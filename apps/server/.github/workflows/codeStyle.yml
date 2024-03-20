@@ -1,0 +1,38 @@
+name: Code style
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  code_style:
+    env:
+      CI: true
+      JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.cjs
+      LINTER_RULES_PATH: /
+      VALIDATE_JAVASCRIPT_STANDARD: false
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+        operations: [ubuntu-latest]
+
+    runs-on: ${{ matrix.operations }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js version ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: |
+          npm i -g pnpm
+          pnpm i
+
+      - name: Check style
+        run: npm run check:style

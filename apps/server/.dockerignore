@@ -1,0 +1,14 @@
+.dccache
+.nyc_output
+build
+built
+coverage
+dist
+dump.rdb
+lib
+node_modules
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
