@@ -3,7 +3,7 @@ import FullPageLoading from "./FullPageLoading";
 import OverlayLoading from "./OverlayLoading";
 
 export const Loading = {
-  Backdrop,
-  FullPageLoading,
-  OverlayLoading,
+	Backdrop,
+	FullPageLoading,
+	OverlayLoading,
 };

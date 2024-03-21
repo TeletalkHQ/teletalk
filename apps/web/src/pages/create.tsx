@@ -1,7 +1,7 @@
 import CreateContainer from "~/containers/Create";
 
 const Create = () => {
-  return <CreateContainer />;
+	return <CreateContainer />;
 };
 
 export default Create;

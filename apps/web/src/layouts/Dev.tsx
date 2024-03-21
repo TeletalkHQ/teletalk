@@ -1,25 +1,24 @@
-import { PropsWithChildren } from "react";
-import { useEffect } from "react";
+import { PropsWithChildren, useEffect } from "react";
 
 import {
-  useGlobalStore,
-  useMessageStore,
-  useSettingsStore,
-  useUserStore,
+	useGlobalStore,
+	useMessageStore,
+	useSettingsStore,
+	useUserStore,
 } from "~/store";
 
 export const DevLayout: React.FC<PropsWithChildren> = ({ children }) => {
-  const state = {
-    message: useMessageStore(),
-    user: useUserStore(),
-    global: useGlobalStore(),
-    settings: useSettingsStore(),
-  };
+	const state = {
+		message: useMessageStore(),
+		user: useUserStore(),
+		global: useGlobalStore(),
+		settings: useSettingsStore(),
+	};
 
-  useEffect(() => {
-    //@ts-ignore
-    window.state = state;
-  });
+	useEffect(() => {
+		//@ts-expect-error //FIXME
+		window.state = state;
+	});
 
-  return <>{children}</>;
+	return <>{children}</>;
 };

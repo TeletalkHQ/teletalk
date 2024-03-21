@@ -4,18 +4,18 @@ import { services } from "~/services";
 import { SocketOnHandler } from "~/types";
 
 export const getPublicData: SocketOnHandler<GetPublicDataIO> = async (
-  _socket,
-  data
+	_socket,
+	data
 ) => {
-  const { userId } = data;
+	const { userId } = data;
 
-  const { publicData } = await services.user.getPublicData({
-    targetUserId: userId,
-  });
+	const { publicData } = await services.user.getPublicData({
+		targetUserId: userId,
+	});
 
-  return {
-    data: {
-      publicData,
-    },
-  };
+	return {
+		data: {
+			publicData,
+		},
+	};
 };

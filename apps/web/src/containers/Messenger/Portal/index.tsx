@@ -20,35 +20,35 @@ import UserInfo from "./Dialog/UserInfo";
 import Drawer from "./Drawer";
 
 const Portal = () => {
-  return (
-    <>
-      <Drawer />
+	return (
+		<>
+			<Drawer />
 
-      {[
-        AddContactWithCellphone,
-        AddContactWithUserId,
-        AvatarSelector,
-        AvatarViewer,
-        BlockedUsers,
-        BlockUser,
-        Contacts,
-        DeleteAvatar,
-        EditBio,
-        EditContactWithCellphone,
-        EditFullName,
-        EditProfile,
-        EditUsername,
-        Logout,
-        PrivacyAndSecurity,
-        RemoveBlock,
-        RemoveContact,
-        Settings,
-        UserInfo,
-      ].map((Component, i) => (
-        <Component key={i} />
-      ))}
-    </>
-  );
+			{[
+				AddContactWithCellphone,
+				AddContactWithUserId,
+				AvatarSelector,
+				AvatarViewer,
+				BlockedUsers,
+				BlockUser,
+				Contacts,
+				DeleteAvatar,
+				EditBio,
+				EditContactWithCellphone,
+				EditFullName,
+				EditProfile,
+				EditUsername,
+				Logout,
+				PrivacyAndSecurity,
+				RemoveBlock,
+				RemoveContact,
+				Settings,
+				UserInfo,
+			].map((Component, i) => (
+				<Component key={i} />
+			))}
+		</>
+	);
 };
 
 export default Portal;

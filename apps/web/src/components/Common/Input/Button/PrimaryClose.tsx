@@ -5,7 +5,7 @@ import PrimaryTextButton from "./PrimaryText";
 interface Props extends ButtonProps {}
 
 const PrimaryCloseButton: React.FC<Props> = (props) => (
-  <PrimaryTextButton {...props}>Close</PrimaryTextButton>
+	<PrimaryTextButton {...props}>Close</PrimaryTextButton>
 );
 
 export default PrimaryCloseButton;

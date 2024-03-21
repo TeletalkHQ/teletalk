@@ -1,0 +1,12 @@
+*-lock.json
+*.d.ts
+*.yaml
+*.yml
+.next
+build
+built
+coverage
+dist
+lib
+node_modules
+public

@@ -5,7 +5,7 @@ import PrimaryButton from "./Primary";
 interface Props extends ButtonProps {}
 
 const PrimaryTextButton: React.FC<Props> = (props) => (
-  <PrimaryButton {...props} variant="text" />
+	<PrimaryButton {...props} variant="text" />
 );
 
 export default PrimaryTextButton;

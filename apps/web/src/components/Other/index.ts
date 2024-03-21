@@ -4,8 +4,8 @@ import ServerStatus from "./ServerStatus";
 import ServerStatusIndicator from "./ServerStatusIndicator";
 
 export const Other = {
-  AuthFooter,
-  Copyright,
-  ServerStatus,
-  ServerStatusIndicator,
+	AuthFooter,
+	Copyright,
+	ServerStatus,
+	ServerStatusIndicator,
 };

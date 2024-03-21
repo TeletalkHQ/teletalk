@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 import { LoggerBrowser } from "logger-browser";
 
 import { Environments, StringMap } from "~/types";

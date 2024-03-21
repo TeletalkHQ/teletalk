@@ -5,21 +5,21 @@ import { services } from "~/services";
 import { SocketOnHandler } from "~/types";
 
 export const getOnlineClients: SocketOnHandler<GetOnlineClientsIO> = async (
-  socket
+	socket
 ) => {
-  const {
-    user: { userId },
-  } = await services.user.findBySessionId({
-    currentSessionId: socket.sessionId,
-  });
+	const {
+		user: { userId },
+	} = await services.user.findBySessionId({
+		currentSessionId: socket.sessionId,
+	});
 
-  const onlineClients = (await clientStatusStore.getOnlineClients()).filter(
-    (i) => i.userId !== userId
-  );
+	const onlineClients = (await clientStatusStore.getOnlineClients()).filter(
+		(i) => i.userId !== userId
+	);
 
-  return {
-    data: {
-      onlineClients,
-    },
-  };
+	return {
+		data: {
+			onlineClients,
+		},
+	};
 };

@@ -5,6 +5,6 @@ import { handlers } from "./handlers";
 import { initialState } from "./initialState";
 
 export const useUserStore = create<UserStore>((set) => ({
-  ...initialState,
-  ...handlers(set),
+	...initialState,
+	...handlers(set),
 }));

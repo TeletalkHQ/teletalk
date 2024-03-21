@@ -4,10 +4,10 @@ import { Select } from "./Select";
 import { TextWithValidator } from "./TextWithValidator";
 
 export const CommonInput = {
-  Button,
-  Select,
-  File: FileInput,
-  Text: {
-    ...TextWithValidator,
-  },
+	Button,
+	Select,
+	File: FileInput,
+	Text: {
+		...TextWithValidator,
+	},
 };

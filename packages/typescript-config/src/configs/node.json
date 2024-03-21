@@ -1,0 +1,22 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "./base.json",
+	"display": "Node Config",
+	"compilerOptions": {
+		"declaration": false,
+		"declarationMap": false,
+		"downlevelIteration": true,
+		"emitDecoratorMetadata": true,
+		"lib": ["ESNext"],
+		"noImplicitReturns": true,
+		"outDir": "./lib",
+		"removeComments": true,
+		"sourceMap": true,
+		"target": "ESNext"
+	},
+	"ts-node": {
+		"esm": true,
+		"experimentalSpecifierResolution": "node",
+		"files": true
+	}
+}

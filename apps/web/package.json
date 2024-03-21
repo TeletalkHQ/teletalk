@@ -1,10 +1,10 @@
 {
-  "name": "web",
-  "description": "teletalk messenger - client (web)",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
+	"name": "web",
+	"description": "teletalk messenger - client (web)",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
 		"build": "dotenv -e ../../.env -- next build",
 		"build:dev": "NEXT_PUBLIC_NODE_ENV=development next build",
 		"check:format": "prettier --write  --list-different ./",
@@ -15,8 +15,6 @@
 		"check:types": "npx tsc --noEmit",
 		"check:types:watch": "pnpm run check:types --watch",
 		"dev": "pnpm run start:dev",
-		"setup:app": "pnpm run setup:git",
-		"setup:git": "pnpx husky install",
 		"start": "pnpm run start:production",
 		"start:dev": "dotenv -e ../../.env -- next dev -p ${p:-3020}",
 		"start:dev:watch": "pnpm run dev &  pnpm run check:types:watch",
@@ -26,9 +24,11 @@
 		"test:dev:coverage": "c8 pnpm run test:dev",
 		"test:dev:watch": "pnpm run test:dev -- --watch"
 	},
-  "dependencies": {},
-  "devDependencies": {},
-"engines": {
-    "node": ">=16.10.0"
-  }
+	"dependencies": {},
+	"devDependencies": {
+		"@repo/typescript-config": "workspace:*"
+	},
+	"engines": {
+		"node": ">=16.10.0"
+	}
 }

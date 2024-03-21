@@ -5,7 +5,7 @@ import SecondaryTextButton from "./SecondaryText";
 interface Props extends ButtonProps {}
 
 const SecondaryCancelButton: React.FC<Props> = (props) => (
-  <SecondaryTextButton {...props}>Cancel</SecondaryTextButton>
+	<SecondaryTextButton {...props}>Cancel</SecondaryTextButton>
 );
 
 export default SecondaryCancelButton;

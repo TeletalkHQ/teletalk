@@ -5,24 +5,24 @@ import { notificationBuilder } from "./NotificationBuilder";
 import { stuffStore } from "./StuffStore";
 
 class NotificationStore {
-  private notifications = [
-    ...stuffStore.errors,
-    ...variables.notifications.errors.customErrors,
-  ].map((item) => {
-    return notificationBuilder()
-      .reason(item.reason)
-      .isAuthError(item.isAuthError)
-      .side(item.side)
-      .build();
-  });
+	private notifications = [
+		...stuffStore.errors,
+		...variables.notifications.errors.customErrors,
+	].map((item) => {
+		return notificationBuilder()
+			.reason(item.reason)
+			.isAuthError(item.isAuthError)
+			.side(item.side)
+			.build();
+	});
 
-  find(reason: NotificationReason): Notification {
-    return this.notifications.find((i) => i.reason === reason)!;
-  }
+	find(reason: NotificationReason): Notification {
+		return this.notifications.find((i) => i.reason === reason)!;
+	}
 
-  getAll() {
-    return this.notifications;
-  }
+	getAll() {
+		return this.notifications;
+	}
 }
 
 export const notificationStore = new NotificationStore();

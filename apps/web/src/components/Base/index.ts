@@ -7,11 +7,11 @@ import { Transition } from "./Transition";
 import { Typography } from "./Typography";
 
 export const BaseComponent = {
-  Box,
-  Icon,
-  Input,
-  Portal,
-  Progress,
-  Transition,
-  Typography,
+	Box,
+	Icon,
+	Input,
+	Portal,
+	Progress,
+	Transition,
+	Typography,
 };

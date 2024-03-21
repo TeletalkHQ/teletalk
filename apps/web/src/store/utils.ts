@@ -3,17 +3,17 @@ import { StateCreator, create as _create } from "zustand";
 const resetters: (() => void)[] = [];
 
 export const create = (<T extends unknown>(f: StateCreator<T> | undefined) => {
-  if (f === undefined) return create;
-  const store = _create(f);
-  const initialState = store.getState();
-  resetters.push(() => {
-    store.setState(initialState, true);
-  });
-  return store;
+	if (f === undefined) return create;
+	const store = _create(f);
+	const initialState = store.getState();
+	resetters.push(() => {
+		store.setState(initialState, true);
+	});
+	return store;
 }) as typeof _create;
 
 export const resetAllStores = () => {
-  for (const resetter of resetters) {
-    resetter();
-  }
+	for (const resetter of resetters) {
+		resetter();
+	}
 };

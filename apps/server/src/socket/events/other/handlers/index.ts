@@ -5,9 +5,9 @@ import { join } from "./join";
 import { ping } from "./ping";
 
 export const handlers = {
-  getCountries,
-  getStuff,
-  getWelcomeMessage,
-  ping,
-  join,
+	getCountries,
+	getStuff,
+	getWelcomeMessage,
+	ping,
+	join,
 };
