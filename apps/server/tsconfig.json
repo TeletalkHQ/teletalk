@@ -14,6 +14,7 @@
 		"configs/**/*.ts",
 		"./index.ts",
 		"testSrc/**/*.ts",
-		"configs/jest/jest.setup.ts"
+		"configs/jest/jest.setup.ts",
+		"src/types/global.d.ts"
 	]
 }
