@@ -11,47 +11,47 @@ import Lower from "./Lower";
 import Upper from "./Upper";
 
 interface Props {
-  messageText: MessageText;
-  onClick: VoidNoArgsFn;
-  selected: boolean;
-  userId: UserId;
+	messageText: MessageText;
+	onClick: VoidNoArgsFn;
+	selected: boolean;
+	userId: UserId;
 }
 
 const ChatListItem: React.FC<Props> = ({
-  messageText,
-  onClick,
-  selected,
-  userId,
+	messageText,
+	onClick,
+	selected,
+	userId,
 }) => {
-  const { publicData } = useGetPublicData(userId);
-  const { avatarSrc } = useGetAvatar(userId);
+	const { publicData } = useGetPublicData(userId);
+	const { avatarSrc } = useGetAvatar(userId);
 
-  const fullName = userUtils.concatFirstNameWithLastName(publicData);
+	const fullName = userUtils.concatFirstNameWithLastName(publicData);
 
-  return (
-    <Box.ListItemButton
-      selected={selected}
-      style={{
-        borderRadius: "10px",
-        display: "flex",
-        height: "65px",
-        justifyContent: "space-between",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap",
-      }}
-      onClick={onClick}
-    >
-      <ListItemAvatar>
-        <Box.Avatar src={avatarSrc} style={{ width: 45, height: 45 }} />
-      </ListItemAvatar>
+	return (
+		<Box.ListItemButton
+			selected={selected}
+			style={{
+				borderRadius: "10px",
+				display: "flex",
+				height: "65px",
+				justifyContent: "space-between",
+				overflow: "hidden",
+				textOverflow: "ellipsis",
+				whiteSpace: "nowrap",
+			}}
+			onClick={onClick}
+		>
+			<ListItemAvatar>
+				<Box.Avatar src={avatarSrc} style={{ width: 45, height: 45 }} />
+			</ListItemAvatar>
 
-      <Box.Flex col style={{ width: "80%" }}>
-        <Upper fullName={fullName} />
-        <Lower messageText={messageText} />
-      </Box.Flex>
-    </Box.ListItemButton>
-  );
+			<Box.Flex col style={{ width: "80%" }}>
+				<Upper fullName={fullName} />
+				<Lower messageText={messageText} />
+			</Box.Flex>
+		</Box.ListItemButton>
+	);
 };
 
 export default ChatListItem;

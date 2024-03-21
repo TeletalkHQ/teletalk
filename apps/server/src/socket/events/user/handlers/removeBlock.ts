@@ -4,17 +4,17 @@ import { services } from "~/services";
 import { SocketOnHandler } from "~/types";
 
 export const removeBlock: SocketOnHandler<RemoveBlockIO> = async (
-  socket,
-  data
+	socket,
+	data
 ) => {
-  await services.user.removeBlock({
-    currentSessionId: socket.sessionId,
-    targetUserId: data.userId,
-  });
+	await services.user.removeBlock({
+		currentSessionId: socket.sessionId,
+		targetUserId: data.userId,
+	});
 
-  return {
-    data: {
-      removedBlock: data,
-    },
-  };
+	return {
+		data: {
+			removedBlock: data,
+		},
+	};
 };

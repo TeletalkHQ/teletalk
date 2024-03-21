@@ -5,24 +5,24 @@ import { services } from "~/services";
 import { SocketOnHandler } from "~/types";
 
 export const getChatInfo: SocketOnHandler<GetChatInfoIO> = async (
-  _socket,
-  data
+	_socket,
+	data
 ) => {
-  const privateChat = await services.privateChat.findByChatId({
-    chatId: data.chatId,
-  });
+	const privateChat = await services.privateChat.findByChatId({
+		chatId: data.chatId,
+	});
 
-  if (!privateChat) throw errorStore.find("PRIVATE_CHAT_NOT_EXIST");
+	if (!privateChat) throw errorStore.find("PRIVATE_CHAT_NOT_EXIST");
 
-  const { chatId, createdAt, participants } = privateChat;
+	const { chatId, createdAt, participants } = privateChat;
 
-  return {
-    data: {
-      chatInfo: {
-        chatId,
-        createdAt,
-        participants,
-      },
-    },
-  };
+	return {
+		data: {
+			chatInfo: {
+				chatId,
+				createdAt,
+				participants,
+			},
+		},
+	};
 };

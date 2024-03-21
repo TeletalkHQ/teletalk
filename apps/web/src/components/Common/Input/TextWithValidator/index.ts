@@ -9,13 +9,13 @@ import Username from "./Username";
 import VerificationCode from "./VerificationCode";
 
 export const TextWithValidator = {
-  Bio,
-  Cellphone,
-  CountryCode,
-  FirstName,
-  FullName,
-  LastName,
-  PhoneNumber,
-  Username,
-  VerificationCode,
+	Bio,
+	Cellphone,
+	CountryCode,
+	FirstName,
+	FullName,
+	LastName,
+	PhoneNumber,
+	Username,
+	VerificationCode,
 };

@@ -8,40 +8,40 @@ import { services } from "~/services";
 import { SocketOnHandler } from "~/types";
 
 export const verify: SocketOnHandler<VerifyIO> = async (socket) => {
-  const authSession = await authSessionStore.find(socket.sessionId);
+	const authSession = await authSessionStore.find(socket.sessionId);
 
-  if (!authSession) throw errorStore.find("SESSION_NOT_FOUND");
+	if (!authSession) throw errorStore.find("SESSION_NOT_FOUND");
 
-  const { isUserExist, userId } = await services.user.isUserExist({
-    cellphone: extractor.cellphone(authSession),
-  });
+	const { isUserExist, userId } = await services.user.isUserExist({
+		cellphone: extractor.cellphone(authSession),
+	});
 
-  if (isUserExist) {
-    const sessionId = sessionManager.generateSessionId();
-    const session = await sessionManager.sign(sessionId);
+	if (isUserExist) {
+		const sessionId = sessionManager.generateSessionId();
+		const session = await sessionManager.sign(sessionId);
 
-    await services.user.addSession({
-      currentUserId: userId!,
-      sessionId,
-    });
+		await services.user.addSession({
+			currentUserId: userId!,
+			sessionId,
+		});
 
-    authSessionStore.remove(socket.sessionId);
+		authSessionStore.remove(socket.sessionId);
 
-    return {
-      data: {
-        newUser: false,
-        session,
-      },
-    };
-  }
+		return {
+			data: {
+				newUser: false,
+				session,
+			},
+		};
+	}
 
-  return {
-    data: {
-      newUser: true,
-      session: "",
-    },
-    options: {
-      shouldEmitToUserRooms: false,
-    },
-  };
+	return {
+		data: {
+			newUser: true,
+			session: "",
+		},
+		options: {
+			shouldEmitToUserRooms: false,
+		},
+	};
 };

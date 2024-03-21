@@ -8,50 +8,50 @@ import { Field } from "~/types/model";
 import { countries } from "~/variables";
 
 export const validationCheckers = Object.keys(nativeModels).reduce(
-  (prevValue, currValue) => {
-    const k = currValue as Field;
+	(prevValue, currValue) => {
+		const k = currValue as Field;
 
-    prevValue[k] = (result, value) =>
-      validationChecker(result, k, value).check();
+		prevValue[k] = (result, value) =>
+			validationChecker(result, k, value).check();
 
-    return prevValue;
-  },
-  {} as ValidationCheckerFnCollection
+		return prevValue;
+	},
+	{} as ValidationCheckerFnCollection
 );
 
 const {
-  countryCode: defaultCountryCodeChecker,
-  countryName: defaultCountryNameChecker,
+	countryCode: defaultCountryCodeChecker,
+	countryName: defaultCountryNameChecker,
 } = validationCheckers;
 
 validationCheckers.countryCode = (result, value) => {
-  if (result === true) {
-    const country = countries.find((c) => c.countryCode === value);
-    if (customTypeof.isUndefined(country))
-      throw errorStore.find("COUNTRY_CODE_NOT_SUPPORTED");
+	if (result === true) {
+		const country = countries.find((c) => c.countryCode === value);
+		if (customTypeof.isUndefined(country))
+			throw errorStore.find("COUNTRY_CODE_NOT_SUPPORTED");
 
-    return;
-  }
+		return;
+	}
 
-  defaultCountryCodeChecker(result, value);
+	defaultCountryCodeChecker(result, value);
 };
 
 validationCheckers.countryName = (result, value) => {
-  if (result === true) {
-    const country = countries.find((c) => c.countryName === value);
-    if (customTypeof.isUndefined(country))
-      throw errorStore.find("COUNTRY_NAME_NOT_SUPPORTED");
+	if (result === true) {
+		const country = countries.find((c) => c.countryName === value);
+		if (customTypeof.isUndefined(country))
+			throw errorStore.find("COUNTRY_NAME_NOT_SUPPORTED");
 
-    return;
-  }
+		return;
+	}
 
-  defaultCountryNameChecker(result, value);
+	defaultCountryNameChecker(result, value);
 };
 
 const notImplementedCheckerFn = (fieldName: Field) =>
-  (() => {
-    throw `${fieldName}ValidationChecker is not implemented`;
-  }) as ValidationCheckerFn;
+	(() => {
+		throw `${fieldName}ValidationChecker is not implemented`;
+	}) as ValidationCheckerFn;
 
 validationCheckers.id = notImplementedCheckerFn("id");
 validationCheckers.createdAt = notImplementedCheckerFn("createdAt");

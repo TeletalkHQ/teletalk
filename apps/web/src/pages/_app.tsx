@@ -11,30 +11,30 @@ import ReactQueryProvider from "~/providers/ReactQueryProvider";
 import { utils } from "~/utils";
 
 export interface CustomAppProps extends AppProps {
-  emotionCache?: EmotionCache;
+	emotionCache?: EmotionCache;
 }
 
 const clientSideEmotionCache = utils.createEmotionCache();
 
 export default function _app(props: CustomAppProps) {
-  const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
+	const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
 
-  return (
-    <SnackbarProvider
-      dense
-      maxSnack={appConfigs.getConfigs().ui.maxNotification}
-      preventDuplicate
-    >
-      <ReactQueryProvider>
-        <MUIThemeProvider emotionCache={emotionCache}>
-          <DevLayout>
-            <MainLayout>
-              <Component {...pageProps} />
-            </MainLayout>
-          </DevLayout>
-        </MUIThemeProvider>
-        <ReactQueryDevtools />
-      </ReactQueryProvider>
-    </SnackbarProvider>
-  );
+	return (
+		<SnackbarProvider
+			dense
+			maxSnack={appConfigs.getConfigs().ui.maxNotification}
+			preventDuplicate
+		>
+			<ReactQueryProvider>
+				<MUIThemeProvider emotionCache={emotionCache}>
+					<DevLayout>
+						<MainLayout>
+							<Component {...pageProps} />
+						</MainLayout>
+					</DevLayout>
+				</MUIThemeProvider>
+				<ReactQueryDevtools />
+			</ReactQueryProvider>
+		</SnackbarProvider>
+	);
 }

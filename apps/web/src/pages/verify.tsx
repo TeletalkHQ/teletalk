@@ -1,7 +1,7 @@
 import VerifyContainer from "~/containers/Verify";
 
 const Verify = () => {
-  return <VerifyContainer />;
+	return <VerifyContainer />;
 };
 
 export default Verify;

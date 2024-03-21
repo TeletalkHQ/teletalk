@@ -1,0 +1,15 @@
+.nyc_output
+.trashcan
+*-lock.json
+*.d.ts
+*.yaml
+*.yml
+build
+built
+coverage
+dist
+lib
+node_modules
+public
+tests.svg
+thunder-tests

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 export const useUnmount = (cb: () => void) => {
-  useEffect(() => {
-    return cb;
-  }, [cb]);
+	useEffect(() => {
+		return cb;
+	}, [cb]);
 };

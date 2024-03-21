@@ -6,31 +6,31 @@ import { SocketOnHandler } from "~/types";
 import { utils } from "~/utils";
 
 export const disconnect: SocketOnHandler<DisconnectIO> = async (socket) => {
-  const notAllowedEvents: EventName[] = ["signIn", "createNewUser", "verify"];
+	const notAllowedEvents: EventName[] = ["signIn", "createNewUser", "verify"];
 
-  if (socket.sessionId && !notAllowedEvents.includes(socket.eventName)) {
-    const {
-      user: { userId },
-    } = await services.user.findBySessionId({
-      currentSessionId: socket.sessionId,
-    });
+	if (socket.sessionId && !notAllowedEvents.includes(socket.eventName)) {
+		const {
+			user: { userId },
+		} = await services.user.findBySessionId({
+			currentSessionId: socket.sessionId,
+		});
 
-    await clientStatusStore.decConnection(userId);
+		await clientStatusStore.decConnection(userId);
 
-    const response = utils.createSuccessResponse("getClientStatus", {
-      isOnline: await clientStatusStore.isOnline(userId),
-      userId,
-    });
+		const response = utils.createSuccessResponse("getClientStatus", {
+			isOnline: await clientStatusStore.isOnline(userId),
+			userId,
+		});
 
-    socket.broadcast.emit<EventName>(response.eventName, response);
-  }
+		socket.broadcast.emit<EventName>(response.eventName, response);
+	}
 
-  return {
-    data: {},
-    options: {
-      shouldEmitReturnValue: false,
-      shouldEmitToUserRooms: false,
-      shouldCallResponseCallback: false,
-    },
-  };
+	return {
+		data: {},
+		options: {
+			shouldEmitReturnValue: false,
+			shouldEmitToUserRooms: false,
+			shouldCallResponseCallback: false,
+		},
+	};
 };

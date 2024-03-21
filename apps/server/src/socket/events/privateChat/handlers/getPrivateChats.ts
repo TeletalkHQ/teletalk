@@ -4,15 +4,15 @@ import { services } from "~/services";
 import { SocketOnHandler } from "~/types";
 
 export const getPrivateChats: SocketOnHandler<GetPrivateChatsIO> = async (
-  socket
+	socket
 ) => {
-  const { privateChats } = await services.privateChat.findManyByParticipantId({
-    currentSessionId: socket.sessionId,
-  });
+	const { privateChats } = await services.privateChat.findManyByParticipantId({
+		currentSessionId: socket.sessionId,
+	});
 
-  return {
-    data: {
-      privateChats,
-    },
-  };
+	return {
+		data: {
+			privateChats,
+		},
+	};
 };

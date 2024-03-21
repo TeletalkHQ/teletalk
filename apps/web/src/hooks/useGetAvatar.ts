@@ -8,35 +8,35 @@ import { useEmitter } from "./useEmitter";
 import { useFindUserById } from "./useFindUserById";
 
 export const useGetAvatar = (userId: UserId) => {
-  const userStore = useUserStore();
-  const { handler: getAvatarHandler, loading } = useEmitter("getAvatar");
-  const {
-    data: { avatarSrc },
-  } = useFindUserById(userId);
+	const userStore = useUserStore();
+	const { handler: getAvatarHandler, loading } = useEmitter("getAvatar");
+	const {
+		data: { avatarSrc },
+	} = useFindUserById(userId);
 
-  useEffect(() => {
-    if (!userId || !userStore.isUserDataSettled) return;
+	useEffect(() => {
+		if (!userId || !userStore.isUserDataSettled) return;
 
-    handler();
+		handler();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId, userStore.isUserDataSettled]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [userId, userStore.isUserDataSettled]);
 
-  const handler = () => {
-    const user = userStore.users.find((i) => i.userId === userId);
-    if (user?.avatarSrc) return;
+	const handler = () => {
+		const user = userStore.users.find((i) => i.userId === userId);
+		if (user?.avatarSrc) return;
 
-    getAvatarHandler.emitFull({ userId }, (response) => {
-      userStore.updateUser({
-        userId: response.data.userId,
-        avatarSrc: response.data.avatarSrc || defaultAvatar.src,
-      });
-    });
-  };
+		getAvatarHandler.emitFull({ userId }, (response) => {
+			userStore.updateUser({
+				userId: response.data.userId,
+				avatarSrc: response.data.avatarSrc || defaultAvatar.src,
+			});
+		});
+	};
 
-  return {
-    avatarSrc: avatarSrc || defaultAvatar.src,
-    handler,
-    loading,
-  };
+	return {
+		avatarSrc: avatarSrc || defaultAvatar.src,
+		handler,
+		loading,
+	};
 };

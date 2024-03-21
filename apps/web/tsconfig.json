@@ -1,40 +1,22 @@
 {
-  "extends": "@repo/typescript-config/src/configs/nextjs.json",
-   "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": ".",
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "incremental": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "paths": {
-      "@/*": ["testSrc/*"],
-      "#/*": ["public/*"],
-      "~/*": ["src/*"]
-    },
-    "plugins": [{
-      "name": "next"
-    }],
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": false,
-    "target": "es2016",
-    "types": ["mocha"]
-  },
-  "exclude": ["node_modules"],
-  "include": ["src", "next-env.d.ts", "./src/types/global.d.ts"],
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node",
-    "files": true
-  }
+	"extends": "@repo/typescript-config/src/configs/nextJS.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "commonjs",
+		"paths": {
+			"@/*": ["testSrc/*"],
+			"#/*": ["public/*"],
+			"~/*": ["src/*"]
+		},
+		"skipLibCheck": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"target": "es2016",
+		"types": ["mocha"],
+		"noEmit": true
+	},
+	"exclude": ["node_modules"],
+	"include": ["src", "next-env.d.ts", "./src/types/global.d.ts"]
 }

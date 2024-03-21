@@ -8,12 +8,12 @@ import SecondaryConfirm from "./SecondaryConfirm";
 import SecondaryText from "./SecondaryText";
 
 export const Button = {
-  Primary,
-  PrimaryClose,
-  PrimaryConfirm,
-  PrimaryText,
-  Secondary,
-  SecondaryCancel,
-  SecondaryConfirm,
-  SecondaryText,
+	Primary,
+	PrimaryClose,
+	PrimaryConfirm,
+	PrimaryText,
+	Secondary,
+	SecondaryCancel,
+	SecondaryConfirm,
+	SecondaryText,
 };

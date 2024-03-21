@@ -8,12 +8,12 @@ import Select from "./Select";
 import Text from "./Text";
 
 export const Input = {
-  Adornment: InputAdornment,
-  AutoComplete,
-  Button,
-  Divider,
-  IconButton,
-  LoadingButton,
-  Select,
-  Text,
+	Adornment: InputAdornment,
+	AutoComplete,
+	Button,
+	Divider,
+	IconButton,
+	LoadingButton,
+	Select,
+	Text,
 };

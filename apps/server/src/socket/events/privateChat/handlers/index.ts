@@ -4,8 +4,8 @@ import { getPrivateChats } from "./getPrivateChats";
 import { sendMessage } from "./sendMessage";
 
 export const privateChatHandlers = {
-  getChatInfo,
-  getPrivateChat,
-  getPrivateChats,
-  sendMessage,
+	getChatInfo,
+	getPrivateChat,
+	getPrivateChats,
+	sendMessage,
 };

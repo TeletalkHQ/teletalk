@@ -1,7 +1,7 @@
 import SignInContainer from "~/containers/SignIn";
 
 const SignIn = () => {
-  return <SignInContainer />;
+	return <SignInContainer />;
 };
 
 export default SignIn;

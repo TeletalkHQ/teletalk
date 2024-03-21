@@ -16,83 +16,83 @@ PrettyError.start();
 await configs.setup();
 
 export const runner = async () => {
-  const { USE_CLUSTERS, LOG_ENVS } = configs.getConfigs().APP;
+	const { USE_CLUSTERS, LOG_ENVS } = configs.getConfigs().APP;
 
-  if (LOG_ENVS === "true") utils.logEnvironments();
+	if (LOG_ENVS === "true") utils.logEnvironments();
 
-  await utils.initializeDatabases();
+	await utils.initializeDatabases();
 
-  if (USE_CLUSTERS === "true") {
-    runWithClusters();
-  } else runNormal();
+	if (USE_CLUSTERS === "true") {
+		runWithClusters();
+	} else runNormal();
 };
 
 const runWithClusters = async () => {
-  if (cluster.isPrimary) setupPrimaryServer();
-  else setupWorkerServer();
+	if (cluster.isPrimary) setupPrimaryServer();
+	else setupWorkerServer();
 };
 
 const runNormal = async () => {
-  const httpServer = createHttpServerWithListener();
-  await createSocketServer(httpServer);
+	const httpServer = createHttpServerWithListener();
+	await createSocketServer(httpServer);
 };
 
 const setupPrimaryServer = () => {
-  const httpServer = createHttpServerWithListener();
+	const httpServer = createHttpServerWithListener();
 
-  setupMaster(httpServer, {
-    loadBalancingMethod: "round-robin",
-  });
+	setupMaster(httpServer, {
+		loadBalancingMethod: "round-robin",
+	});
 
-  setupPrimary();
+	setupPrimary();
 
-  cluster.setupPrimary({
-    serialization: "advanced",
-  });
+	cluster.setupPrimary({
+		serialization: "advanced",
+	});
 
-  forkClusters();
+	forkClusters();
 
-  registerClusterOnExitEvent();
+	registerClusterOnExitEvent();
 };
 
 const setupWorkerServer = async () => {
-  const httpServer = http.createServer();
+	const httpServer = http.createServer();
 
-  const io = await createSocketServer(httpServer);
+	const io = await createSocketServer(httpServer);
 
-  io.adapter(createAdapter());
+	io.adapter(createAdapter());
 
-  setupWorker(io);
+	setupWorker(io);
 };
 
 const createHttpServerWithListener = () => {
-  const httpServer = http.createServer();
-  httpServer.listen(configs.getConfigs().APP.PORT, httpServerListener);
-  return httpServer;
+	const httpServer = http.createServer();
+	httpServer.listen(configs.getConfigs().APP.PORT, httpServerListener);
+	return httpServer;
 };
 
 const httpServerListener = () => {
-  const { ENVIRONMENT, PORT } = configs.getConfigs().APP;
+	const { ENVIRONMENT, PORT } = configs.getConfigs().APP;
 
-  logger.info(
-    `Server is running. RUNTIME_MODE:${ENVIRONMENT}, PID:${
-      process.pid
-    }, PORT:${PORT}, ACCESS_POINT:${address.ip()}:${PORT}`
-  );
+	logger.info(
+		`Server is running. RUNTIME_MODE:${ENVIRONMENT}, PID:${
+			process.pid
+		}, PORT:${PORT}, ACCESS_POINT:${address.ip()}:${PORT}`
+	);
 };
 
 const forkClusters = () => {
-  const NUM_OF_WORKER_THREADS = os.cpus().length;
-  for (let i = 0; i < NUM_OF_WORKER_THREADS; i++) {
-    cluster.fork();
-  }
+	const NUM_OF_WORKER_THREADS = os.cpus().length;
+	for (let i = 0; i < NUM_OF_WORKER_THREADS; i++) {
+		cluster.fork();
+	}
 };
 
 const registerClusterOnExitEvent = () => {
-  cluster.on("exit", (worker) => {
-    logger.debug(`Worker ${worker.process.pid} died`);
-    cluster.fork();
-  });
+	cluster.on("exit", (worker) => {
+		logger.debug(`Worker ${worker.process.pid} died`);
+		cluster.fork();
+	});
 };
 
 if (configs.getConfigs().APP.SELF_EXEC) await runner();

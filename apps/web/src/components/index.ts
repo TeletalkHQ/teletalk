@@ -6,51 +6,51 @@ import { Other } from "./Other";
 import { Template as TemplateComponents } from "./Template";
 
 export const Box = {
-  ...BaseComponent.Box,
+	...BaseComponent.Box,
 };
 
 export const Button = {
-  Base: BaseComponent.Input.Button,
-  ...CommonComponent.Input.Button,
-  Icon: BaseComponent.Input.IconButton,
-  Loading: BaseComponent.Input.LoadingButton,
+	Base: BaseComponent.Input.Button,
+	...CommonComponent.Input.Button,
+	Icon: BaseComponent.Input.IconButton,
+	Loading: BaseComponent.Input.LoadingButton,
 };
 
 export const Input = {
-  ...CommonComponent.Input,
-  Base: {
-    ...BaseComponent.Input,
-  },
+	...CommonComponent.Input,
+	Base: {
+		...BaseComponent.Input,
+	},
 };
 
 export const Icon = {
-  ...BaseComponent.Icon,
+	...BaseComponent.Icon,
 };
 
 export const Loading = {
-  ...LoadingComponents,
+	...LoadingComponents,
 };
 
 export const Template = {
-  ...TemplateComponents,
+	...TemplateComponents,
 };
 
 export const Transition = {
-  ...TransitionComponents,
+	...TransitionComponents,
 };
 
 export const Typography = {
-  ...BaseComponent.Typography,
-  Base: BaseComponent.Typography.Base,
+	...BaseComponent.Typography,
+	Base: BaseComponent.Typography.Base,
 };
 
 export const Progress = {
-  ...BaseComponent.Progress,
+	...BaseComponent.Progress,
 };
 
 export const Components = {
-  Base: {
-    ...BaseComponent.Portal,
-  },
-  ...Other,
+	Base: {
+		...BaseComponent.Portal,
+	},
+	...Other,
 };

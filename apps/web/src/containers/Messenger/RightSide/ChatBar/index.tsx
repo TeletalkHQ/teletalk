@@ -8,34 +8,34 @@ import ChatBarMenu from "./Menu";
 interface Props {}
 
 const ChatBar: React.FC<Props> = () => {
-  const globalStore = useGlobalStore();
+	const globalStore = useGlobalStore();
 
-  const handleChatBarClick = () => {
-    globalStore.openDialog("userInfo");
-  };
+	const handleChatBarClick = () => {
+		globalStore.openDialog("userInfo");
+	};
 
-  return (
-    <>
-      <Box.Paper
-        style={{
-          alignItems: "center",
-          borderRadius: 0,
-          cursor: "pointer",
-          display: "flex",
-          height: 50,
-          justifyContent: "space-between",
-          padding: 5,
-        }}
-        onClick={handleChatBarClick}
-      >
-        <ChatBarCloseButton />
+	return (
+		<>
+			<Box.Paper
+				style={{
+					alignItems: "center",
+					borderRadius: 0,
+					cursor: "pointer",
+					display: "flex",
+					height: 50,
+					justifyContent: "space-between",
+					padding: 5,
+				}}
+				onClick={handleChatBarClick}
+			>
+				<ChatBarCloseButton />
 
-        <ChatBarCenterContent />
+				<ChatBarCenterContent />
 
-        <ChatBarMenu />
-      </Box.Paper>
-    </>
-  );
+				<ChatBarMenu />
+			</Box.Paper>
+		</>
+	);
 };
 
 export default ChatBar;

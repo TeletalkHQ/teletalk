@@ -4,8 +4,8 @@ import { signIn } from "~/socket/events/auth/handlers/signIn";
 import { verify } from "~/socket/events/auth/handlers/verify";
 
 export const handlers = {
-  createNewUser,
-  logout,
-  signIn,
-  verify,
+	createNewUser,
+	logout,
+	signIn,
+	verify,
 };

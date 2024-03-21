@@ -8,36 +8,36 @@ import List from "./List";
 import ProfileOverview from "./ProfileOverview";
 
 interface Props {
-  avatarSrc: AvatarSrc;
-  fullName: string;
-  fullNumber: string;
-  username: Username;
-  onSettingItemClick: OnSettingItemClick;
+	avatarSrc: AvatarSrc;
+	fullName: string;
+	fullNumber: string;
+	username: Username;
+	onSettingItemClick: OnSettingItemClick;
 }
 
 const Content: React.FC<Props> = ({
-  avatarSrc,
-  fullName,
-  fullNumber,
-  onSettingItemClick,
-  username,
+	avatarSrc,
+	fullName,
+	fullNumber,
+	onSettingItemClick,
+	username,
 }) => {
-  return (
-    <>
-      <ProfileOverview
-        avatarSrc={avatarSrc}
-        fullName={fullName}
-        fullNumber={fullNumber}
-        username={username}
-      />
+	return (
+		<>
+			<ProfileOverview
+				avatarSrc={avatarSrc}
+				fullName={fullName}
+				fullNumber={fullNumber}
+				username={username}
+			/>
 
-      <Divider style={{ margin: "20px 0px 20px 0px" }} />
+			<Divider style={{ margin: "20px 0px 20px 0px" }} />
 
-      <Box.List>
-        <List onSettingItemClick={onSettingItemClick} />
-      </Box.List>
-    </>
-  );
+			<Box.List>
+				<List onSettingItemClick={onSettingItemClick} />
+			</Box.List>
+		</>
+	);
 };
 
 export default Content;
