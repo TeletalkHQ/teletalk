@@ -1,5 +1,5 @@
+import { Cellphone } from "@repo/type-store";
 import { JWTPayload, JWTVerifyResult } from "jose";
-import { Cellphone } from "teletalk-type-store";
 
 export interface StringMap {
 	[prop: string | symbol]: any;

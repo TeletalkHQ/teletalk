@@ -1,6 +1,6 @@
 import { LoggerChalker } from "logger-chalker";
 import { Server } from "socket.io";
-import { EncryptedSession, EventName, SessionId } from "teletalk-type-store";
+import { EncryptedSession, EventName, SessionId } from "@repo/type-store";
 
 import {
 	CustomEmit,

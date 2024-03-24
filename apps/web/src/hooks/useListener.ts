@@ -1,4 +1,4 @@
-import type { IOCollection } from "teletalk-type-store";
+import type { IOCollection } from "@repo/type-store";
 
 import { websocket } from "~/classes/websocket/Websocket";
 import { EventName, SocketResponse } from "~/types";

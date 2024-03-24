@@ -1,4 +1,4 @@
-import { EventName } from "teletalk-type-store";
+import { EventName } from "@repo/type-store";
 
 import { SocketMiddleware } from "~/types";
 import { utils } from "~/utils";

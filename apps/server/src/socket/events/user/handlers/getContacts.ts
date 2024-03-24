@@ -1,4 +1,4 @@
-import { GetContactsIO } from "teletalk-type-store";
+import { GetContactsIO } from "@repo/type-store";
 
 import { services } from "~/services";
 import { SocketOnHandler } from "~/types";

@@ -1,4 +1,4 @@
-import { FullNameWithUserId } from "teletalk-type-store";
+import { FullNameWithUserId } from "@repo/type-store";
 
 import { extractor } from "~/classes/Extractor";
 

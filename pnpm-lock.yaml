@@ -236,9 +236,6 @@ importers:
       swiper:
         specifier: ^11.0.5
         version: 11.0.7
-      teletalk-type-store:
-        specifier: ^1.1.4
-        version: 1.1.4
       underscore:
         specifier: ^1.13.6
         version: 1.13.6
@@ -673,6 +670,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/custom-typeof
     devDependencies:
+      '@repo/type-store':
+        specifier: workspace:*
+        version: link:../../packages/type-store
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -683,6 +683,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/custom-typeof
     devDependencies:
+      '@repo/type-store':
+        specifier: workspace:*
+        version: link:../../packages/type-store
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -722,6 +725,9 @@ importers:
 
   packages/logger-chalker:
     dependencies:
+      '@repo/custom-typeof':
+        specifier: workspace:*
+        version: link:../custom-typeof
       '@repo/logestige':
         specifier: workspace:*
         version: link:../logestige
@@ -22900,10 +22906,6 @@ packages:
     dependencies:
       memoizerific: 1.11.3
     dev: true
-
-  /teletalk-type-store@1.1.4:
-    resolution: {integrity: sha512-2m0Y25+OKZaW/mGv4IXKW3KHd8F53RXxz13L61yeRGm1GBKZM/Ltl9zLrb8uU5jI7a2nVIdmbQLPCvLH5Q833g==}
-    dev: false
 
   /temp-dir@2.0.0:
     resolution: {integrity: sha512-aoBAniQmmwtcKp/7BzsH8Cxzv8OL736p7v1ihGb5e9DJ9kTwGWHrQrVB5+lfVDzfGrdRzXch+ig7LHaY1JTOrg==}

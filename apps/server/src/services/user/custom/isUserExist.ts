@@ -1,4 +1,4 @@
-import { PartialEmptyCellphone, UserId } from "teletalk-type-store";
+import { PartialEmptyCellphone, UserId } from "@repo/type-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 

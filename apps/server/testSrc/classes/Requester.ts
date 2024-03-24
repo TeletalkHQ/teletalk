@@ -1,6 +1,6 @@
+import { IO } from "@repo/type-store";
 import chai from "chai";
 import { Socket as Client } from "socket.io-client";
-import { IO } from "teletalk-type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import {

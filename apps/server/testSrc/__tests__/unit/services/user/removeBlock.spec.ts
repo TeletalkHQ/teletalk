@@ -1,4 +1,4 @@
-import { BlackList, DBUserData } from "teletalk-type-store";
+import { BlackList, DBUserData } from "@repo/type-store";
 
 import { services } from "~/services";
 

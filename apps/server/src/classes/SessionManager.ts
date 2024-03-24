@@ -1,5 +1,5 @@
+import { EncryptedSession, SessionId } from "@repo/type-store";
 import { SignJWT, jwtVerify } from "jose";
-import { EncryptedSession, SessionId } from "teletalk-type-store";
 import { randomMaker } from "utility-store";
 
 import { configs } from "~/classes/Configs";

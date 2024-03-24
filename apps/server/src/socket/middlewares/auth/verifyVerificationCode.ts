@@ -1,6 +1,6 @@
+import { SessionId, VerifyIO } from "@repo/type-store";
 import { trier } from "simple-trier";
 import { Socket } from "socket.io";
-import { SessionId, VerifyIO } from "teletalk-type-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { errorStore } from "~/classes/ErrorStore";

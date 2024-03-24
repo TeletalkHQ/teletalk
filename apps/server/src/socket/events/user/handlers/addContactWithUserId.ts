@@ -1,4 +1,4 @@
-import { AddContactWithUserIdIO } from "teletalk-type-store";
+import { AddContactWithUserIdIO } from "@repo/type-store";
 import { maker } from "utility-store";
 
 import { services } from "~/services";

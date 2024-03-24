@@ -1,4 +1,4 @@
-import { EventName } from "teletalk-type-store";
+import { EventName } from "@repo/type-store";
 
 import { eventsWithoutDisconnect } from "@/socket/events";
 import { utils } from "@/utils";

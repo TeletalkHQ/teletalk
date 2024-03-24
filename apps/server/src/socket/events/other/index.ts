@@ -4,7 +4,7 @@ import {
 	GetWelcomeMessageIO,
 	JoinIO,
 	PingIO,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
 import { validationModels } from "~/models/validation";

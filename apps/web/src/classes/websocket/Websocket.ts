@@ -1,5 +1,5 @@
+import { EncryptedSession } from "@repo/type-store";
 import io, { Socket } from "socket.io-client";
-import { EncryptedSession } from "teletalk-type-store";
 
 import { appConfigs } from "~/classes/AppConfigs";
 

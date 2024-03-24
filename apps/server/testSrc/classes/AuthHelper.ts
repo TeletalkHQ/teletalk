@@ -4,7 +4,7 @@ import {
 	FullName,
 	SignInIO,
 	VerifyIO,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { sessionManager } from "~/classes/SessionManager";

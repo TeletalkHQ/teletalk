@@ -1,4 +1,4 @@
-import { DBUserData, PartialEmptyCellphone } from "teletalk-type-store";
+import { DBUserData, PartialEmptyCellphone } from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { extractor } from "~/classes/Extractor";

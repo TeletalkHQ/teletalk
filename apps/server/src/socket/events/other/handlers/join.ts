@@ -1,4 +1,4 @@
-import { EventName, JoinIO } from "teletalk-type-store";
+import { EventName, JoinIO } from "@repo/type-store";
 
 import { clientStatusStore } from "~/classes/ClientStatusStore";
 import { services } from "~/services";

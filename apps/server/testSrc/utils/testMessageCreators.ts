@@ -1,4 +1,4 @@
-import { EventName } from "teletalk-type-store";
+import { EventName } from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { ErrorReason } from "~/types";

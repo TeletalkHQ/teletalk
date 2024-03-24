@@ -1,5 +1,5 @@
+import type { GetUserDataIO } from "@repo/type-store";
 import { useEffect } from "react";
-import type { GetUserDataIO } from "teletalk-type-store";
 
 import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";

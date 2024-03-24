@@ -1,4 +1,4 @@
-import { CreateNewUserIO } from "teletalk-type-store";
+import { CreateNewUserIO } from "@repo/type-store";
 import { extractor, randomMaker } from "utility-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";

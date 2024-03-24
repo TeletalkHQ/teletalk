@@ -1,4 +1,4 @@
-import type { AvatarSrc } from "teletalk-type-store";
+import type { AvatarSrc } from "@repo/type-store";
 
 import { Box, Typography } from "~/components";
 

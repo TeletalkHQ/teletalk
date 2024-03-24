@@ -86,7 +86,7 @@ const baseConfig = defineConfig({
 				amd: true,
 				commonjs: true,
 				esmodule: true,
-				ignore: ["type-fest", "teletalk-type-store"],
+				ignore: ["type-fest", "@repo/type-store"],
 			},
 		],
 		"import/no-unused-modules": [

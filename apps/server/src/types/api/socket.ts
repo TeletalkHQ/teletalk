@@ -1,5 +1,5 @@
+import { EventName, IO } from "@repo/type-store";
 import { Event, Socket } from "socket.io";
-import { EventName, IO } from "teletalk-type-store";
 
 import { NativeError, Route, VoidNoArgsFn } from "..";
 

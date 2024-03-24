@@ -1,4 +1,4 @@
-import { StringMap } from "teletalk-type-store";
+import { StringMap } from "@repo/type-store";
 
 type Key = "session" | "configs";
 

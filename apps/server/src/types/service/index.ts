@@ -1,11 +1,11 @@
-import { ProjectionType, QueryOptions } from "mongoose";
 import {
 	DBUserData,
 	PrivateChatItem,
 	SessionId,
 	UserData,
 	UserId,
-} from "teletalk-type-store";
+} from "@repo/type-store";
+import { ProjectionType, QueryOptions } from "mongoose";
 
 import { StringMap } from "..";
 import { IPrivateChatDoc, IUserDoc } from "../model";

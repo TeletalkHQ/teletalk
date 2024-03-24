@@ -5,7 +5,7 @@ import type {
 	PrivateChatItem,
 	PrivateChats,
 	UserId,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import { StoreSetFn, VoidNoArgsFn, VoidWithArg } from "~/types";
 

@@ -4,7 +4,7 @@ import {
 	FullNameWithUserId,
 	UserId,
 	UserPublicData,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 import { Extractor as ExtractorMain } from "utility-store";
 
 export class Extractor extends ExtractorMain {

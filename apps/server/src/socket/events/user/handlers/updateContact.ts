@@ -1,4 +1,4 @@
-import { UpdateContactIO } from "teletalk-type-store";
+import { UpdateContactIO } from "@repo/type-store";
 
 import { extractor } from "~/classes/Extractor";
 import { services } from "~/services";

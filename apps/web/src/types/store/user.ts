@@ -14,7 +14,7 @@ import type {
 	UserId,
 	UserPublicData,
 	Username,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import { StoreSetFn, StringMap, VoidNoArgsFn, VoidWithArg } from "~/types";
 

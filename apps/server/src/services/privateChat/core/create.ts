@@ -1,4 +1,4 @@
-import { CreatedAt } from "teletalk-type-store";
+import { CreatedAt } from "@repo/type-store";
 
 import { models } from "~/models";
 import { PrivateChatService } from "~/types";

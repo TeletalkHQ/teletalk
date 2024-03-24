@@ -4,7 +4,7 @@ import {
 	FullName,
 	SessionId,
 	UserId,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";

@@ -1,4 +1,4 @@
-import { IO } from "teletalk-type-store";
+import { IO } from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { RouteBuilder } from "~/classes/RouteBuilder";

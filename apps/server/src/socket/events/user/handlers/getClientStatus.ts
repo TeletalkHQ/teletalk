@@ -1,4 +1,4 @@
-import { GetClientStatusIO } from "teletalk-type-store";
+import { GetClientStatusIO } from "@repo/type-store";
 
 import { clientStatusStore } from "~/classes/ClientStatusStore";
 import { SocketOnHandler } from "~/types";

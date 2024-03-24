@@ -1,4 +1,4 @@
-import { VerifyIO } from "teletalk-type-store";
+import { VerifyIO } from "@repo/type-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { errorStore } from "~/classes/ErrorStore";

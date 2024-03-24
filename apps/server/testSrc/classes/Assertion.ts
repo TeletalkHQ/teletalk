@@ -1,4 +1,3 @@
-import chai from "chai";
 import {
 	Bio,
 	BlackList,
@@ -29,7 +28,8 @@ import {
 	UserPublicData,
 	Username,
 	VerificationCode,
-} from "teletalk-type-store";
+} from "@repo/type-store";
+import chai from "chai";
 import { utils } from "utility-store";
 
 import { models } from "~/models";

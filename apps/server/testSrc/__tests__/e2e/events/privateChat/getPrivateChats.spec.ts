@@ -1,5 +1,5 @@
+import { ParticipantId, Participants } from "@repo/type-store";
 import chai from "chai";
-import { ParticipantId, Participants } from "teletalk-type-store";
 
 import { assertion } from "@/classes/Assertion";
 import { randomMaker } from "@/classes/RandomMaker";

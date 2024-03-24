@@ -8,7 +8,7 @@ import type {
 	PhoneNumber,
 	UnknownCellphone,
 	VerificationCode,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import {
 	SelectedCountry,

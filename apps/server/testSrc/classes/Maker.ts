@@ -2,7 +2,7 @@ import type {
 	ExtendedFullName,
 	FullNameWithUserId,
 	UserPublicData,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 import { Maker as MakerMain } from "utility-store";
 
 export class Maker extends MakerMain {

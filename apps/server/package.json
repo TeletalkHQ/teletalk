@@ -32,6 +32,7 @@
 		"@repo/custom-typeof": "workspace:*"
 	},
 	"devDependencies": {
+		"@repo/type-store": "workspace:*",
 		"@repo/typescript-config": "workspace:*"
 	},
 	"engines": {

@@ -1,4 +1,4 @@
-import { DBUserData } from "teletalk-type-store";
+import { DBUserData } from "@repo/type-store";
 
 import { userUtils } from "~/classes/UserUtils";
 import { services } from "~/services";

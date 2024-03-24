@@ -1,4 +1,4 @@
-import { UnknownCellphone, UserId } from "teletalk-type-store";
+import { UnknownCellphone, UserId } from "@repo/type-store";
 import { extractor, utils } from "utility-store";
 
 import { errorStore } from "~/classes/ErrorStore";

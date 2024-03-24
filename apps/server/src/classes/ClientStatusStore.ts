@@ -1,4 +1,4 @@
-import { ClientStatus } from "teletalk-type-store";
+import { ClientStatus } from "@repo/type-store";
 
 import { Store } from "./Store";
 

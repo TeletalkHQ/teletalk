@@ -1,4 +1,4 @@
-import { Cellphone, SessionId, UserId } from "teletalk-type-store";
+import { Cellphone, SessionId, UserId } from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { extractor } from "~/classes/Extractor";

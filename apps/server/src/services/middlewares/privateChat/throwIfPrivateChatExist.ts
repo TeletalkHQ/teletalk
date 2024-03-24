@@ -1,4 +1,4 @@
-import { UserId } from "teletalk-type-store";
+import { UserId } from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { coreServices } from "~/services/privateChat/core";

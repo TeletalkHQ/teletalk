@@ -13,6 +13,7 @@
 		"check:types:watch": "pnpm run check:types --watch"
 	},
 	"dependencies": {
+		"@repo/custom-typeof": "workspace:*",
 		"@repo/logestige": "workspace:*",
 		"chalk": "latest"
 	},

@@ -1,4 +1,4 @@
-import { DBContactItem } from "teletalk-type-store";
+import { DBContactItem } from "@repo/type-store";
 
 import { ServiceMiddleware } from "~/types";
 import { HydratedUser } from "~/types/model";

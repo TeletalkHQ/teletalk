@@ -1,4 +1,4 @@
-import { SessionId } from "teletalk-type-store";
+import { SessionId } from "@repo/type-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";

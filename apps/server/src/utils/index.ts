@@ -1,7 +1,7 @@
+import { EventName, IOCollection } from "@repo/type-store";
 import generatePassword from "generate-password";
 import lodash from "lodash";
 import { Socket } from "socket.io";
-import { EventName, IOCollection } from "teletalk-type-store";
 import { ScreamingSnakeCase } from "type-fest";
 
 import { envManager } from "~/classes/EnvironmentManager";

@@ -1,5 +1,5 @@
+import type { UserId } from "@repo/type-store";
 import { useEffect } from "react";
-import type { UserId } from "teletalk-type-store";
 
 import { useUserStore } from "~/store";
 import { UserItem } from "~/types";

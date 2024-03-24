@@ -1,4 +1,3 @@
-import { Socket } from "socket.io-client";
 import {
 	Cellphone,
 	ContactItem,
@@ -13,7 +12,8 @@ import {
 	UserDataWithoutSessions,
 	UserId,
 	UserPublicData,
-} from "teletalk-type-store";
+} from "@repo/type-store";
+import { Socket } from "socket.io-client";
 import { RandomMaker as RandomMakerMain } from "utility-store";
 
 import { sessionManager } from "~/classes/SessionManager";

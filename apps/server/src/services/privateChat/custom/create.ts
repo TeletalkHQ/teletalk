@@ -1,4 +1,4 @@
-import { UserId } from "teletalk-type-store";
+import { UserId } from "@repo/type-store";
 import { randomMaker } from "utility-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";

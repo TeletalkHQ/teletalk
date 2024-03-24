@@ -1,6 +1,6 @@
 import createCache from "@emotion/cache";
+import type { FullName, UnknownCellphone } from "@repo/type-store";
 import lodash from "lodash";
-import type { FullName, UnknownCellphone } from "teletalk-type-store";
 import { ScreamingSnakeCase } from "type-fest";
 import { utils as storeUtils } from "utility-store";
 

@@ -1,4 +1,4 @@
-import { Contacts, SessionId } from "teletalk-type-store";
+import { Contacts, SessionId } from "@repo/type-store";
 
 import { extractor } from "~/classes/Extractor";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";

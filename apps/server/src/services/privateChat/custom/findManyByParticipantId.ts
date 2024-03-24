@@ -1,4 +1,4 @@
-import { PrivateChats } from "teletalk-type-store";
+import { PrivateChats } from "@repo/type-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";

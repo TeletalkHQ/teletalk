@@ -1,4 +1,4 @@
-import { AddContactWithCellphoneIO, ContactItem } from "teletalk-type-store";
+import { AddContactWithCellphoneIO, ContactItem } from "@repo/type-store";
 
 import { extractor } from "~/classes/Extractor";
 import { services } from "~/services";

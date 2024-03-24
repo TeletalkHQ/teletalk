@@ -1,4 +1,4 @@
-import { GetPrivateChatsIO } from "teletalk-type-store";
+import { GetPrivateChatsIO } from "@repo/type-store";
 
 import { services } from "~/services";
 import { SocketOnHandler } from "~/types";

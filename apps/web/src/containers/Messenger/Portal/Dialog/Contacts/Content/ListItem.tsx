@@ -1,4 +1,4 @@
-import { UserId } from "teletalk-type-store";
+import { UserId } from "@repo/type-store";
 
 import { Box, Typography } from "~/components";
 import { useGetAvatar } from "~/hooks";
