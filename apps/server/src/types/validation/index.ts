@@ -1,8 +1,8 @@
 import {
 	AsyncCheckFunction,
+	ValidationSchema as FVValidationSchema,
 	SyncCheckFunction,
 	ValidationError,
-	ValidationRuleObject,
 } from "fastest-validator";
 
 import { utils } from "~/utils";
@@ -10,10 +10,10 @@ import { utils } from "~/utils";
 import { NativeError } from "..";
 import { Field } from "../model";
 
-export type ValidationModel = ValidationRuleObject;
+export type ValidationSchema = FVValidationSchema;
 
 export type ValidationCollection = {
-	[F in Field]: ValidationModel;
+	[F in Field]: ValidationSchema;
 };
 
 const ERROR_TYPES = utils.getDefaultValidatorErrorTypes();
@@ -27,7 +27,7 @@ export interface ValidationCheckerError extends NativeError {
 }
 export type ValidationResult = true | ValidationErrors;
 
-export type FieldValidator = AsyncCheckFunction | SyncCheckFunction;
+export type ValidatorFnType = AsyncCheckFunction | SyncCheckFunction;
 
 export type ValidationCheckerFn = (r: ValidationResult, value: unknown) => void;
 

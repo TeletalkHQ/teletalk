@@ -1,5 +1,4 @@
 import Timeout from "await-timeout";
-import { checkFields } from "check-fields";
 import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
@@ -16,7 +15,6 @@ import type {
 } from "~/types";
 import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
-import { variables } from "~/variables";
 
 interface Options {
 	timeout: number;
@@ -133,24 +131,24 @@ export class EventHandler<IOType extends IO> {
 		this.handleAuthError();
 	}
 
-	private inputDataFieldsCheck(inputData = this.getRequestData()) {
-		if (appConfigs.getConfigs().api.shouldCheckInputDataFields)
-			checkFields(
-				inputData,
-				this.route.inputFields,
-				variables.notifications.errors.checkFieldErrors.input
-			);
+	private inputDataFieldsCheck(_inputData = this.getRequestData()) {
+		// if (appConfigs.getConfigs().api.shouldCheckInputDataFields)
+		// checkFields(
+		// 	inputData,
+		// 	this.route.inputFields,
+		// 	variables.notifications.errors.checkFieldErrors.input
+		// );
 
 		return this;
 	}
 
-	private outputDataFieldsCheck(outputData = this.getResponseData()) {
-		if (appConfigs.getConfigs().api.shouldCheckOutputDataFields)
-			checkFields(
-				outputData,
-				this.route.outputFields,
-				variables.notifications.errors.checkFieldErrors.output
-			);
+	private outputDataFieldsCheck(_outputData = this.getResponseData()) {
+		// if (appConfigs.getConfigs().api.shouldCheckOutputDataFields)
+		// checkFields(
+		// 	outputData,
+		// 	this.route.outputFields,
+		// 	variables.notifications.errors.checkFieldErrors.output
+		// );
 
 		return this;
 	}

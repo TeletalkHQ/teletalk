@@ -1,10 +1,9 @@
 import { faker } from "@faker-js/faker";
 import chai from "chai";
-import { IoFields } from "check-fields";
 
 import { configs } from "~/classes/Configs";
 import { models } from "~/models";
-import { ErrorReason, NativeError } from "~/types";
+import { ErrorReason, NativeError, ValidationSchema } from "~/types";
 import { Field } from "~/types/model";
 import { utils as mainUtils } from "~/utils";
 import { countries } from "~/variables";
@@ -37,7 +36,7 @@ async function asyncDescribe(...args: AsyncDescribeArgs) {
 
 const getWrongCountryCode = (): string => {
 	const randomCountryCode = randomMaker.stringNumber(
-		models.native.countryCode.maxLength
+		models.native.countryCode.max
 	);
 
 	const isCountryExist = countries.some(
@@ -49,7 +48,9 @@ const getWrongCountryCode = (): string => {
 	return randomCountryCode;
 };
 
-function generateDynamicData(schema: IoFields): Record<string, unknown> {
+function generateDynamicData(
+	schema: ValidationSchema
+): Record<string, unknown> {
 	const data: Record<string, unknown> = {};
 
 	Object.entries(schema).forEach(([fieldName, field]) => {
@@ -68,15 +69,15 @@ function generateDynamicData(schema: IoFields): Record<string, unknown> {
 				}
 				if (FIELD_NAME === "phoneNumber") {
 					// @ts-ignore
-					data[fieldName] = randomMaker.stringNumber(fieldModel.maxLength);
+					data[fieldName] = randomMaker.stringNumber(fieldModel.max);
 					break;
 				}
 
 				data[fieldName] = faker.string.sample(
 					// @ts-ignore
-					fieldModel.minLength,
+					fieldModel.min,
 					// @ts-ignore
-					fieldModel.maxLength
+					fieldModel.max
 				);
 				break;
 			// case "number":
@@ -86,7 +87,7 @@ function generateDynamicData(schema: IoFields): Record<string, unknown> {
 				data[fieldName] = faker.datatype.boolean();
 				break;
 			case "object":
-				data[fieldName] = generateDynamicData(field.value as IoFields);
+				data[fieldName] = generateDynamicData(field.value as ValidationSchema);
 				break;
 			// case "array":
 			//   const fieldArr = Array.isArray(field)

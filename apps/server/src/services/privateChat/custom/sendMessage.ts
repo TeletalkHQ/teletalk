@@ -44,7 +44,7 @@ export const sendMessage = serviceBuilder
 	.setBody(async (data) => {
 		const newMessage = {
 			createdAt: Date.now(),
-			messageId: randomMaker.id(chatModels.messageId.maxLength),
+			messageId: randomMaker.id(chatModels.messageId.max),
 			messageText: data.messageText,
 			sender: {
 				senderId: data.currentParticipant.userId,

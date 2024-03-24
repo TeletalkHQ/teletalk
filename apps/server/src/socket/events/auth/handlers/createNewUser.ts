@@ -55,4 +55,4 @@ const checkClientVerification = (authSession: StoredAuthSession) => {
 		};
 };
 
-const getRandomId = () => randomMaker.id(models.native.userId.maxLength);
+const getRandomId = () => randomMaker.id(models.native.userId.max);

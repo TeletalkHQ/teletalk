@@ -1,8 +1,8 @@
-import { IoFields } from "check-fields";
+import { ValidatorFnType } from "../validation";
 
 export interface Route {
-	inputFields: IoFields | Record<string, never>;
-	outputFields: IoFields | Record<string, never>;
+	inputValidator?: ValidatorFnType;
+	outputValidator?: ValidatorFnType;
 	isAuthRequired: boolean;
 }
 

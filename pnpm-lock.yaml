@@ -74,9 +74,6 @@ importers:
       axios:
         specifier: ^1.6.8
         version: 1.6.8(debug@4.3.4)
-      check-fields:
-        specifier: ^5.0.1
-        version: 5.0.1
       compressorjs:
         specifier: ^1.2.1
         version: 1.2.1
@@ -257,6 +254,9 @@ importers:
       word-wrap:
         specifier: ^1.2.5
         version: 1.2.5
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
       zustand:
         specifier: ^4.4.7
         version: 4.5.2(@types/react@18.2.67)(immer@10.0.4)(react@18.2.0)
@@ -687,12 +687,6 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-
-  packages/check-fields:
-    devDependencies:
-      '@repo/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
 
   packages/custom-typeof:
     devDependencies:
@@ -10824,12 +10818,6 @@ packages:
     dependencies:
       get-func-name: 2.0.2
     dev: true
-
-  /check-fields@5.0.1:
-    resolution: {integrity: sha512-emOm3PAQUTa9RC2sAZaA5ztiak8sJntG8YlFkhZ9TqwJp0M2ctQd/+VmeWFXd3YBHWPHEqP/qfiKVYLRNWwAMw==}
-    dependencies:
-      custom-typeof: 3.0.4
-    dev: false
 
   /check-types@11.2.3:
     resolution: {integrity: sha512-+67P1GkJRaxQD6PKK0Et9DhwQB+vGg3PM5+aavopCpZT1lj9jeqfvpgTLAWErNj8qApkkmXlu/Ug74kmhagkXg==}
@@ -24866,7 +24854,6 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
-    dev: true
 
   /zustand@4.5.2(@types/react@18.2.67)(immer@10.0.4)(react@18.2.0):
     resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}

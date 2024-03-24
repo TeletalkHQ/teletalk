@@ -1,4 +1,3 @@
-import { IoFields } from "check-fields";
 import {
 	AsyncCheckFunction,
 	SyncCheckFunction,
@@ -45,8 +44,10 @@ export type VoidWithTwoArgs<Arg1, Arg2> = (arg1: Arg1, arg2: Arg2) => void;
 export * from "~/types/components";
 
 export interface Route {
-	inputFields: IoFields | Record<string, never>;
-	outputFields: IoFields | Record<string, never>;
+	//FIXME: Use ValidationModel
+	inputFields: Record<string, never>;
+	//FIXME: Use ValidationModel
+	outputFields: Record<string, never>;
 	isAuthRequired: boolean;
 }
 

@@ -57,11 +57,11 @@ export class ValidationChecker {
 		return this;
 	}
 	stringMin() {
-		this.pushError(this.errorTypes.stringMin, this.resolveError("minLength"));
+		this.pushError(this.errorTypes.stringMin, this.resolveError("min"));
 		return this;
 	}
 	stringMax() {
-		this.pushError(this.errorTypes.stringMax, this.resolveError("maxLength"));
+		this.pushError(this.errorTypes.stringMax, this.resolveError("max"));
 		return this;
 	}
 	throwAnyway(error: NativeError) {

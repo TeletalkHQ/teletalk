@@ -13,8 +13,8 @@ export const commonModels = {
 		.type("string")
 		.required(true)
 		.empty(false)
-		.minLength(30)
-		.maxLength(35)
+		.min(30)
+		.max(35)
 		.trim(true)
 		.unique(true)
 		.build(),

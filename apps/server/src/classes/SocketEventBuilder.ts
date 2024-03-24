@@ -13,8 +13,6 @@ export class SocketEventBuilder<IOType extends IO> extends RouteBuilder {
 		// @ts-ignore
 		this.route = {
 			method: "customOn",
-			inputFields: {},
-			outputFields: {},
 			isAuthRequired: true,
 		};
 	}

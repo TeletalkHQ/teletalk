@@ -11,7 +11,8 @@ import {
 } from "~/classes/validator/SubmitValidator";
 import { Field, ValidationModel, ValidatorType } from "~/types";
 
-const compiler = new FastestValidator({
+//CLEANME:
+export const compiler = new FastestValidator({
 	useNewCustomCheckerFunction: true,
 });
 

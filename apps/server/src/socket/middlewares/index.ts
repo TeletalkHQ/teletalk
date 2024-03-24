@@ -5,16 +5,7 @@ import { utils } from "~/utils";
 import { attachSessionId } from "./auth/attachSessionId";
 import { verifyVerificationCode } from "./auth/verifyVerificationCode";
 import { checkEventAvailability } from "./checkEventAvailability";
-import { checkDataFields } from "./dataValidation/checkDataFields";
-import { dynamicValidator } from "./dataValidation/dynamicValidator";
-
-export const middlewares = {
-	attachSessionId,
-	checkDataFields,
-	checkEventAvailability,
-	dynamicValidator,
-	verifyVerificationCode,
-};
+import { checkInputData } from "./dataValidation/checkInputData";
 
 export const registerMiddlewares = (socket: Socket) => {
 	socket.customUse((socket, next, [eventName, data]) => {
@@ -35,8 +26,14 @@ export const registerMiddlewares = (socket: Socket) => {
 
 	socket.customUse(checkEventAvailability);
 
-	socket.customUse(checkDataFields);
-	socket.customUse(dynamicValidator);
+	socket.customUse(checkInputData);
 
 	socket.customUse(utils.applyMiddlewares("verify", verifyVerificationCode));
+};
+
+export const middlewares = {
+	attachSessionId,
+	checkInputData,
+	checkEventAvailability,
+	verifyVerificationCode,
 };

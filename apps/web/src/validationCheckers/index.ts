@@ -1,4 +1,3 @@
-import { errorThrower } from "check-fields";
 import { customTypeof } from "custom-typeof";
 import { countries } from "utility-store/lib/variables/countries";
 
@@ -31,10 +30,8 @@ const {
 validationCheckers.countryCode = (result, value, ignores) => {
 	if (result === true) {
 		const country = countries.find((c) => c.countryCode === value);
-		errorThrower(
-			customTypeof.isUndefined(country),
-			notificationStore.find("COUNTRY_CODE_NOT_SUPPORTED")
-		);
+		if (customTypeof.isUndefined(country))
+			notificationStore.find("COUNTRY_CODE_NOT_SUPPORTED");
 
 		return;
 	}
@@ -45,10 +42,9 @@ validationCheckers.countryCode = (result, value, ignores) => {
 validationCheckers.countryName = (result, value, ignores) => {
 	if (result === true) {
 		const country = countries.find((c) => c.countryName === value);
-		errorThrower(
-			customTypeof.isUndefined(country),
-			notificationStore.find("COUNTRY_NAME_NOT_SUPPORTED")
-		);
+
+		if (customTypeof.isUndefined(country))
+			notificationStore.find("COUNTRY_NAME_NOT_SUPPORTED");
 
 		return;
 	}
@@ -61,8 +57,8 @@ const notImplementedCheckerFn = (fieldName: Field) =>
 		throw Error(`${fieldName}ValidationChecker is not implemented`);
 	}) as ValidationCheckerFn;
 
-validationCheckers.id = notImplementedCheckerFn("id");
 validationCheckers.createdAt = notImplementedCheckerFn("createdAt");
+validationCheckers.id = notImplementedCheckerFn("id");
 validationCheckers.isActive = notImplementedCheckerFn("isActive");
 validationCheckers.macAddress = notImplementedCheckerFn("macAddress");
 validationCheckers.messageId = notImplementedCheckerFn("messageId");

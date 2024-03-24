@@ -9,6 +9,7 @@ import PrettyError from "pretty-error";
 import { configs } from "~/classes/Configs";
 import { createSocketServer } from "~/socket";
 
+import "./test";
 import { utils } from "./utils";
 
 PrettyError.start();

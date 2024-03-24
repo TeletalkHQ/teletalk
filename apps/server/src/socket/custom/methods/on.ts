@@ -1,9 +1,7 @@
-import { checkFields } from "check-fields";
 import { trier } from "simple-trier";
 import { Socket } from "socket.io";
 
 import { services } from "~/services";
-import { events } from "~/socket/events";
 import {
 	CustomOn,
 	ResponseCallback,
@@ -13,7 +11,6 @@ import {
 	UnknownError,
 } from "~/types";
 import { utils } from "~/utils";
-import { errors } from "~/variables";
 
 export const registerCustomOn = (socket: Socket) => {
 	// eslint-disable-next-line sonarjs/cognitive-complexity
@@ -34,9 +31,9 @@ export const registerCustomOn = (socket: Socket) => {
 							const returnValue = await handler(socket, data);
 							const resolvedReturnValue = resolveReturnValue(returnValue);
 
-							if (eventName !== "getStuff") {
-								checkOutputFields(resolvedReturnValue.data);
-							}
+							// if (eventName !== "getStuff") {
+							// 	checkOutputFields(resolvedReturnValue.data);
+							// }
 
 							const response = utils.createSuccessResponse(
 								eventName,
@@ -77,14 +74,14 @@ export const registerCustomOn = (socket: Socket) => {
 					};
 				}
 
-				function checkOutputFields(outputData: StringMap) {
-					const foundEvent = events.find((item) => item.name === eventName)!;
-					checkFields(
-						outputData,
-						foundEvent.outputFields,
-						errors.checkField.output
-					);
-				}
+				// function checkOutputFields(outputData: StringMap) {
+				// const foundEvent = events.find((item) => item.name === eventName)!;
+				// checkFields(
+				// 	outputData,
+				// 	foundEvent.outputFields,
+				// 	errors.checkField.output
+				// );
+				// }
 
 				async function emitReturnValue(response: SocketResponse) {
 					socket.emit(eventName, response);

@@ -16,8 +16,8 @@ export const privateChatModels = {
 		.type("string")
 		.required(true)
 		.empty(false)
-		.minLength(30)
-		.maxLength(35)
+		.min(30)
+		.max(35)
 		.trim(true)
 		.unique(true)
 		.build(),
@@ -27,8 +27,8 @@ export const privateChatModels = {
 		.type("string")
 		.required(true)
 		.empty(false)
-		.maxLength(45)
-		.minLength(40)
+		.max(45)
+		.min(40)
 		.trim(true)
 		.unique(true)
 		.build(),
@@ -43,8 +43,8 @@ export const privateChatModels = {
 		.type("string")
 		.required(true)
 		.empty(false)
-		.minLength(1)
-		.maxLength(1000)
+		.min(1)
+		.max(1000)
 		.trim(true)
 		.build(),
 	participantId: commonModels.id,

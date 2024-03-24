@@ -1,8 +1,6 @@
 import chai from "chai";
-import { IoFields } from "check-fields";
 import { Socket as Client } from "socket.io-client";
 import { IO } from "teletalk-type-store";
-import { objectUtils } from "utility-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import {
@@ -65,7 +63,7 @@ export class Requester<IOType extends IO> {
 		return this;
 	}
 	getInputFields() {
-		return this.getEvent().inputFields;
+		return this.getEvent().inputValidator;
 	}
 
 	getError() {
@@ -84,40 +82,41 @@ export class Requester<IOType extends IO> {
 		return this;
 	}
 
-	private handleFilterRequestData(options = this.getOptions()) {
-		const inputFields = this.convertInputField(this.getInputFields());
-		const requestData = this.getEmitData();
-		this.checkRequestDataFields(options, inputFields);
-		return this.filterEmitData(requestData, inputFields);
-	}
-	private convertInputField(inputFields: IoFields) {
-		return Object.entries(inputFields).reduce((prevValue, currentValue) => {
-			const [requiredFieldKey, requiredFieldProperties] = currentValue;
-			prevValue[requiredFieldKey] = requiredFieldProperties.value;
-			return prevValue;
-		}, {} as StringMap);
-	}
-	private checkRequestDataFields(
-		options = this.getOptions(),
-		inputFields: StringMap
-	) {
-		if (!this.getEmitData() && Object.keys(inputFields).length) {
-			const error = {
-				...errorStore.find("INPUT_FIELDS_MISSING"),
-				options,
-				requestData: this.getEmitData(),
-			};
-			logger.dir("error", error, { depth: 10 });
-			loggerHelper.logEndTestRequest();
-			throw error;
-		}
-	}
-	private filterEmitData(requestData: IOType["input"], inputFields: StringMap) {
-		return objectUtils.excludePropsPeerToPeer(
-			requestData,
-			inputFields
-		) as StringMap;
-	}
+	// private handleFilterRequestData(options = this.getOptions()) {
+	// 	const inputFields = this.convertInputField(this.getInputFields());
+	// 	const requestData = this.getEmitData();
+	// 	this.checkRequestDataFields(options, inputFields);
+	// 	return this.filterEmitData(requestData, inputFields);
+	// }
+
+	// private convertInputField(inputFields: ValidationModel) {
+	// 	return Object.entries(inputFields).reduce((prevValue, currentValue) => {
+	// 		const [requiredFieldKey, requiredFieldProperties] = currentValue;
+	// 		prevValue[requiredFieldKey] = requiredFieldProperties.value;
+	// 		return prevValue;
+	// 	}, {} as StringMap);
+	// }
+	// private checkRequestDataFields(
+	// 	options = this.getOptions(),
+	// 	inputFields: StringMap
+	// ) {
+	// 	if (!this.getEmitData() && Object.keys(inputFields).length) {
+	// 		const error = {
+	// 			...errorStore.find("INPUT_FIELDS_MISSING"),
+	// 			options,
+	// 			requestData: this.getEmitData(),
+	// 		};
+	// 		logger.dir("error", error, { depth: 10 });
+	// 		loggerHelper.logEndTestRequest();
+	// 		throw error;
+	// 	}
+	// }
+	// private filterEmitData(requestData: IOType["input"], inputFields: StringMap) {
+	// 	return objectUtils.excludePropsPeerToPeer(
+	// 		requestData,
+	// 		inputFields
+	// 	) as StringMap;
+	// }
 
 	async emit() {
 		const response = (await new Promise((resolve, _reject) => {
@@ -143,8 +142,8 @@ export class Requester<IOType extends IO> {
 		if (data) this.setEmitData(data);
 
 		if (options.shouldFilterRequestData) {
-			const filteredRequestData = this.handleFilterRequestData(finalOptions);
-			this.setEmitData(filteredRequestData);
+			// const filteredRequestData = this.handleFilterRequestData(finalOptions);
+			// this.setEmitData(finalOptions);
 		}
 
 		loggerHelper.logRequestDetails(

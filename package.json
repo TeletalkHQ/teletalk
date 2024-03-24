@@ -18,6 +18,7 @@
 		"check:types:watch": "turbo check:types:watch --concurrency=500%",
 		"dev": "pnpm run start:dev",
 		"postinstall": "pnpm run setup:app",
+		"prepare": "husky",
 		"setup:alias:load": "./scripts/alias/loader.sh",
 		"setup:alias:unload": "./scripts/alias/unloader.sh",
 		"setup:app": "pnpm run setup:git",
@@ -31,8 +32,7 @@
 		"test": "turbo run test",
 		"test:dev": "turbo run test:dev",
 		"test:dev:coverage": "turbo run test:dev:coverage",
-		"test:dev:watch": "turbo run test:dev:watch",
-		"prepare": "husky"
+		"test:dev:watch": "turbo run test:dev:watch"
 	},
 	"dependencies": {
 		"@emotion/cache": "^11.11.0",
@@ -57,7 +57,6 @@
 		"autosuggest-highlight": "^3.3.4",
 		"await-timeout": "^1.1.1",
 		"axios": "^1.6.8",
-		"check-fields": "^5.0.1",
 		"compressorjs": "^1.2.1",
 		"cookie": "^0.6.0",
 		"cookie-parser": "^1.4.6",
@@ -118,6 +117,7 @@
 		"web-vitals": "^3.5.0",
 		"winston": "^3.12.0",
 		"word-wrap": "^1.2.5",
+		"zod": "^3.22.4",
 		"zustand": "^4.4.7"
 	},
 	"devDependencies": {

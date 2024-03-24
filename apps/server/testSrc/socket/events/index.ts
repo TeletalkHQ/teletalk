@@ -12,8 +12,12 @@ export const unknownEvent = socketEventBuilder()
 	//@ts-expect-error //FIXME
 	.name("unknownEvent")
 	.handler(() => ({ data: {} }))
-	.inputFields({})
-	.outputFields({})
+	.inputSchema({
+		type: "object",
+	})
+	.outputSchema({
+		type: "object",
+	})
 	.build();
 
 export const eventsWithoutDisconnect = events.filter(

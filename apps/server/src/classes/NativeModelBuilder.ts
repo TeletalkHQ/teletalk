@@ -17,13 +17,13 @@ class NativeModelBuilder<T extends NativeModel> {
 		return this;
 	}
 
-	maxLength(value: T["maxLength"]) {
-		this.updateProperty("maxLength", value);
+	max(value: T["max"]) {
+		this.updateProperty("max", value);
 		return this;
 	}
 
-	minLength(value: T["minLength"]) {
-		this.updateProperty("minLength", value);
+	min(value: T["min"]) {
+		this.updateProperty("min", value);
 		return this;
 	}
 

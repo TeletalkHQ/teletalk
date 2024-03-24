@@ -25,7 +25,7 @@ class SessionManager {
 	}
 
 	generateSessionId() {
-		return randomMaker.id(models.native.sessionId.maxLength);
+		return randomMaker.id(models.native.sessionId.max);
 	}
 
 	verify(session: EncryptedSession) {
