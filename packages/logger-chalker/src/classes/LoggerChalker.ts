@@ -1,6 +1,6 @@
+import { customTypeof } from "@repo/custom-typeof";
 import { Logestige } from "@repo/logestige";
 import chalk from "chalk";
-import { customTypeof } from "custom-typeof";
 
 import { LogItem } from "../types";
 

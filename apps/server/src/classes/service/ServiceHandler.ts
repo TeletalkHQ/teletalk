@@ -1,4 +1,4 @@
-import { customTypeof } from "custom-typeof";
+import { customTypeof } from "@repo/custom-typeof";
 import { QueryOptions } from "mongoose";
 import { objectUtils } from "utility-store";
 

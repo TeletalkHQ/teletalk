@@ -1,4 +1,4 @@
-import { customTypeof } from "custom-typeof";
+import { customTypeof } from "@repo/custom-typeof";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { validationChecker } from "~/classes/ValidationChecker";

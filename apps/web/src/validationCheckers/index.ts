@@ -1,4 +1,4 @@
-import { customTypeof } from "custom-typeof";
+import { customTypeof } from "@repo/custom-typeof";
 import { countries } from "utility-store/lib/variables/countries";
 
 import { notificationStore } from "~/classes/NotificationStore";

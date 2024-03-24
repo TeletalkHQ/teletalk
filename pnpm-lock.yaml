@@ -668,12 +668,20 @@ importers:
         version: 17.7.2
 
   apps/server:
+    dependencies:
+      '@repo/custom-typeof':
+        specifier: workspace:*
+        version: link:../../packages/custom-typeof
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
 
   apps/web:
+    dependencies:
+      '@repo/custom-typeof':
+        specifier: workspace:*
+        version: link:../../packages/custom-typeof
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*

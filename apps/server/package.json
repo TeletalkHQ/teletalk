@@ -28,7 +28,9 @@
 		"test:coverage:mocha": "cross-env c8 npm run test-runner:mocha",
 		"test:dev": "cross-env NODE_ENV=test_development npm run test-runner"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@repo/custom-typeof": "workspace:*"
+	},
 	"devDependencies": {
 		"@repo/typescript-config": "workspace:*"
 	},

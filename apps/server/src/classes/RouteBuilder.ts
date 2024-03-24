@@ -1,4 +1,4 @@
-import { customTypeof } from "custom-typeof";
+import { customTypeof } from "@repo/custom-typeof";
 import FastestValidator from "fastest-validator";
 
 import { NativeError, Route, ValidationSchema } from "~/types";

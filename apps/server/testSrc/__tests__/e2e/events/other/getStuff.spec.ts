@@ -1,5 +1,5 @@
 // import chai from "chai";
-// import { customTypeof } from "custom-typeof";
+// import { customTypeof } from "@repo/custom-typeof";
 
 // import { events } from "~/socket/events";
 // import { ErrorCollection, ValidationSchema } from "~/types";
