@@ -1,1 +1,1 @@
-npx lint-staged && npm run build
+npx lint-staged && npm run test:dev && npm run build
