@@ -26,8 +26,9 @@ import {
 	Telegram as TelegramIcon,
 	VerifiedUser as VerifiedUserIcon,
 } from "@mui/icons-material";
+import { ElementLabel, ElementName } from "@repo/utility-store";
 
-import { ElementLabel, ElementName, IconType } from "~/types";
+import { IconType } from "~/types";
 
 const iconProperties = (
 	text: ElementLabel,

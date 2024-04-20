@@ -1,29 +1,34 @@
-import { trier } from "simple-trier";
 import { Socket } from "socket.io";
 
 import {
 	CustomUse,
-	NativeError,
-	SocketDefaultMiddlewareEvent,
+	SocketDefaultEvent,
 	SocketMiddleware,
 	SocketMiddlewareEvent,
 	SocketNext,
 	SocketResponse,
+	UnknownError,
 } from "~/types";
 import { utils } from "~/utils";
 
 export const registerCustomUse = (socket: Socket) => {
 	return ((middleware) => {
-		socket.use(
-			async (socketMiddlewareEvent: SocketDefaultMiddlewareEvent, next) => {
-				// eslint-disable-next-line promise/valid-params
-				await trier(`customUse:${socketMiddlewareEvent[0]}`)
-					.async()
-					.try(tryBlock, socket, next, socketMiddlewareEvent, middleware)
-					.catch(catchBlock, socket, socketMiddlewareEvent)
-					.run();
+		socket.use(async (socketMiddlewareEvent: SocketDefaultEvent, next) => {
+			try {
+				await tryBlock(
+					socket,
+					next,
+					socketMiddlewareEvent as SocketMiddlewareEvent,
+					middleware
+				);
+			} catch (error) {
+				catchBlock(
+					socket,
+					error,
+					socketMiddlewareEvent as SocketMiddlewareEvent
+				);
 			}
-		);
+		});
 	}) as CustomUse;
 };
 
@@ -37,8 +42,8 @@ const tryBlock = async (
 };
 
 const catchBlock = (
-	error: NativeError | NativeError[] | undefined,
 	socket: Socket,
+	error: UnknownError,
 	socketMiddlewareEvent: SocketMiddlewareEvent
 ) => {
 	logger.error(`customUse:catchBlock:${socketMiddlewareEvent[0]}`, error);

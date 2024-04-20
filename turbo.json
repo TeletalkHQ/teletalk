@@ -17,7 +17,9 @@
 		"check:lint:fix": {},
 		"check:lint:fix:strict": {},
 		"check:style": {},
-		"check:types": {},
+		"check:types": {
+			"cache": false
+		},
 		"check:types:watch": {
 			"cache": false,
 			"persistent": true

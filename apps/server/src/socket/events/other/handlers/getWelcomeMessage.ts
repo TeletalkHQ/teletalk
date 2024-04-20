@@ -1,4 +1,4 @@
-import { GetWelcomeMessageIO } from "teletalk-type-store";
+import { GetWelcomeMessageIO } from "@repo/type-store";
 
 import { SocketOnHandler } from "~/types";
 

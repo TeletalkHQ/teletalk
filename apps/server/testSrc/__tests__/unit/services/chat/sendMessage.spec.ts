@@ -1,5 +1,5 @@
+import { PrivateChatItem } from "@repo/type-store";
 import chai from "chai";
-import { PrivateChatItem } from "teletalk-type-store";
 
 import { services } from "~/services";
 

@@ -1,6 +1,5 @@
-import { LoggerChalker } from "logger-chalker";
 import { Server } from "socket.io";
-import { EncryptedSession, EventName, SessionId } from "teletalk-type-store";
+import { EncryptedSession, EventName, SessionId } from "@repo/type-store";
 
 import {
 	CustomEmit,
@@ -10,10 +9,11 @@ import {
 	SocketMiddlewareEvent,
 	SocketNext,
 } from "~/types";
+import logLevel from "loglevel";
 
 declare global {
 	// eslint-disable-next-line no-var
-	var logger: LoggerChalker;
+	var logger: typeof logLevel;
 }
 
 declare module "socket.io" {

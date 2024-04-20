@@ -1,5 +1,3 @@
-import { trier } from "simple-trier";
-
 import {
 	ErrorChecker,
 	ErrorTypeItem,
@@ -35,11 +33,11 @@ export class Validator {
 
 	checkErrors() {
 		// eslint-disable-next-line promise/catch-or-return
-		trier(this.checkErrors.name)
-			.sync()
-			.try(this.tryToCheckErrors)
-			.catch(this.printErrors)
-			.run();
+		try {
+			this.tryToCheckErrors();
+		} catch (error) {
+			this.printErrors(error as NativeError[]);
+		}
 
 		return this;
 	}

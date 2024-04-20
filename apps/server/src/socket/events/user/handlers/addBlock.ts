@@ -1,4 +1,4 @@
-import { AddBlockIO } from "teletalk-type-store";
+import { AddBlockIO } from "@repo/type-store";
 
 import { services } from "~/services";
 import { SocketOnHandler } from "~/types";

@@ -1,5 +1,5 @@
+import { PrivateChats } from "@repo/type-store";
 import { FilterQuery } from "mongoose";
-import { PrivateChats } from "teletalk-type-store";
 
 import { models } from "~/models";
 import { PrivateChatService } from "~/types";

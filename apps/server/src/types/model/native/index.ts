@@ -14,8 +14,8 @@ export interface NativeModel {
 	defaultValue?: any;
 	empty?: boolean;
 	length?: number;
-	maxLength?: number;
-	minLength?: number;
+	max?: number;
+	min?: number;
 	numeric?: boolean;
 	required?: boolean;
 	trim?: boolean;
@@ -25,8 +25,8 @@ export interface NativeModel {
 
 export interface AvatarSrc extends NativeModel {
 	type: "string";
-	maxLength: 800000;
-	minLength: 0;
+	max: 800000;
+	min: 0;
 	required: true;
 	defaultValue: "";
 	trim: true;
@@ -35,8 +35,8 @@ export interface AvatarSrc extends NativeModel {
 
 export interface Bio extends NativeModel {
 	type: "string";
-	maxLength: 255;
-	minLength: 0;
+	max: 255;
+	min: 0;
 	required: true;
 	defaultValue: "";
 	trim: true;
@@ -59,8 +59,8 @@ export interface CountryCode extends NativeModel {
 	type: "string";
 	required: true;
 	empty: false;
-	minLength: 1;
-	maxLength: 4;
+	min: 1;
+	max: 4;
 	numeric: true;
 	trim: true;
 }
@@ -69,8 +69,17 @@ export interface CountryName extends NativeModel {
 	type: "string";
 	required: true;
 	empty: false;
-	minLength: 2;
-	maxLength: 50;
+	min: 2;
+	max: 50;
+	trim: true;
+}
+
+export interface CountryShortName extends NativeModel {
+	type: "string";
+	required: true;
+	empty: false;
+	min: 2;
+	max: 80;
 	trim: true;
 }
 
@@ -78,8 +87,8 @@ export interface FirstName extends NativeModel {
 	type: "string";
 	required: true;
 	empty: false;
-	minLength: 2;
-	maxLength: 18;
+	min: 2;
+	max: 18;
 	trim: true;
 }
 
@@ -89,12 +98,18 @@ export interface IsActive extends NativeModel {
 	defaultValue: false;
 }
 
+export interface IsOnline extends NativeModel {
+	type: "boolean";
+	required: true;
+	defaultValue: false;
+}
+
 export interface LastName extends NativeModel {
 	type: "string";
 	required: true;
 	empty: true;
-	minLength: 2;
-	maxLength: 18;
+	min: 2;
+	max: 18;
 	trim: true;
 }
 
@@ -102,8 +117,8 @@ export interface MacAddress extends NativeModel {
 	type: "string";
 	required: true;
 	empty: false;
-	minLength: 12;
-	maxLength: 16;
+	min: 12;
+	max: 16;
 	trim: true;
 	unique: true;
 }
@@ -112,8 +127,8 @@ export interface PhoneNumber extends NativeModel {
 	type: "string";
 	required: true;
 	empty: false;
-	minLength: 10;
-	maxLength: 14;
+	min: 10;
+	max: 14;
 	numeric: true;
 	unique: true;
 }
@@ -134,8 +149,8 @@ export interface Username extends NativeModel {
 	type: "string";
 	required: true;
 	empty: true;
-	minLength: 0;
-	maxLength: 12;
+	min: 0;
+	max: 12;
 	unique: false;
 	trim: true;
 }
@@ -153,8 +168,8 @@ export interface ChatId extends NativeModel {
 	type: "string";
 	required: true;
 	empty: false;
-	minLength: 30;
-	maxLength: 35;
+	min: 30;
+	max: 35;
 	trim: true;
 	unique: true;
 }
@@ -163,8 +178,8 @@ export interface ClientId extends NativeModel {
 	type: "string";
 	empty: false;
 	required: true;
-	minLength: 100;
-	maxLength: 150;
+	min: 100;
+	max: 150;
 	unique: true;
 	trim: true;
 }
@@ -179,8 +194,8 @@ export interface MessageId extends NativeModel {
 	type: "string";
 	required: true;
 	empty: false;
-	maxLength: 45;
-	minLength: 40;
+	max: 45;
+	min: 40;
 	trim: true;
 	unique: true;
 }
@@ -189,8 +204,8 @@ export interface Id extends NativeModel {
 	type: "string";
 	required: true;
 	empty: false;
-	minLength: 30;
-	maxLength: 35;
+	min: 30;
+	max: 35;
 	trim: true;
 	unique: true;
 }
@@ -207,8 +222,8 @@ export interface MessageText extends NativeModel {
 	type: "string";
 	required: true;
 	empty: false;
-	minLength: 1;
-	maxLength: 1000;
+	min: 1;
+	max: 1000;
 	trim: true;
 }
 
@@ -222,6 +237,24 @@ export interface Participants extends NativeModel {
 export interface PrivateChats extends NativeModel {
 	type: "array";
 	required: true;
+}
+
+export interface WelcomeMessage extends NativeModel {
+	type: "string";
+	required: true;
+	empty: false;
+	min: 10;
+	max: 100;
+	trim: true;
+}
+
+export interface Pong extends NativeModel {
+	type: "number";
+	required: true;
+	empty: false;
+	min: 1;
+	max: 10;
+	trim: false;
 }
 
 export type NativeModelCollection = typeof nativeModels;

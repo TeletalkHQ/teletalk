@@ -1,4 +1,4 @@
-import { AvatarSrc, UserId } from "teletalk-type-store";
+import { AvatarSrc, UserId } from "@repo/type-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";

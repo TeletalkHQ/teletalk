@@ -1,5 +1,4 @@
-import { Trier } from "simple-trier";
-import { randomMaker } from "utility-store";
+import { randomMaker } from "@repo/utility-store";
 
 import { configs } from "~/classes/Configs";
 
@@ -12,13 +11,8 @@ export const testServerInitializer = async () => {
 
 	configs.setPort(randomMaker.numberWithRange(8000, 50000));
 
-	logger.offAll();
-	logger.on("debug");
-
-	Trier.changeGlobalConfigs({
-		callerName: "unknownCaller",
-		canPrintError: false,
-	});
+	logger.disableAll();
+	logger.setLevel("debug");
 
 	await runner();
 };

@@ -1,5 +1,5 @@
+import { PrivateChatItem } from "@repo/type-store";
 import { Document, HydratedDocument, Model } from "mongoose";
-import { PrivateChatItem } from "teletalk-type-store";
 
 export type IPrivateChatDoc = PrivateChatItem & Document;
 export type IPrivateChatModel = Model<IPrivateChatDoc>;

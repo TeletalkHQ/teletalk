@@ -1,5 +1,5 @@
-import { EmptyUserData } from "teletalk-type-store";
-import { UserUtils as UserUtilitiesMain } from "utility-store";
+import { EmptyUserData } from "@repo/type-store";
+import { UserUtils as UserUtilitiesMain } from "@repo/utility-store";
 
 type EmptyDBUserData = Omit<EmptyUserData, "contacts"> & { contacts: [] };
 

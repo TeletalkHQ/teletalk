@@ -1,4 +1,4 @@
-import { Extractor as ExtractorMain } from "utility-store";
+import { Extractor as ExtractorMain } from "@repo/utility-store";
 
 import { CurrentUserData, ExtendedCurrentUserData } from "~/types";
 

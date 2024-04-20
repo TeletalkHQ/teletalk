@@ -1,7 +1,11 @@
-import { IoFields } from "check-fields";
-import { customTypeof } from "custom-typeof";
+import FastestValidator from "fastest-validator";
 
-import { NativeError, Route } from "~/types";
+import { NativeError, Route, ValidationSchema } from "~/types";
+
+//CLEANME:
+export const compiler = new FastestValidator({
+	useNewCustomCheckerFunction: true,
+});
 
 export abstract class RouteBuilder {
 	protected route: Route;
@@ -11,12 +15,12 @@ export abstract class RouteBuilder {
 		this.route = {};
 	}
 
-	inputFields(inputFields: IoFields) {
-		this.route.inputFields = inputFields;
+	inputSchema(inputFields: ValidationSchema) {
+		this.route.inputValidator = compiler.compile(inputFields);
 		return this;
 	}
-	outputFields(outputFields: IoFields) {
-		this.route.outputFields = outputFields;
+	outputSchema(outputFields: ValidationSchema) {
+		this.route.outputValidator = compiler.compile(outputFields);
 		return this;
 	}
 
@@ -28,10 +32,13 @@ export abstract class RouteBuilder {
 		error: NativeError | { reason: string },
 		...requirements: unknown[]
 	) {
-		if (customTypeof.isUndefined(...requirements))
-			throw {
-				...error,
-				route: this.route,
-			};
+		const isAllSet = requirements.every(Boolean);
+
+		if (isAllSet) return;
+
+		throw {
+			...error,
+			route: this.route,
+		};
 	}
 }

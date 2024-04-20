@@ -3,10 +3,10 @@ import {
 	LogoutIO,
 	SignInIO,
 	VerifyIO,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
-import { fields } from "~/variables";
+import { validationModels } from "~/models/validation";
 
 import { handlers } from "./handlers";
 
@@ -15,9 +15,12 @@ const builder = socketEventBuilder();
 const createNewUser = builder
 	.create<CreateNewUserIO>()
 	.name("createNewUser")
-	.inputFields(fields.collection.fullName)
-	.outputFields({
-		session: fields.single.session,
+	.inputSchema({
+		firstName: validationModels.firstName,
+		lastName: validationModels.lastName,
+	})
+	.outputSchema({
+		sessionId: validationModels.sessionId,
 	})
 	.handler(handlers.createNewUser)
 	.build();
@@ -32,9 +35,13 @@ const signIn = builder
 	.create<SignInIO>()
 	.name("signIn")
 	.noAuth()
-	.inputFields(fields.collection.cellphone)
-	.outputFields({
-		session: fields.single.session,
+	.inputSchema({
+		countryCode: validationModels.countryCode,
+		countryName: validationModels.countryName,
+		phoneNumber: validationModels.phoneNumber,
+	})
+	.outputSchema({
+		sessionId: validationModels.sessionId,
 	})
 	.handler(handlers.signIn)
 	.build();
@@ -42,12 +49,14 @@ const signIn = builder
 const verify = builder
 	.create<VerifyIO>()
 	.name("verify")
-	.inputFields({
-		verificationCode: fields.single.verificationCode,
+	.inputSchema({
+		verificationCode: validationModels.verificationCode,
 	})
-	.outputFields({
-		newUser: fields.single.newUser,
-		session: fields.single.session,
+	.outputSchema({
+		isNewUser: {
+			type: "boolean",
+		},
+		sessionId: validationModels.sessionId,
 	})
 	.handler(handlers.verify)
 	.build();

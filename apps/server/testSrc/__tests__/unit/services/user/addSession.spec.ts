@@ -1,4 +1,4 @@
-import { DBUserData, Sessions } from "teletalk-type-store";
+import { DBUserData, Sessions } from "@repo/type-store";
 
 import { services } from "~/services";
 

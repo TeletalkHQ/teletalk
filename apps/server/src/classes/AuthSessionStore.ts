@@ -1,4 +1,4 @@
-import { SessionId } from "teletalk-type-store";
+import { SessionId } from "@repo/type-store";
 
 import { StoredAuthSession } from "~/types";
 

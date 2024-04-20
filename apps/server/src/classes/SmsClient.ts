@@ -1,5 +1,4 @@
 import axios from "axios";
-import { trier } from "simple-trier";
 
 import { configs } from "~/classes/Configs";
 import { escapeChars } from "~/variables";
@@ -20,19 +19,19 @@ export class SmsClient {
 		host: string,
 		verificationCode: string
 	) {
-		const text = this.templates().verificationCode(verificationCode, host);
-		const { SMS_PROVIDER_SELECTOR } = configs.getConfigs().SMS_CLIENT;
+		try {
+			const text = this.templates().verificationCode(verificationCode, host);
+			const { SMS_PROVIDER_SELECTOR } = configs.getConfigs().SMS_CLIENT;
 
-		const providers = [this.devProvider, this.provider1, this.provider2];
-		await trier(this.sendVerificationCode.name)
-			.async()
-			.try(providers[SMS_PROVIDER_SELECTOR].bind(this), sendTo, text)
-			.catch((error) => ({
+			const providers = [this.devProvider, this.provider1, this.provider2];
+
+			await providers[SMS_PROVIDER_SELECTOR](sendTo, text);
+		} catch (error) {
+			throw {
 				...errorStore.find("SEND_SMS_FAILED"),
 				providerError: error,
-			}))
-			.throw()
-			.run();
+			};
+		}
 	}
 
 	private async devProvider(sendTo: string, text: string) {

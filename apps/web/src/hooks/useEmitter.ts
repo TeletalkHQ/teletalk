@@ -1,4 +1,4 @@
-import type { EventName, IOCollection } from "teletalk-type-store";
+import type { EventName, IOCollection } from "@repo/type-store";
 
 import { storage } from "~/classes/Storage";
 import { stuffStore } from "~/classes/StuffStore";

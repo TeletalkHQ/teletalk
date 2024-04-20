@@ -3,7 +3,7 @@ import {
 	EventName,
 	MessageItem,
 	SendMessageIO,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import { services } from "~/services";
 import { SocketOnHandler } from "~/types";

@@ -1,4 +1,4 @@
-import { GetUserDataIO } from "teletalk-type-store";
+import { GetUserDataIO } from "@repo/type-store";
 
 import { services } from "~/services";
 import { SocketOnHandler } from "~/types";

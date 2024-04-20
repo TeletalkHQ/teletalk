@@ -7,8 +7,10 @@ import {
 	Contacts,
 	CountryCode,
 	CountryName,
+	CountryShortName,
 	FirstName,
 	IsActive,
+	IsOnline,
 	LastName,
 	MacAddress,
 	PhoneNumber,
@@ -21,16 +23,6 @@ import {
 import { commonModels } from "./common";
 
 export const userModels = {
-	bio: nativeModelBuilder
-		.create<Bio>()
-		.type("string")
-		.required(true)
-		.empty(true)
-		.trim(true)
-		.minLength(0)
-		.defaultValue("")
-		.maxLength(255)
-		.build(),
 	avatarSrc: nativeModelBuilder
 		.create<AvatarSrc>()
 		.type("string")
@@ -38,27 +30,21 @@ export const userModels = {
 		.empty(true)
 		.defaultValue("")
 		.trim(true)
-		.minLength(0)
-		.maxLength(800000)
+		.min(0)
+		.max(800000)
+		.build(),
+	bio: nativeModelBuilder
+		.create<Bio>()
+		.type("string")
+		.required(true)
+		.empty(true)
+		.trim(true)
+		.min(0)
+		.defaultValue("")
+		.max(255)
 		.build(),
 	blacklist: nativeModelBuilder
 		.create<Blacklist>()
-		.type("array")
-		.required(true)
-		.empty(true)
-		.build(),
-	sessionId: nativeModelBuilder
-		.create<ClientId>()
-		.type("string")
-		.empty(false)
-		.required(true)
-		.minLength(100)
-		.maxLength(150)
-		.unique(true)
-		.trim(true)
-		.build(),
-	sessions: nativeModelBuilder
-		.create<Sessions>()
 		.type("array")
 		.required(true)
 		.empty(true)
@@ -74,8 +60,8 @@ export const userModels = {
 		.type("string")
 		.required(true)
 		.empty(false)
-		.minLength(1)
-		.maxLength(4)
+		.min(1)
+		.max(4)
 		.numeric(true)
 		.trim(true)
 		.build(),
@@ -84,8 +70,17 @@ export const userModels = {
 		.type("string")
 		.required(true)
 		.empty(false)
-		.minLength(2)
-		.maxLength(50)
+		.min(2)
+		.max(50)
+		.trim(true)
+		.build(),
+	countryShortName: nativeModelBuilder
+		.create<CountryShortName>()
+		.type("string")
+		.required(true)
+		.empty(false)
+		.min(2)
+		.max(80)
 		.trim(true)
 		.build(),
 	createdAt: commonModels.createdAt,
@@ -94,12 +89,18 @@ export const userModels = {
 		.type("string")
 		.required(true)
 		.empty(false)
-		.minLength(2)
-		.maxLength(18)
+		.min(2)
+		.max(18)
 		.trim(true)
 		.build(),
 	isActive: nativeModelBuilder
 		.create<IsActive>()
+		.type("boolean")
+		.required(true)
+		.defaultValue(false)
+		.build(),
+	isOnline: nativeModelBuilder
+		.create<IsOnline>()
 		.type("boolean")
 		.required(true)
 		.defaultValue(false)
@@ -109,8 +110,8 @@ export const userModels = {
 		.type("string")
 		.required(true)
 		.empty(true)
-		.minLength(2)
-		.maxLength(18)
+		.min(2)
+		.max(18)
 		.trim(true)
 		.build(),
 	macAddress: nativeModelBuilder
@@ -118,8 +119,8 @@ export const userModels = {
 		.type("string")
 		.required(true)
 		.empty(false)
-		.minLength(12)
-		.maxLength(16)
+		.min(12)
+		.max(16)
 		.trim(true)
 		.unique(true)
 		.build(),
@@ -128,10 +129,26 @@ export const userModels = {
 		.type("string")
 		.required(true)
 		.empty(false)
-		.minLength(10)
-		.maxLength(14)
+		.min(10)
+		.max(14)
 		.numeric(true)
 		.unique(true)
+		.build(),
+	sessionId: nativeModelBuilder
+		.create<ClientId>()
+		.type("string")
+		.empty(false)
+		.required(true)
+		.min(100)
+		.max(150)
+		.unique(true)
+		.trim(true)
+		.build(),
+	sessions: nativeModelBuilder
+		.create<Sessions>()
+		.type("array")
+		.required(true)
+		.empty(true)
 		.build(),
 	status: nativeModelBuilder
 		.create<Status>()
@@ -144,8 +161,8 @@ export const userModels = {
 		.type("string")
 		.required(true)
 		.empty(true)
-		.minLength(0)
-		.maxLength(12)
+		.min(0)
+		.max(12)
 		.unique(false)
 		.trim(true)
 		.build(),

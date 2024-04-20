@@ -1,5 +1,5 @@
+import { IO } from "@repo/type-store";
 import { Socket as ClientSocket } from "socket.io-client";
-import { IO } from "teletalk-type-store";
 
 import { middlewares } from "~/socket/middlewares";
 

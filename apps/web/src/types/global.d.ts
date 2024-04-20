@@ -1,10 +1,10 @@
 /* eslint-disable no-var */
-import { LoggerBrowser } from "logger-browser";
+import loglevel from "loglevel";
 
 import { Environments, StringMap } from "~/types";
 
 declare global {
-  var logger = new LoggerBrowser();
+  var logger = loglevel;
   var ping = (_data: StringMap) => { };
 
   namespace NodeJS {
@@ -12,3 +12,11 @@ declare global {
     interface ProcessEnv extends Environments { }
   }
 }
+
+declare module "*.png";
+declare module "*.svg";
+declare module "*.jpeg";
+declare module "*.jpg";
+declare module "*.module.css";
+declare module "*.module.scss";
+declare module "*.module.sass";

@@ -1,11 +1,11 @@
-import { Socket } from "socket.io-client";
 import {
 	Cellphone,
 	EventName,
 	FullName,
 	IO,
 	IOCollection,
-} from "teletalk-type-store";
+} from "@repo/type-store";
+import { Socket } from "socket.io-client";
 
 import { events } from "~/socket/events";
 import { SocketEvent } from "~/types";

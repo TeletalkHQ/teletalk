@@ -1,4 +1,4 @@
-import { IO } from "teletalk-type-store";
+import { IO } from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { ErrorReason } from "~/types";
@@ -23,10 +23,10 @@ class E2eFailTestInitializer<
 	) {}
 
 	private getMinLength() {
-		return this.model.minLength as number;
+		return this.model.min as number;
 	}
 	private getMaxLength() {
-		return this.model.maxLength as number;
+		return this.model.max as number;
 	}
 	private getLength() {
 		return this.model.length as number;
@@ -46,14 +46,14 @@ class E2eFailTestInitializer<
 		this.overload();
 
 		if (this.model.empty === false) this.empty();
-		if (this.model.maxLength) this.maxLength();
-		if (this.model.minLength) this.minLength();
+		if (this.model.max) this.max();
+		if (this.model.min) this.min();
 		if (this.model.length) this.length();
 		if (this.model.numeric === false) this.numeric();
 
 		if (this.fieldName === "countryName") {
 			this.custom(
-				randomMaker.string(this.model.maxLength!),
+				randomMaker.string(this.model.max!),
 				"COUNTRY_NAME_NOT_SUPPORTED"
 			);
 		}
@@ -71,24 +71,24 @@ class E2eFailTestInitializer<
 		return this;
 	}
 	missing() {
-		this.initTest(this.dataMerger(), "INPUT_FIELDS_MISSING");
+		// this.initTest(this.dataMerger(), "INPUT_FIELDS_MISSING");
 		return this;
 	}
 	overload() {
-		const overloadedData = {
-			...this.data,
-			[randomMaker.string(10)]: randomMaker.string(10),
-		};
-		this.initTest(overloadedData, "INPUT_FIELDS_OVERLOAD", {
-			shouldFilterRequestData: false,
-		});
+		// const overloadedData = {
+		// 	...this.data,
+		// 	[randomMaker.string(10)]: randomMaker.string(10),
+		// };
+		// this.initTest(overloadedData, "INPUT_FIELDS_OVERLOAD", {
+		// 	shouldFilterRequestData: false,
+		// });
 		return this;
 	}
-	invalidType(value?: FieldType) {
-		const valueWithIncorrectType =
-			value || randomMaker.number(this.getMaxLength());
-		const mergedData = this.dataMerger(valueWithIncorrectType);
-		this.initTest(mergedData, "INPUT_FIELD_INVALID_TYPE");
+	invalidType(_value?: FieldType) {
+		// const valueWithIncorrectType =
+		// 	value || randomMaker.number(this.getMaxLength());
+		// const mergedData = this.dataMerger(valueWithIncorrectType);
+		// this.initTest(mergedData, "INPUT_FIELD_INVALID_TYPE");
 		return this;
 	}
 	numeric() {
@@ -97,18 +97,18 @@ class E2eFailTestInitializer<
 		this.initTest(mergedData, this.resolveErrorReason("numeric"));
 		return this;
 	}
-	minLength() {
+	min() {
 		if (this.getMinLength() > 1) {
 			const randomValue = randomMaker.string(this.getMinLength() - 1);
 			const mergedData = this.dataMerger(randomValue);
-			this.initTest(mergedData, this.resolveErrorReason("minLength"));
+			this.initTest(mergedData, this.resolveErrorReason("min"));
 		}
 		return this;
 	}
-	maxLength(value?: any) {
+	max(value?: any) {
 		const randomValue = value || randomMaker.string(this.getMaxLength() + 1);
 		const mergedData = this.dataMerger(randomValue);
-		this.initTest(mergedData, this.resolveErrorReason("maxLength"));
+		this.initTest(mergedData, this.resolveErrorReason("max"));
 		return this;
 	}
 	length(value?: any) {

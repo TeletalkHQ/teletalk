@@ -1,4 +1,4 @@
-import { customTypeof } from "custom-typeof";
+import is from "@sindresorhus/is";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { validationChecker } from "~/classes/ValidationChecker";
@@ -27,7 +27,7 @@ const {
 validationCheckers.countryCode = (result, value) => {
 	if (result === true) {
 		const country = countries.find((c) => c.countryCode === value);
-		if (customTypeof.isUndefined(country))
+		if (is.undefined(country))
 			throw errorStore.find("COUNTRY_CODE_NOT_SUPPORTED");
 
 		return;
@@ -39,7 +39,7 @@ validationCheckers.countryCode = (result, value) => {
 validationCheckers.countryName = (result, value) => {
 	if (result === true) {
 		const country = countries.find((c) => c.countryName === value);
-		if (customTypeof.isUndefined(country))
+		if (is.undefined(country))
 			throw errorStore.find("COUNTRY_NAME_NOT_SUPPORTED");
 
 		return;

@@ -4,10 +4,10 @@ import {
 	GetWelcomeMessageIO,
 	JoinIO,
 	PingIO,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
-import { fields } from "~/variables";
+import { validationModels } from "~/models/validation";
 
 import { handlers } from "./handlers";
 
@@ -17,12 +17,23 @@ const getCountries = builder
 	.create<GetCountriesIO>()
 	.name("getCountries")
 	.noAuth()
-	.outputFields({
-		countries: fields.statics.array(fields.collection.country),
+	.outputSchema({
+		countries: {
+			type: "array",
+			items: {
+				type: "object",
+				props: {
+					countryCode: validationModels.countryCode,
+					countryName: validationModels.countryName,
+					countryShortName: validationModels.countryShortName,
+				},
+			},
+		},
 	})
 	.handler(handlers.getCountries)
 	.build();
 
+//FIXME: Add IO
 const getStuff = builder
 	.create<GetStuffIO>()
 	.name("getStuff")
@@ -34,8 +45,8 @@ const getWelcomeMessage = builder
 	.create<GetWelcomeMessageIO>()
 	.name("getWelcomeMessage")
 	.noAuth()
-	.outputFields({
-		welcomeMessage: fields.single.welcomeMessage,
+	.outputSchema({
+		welcomeMessage: validationModels.welcomeMessage,
 	})
 	.handler(handlers.getWelcomeMessage)
 	.build();
@@ -44,10 +55,13 @@ const ping = builder
 	.create<PingIO>()
 	.name("ping")
 	.noAuth()
-	.outputFields({ pong: fields.statics.string })
+	.outputSchema({
+		pong: validationModels.pong,
+	})
 	.handler(handlers.ping)
 	.build();
 
+//FIXME: Add IO
 const join = builder
 	.create<JoinIO>()
 	.name("join")

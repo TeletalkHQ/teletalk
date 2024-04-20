@@ -24,8 +24,11 @@
 		"test:dev:coverage": "c8 pnpm run test:dev",
 		"test:dev:watch": "pnpm run test:dev -- --watch"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@repo/utility-store": "workspace:*"
+	},
 	"devDependencies": {
+		"@repo/type-store": "workspace:*",
 		"@repo/typescript-config": "workspace:*"
 	},
 	"engines": {

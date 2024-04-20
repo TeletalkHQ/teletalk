@@ -1,5 +1,5 @@
+import { UserId } from "@repo/type-store";
 import { useEffect } from "react";
-import { UserId } from "teletalk-type-store";
 
 import defaultAvatar from "~/assets/images/default-avatar.png";
 import { useUserStore } from "~/store";

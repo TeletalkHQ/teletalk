@@ -34,8 +34,8 @@ export class AssertionInitializer<Model extends NativeModel = any> {
 			equalValue,
 			testValue,
 			modelLength: model.length!,
-			modelMaxLength: model.maxLength!,
-			modelMinLength: model.minLength!,
+			modelMaxLength: model.max!,
+			modelMinLength: model.min!,
 		};
 
 		return this;
@@ -67,8 +67,8 @@ export class AssertionInitializer<Model extends NativeModel = any> {
 		if (this.options.stringEquality) this.stringEqualityCheck();
 
 		if (m.empty === false) this.emptyCheck();
-		if (m.maxLength) this.lteCheck();
-		if (m.minLength) this.gteCheck();
+		if (m.max) this.lteCheck();
+		if (m.min) this.gteCheck();
 		if (m.length) this.lengthCheck();
 		if (m.numeric) this.numericCheck();
 

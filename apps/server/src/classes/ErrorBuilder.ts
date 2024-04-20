@@ -1,5 +1,3 @@
-import { customTypeof } from "custom-typeof";
-
 import { ErrorReason, NativeError } from "~/types";
 
 export class ErrorBuilder<ReasonType extends ErrorReason> {
@@ -32,9 +30,7 @@ export class ErrorBuilder<ReasonType extends ErrorReason> {
 	build() {
 		const { description, message, ...rest } = this.error;
 		const values = Object.values(rest);
-		const isUndefined = values.some(
-			customTypeof.isUndefined.bind(customTypeof)
-		);
+		const isUndefined = values.some((item) => typeof item === "undefined");
 		if (isUndefined) throw "ERROR_IS_INVALID";
 
 		return this.error;

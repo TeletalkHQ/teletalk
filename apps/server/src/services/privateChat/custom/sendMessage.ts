@@ -6,8 +6,8 @@ import {
 	SenderId,
 	SessionId,
 	UserId,
-} from "teletalk-type-store";
-import { randomMaker } from "utility-store";
+} from "@repo/type-store";
+import { randomMaker } from "@repo/utility-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { models } from "~/models";
@@ -44,7 +44,7 @@ export const sendMessage = serviceBuilder
 	.setBody(async (data) => {
 		const newMessage = {
 			createdAt: Date.now(),
-			messageId: randomMaker.id(chatModels.messageId.maxLength),
+			messageId: randomMaker.id(chatModels.messageId.max),
 			messageText: data.messageText,
 			sender: {
 				senderId: data.currentParticipant.userId,

@@ -1,5 +1,5 @@
-import { ExtendedCellphone, SignInIO } from "teletalk-type-store";
-import { extractor } from "utility-store";
+import { ExtendedCellphone, SignInIO } from "@repo/type-store";
+import { extractor } from "@repo/utility-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { sessionManager } from "~/classes/SessionManager";

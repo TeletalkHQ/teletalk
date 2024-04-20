@@ -1,4 +1,4 @@
-import { IO } from "teletalk-type-store";
+import { IO } from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { RouteBuilder } from "~/classes/RouteBuilder";
@@ -13,8 +13,6 @@ export class SocketEventBuilder<IOType extends IO> extends RouteBuilder {
 		// @ts-ignore
 		this.route = {
 			method: "customOn",
-			inputFields: {},
-			outputFields: {},
 			isAuthRequired: true,
 		};
 	}

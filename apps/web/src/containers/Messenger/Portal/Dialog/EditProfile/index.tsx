@@ -1,5 +1,5 @@
+import { extractor } from "@repo/utility-store";
 import { useEffect } from "react";
-import { extractor } from "utility-store";
 
 import { Template } from "~/components";
 import { useDialogState } from "~/hooks";

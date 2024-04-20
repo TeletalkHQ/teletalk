@@ -1,5 +1,5 @@
+import { EventName, IO } from "@repo/type-store";
 import { Event, Socket } from "socket.io";
-import { EventName, IO } from "teletalk-type-store";
 
 import { NativeError, Route, VoidNoArgsFn } from "..";
 
@@ -73,7 +73,7 @@ export type SocketMiddlewareReturnValue = {
 	ok: boolean;
 };
 
-export type SocketDefaultMiddlewareEvent = Event;
+export type SocketDefaultEvent = Event;
 
 export type SocketMiddleware<IOType extends IO = any> = (
 	socket: Socket,

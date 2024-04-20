@@ -1,4 +1,4 @@
-import { EventName, PingIO } from "teletalk-type-store";
+import { EventName, PingIO } from "@repo/type-store";
 
 import { SocketOnHandler } from "~/types";
 import { utils } from "~/utils";

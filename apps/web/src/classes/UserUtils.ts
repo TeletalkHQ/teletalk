@@ -1,8 +1,8 @@
 import type {
 	ExtendedUnknownCellphone,
 	UserPublicData,
-} from "teletalk-type-store";
-import { UserUtils as userUtilsMain } from "utility-store";
+} from "@repo/type-store";
+import { UserUtils as userUtilsMain } from "@repo/utility-store";
 
 import { UserItem } from "~/types";
 

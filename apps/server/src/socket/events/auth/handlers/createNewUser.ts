@@ -1,5 +1,5 @@
-import { CreateNewUserIO } from "teletalk-type-store";
-import { extractor, randomMaker } from "utility-store";
+import { CreateNewUserIO } from "@repo/type-store";
+import { extractor, randomMaker } from "@repo/utility-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { errorStore } from "~/classes/ErrorStore";
@@ -55,4 +55,4 @@ const checkClientVerification = (authSession: StoredAuthSession) => {
 		};
 };
 
-const getRandomId = () => randomMaker.id(models.native.userId.maxLength);
+const getRandomId = () => randomMaker.id(models.native.userId.max);

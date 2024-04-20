@@ -1,4 +1,4 @@
-import { ContactItemWithoutUserId } from "teletalk-type-store";
+import { ContactItemWithoutUserId } from "@repo/type-store";
 
 import { extractor } from "~/classes/Extractor";
 

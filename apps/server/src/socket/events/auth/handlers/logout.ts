@@ -1,4 +1,4 @@
-import { LogoutIO } from "teletalk-type-store";
+import { LogoutIO } from "@repo/type-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { services } from "~/services";

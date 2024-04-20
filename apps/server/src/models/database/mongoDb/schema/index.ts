@@ -13,9 +13,10 @@ export const schemas = Object.entries(nativeModels).reduce(
 
 		model.type = value.type;
 
+		//CLEANME:
 		if ("defaultValue" in model) model.default = model.defaultValue;
-		if ("minLength" in model) model.minlength = mongoMaker("minLength");
-		if ("maxLength" in model) model.maxlength = mongoMaker("maxLength");
+		if ("min" in model) model.minlength = mongoMaker("min");
+		if ("max" in model) model.maxlength = mongoMaker("max");
 		if ("trim" in model) model.trim = value.trim;
 		if ("required" in model) model.required = mongoMaker("required");
 		if ("unique" in model) model.unique = mongoMaker("unique");

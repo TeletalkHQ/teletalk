@@ -14,12 +14,10 @@ export const loggerHelper = {
 		return `${fixedSeparator}---${title}---${fixedSeparator}`;
 	},
 	logStartTestRequest() {
-		logger
-			.bgRed(
-				`${escapeChars.newLine}${this.makeSeparator("TEST_REQUEST_BEGIN")}`,
-				"black"
-			)
-			.info();
+		logger.info(
+			`${escapeChars.newLine}${this.makeSeparator("TEST_REQUEST_BEGIN")}`
+		);
+
 		return this;
 	},
 	logRequestDetails(
@@ -28,30 +26,23 @@ export const loggerHelper = {
 		event: object,
 		error: unknown
 	) {
-		logger.bgRed(`${escapeChars.newLine}request details:`, "black").dir(
-			"info",
-			{
-				options,
-				requestData,
-				event,
-				error,
-			},
-			{ depth: 10 }
-		);
+		logger.info(`${escapeChars.newLine}request details:`, {
+			options,
+			requestData,
+			event,
+			error,
+		});
 		return this;
 	},
 	logEndTestRequest() {
-		logger
-			.bgYellow(
-				`${escapeChars.newLine}${this.makeSeparator("TEST_REQUEST_END")}`,
-				"black"
-			)
-			.info();
+		logger.info(
+			`${escapeChars.newLine}${this.makeSeparator("TEST_REQUEST_END")}`
+		);
 
 		return this;
 	},
 
 	logSeparator() {
-		logger.bgMagenta(this.makeSeparator(), "black").info();
+		logger.info(this.makeSeparator());
 	},
 };

@@ -1,4 +1,4 @@
-import { GetChatInfoIO } from "teletalk-type-store";
+import { GetChatInfoIO } from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { services } from "~/services";

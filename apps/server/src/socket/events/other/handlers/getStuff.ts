@@ -1,4 +1,4 @@
-import { GetStuffIO } from "teletalk-type-store";
+import { GetStuffIO } from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { models } from "~/models";

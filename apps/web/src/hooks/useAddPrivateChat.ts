@@ -1,4 +1,4 @@
-import type { ChatId } from "teletalk-type-store";
+import type { ChatId } from "@repo/type-store";
 
 import { useMessageStore } from "~/store";
 

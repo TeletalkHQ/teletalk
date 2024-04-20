@@ -1,6 +1,6 @@
 import { ValidationModelBuilder } from "~/classes/ValidationModelBuilder";
 import { models } from "~/models";
-import { FieldValidator } from "~/types";
+import { ValidatorFnType } from "~/types";
 import { Field } from "~/types/model";
 
 export const validators = Object.entries(models.validation).reduce(
@@ -8,7 +8,7 @@ export const validators = Object.entries(models.validation).reduce(
 		prevValue[fieldName as Field] = ValidationModelBuilder.compiler(model);
 		return prevValue;
 	},
-	{} as { [key in Field]: FieldValidator }
+	{} as { [key in Field]: ValidatorFnType }
 );
 
 export * from "./validationCheckers";

@@ -3,7 +3,7 @@ import {
 	FullName,
 	SessionId,
 	UnknownCellphone,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";

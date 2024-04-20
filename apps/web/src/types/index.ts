@@ -1,15 +1,14 @@
-import { IoFields } from "check-fields";
+import type {
+	Cellphone,
+	ContactItem,
+	EventName as MainEventName,
+} from "@repo/type-store";
 import {
 	AsyncCheckFunction,
 	SyncCheckFunction,
 	ValidationError,
 } from "fastest-validator";
 import { CSSProperties } from "react";
-import type {
-	Cellphone,
-	ContactItem,
-	EventName as MainEventName,
-} from "teletalk-type-store";
 import { ScreamingSnakeCase } from "type-fest";
 
 import { stuffStore } from "~/classes/StuffStore";
@@ -45,8 +44,10 @@ export type VoidWithTwoArgs<Arg1, Arg2> = (arg1: Arg1, arg2: Arg2) => void;
 export * from "~/types/components";
 
 export interface Route {
-	inputFields: IoFields | Record<string, never>;
-	outputFields: IoFields | Record<string, never>;
+	//FIXME: Use ValidationModel
+	inputFields: Record<string, never>;
+	//FIXME: Use ValidationModel
+	outputFields: Record<string, never>;
 	isAuthRequired: boolean;
 }
 

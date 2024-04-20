@@ -1,4 +1,4 @@
-import { DBUserData, UserId } from "teletalk-type-store";
+import { DBUserData, UserId } from "@repo/type-store";
 
 import { extractor } from "~/classes/Extractor";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";

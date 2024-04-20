@@ -1,4 +1,4 @@
-import { EventName, UpdateAvatarIO } from "teletalk-type-store";
+import { EventName, UpdateAvatarIO } from "@repo/type-store";
 
 import { services } from "~/services";
 import { SocketOnHandler } from "~/types";

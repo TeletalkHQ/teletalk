@@ -3,26 +3,67 @@ import {
 	GetPrivateChatIO,
 	GetPrivateChatsIO,
 	SendMessageIO,
-} from "teletalk-type-store";
+} from "@repo/type-store";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
-import { fields } from "~/variables";
+import { validationModels } from "~/models/validation";
+import { ValidationSchema } from "~/types";
 
 import { privateChatHandlers } from "./handlers";
 
 const builder = socketEventBuilder();
 
+const messageItemSchema = {
+	type: "object",
+	createdAt: validationModels.createdAt,
+	messageId: validationModels.messageId,
+	messageText: validationModels.messageText,
+	sender: {
+		type: "object",
+		props: {
+			senderId: validationModels.senderId,
+		},
+	},
+};
+
+const privateChatSchema: ValidationSchema = {
+	type: "object",
+	chatId: validationModels.chatId,
+	createdAt: validationModels.createdAt,
+	messages: {
+		type: "array",
+		items: messageItemSchema,
+	},
+	participants: {
+		type: "array",
+		items: {
+			participantId: validationModels.participantId,
+		},
+	},
+};
+
 const getChatInfo = builder
 	.create<GetChatInfoIO>()
 	.handler(privateChatHandlers.getChatInfo)
 	.name("getChatInfo")
-	.inputFields({ chatId: fields.single.chatId })
-	.outputFields({
-		chatInfo: fields.statics.object({
-			chatId: fields.single.chatId,
-			createdAt: fields.single.createdAt,
-			participants: fields.collection.participants,
-		}),
+	.inputSchema({
+		chatId: validationModels.chatId,
+	})
+	.outputSchema({
+		chatInfo: {
+			type: "object",
+			props: {
+				chatId: validationModels.chatId,
+				createdAt: validationModels.createdAt,
+				participants: {
+					type: "array",
+					items: {
+						type: "object",
+						participantId: validationModels.participantId,
+					},
+				},
+			},
+		},
 	})
 	.build();
 
@@ -30,9 +71,11 @@ const getPrivateChat = builder
 	.create<GetPrivateChatIO>()
 	.handler(privateChatHandlers.getPrivateChat)
 	.name("getPrivateChat")
-	.inputFields({ chatId: fields.single.chatId })
-	.outputFields({
-		privateChat: fields.statics.object(fields.collection.privateChat),
+	.inputSchema({
+		chatId: validationModels.chatId,
+	})
+	.outputSchema({
+		privateChat: privateChatSchema,
 	})
 	.build();
 
@@ -40,8 +83,11 @@ const getPrivateChats = builder
 	.create<GetPrivateChatsIO>()
 	.handler(privateChatHandlers.getPrivateChats)
 	.name("getPrivateChats")
-	.outputFields({
-		privateChats: fields.statics.array(fields.collection.privateChat),
+	.outputSchema({
+		privateChats: {
+			type: "array",
+			items: privateChatSchema,
+		},
 	})
 	.build();
 
@@ -49,13 +95,13 @@ const sendMessage = builder
 	.create<SendMessageIO>()
 	.handler(privateChatHandlers.sendMessage)
 	.name("sendMessage")
-	.inputFields({
-		messageText: fields.single.messageText,
-		targetParticipantId: fields.single.participantId,
+	.inputSchema({
+		messageText: validationModels.messageText,
+		targetParticipantId: validationModels.targetParticipantId,
 	})
-	.outputFields({
-		chatId: fields.single.chatId,
-		addedMessage: fields.statics.object(fields.collection.messageItem),
+	.outputSchema({
+		chatId: validationModels.chatId,
+		addedMessage: messageItemSchema,
 	})
 	.build();
 

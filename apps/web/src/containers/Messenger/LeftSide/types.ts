@@ -1,4 +1,4 @@
-import type { ChatId, UserId } from "teletalk-type-store";
+import type { ChatId, UserId } from "@repo/type-store";
 
 import { VoidWithArg } from "~/types";
 

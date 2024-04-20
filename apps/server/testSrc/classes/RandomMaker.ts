@@ -1,4 +1,3 @@
-import { Socket } from "socket.io-client";
 import {
 	Cellphone,
 	ContactItem,
@@ -13,8 +12,9 @@ import {
 	UserDataWithoutSessions,
 	UserId,
 	UserPublicData,
-} from "teletalk-type-store";
-import { RandomMaker as RandomMakerMain } from "utility-store";
+} from "@repo/type-store";
+import { RandomMaker as RandomMakerMain } from "@repo/utility-store";
+import { Socket } from "socket.io-client";
 
 import { sessionManager } from "~/classes/SessionManager";
 import { userUtils } from "~/classes/UserUtils";
@@ -40,15 +40,15 @@ class RandomMaker extends RandomMakerMain {
 	}
 
 	sessionId(): SessionId {
-		return super.string(models.native.sessionId.maxLength);
+		return super.string(models.native.sessionId.max);
 	}
 
 	contact(): ContactItem {
 		return super.contact(
-			models.native.firstName.maxLength,
-			models.native.lastName.maxLength,
-			models.native.userId.maxLength,
-			models.native.phoneNumber.maxLength
+			models.native.firstName.max,
+			models.native.lastName.max,
+			models.native.userId.max,
+			models.native.phoneNumber.max
 		);
 	}
 
@@ -68,13 +68,13 @@ class RandomMaker extends RandomMakerMain {
 
 	fullName() {
 		return super.fullName(
-			models.native.firstName.maxLength,
-			models.native.lastName.maxLength
+			models.native.firstName.max,
+			models.native.lastName.max
 		);
 	}
 
 	userId() {
-		return super.id(models.native.userId.maxLength);
+		return super.id(models.native.userId.max);
 	}
 
 	async e2eUser(
@@ -191,9 +191,9 @@ class RandomMaker extends RandomMakerMain {
 	userPublicData(): UserPublicData {
 		return {
 			...randomMaker.fullName(),
-			bio: randomMaker.string(models.native.bio.maxLength),
-			username: randomMaker.string(models.native.username.maxLength),
-			userId: super.id(models.native.userId.maxLength),
+			bio: randomMaker.string(models.native.bio.max),
+			username: randomMaker.string(models.native.username.max),
+			userId: super.id(models.native.userId.max),
 		};
 	}
 
@@ -212,16 +212,16 @@ class RandomMaker extends RandomMakerMain {
 
 	unusedContact(): ContactItem {
 		return super.unusedContact(
-			models.native.firstName.maxLength,
-			models.native.lastName.minLength,
-			models.native.userId.maxLength
+			models.native.firstName.max,
+			models.native.lastName.min,
+			models.native.userId.max
 		);
 	}
 
 	privateMessage(): MessageItem {
 		return {
 			createdAt: Date.now(),
-			messageId: super.id(models.native.messageId.maxLength),
+			messageId: super.id(models.native.messageId.max),
 			messageText: this.messageText(),
 			sender: {
 				senderId: this.userId(),
@@ -230,7 +230,7 @@ class RandomMaker extends RandomMakerMain {
 	}
 
 	messageText(): MessageText {
-		return super.string(models.native.messageText.maxLength);
+		return super.string(models.native.messageText.max);
 	}
 }
 

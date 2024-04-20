@@ -1,5 +1,5 @@
-import { UnknownCellphone, UserId } from "teletalk-type-store";
-import { extractor, utils } from "utility-store";
+import { UnknownCellphone, UserId } from "@repo/type-store";
+import { extractor, utils } from "@repo/utility-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { HydratedUser, ServiceMiddleware } from "~/types";

@@ -1,4 +1,4 @@
-import { GetCountriesIO } from "teletalk-type-store";
+import { GetCountriesIO } from "@repo/type-store";
 
 import { SocketOnHandler } from "~/types";
 import { countries } from "~/variables";

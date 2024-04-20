@@ -1,4 +1,4 @@
-import { Cellphone, UserId } from "teletalk-type-store";
+import { Cellphone, UserId } from "@repo/type-store";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { coreServices } from "~/services/user/core";

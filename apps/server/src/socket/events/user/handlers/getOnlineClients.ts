@@ -1,4 +1,4 @@
-import { GetOnlineClientsIO } from "teletalk-type-store";
+import { GetOnlineClientsIO } from "@repo/type-store";
 
 import { clientStatusStore } from "~/classes/ClientStatusStore";
 import { services } from "~/services";

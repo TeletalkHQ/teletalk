@@ -1,12 +1,15 @@
-import Validator, { MessagesType } from "fastest-validator";
+import Validator, {
+	MessagesType,
+	ValidationRuleObject,
+} from "fastest-validator";
 
 import { errorStore } from "~/classes/ErrorStore";
-import { ValidationModel } from "~/types";
+import { ValidationSchema } from "~/types";
 import { Field, NativeModelCollection, NativeModelKey } from "~/types/model";
 import { utils } from "~/utils";
 
 type ErrorMessageKey = keyof MessagesType;
-type ValidationSchemaKey = keyof ValidationModel;
+type ValidationSchemaKey = keyof ValidationRuleObject;
 
 const compiler = new Validator({
 	useNewCustomCheckerFunction: true,
@@ -17,11 +20,11 @@ export class ValidationModelBuilder<
 	Model extends NativeModelCollection[T],
 > {
 	private model: Model;
-	private validationRuleObject: ValidationModel;
+	private validationSchema: ValidationRuleObject;
 
 	constructor(private fieldName: T) {
 		//@ts-expect-error //FIXME
-		this.validationRuleObject = {
+		this.validationSchema = {
 			messages: {},
 		};
 	}
@@ -44,21 +47,20 @@ export class ValidationModelBuilder<
 		modelKey: NativeModelKey,
 		validationKey: ValidationSchemaKey
 	) {
-		this.validationRuleObject[validationKey] =
-			this.model[modelKey as keyof Model];
+		this.validationSchema[validationKey] = this.model[modelKey as keyof Model];
 	}
 	private setMessage(
 		modelKey: NativeModelKey,
 		errorMessageKey: ErrorMessageKey
 	) {
-		if (this.validationRuleObject.messages) {
-			this.validationRuleObject.messages[errorMessageKey] = errorStore.find(
+		if (this.validationSchema.messages) {
+			this.validationSchema.messages[errorMessageKey] = errorStore.find(
 				utils.makeModelErrorReason(this.fieldName, modelKey)
 			).reason;
 		}
 	}
 
-	static compiler(validationModel: ValidationModel) {
+	static compiler(validationModel: ValidationSchema) {
 		return compiler.compile({
 			$$root: true,
 			...validationModel,
@@ -79,11 +81,11 @@ export class ValidationModelBuilder<
 		return this;
 	}
 	max() {
-		this.updateProperty("max", "maxLength", "stringMax");
+		this.updateProperty("max", "max", "stringMax");
 		return this;
 	}
 	min() {
-		this.updateProperty("min", "minLength", "stringMin");
+		this.updateProperty("min", "min", "stringMin");
 		return this;
 	}
 	numeric() {
@@ -108,7 +110,7 @@ export class ValidationModelBuilder<
 	}
 
 	build() {
-		return this.validationRuleObject;
+		return this.validationSchema;
 	}
 }
 

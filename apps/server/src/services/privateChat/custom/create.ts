@@ -1,5 +1,5 @@
-import { UserId } from "teletalk-type-store";
-import { randomMaker } from "utility-store";
+import { UserId } from "@repo/type-store";
+import { randomMaker } from "@repo/utility-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { models } from "~/models";
@@ -18,7 +18,7 @@ export const create = serviceBuilder
 	.setBeforeRunMiddlewares(serviceMiddlewares.throwIfPrivateChatExist)
 	.setBody(async (data) => {
 		await coreServices.create({
-			chatId: randomMaker.id(models.native.chatId.maxLength),
+			chatId: randomMaker.id(models.native.chatId.max),
 			createdAt: Date.now(),
 			currentParticipantId: data.currentParticipantId,
 			targetParticipantId: data.targetParticipantId,

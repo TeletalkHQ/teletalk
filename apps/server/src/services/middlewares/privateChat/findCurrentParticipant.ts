@@ -1,4 +1,4 @@
-import { ExtendedCellphone, SessionId, UserId } from "teletalk-type-store";
+import { ExtendedCellphone, SessionId, UserId } from "@repo/type-store";
 
 import { HydratedUser, ServiceMiddleware } from "~/types";
 

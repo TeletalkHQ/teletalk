@@ -1,4 +1,4 @@
-import { DisconnectIO, EventName } from "teletalk-type-store";
+import { DisconnectIO, EventName } from "@repo/type-store";
 
 import { clientStatusStore } from "~/classes/ClientStatusStore";
 import { services } from "~/services";

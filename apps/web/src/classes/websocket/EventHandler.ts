@@ -1,6 +1,4 @@
 import Timeout from "await-timeout";
-import { checkFields } from "check-fields";
-import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { notificationStore } from "~/classes/NotificationStore";
@@ -16,7 +14,6 @@ import type {
 } from "~/types";
 import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
-import { variables } from "~/variables";
 
 interface Options {
 	timeout: number;
@@ -102,20 +99,20 @@ export class EventHandler<IOType extends IO> {
 			undefined,
 		errorCallback: SocketErrorCallback = (_errors) => {},
 		options?: Partial<Options>
-	): Promise<SocketResponse<IOType["output"]>> {
+	): Promise<SocketResponse<IOType["output"]> | undefined> {
 		this.requestData = data;
 		this.responseCallback = responseCallback;
 		this.errorCallback = errorCallback;
 
-		return await trier<IOType["output"]>(this.emitFull.name)
-			.async()
-			.try(this.tryToEmitFull, options)
-			.catch(this.catchEmitFull)
-			.run();
+		try {
+			return await this.tryToEmitFull(options);
+		} catch (error) {
+			this.catchEmitFull();
+		}
 	}
 
 	@AutoBind
-	private async tryToEmitFull(options?: Options) {
+	private async tryToEmitFull(options?: Partial<Options>) {
 		await this.emit(this.requestData, options);
 
 		await this.outputDataFieldsCheck()
@@ -133,24 +130,24 @@ export class EventHandler<IOType extends IO> {
 		this.handleAuthError();
 	}
 
-	private inputDataFieldsCheck(inputData = this.getRequestData()) {
-		if (appConfigs.getConfigs().api.shouldCheckInputDataFields)
-			checkFields(
-				inputData,
-				this.route.inputFields,
-				variables.notifications.errors.checkFieldErrors.input
-			);
+	private inputDataFieldsCheck(_inputData = this.getRequestData()) {
+		// if (appConfigs.getConfigs().api.shouldCheckInputDataFields)
+		// checkFields(
+		// 	inputData,
+		// 	this.route.inputFields,
+		// 	variables.notifications.errors.checkFieldErrors.input
+		// );
 
 		return this;
 	}
 
-	private outputDataFieldsCheck(outputData = this.getResponseData()) {
-		if (appConfigs.getConfigs().api.shouldCheckOutputDataFields)
-			checkFields(
-				outputData,
-				this.route.outputFields,
-				variables.notifications.errors.checkFieldErrors.output
-			);
+	private outputDataFieldsCheck(_outputData = this.getResponseData()) {
+		// if (appConfigs.getConfigs().api.shouldCheckOutputDataFields)
+		// checkFields(
+		// 	outputData,
+		// 	this.route.outputFields,
+		// 	variables.notifications.errors.checkFieldErrors.output
+		// );
 
 		return this;
 	}

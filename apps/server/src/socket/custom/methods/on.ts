@@ -1,9 +1,7 @@
-import { checkFields } from "check-fields";
-import { trier } from "simple-trier";
+import { EventName } from "@repo/type-store";
 import { Socket } from "socket.io";
 
 import { services } from "~/services";
-import { events } from "~/socket/events";
 import {
 	CustomOn,
 	ResponseCallback,
@@ -13,7 +11,6 @@ import {
 	UnknownError,
 } from "~/types";
 import { utils } from "~/utils";
-import { errors } from "~/variables";
 
 export const registerCustomOn = (socket: Socket) => {
 	// eslint-disable-next-line sonarjs/cognitive-complexity
@@ -24,93 +21,99 @@ export const registerCustomOn = (socket: Socket) => {
 				const responseCallback =
 					typeof cb === "function" ? cb : () => undefined;
 
-				async function tryToRunHandler(): Promise<void | SocketHandlerReturnValue> {
-					// eslint-disable-next-line promise/valid-params
-					return await trier<void | SocketHandlerReturnValue>(
-						tryToRunHandler.name
-					)
-						.async()
-						.try(async () => {
-							const returnValue = await handler(socket, data);
-							const resolvedReturnValue = resolveReturnValue(returnValue);
+				try {
+					const returnValue = await handler(socket, data);
+					const resolvedReturnValue = resolveReturnValue(returnValue);
 
-							if (eventName !== "getStuff") {
-								checkOutputFields(resolvedReturnValue.data);
-							}
+					// if (eventName !== "getStuff") {
+					// 	checkOutputFields(resolvedReturnValue.data);
+					// }
 
-							const response = utils.createSuccessResponse(
-								eventName,
-								resolvedReturnValue.data
-							);
-
-							if (resolvedReturnValue.options.shouldEmitReturnValue)
-								await emitReturnValue(response);
-
-							if (resolvedReturnValue.options.shouldCallResponseCallback)
-								await responseCallback(response);
-
-							if (resolvedReturnValue.options.shouldEmitToUserRooms) {
-								await emitToUserRooms(response);
-							}
-
-							resolvedReturnValue.options.cbAfterEmit();
-						})
-						.catch(catchBlock, socket, eventName, responseCallback)
-						.run();
-				}
-
-				function resolveReturnValue(
-					returnValue: void | SocketHandlerReturnValue
-				) {
-					return {
-						data: returnValue?.data || {},
-						options: {
-							shouldEmitReturnValue:
-								returnValue?.options?.shouldEmitReturnValue ?? true,
-							shouldCallResponseCallback:
-								returnValue?.options?.shouldCallResponseCallback ?? true,
-							shouldEmitToUserRooms:
-								returnValue?.options?.shouldEmitToUserRooms ?? true,
-							cbAfterEmit:
-								returnValue?.options?.cbAfterEmit ?? (() => undefined),
-						},
-					};
-				}
-
-				function checkOutputFields(outputData: StringMap) {
-					const foundEvent = events.find((item) => item.name === eventName)!;
-					checkFields(
-						outputData,
-						foundEvent.outputFields,
-						errors.checkField.output
-					);
-				}
-
-				async function emitReturnValue(response: SocketResponse) {
-					socket.emit(eventName, response);
-				}
-
-				async function emitToUserRooms(response: SocketResponse) {
-					const {
-						user: { userId },
-					} = await services.user.findBySessionId({
-						currentSessionId: socket.sessionId,
-					});
-					socket.to(userId).emit(eventName, response);
-				}
-
-				const catchBlock = (error: UnknownError) => {
-					const response: SocketResponse = utils.createFailureResponse(
+					const response = utils.createSuccessResponse(
 						eventName,
-						error
+						resolvedReturnValue.data
 					);
-					logger.error(`customOn:catchBlock:${eventName}`, error);
-					responseCallback(response);
-					socket.emit("error", response);
-				};
 
-				await tryToRunHandler();
+					if (resolvedReturnValue.options.shouldEmitReturnValue)
+						await emitReturnValue(socket, eventName, response);
+
+					if (resolvedReturnValue.options.shouldCallResponseCallback)
+						await responseCallback(response);
+
+					if (resolvedReturnValue.options.shouldEmitToUserRooms) {
+						await emitToUserRooms(socket, eventName, response);
+					}
+
+					resolvedReturnValue.options.cbAfterEmit();
+				} catch (error) {
+					catchBlock(
+						socket,
+						eventName,
+						error as UnknownError,
+						responseCallback
+					);
+				}
 			}
 		);
 	} as CustomOn;
+};
+
+function resolveReturnValue(returnValue: void | SocketHandlerReturnValue) {
+	return {
+		data: returnValue?.data || {},
+		options: {
+			shouldEmitReturnValue:
+				returnValue?.options?.shouldEmitReturnValue ?? true,
+			shouldCallResponseCallback:
+				returnValue?.options?.shouldCallResponseCallback ?? true,
+			shouldEmitToUserRooms:
+				returnValue?.options?.shouldEmitToUserRooms ?? true,
+			cbAfterEmit: returnValue?.options?.cbAfterEmit ?? (() => undefined),
+		},
+	};
+}
+
+// function checkOutputFields(outputData: StringMap) {
+// const foundEvent = events.find((item) => item.name === eventName)!;
+// checkFields(
+// 	outputData,
+// 	foundEvent.outputFields,
+// 	errors.checkField.output
+// );
+// }
+
+async function emitReturnValue(
+	socket: Socket,
+	eventName: EventName,
+	response: SocketResponse
+) {
+	socket.emit(eventName, response);
+}
+
+async function emitToUserRooms(
+	socket: Socket,
+	eventName: EventName,
+	response: SocketResponse
+) {
+	const {
+		user: { userId },
+	} = await services.user.findBySessionId({
+		currentSessionId: socket.sessionId,
+	});
+	socket.to(userId).emit(eventName, response);
+}
+
+const catchBlock = (
+	socket: Socket,
+	eventName: EventName,
+	error: UnknownError,
+	responseCallback: ResponseCallback
+) => {
+	const response: SocketResponse = utils.createFailureResponse(
+		eventName,
+		error
+	);
+	logger.error(`customOn:catchBlock:${eventName}`, error);
+	responseCallback(response);
+	socket.emit("error", response);
 };
