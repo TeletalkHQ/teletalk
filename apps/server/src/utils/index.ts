@@ -105,7 +105,7 @@ const upperSnake = (value: string) => lodash.snakeCase(value).toUpperCase();
 const resolveResponseError = (error: UnknownError) =>
 	Array.isArray(error)
 		? error
-		: error?.reason
+		: typeof error === "object" && "reason" in error!
 			? [error]
 			: [errors.custom.find((i) => i.reason === "UNKNOWN_ERROR")!];
 

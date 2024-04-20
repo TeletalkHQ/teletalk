@@ -1,25 +1,18 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { DefaultReporter, utils } = require("@jest/reporters");
-const { LoggerChalker } = require("logger-chalker");
 // const chalk = require("chalk");
-
-const logger = new LoggerChalker();
-
-const TITLE_BULLET = logger.colorizer.bold("\u25cf ");
 
 const getBufferedLog = (buffer, _config, globalConfig) => {
 	const TITLE_INDENT = globalConfig.verbose ? "  " : "    ";
 	const CONSOLE_INDENT = TITLE_INDENT + "  ";
-	const logEntries = buffer.reduce((output, { type, message }) => {
+	const logEntries = buffer.reduce((output, { message }) => {
 		message = message
 			.split(/\n/)
 			.map((line) => CONSOLE_INDENT + line)
 			.join("\n");
-		if (type === "warn") {
-			message = logger.colorizer.yellow(message);
-		} else if (type === "error") {
-			message = logger.colorizer.red(message);
-		}
+		// if (type === "warn") {
+		// } else if (type === "error") {
+		// }
 		return output + message.trimRight() + "\n";
 	}, "");
 	return logEntries.trimRight() + "\n";
@@ -35,7 +28,7 @@ class AwesomeReporter extends DefaultReporter {
 		if (result.console) {
 			this.log(
 				"  " +
-					TITLE_BULLET +
+					"TITLE_BULLET" +
 					"Console\n\n" +
 					getBufferedLog(result.console, config, this._globalConfig)
 			);

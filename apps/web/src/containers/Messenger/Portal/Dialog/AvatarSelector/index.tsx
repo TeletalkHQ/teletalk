@@ -1,6 +1,6 @@
+import { compressor } from "@repo/utility-store";
 import { useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
-import { compressor } from "utility-store";
 
 import { Template } from "~/components";
 import { useDialogState, useEmitter } from "~/hooks";

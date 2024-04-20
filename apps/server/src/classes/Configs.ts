@@ -1,4 +1,4 @@
-import { LoggerChalker } from "logger-chalker";
+import logLevel from "loglevel";
 
 import { envManager } from "~/classes/EnvironmentManager";
 import { Environments } from "~/types";
@@ -20,7 +20,7 @@ class Configs {
 	}
 
 	private setLogLevel() {
-		logger.onAll();
+		logger.enableAll();
 	}
 
 	private setConfigs(e: Environments) {
@@ -28,7 +28,7 @@ class Configs {
 	}
 
 	private registerCustomGlobals() {
-		global.logger = new LoggerChalker();
+		global.logger = logLevel;
 	}
 
 	getConfigs() {

@@ -1,5 +1,5 @@
 import { CreateNewUserIO } from "@repo/type-store";
-import { extractor, randomMaker } from "utility-store";
+import { extractor, randomMaker } from "@repo/utility-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { errorStore } from "~/classes/ErrorStore";

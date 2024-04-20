@@ -1,4 +1,4 @@
-import { countries } from "utility-store/lib/variables/countries";
+import { countries } from "@repo/utility-store";
 
 import { BaseComponent } from "~/components/Base";
 import { OnChangeValidatorFn, SelectedCountry } from "~/types";

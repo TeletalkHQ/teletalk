@@ -1,5 +1,5 @@
 import { UserId } from "@repo/type-store";
-import { randomMaker } from "utility-store";
+import { randomMaker } from "@repo/utility-store";
 
 import { models } from "~/models";
 import { coreServices } from "~/services/privateChat/core";

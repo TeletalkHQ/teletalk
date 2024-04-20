@@ -1,10 +1,10 @@
 /* eslint-disable no-var */
-import { LoggerBrowser } from "logger-browser";
+import loglevel from "loglevel";
 
 import { Environments, StringMap } from "~/types";
 
 declare global {
-  var logger = new LoggerBrowser();
+  var logger = loglevel;
   var ping = (_data: StringMap) => { };
 
   namespace NodeJS {

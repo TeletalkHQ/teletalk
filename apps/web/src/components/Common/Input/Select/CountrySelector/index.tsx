@@ -1,7 +1,7 @@
 import { ListItemProps } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import type { CountryItem } from "@repo/type-store";
-import { countries } from "utility-store/lib/variables/countries";
+import { countries } from "@repo/utility-store";
 
 import { OnChangeValidatorFn, SelectedCountry, VoidWithArg } from "~/types";
 import { utils } from "~/utils";

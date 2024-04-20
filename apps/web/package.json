@@ -25,7 +25,7 @@
 		"test:dev:watch": "pnpm run test:dev -- --watch"
 	},
 	"dependencies": {
-		"@repo/custom-typeof": "workspace:*"
+		"@repo/utility-store": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/type-store": "workspace:*",

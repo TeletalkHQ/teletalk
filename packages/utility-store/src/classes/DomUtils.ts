@@ -1,3 +1,5 @@
+import { ElementId, ElementName } from "../types";
+
 class DomUtils {
 	private document = document;
 	private element?: Element;
@@ -12,9 +14,6 @@ class DomUtils {
 		};
 	}
 
-	getElementById(elementId: string) {
-		return this.document.getElementById(elementId);
-	}
 	getElementsByName(elementName: string) {
 		return this.document.getElementsByName(elementName);
 	}
@@ -45,19 +44,11 @@ class DomUtils {
 		return this;
 	}
 
-	setElementById(elementId: string) {
+	setElementById(elementId: ElementName) {
 		const element = this.getElementById(elementId)!;
 		this.setElement(element);
 
 		this.setElementId(elementId);
-
-		return this;
-	}
-	setElementByName(elementName: string) {
-		const element = this.getFirstElementByName(elementName);
-		this.setElement(element);
-
-		this.setElementName(elementName);
 
 		return this;
 	}
@@ -70,6 +61,19 @@ class DomUtils {
 	selectAllValue() {
 		(this.getElement() as HTMLInputElement).select();
 		return this;
+	}
+
+	setElementByName(elementName: ElementName) {
+		const element = this.getFirstElementByName(elementName);
+		this.setElement(element);
+
+		this.setElementName(elementName);
+
+		return this;
+	}
+
+	getElementById(elementId: ElementId): HTMLElement | null {
+		return this.document.getElementById(elementId);
 	}
 }
 

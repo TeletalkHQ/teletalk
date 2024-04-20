@@ -1,5 +1,5 @@
-import { customTypeof } from "@repo/custom-typeof";
-import { countries } from "utility-store/lib/variables/countries";
+import { countries } from "@repo/utility-store";
+import is from "@sindresorhus/is";
 
 import { notificationStore } from "~/classes/NotificationStore";
 import { stuffStore } from "~/classes/StuffStore";
@@ -30,7 +30,7 @@ const {
 validationCheckers.countryCode = (result, value, ignores) => {
 	if (result === true) {
 		const country = countries.find((c) => c.countryCode === value);
-		if (customTypeof.isUndefined(country))
+		if (is.undefined(country))
 			notificationStore.find("COUNTRY_CODE_NOT_SUPPORTED");
 
 		return;
@@ -43,7 +43,7 @@ validationCheckers.countryName = (result, value, ignores) => {
 	if (result === true) {
 		const country = countries.find((c) => c.countryName === value);
 
-		if (customTypeof.isUndefined(country))
+		if (is.undefined(country))
 			notificationStore.find("COUNTRY_NAME_NOT_SUPPORTED");
 
 		return;

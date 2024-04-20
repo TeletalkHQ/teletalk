@@ -62,7 +62,6 @@
 		"cookie-parser": "^1.4.6",
 		"cors": "^2.8.5",
 		"cross-env": "^7.0.3",
-		"custom-typeof": "^3.0.4",
 		"danger": "^11.3.1",
 		"debug": "^4.3.4",
 		"defer-to-connect": "^2.0.1",
@@ -79,8 +78,7 @@
 		"jose": "^5.2.3",
 		"jwt-decode": "^4.0.0",
 		"lodash": "^4.17.21",
-		"logger-browser": "^2.0.4",
-		"logger-chalker": "^5.1.2",
+		"loglevel": "^1.9.1",
 		"mongoose": "^8.2.2",
 		"morgan": "^1.10.0",
 		"nanoid": "^5.0.6",
@@ -104,7 +102,6 @@
 		"redis": "^4.6.13",
 		"resolve": "^1.22.8",
 		"serve-favicon": "^2.5.0",
-		"simple-trier": "^4.0.3",
 		"sinon": "^17.0.1",
 		"socket.io": "^4.7.5",
 		"socket.io-client": "^4.7.2",
@@ -112,7 +109,6 @@
 		"superjson": "^2.2.1",
 		"swiper": "^11.0.5",
 		"underscore": "^1.13.6",
-		"utility-store": "^14.0.43",
 		"web-vitals": "^3.5.0",
 		"winston": "^3.12.0",
 		"word-wrap": "^1.2.5",
@@ -261,7 +257,7 @@
 		"typescript-plugin-css-modules": "5.1.0",
 		"yargs": "^17.7.2"
 	},
-	"packageManager": "pnpm@8.9.0",
+	"packageManager": "pnpm@9.0.4",
 	"engines": {
 		"node": ">=18"
 	},

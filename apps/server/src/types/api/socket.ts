@@ -73,7 +73,7 @@ export type SocketMiddlewareReturnValue = {
 	ok: boolean;
 };
 
-export type SocketDefaultMiddlewareEvent = Event;
+export type SocketDefaultEvent = Event;
 
 export type SocketMiddleware<IOType extends IO = any> = (
 	socket: Socket,

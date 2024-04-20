@@ -1,8 +1,8 @@
 import createCache from "@emotion/cache";
 import type { FullName, UnknownCellphone } from "@repo/type-store";
+import { utils as storeUtils } from "@repo/utility-store";
 import lodash from "lodash";
 import { ScreamingSnakeCase } from "type-fest";
-import { utils as storeUtils } from "utility-store";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { envManager } from "~/classes/EnvironmentManager";

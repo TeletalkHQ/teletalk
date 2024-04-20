@@ -1,4 +1,6 @@
-import { StackManOptions } from "../types";
+export interface StackManOptions {
+	fullLine: boolean;
+}
 
 export class StackMan {
 	options: StackManOptions;

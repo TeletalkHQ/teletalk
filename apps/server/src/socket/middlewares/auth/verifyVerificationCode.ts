@@ -1,22 +1,17 @@
 import { SessionId, VerifyIO } from "@repo/type-store";
-import { trier } from "simple-trier";
 import { Socket } from "socket.io";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { errorStore } from "~/classes/ErrorStore";
-import { SocketMiddleware, SocketNext } from "~/types";
+import { SocketMiddleware } from "~/types";
 
 export const verifyVerificationCode: SocketMiddleware<VerifyIO> = async (
 	socket,
 	next,
 	[_name, data]
 ) => {
-	await trier<void>(verifyVerificationCode.name)
-		.async()
-		.try(tryBlock, socket, data)
-		.executeIfNoError(executeIfNoError, next)
-		.throw()
-		.run();
+	await tryBlock(socket, data);
+	next();
 };
 
 const tryBlock = async (socket: Socket, data: VerifyIO["input"]) => {
@@ -42,8 +37,4 @@ const findAuthSession = async (sessionId: SessionId) => {
 
 	if (!authSession) throw errorStore.find("SESSION_NOT_FOUND");
 	return authSession;
-};
-
-const executeIfNoError = (_: void, next: SocketNext) => {
-	next();
 };

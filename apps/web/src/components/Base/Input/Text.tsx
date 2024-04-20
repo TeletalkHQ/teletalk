@@ -1,6 +1,5 @@
 import { TextField, TextFieldProps } from "@mui/material";
-
-import { ElementId, ElementLabel, ElementName } from "~/types";
+import { ElementId, ElementLabel, ElementName } from "@repo/utility-store";
 
 interface Props extends Omit<TextFieldProps, ""> {
 	label?: ElementLabel;

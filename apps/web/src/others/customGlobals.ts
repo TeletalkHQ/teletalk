@@ -1,5 +1,5 @@
-import { LoggerBrowser } from "logger-browser";
+import loglevel from "loglevel";
 
-const logger = new LoggerBrowser();
+const logger = loglevel;
 
 global.logger = logger;

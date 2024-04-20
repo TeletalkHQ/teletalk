@@ -1,7 +1,7 @@
 import type { PrivateChats, UserId } from "@repo/type-store";
+import { domUtils } from "@repo/utility-store";
 import { useEffect } from "react";
 
-import { domUtils } from "~/classes/DomUtils";
 import { Box } from "~/components";
 import MessageListItem from "~/containers/Messenger/RightSide/MessageListItem";
 import { useMessageStore, useUserStore } from "~/store";
@@ -14,6 +14,7 @@ const MessageList: React.FC<Props> = () => {
 
 	useEffect(() => {
 		setTimeout(() => {
+			//CLEANME: Don't use null assertions
 			const messageBox = domUtils().getElementById("messageBox")!;
 			messageBox.scrollTo({
 				top: messageBox.scrollHeight,

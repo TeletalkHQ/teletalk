@@ -1,10 +1,7 @@
+import { ElementName } from "@repo/utility-store";
+
 import { Box, Icon } from "~/components";
-import {
-	ElementName,
-	HTMLDivMouseEvent,
-	VoidWithArg,
-	VoidWithTwoArgs,
-} from "~/types";
+import { HTMLDivMouseEvent, VoidWithArg, VoidWithTwoArgs } from "~/types";
 
 const drawerList = [
 	{ Icon: Icon.Calls, disabled: true },

@@ -1,6 +1,5 @@
-import { customTypeof } from "@repo/custom-typeof";
+import { objectUtils } from "@repo/utility-store";
 import { QueryOptions } from "mongoose";
-import { objectUtils } from "utility-store";
 
 import {
 	ServiceFn,
@@ -62,7 +61,7 @@ export class ServiceHandler<Query, Return> {
 
 		this.setQueryResult(queryResult as Return);
 
-		if (customTypeof.isObject(this.getQueryResult())) {
+		if (typeof this.getQueryResult() === "object") {
 			this.setQueryResult(JSON.parse(JSON.stringify(this.getQueryResult())));
 			this.handleExclude();
 		}

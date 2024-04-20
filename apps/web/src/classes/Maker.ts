@@ -3,14 +3,14 @@ import type {
 	FullNameWithUserId,
 	UserPublicData,
 } from "@repo/type-store";
-import { Maker as MakerMain } from "utility-store";
+import { maker as makerMain } from "@repo/utility-store";
 
 import { AddingContactWithCellphone, UserItem } from "~/types";
 
-export class Maker extends MakerMain {
+export class Maker {
 	emptyContact() {
 		return {
-			...super.emptyContact(),
+			...makerMain.emptyContact(),
 			isContact: false,
 			userId: "",
 		};
@@ -18,14 +18,14 @@ export class Maker extends MakerMain {
 
 	emptyAddingContactWithCellphone(): AddingContactWithCellphone {
 		return {
-			...super.emptyCellphone(),
-			...super.emptyFullName(),
+			...makerMain.emptyCellphone(),
+			...makerMain.emptyFullName(),
 		};
 	}
 
 	emptyUserPublicData(): UserPublicData {
 		return {
-			...super.emptyFullName(),
+			...makerMain.emptyFullName(),
 			bio: "",
 			userId: "",
 			username: "",
@@ -34,7 +34,7 @@ export class Maker extends MakerMain {
 
 	emptyContactWithUserId(): FullNameWithUserId {
 		return {
-			...super.emptyFullName(),
+			...makerMain.emptyFullName(),
 			userId: "",
 		};
 	}
@@ -42,7 +42,7 @@ export class Maker extends MakerMain {
 	emptyUser(): UserItem {
 		return {
 			...this.emptyUserPublicData(),
-			...this.emptyCellphone(),
+			...makerMain.emptyCellphone(),
 			avatarSrc: "",
 			isBlocked: false,
 			isContact: false,

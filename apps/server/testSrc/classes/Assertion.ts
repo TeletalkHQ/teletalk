@@ -29,8 +29,8 @@ import {
 	Username,
 	VerificationCode,
 } from "@repo/type-store";
+import { utils } from "@repo/utility-store";
 import chai from "chai";
-import { utils } from "utility-store";
 
 import { models } from "~/models";
 import { Field } from "~/types";

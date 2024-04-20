@@ -13,8 +13,8 @@ import {
 	UserId,
 	UserPublicData,
 } from "@repo/type-store";
+import { RandomMaker as RandomMakerMain } from "@repo/utility-store";
 import { Socket } from "socket.io-client";
-import { RandomMaker as RandomMakerMain } from "utility-store";
 
 import { sessionManager } from "~/classes/SessionManager";
 import { userUtils } from "~/classes/UserUtils";

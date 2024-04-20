@@ -1,6 +1,6 @@
 import { EncryptedSession, SessionId } from "@repo/type-store";
+import { randomMaker } from "@repo/utility-store";
 import { SignJWT, jwtVerify } from "jose";
-import { randomMaker } from "utility-store";
 
 import { configs } from "~/classes/Configs";
 import { models } from "~/models";

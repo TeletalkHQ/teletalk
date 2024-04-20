@@ -1,27 +1,20 @@
-import { trier } from "simple-trier";
 import { Socket } from "socket.io";
 
 import { errorStore } from "~/classes/ErrorStore";
 import { sessionManager } from "~/classes/SessionManager";
-import {
-	SocketMiddleware,
-	SocketMiddlewareReturnValue,
-	SocketNext,
-} from "~/types";
+import { SocketMiddleware } from "~/types";
 
 export const attachSessionId: SocketMiddleware = async (
 	socket,
 	next,
-	[_name, data]
+	[_name]
 ) => {
-	// eslint-disable-next-line promise/valid-params
-	return await trier(attachSessionId.name)
-		.async()
-		.try(tryBlock, socket, data)
-		.executeIfNoError(executeIfNoError, next)
-		.throw()
-		.catch(catchBlock, socket)
-		.run();
+	try {
+		await tryBlock(socket);
+		next();
+	} catch (error) {
+		catchBlock(socket);
+	}
 };
 
 const tryBlock = async (socket: Socket) => {
@@ -31,13 +24,9 @@ const tryBlock = async (socket: Socket) => {
 	socket.sessionId = sessionManager.getSessionId(verifiedSession);
 };
 
-const executeIfNoError = (_: SocketMiddlewareReturnValue, next: SocketNext) => {
-	next();
-};
-
-const catchBlock = (_err: unknown, socket: Socket) => {
+const catchBlock = (socket: Socket) => {
 	if (!socket.handshake.auth.session)
-		return errorStore.find("SESSION_NOT_FOUND");
+		throw errorStore.find("SESSION_NOT_FOUND");
 
-	return errorStore.find("SESSION_ID_INVALID");
+	throw errorStore.find("SESSION_ID_INVALID");
 };

@@ -1,5 +1,5 @@
 import { UserId } from "@repo/type-store";
-import { randomMaker } from "utility-store";
+import { randomMaker } from "@repo/utility-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { models } from "~/models";

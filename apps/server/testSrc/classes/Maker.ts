@@ -3,13 +3,12 @@ import type {
 	FullNameWithUserId,
 	UserPublicData,
 } from "@repo/type-store";
-import { Maker as MakerMain } from "utility-store";
+import { maker as makerMain } from "@repo/utility-store";
 
-export class Maker extends MakerMain {
-	//@ts-expect-error //FIXME
+export class Maker {
 	emptyContact() {
 		return {
-			...super.emptyContact(),
+			...makerMain.emptyContact(),
 			isContact: false,
 			userId: "",
 		};
@@ -17,7 +16,7 @@ export class Maker extends MakerMain {
 
 	emptyUserPublicData(): UserPublicData {
 		return {
-			...super.emptyFullName(),
+			...makerMain.emptyFullName(),
 			bio: "",
 			userId: "",
 			username: "",
@@ -26,7 +25,7 @@ export class Maker extends MakerMain {
 
 	emptyContactWithUserId(): FullNameWithUserId {
 		return {
-			...super.emptyFullName(),
+			...makerMain.emptyFullName(),
 			userId: "",
 		};
 	}
@@ -40,3 +39,5 @@ export class Maker extends MakerMain {
 }
 
 export const maker = new Maker();
+
+//CLEANME: merge Maker and RandomMaker

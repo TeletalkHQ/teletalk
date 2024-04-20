@@ -2,7 +2,7 @@ import type {
 	ExtendedUnknownCellphone,
 	UserPublicData,
 } from "@repo/type-store";
-import { UserUtils as userUtilsMain } from "utility-store";
+import { UserUtils as userUtilsMain } from "@repo/utility-store";
 
 import { UserItem } from "~/types";
 

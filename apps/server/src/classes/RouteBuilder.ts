@@ -1,4 +1,3 @@
-import { customTypeof } from "@repo/custom-typeof";
 import FastestValidator from "fastest-validator";
 
 import { NativeError, Route, ValidationSchema } from "~/types";
@@ -33,10 +32,13 @@ export abstract class RouteBuilder {
 		error: NativeError | { reason: string },
 		...requirements: unknown[]
 	) {
-		if (customTypeof.isUndefined(...requirements))
-			throw {
-				...error,
-				route: this.route,
-			};
+		const isAllSet = requirements.every(Boolean);
+
+		if (isAllSet) return;
+
+		throw {
+			...error,
+			route: this.route,
+		};
 	}
 }

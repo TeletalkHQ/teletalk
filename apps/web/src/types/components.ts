@@ -1,6 +1,7 @@
 import { LoadingButtonProps } from "@mui/lab";
 import { SelectChangeEvent, SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { ElementName } from "@repo/utility-store";
 import {
 	ChangeEvent,
 	ChangeEventHandler,
@@ -38,44 +39,6 @@ export type CommonChangeEvent = ChangeEvent<
 
 export type HTMLProps = HTMLAttributes<HTMLLIElement>;
 
-export type ElementName =
-	| "account"
-	| "addContacts"
-	| "allChats"
-	| "attachFile"
-	| "back"
-	| "bio"
-	| "bot"
-	| "calls"
-	| "channels"
-	| "check"
-	| "close"
-	| "contacts"
-	| "countryCode"
-	| "countryName"
-	| "editChats"
-	| "emojiEmotions"
-	| "firstName"
-	| "groups"
-	| "lastName"
-	| "lock"
-	| "logout"
-	| "menu"
-	| "messageBox"
-	| "micNone"
-	| "more"
-	| "newChannel"
-	| "newGroup"
-	| "nightMode"
-	| "personal"
-	| "phoneNumber"
-	| "search"
-	| "settings"
-	| "send"
-	| "unread"
-	| "username"
-	| "verificationCode";
-
 export type OnChangeValidatorFn = (
 	value: any,
 	e:
@@ -87,54 +50,6 @@ export type OnChangeValidatorFn = (
 		  }
 		| CommonChangeEvent
 ) => void;
-
-export type ElementLabel =
-	| "Account"
-	| "All Chats"
-	| "Attach File"
-	| "Back"
-	| "Bio"
-	| "Bot"
-	| "Calls"
-	| "Channels"
-	| "Check"
-	| "Choose a country"
-	| "Close"
-	| "Code"
-	| "Contacts"
-	| "Create"
-	| "Creating..."
-	| "Edit Chats"
-	| "Emoji Emotions"
-	| "Fingerprint"
-	| "First Name"
-	| "Groups"
-	| "Last Name"
-	| "Lock"
-	| "Logout"
-	| "Menu"
-	| "MicNone"
-	| "More"
-	| "Name"
-	| "New Channel"
-	| "New Group"
-	| "Next"
-	| "Night Mode"
-	| "Personal"
-	| "Phone Number"
-	| "Search"
-	| "Settings"
-	| "Sign in..."
-	| "Send"
-	| "Unread Messages"
-	| "Url"
-	| "Username"
-	| "Verification Code"
-	| "Verified User"
-	| "Verify"
-	| "Verifying...";
-
-export type ElementId = ElementName;
 
 export type IconType = OverridableComponent<SvgIconTypeMap<object, "svg">> & {
 	muiName: string;

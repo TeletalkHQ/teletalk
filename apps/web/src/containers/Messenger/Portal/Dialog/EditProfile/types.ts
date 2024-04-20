@@ -1,4 +1,6 @@
-import { DialogName, ElementLabel, IconType, VoidWithArg } from "~/types";
+import { ElementLabel } from "@repo/utility-store";
+
+import { DialogName, IconType, VoidWithArg } from "~/types";
 
 export interface EditProfileListItem {
 	name: DialogName;

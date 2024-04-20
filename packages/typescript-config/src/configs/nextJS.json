@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"extends": "./base.json",
-	"display": "NextJS Config",
+	"display": "NextJS",
 	"compilerOptions": {
 		"jsx": "preserve",
 		"lib": ["dom", "dom.iterable", "esnext"],
@@ -10,7 +10,9 @@
 			{
 				"name": "next"
 			},
-			{ "name": "typescript-plugin-css-modules" }
+			{
+				"name": "typescript-plugin-css-modules"
+			}
 		]
 	}
 }
