@@ -1,19 +1,20 @@
 import type {
+	AddingContactWithCellphone,
 	AvatarSrc,
 	Bio,
 	Cellphone,
 	ContactItem,
 	ContactItemWithEmptyCellphone,
 	CountryItem,
-	EmptyCellphone,
 	FullName,
 	FullNameWithUserId,
 	RemoveContactIO,
 	Status,
-	UnknownCellphone,
 	UserId,
+	UserItem,
 	UserPublicData,
 	Username,
+	Users,
 } from "@repo/type-store";
 
 import { StoreSetFn, StringMap, VoidNoArgsFn, VoidWithArg } from "~/types";
@@ -23,16 +24,6 @@ export interface BlacklistItem {
 }
 
 export type Blacklist = BlacklistItem[];
-
-export type UserItem = UserPublicData &
-	UnknownCellphone & {
-		avatarSrc: AvatarSrc;
-		isContact: boolean;
-		isBlocked: boolean;
-		originalFirstName: string;
-		originalLastName: string;
-	};
-export type Users = UserItem[];
 
 export interface OnlineUser {
 	userId: UserId;
@@ -50,7 +41,6 @@ export type CurrentUserData = FullNameWithUserId &
 		avatarSrc: AvatarSrc;
 	};
 
-export type AddingContactWithCellphone = FullName & EmptyCellphone;
 export interface UserState {
 	currentUserData: CurrentUserData;
 	selectedUserIdForActions: UserId;

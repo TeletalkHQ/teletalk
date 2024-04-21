@@ -1,6 +1,6 @@
+import { errorStore } from "@repo/error-store";
 import { PrivateChatItem } from "@repo/type-store";
 
-import { errorStore } from "~/classes/ErrorStore";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 
 import { coreServices } from "../core";

@@ -1,8 +1,7 @@
+import { HydratedPrivateChat, models } from "@repo/model";
 import { CreatedAt } from "@repo/type-store";
 
-import { models } from "~/models";
 import { PrivateChatService } from "~/types";
-import { HydratedPrivateChat } from "~/types/model";
 
 export const create: PrivateChatService<
 	{

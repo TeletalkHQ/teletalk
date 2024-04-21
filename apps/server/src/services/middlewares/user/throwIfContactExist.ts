@@ -1,6 +1,7 @@
-import { errorStore } from "~/classes/ErrorStore";
+import { errorStore } from "@repo/error-store";
+import { HydratedUser } from "@repo/model";
+
 import { ServiceMiddleware } from "~/types";
-import { HydratedUser } from "~/types/model";
 
 export const throwIfContactExist: ServiceMiddleware<
 	{

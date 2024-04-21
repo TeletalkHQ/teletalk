@@ -25,7 +25,11 @@
 		"test:dev:watch": "pnpm run test:dev -- --watch"
 	},
 	"dependencies": {
-		"@repo/utility-store": "workspace:*"
+		"@repo/classes": "workspace:*",
+		"@repo/model": "workspace:*",
+		"@repo/utility-store": "workspace:*",
+		"@repo/validator": "workspace:*",
+		"@repo/vars": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/type-store": "workspace:*",

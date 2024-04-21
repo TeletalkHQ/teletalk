@@ -2,6 +2,7 @@
 	"name": "@repo/utility-store",
 	"version": "0.0.0",
 	"private": true,
+	"type": "module",
 	"main": "./src/index.ts",
 	"types": "./src/index.ts",
 	"scripts": {
@@ -14,11 +15,11 @@
 		"check:types:watch": "pnpm run check:types --watch"
 	},
 	"dependencies": {
-		"@repo/assets": "workspace:*"
+		"@repo/vars": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
-		"@repo/typescript-config": "workspace:*",
-		"@repo/type-store": "workspace:*"
+		"@repo/type-store": "workspace:*",
+		"@repo/typescript-config": "workspace:*"
 	}
 }

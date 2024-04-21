@@ -1,8 +1,9 @@
-import { UserId } from "@repo/type-store";
+import { errorStore } from "@repo/error-store";
+import { HydratedPrivateChat } from "@repo/model";
+import { ChatId, UserId } from "@repo/type-store";
 
-import { errorStore } from "~/classes/ErrorStore";
 import { coreServices } from "~/services/privateChat/core";
-import { ChatId, HydratedPrivateChat, ServiceMiddleware } from "~/types";
+import { ServiceMiddleware } from "~/types";
 
 export const throwIfPrivateChatExist: ServiceMiddleware<
 	{

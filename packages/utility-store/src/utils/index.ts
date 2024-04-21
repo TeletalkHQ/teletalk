@@ -1,5 +1,6 @@
 import { ExtendedUnknownCellphone, UnknownCellphone } from "@repo/type-store";
-import is from "@sindresorhus/is";
+import lodash from "lodash";
+import { ScreamingSnakeCase } from "type-fest";
 
 const errorThrower = <T>(condition: any, error: T) => {
 	if (condition) {
@@ -13,6 +14,11 @@ const printError = (callerName: string, error: any) => {
 	console.error(`${callerName} catch, error: `, error);
 };
 
+const makeScreamingSnakeCase = <T extends string>(value: T) =>
+	upperSnake(value) as ScreamingSnakeCase<T>;
+
+const upperSnake = (value: string) => lodash.snakeCase(value).toUpperCase();
+
 const isDataHasEqualityWithTargetCellphone = (
 	data: ExtendedUnknownCellphone,
 	targetCellphone: UnknownCellphone
@@ -25,7 +31,7 @@ const isDataHasEqualityWithTargetCellphone = (
 			data.countryCode,
 			data.countryName,
 			data.phoneNumber,
-		].some((i) => is.undefined(i))
+		].some((i) => typeof i === "undefined")
 	)
 		throw {
 			reason: "TARGET_CELLPHONE_INVALID",
@@ -39,22 +45,10 @@ const isDataHasEqualityWithTargetCellphone = (
 	);
 };
 
-const convertFileToBase64 = (file: File | Blob) => {
-	return new Promise((resolve, reject) => {
-		if (file) {
-			const Reader = new FileReader();
-			Reader.readAsDataURL(file);
-			Reader.onloadend = () => {
-				resolve(Reader.result);
-			};
-			Reader.onerror = reject;
-		}
-	});
-};
-
 export const utils = {
-	convertFileToBase64,
 	errorThrower,
 	isDataHasEqualityWithTargetCellphone,
+	makeScreamingSnakeCase,
 	printError,
+	upperSnake,
 };

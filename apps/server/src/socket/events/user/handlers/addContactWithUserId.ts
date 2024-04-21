@@ -1,5 +1,5 @@
+import { maker } from "@repo/classes";
 import { AddContactWithUserIdIO } from "@repo/type-store";
-import { maker } from "@repo/utility-store";
 
 import { services } from "~/services";
 import { SocketOnHandler } from "~/types";

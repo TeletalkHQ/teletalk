@@ -1,6 +1,6 @@
+import { maker } from "@repo/classes";
 import React from "react";
 
-import { maker } from "~/classes/Maker";
 import { Template } from "~/components";
 import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";

@@ -29,7 +29,12 @@
 		"test:dev": "cross-env NODE_ENV=test_development npm run test-runner"
 	},
 	"dependencies": {
-		"@repo/utility-store": "workspace:*"
+		"@repo/classes": "workspace:*",
+		"@repo/error-store": "workspace:*",
+		"@repo/model": "workspace:*",
+		"@repo/utility-store": "workspace:*",
+		"@repo/validator": "workspace:*",
+		"@repo/vars": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/type-store": "workspace:*",

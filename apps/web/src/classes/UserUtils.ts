@@ -1,10 +1,9 @@
 import type {
 	ExtendedUnknownCellphone,
+	UserItem,
 	UserPublicData,
 } from "@repo/type-store";
 import { UserUtils as userUtilsMain } from "@repo/utility-store";
-
-import { UserItem } from "~/types";
 
 export class UserUtils extends userUtilsMain {
 	concatFirstNameWithLastName(

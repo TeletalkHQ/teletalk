@@ -1,21 +1,17 @@
-import { countries } from "@repo/utility-store";
-import is from "@sindresorhus/is";
+import { validationChecker } from "@repo/validator";
+import { ValidationCheckerFnCollection } from "@repo/validator";
+import { countries } from "@repo/vars";
 
 import { notificationStore } from "~/classes/NotificationStore";
 import { stuffStore } from "~/classes/StuffStore";
-import { validationChecker } from "~/classes/ValidationChecker";
-import {
-	Field,
-	ValidationCheckerFn,
-	ValidationCheckerFnCollection,
-} from "~/types";
+import { Field, ValidationCheckerFn } from "~/types";
 
 export const validationCheckers = Object.keys(stuffStore.models).reduce(
 	(prevValue, currValue) => {
 		const k = currValue as Field;
 
-		prevValue[k] = (result, value, ignores) =>
-			validationChecker(result, k, value, ignores).check();
+		prevValue[k] = (result, value) =>
+			validationChecker(result, k, value).check();
 
 		return prevValue;
 	},
@@ -27,29 +23,29 @@ const {
 	countryName: defaultCountryNameChecker,
 } = validationCheckers;
 
-validationCheckers.countryCode = (result, value, ignores) => {
+validationCheckers.countryCode = (result, value) => {
 	if (result === true) {
 		const country = countries.find((c) => c.countryCode === value);
-		if (is.undefined(country))
+		if (typeof country === "undefined")
 			notificationStore.find("COUNTRY_CODE_NOT_SUPPORTED");
 
 		return;
 	}
 
-	defaultCountryCodeChecker(result, value, ignores);
+	defaultCountryCodeChecker(result, value);
 };
 
-validationCheckers.countryName = (result, value, ignores) => {
+validationCheckers.countryName = (result, value) => {
 	if (result === true) {
 		const country = countries.find((c) => c.countryName === value);
 
-		if (is.undefined(country))
+		if (typeof country === "undefined")
 			notificationStore.find("COUNTRY_NAME_NOT_SUPPORTED");
 
 		return;
 	}
 
-	defaultCountryNameChecker(result, value, ignores);
+	defaultCountryNameChecker(result, value);
 };
 
 const notImplementedCheckerFn = (fieldName: Field) =>

@@ -1,5 +1,5 @@
+import { maker } from "@repo/classes";
 import type { FullName } from "@repo/type-store";
-import { maker } from "@repo/utility-store";
 import React, { useEffect, useState } from "react";
 
 import { extractor } from "~/classes/Extractor";

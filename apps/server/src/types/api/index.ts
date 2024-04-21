@@ -1,4 +1,4 @@
-import { ValidatorFnType } from "../validation";
+import { ValidatorFnType } from "@repo/validator";
 
 export interface Route {
 	inputValidator?: ValidatorFnType;

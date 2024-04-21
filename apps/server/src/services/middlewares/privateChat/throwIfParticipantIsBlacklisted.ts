@@ -1,5 +1,7 @@
-import { errorStore } from "~/classes/ErrorStore";
-import { HydratedUser, ServiceMiddleware } from "~/types";
+import { errorStore } from "@repo/error-store";
+import { HydratedUser } from "@repo/model";
+
+import { ServiceMiddleware } from "~/types";
 
 export const throwIfParticipantIsBlacklisted: ServiceMiddleware<
 	{

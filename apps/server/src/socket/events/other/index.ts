@@ -5,9 +5,9 @@ import {
 	JoinIO,
 	PingIO,
 } from "@repo/type-store";
+import { models } from "@repo/validator";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
-import { validationModels } from "~/models/validation";
 
 import { handlers } from "./handlers";
 
@@ -23,9 +23,9 @@ const getCountries = builder
 			items: {
 				type: "object",
 				props: {
-					countryCode: validationModels.countryCode,
-					countryName: validationModels.countryName,
-					countryShortName: validationModels.countryShortName,
+					countryCode: models.validation.countryCode,
+					countryName: models.validation.countryName,
+					countryShortName: models.validation.countryShortName,
 				},
 			},
 		},
@@ -46,7 +46,7 @@ const getWelcomeMessage = builder
 	.name("getWelcomeMessage")
 	.noAuth()
 	.outputSchema({
-		welcomeMessage: validationModels.welcomeMessage,
+		welcomeMessage: models.validation.welcomeMessage,
 	})
 	.handler(handlers.getWelcomeMessage)
 	.build();
@@ -56,7 +56,7 @@ const ping = builder
 	.name("ping")
 	.noAuth()
 	.outputSchema({
-		pong: validationModels.pong,
+		pong: models.validation.pong,
 	})
 	.handler(handlers.ping)
 	.build();

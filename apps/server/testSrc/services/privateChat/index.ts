@@ -1,7 +1,7 @@
-import { databaseModels } from "~/models/database";
+import { models } from "@repo/model";
 
 const deleteAllPrivateChats = async () => {
-	await databaseModels.PrivateChat.deleteMany();
+	await models.database.PrivateChat.deleteMany();
 };
 
 export const privateChatServices = { deleteAllPrivateChats };

@@ -1,3 +1,4 @@
+import { HydratedUser } from "@repo/model";
 import {
 	DBContactItem,
 	FullName,
@@ -7,7 +8,6 @@ import {
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
-import { HydratedUser } from "~/types/model";
 
 export const addContactWithCellphone = serviceBuilder
 	.create<

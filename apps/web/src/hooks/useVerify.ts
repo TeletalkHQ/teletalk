@@ -1,5 +1,4 @@
-import { domUtils } from "@repo/utility-store";
-
+import { domUtils } from "~/classes/DomUtils";
 import { storage } from "~/classes/Storage";
 import { websocket } from "~/classes/websocket/Websocket";
 import { useAuthStore } from "~/store";

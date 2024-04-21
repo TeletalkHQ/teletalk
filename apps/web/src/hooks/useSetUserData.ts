@@ -1,11 +1,11 @@
-import type { GetUserDataIO } from "@repo/type-store";
+import { maker } from "@repo/classes";
+import type { GetUserDataIO, UserItem } from "@repo/type-store";
 import { useEffect } from "react";
 
 import { extractor } from "~/classes/Extractor";
-import { maker } from "~/classes/Maker";
 import { storage } from "~/classes/Storage";
 import { useGlobalStore, useUserStore } from "~/store";
-import { SocketErrorCallback, SocketResponseCallback, UserItem } from "~/types";
+import { SocketErrorCallback, SocketResponseCallback } from "~/types";
 
 import { useCustomRouter } from "./useCustomRouter";
 import { useEmitter } from "./useEmitter";

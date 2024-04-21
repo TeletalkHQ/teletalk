@@ -1,12 +1,9 @@
+import { UserItem } from "@repo/type-store";
+
 import { Template } from "~/components";
 import { useContextMenu, useDialogState } from "~/hooks";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
-import {
-	ContextMenuList,
-	DialogName,
-	ExtendedOnContextMenu,
-	UserItem,
-} from "~/types";
+import { ContextMenuList, DialogName, ExtendedOnContextMenu } from "~/types";
 
 import Actions from "./Actions";
 import Content from "./Content";

@@ -1,9 +1,9 @@
+import { randomMaker } from "@repo/classes";
+import { HydratedUser, models } from "@repo/model";
 import { UserId } from "@repo/type-store";
-import { randomMaker } from "@repo/utility-store";
 
-import { models } from "~/models";
 import { coreServices } from "~/services/privateChat/core";
-import { HydratedUser, ServiceMiddleware } from "~/types";
+import { ServiceMiddleware } from "~/types";
 
 export const createPrivateChatIfNotExist: ServiceMiddleware<
 	{

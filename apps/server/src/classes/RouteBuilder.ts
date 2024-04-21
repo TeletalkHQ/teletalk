@@ -1,6 +1,7 @@
-import FastestValidator from "fastest-validator";
+import { NativeError } from "@repo/error-store";
+import FastestValidator, { ValidationSchema } from "fastest-validator";
 
-import { NativeError, Route, ValidationSchema } from "~/types";
+import { Route } from "~/types";
 
 //CLEANME:
 export const compiler = new FastestValidator({

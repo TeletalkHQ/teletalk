@@ -1,9 +1,8 @@
+import { errorStore } from "@repo/error-store";
+import { escapeChars } from "@repo/vars";
 import axios from "axios";
 
 import { configs } from "~/classes/Configs";
-import { escapeChars } from "~/variables";
-
-import { errorStore } from "./ErrorStore";
 
 export class SmsClient {
 	templates() {

@@ -1,8 +1,8 @@
+import { HydratedUser } from "@repo/model";
 import { SessionId } from "@repo/type-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
-import { HydratedUser } from "~/types/model";
 
 export const addSession = serviceBuilder
 	.create<

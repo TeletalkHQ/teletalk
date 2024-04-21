@@ -1,6 +1,6 @@
+import { errorStore } from "@repo/error-store";
 import { Socket } from "socket.io";
 
-import { errorStore } from "~/classes/ErrorStore";
 import { sessionManager } from "~/classes/SessionManager";
 import { SocketMiddleware } from "~/types";
 

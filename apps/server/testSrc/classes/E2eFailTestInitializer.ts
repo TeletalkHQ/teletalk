@@ -1,9 +1,11 @@
+import { ErrorReason, errorStore } from "@repo/error-store";
+import {
+	Field,
+	FieldType,
+	NativeModel,
+	utils as modelUtils,
+} from "@repo/model";
 import { IO } from "@repo/type-store";
-
-import { errorStore } from "~/classes/ErrorStore";
-import { ErrorReason } from "~/types";
-import { Field, FieldType, NativeModel } from "~/types/model";
-import { utils as mainUtils } from "~/utils";
 
 import { RequesterOptions } from "@/types";
 import { utils } from "@/utils";
@@ -36,7 +38,7 @@ class E2eFailTestInitializer<
 	}
 	private resolveErrorReason(modelPropName: keyof NativeModel) {
 		return errorStore.find(
-			mainUtils.makeModelErrorReason(this.fieldName, modelPropName)
+			modelUtils.makeModelErrorReason(this.fieldName, modelPropName)
 		).reason;
 	}
 

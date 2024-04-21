@@ -1,8 +1,9 @@
+import { errorStore } from "@repo/error-store";
+import { HydratedUser } from "@repo/model";
 import { UnknownCellphone, UserId } from "@repo/type-store";
 import { extractor, utils } from "@repo/utility-store";
 
-import { errorStore } from "~/classes/ErrorStore";
-import { HydratedUser, ServiceMiddleware } from "~/types";
+import { ServiceMiddleware } from "~/types";
 
 export const throwIfSelfDataRequested: ServiceMiddleware<
 	{

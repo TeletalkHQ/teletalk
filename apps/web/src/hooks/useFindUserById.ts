@@ -1,6 +1,6 @@
+import { maker } from "@repo/classes";
 import type { UserId } from "@repo/type-store";
 
-import { maker } from "~/classes/Maker";
 import { useUserStore } from "~/store";
 
 export const useFindUserById = (userId: UserId) => {

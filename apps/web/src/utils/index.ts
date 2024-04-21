@@ -1,8 +1,6 @@
 import createCache from "@emotion/cache";
 import type { FullName, UnknownCellphone } from "@repo/type-store";
-import { utils as storeUtils } from "@repo/utility-store";
-import lodash from "lodash";
-import { ScreamingSnakeCase } from "type-fest";
+import { utils as pkgUtils } from "@repo/utility-store";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { envManager } from "~/classes/EnvironmentManager";
@@ -84,16 +82,11 @@ const registerWindowCustomProperties = () => {
 	window.websocket = websocket;
 };
 
-const makeScreamingSnakeCase = <T extends string>(value: T) =>
-	upperSnake(value) as ScreamingSnakeCase<T>;
-
-const upperSnake = (value: string) => lodash.snakeCase(value).toUpperCase();
-
 const makeModelErrorReason = (
 	fieldName: Field,
 	modelKeyName: NativeModelKey
 ) => {
-	return `${makeScreamingSnakeCase(fieldName)}_${makeScreamingSnakeCase(
+	return `${pkgUtils.makeScreamingSnakeCase(fieldName)}_${pkgUtils.makeScreamingSnakeCase(
 		modelKeyName
 	)}_ERROR` as ModelErrorReason;
 };
@@ -184,8 +177,21 @@ const printResponseErrors = (errors: SocketResponseErrors) => {
 	});
 };
 
+const convertFileToBase64 = (file: File | Blob) => {
+	return new Promise((resolve, reject) => {
+		if (file) {
+			const Reader = new FileReader();
+			Reader.readAsDataURL(file);
+			Reader.onloadend = () => {
+				resolve(Reader.result);
+			};
+			Reader.onerror = reject;
+		}
+	});
+};
+
 export const utils = {
-	...storeUtils,
+	convertFileToBase64,
 	createEmotionCache,
 	createOnChangeValidator,
 	getDefaultValidatorErrorTypes,

@@ -1,8 +1,8 @@
+import { HydratedUser } from "@repo/model";
 import { DBUserData } from "@repo/type-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
-import { HydratedUser } from "~/types/model";
 
 import { coreServices } from "../core";
 

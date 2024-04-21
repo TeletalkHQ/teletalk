@@ -654,9 +654,24 @@ importers:
 
   apps/server:
     dependencies:
+      '@repo/classes':
+        specifier: workspace:*
+        version: link:../../packages/classes
+      '@repo/error-store':
+        specifier: workspace:*
+        version: link:../../packages/error-store
+      '@repo/model':
+        specifier: workspace:*
+        version: link:../../packages/model
       '@repo/utility-store':
         specifier: workspace:*
         version: link:../../packages/utility-store
+      '@repo/validator':
+        specifier: workspace:*
+        version: link:../../packages/validator
+      '@repo/vars':
+        specifier: workspace:*
+        version: link:../../packages/vars
     devDependencies:
       '@repo/type-store':
         specifier: workspace:*
@@ -667,9 +682,21 @@ importers:
 
   apps/web:
     dependencies:
+      '@repo/classes':
+        specifier: workspace:*
+        version: link:../../packages/classes
+      '@repo/model':
+        specifier: workspace:*
+        version: link:../../packages/model
       '@repo/utility-store':
         specifier: workspace:*
         version: link:../../packages/utility-store
+      '@repo/validator':
+        specifier: workspace:*
+        version: link:../../packages/validator
+      '@repo/vars':
+        specifier: workspace:*
+        version: link:../../packages/vars
     devDependencies:
       '@repo/type-store':
         specifier: workspace:*
@@ -687,13 +714,21 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
 
-  packages/eslint-config: {}
-
-  packages/type-store:
-    devDependencies:
-      '@repo/assets':
+  packages/classes:
+    dependencies:
+      '@repo/model':
         specifier: workspace:*
-        version: link:../assets
+        version: link:../model
+      '@repo/type-store':
+        specifier: workspace:*
+        version: link:../type-store
+      '@repo/utility-store':
+        specifier: workspace:*
+        version: link:../utility-store
+      '@repo/vars':
+        specifier: workspace:*
+        version: link:../vars
+    devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
@@ -701,13 +736,46 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
 
+  packages/error-store:
+    dependencies:
+      '@repo/model':
+        specifier: workspace:*
+        version: link:../model
+      '@repo/utility-store':
+        specifier: workspace:*
+        version: link:../utility-store
+
+  packages/eslint-config: {}
+
+  packages/model:
+    dependencies:
+      '@repo/utility-store':
+        specifier: workspace:*
+        version: link:../utility-store
+    devDependencies:
+      '@repo/type-store':
+        specifier: workspace:*
+        version: link:../type-store
+
+  packages/type-store:
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@repo/vars':
+        specifier: workspace:*
+        version: link:../vars
+
   packages/typescript-config: {}
 
   packages/utility-store:
     dependencies:
-      '@repo/assets':
+      '@repo/vars':
         specifier: workspace:*
-        version: link:../assets
+        version: link:../vars
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -718,6 +786,23 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+
+  packages/validator:
+    dependencies:
+      '@repo/error-store':
+        specifier: workspace:*
+        version: link:../error-store
+      '@repo/model':
+        specifier: workspace:*
+        version: link:../model
+      '@repo/utility-store':
+        specifier: workspace:*
+        version: link:../utility-store
+      '@repo/vars':
+        specifier: workspace:*
+        version: link:../vars
+
+  packages/vars: {}
 
 packages:
 

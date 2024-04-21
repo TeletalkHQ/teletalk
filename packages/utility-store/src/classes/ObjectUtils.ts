@@ -1,5 +1,4 @@
 import { StringMap } from "@repo/type-store";
-import is from "@sindresorhus/is";
 
 interface FilterFields {
 	[key: string]: any | FilterFields | FilterFields[];
@@ -15,7 +14,7 @@ class ObjectUtils {
 		return Object.entries(filterFields).reduce(
 			(prevValue: StringMap, [kye, filterFieldValue]) => {
 				const objectFieldValue = data[kye];
-				if (is.object(filterFieldValue)) {
+				if (typeof filterFieldValue === "object" && filterFieldValue !== null) {
 					prevValue[kye] = this.excludePropsPeerToPeer(
 						objectFieldValue,
 						filterFieldValue
@@ -23,7 +22,7 @@ class ObjectUtils {
 					return prevValue;
 				}
 
-				if (is.array(filterFieldValue)) {
+				if (Array.isArray(filterFieldValue)) {
 					prevValue[kye] = objectFieldValue.map((v: StringMap) =>
 						this.excludePropsPeerToPeer(v, filterFieldValue[0] as any)
 					);
@@ -41,12 +40,16 @@ class ObjectUtils {
 		return Object.entries(data).reduce((prevValue: StringMap, [key, value]) => {
 			if (props.includes(key)) return prevValue;
 
-			if (is.object(value) && !is.null(value)) {
+			if (
+				!Array.isArray(value) &&
+				typeof value === "object" &&
+				value !== null
+			) {
 				prevValue[key] = this.excludeProps(value, props);
 				return prevValue;
 			}
 
-			if (is.array(value)) {
+			if (Array.isArray(value)) {
 				prevValue[key] = value.map((v) => this.excludeProps(v as any, props));
 				return prevValue;
 			}
@@ -59,14 +62,17 @@ class ObjectUtils {
 	clarify(dirtyObject: StringMap) {
 		return Object.entries(dirtyObject).reduce(
 			(prevValue: StringMap, [key, value]) => {
-				if (!is.undefined(value)) {
-					if (is.object(dirtyObject[key])) {
+				if (typeof value !== "undefined") {
+					if (
+						typeof dirtyObject[key] === "object" &&
+						dirtyObject[key] !== null
+					) {
 						prevValue[key] = this.clarify(dirtyObject[key]);
 
 						return prevValue;
 					}
 
-					if (is.array(dirtyObject[key])) {
+					if (Array.isArray(dirtyObject[key])) {
 						prevValue[key] = dirtyObject[key].map((item: StringMap) =>
 							this.clarify(item)
 						);

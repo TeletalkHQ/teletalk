@@ -1,8 +1,8 @@
+import { errorStore } from "@repo/error-store";
+import { HydratedUser } from "@repo/model";
 import { UserId } from "@repo/type-store";
 
-import { errorStore } from "~/classes/ErrorStore";
 import { ServiceMiddleware } from "~/types";
-import { HydratedUser } from "~/types/model";
 
 export const throwIfBlacklistItemNotExist: ServiceMiddleware<
 	{

@@ -1,6 +1,6 @@
+import { errorStore } from "@repo/error-store";
 import { GetChatInfoIO } from "@repo/type-store";
 
-import { errorStore } from "~/classes/ErrorStore";
 import { services } from "~/services";
 import { SocketOnHandler } from "~/types";
 

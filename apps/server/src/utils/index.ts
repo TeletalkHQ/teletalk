@@ -1,27 +1,17 @@
+import { errors } from "@repo/error-store";
 import { EventName, IOCollection } from "@repo/type-store";
 import generatePassword from "generate-password";
-import lodash from "lodash";
 import { Socket } from "socket.io";
-import { ScreamingSnakeCase } from "type-fest";
 
 import { envManager } from "~/classes/EnvironmentManager";
-import { nativeModels } from "~/models/native";
 import {
 	Environments,
-	ErrorReason,
 	SocketMiddleware,
 	SocketMiddlewareEvent,
 	SocketNext,
 	SocketResponse,
 	UnknownError,
 } from "~/types";
-import {
-	Field,
-	ModelErrorReason,
-	NativeModelCollection,
-	NativeModelKey,
-} from "~/types/model";
-import { errors } from "~/variables/errors";
 
 import { databaseUtils } from "./database";
 import { middlewareUtils } from "./middleware";
@@ -65,8 +55,6 @@ const executeMiddlewares = async ({
 	next();
 };
 
-const regexMaker = (pattern: string) => new RegExp(pattern);
-
 const logEnvironments = () => logger.debug(sortEnvironments());
 
 const passwordGenerator = (options: generatePassword.GenerateOptions = {}) => {
@@ -96,11 +84,6 @@ const extractClientFromCookie = (cookie: string) => {
 	const [rawCookie] = cookie.split("; ");
 	return rawCookie.split("=")[1];
 };
-
-const makeScreamingSnakeCase = <T extends string>(value: T) =>
-	upperSnake(value) as ScreamingSnakeCase<T>;
-
-const upperSnake = (value: string) => lodash.snakeCase(value).toUpperCase();
 
 const resolveResponseError = (error: UnknownError) =>
 	Array.isArray(error)
@@ -170,27 +153,6 @@ const getDefaultValidatorErrorTypes = () => ({
 });
 
 //TODO: Add more support like trim and required
-function makeMongoSchemaValue<P extends keyof NativeModelCollection>(
-	fieldName: P
-) {
-	return function <F extends keyof NativeModelCollection[P]>(
-		prop: F
-	): [NativeModelCollection[P][F], ErrorReason] {
-		return [
-			nativeModels[fieldName][prop],
-			makeModelErrorReason(fieldName, prop as NativeModelKey),
-		];
-	};
-}
-
-const makeModelErrorReason = (
-	fieldName: Field,
-	modelKeyName: NativeModelKey
-) => {
-	return `${makeScreamingSnakeCase(fieldName)}_${makeScreamingSnakeCase(
-		modelKeyName
-	)}_ERROR` as ModelErrorReason;
-};
 
 const createSuccessResponse = <T extends EventName>(
 	eventName: T,
@@ -223,12 +185,7 @@ export const utils = {
 	getDefaultValidatorErrorTypes,
 	isEventNameMatch,
 	logEnvironments,
-	makeModelErrorReason,
-	makeMongoSchemaValue,
-	makeScreamingSnakeCase,
 	passwordGenerator,
-	regexMaker,
 	resolveResponseError,
 	sortEnvironments,
-	upperSnake,
 };

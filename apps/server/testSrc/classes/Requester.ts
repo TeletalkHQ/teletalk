@@ -1,15 +1,9 @@
+import { ErrorReason, NativeError, errorStore } from "@repo/error-store";
 import { IO } from "@repo/type-store";
 import chai from "chai";
 import { Socket as Client } from "socket.io-client";
 
-import { errorStore } from "~/classes/ErrorStore";
-import {
-	ErrorReason,
-	NativeError,
-	SocketEvent,
-	SocketResponse,
-	StringMap,
-} from "~/types";
+import { SocketEvent, SocketResponse, StringMap } from "~/types";
 
 import { RequesterOptions } from "@/types";
 import { loggerHelper } from "@/utils/logHelper";

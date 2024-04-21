@@ -1,3 +1,4 @@
+import { Field, models } from "@repo/model";
 import {
 	Bio,
 	BlackList,
@@ -31,9 +32,6 @@ import {
 } from "@repo/type-store";
 import { utils } from "@repo/utility-store";
 import chai from "chai";
-
-import { models } from "~/models";
-import { Field } from "~/types";
 
 import { AssertionInitializerArgs, AssertionInitializerOptions } from "@/types";
 import { FIELD_TYPE } from "@/variables";

@@ -1,7 +1,7 @@
+import { HydratedUser } from "@repo/model";
 import { DBContactItem } from "@repo/type-store";
 
 import { ServiceMiddleware } from "~/types";
-import { HydratedUser } from "~/types/model";
 
 export const saveNewContactItem: ServiceMiddleware<
 	{

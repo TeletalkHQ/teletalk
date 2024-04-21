@@ -13,7 +13,7 @@
 		"check:types:watch": "pnpm run check:types --watch"
 	},
 	"devDependencies": {
-		"@repo/assets": "workspace:*",
+		"@repo/vars": "workspace:*",
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*"
 	}

@@ -1,8 +1,8 @@
+import { errorStore } from "@repo/error-store";
 import { SessionId, VerifyIO } from "@repo/type-store";
 import { Socket } from "socket.io";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
-import { errorStore } from "~/classes/ErrorStore";
 import { SocketMiddleware } from "~/types";
 
 export const verifyVerificationCode: SocketMiddleware<VerifyIO> = async (

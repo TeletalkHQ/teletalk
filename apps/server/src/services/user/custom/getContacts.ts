@@ -1,10 +1,10 @@
+import { models } from "@repo/model";
+import { HydratedUser } from "@repo/model";
 import { Contacts, SessionId } from "@repo/type-store";
 
 import { extractor } from "~/classes/Extractor";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
-import { models } from "~/models";
 import { serviceMiddlewares } from "~/services/middlewares";
-import { HydratedUser } from "~/types/model";
 
 export const getContacts = serviceBuilder
 	.create<

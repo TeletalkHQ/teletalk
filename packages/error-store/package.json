@@ -1,0 +1,13 @@
+{
+	"name": "@repo/error-store",
+	"version": "0.0.0",
+	"type": "module",
+	"private": true,
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"dependencies": {
+		"@repo/model": "workspace:*",
+		"@repo/utility-store": "workspace:*"
+	},
+	"devDependencies": {}
+}

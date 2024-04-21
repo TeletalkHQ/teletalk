@@ -1,3 +1,5 @@
+import { randomMaker } from "@repo/classes";
+import { HydratedPrivateChat, HydratedUser, models } from "@repo/model";
 import {
 	ChatId,
 	CreatedAt,
@@ -7,12 +9,9 @@ import {
 	SessionId,
 	UserId,
 } from "@repo/type-store";
-import { randomMaker } from "@repo/utility-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
-import { models } from "~/models";
 import { serviceMiddlewares } from "~/services/middlewares";
-import { HydratedPrivateChat, HydratedUser } from "~/types/model";
 
 const chatModels = models.native;
 

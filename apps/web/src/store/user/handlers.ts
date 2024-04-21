@@ -1,6 +1,8 @@
+import { maker } from "@repo/classes";
+import { UserItem } from "@repo/type-store";
+
 import { extractor } from "~/classes/Extractor";
-import { maker } from "~/classes/Maker";
-import { UserHandlers, UserItem, UserSetState } from "~/types/store/user";
+import { UserHandlers, UserSetState } from "~/types/store/user";
 
 import { initialState } from "./initialState";
 

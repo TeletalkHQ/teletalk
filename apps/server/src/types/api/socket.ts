@@ -1,7 +1,8 @@
+import { NativeError } from "@repo/error-store";
 import { EventName, IO } from "@repo/type-store";
 import { Event, Socket } from "socket.io";
 
-import { NativeError, Route, VoidNoArgsFn } from "..";
+import { Route, VoidNoArgsFn } from "..";
 
 export type SocketResponseErrors = NativeError[];
 

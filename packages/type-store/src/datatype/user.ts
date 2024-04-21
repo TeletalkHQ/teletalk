@@ -1,4 +1,4 @@
-import { countries } from "@repo/assets";
+import { countries } from "@repo/vars";
 
 import type { CreatedAt, Id, StringMap } from "..";
 

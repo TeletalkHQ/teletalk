@@ -1,8 +1,8 @@
+import { ErrorReason, errorStore } from "@repo/error-store";
 import chai from "chai";
 
-import { errorStore } from "~/classes/ErrorStore";
 import { sessionManager } from "~/classes/SessionManager";
-import { ErrorReason, SocketEvent } from "~/types";
+import { SocketEvent } from "~/types";
 
 import { clientInitializer } from "@/classes/ClientInitializer";
 import { requesterMaker } from "@/classes/Requester";

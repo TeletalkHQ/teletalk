@@ -1,11 +1,10 @@
-import { maker as makerMain } from "@repo/utility-store";
+import { maker } from "@repo/classes";
 
-import { maker } from "~/classes/Maker";
 import { UserState } from "~/types";
 
 export const initialState: UserState = {
 	addingContactWithCellphone: maker.emptyAddingContactWithCellphone(),
-	addingContactWithUserId: makerMain.emptyFullName(),
+	addingContactWithUserId: maker.emptyFullName(),
 	currentUserData: {
 		avatarSrc: "",
 		bio: "",

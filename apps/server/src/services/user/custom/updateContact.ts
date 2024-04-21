@@ -1,3 +1,5 @@
+import { errorStore } from "@repo/error-store";
+import { HydratedUser } from "@repo/model";
 import {
 	DBContactItem,
 	DBContacts,
@@ -6,10 +8,8 @@ import {
 	UserId,
 } from "@repo/type-store";
 
-import { errorStore } from "~/classes/ErrorStore";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
-import { HydratedUser } from "~/types/model";
 
 export const updateContact = serviceBuilder
 	.create<

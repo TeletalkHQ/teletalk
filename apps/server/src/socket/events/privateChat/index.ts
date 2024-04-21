@@ -4,10 +4,10 @@ import {
 	GetPrivateChatsIO,
 	SendMessageIO,
 } from "@repo/type-store";
+import { models } from "@repo/validator";
+import { ValidationSchema } from "fastest-validator";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
-import { validationModels } from "~/models/validation";
-import { ValidationSchema } from "~/types";
 
 import { privateChatHandlers } from "./handlers";
 
@@ -15,21 +15,21 @@ const builder = socketEventBuilder();
 
 const messageItemSchema = {
 	type: "object",
-	createdAt: validationModels.createdAt,
-	messageId: validationModels.messageId,
-	messageText: validationModels.messageText,
+	createdAt: models.validation.createdAt,
+	messageId: models.validation.messageId,
+	messageText: models.validation.messageText,
 	sender: {
 		type: "object",
 		props: {
-			senderId: validationModels.senderId,
+			senderId: models.validation.senderId,
 		},
 	},
 };
 
 const privateChatSchema: ValidationSchema = {
 	type: "object",
-	chatId: validationModels.chatId,
-	createdAt: validationModels.createdAt,
+	chatId: models.validation.chatId,
+	createdAt: models.validation.createdAt,
 	messages: {
 		type: "array",
 		items: messageItemSchema,
@@ -37,7 +37,7 @@ const privateChatSchema: ValidationSchema = {
 	participants: {
 		type: "array",
 		items: {
-			participantId: validationModels.participantId,
+			participantId: models.validation.participantId,
 		},
 	},
 };
@@ -47,19 +47,19 @@ const getChatInfo = builder
 	.handler(privateChatHandlers.getChatInfo)
 	.name("getChatInfo")
 	.inputSchema({
-		chatId: validationModels.chatId,
+		chatId: models.validation.chatId,
 	})
 	.outputSchema({
 		chatInfo: {
 			type: "object",
 			props: {
-				chatId: validationModels.chatId,
-				createdAt: validationModels.createdAt,
+				chatId: models.validation.chatId,
+				createdAt: models.validation.createdAt,
 				participants: {
 					type: "array",
 					items: {
 						type: "object",
-						participantId: validationModels.participantId,
+						participantId: models.validation.participantId,
 					},
 				},
 			},
@@ -72,7 +72,7 @@ const getPrivateChat = builder
 	.handler(privateChatHandlers.getPrivateChat)
 	.name("getPrivateChat")
 	.inputSchema({
-		chatId: validationModels.chatId,
+		chatId: models.validation.chatId,
 	})
 	.outputSchema({
 		privateChat: privateChatSchema,
@@ -96,11 +96,11 @@ const sendMessage = builder
 	.handler(privateChatHandlers.sendMessage)
 	.name("sendMessage")
 	.inputSchema({
-		messageText: validationModels.messageText,
-		targetParticipantId: validationModels.targetParticipantId,
+		messageText: models.validation.messageText,
+		targetParticipantId: models.validation.targetParticipantId,
 	})
 	.outputSchema({
-		chatId: validationModels.chatId,
+		chatId: models.validation.chatId,
 		addedMessage: messageItemSchema,
 	})
 	.build();

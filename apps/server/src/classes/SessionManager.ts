@@ -1,9 +1,9 @@
+import { randomMaker } from "@repo/classes";
+import { models } from "@repo/model";
 import { EncryptedSession, SessionId } from "@repo/type-store";
-import { randomMaker } from "@repo/utility-store";
 import { SignJWT, jwtVerify } from "jose";
 
 import { configs } from "~/classes/Configs";
-import { models } from "~/models";
 import { VerifiedSession } from "~/types";
 
 class SessionManager {

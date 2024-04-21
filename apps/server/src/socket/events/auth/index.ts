@@ -4,9 +4,9 @@ import {
 	SignInIO,
 	VerifyIO,
 } from "@repo/type-store";
+import { models } from "@repo/validator";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
-import { validationModels } from "~/models/validation";
 
 import { handlers } from "./handlers";
 
@@ -16,11 +16,11 @@ const createNewUser = builder
 	.create<CreateNewUserIO>()
 	.name("createNewUser")
 	.inputSchema({
-		firstName: validationModels.firstName,
-		lastName: validationModels.lastName,
+		firstName: models.validation.firstName,
+		lastName: models.validation.lastName,
 	})
 	.outputSchema({
-		sessionId: validationModels.sessionId,
+		sessionId: models.validation.sessionId,
 	})
 	.handler(handlers.createNewUser)
 	.build();
@@ -36,12 +36,12 @@ const signIn = builder
 	.name("signIn")
 	.noAuth()
 	.inputSchema({
-		countryCode: validationModels.countryCode,
-		countryName: validationModels.countryName,
-		phoneNumber: validationModels.phoneNumber,
+		countryCode: models.validation.countryCode,
+		countryName: models.validation.countryName,
+		phoneNumber: models.validation.phoneNumber,
 	})
 	.outputSchema({
-		sessionId: validationModels.sessionId,
+		sessionId: models.validation.sessionId,
 	})
 	.handler(handlers.signIn)
 	.build();
@@ -50,13 +50,13 @@ const verify = builder
 	.create<VerifyIO>()
 	.name("verify")
 	.inputSchema({
-		verificationCode: validationModels.verificationCode,
+		verificationCode: models.validation.verificationCode,
 	})
 	.outputSchema({
 		isNewUser: {
 			type: "boolean",
 		},
-		sessionId: validationModels.sessionId,
+		sessionId: models.validation.sessionId,
 	})
 	.handler(handlers.verify)
 	.build();

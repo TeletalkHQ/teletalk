@@ -1,9 +1,10 @@
+import { ErrorReason, errorStore } from "@repo/error-store";
+import { HydratedUser } from "@repo/model";
 import { Cellphone, SessionId, UserId } from "@repo/type-store";
 
-import { errorStore } from "~/classes/ErrorStore";
 import { extractor } from "~/classes/Extractor";
 import { coreServices } from "~/services/user/core";
-import { ErrorReason, HydratedUser, ServiceMiddleware } from "~/types";
+import { ServiceMiddleware } from "~/types";
 
 export const findUser: ServiceMiddleware<
 	{

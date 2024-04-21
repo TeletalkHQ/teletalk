@@ -1,3 +1,4 @@
+import { IPrivateChatDoc, IUserDoc } from "@repo/model";
 import {
 	DBUserData,
 	PrivateChatItem,
@@ -8,7 +9,6 @@ import {
 import { ProjectionType, QueryOptions } from "mongoose";
 
 import { StringMap } from "..";
-import { IPrivateChatDoc, IUserDoc } from "../model";
 
 export type ServiceHandlerExcludeProp = "_id" | "__v";
 export type ServiceHandlerExcludeProps = ServiceHandlerExcludeProp[];

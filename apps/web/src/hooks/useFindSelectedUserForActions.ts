@@ -1,4 +1,5 @@
-import { maker } from "~/classes/Maker";
+import { maker } from "@repo/classes";
+
 import { useUserStore } from "~/store";
 
 export const useFindSelectedUserForActions = () => {

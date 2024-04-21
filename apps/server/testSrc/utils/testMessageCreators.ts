@@ -1,7 +1,5 @@
+import { ErrorReason, errorStore } from "@repo/error-store";
 import { EventName } from "@repo/type-store";
-
-import { errorStore } from "~/classes/ErrorStore";
-import { ErrorReason } from "~/types";
 
 import { MiddlewareName, ServiceName } from "@/types";
 

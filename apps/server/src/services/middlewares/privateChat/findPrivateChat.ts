@@ -1,12 +1,8 @@
-import { errorStore } from "~/classes/ErrorStore";
+import { errorStore } from "@repo/error-store";
+import { ChatId, HydratedPrivateChat, HydratedUser, UserId } from "@repo/model";
+
 import { coreServices } from "~/services/privateChat/core";
-import {
-	ChatId,
-	HydratedPrivateChat,
-	HydratedUser,
-	ServiceMiddleware,
-	UserId,
-} from "~/types";
+import { ServiceMiddleware } from "~/types";
 
 export const findPrivateChat: ServiceMiddleware<
 	{

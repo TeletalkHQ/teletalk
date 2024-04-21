@@ -1,8 +1,8 @@
+import { HydratedUser } from "@repo/model";
 import { SessionId, UserId } from "@repo/type-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
-import { HydratedUser } from "~/types/model";
 
 export const removeBlock = serviceBuilder
 	.create<

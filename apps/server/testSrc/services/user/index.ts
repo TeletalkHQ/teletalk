@@ -1,7 +1,7 @@
-import { databaseModels } from "~/models/database";
+import { models } from "@repo/model";
 
 const deleteAllUsers = async () => {
-	await databaseModels.User.deleteMany();
+	await models.database.User.deleteMany();
 };
 
 export const userServices = {

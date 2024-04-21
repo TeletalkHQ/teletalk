@@ -1,6 +1,27 @@
+import {
+	AvatarSrc,
+	EmptyCellphone,
+	FullName,
+	UnknownCellphone,
+	UserPublicData,
+} from "./datatype";
+
 export interface StringMap {
 	[key: string]: any;
 }
+
+export type UserItem = UserPublicData &
+	UnknownCellphone & {
+		avatarSrc: AvatarSrc;
+		isContact: boolean;
+		isBlocked: boolean;
+		originalFirstName: string;
+		originalLastName: string;
+	};
+
+export type AddingContactWithCellphone = FullName & EmptyCellphone;
+
+export type Users = UserItem[];
 
 export * from "./datatype";
 export * from "./api";

@@ -1,4 +1,5 @@
-import { errorStore } from "~/classes/ErrorStore";
+import { errorStore } from "@repo/error-store";
+
 import { events } from "~/socket/events";
 import { SocketMiddleware } from "~/types";
 

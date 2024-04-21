@@ -1,8 +1,8 @@
+import { randomMaker } from "@repo/classes";
+import { models } from "@repo/model";
 import { UserId } from "@repo/type-store";
-import { randomMaker } from "@repo/utility-store";
 
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
-import { models } from "~/models";
 import { serviceMiddlewares } from "~/services/middlewares";
 
 import { coreServices } from "../core";

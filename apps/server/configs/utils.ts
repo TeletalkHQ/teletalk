@@ -1,4 +1,4 @@
-import { randomMaker } from "@repo/utility-store";
+import { randomMaker } from "@repo/classes";
 
 import { configs } from "~/classes/Configs";
 

@@ -1,8 +1,7 @@
-import type { UserId } from "@repo/type-store";
+import type { UserId, UserItem } from "@repo/type-store";
 import { useEffect } from "react";
 
 import { useUserStore } from "~/store";
-import { UserItem } from "~/types";
 
 import { useEmitter } from "./useEmitter";
 import { useFindUserById } from "./useFindUserById";

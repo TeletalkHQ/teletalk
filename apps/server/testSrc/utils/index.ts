@@ -1,12 +1,12 @@
 import { faker } from "@faker-js/faker";
+import { ErrorReason, NativeError } from "@repo/error-store";
+import { Field, models } from "@repo/model";
+import { countries } from "@repo/vars";
 import chai from "chai";
+import { ValidationSchema } from "fastest-validator";
 
 import { configs } from "~/classes/Configs";
-import { models } from "~/models";
-import { ErrorReason, NativeError, ValidationSchema } from "~/types";
-import { Field } from "~/types/model";
 import { utils as mainUtils } from "~/utils";
-import { countries } from "~/variables";
 
 import { randomMaker } from "@/classes/RandomMaker";
 import { mergedServices } from "@/services";

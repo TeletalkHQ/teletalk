@@ -1,3 +1,5 @@
+import { RandomMaker as RandomMakerMain } from "@repo/classes";
+import { models } from "@repo/model";
 import {
 	Cellphone,
 	ContactItem,
@@ -13,12 +15,10 @@ import {
 	UserId,
 	UserPublicData,
 } from "@repo/type-store";
-import { RandomMaker as RandomMakerMain } from "@repo/utility-store";
 import { Socket } from "socket.io-client";
 
 import { sessionManager } from "~/classes/SessionManager";
 import { userUtils } from "~/classes/UserUtils";
-import { models } from "~/models";
 
 import { authHelper } from "@/classes/AuthHelper";
 import { services } from "@/services";
@@ -213,7 +213,7 @@ class RandomMaker extends RandomMakerMain {
 	unusedContact(): ContactItem {
 		return super.unusedContact(
 			models.native.firstName.max,
-			models.native.lastName.min,
+			models.native.lastName.max,
 			models.native.userId.max
 		);
 	}

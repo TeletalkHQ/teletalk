@@ -15,9 +15,9 @@ import {
 	UpdateContactIO,
 	UpdatePublicDataIO,
 } from "@repo/type-store";
+import { models } from "@repo/validator";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
-import { validationModels } from "~/models/validation";
 
 import { handlers } from "./handlers";
 
@@ -27,13 +27,13 @@ const addBlock = builder
 	.create<AddBlockIO>()
 	.name("addBlock")
 	.inputSchema({
-		userId: validationModels.userId,
+		userId: models.validation.userId,
 	})
 	.outputSchema({
 		blockedUser: {
 			type: "object",
 			props: {
-				userId: validationModels.userId,
+				userId: models.validation.userId,
 			},
 		},
 	})
@@ -44,22 +44,22 @@ const addContactWithCellphone = builder
 	.create<AddContactWithCellphoneIO>()
 	.name("addContactWithCellphone")
 	.inputSchema({
-		countryCode: validationModels.countryCode,
-		countryName: validationModels.countryName,
-		phoneNumber: validationModels.phoneNumber,
-		firstName: validationModels.firstName,
-		lastName: validationModels.lastName,
+		countryCode: models.validation.countryCode,
+		countryName: models.validation.countryName,
+		phoneNumber: models.validation.phoneNumber,
+		firstName: models.validation.firstName,
+		lastName: models.validation.lastName,
 	})
 	.outputSchema({
 		newContact: {
 			type: "object",
 			props: {
-				countryCode: validationModels.countryCode,
-				countryName: validationModels.countryName,
-				phoneNumber: validationModels.phoneNumber,
-				firstName: validationModels.firstName,
-				lastName: validationModels.lastName,
-				userId: validationModels.userId,
+				countryCode: models.validation.countryCode,
+				countryName: models.validation.countryName,
+				phoneNumber: models.validation.phoneNumber,
+				firstName: models.validation.firstName,
+				lastName: models.validation.lastName,
+				userId: models.validation.userId,
 			},
 		},
 	})
@@ -70,20 +70,20 @@ const addContactWithUserId = builder
 	.create<AddContactWithUserIdIO>()
 	.name("addContactWithUserId")
 	.inputSchema({
-		firstName: validationModels.firstName,
-		lastName: validationModels.lastName,
-		userId: validationModels.userId,
+		firstName: models.validation.firstName,
+		lastName: models.validation.lastName,
+		userId: models.validation.userId,
 	})
 	.outputSchema({
 		newContact: {
 			type: "object",
 			props: {
-				countryCode: validationModels.countryCode,
-				countryName: validationModels.countryName,
-				phoneNumber: validationModels.phoneNumber,
-				firstName: validationModels.firstName,
-				lastName: validationModels.lastName,
-				userId: validationModels.userId,
+				countryCode: models.validation.countryCode,
+				countryName: models.validation.countryName,
+				phoneNumber: models.validation.phoneNumber,
+				firstName: models.validation.firstName,
+				lastName: models.validation.lastName,
+				userId: models.validation.userId,
 			},
 		},
 	})
@@ -102,17 +102,17 @@ const updateContact = builder
 	.create<UpdateContactIO>()
 	.name("updateContact")
 	.inputSchema({
-		firstName: validationModels.firstName,
-		lastName: validationModels.lastName,
-		userId: validationModels.userId,
+		firstName: models.validation.firstName,
+		lastName: models.validation.lastName,
+		userId: models.validation.userId,
 	})
 	.outputSchema({
 		updatedContact: {
 			type: "object",
 			props: {
-				firstName: validationModels.firstName,
-				lastName: validationModels.lastName,
-				userId: validationModels.userId,
+				firstName: models.validation.firstName,
+				lastName: models.validation.lastName,
+				userId: models.validation.userId,
 			},
 		},
 	})
@@ -127,12 +127,12 @@ const getContacts = builder
 			type: "array",
 			items: {
 				type: "object",
-				countryCode: validationModels.countryCode,
-				countryName: validationModels.countryName,
-				phoneNumber: validationModels.phoneNumber,
-				firstName: validationModels.firstName,
-				lastName: validationModels.lastName,
-				userId: validationModels.userId,
+				countryCode: models.validation.countryCode,
+				countryName: models.validation.countryName,
+				phoneNumber: models.validation.phoneNumber,
+				firstName: models.validation.firstName,
+				lastName: models.validation.lastName,
+				userId: models.validation.userId,
 			},
 		},
 	})
@@ -143,36 +143,36 @@ const getUserData = builder
 	.create<GetUserDataIO>()
 	.name("getUserData")
 	.outputSchema({
-		avatarSrc: validationModels.avatarSrc,
-		bio: validationModels.bio,
+		avatarSrc: models.validation.avatarSrc,
+		bio: models.validation.bio,
 		blacklist: {
 			type: "array",
 			items: {
 				type: "object",
-				userId: validationModels.userId,
+				userId: models.validation.userId,
 			},
 		},
 		contacts: {
 			type: "array",
 			items: {
 				type: "object",
-				countryCode: validationModels.countryCode,
-				countryName: validationModels.countryName,
-				phoneNumber: validationModels.phoneNumber,
-				firstName: validationModels.firstName,
-				lastName: validationModels.lastName,
-				userId: validationModels.userId,
+				countryCode: models.validation.countryCode,
+				countryName: models.validation.countryName,
+				phoneNumber: models.validation.phoneNumber,
+				firstName: models.validation.firstName,
+				lastName: models.validation.lastName,
+				userId: models.validation.userId,
 			},
 		},
-		countryCode: validationModels.countryCode,
-		countryName: validationModels.countryName,
-		createdAt: validationModels.createdAt,
-		firstName: validationModels.firstName,
-		lastName: validationModels.lastName,
-		phoneNumber: validationModels.phoneNumber,
-		status: validationModels.status,
-		userId: validationModels.userId,
-		username: validationModels.username,
+		countryCode: models.validation.countryCode,
+		countryName: models.validation.countryName,
+		createdAt: models.validation.createdAt,
+		firstName: models.validation.firstName,
+		lastName: models.validation.lastName,
+		phoneNumber: models.validation.phoneNumber,
+		status: models.validation.status,
+		userId: models.validation.userId,
+		username: models.validation.username,
 	})
 	.handler(handlers.getUserData)
 	.build();
@@ -181,11 +181,11 @@ const getClientStatus = builder
 	.create<GetClientStatusIO>()
 	.name("getClientStatus")
 	.inputSchema({
-		userId: validationModels.userId,
+		userId: models.validation.userId,
 	})
 	.outputSchema({
-		isOnline: validationModels.isOnline,
-		userId: validationModels.userId,
+		isOnline: models.validation.isOnline,
+		userId: models.validation.userId,
 	})
 	.handler(handlers.getClientStatus)
 	.build();
@@ -198,7 +198,7 @@ const getOnlineClients = builder
 			type: "array",
 			items: {
 				type: "object",
-				userId: validationModels.userId,
+				userId: models.validation.userId,
 			},
 		},
 	})
@@ -209,17 +209,17 @@ const getPublicData = builder
 	.create<GetPublicDataIO>()
 	.name("getPublicData")
 	.inputSchema({
-		userId: validationModels.userId,
+		userId: models.validation.userId,
 	})
 	.outputSchema({
 		publicData: {
 			type: "object",
 			props: {
-				firstName: validationModels.firstName,
-				lastName: validationModels.lastName,
-				bio: validationModels.bio,
-				userId: validationModels.userId,
-				username: validationModels.username,
+				firstName: models.validation.firstName,
+				lastName: models.validation.lastName,
+				bio: models.validation.bio,
+				userId: models.validation.userId,
+				username: models.validation.username,
 			},
 		},
 	})
@@ -230,13 +230,13 @@ const removeBlock = builder
 	.create<RemoveBlockIO>()
 	.name("removeBlock")
 	.inputSchema({
-		userId: validationModels.userId,
+		userId: models.validation.userId,
 	})
 	.outputSchema({
 		removedBlock: {
 			type: "object",
 			props: {
-				userId: validationModels.userId,
+				userId: models.validation.userId,
 			},
 		},
 	})
@@ -247,13 +247,13 @@ const removeContact = builder
 	.create<RemoveContactIO>()
 	.name("removeContact")
 	.inputSchema({
-		userId: validationModels.userId,
+		userId: models.validation.userId,
 	})
 	.outputSchema({
 		removedContact: {
 			type: "object",
 			props: {
-				userId: validationModels.userId,
+				userId: models.validation.userId,
 			},
 		},
 	})
@@ -264,20 +264,20 @@ const updatePublicData = builder
 	.create<UpdatePublicDataIO>()
 	.name("updatePublicData")
 	.inputSchema({
-		firstName: validationModels.firstName,
-		lastName: validationModels.lastName,
-		bio: validationModels.bio,
-		username: validationModels.username,
+		firstName: models.validation.firstName,
+		lastName: models.validation.lastName,
+		bio: models.validation.bio,
+		username: models.validation.username,
 	})
 	.outputSchema({
 		publicData: {
 			type: "object",
 			props: {
-				firstName: validationModels.firstName,
-				lastName: validationModels.lastName,
-				bio: validationModels.bio,
-				userId: validationModels.userId,
-				username: validationModels.username,
+				firstName: models.validation.firstName,
+				lastName: models.validation.lastName,
+				bio: models.validation.bio,
+				userId: models.validation.userId,
+				username: models.validation.username,
 			},
 		},
 	})
@@ -288,11 +288,11 @@ const getAvatar = builder
 	.create<GetAvatarIO>()
 	.name("getAvatar")
 	.inputSchema({
-		userId: validationModels.userId,
+		userId: models.validation.userId,
 	})
 	.outputSchema({
-		userId: validationModels.userId,
-		avatarSrc: validationModels.avatarSrc,
+		userId: models.validation.userId,
+		avatarSrc: models.validation.avatarSrc,
 	})
 	.handler(handlers.getAvatar)
 	.build();
@@ -301,11 +301,11 @@ const updateAvatar = builder
 	.create<UpdateAvatarIO>()
 	.name("updateAvatar")
 	.inputSchema({
-		avatarSrc: validationModels.avatarSrc,
+		avatarSrc: models.validation.avatarSrc,
 	})
 	.outputSchema({
-		userId: validationModels.userId,
-		avatarSrc: validationModels.avatarSrc,
+		userId: models.validation.userId,
+		avatarSrc: models.validation.avatarSrc,
 	})
 	.handler(handlers.updateAvatar)
 	.build();

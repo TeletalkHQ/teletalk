@@ -1,0 +1,62 @@
+import { errorStore } from "@repo/error-store";
+import { Field, models } from "@repo/model";
+import { countries } from "@repo/vars";
+
+import { validationChecker } from "../../classes";
+import {
+	ValidationCheckerFn,
+	ValidationCheckerFnCollection,
+} from "../../types/validation";
+
+export const validationCheckers = Object.keys(models.native).reduce(
+	(prevValue, currValue) => {
+		const k = currValue as Field;
+
+		prevValue[k] = (result, value) =>
+			validationChecker(result, k, value).check();
+
+		return prevValue;
+	},
+	{} as ValidationCheckerFnCollection
+);
+
+const {
+	countryCode: defaultCountryCodeChecker,
+	countryName: defaultCountryNameChecker,
+} = validationCheckers;
+
+validationCheckers.countryCode = (result, value) => {
+	if (result === true) {
+		const country = countries.find((c) => c.countryCode === value);
+		if (typeof country === "undefined")
+			throw errorStore.find("COUNTRY_CODE_NOT_SUPPORTED");
+
+		return;
+	}
+
+	defaultCountryCodeChecker(result, value);
+};
+
+validationCheckers.countryName = (result, value) => {
+	if (result === true) {
+		const country = countries.find((c) => c.countryName === value);
+		if (typeof country === "undefined")
+			throw errorStore.find("COUNTRY_NAME_NOT_SUPPORTED");
+
+		return;
+	}
+
+	defaultCountryNameChecker(result, value);
+};
+
+const notImplementedCheckerFn = (fieldName: Field) =>
+	(() => {
+		throw `${fieldName}ValidationChecker is not implemented`;
+	}) as ValidationCheckerFn;
+
+validationCheckers.id = notImplementedCheckerFn("id");
+validationCheckers.createdAt = notImplementedCheckerFn("createdAt");
+validationCheckers.isActive = notImplementedCheckerFn("isActive");
+validationCheckers.macAddress = notImplementedCheckerFn("macAddress");
+validationCheckers.messageId = notImplementedCheckerFn("messageId");
+validationCheckers.senderId = notImplementedCheckerFn("senderId");
