@@ -17,7 +17,7 @@
 	"dependencies": {
 		"@repo/model": "workspace:*",
 		"@repo/type-store": "workspace:*",
-		"@repo/utility-store": "workspace:*",
+		"@repo/utils": "workspace:*",
 		"@repo/vars": "workspace:*"
 	},
 	"devDependencies": {

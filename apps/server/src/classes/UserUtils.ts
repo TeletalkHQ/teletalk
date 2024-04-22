@@ -1,5 +1,5 @@
 import { EmptyUserData } from "@repo/type-store";
-import { UserUtils as UserUtilitiesMain } from "@repo/utility-store";
+import { UserUtils as UserUtilitiesMain } from "@repo/utils";
 
 type EmptyDBUserData = Omit<EmptyUserData, "contacts"> & { contacts: [] };
 

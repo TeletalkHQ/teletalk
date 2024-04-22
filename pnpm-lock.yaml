@@ -663,9 +663,9 @@ importers:
       '@repo/model':
         specifier: workspace:*
         version: link:../../packages/model
-      '@repo/utility-store':
+      '@repo/utils':
         specifier: workspace:*
-        version: link:../../packages/utility-store
+        version: link:../../packages/utils
       '@repo/validator':
         specifier: workspace:*
         version: link:../../packages/validator
@@ -688,9 +688,9 @@ importers:
       '@repo/model':
         specifier: workspace:*
         version: link:../../packages/model
-      '@repo/utility-store':
+      '@repo/utils':
         specifier: workspace:*
-        version: link:../../packages/utility-store
+        version: link:../../packages/utils
       '@repo/validator':
         specifier: workspace:*
         version: link:../../packages/validator
@@ -722,9 +722,9 @@ importers:
       '@repo/type-store':
         specifier: workspace:*
         version: link:../type-store
-      '@repo/utility-store':
+      '@repo/utils':
         specifier: workspace:*
-        version: link:../utility-store
+        version: link:../utils
       '@repo/vars':
         specifier: workspace:*
         version: link:../vars
@@ -741,17 +741,17 @@ importers:
       '@repo/model':
         specifier: workspace:*
         version: link:../model
-      '@repo/utility-store':
+      '@repo/utils':
         specifier: workspace:*
-        version: link:../utility-store
+        version: link:../utils
 
   packages/eslint-config: {}
 
   packages/model:
     dependencies:
-      '@repo/utility-store':
+      '@repo/utils':
         specifier: workspace:*
-        version: link:../utility-store
+        version: link:../utils
     devDependencies:
       '@repo/type-store':
         specifier: workspace:*
@@ -771,7 +771,7 @@ importers:
 
   packages/typescript-config: {}
 
-  packages/utility-store:
+  packages/utils:
     dependencies:
       '@repo/vars':
         specifier: workspace:*
@@ -795,9 +795,9 @@ importers:
       '@repo/model':
         specifier: workspace:*
         version: link:../model
-      '@repo/utility-store':
+      '@repo/utils':
         specifier: workspace:*
-        version: link:../utility-store
+        version: link:../utils
       '@repo/vars':
         specifier: workspace:*
         version: link:../vars

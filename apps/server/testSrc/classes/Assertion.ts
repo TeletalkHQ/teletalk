@@ -30,7 +30,7 @@ import {
 	Username,
 	VerificationCode,
 } from "@repo/type-store";
-import { utils } from "@repo/utility-store";
+import { utils } from "@repo/utils";
 import chai from "chai";
 
 import { AssertionInitializerArgs, AssertionInitializerOptions } from "@/types";

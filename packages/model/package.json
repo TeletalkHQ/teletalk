@@ -6,7 +6,7 @@
 	"main": "./src/index.ts",
 	"types": "./src/index.ts",
 	"dependencies": {
-		"@repo/utility-store": "workspace:*"
+		"@repo/utils": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/type-store": "workspace:*"

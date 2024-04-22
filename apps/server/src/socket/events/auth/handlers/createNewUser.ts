@@ -2,7 +2,7 @@ import { randomMaker } from "@repo/classes";
 import { errorStore } from "@repo/error-store";
 import { models } from "@repo/model";
 import { CreateNewUserIO } from "@repo/type-store";
-import { extractor } from "@repo/utility-store";
+import { extractor } from "@repo/utils";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { sessionManager } from "~/classes/SessionManager";

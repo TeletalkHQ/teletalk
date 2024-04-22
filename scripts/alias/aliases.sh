@@ -9,7 +9,7 @@ SCRIPT_DIR="$(dirname "$SCRIPT_PATH")"
 WORKING_DIR="$SCRIPT_DIR/../../"
 
 #? cwd
-alias pefe="cd $WORKING_DIR"
+alias ttk="cd $WORKING_DIR"
 
 #? Docker aliases
 # alias docb="docker build . -t PATH_HERE"

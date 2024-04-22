@@ -5,7 +5,7 @@ import {
 	UserId,
 	UserPublicData,
 } from "@repo/type-store";
-import { Extractor as ExtractorMain } from "@repo/utility-store";
+import { Extractor as ExtractorMain } from "@repo/utils";
 
 export class Extractor extends ExtractorMain {
 	userPublicData(data: ExtendedUserPublicData): UserPublicData {

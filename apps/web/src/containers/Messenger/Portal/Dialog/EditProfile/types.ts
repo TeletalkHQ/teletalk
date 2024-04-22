@@ -1,4 +1,4 @@
-import { ElementLabel } from "@repo/utility-store";
+import { ElementLabel } from "@repo/utils";
 
 import { DialogName, IconType, VoidWithArg } from "~/types";
 

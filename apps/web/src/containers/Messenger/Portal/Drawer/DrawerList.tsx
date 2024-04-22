@@ -1,4 +1,4 @@
-import { ElementName } from "@repo/utility-store";
+import { ElementName } from "@repo/utils";
 
 import { Box, Icon } from "~/components";
 import { HTMLDivMouseEvent, VoidWithArg, VoidWithTwoArgs } from "~/types";

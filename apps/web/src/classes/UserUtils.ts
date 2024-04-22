@@ -3,7 +3,7 @@ import type {
 	UserItem,
 	UserPublicData,
 } from "@repo/type-store";
-import { UserUtils as userUtilsMain } from "@repo/utility-store";
+import { UserUtils as userUtilsMain } from "@repo/utils";
 
 export class UserUtils extends userUtilsMain {
 	concatFirstNameWithLastName(

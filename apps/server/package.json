@@ -32,7 +32,7 @@
 		"@repo/classes": "workspace:*",
 		"@repo/error-store": "workspace:*",
 		"@repo/model": "workspace:*",
-		"@repo/utility-store": "workspace:*",
+		"@repo/utils": "workspace:*",
 		"@repo/validator": "workspace:*",
 		"@repo/vars": "workspace:*"
 	},

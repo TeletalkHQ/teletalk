@@ -1,4 +1,4 @@
-import { utils as pkgUtils } from "@repo/utility-store";
+import { utils as pkgUtils } from "@repo/utils";
 
 import { Field, ModelErrorReason, NativeModelKey } from "../types";
 

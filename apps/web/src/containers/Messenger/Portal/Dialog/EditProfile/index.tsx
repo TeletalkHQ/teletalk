@@ -1,4 +1,4 @@
-import { extractor } from "@repo/utility-store";
+import { extractor } from "@repo/utils";
 import { useEffect } from "react";
 
 import { Template } from "~/components";

@@ -1,5 +1,5 @@
 import { Cellphone } from "@repo/type-store";
-import { utils } from "@repo/utility-store";
+import { utils } from "@repo/utils";
 
 class DataUsageManager {
 	private usedCellphones: Cellphone[];

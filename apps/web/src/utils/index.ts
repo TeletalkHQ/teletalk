@@ -1,6 +1,6 @@
 import createCache from "@emotion/cache";
 import type { FullName, UnknownCellphone } from "@repo/type-store";
-import { utils as pkgUtils } from "@repo/utility-store";
+import { utils as pkgUtils } from "@repo/utils";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { envManager } from "~/classes/EnvironmentManager";

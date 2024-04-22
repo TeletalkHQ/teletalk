@@ -2,18 +2,6 @@ import { ExtendedUnknownCellphone, UnknownCellphone } from "@repo/type-store";
 import lodash from "lodash";
 import { ScreamingSnakeCase } from "type-fest";
 
-const errorThrower = <T>(condition: any, error: T) => {
-	if (condition) {
-		if (typeof error === "function") throw error();
-
-		throw error;
-	}
-};
-
-const printError = (callerName: string, error: any) => {
-	console.error(`${callerName} catch, error: `, error);
-};
-
 const makeScreamingSnakeCase = <T extends string>(value: T) =>
 	upperSnake(value) as ScreamingSnakeCase<T>;
 
@@ -46,9 +34,7 @@ const isDataHasEqualityWithTargetCellphone = (
 };
 
 export const utils = {
-	errorThrower,
 	isDataHasEqualityWithTargetCellphone,
 	makeScreamingSnakeCase,
-	printError,
 	upperSnake,
 };
