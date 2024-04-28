@@ -1,8 +1,8 @@
+import { extractor } from "@repo/classes";
 import { ErrorReason, errorStore } from "@repo/error-store";
 import { HydratedUser } from "@repo/model";
 import { Cellphone, SessionId, UserId } from "@repo/type-store";
 
-import { extractor } from "~/classes/Extractor";
 import { coreServices } from "~/services/user/core";
 import { ServiceMiddleware } from "~/types";
 

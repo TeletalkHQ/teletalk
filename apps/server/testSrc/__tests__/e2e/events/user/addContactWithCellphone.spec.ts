@@ -1,6 +1,5 @@
+import { extractor } from "@repo/classes";
 import { ContactItemWithoutUserId } from "@repo/type-store";
-
-import { extractor } from "~/classes/Extractor";
 
 import { assertion } from "@/classes/Assertion";
 import { randomMaker } from "@/classes/RandomMaker";

@@ -6,10 +6,6 @@ import {
 	ValidationError,
 } from "fastest-validator";
 
-import { utils } from "../../utils";
-
-const ERROR_TYPES = utils.getDefaultValidatorErrorTypes();
-export type ErrorTypes = typeof ERROR_TYPES;
 export type ValidationErrors = ValidationError[];
 
 export interface ProcessedValidationError extends NativeError {

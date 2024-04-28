@@ -1,8 +1,8 @@
+import { extractor } from "@repo/classes";
 import { errorStore } from "@repo/error-store";
 import { VerifyIO } from "@repo/type-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
-import { extractor } from "~/classes/Extractor";
 import { sessionManager } from "~/classes/SessionManager";
 import { services } from "~/services";
 import { SocketOnHandler } from "~/types";

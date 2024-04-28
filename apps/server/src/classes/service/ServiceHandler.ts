@@ -1,4 +1,4 @@
-import { objectUtils } from "@repo/utils";
+import { objectUtils } from "@repo/classes";
 import { QueryOptions } from "mongoose";
 
 import {

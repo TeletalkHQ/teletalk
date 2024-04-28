@@ -1,4 +1,5 @@
-import { extractor } from "~/classes/Extractor";
+import { extractor } from "@repo/classes";
+
 import { storage } from "~/classes/Storage";
 import { websocket } from "~/classes/websocket/Websocket";
 import { useAuthStore } from "~/store";

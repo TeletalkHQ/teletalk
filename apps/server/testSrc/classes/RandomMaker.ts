@@ -1,4 +1,4 @@
-import { RandomMaker as RandomMakerMain } from "@repo/classes";
+import { RandomMaker as RandomMakerMain, userUtils } from "@repo/classes";
 import { models } from "@repo/model";
 import {
 	Cellphone,
@@ -18,7 +18,6 @@ import {
 import { Socket } from "socket.io-client";
 
 import { sessionManager } from "~/classes/SessionManager";
-import { userUtils } from "~/classes/UserUtils";
 
 import { authHelper } from "@/classes/AuthHelper";
 import { services } from "@/services";

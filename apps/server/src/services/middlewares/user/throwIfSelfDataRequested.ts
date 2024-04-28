@@ -1,7 +1,8 @@
+import { extractor } from "@repo/classes";
 import { errorStore } from "@repo/error-store";
 import { HydratedUser } from "@repo/model";
 import { UnknownCellphone, UserId } from "@repo/type-store";
-import { extractor, utils } from "@repo/utils";
+import { utils } from "@repo/utils";
 
 import { ServiceMiddleware } from "~/types";
 

@@ -1,7 +1,7 @@
 import { LoadingButtonProps } from "@mui/lab";
 import { SelectChangeEvent, SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
-import { ElementName } from "@repo/utils";
+import { ElementName } from "@repo/type-store";
 import {
 	ChangeEvent,
 	ChangeEventHandler,

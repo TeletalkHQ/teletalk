@@ -1,7 +1,7 @@
+import { extractor } from "@repo/classes";
 import { HydratedUser } from "@repo/model";
 import { UserId, UserPublicData } from "@repo/type-store";
 
-import { extractor } from "~/classes/Extractor";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
 

@@ -1,6 +1,6 @@
+import { userUtils } from "@repo/classes";
 import { DBUserData } from "@repo/type-store";
 
-import { userUtils } from "~/classes/UserUtils";
 import { services } from "~/services";
 
 import { assertion } from "@/classes/Assertion";

@@ -1,4 +1,3 @@
-import type { EventName } from ".";
 import type {
 	AvatarSrc,
 	Bio,
@@ -25,6 +24,37 @@ import type {
 	VerificationCode,
 	WelcomeMessage,
 } from "../datatype";
+
+export type EventName =
+	| "addBlock"
+	| "addContactWithCellphone"
+	| "addContactWithUserId"
+	| "createNewUser"
+	| "disconnect"
+	| "getAvatar"
+	| "getChatInfo"
+	| "getClientStatus"
+	| "getContacts"
+	| "getCountries"
+	| "getOnlineClients"
+	| "getPrivateChat"
+	| "getPrivateChats"
+	| "getPublicData"
+	| "getStuff"
+	| "getUserData"
+	| "getWelcomeMessage"
+	| "join"
+	| "logout"
+	| "ping"
+	| "pong"
+	| "removeBlock"
+	| "removeContact"
+	| "sendMessage"
+	| "signIn"
+	| "updateAvatar"
+	| "updateContact"
+	| "updatePublicData"
+	| "verify";
 
 export type IO = {
 	input: object;
@@ -284,6 +314,7 @@ export type IOCollection = { [key in EventName]: IO } & {
 	addContactWithUserId: AddContactWithUserIdIO;
 	createNewUser: CreateNewUserIO;
 	disconnect: DisconnectIO;
+	getAvatar: GetAvatarIO;
 	getChatInfo: GetChatInfoIO;
 	getClientStatus: GetClientStatusIO;
 	getContacts: GetContactsIO;
@@ -307,5 +338,4 @@ export type IOCollection = { [key in EventName]: IO } & {
 	updateContact: UpdateContactIO;
 	updatePublicData: UpdatePublicDataIO;
 	verify: VerifyIO;
-	getAvatar: GetAvatarIO;
 };

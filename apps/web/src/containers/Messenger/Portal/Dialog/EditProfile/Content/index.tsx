@@ -1,6 +1,6 @@
+import { userUtils } from "@repo/classes";
 import type { AvatarSrc } from "@repo/type-store";
 
-import { userUtils } from "~/classes/UserUtils";
 import { Box } from "~/components";
 import { Profile, VoidNoArgsFn } from "~/types";
 

@@ -16,7 +16,7 @@ import {
 	requesterCollection,
 	requesterMakerHelper,
 	setupRequester,
-} from "./requester";
+} from "./requesterCollection";
 import { createTestMessage } from "./testMessageCreators";
 
 type DescribeArgs = [title: string, suite: () => () => void];

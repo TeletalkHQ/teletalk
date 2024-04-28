@@ -1,18 +1,22 @@
 import {
 	Cellphone,
 	ContactItem,
+	CurrentUserData,
 	DBUserData,
 	ExtendedCellphone,
 	ExtendedContactItem,
+	ExtendedCurrentUserData,
 	ExtendedFullName,
 	ExtendedUnknownCellphone,
 	ExtendedUserData,
 	ExtendedUserPublicData,
 	FullName,
+	FullNameWithUserId,
 	StringMap,
 	UnknownCellphone,
 	UserData,
 	UserDataWithoutSessions,
+	UserId,
 	UserPublicData,
 } from "@repo/type-store";
 
@@ -83,12 +87,35 @@ export class Extractor {
 		return rest;
 	}
 
-	publicUserData(data: ExtendedUserPublicData): UserPublicData {
+	currentUserData(data: ExtendedCurrentUserData): CurrentUserData {
+		return {
+			...this.cellphone(data),
+			...this.fullName(data),
+			avatarSrc: data.avatarSrc,
+			bio: data.bio,
+			createdAt: data.createdAt,
+			status: data.status,
+			userId: data.userId,
+			username: data.username,
+		};
+	}
+
+	userPublicData(data: ExtendedUserPublicData): UserPublicData {
 		return {
 			...this.fullName(data),
 			bio: data.bio,
 			userId: data.userId,
 			username: data.username,
+		};
+	}
+
+	contactWithUserId(
+		data: ExtendedFullName & { userId: UserId }
+	): FullNameWithUserId {
+		return {
+			firstName: data.firstName,
+			lastName: data.lastName,
+			userId: data.userId,
 		};
 	}
 }

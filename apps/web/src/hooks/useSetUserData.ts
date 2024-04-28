@@ -1,8 +1,8 @@
 import { maker } from "@repo/classes";
+import { extractor } from "@repo/classes";
 import type { GetUserDataIO, UserItem } from "@repo/type-store";
 import { useEffect } from "react";
 
-import { extractor } from "~/classes/Extractor";
 import { storage } from "~/classes/Storage";
 import { useGlobalStore, useUserStore } from "~/store";
 import { SocketErrorCallback, SocketResponseCallback } from "~/types";

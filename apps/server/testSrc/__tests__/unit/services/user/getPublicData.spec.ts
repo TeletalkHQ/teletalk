@@ -1,4 +1,5 @@
-import { extractor } from "~/classes/Extractor";
+import { extractor } from "@repo/classes";
+
 import { services } from "~/services";
 
 import { assertion } from "@/classes/Assertion";

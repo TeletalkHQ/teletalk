@@ -1,7 +1,7 @@
 import LockOpenTwoToneIcon from "@mui/icons-material/LockOpenTwoTone";
+import { userUtils } from "@repo/classes";
 import { UserItem } from "@repo/type-store";
 
-import { userUtils } from "~/classes/UserUtils";
 import { Box, Button } from "~/components";
 import { useGetPublicData } from "~/hooks";
 import { VoidNoArgsFn } from "~/types";

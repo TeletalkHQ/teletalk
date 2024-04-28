@@ -1,5 +1,5 @@
+import { extractor } from "@repo/classes";
 import { ExtendedCellphone, SignInIO } from "@repo/type-store";
-import { extractor } from "@repo/utils";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { sessionManager } from "~/classes/SessionManager";

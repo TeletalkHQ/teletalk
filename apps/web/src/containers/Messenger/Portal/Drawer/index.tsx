@@ -1,8 +1,8 @@
 import { Divider, SwipeableDrawer } from "@mui/material";
-import { ElementName } from "@repo/utils";
+import { userUtils } from "@repo/classes";
+import { ElementName } from "@repo/type-store";
 import { KeyboardEvent, SyntheticEvent } from "react";
 
-import { userUtils } from "~/classes/UserUtils";
 import { Box } from "~/components";
 import { useGlobalStore, useUserStore } from "~/store";
 import { dialogNames } from "~/store/global/initialState";

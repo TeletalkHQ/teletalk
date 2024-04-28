@@ -1,6 +1,6 @@
+import { extractor } from "@repo/classes";
 import { AddContactWithCellphoneIO, ContactItem } from "@repo/type-store";
 
-import { extractor } from "~/classes/Extractor";
 import { services } from "~/services";
 import { SocketOnHandler } from "~/types";
 

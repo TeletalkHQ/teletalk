@@ -66,6 +66,7 @@ export type ExtendedContactItem = ContactItem & StringMap;
 export type EmptyContact = EmptyCellphone & EmptyFullName & { userId: "" };
 export type Contacts = ContactItem[];
 export type DBContactItem = FullNameWithUserId & {
+	//TODO: Remove this field
 	isCellphoneAccessible: boolean;
 };
 export type DBContacts = DBContactItem[];
@@ -123,6 +124,29 @@ export interface ClientStatus {
 	connections: number;
 	userId: UserId;
 }
+
+export type UserItem = UserPublicData &
+	UnknownCellphone & {
+		avatarSrc: AvatarSrc;
+		isBlocked: boolean;
+		isContact: boolean;
+		originalFirstName: string;
+		originalLastName: string;
+	};
+
+export type Users = UserItem[];
+
+export type AddingContactWithCellphone = FullName & EmptyCellphone;
+
+export type CurrentUserData = FullNameWithUserId &
+	Cellphone & {
+		bio: Bio;
+		username: Username;
+		status: Status;
+		createdAt: number;
+		avatarSrc: AvatarSrc;
+	};
+export type ExtendedCurrentUserData = CurrentUserData & StringMap;
 
 export type ClientStatusList = {
 	[key: string]: ClientStatus;

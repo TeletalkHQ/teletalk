@@ -1,4 +1,5 @@
-import { userUtils } from "~/classes/UserUtils";
+import { userUtils } from "@repo/classes";
+
 import { Box, Typography } from "~/components";
 import { useGetPublicData } from "~/hooks";
 import { useMessageStore } from "~/store";

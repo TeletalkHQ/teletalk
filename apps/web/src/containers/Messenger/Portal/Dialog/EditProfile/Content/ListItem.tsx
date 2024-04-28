@@ -1,5 +1,5 @@
 import { ListItemButtonProps } from "@mui/material";
-import { ElementLabel } from "@repo/utils";
+import { ElementLabel } from "@repo/type-store";
 
 import { Box } from "~/components";
 import { IconType, VoidNoArgsFn } from "~/types";

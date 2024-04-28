@@ -1,4 +1,4 @@
-import { ElementLabel } from "@repo/utils";
+import { ElementLabel } from "@repo/type-store";
 
 import { DialogName, IconType, VoidWithArg } from "~/types";
 

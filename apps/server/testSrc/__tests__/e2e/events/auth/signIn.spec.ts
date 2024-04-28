@@ -1,4 +1,4 @@
-import { extractor } from "~/classes/Extractor";
+import { extractor } from "@repo/classes";
 
 import { authHelper } from "@/classes/AuthHelper";
 import { randomMaker } from "@/classes/RandomMaker";

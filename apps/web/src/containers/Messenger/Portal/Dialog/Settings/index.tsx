@@ -1,4 +1,5 @@
-import { userUtils } from "~/classes/UserUtils";
+import { userUtils } from "@repo/classes";
+
 import { Template } from "~/components";
 import { useDialogState } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";

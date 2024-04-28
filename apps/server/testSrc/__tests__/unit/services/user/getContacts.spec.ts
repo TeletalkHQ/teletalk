@@ -1,6 +1,6 @@
+import { extractor } from "@repo/classes";
 import { ContactItem } from "@repo/type-store";
 
-import { extractor } from "~/classes/Extractor";
 import { services } from "~/services";
 
 import { assertion } from "@/classes/Assertion";

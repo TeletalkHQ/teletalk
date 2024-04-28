@@ -1,8 +1,8 @@
+import { extractor } from "@repo/classes";
 import { models } from "@repo/model";
 import { HydratedUser } from "@repo/model";
 import { Contacts, SessionId } from "@repo/type-store";
 
-import { extractor } from "~/classes/Extractor";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
 

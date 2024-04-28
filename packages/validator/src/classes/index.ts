@@ -1,2 +1,2 @@
-export * from "./ValidationChecker";
+export * from "./ProcessValidationError";
 export * from "./ValidationModelBuilder";

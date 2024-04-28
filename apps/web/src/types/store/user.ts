@@ -1,19 +1,15 @@
 import type {
 	AddingContactWithCellphone,
 	AvatarSrc,
-	Bio,
-	Cellphone,
 	ContactItem,
 	ContactItemWithEmptyCellphone,
 	CountryItem,
+	CurrentUserData,
 	FullName,
-	FullNameWithUserId,
 	RemoveContactIO,
-	Status,
 	UserId,
 	UserItem,
 	UserPublicData,
-	Username,
 	Users,
 } from "@repo/type-store";
 
@@ -32,15 +28,6 @@ export interface OnlineUser {
 
 export type OnlineUserList = OnlineUser[];
 
-export type CurrentUserData = FullNameWithUserId &
-	Cellphone & {
-		bio: Bio;
-		username: Username;
-		status: Status;
-		createdAt: number;
-		avatarSrc: AvatarSrc;
-	};
-
 export interface UserState {
 	currentUserData: CurrentUserData;
 	selectedUserIdForActions: UserId;
@@ -50,8 +37,6 @@ export interface UserState {
 	onlineUsers: OnlineUserList;
 	isUserDataSettled: boolean;
 }
-
-export type ExtendedCurrentUserData = CurrentUserData & StringMap;
 
 export type ExtendedCountryItem = CountryItem & StringMap;
 

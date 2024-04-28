@@ -26,7 +26,7 @@ import {
 	Telegram as TelegramIcon,
 	VerifiedUser as VerifiedUserIcon,
 } from "@mui/icons-material";
-import { ElementLabel, ElementName } from "@repo/utils";
+import { ElementLabel, ElementName } from "@repo/type-store";
 
 import { IconType } from "~/types";
 

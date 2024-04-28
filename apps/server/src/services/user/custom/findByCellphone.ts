@@ -1,8 +1,8 @@
+import { extractor } from "@repo/classes";
 import { errorStore } from "@repo/error-store";
 import { HydratedUser } from "@repo/model";
 import { DBUserData, PartialEmptyCellphone } from "@repo/type-store";
 
-import { extractor } from "~/classes/Extractor";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 
 import { coreServices } from "../core";
