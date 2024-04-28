@@ -1,10 +1,8 @@
 import { Field } from "@repo/model";
-import { AsyncCheckFunction, SyncCheckFunction } from "fastest-validator";
 
 import { ValidationModelBuilder } from "../classes";
 import { models } from "../models";
-
-export type ValidatorFnType = AsyncCheckFunction | SyncCheckFunction;
+import { ValidatorFnType } from "../types";
 
 export const validators = Object.entries(models.validation).reduce(
 	(prevValue, [fieldName, model]) => {

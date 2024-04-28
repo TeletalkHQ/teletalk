@@ -3,8 +3,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import type { CountryItem } from "@repo/type-store";
 import { countries } from "@repo/vars";
 
-import { OnChangeValidatorFn, SelectedCountry, VoidWithArg } from "~/types";
-import { utils } from "~/utils";
+import { SelectedCountry, VoidWithArg } from "~/types";
 
 import Option from "./Option";
 import SelectorInput from "./SelectorInput";
@@ -14,36 +13,12 @@ export type SelectCountryOnChange = VoidWithArg<SelectedCountry>;
 interface Props {
 	countryCode: string;
 	countryName: string;
-	countryNameOnChange: OnChangeValidatorFn;
-	onSelectChange: SelectCountryOnChange;
 }
 
-const CountrySelector: React.FC<Props> = ({
-	countryCode,
-	countryName,
-	countryNameOnChange,
-	onSelectChange,
-}) => {
+const CountrySelector: React.FC<Props> = ({ countryCode, countryName }) => {
 	const getOptionLabel = (option: CountryItem) => option.countryName;
 
-	const handleCountryNameOnChange = utils.createOnChangeValidator(
-		"countryName",
-		(value: string) => {
-			countryNameOnChange(value, {
-				target: {
-					value,
-					name: "countryName",
-				},
-			});
-		}
-	);
-
-	const handleSelectCountryOnChange = (
-		_e: React.SyntheticEvent,
-		newValue: SelectedCountry
-	) => {
-		onSelectChange(newValue);
-	};
+	const handleSelectCountryOnChange = (_e: React.SyntheticEvent) => {};
 
 	const renderOption = (props: ListItemProps, option: CountryItem) => (
 		<Option key={option.countryName} option={option} props={props} />
@@ -63,7 +38,7 @@ const CountrySelector: React.FC<Props> = ({
 			renderOption={renderOption}
 			value={selectedCountry}
 			onChange={handleSelectCountryOnChange}
-			onInputChange={handleCountryNameOnChange}
+			// onInputChange={handleCountryNameOnChange}
 		/>
 	);
 };

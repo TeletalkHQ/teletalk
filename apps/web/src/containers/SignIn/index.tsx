@@ -4,7 +4,7 @@ import { websocket } from "~/classes/websocket/Websocket";
 import { Box, Button, Components, Icon, Input, Typography } from "~/components";
 import { useSignIn } from "~/hooks";
 import { useAuthStore } from "~/store";
-import { OnChangeValidatorFn } from "~/types";
+import { CommonOnChange } from "~/types";
 import { utils } from "~/utils";
 
 const SignIn = () => {
@@ -17,9 +17,9 @@ const SignIn = () => {
 		if (websocket.client.disconnected) websocket.client.connect();
 	}, []);
 
-	const handleChange: OnChangeValidatorFn = (_value: string, event) => {
+	const handleChange: CommonOnChange = (e) => {
 		authStore.updateCellphone({
-			[event.target.name]: event.target.value,
+			[e.target.name]: e.target.value,
 		});
 	};
 

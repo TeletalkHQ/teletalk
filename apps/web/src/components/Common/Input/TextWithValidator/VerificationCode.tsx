@@ -1,19 +1,13 @@
 import { BaseComponent } from "~/components/Base";
-import { OnChangeValidatorFn } from "~/types";
-import { utils } from "~/utils";
+import { CommonOnChange } from "~/types";
 
 interface Props {
 	value: string;
-	onChange: OnChangeValidatorFn;
+	onChange: CommonOnChange;
 	required?: boolean;
 }
 
 const VerificationCode: React.FC<Props> = ({ value, onChange }) => {
-	const handleChange = utils.createOnChangeValidator(
-		"verificationCode",
-		onChange
-	);
-
 	return (
 		<BaseComponent.Input.Text
 			autoFocus
@@ -21,7 +15,7 @@ const VerificationCode: React.FC<Props> = ({ value, onChange }) => {
 			name="verificationCode"
 			required
 			value={value}
-			onChange={handleChange}
+			onChange={onChange}
 		/>
 	);
 };

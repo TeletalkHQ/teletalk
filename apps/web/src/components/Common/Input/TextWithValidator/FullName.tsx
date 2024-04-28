@@ -1,11 +1,11 @@
-import { OnChangeValidatorFn } from "~/types";
+import { CommonOnChange } from "~/types";
 
 import FirstName from "./FirstName";
 import LastName from "./LastName";
 
 interface Props {
-	onFirstNameInputChange: OnChangeValidatorFn;
-	onLastNameInputChange: OnChangeValidatorFn;
+	onFirstNameInputChange: CommonOnChange;
+	onLastNameInputChange: CommonOnChange;
 	firstName: string;
 	lastName: string;
 }

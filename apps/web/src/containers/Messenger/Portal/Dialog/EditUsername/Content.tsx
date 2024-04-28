@@ -1,8 +1,8 @@
 import { Box, Input, Typography } from "~/components";
-import { OnChangeValidatorFn } from "~/types";
+import { CommonOnChange } from "~/types";
 
 interface Props {
-	onChange: OnChangeValidatorFn;
+	onChange: CommonOnChange;
 	username: string;
 	usernameLength: string | number;
 }

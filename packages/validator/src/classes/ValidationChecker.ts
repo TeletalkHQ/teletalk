@@ -1,107 +1,41 @@
-import { NativeError, errorStore } from "@repo/error-store";
-import { Field, NativeModelKey, utils as utilsFromModelPkg } from "@repo/model";
+import { ErrorReason, NativeError, errorStore } from "@repo/error-store";
+import { ValidationError } from "fastest-validator";
 
 import {
-	ValidationCheckerError,
+	ProcessedValidationError,
 	ValidationErrors,
-	ValidationResult,
 } from "../types/validation";
-import { ErrorTypes, utils } from "../utils";
 
-export class ValidationChecker {
+export class ProcessValidationError {
 	private collectedErrors: NativeError[] = [];
 
-	private errorTypes: ErrorTypes;
+	constructor(private validationErrors: ValidationErrors) {}
 
-	constructor(
-		private validationResult: ValidationResult,
-		private fieldName: Field,
-		private value: unknown
-	) {}
-
-	check() {
-		if (this.validationResult === true) return;
-
-		this.errorTypes = convertErrorTypesToBoolean(this.validationResult);
-
-		this.required()
-			.stringEmpty()
-			.string()
-			.stringMax()
-			.stringMin()
-			.stringNumeric()
-			.stringLength();
-
-		if (this.collectedErrors.length) throw this.collectedErrors;
+	process() {
+		this.validationErrors.forEach((item) => {
+			const nativeError = this.resolveNativeError(item.message);
+			const processedValidationError = this.processError(item, nativeError);
+			this.collectedErrors.push(processedValidationError);
+		});
 	}
 
-	stringEmpty() {
-		this.pushError(this.errorTypes.stringEmpty, this.resolveError("empty"));
-		return this;
-	}
-	required() {
-		this.pushError(this.errorTypes.required, this.resolveError("required"));
-		return this;
-	}
-	string() {
-		this.pushError(this.errorTypes.string, this.resolveError("type"));
-		return this;
-	}
-	stringNumeric() {
-		this.pushError(this.errorTypes.stringNumeric, this.resolveError("numeric"));
-		return this;
-	}
-	stringLength() {
-		this.pushError(this.errorTypes.stringLength, this.resolveError("length"));
-		return this;
-	}
-	stringMin() {
-		this.pushError(this.errorTypes.stringMin, this.resolveError("min"));
-		return this;
-	}
-	stringMax() {
-		this.pushError(this.errorTypes.stringMax, this.resolveError("max"));
-		return this;
-	}
-	throwAnyway(error: NativeError) {
-		this.pushError(true, error);
-		return this;
-	}
-
-	resolveError(prop: NativeModelKey) {
-		return errorStore.find(
-			utilsFromModelPkg.makeModelErrorReason(this.fieldName, prop)
+	resolveNativeError(message?: string) {
+		return (
+			errorStore.find(message as ErrorReason) ||
+			errorStore.find("UNKNOWN_VALIDATION_ERROR")
 		);
 	}
 
-	pushError(condition: boolean, error: NativeError) {
-		if (condition) this.collectedErrors.push(this.makeError(error));
-
-		return this;
-	}
-
-	makeError(error: NativeError): ValidationCheckerError {
+	processError(
+		validationError: ValidationError,
+		error: NativeError
+	): ProcessedValidationError {
 		return {
 			...error,
-			result: this.validationResult as ValidationErrors,
-			validatedFieldName: this.fieldName,
-			validatedValue: this.value,
+			result: validationError,
 		};
 	}
 }
 
-const convertErrorTypesToBoolean = (errors: ValidationErrors) => {
-	const validatorErrorTypes = utils.getDefaultValidatorErrorTypes();
-
-	errors.forEach((error) => {
-		validatorErrorTypes[error.type as keyof ErrorTypes] = true;
-	});
-
-	return validatorErrorTypes;
-};
-
-export const validationChecker = (
-	validationResult: ValidationResult,
-	fieldName: Field,
-	value: unknown
-) => new ValidationChecker(validationResult, fieldName, value);
+export const processValidationError = (validationResult: ValidationErrors) =>
+	new ProcessValidationError(validationResult);

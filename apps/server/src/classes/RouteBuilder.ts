@@ -1,4 +1,5 @@
 import { NativeError } from "@repo/error-store";
+import { models } from "@repo/validator";
 import FastestValidator, { ValidationSchema } from "fastest-validator";
 
 import { Route } from "~/types";
@@ -43,3 +44,15 @@ export abstract class RouteBuilder {
 		};
 	}
 }
+
+const validator = compiler.compile({
+	phoneNumber: models.validation.phoneNumber,
+	lastName: models.validation.lastName,
+	// firstName: models.validation.firstName,
+	// countryCode: models.validation.countryCode,
+	// countryName: models.validation.countryName,
+});
+
+const _result = validator({
+	phoneNumber: "123123123",
+});

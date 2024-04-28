@@ -15,7 +15,11 @@ export const validationModels: ValidationCollection = Object.keys(
 	const builder = validationModelBuilder(currValue as Field).setModel(model);
 
 	Object.keys(model).forEach((key) => {
-		if (key in builder && typeof (builder as any)[key] === "function")
+		if (
+			key in builder &&
+			typeof builder[key as keyof typeof builder] === "function" &&
+			key !== "setModel"
+		)
 			(builder as any)[key]();
 	});
 

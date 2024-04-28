@@ -1,62 +1,52 @@
-import { errorStore } from "@repo/error-store";
-import { Field, models } from "@repo/model";
-import { countries } from "@repo/vars";
+//CLEANME
+// export const validationCheckers = Object.keys(models.native).reduce(
+// 	(prevValue, currValue) => {
+// 		const fieldName = currValue as Field;
+// 		prevValue[fieldName] = (result) => {
+// 		if()
+// processValidationError(result).process()
+// 		};
 
-import { validationChecker } from "../../classes";
-import {
-	ValidationCheckerFn,
-	ValidationCheckerFnCollection,
-} from "../../types/validation";
+// 		return prevValue;
+// 	},
+// 	{} as ValidationCheckerFnCollection
+// );
 
-export const validationCheckers = Object.keys(models.native).reduce(
-	(prevValue, currValue) => {
-		const k = currValue as Field;
+// const {
+// 	countryCode: defaultCountryCodeChecker,
+// 	countryName: defaultCountryNameChecker,
+// } = validationCheckers;
 
-		prevValue[k] = (result, value) =>
-			validationChecker(result, k, value).check();
+// validationCheckers.countryCode = (result, value) => {
+// 	if (result === true) {
+// 		const country = countries.find((c) => c.countryCode === value);
+// 		if (!country) throw errorStore.find("COUNTRY_CODE_NOT_SUPPORTED");
 
-		return prevValue;
-	},
-	{} as ValidationCheckerFnCollection
-);
+// 		return;
+// 	}
 
-const {
-	countryCode: defaultCountryCodeChecker,
-	countryName: defaultCountryNameChecker,
-} = validationCheckers;
+// 	defaultCountryCodeChecker(result, value);
+// };
 
-validationCheckers.countryCode = (result, value) => {
-	if (result === true) {
-		const country = countries.find((c) => c.countryCode === value);
-		if (typeof country === "undefined")
-			throw errorStore.find("COUNTRY_CODE_NOT_SUPPORTED");
+// validationCheckers.countryName = (result, value) => {
+// 	if (result === true) {
+// 		const country = countries.find((c) => c.countryName === value);
+// 		if (!country) throw errorStore.find("COUNTRY_NAME_NOT_SUPPORTED");
 
-		return;
-	}
+// 		return;
+// 	}
 
-	defaultCountryCodeChecker(result, value);
-};
+// 	defaultCountryNameChecker(result, value);
+// };
 
-validationCheckers.countryName = (result, value) => {
-	if (result === true) {
-		const country = countries.find((c) => c.countryName === value);
-		if (typeof country === "undefined")
-			throw errorStore.find("COUNTRY_NAME_NOT_SUPPORTED");
+// const notImplementedCheckerFn = (fieldName: Field) =>
+// 	(() => {
+// 		throw `${fieldName}ValidationChecker is not implemented`;
+// 	}) as ValidationCheckerFn;
 
-		return;
-	}
-
-	defaultCountryNameChecker(result, value);
-};
-
-const notImplementedCheckerFn = (fieldName: Field) =>
-	(() => {
-		throw `${fieldName}ValidationChecker is not implemented`;
-	}) as ValidationCheckerFn;
-
-validationCheckers.id = notImplementedCheckerFn("id");
-validationCheckers.createdAt = notImplementedCheckerFn("createdAt");
-validationCheckers.isActive = notImplementedCheckerFn("isActive");
-validationCheckers.macAddress = notImplementedCheckerFn("macAddress");
-validationCheckers.messageId = notImplementedCheckerFn("messageId");
-validationCheckers.senderId = notImplementedCheckerFn("senderId");
+// validationCheckers.id = notImplementedCheckerFn("id");
+// validationCheckers.createdAt = notImplementedCheckerFn("createdAt");
+// validationCheckers.isActive = notImplementedCheckerFn("isActive");
+// validationCheckers.macAddress = notImplementedCheckerFn("macAddress");
+// validationCheckers.messageId = notImplementedCheckerFn("messageId");
+// validationCheckers.senderId = notImplementedCheckerFn("senderId");

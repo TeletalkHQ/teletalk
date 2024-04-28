@@ -10,7 +10,7 @@ import {
 	useFindSelectedUserForActions,
 } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
-import { OnChangeValidatorFn } from "~/types";
+import { CommonOnChange } from "~/types";
 import { utils } from "~/utils";
 
 import Actions from "./Actions";
@@ -30,10 +30,10 @@ const EditContactWithCellphone = () => {
 			setFullName(extractor.fullName(selectedUserForActions));
 	}, [dialogState.open, selectedUserForActions, selectedUserForActions.userId]);
 
-	const handleInputChange: OnChangeValidatorFn = (_value: string, event) => {
+	const handleInputChange: CommonOnChange = (e) => {
 		setFullName({
 			...fullName,
-			[event.target.name]: event.target.value,
+			[e.target.name]: e.target.value,
 		});
 	};
 

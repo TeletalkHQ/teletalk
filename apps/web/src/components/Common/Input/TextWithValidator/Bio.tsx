@@ -1,16 +1,13 @@
 import { stuffStore } from "~/classes/StuffStore";
 import { BaseComponent } from "~/components/Base";
-import { OnChangeValidatorFn } from "~/types";
-import { utils } from "~/utils";
+import { CommonOnChange } from "~/types";
 
 interface Props {
-	onChange: OnChangeValidatorFn;
+	onChange: CommonOnChange;
 	value: string;
 }
 
 const Bio: React.FC<Props> = ({ onChange, value }) => {
-	const handleChange = utils.createOnChangeValidator("bio", onChange);
-
 	return (
 		<BaseComponent.Input.Text
 			InputProps={{
@@ -25,7 +22,7 @@ const Bio: React.FC<Props> = ({ onChange, value }) => {
 			multiline
 			name="bio"
 			value={value}
-			onChange={handleChange}
+			onChange={onChange}
 		/>
 	);
 };

@@ -1,16 +1,13 @@
 import { BaseComponent } from "~/components/Base";
-import { OnChangeValidatorFn } from "~/types";
-import { utils } from "~/utils";
+import { CommonOnChange } from "~/types";
 
 interface Props {
 	value: string;
-	onChange: OnChangeValidatorFn;
+	onChange: CommonOnChange;
 	required?: boolean;
 }
 
 const LastName: React.FC<Props> = ({ value, onChange, required }) => {
-	const handleChange = utils.createOnChangeValidator("lastName", onChange);
-
 	return (
 		<BaseComponent.Input.Text
 			id="lastName"
@@ -18,7 +15,7 @@ const LastName: React.FC<Props> = ({ value, onChange, required }) => {
 			name="lastName"
 			required={required}
 			value={value}
-			onChange={handleChange}
+			onChange={onChange}
 		/>
 	);
 };

@@ -1,16 +1,13 @@
 import { BaseComponent } from "~/components/Base";
-import { OnChangeValidatorFn } from "~/types";
-import { utils } from "~/utils";
+import { CommonOnChange } from "~/types";
 
 interface Props {
 	value: string;
-	onChange: OnChangeValidatorFn;
+	onChange: CommonOnChange;
 	required?: boolean;
 }
 
 const FirstName: React.FC<Props> = ({ value, onChange, required = true }) => {
-	const handleChange = utils.createOnChangeValidator("firstName", onChange);
-
 	return (
 		<BaseComponent.Input.Text
 			autoFocus
@@ -19,7 +16,7 @@ const FirstName: React.FC<Props> = ({ value, onChange, required = true }) => {
 			name="firstName"
 			required={required}
 			value={value}
-			onChange={handleChange}
+			onChange={onChange}
 		/>
 	);
 };

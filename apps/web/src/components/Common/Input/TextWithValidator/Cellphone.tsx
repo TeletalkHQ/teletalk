@@ -1,7 +1,5 @@
-import { countries } from "@repo/vars";
-
 import { BaseComponent } from "~/components/Base";
-import { OnChangeValidatorFn, SelectedCountry } from "~/types";
+import { CommonOnChange } from "~/types";
 
 import CountrySelector from "../Select/CountrySelector";
 import CountryCode from "./CountryCode";
@@ -11,7 +9,7 @@ interface Props {
 	countryCode: string;
 	countryName: string;
 	phoneNumber: string;
-	onChange: OnChangeValidatorFn;
+	onChange: CommonOnChange;
 }
 
 const Cellphone: React.FC<Props> = ({
@@ -20,51 +18,13 @@ const Cellphone: React.FC<Props> = ({
 	onChange,
 	phoneNumber,
 }) => {
-	const handleCountryNameOnChange: OnChangeValidatorFn = (countryName, e) => {
-		onChange(countryName, e);
-	};
-
-	const handleSelectedCountryOnChange = (value: SelectedCountry) => {
-		const { countryCode = "", countryName = "" } = value || {};
-
-		onChange(countryName, {
-			target: {
-				name: "countryName",
-				value: countryName,
-			},
-		});
-
-		onChange(countryCode, {
-			target: {
-				name: "countryCode",
-				value: countryCode,
-			},
-		});
-	};
-
-	const handleCountryCodeOnChange: OnChangeValidatorFn = (value, e) => {
-		const country = countries.find((i) => i.countryCode === value);
-
-		onChange(value, e);
-		onChange(country?.countryName || "", e);
-	};
-
-	const handlePhoneNumberOnChange: OnChangeValidatorFn = (value, e) => {
-		onChange(value, e);
-	};
-
 	return (
 		<>
-			<CountrySelector
-				countryCode={countryCode}
-				countryName={countryName}
-				countryNameOnChange={handleCountryNameOnChange}
-				onSelectChange={handleSelectedCountryOnChange}
-			/>
+			<CountrySelector countryCode={countryCode} countryName={countryName} />
 
 			<BaseComponent.Box.Flex jc="space-between" style={{ width: "100%" }}>
-				<CountryCode value={countryCode} onChange={handleCountryCodeOnChange} />
-				<PhoneNumber value={phoneNumber} onChange={handlePhoneNumberOnChange} />
+				<CountryCode value={countryCode} onChange={onChange} />
+				<PhoneNumber value={phoneNumber} onChange={onChange} />
 			</BaseComponent.Box.Flex>
 		</>
 	);

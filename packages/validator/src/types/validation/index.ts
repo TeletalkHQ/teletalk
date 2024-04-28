@@ -12,10 +12,8 @@ const ERROR_TYPES = utils.getDefaultValidatorErrorTypes();
 export type ErrorTypes = typeof ERROR_TYPES;
 export type ValidationErrors = ValidationError[];
 
-export interface ValidationCheckerError extends NativeError {
-	result: ValidationErrors;
-	validatedValue: unknown;
-	validatedFieldName: Field;
+export interface ProcessedValidationError extends NativeError {
+	result: ValidationError;
 }
 export type ValidationResult = true | ValidationErrors;
 

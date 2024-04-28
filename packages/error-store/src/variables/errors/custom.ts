@@ -59,6 +59,7 @@ export const customErrors = [
 		.build(),
 	errorBuilder().reason("TARGET_USER_NOT_EXIST").build(),
 	errorBuilder().reason("UNKNOWN_ERROR").side("SERVER").build(),
+	errorBuilder().reason("UNKNOWN_VALIDATION_ERROR").side("SERVER").build(),
 	errorBuilder().reason("USER_EXIST").build(),
 	errorBuilder().reason("USER_NO_LONGER_PARTICIPANT").build(),
 ];

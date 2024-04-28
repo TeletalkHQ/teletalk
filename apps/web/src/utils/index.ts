@@ -1,6 +1,7 @@
 import createCache from "@emotion/cache";
 import type { FullName, UnknownCellphone } from "@repo/type-store";
 import { utils as pkgUtils } from "@repo/utils";
+import { validators } from "@repo/validator";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { envManager } from "~/classes/EnvironmentManager";
@@ -9,7 +10,6 @@ import { stuffStore } from "~/classes/StuffStore";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import {
-	CommonChangeEvent,
 	Field,
 	ModelErrorReason,
 	ModelName,
@@ -18,7 +18,6 @@ import {
 	SocketResponseErrors,
 	WeirdSelectedCountry,
 } from "~/types";
-import { validators } from "~/validators";
 
 import { transformers } from "./transformers";
 
@@ -46,16 +45,6 @@ const isValueLengthInBetweenMinMax = (modelName: ModelName, value: string) => {
 const isValueLengthEqualToLength = (modelName: ModelName, value: string) => {
 	return value.length === (stuffStore.models[modelName] as NativeModel).length;
 };
-
-const createOnChangeValidator =
-	(fieldName: Field, onChangeFn: any) =>
-	(e: CommonChangeEvent | React.SyntheticEvent, value?: any) => {
-		validators[fieldName]
-			.onChangeValidator()
-			.checkValue(e, value)
-			.checkErrors()
-			.executeIfNoError(onChangeFn);
-	};
 
 const makeNonBreakSpace = (length: number) =>
 	Array.from({ length }).map((_) => "&nbsp;");
@@ -93,9 +82,10 @@ const makeModelErrorReason = (
 
 const isCellphoneValid = (c: UnknownCellphone) => {
 	return [
-		validators.countryName.submitValidator().checkValue(c.countryName).hasError,
-		validators.countryCode.submitValidator().checkValue(c.countryCode).hasError,
-		validators.phoneNumber.submitValidator().checkValue(c.phoneNumber).hasError,
+		//CLEANME
+		validators.countryName(c.countryName) === true ? true : false,
+		validators.countryCode(c.countryCode) === true ? true : false,
+		validators.phoneNumber(c.phoneNumber) === true ? true : false,
 	].some(Boolean);
 };
 
@@ -105,10 +95,8 @@ const isContactWithCellphoneValid = (c: UnknownCellphone & FullName) => {
 
 const isFullNameValid = (fullName: FullName) =>
 	[
-		validators.firstName.submitValidator().checkValue(fullName.firstName)
-			.hasError,
-		validators.lastName.submitValidator().checkValue(fullName.lastName)
-			.hasError,
+		validators.firstName(fullName.firstName) === true ? true : false,
+		validators.lastName(fullName.lastName) === true ? true : false,
 	].some(Boolean);
 
 const getDefaultValidatorErrorTypes = () => ({
@@ -193,7 +181,6 @@ const convertFileToBase64 = (file: File | Blob) => {
 export const utils = {
 	convertFileToBase64,
 	createEmotionCache,
-	createOnChangeValidator,
 	getDefaultValidatorErrorTypes,
 	isCellphoneValid,
 	isContactWithCellphoneValid,

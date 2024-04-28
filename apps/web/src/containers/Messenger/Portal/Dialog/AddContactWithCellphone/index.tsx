@@ -4,7 +4,7 @@ import React from "react";
 import { Template } from "~/components";
 import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
-import { OnChangeValidatorFn } from "~/types";
+import { CommonOnChange } from "~/types";
 import { utils } from "~/utils";
 
 import Actions from "./Actions";
@@ -17,9 +17,9 @@ const AddContactWithCellphone = () => {
 	const { handler, loading } = useEmitter("addContactWithCellphone");
 	const dialogState = useDialogState("addContactWithCellphone");
 
-	const handleChange: OnChangeValidatorFn = (_value: string, event) => {
+	const handleChange: CommonOnChange = (e) => {
 		userStore.updateAddingContactWithCellphone({
-			[event.target.name]: event.target.value,
+			[e.target.name]: e.target.value,
 		});
 	};
 

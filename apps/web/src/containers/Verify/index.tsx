@@ -1,25 +1,27 @@
+import { validators } from "@repo/validator";
+
 import { Box, Button, Components, Icon, Input, Typography } from "~/components";
 import { useCustomRouter, useVerify } from "~/hooks";
 import { useAuthStore } from "~/store";
-import { validators } from "~/validators";
+import { CommonOnChange } from "~/types";
 
 const Verify = () => {
 	const authStore = useAuthStore();
 	const router = useCustomRouter();
 	const { handler, loading } = useVerify();
 
-	const isVerifySubmitButtonDisabled = () =>
-		validators.verificationCode
-			.submitValidator()
-			.checkValue(authStore.verificationCode).hasError;
+	const isVerifySubmitButtonDisabled = () => {
+		const result = validators.verificationCode(authStore.verificationCode);
+		return Array.isArray(result) ? false : true;
+	};
 
 	const handleBackToSignInClick = () => {
 		authStore.updateVerificationCode("");
 		router.back();
 	};
 
-	const handleVerificationCodeInputChange = (value: string) => {
-		authStore.updateVerificationCode(value);
+	const handleVerificationCodeInputChange: CommonOnChange = (e) => {
+		authStore.updateVerificationCode(e.target.value);
 	};
 
 	return (
