@@ -31,9 +31,7 @@ export type AssertionInitializer<
 	options: Partial<AssertionInitializerOptions>
 ) => void;
 
-export interface RequesterOptions {
-	shouldFilterRequestData: boolean;
-}
+export interface RequesterOptions {}
 
 export type MiddlewareName = keyof typeof middlewares;
 export type ServiceName = keyof typeof mergedServices;

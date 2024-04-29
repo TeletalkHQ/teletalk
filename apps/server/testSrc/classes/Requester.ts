@@ -11,12 +11,10 @@ import { FIELD_TYPE } from "@/variables";
 
 export class Requester<IOType extends IO> {
 	private error?: NativeError;
-	private options: RequesterOptions = {
-		shouldFilterRequestData: true,
-	};
+	private event: SocketEvent<IOType>;
+	private options: RequesterOptions = {};
 	private requestData: IOType["input"];
 	private response: SocketResponse<IOType["output"]>;
-	private event: SocketEvent<IOType>;
 	private socket: Client;
 
 	constructor(socket: Client, event: SocketEvent<IOType>) {
@@ -76,42 +74,6 @@ export class Requester<IOType extends IO> {
 		return this;
 	}
 
-	// private handleFilterRequestData(options = this.getOptions()) {
-	// 	const inputFields = this.convertInputField(this.getInputFields());
-	// 	const requestData = this.getEmitData();
-	// 	this.checkRequestDataFields(options, inputFields);
-	// 	return this.filterEmitData(requestData, inputFields);
-	// }
-
-	// private convertInputField(inputFields: ValidationModel) {
-	// 	return Object.entries(inputFields).reduce((prevValue, currentValue) => {
-	// 		const [requiredFieldKey, requiredFieldProperties] = currentValue;
-	// 		prevValue[requiredFieldKey] = requiredFieldProperties.value;
-	// 		return prevValue;
-	// 	}, {} as StringMap);
-	// }
-	// private checkRequestDataFields(
-	// 	options = this.getOptions(),
-	// 	inputFields: StringMap
-	// ) {
-	// 	if (!this.getEmitData() && Object.keys(inputFields).length) {
-	// 		const error = {
-	// 			...errorStore.find("INPUT_FIELDS_MISSING"),
-	// 			options,
-	// 			requestData: this.getEmitData(),
-	// 		};
-	// 		logger.dir("error", error, { depth: 10 });
-	// 		loggerHelper.logEndTestRequest();
-	// 		throw error;
-	// 	}
-	// }
-	// private filterEmitData(requestData: IOType["input"], inputFields: StringMap) {
-	// 	return objectUtils.excludePropsPeerToPeer(
-	// 		requestData,
-	// 		inputFields
-	// 	) as StringMap;
-	// }
-
 	async emit() {
 		const response = (await new Promise((resolve, _reject) => {
 			// this.socket.connect();
@@ -134,11 +96,6 @@ export class Requester<IOType extends IO> {
 		const finalOptions = this.mergeOptions(options);
 
 		if (data) this.setEmitData(data);
-
-		if (options.shouldFilterRequestData) {
-			// const filteredRequestData = this.handleFilterRequestData(finalOptions);
-			// this.setEmitData(finalOptions);
-		}
 
 		loggerHelper.logRequestDetails(
 			finalOptions,
