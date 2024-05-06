@@ -2,7 +2,7 @@ import { userUtils } from "@repo/classes";
 import type { AvatarSrc, VoidNoArgsFn } from "@repo/type-store";
 
 import { Box } from "~/components";
-import { Profile } from "~/types";
+import { SettingsStore } from "~/store";
 
 import { EditProfileListItemOnClick } from "../types";
 import Header from "./Header";
@@ -12,7 +12,7 @@ interface Props {
 	avatarSrc: AvatarSrc;
 	onAvatarClick: VoidNoArgsFn;
 	onClick: EditProfileListItemOnClick;
-	profile: Profile;
+	profile: SettingsStore.Profile;
 }
 
 const Content: React.FC<Props> = ({

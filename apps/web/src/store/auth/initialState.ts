@@ -1,6 +1,6 @@
-import { AuthState } from "~/types";
+import { State } from "./types";
 
-export const initialState: AuthState = {
+export const initialState: State = {
 	countryCode: "",
 	countryName: "",
 	firstName: "",

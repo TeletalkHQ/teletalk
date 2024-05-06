@@ -3,14 +3,14 @@ import { VoidNoArgsFn } from "@repo/type-store";
 
 import { Box, Typography } from "~/components";
 import { useGetAvatar } from "~/hooks";
-import { OnContextMenu } from "~/types";
+import { GlobalStore } from "~/store";
 
 interface Props {
 	fullName: string;
 	//REFACTOR: To template string
 	lastSeen: string;
 	onContactClick: VoidNoArgsFn;
-	onContextMenu: OnContextMenu;
+	onContextMenu: GlobalStore.OnContextMenu;
 	userId: UserId;
 }
 

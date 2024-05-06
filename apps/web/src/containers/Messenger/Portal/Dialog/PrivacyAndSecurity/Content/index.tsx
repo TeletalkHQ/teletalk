@@ -1,11 +1,11 @@
 import { VoidWithArg } from "@repo/type-store";
 
-import { DialogName } from "~/types";
+import { GlobalStore } from "~/store";
 
 import List from "./List";
 
 interface Props {
-	onItemClick: VoidWithArg<DialogName>;
+	onItemClick: VoidWithArg<GlobalStore.DialogName>;
 }
 
 const Content: React.FC<Props> = ({ onItemClick }) => (

@@ -1,7 +1,6 @@
 import { Template } from "~/components";
 import { useDialogState } from "~/hooks";
-import { useGlobalStore } from "~/store";
-import { DialogName } from "~/types";
+import { GlobalStore, useGlobalStore } from "~/store";
 
 import Actions from "./Actions";
 import Content from "./Content";
@@ -10,7 +9,7 @@ const PrivacyAndSecurity = () => {
 	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("privacyAndSecurity");
 
-	const handleItemClick = (d: DialogName) => {
+	const handleItemClick = (d: GlobalStore.DialogName) => {
 		globalStore.openDialog(d);
 	};
 

@@ -9,3 +9,5 @@ export const nativeModels = {
 	...userModels,
 	...otherModels,
 };
+
+export type NativeModelName = keyof typeof nativeModels;

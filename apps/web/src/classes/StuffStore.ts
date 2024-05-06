@@ -1,6 +1,6 @@
 import { stuff } from "~/data/stuff";
-import { Stuff } from "~/types";
 
+//TODO: move to pkg
 class StuffStore {
 	errors = stuff.errors;
 	events = stuff.events;
@@ -16,19 +16,19 @@ class StuffStore {
 		};
 	}
 
-	updateModels(models: Stuff["models"]) {
+	updateModels(models: typeof stuff.models) {
 		this.models = models;
 		return this;
 	}
-	updateErrors(errors: Stuff["errors"]) {
+	updateErrors(errors: typeof stuff.errors) {
 		this.errors = errors;
 		return this;
 	}
-	updateEvents(events: Stuff["events"]) {
+	updateEvents(events: typeof stuff.events) {
 		this.events = events;
 		return this;
 	}
-	updateValidationModels(validationModels: Stuff["validationModels"]) {
+	updateValidationModels(validationModels: typeof stuff.validationModels) {
 		this.validationModels = validationModels;
 		return this;
 	}

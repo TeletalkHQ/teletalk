@@ -1,13 +1,13 @@
 import { UserItem, Users, VoidWithArg } from "@repo/type-store";
 
-import { ExtendedOnContextMenu } from "~/types";
+import { GlobalStore } from "~/store";
 
 import ListItem from "./ListItem";
 
 interface Props {
 	contacts: Users;
 	onContactItemClicked: VoidWithArg<UserItem>;
-	onContextMenu: ExtendedOnContextMenu<UserItem>;
+	onContextMenu: GlobalStore.ExtendedOnContextMenu<UserItem>;
 }
 
 const Content: React.FC<Props> = ({

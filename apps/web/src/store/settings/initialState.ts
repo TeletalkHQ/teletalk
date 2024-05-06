@@ -1,6 +1,6 @@
-import { SettingsState } from "~/types";
+import { State } from "./types";
 
-export const initialState: SettingsState = {
+export const initialState: State = {
 	profile: {
 		bio: "",
 		countryCode: "1",

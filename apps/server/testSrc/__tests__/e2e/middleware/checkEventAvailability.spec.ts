@@ -1,5 +1,5 @@
 import { ErrorReason, errorStore } from "@repo/error-store";
-import { SocketEvent } from "@repo/hl-types";
+import { SocketRoute } from "@repo/hl-types";
 import chai from "chai";
 
 import { sessionManager } from "~/classes/SessionManager";
@@ -10,7 +10,7 @@ import { eventsWithoutDisconnect, unknownEvent } from "@/socket/events";
 import { ClientSocket } from "@/types";
 import { utils } from "@/utils";
 
-const createRequester = (socket: ClientSocket, event: SocketEvent<any>) =>
+const createRequester = (socket: ClientSocket, event: SocketRoute<any>) =>
 	requesterMaker(socket, event);
 
 await utils.asyncDescribe(

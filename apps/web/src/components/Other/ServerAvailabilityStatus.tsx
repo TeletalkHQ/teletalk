@@ -1,13 +1,13 @@
-import { Status } from "~/types";
+import { ServerAvailabilityStatus as ServerAvailabilityStatusType } from "~/types";
 
 import { Box } from "..";
 import ServerStatusIndicator from "./ServerStatusIndicator";
 
 interface Props {
-	status: Status;
+	status: ServerAvailabilityStatusType;
 }
 
-const ServerStatus: React.FC<Props> = ({ status }) => {
+const ServerAvailabilityStatus: React.FC<Props> = ({ status }) => {
 	return (
 		<Box.Flex
 			bgcolor={(theme) => theme.palette.background.paper}
@@ -25,4 +25,4 @@ const ServerStatus: React.FC<Props> = ({ status }) => {
 	);
 };
 
-export default ServerStatus;
+export default ServerAvailabilityStatus;

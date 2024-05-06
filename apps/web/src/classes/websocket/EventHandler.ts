@@ -20,7 +20,7 @@ interface Options {
 type FoundInput<T extends EventName> = IOCollection[T]["input"];
 type FoundOutput<T extends EventName> = IOCollection[T]["output"];
 
-//TODO: Merge this
+//TODO: Merge with Requester
 export class EventHandler<T extends EventName> {
 	private defaultOptions: Options = {
 		timeout: appConfigs.getConfigs().api.defaultTimeout,

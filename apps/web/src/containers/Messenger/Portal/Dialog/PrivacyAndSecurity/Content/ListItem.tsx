@@ -1,13 +1,13 @@
 import { VoidWithArg } from "@repo/type-store";
 
 import { Box } from "~/components";
-import { DialogName } from "~/types";
+import { GlobalStore } from "~/store";
 
 import { PrivacyAndSecurityListItem } from "../type";
 
 interface Props {
 	item: PrivacyAndSecurityListItem;
-	onItemClick: VoidWithArg<DialogName>;
+	onItemClick: VoidWithArg<GlobalStore.DialogName>;
 }
 
 const ListItem: React.FC<Props> = ({ item, onItemClick }) => (

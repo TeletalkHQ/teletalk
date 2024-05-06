@@ -1,7 +1,11 @@
 import { FormControl, InputLabel } from "@mui/material";
 
 import { Box, Components, Input } from "~/components";
-import { CommonOnChange, CommonSelectOnChange, Status } from "~/types";
+import {
+	CommonOnChange,
+	CommonSelectOnChange,
+	ServerAvailabilityStatus,
+} from "~/types";
 
 interface Props {
 	disabled: boolean;
@@ -9,7 +13,7 @@ interface Props {
 	onChange: CommonOnChange;
 	onSelectChange: CommonSelectOnChange;
 	protocol: string;
-	status: Status;
+	status: ServerAvailabilityStatus;
 }
 
 const Content: React.FC<Props> = ({
@@ -22,7 +26,7 @@ const Content: React.FC<Props> = ({
 }) => {
 	return (
 		<Box.Flex col gap="5px" style={{ maxWidth: "400px" }}>
-			<Components.ServerStatus status={status} />
+			<Components.ServerAvailabilityStatus status={status} />
 
 			<Box.Flex ai="center" jc="space-between" width="100%">
 				<FormControl fullWidth style={{ width: "25%" }}>

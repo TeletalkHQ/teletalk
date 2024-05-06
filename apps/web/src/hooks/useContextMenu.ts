@@ -1,10 +1,12 @@
-import { useGlobalStore } from "~/store";
-import { ContextMenuList } from "~/types";
+import { GlobalStore, useGlobalStore } from "~/store";
 
-export const useContextMenu = (list: ContextMenuList) => {
+export const useContextMenu = (list: GlobalStore.ContextMenuList) => {
 	const globalStore = useGlobalStore();
 
-	const handleOpenContextMenu = (e: React.MouseEvent, l?: ContextMenuList) => {
+	const handleOpenContextMenu = (
+		e: React.MouseEvent,
+		l?: GlobalStore.ContextMenuList
+	) => {
 		globalStore.handleContextMenu(e, l || list);
 	};
 

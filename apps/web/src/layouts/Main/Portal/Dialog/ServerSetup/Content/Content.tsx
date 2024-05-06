@@ -1,7 +1,7 @@
 import { VoidNoArgsFn, VoidWithArg } from "@repo/type-store";
 
 import { Box, Button, Components } from "~/components";
-import { Status, Url } from "~/types";
+import { ServerAvailabilityStatus, Url } from "~/types";
 
 import AddServerButton from "./AddServerButton";
 import ServerSelect from "./ServersSelect";
@@ -12,7 +12,7 @@ interface Props {
 	onServersClick: VoidNoArgsFn;
 	onServerSelectChange: VoidWithArg<Url>;
 	selectedServer: string;
-	status: Status;
+	status: ServerAvailabilityStatus;
 }
 
 const ServerSetupContent: React.FC<Props> = ({
@@ -25,7 +25,7 @@ const ServerSetupContent: React.FC<Props> = ({
 }) => {
 	return (
 		<Box.Flex col gap="10px" maxWidth="400px" padding="10px">
-			<Components.ServerStatus status={status} />
+			<Components.ServerAvailabilityStatus status={status} />
 
 			<ServerSelect
 				disabled={disabled}

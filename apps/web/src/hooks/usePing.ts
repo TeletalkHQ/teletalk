@@ -3,13 +3,13 @@ import { useState } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
-import { ServerTestResult, Status, Url } from "~/types";
+import { ServerAvailabilityStatus, ServerTestResult, Url } from "~/types";
 
 import { useEmitter } from "./useEmitter";
 
 export const usePing = () => {
 	const [loading, setLoading] = useState(false);
-	const [status, setStatus] = useState<Status>("idle");
+	const [status, setStatus] = useState<ServerAvailabilityStatus>("idle");
 	const { handler: pingHandler } = useEmitter("ping");
 
 	const handler = async (url: Url) => {
@@ -77,7 +77,7 @@ export const usePing = () => {
 		handleSettled("offline");
 	};
 
-	const handleSettled = (status: Status) => {
+	const handleSettled = (status: ServerAvailabilityStatus) => {
 		setStatus(status);
 		setLoading(false);
 	};

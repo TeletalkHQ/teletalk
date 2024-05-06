@@ -9,7 +9,7 @@ import type {
 	VoidWithArg,
 } from "@repo/type-store";
 
-import { StoreSetFn } from "~/types";
+import { StoreSetFn } from "../utils";
 
 export interface SelectedChatInfo {
 	chatId: ChatId;
@@ -21,13 +21,13 @@ export interface AddMessagePayload {
 	addedMessage: MessageItem;
 }
 
-export interface MessageState {
+export interface State {
 	privateChats: PrivateChats;
 	selectedChatInfo: SelectedChatInfo;
 	messageInputTextValue: MessageText;
 }
 
-export interface MessageHandlers {
+export interface Handlers {
 	addMessage: VoidWithArg<AddMessagePayload>;
 	addPrivateChat: VoidWithArg<PrivateChatItem>;
 	createNewPrivateChat: VoidWithArg<PrivateChatItem>;
@@ -38,6 +38,6 @@ export interface MessageHandlers {
 	reset: VoidNoArgsFn;
 }
 
-export type MessageSetState = StoreSetFn<MessageState>;
+export type SetState = StoreSetFn<State>;
 
-export type MessageStore = MessageHandlers & MessageState;
+export type Store = Handlers & State;

@@ -1,11 +1,11 @@
 import CircleIcon from "@mui/icons-material/Circle";
 
-import { Status, StatusColors } from "~/types";
+import { ServerAvailabilityStatus, StatusColors } from "~/types";
 
 import { Box } from "..";
 
 interface Props {
-	status: Status;
+	status: ServerAvailabilityStatus;
 }
 
 export const statusColors: StatusColors = {

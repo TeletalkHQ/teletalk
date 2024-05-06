@@ -12,9 +12,10 @@ import type {
 	VoidWithArg,
 } from "@repo/type-store";
 
-import { SelectedCountry, StoreSetFn } from "~/types";
+import { GlobalStore } from "../global";
+import { StoreSetFn } from "../utils";
 
-export interface AuthHandlers {
+export interface Handlers {
 	reset: VoidNoArgsFn;
 	updateCellphone: VoidWithArg<Partial<Cellphone>>;
 	updateCountryCode: VoidWithArg<CountryCode>;
@@ -22,15 +23,15 @@ export interface AuthHandlers {
 	updateFirstName: VoidWithArg<FirstName>;
 	updateLastName: VoidWithArg<LastName>;
 	updatePhoneNumber: VoidWithArg<PhoneNumber>;
-	updateSelectedCountry: VoidWithArg<SelectedCountry>;
+	updateSelectedCountry: VoidWithArg<GlobalStore.SelectedCountry>;
 	updateVerificationCode: VoidWithArg<VerificationCode>;
 }
 
-export interface AuthState extends UnknownCellphone, FullName {
-	selectedCountry: SelectedCountry;
+export interface State extends UnknownCellphone, FullName {
+	selectedCountry: GlobalStore.SelectedCountry;
 	verificationCode: VerificationCode;
 }
 
-export type AuthSetState = StoreSetFn<AuthState>;
+export type SetState = StoreSetFn<State>;
 
-export type AuthStore = AuthHandlers & AuthState;
+export type Store = Handlers & State;

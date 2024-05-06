@@ -8,7 +8,8 @@ import type {
 import { CSSProperties } from "react";
 
 import { dialogNames } from "~/store/global/initialState";
-import { StoreSetFn } from "~/types";
+
+import { StoreSetFn } from "../utils";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -69,7 +70,7 @@ export type ContextMenuState = {
 	list: ContextMenuList;
 };
 
-export interface GlobalHandlers {
+export interface Handlers {
 	changeDrawerOpen: VoidWithArg<boolean>;
 	closeAllDialog: VoidNoArgsFn;
 	closeContextMenu: VoidNoArgsFn;
@@ -97,7 +98,7 @@ export interface LoadingState {
 	type: LoadingType;
 }
 
-export interface GlobalState {
+export interface State {
 	contextMenu: ContextMenuState;
 	dialogStates: DialogState[];
 	drawer: {
@@ -116,6 +117,6 @@ export interface GlobalState {
 	isInitialized: boolean;
 }
 
-export type GlobalSetState = StoreSetFn<GlobalState>;
+export type SetState = StoreSetFn<State>;
 
-export type GlobalStore = GlobalHandlers & GlobalState;
+export type Store = Handlers & State;

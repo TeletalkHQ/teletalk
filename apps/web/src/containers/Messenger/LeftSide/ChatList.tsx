@@ -1,14 +1,13 @@
 import type { PrivateChatItem, UserId } from "@repo/type-store";
 
-import { useMessageStore, useUserStore } from "~/store";
-import { SelectedChatInfo } from "~/types";
+import { MessageStore, useMessageStore, useUserStore } from "~/store";
 
 import ChatListItem from "./ChatListItem";
 import { HandleChatListItemClick } from "./types";
 
 interface Props {
 	onChatListItemClick: HandleChatListItemClick;
-	selectedUserToChat: SelectedChatInfo;
+	selectedUserToChat: MessageStore.SelectedChatInfo;
 }
 
 const ChatList: React.FC<Props> = ({

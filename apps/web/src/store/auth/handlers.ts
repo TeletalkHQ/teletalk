@@ -1,8 +1,7 @@
-import { AuthHandlers, AuthSetState } from "~/types";
-
 import { initialState } from "./initialState";
+import { Handlers, SetState } from "./types";
 
-export const handlers: (set: AuthSetState) => AuthHandlers = (set) => ({
+export const handlers: (set: SetState) => Handlers = (set) => ({
 	updateCountryCode(countryCode) {
 		set({
 			countryCode,

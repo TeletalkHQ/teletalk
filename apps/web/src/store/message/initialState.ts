@@ -1,6 +1,6 @@
-import { MessageState } from "~/types";
+import { State } from "./types";
 
-export const initialState: MessageState = {
+export const initialState: State = {
 	messageInputTextValue: "",
 	privateChats: [],
 	selectedChatInfo: {

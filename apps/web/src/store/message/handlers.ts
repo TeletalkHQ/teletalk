@@ -1,10 +1,9 @@
 import type { PrivateChatItem } from "@repo/type-store";
 
-import { MessageHandlers, MessageSetState } from "~/types";
-
 import { initialState } from "./initialState";
+import { Handlers, SetState } from "./types";
 
-export const handlers: (set: MessageSetState) => MessageHandlers = (set) => ({
+export const handlers: (set: SetState) => Handlers = (set) => ({
 	setPrivateChats(privateChats) {
 		set({
 			privateChats,

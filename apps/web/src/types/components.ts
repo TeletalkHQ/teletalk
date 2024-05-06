@@ -10,7 +10,7 @@ import {
 	MouseEvent,
 } from "react";
 
-import { DialogName } from "./store";
+import { GlobalStore } from "~/store";
 
 export type DivProps = DetailedHTMLProps<
 	HTMLAttributes<HTMLDivElement>,
@@ -59,7 +59,7 @@ export type HTMLDivMouseEvent = MouseEvent<
 	globalThis.MouseEvent
 >;
 
-export type OnDialogClose = VoidWithArg<DialogName>;
+export type OnDialogClose = VoidWithArg<GlobalStore.DialogName>;
 
 export interface CustomLoadingButtonProps extends LoadingButtonProps {
 	loadingIndicatorText?: string;

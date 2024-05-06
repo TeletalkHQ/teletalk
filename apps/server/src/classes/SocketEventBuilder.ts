@@ -1,11 +1,11 @@
 import { errorStore } from "@repo/error-store";
-import { SocketEvent } from "@repo/hl-types";
+import { SocketRoute } from "@repo/hl-types";
 import { EventName } from "@repo/type-store";
 
 import { RouteBuilder } from "~/classes/RouteBuilder";
 
 export class SocketEventBuilder<T extends EventName> extends RouteBuilder {
-	protected route: SocketEvent<T>;
+	protected route: SocketRoute<T>;
 
 	constructor() {
 		super();

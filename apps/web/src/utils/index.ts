@@ -1,5 +1,11 @@
 import createCache from "@emotion/cache";
 import { SocketResponseErrors } from "@repo/hl-types";
+import {
+	Field,
+	ModelErrorReason,
+	NativeModel,
+	NativeModelKey,
+} from "@repo/model";
 import type { FullName, UnknownCellphone } from "@repo/type-store";
 import { utils as pkgUtils } from "@repo/utils";
 import { validators } from "@repo/validator";
@@ -10,14 +16,8 @@ import { notificationManager } from "~/classes/NotificationManager";
 import { stuffStore } from "~/classes/StuffStore";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
-import {
-	Field,
-	ModelErrorReason,
-	ModelName,
-	NativeModel,
-	NativeModelKey,
-	WeirdSelectedCountry,
-} from "~/types";
+import { GlobalStore } from "~/store";
+import { ModelName } from "~/types";
 
 import { transformers } from "./transformers";
 
@@ -37,7 +37,9 @@ const createEmotionCache = () => {
 };
 
 const isValueLengthInBetweenMinMax = (modelName: ModelName, value: string) => {
-	const { maxLength, minLength } = stuffStore.models[modelName] as NativeModel;
+	const { max: maxLength, min: minLength } = stuffStore.models[
+		modelName
+	] as NativeModel;
 	const inputValueLength = value.length;
 	return inputValueLength >= minLength! && inputValueLength <= maxLength!;
 };
@@ -56,7 +58,7 @@ const isIos = () => {
 	);
 };
 
-const isCountrySelected = (c: WeirdSelectedCountry) => {
+const isCountrySelected = (c: GlobalStore.WeirdSelectedCountry) => {
 	return !!(c?.countryCode && c?.countryName && c?.countryShortName);
 };
 

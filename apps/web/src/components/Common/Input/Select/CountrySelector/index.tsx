@@ -3,12 +3,12 @@ import Autocomplete from "@mui/material/Autocomplete";
 import type { CountryItem, VoidWithArg } from "@repo/type-store";
 import { countries } from "@repo/vars";
 
-import { SelectedCountry } from "~/types";
+import { GlobalStore } from "~/store";
 
 import Option from "./Option";
 import SelectorInput from "./SelectorInput";
 
-export type SelectCountryOnChange = VoidWithArg<SelectedCountry>;
+export type SelectCountryOnChange = VoidWithArg<GlobalStore.SelectedCountry>;
 
 interface Props {
 	countryCode: string;

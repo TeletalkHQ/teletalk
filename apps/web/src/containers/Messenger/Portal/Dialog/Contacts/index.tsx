@@ -2,8 +2,12 @@ import { UserItem } from "@repo/type-store";
 
 import { Template } from "~/components";
 import { useContextMenu, useDialogState } from "~/hooks";
-import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
-import { ContextMenuList, DialogName, ExtendedOnContextMenu } from "~/types";
+import {
+	GlobalStore,
+	useGlobalStore,
+	useMessageStore,
+	useUserStore,
+} from "~/store";
 
 import Actions from "./Actions";
 import Content from "./Content";
@@ -17,7 +21,7 @@ const Contacts = () => {
 
 	const createContextMenuList = ({
 		isBlocked,
-	}: Partial<UserItem> = {}): ContextMenuList => [
+	}: Partial<UserItem> = {}): GlobalStore.ContextMenuList => [
 		{
 			text: "Edit",
 			handler: onContextMenuHandler("editContactWithCellphone"),
@@ -32,7 +36,7 @@ const Contacts = () => {
 		},
 	];
 
-	const onContextMenuHandler = (dn: DialogName) => () => {
+	const onContextMenuHandler = (dn: GlobalStore.DialogName) => () => {
 		globalStore.closeContextMenu();
 		globalStore.openDialog(dn);
 	};
@@ -51,7 +55,10 @@ const Contacts = () => {
 		});
 	};
 
-	const handleContextMenu: ExtendedOnContextMenu<UserItem> = (event, u) => {
+	const handleContextMenu: GlobalStore.ExtendedOnContextMenu<UserItem> = (
+		event,
+		u
+	) => {
 		userStore.updateSelectedUserIdForActions(u.userId);
 		onContextMenu(event, createContextMenuList(u));
 	};

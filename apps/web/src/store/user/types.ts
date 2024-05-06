@@ -16,7 +16,7 @@ import type {
 	VoidWithArg,
 } from "@repo/type-store";
 
-import { StoreSetFn } from "~/types";
+import { StoreSetFn } from "../utils";
 
 export interface BlacklistItem {
 	userId: UserId;
@@ -31,7 +31,7 @@ export interface OnlineUser {
 
 export type OnlineUserList = OnlineUser[];
 
-export interface UserState {
+export interface State {
 	currentUserData: CurrentUserData;
 	selectedUserIdForActions: UserId;
 	users: Users;
@@ -43,7 +43,7 @@ export interface UserState {
 
 export type ExtendedCountryItem = CountryItem & StringMap;
 
-export interface UserHandlers {
+export interface Handlers {
 	addBlock: VoidWithArg<BlacklistItem>;
 	addContactWithUserId: VoidWithArg<ContactItemWithEmptyCellphone>;
 	addContactWithCellphone: VoidWithArg<ContactItem>;
@@ -67,6 +67,6 @@ export interface UserHandlers {
 	updateUser: VoidWithArg<Partial<UserItem> & { userId: UserId }>;
 }
 
-export type UserSetState = StoreSetFn<UserState>;
+export type SetState = StoreSetFn<State>;
 
-export type UserStore = UserHandlers & UserState;
+export type Store = Handlers & State;

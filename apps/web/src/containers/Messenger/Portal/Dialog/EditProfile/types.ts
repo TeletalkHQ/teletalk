@@ -1,9 +1,10 @@
 import { ElementLabel, VoidWithArg } from "@repo/type-store";
 
-import { DialogName, IconType } from "~/types";
+import { GlobalStore } from "~/store";
+import { IconType } from "~/types";
 
 export interface EditProfileListItem {
-	name: DialogName;
+	name: GlobalStore.DialogName;
 	label: ElementLabel;
 	disabled: boolean;
 	value: string;

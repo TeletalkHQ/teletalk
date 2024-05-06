@@ -1,13 +1,13 @@
 import { VoidNoArgsFn } from "@repo/type-store";
 
 import { Button } from "~/components";
-import { Status } from "~/types";
+import { ServerAvailabilityStatus } from "~/types";
 
 interface Props {
 	disabled: boolean;
 	loading: boolean;
 	onSetup: VoidNoArgsFn;
-	status: Status;
+	status: ServerAvailabilityStatus;
 }
 
 const ServerSetupActions: React.FC<Props> = ({

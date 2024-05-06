@@ -4,9 +4,8 @@ import { ElementName } from "@repo/type-store";
 import { KeyboardEvent, SyntheticEvent } from "react";
 
 import { Box } from "~/components";
-import { useGlobalStore, useUserStore } from "~/store";
+import { GlobalStore, useGlobalStore, useUserStore } from "~/store";
 import { dialogNames } from "~/store/global/initialState";
-import { DialogName } from "~/types";
 import { utils } from "~/utils";
 
 import DrawerList from "./DrawerList";
@@ -33,7 +32,7 @@ const Drawer = () => {
 
 	const handleDrawerItemClick = (n: ElementName) => {
 		if (dialogNames.some((i) => i === n))
-			globalStore.openDialog(n as DialogName);
+			globalStore.openDialog(n as GlobalStore.DialogName);
 	};
 
 	const fullName = userUtils.concatFirstNameWithLastName(

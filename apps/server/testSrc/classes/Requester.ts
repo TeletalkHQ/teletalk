@@ -1,5 +1,5 @@
 import { ErrorReason, NativeError, errorStore } from "@repo/error-store";
-import { SocketEvent, SocketResponse } from "@repo/hl-types";
+import { SocketResponse, SocketRoute } from "@repo/hl-types";
 import { EventName, IOCollection } from "@repo/type-store";
 import chai from "chai";
 import { Socket as Client } from "socket.io-client";
@@ -10,13 +10,13 @@ import { FIELD_TYPE } from "@/variables";
 
 export class Requester<T extends EventName> {
 	private error?: NativeError;
-	private event: SocketEvent<T>;
+	private event: SocketRoute<T>;
 	private options: RequesterOptions = {};
 	private requestData: IOCollection[T]["input"];
 	private response: SocketResponse<T>;
 	private socket: Client;
 
-	constructor(socket: Client, event: SocketEvent<T>) {
+	constructor(socket: Client, event: SocketRoute<T>) {
 		this.setSocket(socket);
 		this.setEvent(event);
 	}
@@ -153,5 +153,5 @@ export class Requester<T extends EventName> {
 
 export const requesterMaker = <T extends EventName>(
 	socket: Client,
-	event: SocketEvent<T>
+	event: SocketRoute<T>
 ) => new Requester(socket, event);

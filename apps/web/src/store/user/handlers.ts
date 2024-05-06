@@ -1,11 +1,10 @@
 import { extractor, maker } from "@repo/classes";
 import { UserItem } from "@repo/type-store";
 
-import { UserHandlers, UserSetState } from "~/types/store/user";
-
 import { initialState } from "./initialState";
+import { Handlers, SetState } from "./types";
 
-export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
+export const handlers: (set: SetState) => Handlers = (set) => ({
 	updateCurrentUserData(userData) {
 		set({ currentUserData: userData });
 	},

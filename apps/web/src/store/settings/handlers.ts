@@ -1,8 +1,7 @@
-import { SettingsHandlers, SettingsSetState } from "~/types";
-
 import { initialState } from "./initialState";
+import { Handlers, SetState } from "./types";
 
-export const handlers: (set: SettingsSetState) => SettingsHandlers = (set) => ({
+export const handlers: (set: SetState) => Handlers = (set) => ({
 	updateProfile(profile) {
 		set((prevState) => ({
 			profile: {

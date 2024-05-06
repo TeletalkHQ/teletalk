@@ -1,8 +1,8 @@
 import { maker } from "@repo/classes";
 
-import { UserState } from "~/types";
+import { State } from "./types";
 
-export const initialState: UserState = {
+export const initialState: State = {
 	addingContactWithCellphone: maker.emptyAddingContactWithCellphone(),
 	addingContactWithUserId: maker.emptyFullName(),
 	currentUserData: {

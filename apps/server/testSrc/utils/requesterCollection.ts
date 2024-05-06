@@ -1,4 +1,4 @@
-import { SocketEvent } from "@repo/hl-types";
+import { SocketRoute } from "@repo/hl-types";
 import { Cellphone, EventName, FullName } from "@repo/type-store";
 import { Socket } from "socket.io-client";
 
@@ -11,7 +11,7 @@ import { RequesterMaker } from "@/types";
 export const requesterMakerHelper = <T extends EventName>(eventName: T) => {
 	const event = events.find(
 		(i) => i.name === eventName
-	) as unknown as SocketEvent<T>;
+	) as unknown as SocketRoute<T>;
 
 	return (socket: Socket) => {
 		return requesterMaker(socket, event);

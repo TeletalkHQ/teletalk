@@ -98,7 +98,11 @@
 		"**/node_modules": true,
 		"**/.turbo": true,
 		"**/.next": true,
-		"**/.prettierignore": true
+		"**/.prettierignore": true,
+		"**/.mocharc.json": true,
+		"**/build": true,
+		"apps/web/configs": true,
+		"apps/server/configs": true
 	},
 	"jest.autoRun": "off",
 	"jest.coverageFormatter": "GutterFormatter",

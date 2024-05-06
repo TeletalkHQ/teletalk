@@ -1,5 +1,6 @@
 import { appConfigs } from "~/classes/AppConfigs";
-import { GlobalState } from "~/types";
+
+import { State } from "./types";
 
 export const defaultDialogState = {
 	//TODO: read default value from mui
@@ -42,7 +43,7 @@ export const dialogNames = [
 	"userInfo",
 ] as const;
 
-export const initialState: GlobalState = {
+export const initialState: State = {
 	contextMenu: {
 		list: [],
 		position: null,

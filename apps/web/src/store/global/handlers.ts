@@ -1,8 +1,7 @@
-import { GlobalHandlers, GlobalSetState } from "~/types";
-
 import { defaultDialogState, initialState } from "./initialState";
+import { Handlers, SetState } from "./types";
 
-export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
+export const handlers: (set: SetState) => Handlers = (set) => ({
 	openLoading(type) {
 		set((prevState) => {
 			return {

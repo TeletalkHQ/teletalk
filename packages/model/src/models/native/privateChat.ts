@@ -11,6 +11,7 @@ import { commonModels } from "./common";
 
 export const privateChatModels = {
 	chatId: nativeModelBuilder
+		//TODO: Move interface to collection, like IO
 		.create<ChatId>()
 		.type("string")
 		.required(true)

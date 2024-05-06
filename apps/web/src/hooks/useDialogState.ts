@@ -1,11 +1,10 @@
-import { useGlobalStore } from "~/store";
-import { DialogName, DialogProps } from "~/types";
+import { GlobalStore, useGlobalStore } from "~/store";
 
 export const useDialogState = (
-	dialogName: DialogName
+	dialogName: GlobalStore.DialogName
 ): {
 	open: boolean;
-	props: DialogProps;
+	props: GlobalStore.DialogProps;
 } => {
 	const globalStore = useGlobalStore();
 
