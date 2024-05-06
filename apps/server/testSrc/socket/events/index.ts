@@ -11,7 +11,7 @@ export const unknownEvent = socketEventBuilder()
 	.create()
 	//@ts-expect-error //FIXME
 	.name("unknownEvent")
-	.handler(() => ({ data: {} }))
+	.handler(() => ({ data: undefined }))
 	.inputSchema({
 		type: "object",
 	})

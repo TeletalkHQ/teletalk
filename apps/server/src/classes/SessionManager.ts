@@ -3,7 +3,7 @@ import { models } from "@repo/model";
 import { EncryptedSession, SessionId } from "@repo/type-store";
 import { SignJWT, jwtVerify } from "jose";
 
-import { configs } from "~/classes/Configs";
+import { configManager } from "~/classes/ConfigManager";
 import { VerifiedSession } from "~/types";
 
 class SessionManager {
@@ -40,7 +40,7 @@ class SessionManager {
 	}
 
 	private getEncodedSecret() {
-		return this.encodeString(configs.getConfigs().APP.SESSION_SECRET);
+		return this.encodeString(configManager.getConfigs().APP.SESSION_SECRET);
 	}
 
 	private encodeString(str: string) {

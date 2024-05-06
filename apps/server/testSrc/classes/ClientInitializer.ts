@@ -5,7 +5,7 @@ import Client, {
 	SocketOptions,
 } from "socket.io-client";
 
-import { configs } from "~/classes/Configs";
+import { configManager } from "~/classes/ConfigManager";
 
 export class ClientInitializer {
 	private client: Socket;
@@ -19,7 +19,7 @@ export class ClientInitializer {
 	private getUrl() {
 		const {
 			APP: { PORT, HOSTNAME },
-		} = configs.getConfigs();
+		} = configManager.getConfigs();
 		return `http://${HOSTNAME}:${PORT}`;
 	}
 

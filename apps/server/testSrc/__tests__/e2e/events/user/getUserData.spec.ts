@@ -16,7 +16,9 @@ describe(
 
 				const {
 					data: { user: receivedUserData },
-				} = await utils.requesterCollection.getUserData(socket).emitFull();
+				} = await utils.requesterCollection
+					.getUserData(socket)
+					.emitFull(undefined);
 
 				assertion().userData({
 					equalValue: {

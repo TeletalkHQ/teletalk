@@ -1,7 +1,8 @@
-import { events } from "~/socket/events";
-import { SocketMiddleware } from "~/types";
+import { SocketMiddleware } from "@repo/hl-types";
 
-export const checkInputData: SocketMiddleware = async (
+import { events } from "~/socket/events";
+
+export const checkInputData: SocketMiddleware<any> = async (
 	_socket,
 	next,
 	[name, data]

@@ -1,5 +1,3 @@
-import { Socket } from "socket.io";
-
 import {
 	CustomUse,
 	SocketDefaultEvent,
@@ -7,8 +5,11 @@ import {
 	SocketMiddlewareEvent,
 	SocketNext,
 	SocketResponse,
-	UnknownError,
-} from "~/types";
+} from "@repo/hl-types";
+import { EventName } from "@repo/type-store";
+import { Socket } from "socket.io";
+
+import { UnknownError } from "~/types";
 import { utils } from "~/utils";
 
 export const registerCustomUse = (socket: Socket) => {
@@ -18,37 +19,37 @@ export const registerCustomUse = (socket: Socket) => {
 				await tryBlock(
 					socket,
 					next,
-					socketMiddlewareEvent as SocketMiddlewareEvent,
+					socketMiddlewareEvent as SocketMiddlewareEvent<any>,
 					middleware
 				);
 			} catch (error) {
 				catchBlock(
 					socket,
 					error,
-					socketMiddlewareEvent as SocketMiddlewareEvent
+					socketMiddlewareEvent as SocketMiddlewareEvent<any>
 				);
 			}
 		});
-	}) as CustomUse;
+	}) as CustomUse<any>;
 };
 
-const tryBlock = async (
+const tryBlock = async <T extends EventName>(
 	socket: Socket,
 	next: SocketNext,
-	socketMiddlewareEvent: SocketMiddlewareEvent,
-	middleware: SocketMiddleware
+	socketMiddlewareEvent: SocketMiddlewareEvent<T>,
+	middleware: SocketMiddleware<T>
 ) => {
 	await middleware(socket, next, socketMiddlewareEvent);
 };
 
-const catchBlock = (
+const catchBlock = <T extends EventName>(
 	socket: Socket,
 	error: UnknownError,
-	socketMiddlewareEvent: SocketMiddlewareEvent
+	socketMiddlewareEvent: SocketMiddlewareEvent<T>
 ) => {
 	logger.error(`customUse:catchBlock:${socketMiddlewareEvent[0]}`, error);
 
-	const response: SocketResponse = utils.createFailureResponse(
+	const response: SocketResponse<T> = utils.createFailureResponse(
 		socketMiddlewareEvent[0],
 		error
 	);

@@ -1,5 +1,7 @@
+import { VoidNoArgsFn } from "@repo/type-store";
+
 import { Box } from "~/components";
-import { IconType, VoidNoArgsFn } from "~/types";
+import { IconType } from "~/types";
 
 import { SettingDisplayName } from "../types";
 

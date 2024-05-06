@@ -1,13 +1,12 @@
 import { extractor } from "@repo/classes";
 import { errorStore } from "@repo/error-store";
-import { VerifyIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { sessionManager } from "~/classes/SessionManager";
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const verify: SocketOnHandler<VerifyIO> = async (socket) => {
+export const verify: SocketOnHandler<"verify"> = async (socket) => {
 	const authSession = await authSessionStore.find(socket.sessionId);
 
 	if (!authSession) throw errorStore.find("SESSION_NOT_FOUND");

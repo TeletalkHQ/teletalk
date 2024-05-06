@@ -5,7 +5,7 @@ import {
 	NativeModel,
 	utils as modelUtils,
 } from "@repo/model";
-import { IO } from "@repo/type-store";
+import { EventName, IOCollection } from "@repo/type-store";
 
 import { RequesterOptions } from "@/types";
 import { utils } from "@/utils";
@@ -15,11 +15,11 @@ import { Requester } from "./Requester";
 
 class E2eFailTestInitializer<
 	PartialNativeModel extends NativeModel,
-	IOType extends IO,
+	T extends EventName,
 > {
 	constructor(
-		private configuredRequester: Requester<IOType>,
-		private data: IOType["input"],
+		private configuredRequester: Requester<T>,
+		private data: IOCollection[T]["input"],
 		private model: PartialNativeModel,
 		private fieldName: Field
 	) {}
@@ -139,14 +139,14 @@ class E2eFailTestInitializer<
 
 export const e2eFailTestInitializer = <
 	PartialNativeModel extends NativeModel,
-	IOType extends IO,
+	T extends EventName,
 >(
-	configuredRequester: Requester<IOType>,
+	configuredRequester: Requester<T>,
 	data: any,
 	model: PartialNativeModel,
 	fieldName: Field
 ) =>
-	new E2eFailTestInitializer<PartialNativeModel, IOType>(
+	new E2eFailTestInitializer<PartialNativeModel, T>(
 		configuredRequester,
 		data,
 		model,

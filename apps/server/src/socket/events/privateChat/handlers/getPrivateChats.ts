@@ -1,9 +1,8 @@
-import { GetPrivateChatsIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const getPrivateChats: SocketOnHandler<GetPrivateChatsIO> = async (
+export const getPrivateChats: SocketOnHandler<"getPrivateChats"> = async (
 	socket
 ) => {
 	const { privateChats } = await services.privateChat.findManyByParticipantId({

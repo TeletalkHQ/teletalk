@@ -8,14 +8,11 @@ import type {
 	PhoneNumber,
 	UnknownCellphone,
 	VerificationCode,
-} from "@repo/type-store";
-
-import {
-	SelectedCountry,
-	StoreSetFn,
 	VoidNoArgsFn,
 	VoidWithArg,
-} from "~/types";
+} from "@repo/type-store";
+
+import { SelectedCountry, StoreSetFn } from "~/types";
 
 export interface AuthHandlers {
 	reset: VoidNoArgsFn;

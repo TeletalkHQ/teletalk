@@ -1,9 +1,8 @@
-import { GetAvatarIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const getAvatar: SocketOnHandler<GetAvatarIO> = async (
+export const getAvatar: SocketOnHandler<"getAvatar"> = async (
 	_socket,
 	data
 ) => {

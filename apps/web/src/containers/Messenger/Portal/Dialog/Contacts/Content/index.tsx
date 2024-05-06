@@ -1,6 +1,6 @@
-import { UserItem, Users } from "@repo/type-store";
+import { UserItem, Users, VoidWithArg } from "@repo/type-store";
 
-import { ExtendedOnContextMenu, VoidWithArg } from "~/types";
+import { ExtendedOnContextMenu } from "~/types";
 
 import ListItem from "./ListItem";
 

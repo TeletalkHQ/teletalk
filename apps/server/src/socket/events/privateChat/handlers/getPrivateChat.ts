@@ -1,9 +1,8 @@
-import { GetPrivateChatIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const getPrivateChat: SocketOnHandler<GetPrivateChatIO> = async (
+export const getPrivateChat: SocketOnHandler<"getPrivateChat"> = async (
 	_socket,
 	data
 ) => {

@@ -1,4 +1,4 @@
-import { IO } from "@repo/type-store";
+import { EventName } from "@repo/type-store";
 import { Socket as ClientSocket } from "socket.io-client";
 
 import { middlewares } from "~/socket/middlewares";
@@ -6,12 +6,12 @@ import { middlewares } from "~/socket/middlewares";
 import { Requester } from "@/classes/Requester";
 import { mergedServices } from "@/services";
 
-export type RequesterMaker<IOType extends IO> = (
+export type RequesterMaker<T extends EventName> = (
 	socketClient: ClientSocket
-) => Requester<IOType>;
+) => Requester<T>;
 
-export type E2eFailTestInitializer<IOType extends IO = any> = (
-	configuredRequester: Requester<IOType>,
+export type E2eFailTestInitializer<T extends EventName> = (
+	configuredRequester: Requester<T>,
 	data: Readonly<object>
 ) => void;
 

@@ -1,5 +1,7 @@
+import { VoidNoArgsFn, VoidWithArg } from "@repo/type-store";
+
 import { Box, Button, Components } from "~/components";
-import { Status, Url, VoidNoArgsFn, VoidWithArg } from "~/types";
+import { Status, Url } from "~/types";
 
 import AddServerButton from "./AddServerButton";
 import ServerSelect from "./ServersSelect";

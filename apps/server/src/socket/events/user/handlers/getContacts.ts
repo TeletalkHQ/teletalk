@@ -1,9 +1,8 @@
-import { GetContactsIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const getContacts: SocketOnHandler<GetContactsIO> = async (socket) => {
+export const getContacts: SocketOnHandler<"getContacts"> = async (socket) => {
 	const { contacts } = await services.user.getContacts({
 		currentSessionId: socket.sessionId,
 	});

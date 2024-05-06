@@ -1,31 +1,25 @@
-import {
-	Cellphone,
-	EventName,
-	FullName,
-	IO,
-	IOCollection,
-} from "@repo/type-store";
+import { SocketEvent } from "@repo/hl-types";
+import { Cellphone, EventName, FullName } from "@repo/type-store";
 import { Socket } from "socket.io-client";
 
 import { events } from "~/socket/events";
-import { SocketEvent } from "~/types";
 
 import { randomMaker } from "@/classes/RandomMaker";
 import { requesterMaker } from "@/classes/Requester";
 import { RequesterMaker } from "@/types";
 
 export const requesterMakerHelper = <T extends EventName>(eventName: T) => {
-	const event = events.find((i) => i.name === eventName)! as SocketEvent<
-		IOCollection[T]
-	>;
+	const event = events.find(
+		(i) => i.name === eventName
+	) as unknown as SocketEvent<T>;
 
 	return (socket: Socket) => {
 		return requesterMaker(socket, event);
 	};
 };
 
-export const setupRequester = async <IOType extends IO>(
-	requester: RequesterMaker<IOType>,
+export const setupRequester = async <T extends EventName>(
+	requester: RequesterMaker<T>,
 	cellphone?: Cellphone,
 	fullName?: FullName
 ) => {

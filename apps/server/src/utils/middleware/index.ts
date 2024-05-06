@@ -1,11 +1,11 @@
+import { SocketMiddleware } from "@repo/hl-types";
 import { EventName } from "@repo/type-store";
 
-import { SocketMiddleware } from "~/types";
 import { utils } from "~/utils";
 
-const applyMiddlewares = (
+const applyMiddlewares = <T extends EventName = any>(
 	eventNamesToApply: EventName | EventName[],
-	...middlewares: SocketMiddleware[]
+	...middlewares: SocketMiddleware<T>[]
 ) => {
 	return (async (socket, next, socketMiddlewareEvent) => {
 		if (utils.isEventNameMatch(eventNamesToApply, socketMiddlewareEvent[0]))
@@ -16,12 +16,12 @@ const applyMiddlewares = (
 				socketMiddlewareEvent,
 			});
 		else next();
-	}) as SocketMiddleware;
+	}) as SocketMiddleware<T>;
 };
 
-const ignoreMiddlewares = (
+const ignoreMiddlewares = <T extends EventName = any>(
 	eventNamesToIgnore: EventName | EventName[],
-	...middlewares: SocketMiddleware[]
+	...middlewares: SocketMiddleware<T>[]
 ) => {
 	return (async (socket, next, socketMiddlewareEvent) => {
 		if (utils.isEventNameMatch(eventNamesToIgnore, socketMiddlewareEvent[0]))
@@ -33,7 +33,7 @@ const ignoreMiddlewares = (
 				socket,
 				socketMiddlewareEvent,
 			});
-	}) as SocketMiddleware;
+	}) as SocketMiddleware<T>;
 };
 
 export const middlewareUtils = {

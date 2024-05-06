@@ -3,12 +3,11 @@ import {
 	DBUserData,
 	PrivateChatItem,
 	SessionId,
+	StringMap,
 	UserData,
 	UserId,
 } from "@repo/type-store";
 import { ProjectionType, QueryOptions } from "mongoose";
-
-import { StringMap } from "..";
 
 export type ServiceHandlerExcludeProp = "_id" | "__v";
 export type ServiceHandlerExcludeProps = ServiceHandlerExcludeProp[];

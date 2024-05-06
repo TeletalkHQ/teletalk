@@ -57,8 +57,10 @@ export type EventName =
 	| "verify";
 
 export type IO = {
-	input: object;
-	output: object;
+	input: object | undefined;
+	output: object | undefined;
+	params: object | undefined;
+	query: object | undefined;
 };
 
 export interface CreateNewUserIO extends IO {
@@ -69,13 +71,13 @@ export interface CreateNewUserIO extends IO {
 }
 
 export interface DisconnectIO extends IO {
-	input: object;
-	output: object;
+	input: undefined;
+	output: undefined;
 }
 
 export interface LogoutIO extends IO {
-	input: object;
-	output: object;
+	input: undefined;
+	output: undefined;
 }
 
 export interface SignInIO extends IO {
@@ -96,7 +98,7 @@ export interface VerifyIO extends IO {
 }
 
 export interface GetCountriesIO extends IO {
-	input: object;
+	input: undefined;
 	output: {
 		countries: Countries;
 	};
@@ -108,7 +110,7 @@ export interface GetStuffIO<
 	Models = any,
 	ValidationModels = any,
 > extends IO {
-	input: object;
+	input: undefined;
 	output: {
 		errors: Errors;
 		models: Models;
@@ -118,20 +120,20 @@ export interface GetStuffIO<
 }
 
 export interface GetWelcomeMessageIO extends IO {
-	input: object;
+	input: undefined;
 	output: {
 		welcomeMessage: WelcomeMessage;
 	};
 }
 export interface PingIO extends IO {
-	input: object;
+	input: undefined;
 	output: {
 		pong: string;
 	};
 }
 
 export interface PongIO extends IO {
-	input: object;
+	input: undefined;
 	output: { pong: string };
 }
 
@@ -154,15 +156,15 @@ export interface GetPrivateChatIO extends IO {
 }
 
 export interface GetPrivateChatsIO extends IO {
-	input: object;
+	input: undefined;
 	output: {
 		privateChats: PrivateChats;
 	};
 }
 
 export interface JoinIO extends IO {
-	input: object;
-	output: object;
+	input: undefined;
+	output: undefined;
 }
 
 export interface SendMessageIO extends IO {
@@ -214,14 +216,14 @@ export interface UpdateContactIO extends IO {
 }
 
 export interface GetContactsIO extends IO {
-	input: object;
+	input: undefined;
 	output: {
 		contacts: Contacts;
 	};
 }
 
 export interface GetOnlineClientsIO extends IO {
-	input: object;
+	input: undefined;
 	output: {
 		onlineClients: {
 			userId: UserId;
@@ -230,7 +232,7 @@ export interface GetOnlineClientsIO extends IO {
 }
 
 export interface GetUserDataIO extends IO {
-	input: object;
+	input: undefined;
 	output: {
 		user: UserDataWithoutSessions;
 	};

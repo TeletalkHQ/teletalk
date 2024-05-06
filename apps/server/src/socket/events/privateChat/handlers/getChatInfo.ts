@@ -1,10 +1,9 @@
 import { errorStore } from "@repo/error-store";
-import { GetChatInfoIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const getChatInfo: SocketOnHandler<GetChatInfoIO> = async (
+export const getChatInfo: SocketOnHandler<"getChatInfo"> = async (
 	_socket,
 	data
 ) => {

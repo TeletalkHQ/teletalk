@@ -2,10 +2,10 @@
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { userUtils } from "@repo/classes";
 import type { MessageText, UserId } from "@repo/type-store";
+import { VoidNoArgsFn } from "@repo/type-store";
 
 import { Box } from "~/components";
 import { useGetAvatar, useGetPublicData } from "~/hooks";
-import { VoidNoArgsFn } from "~/types";
 
 import Lower from "./Lower";
 import Upper from "./Upper";

@@ -1,11 +1,11 @@
 import { maker } from "@repo/classes";
 import { extractor } from "@repo/classes";
-import type { GetUserDataIO, UserItem } from "@repo/type-store";
+import { SocketErrorCallback, SocketResponseCallback } from "@repo/hl-types";
+import type { UserItem } from "@repo/type-store";
 import { useEffect } from "react";
 
 import { storage } from "~/classes/Storage";
 import { useGlobalStore, useUserStore } from "~/store";
-import { SocketErrorCallback, SocketResponseCallback } from "~/types";
 
 import { useCustomRouter } from "./useCustomRouter";
 import { useEmitter } from "./useEmitter";
@@ -14,7 +14,7 @@ export const useSetUserData = ({
 	errorCb,
 	successCb,
 }: {
-	successCb?: SocketResponseCallback<GetUserDataIO["output"]>;
+	successCb?: SocketResponseCallback<"getUserData">;
 	errorCb?: SocketErrorCallback;
 } = {}) => {
 	const { handler: getUserDataHandler, loading } = useEmitter("getUserData");
@@ -29,7 +29,7 @@ export const useSetUserData = ({
 			storage.get("session")
 		) {
 			return getUserDataHandler.emitFull(
-				{},
+				undefined,
 				(response) => {
 					userStore.updateCurrentUserData(
 						extractor.currentUserData(response.data.user)

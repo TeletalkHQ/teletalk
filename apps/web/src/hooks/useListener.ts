@@ -1,7 +1,7 @@
-import type { IOCollection } from "@repo/type-store";
+import { SocketResponse } from "@repo/hl-types";
 
 import { websocket } from "~/classes/websocket/Websocket";
-import { EventName, SocketResponse } from "~/types";
+import { EventName } from "~/types";
 
 export const useListener = <EvName extends EventName>({
 	evName,
@@ -9,7 +9,7 @@ export const useListener = <EvName extends EventName>({
 }: {
 	evName: EvName;
 	//@ts-expect-error //FIXME
-	cb: (response: SocketResponse<IOCollection[EvName]["output"]>) => void;
+	cb: (response: SocketResponse<EvName>) => void;
 }) => {
 	websocket.client.off(evName);
 	websocket.client.on<EventName>(evName, cb);

@@ -1,10 +1,10 @@
-import { EventName, UpdatePublicDataIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
+import { EventName } from "@repo/type-store";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 import { utils } from "~/utils";
 
-export const updatePublicData: SocketOnHandler<UpdatePublicDataIO> = async (
+export const updatePublicData: SocketOnHandler<"updatePublicData"> = async (
 	socket,
 	data
 ) => {

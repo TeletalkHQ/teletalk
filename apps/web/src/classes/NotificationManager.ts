@@ -1,18 +1,17 @@
+import { errorStore } from "@repo/error-store";
 import { enqueueSnackbar } from "notistack";
 
 import { NotificationReason } from "~/types";
 
-import { notificationStore } from "./NotificationStore";
-
 export class NotificationManager {
 	printError(reason: NotificationReason) {
-		enqueueSnackbar(notificationStore.find(reason).message, {
+		enqueueSnackbar(errorStore.find(reason).message, {
 			variant: "error",
 		});
 	}
 
 	printSuccess(reason: NotificationReason) {
-		enqueueSnackbar(notificationStore.find(reason).message, {
+		enqueueSnackbar(errorStore.find(reason).message, {
 			variant: "success",
 		});
 	}

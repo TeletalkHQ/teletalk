@@ -1,6 +1,7 @@
 import { SvgIconComponent } from "@mui/icons-material";
+import { VoidWithArg } from "@repo/type-store";
 
-import { DialogName, VoidWithArg } from "~/types";
+import { DialogName } from "~/types";
 
 export type SettingDisplayName =
 	| "Edit Profile"

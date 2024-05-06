@@ -5,7 +5,7 @@ import { countries } from "@repo/vars";
 import chai from "chai";
 import { ValidationSchema } from "fastest-validator";
 
-import { configs } from "~/classes/Configs";
+import { configManager } from "~/classes/ConfigManager";
 import { utils as mainUtils } from "~/utils";
 
 import { randomMaker } from "@/classes/RandomMaker";
@@ -122,7 +122,7 @@ function generateDynamicData(
 	return data;
 }
 
-const isJestRunning = () => configs.getConfigs().TEST.RUNNER === "JEST";
+const isJestRunning = () => configManager.getConfigs().TEST.RUNNER === "JEST";
 
 const jestDescribe = (...args: DescribeArgs) =>
 	isJestRunning() && describe(...args);

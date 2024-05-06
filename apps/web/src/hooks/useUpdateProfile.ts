@@ -1,5 +1,6 @@
+import { VoidNoArgsFn } from "@repo/type-store";
+
 import { useSettingsStore } from "~/store";
-import { VoidNoArgsFn } from "~/types";
 
 import { useEmitter } from "./useEmitter";
 

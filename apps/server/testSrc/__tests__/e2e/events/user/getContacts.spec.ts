@@ -24,7 +24,9 @@ describe(
 
 				const {
 					data: { contacts },
-				} = await utils.requesterCollection.getContacts(socket).emitFull();
+				} = await utils.requesterCollection
+					.getContacts(socket)
+					.emitFull(undefined);
 
 				assertion().oneContact({
 					testValue: contacts.at(0)!,

@@ -31,7 +31,7 @@ describe(
 					data: { privateChats },
 				} = await utils.requesterCollection
 					.getPrivateChats(currentUserSocket)
-					.emitFull();
+					.emitFull(undefined);
 
 				for (const item of privateChats) {
 					assertion().chatId(

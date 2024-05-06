@@ -1,9 +1,8 @@
-import { AddBlockIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const addBlock: SocketOnHandler<AddBlockIO> = async (socket, data) => {
+export const addBlock: SocketOnHandler<"addBlock"> = async (socket, data) => {
 	await services.user.addBlock({
 		targetUserId: data.userId,
 		currentSessionId: socket.sessionId,

@@ -1,4 +1,4 @@
-import type { EventName, IOCollection } from "@repo/type-store";
+import type { EventName } from "@repo/type-store";
 
 import { storage } from "~/classes/Storage";
 import { stuffStore } from "~/classes/StuffStore";
@@ -17,9 +17,7 @@ export const useEmitter = <EvName extends EventName>(evName: EvName) => {
 		router.push("signIn");
 	};
 
-	type IOType = IOCollection[EvName];
-
-	const handler = eventHandler<IOType>(updateLoading, handleAuthError).setRoute(
+	const handler = eventHandler<EvName>(updateLoading, handleAuthError).setRoute(
 		stuffStore.events.find((i) => i.name === evName) as SocketRoute
 	);
 

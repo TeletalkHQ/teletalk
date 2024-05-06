@@ -1,11 +1,11 @@
 import { extractor } from "@repo/classes";
-import { AddContactWithCellphoneIO, ContactItem } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
+import { ContactItem } from "@repo/type-store";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
 export const addContactWithCellphone: SocketOnHandler<
-	AddContactWithCellphoneIO
+	"addContactWithCellphone"
 > = async (socket, data) => {
 	const {
 		newContact: { isCellphoneAccessible, ...rest },

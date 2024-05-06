@@ -1,9 +1,9 @@
 import { errorStore } from "@repo/error-store";
+import { SocketMiddleware } from "@repo/hl-types";
 
 import { events } from "~/socket/events";
-import { SocketMiddleware } from "~/types";
 
-export const checkEventAvailability: SocketMiddleware = (
+export const checkEventAvailability: SocketMiddleware<any> = (
 	_socket,
 	next,
 	[eventName]

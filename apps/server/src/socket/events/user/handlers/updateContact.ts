@@ -1,10 +1,9 @@
 import { extractor } from "@repo/classes";
-import { UpdateContactIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const updateContact: SocketOnHandler<UpdateContactIO> = async (
+export const updateContact: SocketOnHandler<"updateContact"> = async (
 	socket,
 	data
 ) => {

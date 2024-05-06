@@ -1,5 +1,6 @@
+import { VoidNoArgsFn } from "@repo/type-store";
+
 import { Box, Button, Icon } from "~/components";
-import { VoidNoArgsFn } from "~/types";
 
 interface Props {
 	onDrawerIconClick: VoidNoArgsFn;

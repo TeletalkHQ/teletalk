@@ -3,7 +3,7 @@ import { RedisClientType, createClient } from "redis";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { clientStatusStore } from "~/classes/ClientStatusStore";
-import { configs } from "~/classes/Configs";
+import { configManager } from "~/classes/ConfigManager";
 import { store } from "~/classes/Store";
 import { utils } from "~/utils";
 
@@ -16,7 +16,7 @@ const initializeDatabases = async () => {
 };
 
 const mongodbConnector = () => {
-	const { DB: DB_CONFIGS } = configs.getConfigs();
+	const { DB: DB_CONFIGS } = configManager.getConfigs();
 
 	mongoose.set("strictQuery", false);
 	mongoose.connection.once("connected", () =>
@@ -28,9 +28,9 @@ const mongodbConnector = () => {
 
 const redisConnector = async () => {
 	const REDIS_CONNECTION_OPTIONS = {
-		HOST: configs.getConfigs().DB.REDIS_HOST,
-		PASSWORD: configs.getConfigs().DB.REDIS_PASSWORD,
-		PORT: configs.getConfigs().DB.REDIS_PORT,
+		HOST: configManager.getConfigs().DB.REDIS_HOST,
+		PASSWORD: configManager.getConfigs().DB.REDIS_PASSWORD,
+		PORT: configManager.getConfigs().DB.REDIS_PORT,
 	};
 
 	const storage = createClient({

@@ -1,9 +1,9 @@
-import { EventName, PingIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
+import { EventName } from "@repo/type-store";
 
-import { SocketOnHandler } from "~/types";
 import { utils } from "~/utils";
 
-export const ping: SocketOnHandler<PingIO> = (socket) => {
+export const ping: SocketOnHandler<"ping"> = (socket) => {
 	const data = {
 		pong: `ping request from socketId:${socket.id}`,
 	};

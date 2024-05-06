@@ -1,9 +1,7 @@
-import { GetWelcomeMessageIO } from "@repo/type-store";
-
-import { SocketOnHandler } from "~/types";
+import { SocketOnHandler } from "@repo/hl-types";
 
 export const getWelcomeMessage: SocketOnHandler<
-	GetWelcomeMessageIO
+	"getWelcomeMessage"
 > = async () => {
 	return {
 		data: {

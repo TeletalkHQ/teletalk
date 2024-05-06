@@ -85,7 +85,7 @@ class RandomMaker extends RandomMakerMain {
 
 		const response = await utils.requesterCollection
 			.getUserData(ah.getClientSocket())
-			.emitFull();
+			.emitFull(undefined);
 
 		return {
 			...ah.getResponses().create.data,

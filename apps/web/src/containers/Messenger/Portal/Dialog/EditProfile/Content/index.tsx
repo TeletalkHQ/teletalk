@@ -1,8 +1,8 @@
 import { userUtils } from "@repo/classes";
-import type { AvatarSrc } from "@repo/type-store";
+import type { AvatarSrc, VoidNoArgsFn } from "@repo/type-store";
 
 import { Box } from "~/components";
-import { Profile, VoidNoArgsFn } from "~/types";
+import { Profile } from "~/types";
 
 import { EditProfileListItemOnClick } from "../types";
 import Header from "./Header";

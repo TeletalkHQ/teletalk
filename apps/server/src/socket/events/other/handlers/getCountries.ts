@@ -1,8 +1,6 @@
-import { GetCountriesIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 import { countries } from "@repo/vars";
 
-import { SocketOnHandler } from "~/types";
-
-export const getCountries: SocketOnHandler<GetCountriesIO> = async () => {
+export const getCountries: SocketOnHandler<"getCountries"> = async () => {
 	return { data: { countries } };
 };

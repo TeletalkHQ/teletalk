@@ -1,20 +1,3 @@
-import {
-	AddBlockIO,
-	AddContactWithCellphoneIO,
-	AddContactWithUserIdIO,
-	DisconnectIO,
-	GetAvatarIO,
-	GetClientStatusIO,
-	GetContactsIO,
-	GetOnlineClientsIO,
-	GetPublicDataIO,
-	GetUserDataIO,
-	RemoveBlockIO,
-	RemoveContactIO,
-	UpdateAvatarIO,
-	UpdateContactIO,
-	UpdatePublicDataIO,
-} from "@repo/type-store";
 import { models } from "@repo/validator";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
@@ -24,7 +7,7 @@ import { handlers } from "./handlers";
 const builder = socketEventBuilder();
 
 const addBlock = builder
-	.create<AddBlockIO>()
+	.create<"addBlock">()
 	.name("addBlock")
 	.inputSchema({
 		userId: models.validation.userId,
@@ -41,7 +24,7 @@ const addBlock = builder
 	.build();
 
 const addContactWithCellphone = builder
-	.create<AddContactWithCellphoneIO>()
+	.create<"addContactWithCellphone">()
 	.name("addContactWithCellphone")
 	.inputSchema({
 		countryCode: models.validation.countryCode,
@@ -67,7 +50,7 @@ const addContactWithCellphone = builder
 	.build();
 
 const addContactWithUserId = builder
-	.create<AddContactWithUserIdIO>()
+	.create<"addContactWithUserId">()
 	.name("addContactWithUserId")
 	.inputSchema({
 		firstName: models.validation.firstName,
@@ -92,14 +75,14 @@ const addContactWithUserId = builder
 
 //FIXME: Add IO
 const disconnect = builder
-	.create<DisconnectIO>()
+	.create<"disconnect">()
 	.name("disconnect")
 	.noAuth()
 	.handler(handlers.disconnect)
 	.build();
 
 const updateContact = builder
-	.create<UpdateContactIO>()
+	.create<"updateContact">()
 	.name("updateContact")
 	.inputSchema({
 		firstName: models.validation.firstName,
@@ -120,7 +103,7 @@ const updateContact = builder
 	.build();
 
 const getContacts = builder
-	.create<GetContactsIO>()
+	.create<"getContacts">()
 	.name("getContacts")
 	.outputSchema({
 		contacts: {
@@ -140,7 +123,7 @@ const getContacts = builder
 	.build();
 
 const getUserData = builder
-	.create<GetUserDataIO>()
+	.create<"getUserData">()
 	.name("getUserData")
 	.outputSchema({
 		avatarSrc: models.validation.avatarSrc,
@@ -178,7 +161,7 @@ const getUserData = builder
 	.build();
 
 const getClientStatus = builder
-	.create<GetClientStatusIO>()
+	.create<"getClientStatus">()
 	.name("getClientStatus")
 	.inputSchema({
 		userId: models.validation.userId,
@@ -191,7 +174,7 @@ const getClientStatus = builder
 	.build();
 
 const getOnlineClients = builder
-	.create<GetOnlineClientsIO>()
+	.create<"getOnlineClients">()
 	.name("getOnlineClients")
 	.outputSchema({
 		onlineClients: {
@@ -206,7 +189,7 @@ const getOnlineClients = builder
 	.build();
 
 const getPublicData = builder
-	.create<GetPublicDataIO>()
+	.create<"getPublicData">()
 	.name("getPublicData")
 	.inputSchema({
 		userId: models.validation.userId,
@@ -227,7 +210,7 @@ const getPublicData = builder
 	.build();
 
 const removeBlock = builder
-	.create<RemoveBlockIO>()
+	.create<"removeBlock">()
 	.name("removeBlock")
 	.inputSchema({
 		userId: models.validation.userId,
@@ -244,7 +227,7 @@ const removeBlock = builder
 	.build();
 
 const removeContact = builder
-	.create<RemoveContactIO>()
+	.create<"removeContact">()
 	.name("removeContact")
 	.inputSchema({
 		userId: models.validation.userId,
@@ -261,7 +244,7 @@ const removeContact = builder
 	.build();
 
 const updatePublicData = builder
-	.create<UpdatePublicDataIO>()
+	.create<"updatePublicData">()
 	.name("updatePublicData")
 	.inputSchema({
 		firstName: models.validation.firstName,
@@ -285,7 +268,7 @@ const updatePublicData = builder
 	.build();
 
 const getAvatar = builder
-	.create<GetAvatarIO>()
+	.create<"getAvatar">()
 	.name("getAvatar")
 	.inputSchema({
 		userId: models.validation.userId,
@@ -298,7 +281,7 @@ const getAvatar = builder
 	.build();
 
 const updateAvatar = builder
-	.create<UpdateAvatarIO>()
+	.create<"updateAvatar">()
 	.name("updateAvatar")
 	.inputSchema({
 		avatarSrc: models.validation.avatarSrc,

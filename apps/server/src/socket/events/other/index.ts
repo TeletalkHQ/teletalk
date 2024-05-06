@@ -1,10 +1,3 @@
-import {
-	GetCountriesIO,
-	GetStuffIO,
-	GetWelcomeMessageIO,
-	JoinIO,
-	PingIO,
-} from "@repo/type-store";
 import { models } from "@repo/validator";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
@@ -14,7 +7,7 @@ import { handlers } from "./handlers";
 const builder = socketEventBuilder();
 
 const getCountries = builder
-	.create<GetCountriesIO>()
+	.create<"getCountries">()
 	.name("getCountries")
 	.noAuth()
 	.outputSchema({
@@ -35,14 +28,14 @@ const getCountries = builder
 
 //FIXME: Add IO
 const getStuff = builder
-	.create<GetStuffIO>()
+	.create<"getStuff">()
 	.name("getStuff")
 	.noAuth()
 	.handler(handlers.getStuff)
 	.build();
 
 const getWelcomeMessage = builder
-	.create<GetWelcomeMessageIO>()
+	.create<"getWelcomeMessage">()
 	.name("getWelcomeMessage")
 	.noAuth()
 	.outputSchema({
@@ -52,7 +45,7 @@ const getWelcomeMessage = builder
 	.build();
 
 const ping = builder
-	.create<PingIO>()
+	.create<"ping">()
 	.name("ping")
 	.noAuth()
 	.outputSchema({
@@ -63,7 +56,7 @@ const ping = builder
 
 //FIXME: Add IO
 const join = builder
-	.create<JoinIO>()
+	.create<"join">()
 	.name("join")
 	.handler(handlers.join)
 	.method("once")

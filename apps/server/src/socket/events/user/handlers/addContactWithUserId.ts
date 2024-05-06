@@ -1,11 +1,10 @@
 import { maker } from "@repo/classes";
-import { AddContactWithUserIdIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
 export const addContactWithUserId: SocketOnHandler<
-	AddContactWithUserIdIO
+	"addContactWithUserId"
 > = async (socket, data) => {
 	const {
 		newContact: { isCellphoneAccessible, ...rest },

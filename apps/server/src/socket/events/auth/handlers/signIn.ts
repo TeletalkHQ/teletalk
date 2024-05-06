@@ -1,13 +1,13 @@
 import { extractor } from "@repo/classes";
-import { ExtendedCellphone, SignInIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
+import { ExtendedCellphone } from "@repo/type-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { sessionManager } from "~/classes/SessionManager";
 import { smsClient } from "~/classes/SmsClient";
-import { SocketOnHandler } from "~/types";
 import { utils } from "~/utils";
 
-export const signIn: SocketOnHandler<SignInIO> = async (_socket, data) => {
+export const signIn: SocketOnHandler<"signIn"> = async (_socket, data) => {
 	const verificationCode = utils.passwordGenerator();
 
 	const cellphone = extractor.cellphone(data as ExtendedCellphone);

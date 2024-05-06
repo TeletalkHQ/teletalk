@@ -7,13 +7,16 @@ import type {
 	CurrentUserData,
 	FullName,
 	RemoveContactIO,
+	StringMap,
 	UserId,
 	UserItem,
 	UserPublicData,
 	Users,
+	VoidNoArgsFn,
+	VoidWithArg,
 } from "@repo/type-store";
 
-import { StoreSetFn, StringMap, VoidNoArgsFn, VoidWithArg } from "~/types";
+import { StoreSetFn } from "~/types";
 
 export interface BlacklistItem {
 	userId: UserId;

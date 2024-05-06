@@ -1,15 +1,10 @@
-import {
-	ChatId,
-	EventName,
-	MessageItem,
-	SendMessageIO,
-} from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
+import { ChatId, EventName, MessageItem } from "@repo/type-store";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 import { utils } from "~/utils";
 
-export const sendMessage: SocketOnHandler<SendMessageIO> = async (
+export const sendMessage: SocketOnHandler<"sendMessage"> = async (
 	socket,
 	data
 ) => {

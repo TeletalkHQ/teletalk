@@ -6,7 +6,7 @@ import http from "http";
 import os from "os";
 import PrettyError from "pretty-error";
 
-import { configs } from "~/classes/Configs";
+import { configManager } from "~/classes/ConfigManager";
 import { createSocketServer } from "~/socket";
 
 import "./test";
@@ -14,10 +14,10 @@ import { utils } from "./utils";
 
 PrettyError.start();
 
-await configs.setup();
+await configManager.setup();
 
 export const runner = async () => {
-	const { USE_CLUSTERS, LOG_ENVS } = configs.getConfigs().APP;
+	const { USE_CLUSTERS, LOG_ENVS } = configManager.getConfigs().APP;
 
 	if (LOG_ENVS === "true") utils.logEnvironments();
 
@@ -68,12 +68,12 @@ const setupWorkerServer = async () => {
 
 const createHttpServerWithListener = () => {
 	const httpServer = http.createServer();
-	httpServer.listen(configs.getConfigs().APP.PORT, httpServerListener);
+	httpServer.listen(configManager.getConfigs().APP.PORT, httpServerListener);
 	return httpServer;
 };
 
 const httpServerListener = () => {
-	const { ENVIRONMENT, PORT } = configs.getConfigs().APP;
+	const { ENVIRONMENT, PORT } = configManager.getConfigs().APP;
 
 	logger.info(
 		`Server is running. RUNTIME_MODE:${ENVIRONMENT}, PID:${
@@ -96,4 +96,4 @@ const registerClusterOnExitEvent = () => {
 	});
 };
 
-if (configs.getConfigs().APP.SELF_EXEC) await runner();
+if (configManager.getConfigs().APP.SELF_EXEC) await runner();

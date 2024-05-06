@@ -1,7 +1,8 @@
+import { VoidNoArgsFn } from "@repo/type-store";
 import AvatarEditor from "react-avatar-editor";
 
 import { Box, Button } from "~/components";
-import { CommonOnChange, VoidNoArgsFn } from "~/types";
+import { CommonOnChange } from "~/types";
 
 interface Props {
 	avatarSrc: string;

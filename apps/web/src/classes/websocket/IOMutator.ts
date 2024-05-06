@@ -1,38 +1,38 @@
 import {
-	IO,
 	Interceptors,
 	RequestTransformer,
 	ResponseTransformer,
-} from "~/types";
+} from "@repo/hl-types";
+import { EventName, IOCollection } from "@repo/type-store";
 
 //UNUSED, //!UNSTABLE
-export class IOMutator<IOType extends IO> {
-	private requestInterceptors: Interceptors = [];
-	private requestTransformer: RequestTransformer<IOType["input"]> = (
-		requestData
-	) => requestData;
-	private responseInterceptors: Interceptors = [];
-	private responseTransformer: ResponseTransformer = (response) => response;
+export class IOMutator<T extends EventName> {
+	private requestInterceptors: Interceptors<T> = [];
+	private requestTransformer: RequestTransformer<T> = (requestData) =>
+		requestData;
+	private responseInterceptors: Interceptors<T> = [];
+	private responseTransformer: ResponseTransformer<T> = (response) => response;
 
-	private executeRequestTransformer(reqData: IOType["input"]) {
+	private executeRequestTransformer(reqData: IOCollection[T]["input"]) {
 		return this.requestTransformer(reqData);
 	}
 
-	private executeRequestInterceptors(reqData: IOType["input"]) {
+	private executeRequestInterceptors(reqData: IOCollection[T]["input"]) {
 		return this.executeInterceptors(this.requestInterceptors, reqData);
 	}
 
-	private executeResponseTransformer(resData: IOType["output"]) {
+	private executeResponseTransformer(resData: IOCollection[T]["output"]) {
 		return this.responseTransformer(resData);
 	}
 
-	private executeResponseInterceptors(resData: IOType["output"]) {
+	private executeResponseInterceptors(resData: IOCollection[T]["output"]) {
 		return this.executeInterceptors(this.responseInterceptors, resData);
 	}
 
 	private executeInterceptors(
-		interceptors: Interceptors,
-		data: IOType["input"] | IOType["output"]
+		interceptors: Interceptors<T>,
+		//CLEANME: Duplicate type
+		data: IOCollection[T]["input"] | IOCollection[T]["output"]
 	) {
 		let newData = data;
 

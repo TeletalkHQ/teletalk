@@ -1,10 +1,9 @@
-import { LogoutIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const logout: SocketOnHandler<LogoutIO> = async (socket) => {
+export const logout: SocketOnHandler<"logout"> = async (socket) => {
 	await services.user.logout({
 		currentSessionId: socket.sessionId,
 	});
@@ -12,7 +11,7 @@ export const logout: SocketOnHandler<LogoutIO> = async (socket) => {
 	await authSessionStore.remove(socket.sessionId);
 
 	return {
-		data: {},
+		data: undefined,
 		options: {
 			cbAfterEmit: () => {
 				socket.rooms.clear();

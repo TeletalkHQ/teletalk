@@ -1,5 +1,6 @@
+import { VoidNoArgsFn } from "@repo/type-store";
+
 import { Button } from "~/components";
-import { VoidNoArgsFn } from "~/types";
 
 interface Props {
 	onClose: VoidNoArgsFn;

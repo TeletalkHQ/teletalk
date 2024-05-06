@@ -1,10 +1,10 @@
 import { errorStore } from "@repo/error-store";
+import { SocketMiddleware } from "@repo/hl-types";
 import { Socket } from "socket.io";
 
 import { sessionManager } from "~/classes/SessionManager";
-import { SocketMiddleware } from "~/types";
 
-export const attachSessionId: SocketMiddleware = async (
+export const attachSessionId: SocketMiddleware<any> = async (
 	socket,
 	next,
 	[_name]

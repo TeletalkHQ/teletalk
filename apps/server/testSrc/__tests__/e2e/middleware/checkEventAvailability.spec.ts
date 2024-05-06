@@ -1,8 +1,8 @@
 import { ErrorReason, errorStore } from "@repo/error-store";
+import { SocketEvent } from "@repo/hl-types";
 import chai from "chai";
 
 import { sessionManager } from "~/classes/SessionManager";
-import { SocketEvent } from "~/types";
 
 import { clientInitializer } from "@/classes/ClientInitializer";
 import { requesterMaker } from "@/classes/Requester";
@@ -10,7 +10,7 @@ import { eventsWithoutDisconnect, unknownEvent } from "@/socket/events";
 import { ClientSocket } from "@/types";
 import { utils } from "@/utils";
 
-const createRequester = (socket: ClientSocket, event: SocketEvent) =>
+const createRequester = (socket: ClientSocket, event: SocketEvent<any>) =>
 	requesterMaker(socket, event);
 
 await utils.asyncDescribe(
@@ -33,7 +33,7 @@ await utils.asyncDescribe(
 			it(message, async () => {
 				await createRequester(clientSocket, unknownEvent)
 					.setError("EVENT_NOT_FOUND")
-					.emitFull();
+					.emitFull(undefined);
 			});
 		};
 	}

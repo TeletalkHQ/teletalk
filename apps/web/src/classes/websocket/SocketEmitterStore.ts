@@ -1,9 +1,10 @@
 import { stuffStore } from "~/classes/StuffStore";
 import { EventHandler, eventHandler } from "~/classes/websocket/EventHandler";
-import { EventName, IO, SocketRoute } from "~/types";
+import { EventName, SocketRoute } from "~/types";
 
 type Events = {
-	[key in EventName]: EventHandler<IO>;
+	//TODO: Remove any
+	[key in EventName]: EventHandler<any>;
 };
 
 export class SocketEmitterStore {

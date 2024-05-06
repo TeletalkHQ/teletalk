@@ -1,7 +1,13 @@
-import type { Bio, Cellphone, FullName, Username } from "@repo/type-store";
+import type {
+	Bio,
+	Cellphone,
+	FullName,
+	Username,
+	VoidNoArgsFn,
+	VoidWithArg,
+} from "@repo/type-store";
 
 import { StoreSetFn } from ".";
-import { VoidNoArgsFn, VoidWithArg } from "..";
 
 export interface Profile extends Cellphone, FullName {
 	bio: Bio;

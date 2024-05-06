@@ -1,9 +1,3 @@
-import {
-	GetChatInfoIO,
-	GetPrivateChatIO,
-	GetPrivateChatsIO,
-	SendMessageIO,
-} from "@repo/type-store";
 import { models } from "@repo/validator";
 import { ValidationSchema } from "fastest-validator";
 
@@ -43,7 +37,7 @@ const privateChatSchema: ValidationSchema = {
 };
 
 const getChatInfo = builder
-	.create<GetChatInfoIO>()
+	.create<"getChatInfo">()
 	.handler(privateChatHandlers.getChatInfo)
 	.name("getChatInfo")
 	.inputSchema({
@@ -68,7 +62,7 @@ const getChatInfo = builder
 	.build();
 
 const getPrivateChat = builder
-	.create<GetPrivateChatIO>()
+	.create<"getPrivateChat">()
 	.handler(privateChatHandlers.getPrivateChat)
 	.name("getPrivateChat")
 	.inputSchema({
@@ -80,7 +74,7 @@ const getPrivateChat = builder
 	.build();
 
 const getPrivateChats = builder
-	.create<GetPrivateChatsIO>()
+	.create<"getPrivateChats">()
 	.handler(privateChatHandlers.getPrivateChats)
 	.name("getPrivateChats")
 	.outputSchema({
@@ -92,7 +86,7 @@ const getPrivateChats = builder
 	.build();
 
 const sendMessage = builder
-	.create<SendMessageIO>()
+	.create<"sendMessage">()
 	.handler(privateChatHandlers.sendMessage)
 	.name("sendMessage")
 	.inputSchema({

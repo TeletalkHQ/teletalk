@@ -1,10 +1,6 @@
 import { Cellphone } from "@repo/type-store";
 import { JWTPayload, JWTVerifyResult } from "jose";
 
-export interface StringMap {
-	[prop: string | symbol]: any;
-}
-
 export type LogLevel = "debug" | "error" | "info" | "warn";
 
 export interface StoredAuthSession extends Cellphone {
@@ -19,9 +15,6 @@ export interface SessionPayload extends JWTPayload {
 export interface VerifiedSession extends JWTVerifyResult {
 	payload: SessionPayload;
 }
-
-export type VoidNoArgsFn = () => void;
-export type PromiseVoidNoArgsFn = () => Promise<void>;
 
 export * from "./api";
 export * from "./env";

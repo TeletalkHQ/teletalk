@@ -1,11 +1,11 @@
 import { errorStore } from "@repo/error-store";
+import { SocketMiddleware } from "@repo/hl-types";
 import { SessionId, VerifyIO } from "@repo/type-store";
 import { Socket } from "socket.io";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
-import { SocketMiddleware } from "~/types";
 
-export const verifyVerificationCode: SocketMiddleware<VerifyIO> = async (
+export const verifyVerificationCode: SocketMiddleware<"verify"> = async (
 	socket,
 	next,
 	[_name, data]

@@ -1,4 +1,5 @@
 import createCache from "@emotion/cache";
+import { SocketResponseErrors } from "@repo/hl-types";
 import type { FullName, UnknownCellphone } from "@repo/type-store";
 import { utils as pkgUtils } from "@repo/utils";
 import { validators } from "@repo/validator";
@@ -15,7 +16,6 @@ import {
 	ModelName,
 	NativeModel,
 	NativeModelKey,
-	SocketResponseErrors,
 	WeirdSelectedCountry,
 } from "~/types";
 

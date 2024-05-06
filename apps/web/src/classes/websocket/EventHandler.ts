@@ -1,17 +1,15 @@
-import Timeout from "await-timeout";
-
-import { appConfigs } from "~/classes/AppConfigs";
-import { notificationStore } from "~/classes/NotificationStore";
-import { websocket } from "~/classes/websocket/Websocket";
-import type {
-	IO,
+import { errorStore } from "@repo/error-store";
+import {
 	SocketErrorCallback,
 	SocketResponse,
 	SocketResponseCallback,
-	SocketRoute,
-	UpdateLoadingFn,
-	VoidNoArgsFn,
-} from "~/types";
+} from "@repo/hl-types";
+import { EventName, IOCollection, VoidNoArgsFn } from "@repo/type-store";
+import Timeout from "await-timeout";
+
+import { appConfigs } from "~/classes/AppConfigs";
+import { websocket } from "~/classes/websocket/Websocket";
+import type { SocketRoute, UpdateLoadingFn } from "~/types";
 import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
 
@@ -19,15 +17,19 @@ interface Options {
 	timeout: number;
 }
 
-export class EventHandler<IOType extends IO> {
+type FoundInput<T extends EventName> = IOCollection[T]["input"];
+type FoundOutput<T extends EventName> = IOCollection[T]["output"];
+
+//TODO: Merge this
+export class EventHandler<T extends EventName> {
 	private defaultOptions: Options = {
 		timeout: appConfigs.getConfigs().api.defaultTimeout,
 	};
 
 	private errorCallback: SocketErrorCallback;
-	private requestData: IOType["input"];
-	private response: SocketResponse;
-	private responseCallback: SocketResponseCallback;
+	private requestData: FoundInput<T>;
+	private response: SocketResponse<T>;
+	private responseCallback: SocketResponseCallback<T>;
 	private route: SocketRoute;
 
 	constructor(
@@ -38,7 +40,7 @@ export class EventHandler<IOType extends IO> {
 	getRequestData() {
 		return this.requestData;
 	}
-	setRequestData(requestData: IOType["input"]) {
+	setRequestData(requestData: FoundInput<T>) {
 		this.requestData = requestData;
 		return this;
 	}
@@ -51,7 +53,7 @@ export class EventHandler<IOType extends IO> {
 	getResponse() {
 		return this.response;
 	}
-	setResponse(response: SocketResponse) {
+	setResponse(response: SocketResponse<T>) {
 		this.response = response;
 		return this;
 	}
@@ -59,13 +61,13 @@ export class EventHandler<IOType extends IO> {
 	getResponseData() {
 		return this.getResponse().data;
 	}
-	setResponseData(responseData: IOType["output"]) {
+	setResponseData(responseData: FoundOutput<T>) {
 		this.response.data = responseData;
 		return this;
 	}
 
 	async emit(
-		data: IOType["input"] = {},
+		data: FoundInput<T>,
 		options: Partial<Options> = this.defaultOptions
 	) {
 		const mergedOptions = { ...this.defaultOptions, ...options };
@@ -78,7 +80,7 @@ export class EventHandler<IOType extends IO> {
 			websocket.client.emit(
 				this.route.name,
 				data,
-				(response: SocketResponse) => {
+				(response: SocketResponse<T>) => {
 					this.setResponse(response).setResponseData(response.data);
 
 					this.loadingUpdater(false);
@@ -94,12 +96,11 @@ export class EventHandler<IOType extends IO> {
 	}
 
 	async emitFull(
-		data: IOType["input"],
-		responseCallback: SocketResponseCallback<IOType["output"]> = () =>
-			undefined,
+		data: FoundInput<T>,
+		responseCallback: SocketResponseCallback<T> = () => undefined,
 		errorCallback: SocketErrorCallback = (_errors) => {},
 		options?: Partial<Options>
-	): Promise<SocketResponse<IOType["output"]> | undefined> {
+	): Promise<SocketResponse<T> | undefined> {
 		this.requestData = data;
 		this.responseCallback = responseCallback;
 		this.errorCallback = errorCallback;
@@ -170,7 +171,7 @@ export class EventHandler<IOType extends IO> {
 	private resolveError() {
 		return (
 			Object.values(this.response.errors || [])[0] ||
-			notificationStore.find("UNKNOWN_ERROR")
+			errorStore.find("UNKNOWN_ERROR")
 		);
 	}
 
@@ -188,7 +189,7 @@ export class EventHandler<IOType extends IO> {
 	}
 }
 
-export const eventHandler = <IOType extends IO>(
+export const eventHandler = <T extends EventName>(
 	loadingUpdater: UpdateLoadingFn,
 	authErrorHandler: VoidNoArgsFn
-) => new EventHandler<IOType>(loadingUpdater, authErrorHandler);
+) => new EventHandler<T>(loadingUpdater, authErrorHandler);

@@ -1,5 +1,7 @@
+import { VoidNoArgsFn } from "@repo/type-store";
+
 import { Button } from "~/components";
-import { Status, VoidNoArgsFn } from "~/types";
+import { Status } from "~/types";
 
 interface Props {
 	disabled: boolean;

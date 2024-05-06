@@ -1,4 +1,6 @@
-import { DialogName, VoidWithArg } from "~/types";
+import { VoidWithArg } from "@repo/type-store";
+
+import { DialogName } from "~/types";
 
 import List from "./List";
 

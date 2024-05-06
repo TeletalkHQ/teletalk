@@ -1,7 +1,6 @@
 import { NativeModel } from "@repo/model";
+import { VoidNoArgsFn } from "@repo/type-store";
 import chai from "chai";
-
-import { VoidNoArgsFn } from "~/types";
 
 import { AssertionInitializerOptions } from "@/types";
 import { FIELD_TYPE } from "@/variables";

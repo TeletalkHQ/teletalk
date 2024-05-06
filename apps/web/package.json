@@ -26,12 +26,14 @@
 	},
 	"dependencies": {
 		"@repo/classes": "workspace:*",
+		"@repo/error-store": "workspace:*",
 		"@repo/model": "workspace:*",
 		"@repo/utils": "workspace:*",
 		"@repo/validator": "workspace:*",
 		"@repo/vars": "workspace:*"
 	},
 	"devDependencies": {
+		"@repo/hl-types": "workspace:*",
 		"@repo/type-store": "workspace:*",
 		"@repo/typescript-config": "workspace:*"
 	},

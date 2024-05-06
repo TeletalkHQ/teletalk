@@ -1,9 +1,8 @@
-import { GetUserDataIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const getUserData: SocketOnHandler<GetUserDataIO> = async (socket) => {
+export const getUserData: SocketOnHandler<"getUserData"> = async (socket) => {
 	const {
 		user: { sessions, ...rest },
 	} = await services.user.findBySessionId({

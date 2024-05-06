@@ -1,3 +1,4 @@
+import { SocketMiddleware } from "@repo/hl-types";
 import { Socket } from "socket.io";
 
 import { utils } from "~/utils";
@@ -8,7 +9,7 @@ import { checkEventAvailability } from "./checkEventAvailability";
 import { checkInputData } from "./dataValidation/checkInputData";
 
 export const registerMiddlewares = (socket: Socket) => {
-	socket.customUse((socket, next, [eventName, data]) => {
+	socket.customUse(((socket, next, [eventName, data]) => {
 		logger.info(
 			`new event(${eventName}) from session:${
 				socket.sessionId || "not initialized"
@@ -18,7 +19,7 @@ export const registerMiddlewares = (socket: Socket) => {
 		);
 
 		next();
-	});
+	}) as SocketMiddleware<any>);
 
 	socket.customUse(
 		utils.ignoreMiddlewares(["signIn", "getStuff", "ping"], attachSessionId)

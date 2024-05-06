@@ -20,11 +20,12 @@ class ErrorStore {
 	private build() {
 		this.errors = [...modelErrorBuilder().build(), ...errors.custom];
 
-		this.errors.forEach((item) => {
-			if (item.reason.startsWith("SESSION_")) {
-				item.isAuthError = true;
-			}
-		});
+		//TODO: add `isAuthError` to wherever is required
+		// this.errors.forEach((item) => {
+		// 	if (item.reason.startsWith("SESSION_")) {
+		// 		item.isAuthError = true;
+		// 	}
+		// });
 	}
 }
 

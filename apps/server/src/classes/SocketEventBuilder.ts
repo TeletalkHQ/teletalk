@@ -1,11 +1,11 @@
 import { errorStore } from "@repo/error-store";
-import { IO } from "@repo/type-store";
+import { SocketEvent } from "@repo/hl-types";
+import { EventName } from "@repo/type-store";
 
 import { RouteBuilder } from "~/classes/RouteBuilder";
-import { SocketEvent } from "~/types";
 
-export class SocketEventBuilder<IOType extends IO> extends RouteBuilder {
-	protected route: SocketEvent<IOType>;
+export class SocketEventBuilder<T extends EventName> extends RouteBuilder {
+	protected route: SocketEvent<T>;
 
 	constructor() {
 		super();
@@ -45,5 +45,5 @@ export class SocketEventBuilder<IOType extends IO> extends RouteBuilder {
 }
 
 export const socketEventBuilder = () => ({
-	create: <IOType extends IO>() => new SocketEventBuilder<IOType>(),
+	create: <T extends EventName>() => new SocketEventBuilder<T>(),
 });

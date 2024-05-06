@@ -1,7 +1,6 @@
-import type { AvatarSrc } from "@repo/type-store";
+import type { AvatarSrc, VoidNoArgsFn } from "@repo/type-store";
 
 import { Box, Typography } from "~/components";
-import { VoidNoArgsFn } from "~/types";
 
 interface Props {
 	fullName: string;

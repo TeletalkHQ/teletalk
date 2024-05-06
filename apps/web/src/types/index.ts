@@ -1,7 +1,11 @@
+import { ErrorReason, ErrorSide, NativeError } from "@repo/error-store";
+import { Route } from "@repo/hl-types";
 import type {
 	Cellphone,
 	ContactItem,
 	EventName as MainEventName,
+	VoidWithArg,
+	VoidWithTwoArgs,
 } from "@repo/type-store";
 import {
 	AsyncCheckFunction,
@@ -17,10 +21,6 @@ import { stuff } from "~/data/stuff";
 
 import { DrawerAnchor } from "./store/global";
 
-export interface StringMap {
-	[prop: string]: any;
-}
-
 export type TransitionName = keyof typeof Transition;
 
 export interface UiConfig {
@@ -35,22 +35,9 @@ export type Style = CSSProperties;
 
 export type FullContact = ContactItem & Cellphone;
 
-export type VoidNoArgsFn = () => void;
-
-export type VoidWithArg<Arg> = (arg: Arg) => void;
-
-export type VoidWithTwoArgs<Arg1, Arg2> = (arg1: Arg1, arg2: Arg2) => void;
-
 export * from "~/types/components";
 
-export interface Route {
-	//FIXME: Use ValidationModel
-	inputFields: Record<string, never>;
-	//FIXME: Use ValidationModel
-	outputFields: Record<string, never>;
-	isAuthRequired: boolean;
-}
-
+//TODO: Remove or merge with main event name
 export type EventName =
 	| MainEventName
 	| "connect"
@@ -74,7 +61,9 @@ export type Protocol = "http" | "https";
 
 export type Url = `${Protocol}://${string}`;
 
-export type NotificationSide = "SERVER" | "CLIENT";
+export type NotificationSide = ErrorSide;
+export type NotificationReason = ErrorReason;
+export type Notification = NativeError;
 
 export interface Environments {
 	NEXT_PUBLIC_CLIENT_BASE_URL: Url;
@@ -92,28 +81,6 @@ type AllErrorKeys = {
 export type ModelErrorReason = ScreamingSnakeCase<
 	AllErrorKeys[keyof AllErrorKeys] | `${keyof NativeModelCollection}_invalid`
 >;
-
-export type Errors = typeof stuffStore.errors;
-export type ErrorItem = Errors[number];
-export type ErrorReason =
-	| ModelErrorReason
-	| ErrorItem["reason"]
-	| "ECONNABORTED"
-	| "EVENT_IS_BROKEN"
-	| "REQUIREMENT_ITEM_MISSING"
-	| "SERVER_ALREADY_EXIST";
-
-export type NotificationReason = ErrorReason;
-
-export interface NativeError {
-	description: string;
-	isAuthError: boolean;
-	message: string;
-	reason: ErrorReason;
-	side: NotificationSide;
-}
-
-export type Notification = NativeError;
 
 export type EnvName = keyof Environments;
 

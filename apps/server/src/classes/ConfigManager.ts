@@ -1,17 +1,21 @@
 import logLevel from "loglevel";
 
 import { envManager } from "~/classes/EnvironmentManager";
-import { Environments } from "~/types";
+import { EnvFileName, Environments } from "~/types";
 
-class Configs {
+class ConfigManager {
 	private ENVIRONMENTS: Environments;
 
 	async setup() {
 		this.registerCustomGlobals();
 		envManager.registerEnvironments("base");
-		envManager.registerEnvironments(envManager.getNodeEnv());
 
-		this.setConfigs(envManager.getEnv());
+		const NODE_ENV = envManager.getNodeEnv();
+		//TODO: Remove assertion
+		if (NODE_ENV) envManager.registerEnvironments(NODE_ENV as EnvFileName);
+
+		//TODO: Remove assertion
+		this.setConfigs(envManager.getEnv() as unknown as Environments);
 		this.setLogLevel();
 	}
 
@@ -66,4 +70,4 @@ class Configs {
 	}
 }
 
-export const configs = new Configs();
+export const configManager = new ConfigManager();

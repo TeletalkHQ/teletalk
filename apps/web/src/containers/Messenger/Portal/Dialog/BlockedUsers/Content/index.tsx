@@ -1,6 +1,4 @@
-import type { UserId } from "@repo/type-store";
-
-import { VoidWithArg } from "~/types";
+import type { UserId, VoidWithArg } from "@repo/type-store";
 
 import List from "./List";
 

@@ -2,7 +2,7 @@ import { errorStore } from "@repo/error-store";
 import { escapeChars } from "@repo/vars";
 import axios from "axios";
 
-import { configs } from "~/classes/Configs";
+import { configManager } from "~/classes/ConfigManager";
 
 export class SmsClient {
 	templates() {
@@ -20,7 +20,7 @@ export class SmsClient {
 	) {
 		try {
 			const text = this.templates().verificationCode(verificationCode, host);
-			const { SMS_PROVIDER_SELECTOR } = configs.getConfigs().SMS_CLIENT;
+			const { SMS_PROVIDER_SELECTOR } = configManager.getConfigs().SMS_CLIENT;
 
 			const providers = [this.devProvider, this.provider1, this.provider2];
 
@@ -43,7 +43,7 @@ export class SmsClient {
 			SMS_PROVIDER_1_ROUTE,
 			SMS_PROVIDER_1_SENDER,
 			SMS_PROVIDER_1_SESSION,
-		} = configs.getConfigs().SMS_CLIENT;
+		} = configManager.getConfigs().SMS_CLIENT;
 
 		const { method, sendFrom, url } = {
 			method: "POST",
@@ -71,7 +71,7 @@ export class SmsClient {
 			SMS_PROVIDER_2_REPORT_URL,
 			SMS_PROVIDER_2_ROUTE,
 			SMS_PROVIDER_2_SESSION,
-		} = configs.getConfigs().SMS_CLIENT;
+		} = configManager.getConfigs().SMS_CLIENT;
 
 		const config = {
 			data: {

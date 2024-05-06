@@ -1,17 +1,16 @@
 import { errors } from "@repo/error-store";
+import {
+	SocketMiddleware,
+	SocketMiddlewareEvent,
+	SocketNext,
+	SocketResponse,
+} from "@repo/hl-types";
 import { EventName, IOCollection } from "@repo/type-store";
 import generatePassword from "generate-password";
 import { Socket } from "socket.io";
 
 import { envManager } from "~/classes/EnvironmentManager";
-import {
-	Environments,
-	SocketMiddleware,
-	SocketMiddlewareEvent,
-	SocketNext,
-	SocketResponse,
-	UnknownError,
-} from "~/types";
+import { Environments, UnknownError } from "~/types";
 
 import { databaseUtils } from "./database";
 import { middlewareUtils } from "./middleware";
@@ -27,10 +26,10 @@ const crashServer = (message: unknown) => {
 };
 
 interface ExecuteMiddlewaresArgs {
-	middlewares: SocketMiddleware[];
+	middlewares: SocketMiddleware<any>[];
 	next: SocketNext;
 	socket: Socket;
-	socketMiddlewareEvent: SocketMiddlewareEvent;
+	socketMiddlewareEvent: SocketMiddlewareEvent<any>;
 }
 
 const executeMiddlewares = async ({
@@ -97,18 +96,18 @@ const resolveResponseError = (error: UnknownError) =>
 const createSuccessResponse = <T extends EventName>(
 	eventName: T,
 	data: IOCollection[T]["output"]
-): SocketResponse => ({
+): SocketResponse<T> => ({
 	data,
 	errors: [],
 	ok: true,
 	eventName,
 });
 
-const createFailureResponse = (
+const createFailureResponse = <T extends EventName>(
 	eventName: EventName,
 	errors: UnknownError
-): SocketResponse => ({
-	data: {},
+): SocketResponse<T> => ({
+	data: undefined,
 	errors: resolveResponseError(errors),
 	eventName,
 	ok: false,

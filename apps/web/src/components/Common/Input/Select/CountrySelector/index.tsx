@@ -1,9 +1,9 @@
 import { ListItemProps } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
-import type { CountryItem } from "@repo/type-store";
+import type { CountryItem, VoidWithArg } from "@repo/type-store";
 import { countries } from "@repo/vars";
 
-import { SelectedCountry, VoidWithArg } from "~/types";
+import { SelectedCountry } from "~/types";
 
 import Option from "./Option";
 import SelectorInput from "./SelectorInput";

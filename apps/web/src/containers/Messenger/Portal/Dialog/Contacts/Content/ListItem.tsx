@@ -1,8 +1,9 @@
 import { UserId } from "@repo/type-store";
+import { VoidNoArgsFn } from "@repo/type-store";
 
 import { Box, Typography } from "~/components";
 import { useGetAvatar } from "~/hooks";
-import { OnContextMenu, VoidNoArgsFn } from "~/types";
+import { OnContextMenu } from "~/types";
 
 interface Props {
 	fullName: string;

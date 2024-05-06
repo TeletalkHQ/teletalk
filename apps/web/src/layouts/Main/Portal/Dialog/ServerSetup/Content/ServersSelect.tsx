@@ -1,9 +1,10 @@
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
+import { VoidWithArg } from "@repo/type-store";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { Box, Input } from "~/components";
-import { Url, VoidWithArg } from "~/types";
+import { Url } from "~/types";
 
 interface Props {
 	disabled: boolean;

@@ -1,3 +1,4 @@
+import { ErrorReason, NativeError } from "@repo/error-store";
 import {
 	AsyncCheckFunction,
 	SyncCheckFunction,
@@ -5,7 +6,7 @@ import {
 	ValidationRuleObject,
 } from "fastest-validator";
 
-import { ErrorReason, Field, NativeError } from "~/types";
+import { Field } from "~/types";
 
 export type ValidationModel = ValidationRuleObject;
 

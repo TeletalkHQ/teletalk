@@ -1,0 +1,23 @@
+{
+	"name": "@repo/hl-types",
+	"version": "0.0.0",
+	"private": true,
+	"types": "./src/index.ts",
+	"scripts": {
+		"check:format": "prettier --write  --list-different ./",
+		"check:lint": "eslint ./",
+		"check:lint:fix": "eslint --fix ./",
+		"check:lint:fix:strict": "eslint --fix --max-warnings 0 ./",
+		"check:style": "pnpm run check:format && pnpm run check:lint:fix && pnpm run check:types",
+		"check:types": "npx tsc --noEmit",
+		"check:types:watch": "pnpm run check:types --watch"
+	},
+	"devDependencies": {
+		"@repo/error-store": "workspace:*",
+		"@repo/eslint-config": "workspace:*",
+		"@repo/type-store": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
+		"@repo/validator": "workspace:*",
+		"@repo/vars": "workspace:*"
+	}
+}

@@ -1,8 +1,7 @@
-import type { UserId } from "@repo/type-store";
+import type { UserId, VoidWithArg } from "@repo/type-store";
 
 import { Box } from "~/components";
 import { useUserStore } from "~/store";
-import { VoidWithArg } from "~/types";
 
 import ListItem from "./ListItem";
 

@@ -1,5 +1,6 @@
+import { StringMap } from "@repo/type-store";
+
 import { websocket } from "~/classes/websocket/Websocket";
-import { StringMap } from "~/types";
 
 export const otherEvents = () => {
 	websocket.client.onAny((event, ...args) => {

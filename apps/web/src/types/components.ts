@@ -1,7 +1,7 @@
 import { LoadingButtonProps } from "@mui/lab";
 import { SelectChangeEvent, SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
-import { ElementName } from "@repo/type-store";
+import { ElementName, VoidNoArgsFn, VoidWithArg } from "@repo/type-store";
 import {
 	ChangeEvent,
 	ChangeEventHandler,
@@ -10,7 +10,6 @@ import {
 	MouseEvent,
 } from "react";
 
-import { VoidNoArgsFn, VoidWithArg } from ".";
 import { DialogName } from "./store";
 
 export type DivProps = DetailedHTMLProps<

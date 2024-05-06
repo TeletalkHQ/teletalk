@@ -1,7 +1,7 @@
-import { SocketOnAnyHandler } from "~/types";
+import { SocketOnAnyHandler } from "@repo/hl-types";
 
 //CLEANME:
-export const logEvent: SocketOnAnyHandler = async (
+export const logEvent: SocketOnAnyHandler<any> = async (
 	_socket,
 	data,
 	eventName

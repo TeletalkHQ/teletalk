@@ -1,14 +1,9 @@
-import {
-	Cellphone,
-	CreateNewUserIO,
-	FullName,
-	SignInIO,
-	VerifyIO,
-} from "@repo/type-store";
+import { SocketResponse } from "@repo/hl-types";
+import { Cellphone, FullName } from "@repo/type-store";
 
 import { authSessionStore } from "~/classes/AuthSessionStore";
 import { sessionManager } from "~/classes/SessionManager";
-import { SocketResponse, StoredAuthSession } from "~/types";
+import { StoredAuthSession } from "~/types";
 
 import {
 	ClientInitializer,
@@ -19,9 +14,9 @@ import { utils } from "@/utils";
 
 class AuthHelper {
 	private clientSocket: ClientSocket;
-	private createResponse: SocketResponse<CreateNewUserIO["output"]>;
-	private signInResponse: SocketResponse<SignInIO["output"]>;
-	private verifyResponse: SocketResponse<VerifyIO["output"]>;
+	private createResponse: SocketResponse<"createNewUser">;
+	private signInResponse: SocketResponse<"signIn">;
+	private verifyResponse: SocketResponse<"verify">;
 	private clientInitializer: ClientInitializer;
 
 	constructor(

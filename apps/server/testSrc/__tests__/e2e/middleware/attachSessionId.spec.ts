@@ -24,7 +24,7 @@ await utils.asyncDescribe(
 				);
 				it(title, async () => {
 					await requesterMaker(initializer.getClient(), event as any).emitFull(
-						{},
+						undefined,
 						"SESSION_ID_INVALID"
 					);
 				});
@@ -42,7 +42,7 @@ await utils.asyncDescribe(
 						.getClient();
 
 					await requesterMaker(client, event as any).emitFull(
-						{},
+						undefined,
 						"SESSION_NOT_FOUND"
 					);
 				});

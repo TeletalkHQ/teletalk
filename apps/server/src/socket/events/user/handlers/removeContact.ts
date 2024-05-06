@@ -1,9 +1,8 @@
-import { RemoveContactIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const removeContact: SocketOnHandler<RemoveContactIO> = async (
+export const removeContact: SocketOnHandler<"removeContact"> = async (
 	socket,
 	data
 ) => {

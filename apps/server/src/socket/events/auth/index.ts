@@ -1,9 +1,3 @@
-import {
-	CreateNewUserIO,
-	LogoutIO,
-	SignInIO,
-	VerifyIO,
-} from "@repo/type-store";
 import { models } from "@repo/validator";
 
 import { socketEventBuilder } from "~/classes/SocketEventBuilder";
@@ -13,7 +7,7 @@ import { handlers } from "./handlers";
 const builder = socketEventBuilder();
 
 const createNewUser = builder
-	.create<CreateNewUserIO>()
+	.create<"createNewUser">()
 	.name("createNewUser")
 	.inputSchema({
 		firstName: models.validation.firstName,
@@ -26,13 +20,13 @@ const createNewUser = builder
 	.build();
 
 const logout = builder
-	.create<LogoutIO>()
+	.create<"logout">()
 	.name("logout")
 	.handler(handlers.logout)
 	.build();
 
 const signIn = builder
-	.create<SignInIO>()
+	.create<"signIn">()
 	.name("signIn")
 	.noAuth()
 	.inputSchema({
@@ -47,7 +41,7 @@ const signIn = builder
 	.build();
 
 const verify = builder
-	.create<VerifyIO>()
+	.create<"verify">()
 	.name("verify")
 	.inputSchema({
 		verificationCode: models.validation.verificationCode,

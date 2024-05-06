@@ -1,15 +1,15 @@
 import { randomMaker } from "@repo/classes";
 
-import { configs } from "~/classes/Configs";
+import { configManager } from "~/classes/ConfigManager";
 
-await configs.setup();
+await configManager.setup();
 
 export const testServerInitializer = async () => {
-	await configs.setup();
+	await configManager.setup();
 
 	const { runner } = await import("~/index");
 
-	configs.setPort(randomMaker.numberWithRange(8000, 50000));
+	configManager.setPort(randomMaker.numberWithRange(8000, 50000));
 
 	logger.disableAll();
 	logger.setLevel("debug");

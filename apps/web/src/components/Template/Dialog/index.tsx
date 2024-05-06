@@ -1,10 +1,11 @@
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { VoidNoArgsFn } from "@repo/type-store";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { BaseComponent } from "~/components/Base";
 import { useGlobalStore } from "~/store";
-import { Style, TransitionName, VoidNoArgsFn } from "~/types";
+import { Style, TransitionName } from "~/types";
 
 import Actions from "./Actions";
 import Content from "./Content";

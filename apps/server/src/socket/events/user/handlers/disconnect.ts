@@ -1,11 +1,11 @@
-import { DisconnectIO, EventName } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
+import { EventName } from "@repo/type-store";
 
 import { clientStatusStore } from "~/classes/ClientStatusStore";
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 import { utils } from "~/utils";
 
-export const disconnect: SocketOnHandler<DisconnectIO> = async (socket) => {
+export const disconnect: SocketOnHandler<"disconnect"> = async (socket) => {
 	const notAllowedEvents: EventName[] = ["signIn", "createNewUser", "verify"];
 
 	if (socket.sessionId && !notAllowedEvents.includes(socket.eventName)) {
@@ -26,7 +26,7 @@ export const disconnect: SocketOnHandler<DisconnectIO> = async (socket) => {
 	}
 
 	return {
-		data: {},
+		data: undefined,
 		options: {
 			shouldEmitReturnValue: false,
 			shouldEmitToUserRooms: false,

@@ -1,4 +1,5 @@
 import { objectUtils } from "@repo/classes";
+import { StringMap } from "@repo/type-store";
 import { QueryOptions } from "mongoose";
 
 import {
@@ -6,7 +7,6 @@ import {
 	ServiceHandlerExcludeProps,
 	ServiceHandlerOptions,
 	ServiceMiddleware,
-	StringMap,
 } from "~/types";
 
 type PartialOptions = Partial<ServiceHandlerOptions>;

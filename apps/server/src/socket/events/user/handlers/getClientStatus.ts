@@ -1,9 +1,8 @@
-import { GetClientStatusIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { clientStatusStore } from "~/classes/ClientStatusStore";
-import { SocketOnHandler } from "~/types";
 
-export const getClientStatus: SocketOnHandler<GetClientStatusIO> = async (
+export const getClientStatus: SocketOnHandler<"getClientStatus"> = async (
 	_socket,
 	data
 ) => {

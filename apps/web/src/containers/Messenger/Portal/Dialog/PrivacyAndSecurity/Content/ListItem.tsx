@@ -1,5 +1,7 @@
+import { VoidWithArg } from "@repo/type-store";
+
 import { Box } from "~/components";
-import { DialogName, VoidWithArg } from "~/types";
+import { DialogName } from "~/types";
 
 import { PrivacyAndSecurityListItem } from "../type";
 

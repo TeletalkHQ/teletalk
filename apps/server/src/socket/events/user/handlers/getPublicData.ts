@@ -1,9 +1,8 @@
-import { GetPublicDataIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
 
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 
-export const getPublicData: SocketOnHandler<GetPublicDataIO> = async (
+export const getPublicData: SocketOnHandler<"getPublicData"> = async (
 	_socket,
 	data
 ) => {

@@ -1,7 +1,7 @@
-import { ElementName } from "@repo/type-store";
+import { ElementName, VoidWithArg, VoidWithTwoArgs } from "@repo/type-store";
 
 import { Box, Icon } from "~/components";
-import { HTMLDivMouseEvent, VoidWithArg, VoidWithTwoArgs } from "~/types";
+import { HTMLDivMouseEvent } from "~/types";
 
 const drawerList = [
 	{ Icon: Icon.Calls, disabled: true },

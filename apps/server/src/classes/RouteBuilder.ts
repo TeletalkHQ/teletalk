@@ -1,8 +1,7 @@
 import { NativeError } from "@repo/error-store";
+import { Route } from "@repo/hl-types";
 import { models } from "@repo/validator";
 import FastestValidator, { ValidationSchema } from "fastest-validator";
-
-import { Route } from "~/types";
 
 //CLEANME:
 export const compiler = new FastestValidator({

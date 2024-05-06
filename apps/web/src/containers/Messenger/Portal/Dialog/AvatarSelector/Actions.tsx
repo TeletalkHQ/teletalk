@@ -1,5 +1,7 @@
+import { VoidNoArgsFn } from "@repo/type-store";
+
 import { Button } from "~/components";
-import { CommonOnClose, VoidNoArgsFn } from "~/types";
+import { CommonOnClose } from "~/types";
 
 interface Props {
 	isSaveDisabled: boolean;

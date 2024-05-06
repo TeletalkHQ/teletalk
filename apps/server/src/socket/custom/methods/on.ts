@@ -1,15 +1,14 @@
-import { EventName } from "@repo/type-store";
-import { Socket } from "socket.io";
-
-import { services } from "~/services";
 import {
 	CustomOn,
 	ResponseCallback,
 	SocketHandlerReturnValue,
 	SocketResponse,
-	StringMap,
-	UnknownError,
-} from "~/types";
+} from "@repo/hl-types";
+import { EventName, StringMap } from "@repo/type-store";
+import { Socket } from "socket.io";
+
+import { services } from "~/services";
+import { UnknownError } from "~/types";
 import { utils } from "~/utils";
 
 export const registerCustomOn = (socket: Socket) => {
@@ -17,7 +16,7 @@ export const registerCustomOn = (socket: Socket) => {
 	return function (eventName, handler) {
 		socket.on(
 			eventName,
-			async (data: StringMap, cb?: ResponseCallback): Promise<void> => {
+			async (data: StringMap, cb?: ResponseCallback<any>): Promise<void> => {
 				const responseCallback =
 					typeof cb === "function" ? cb : () => undefined;
 
@@ -58,7 +57,7 @@ export const registerCustomOn = (socket: Socket) => {
 	} as CustomOn;
 };
 
-function resolveReturnValue(returnValue: void | SocketHandlerReturnValue) {
+function resolveReturnValue(returnValue: void | SocketHandlerReturnValue<any>) {
 	return {
 		data: returnValue?.data || {},
 		options: {
@@ -85,7 +84,7 @@ function resolveReturnValue(returnValue: void | SocketHandlerReturnValue) {
 async function emitReturnValue(
 	socket: Socket,
 	eventName: EventName,
-	response: SocketResponse
+	response: SocketResponse<any>
 ) {
 	socket.emit(eventName, response);
 }
@@ -93,7 +92,7 @@ async function emitReturnValue(
 async function emitToUserRooms(
 	socket: Socket,
 	eventName: EventName,
-	response: SocketResponse
+	response: SocketResponse<any>
 ) {
 	const {
 		user: { userId },
@@ -107,9 +106,9 @@ const catchBlock = (
 	socket: Socket,
 	eventName: EventName,
 	error: UnknownError,
-	responseCallback: ResponseCallback
+	responseCallback: ResponseCallback<any>
 ) => {
-	const response: SocketResponse = utils.createFailureResponse(
+	const response: SocketResponse<any> = utils.createFailureResponse(
 		eventName,
 		error
 	);

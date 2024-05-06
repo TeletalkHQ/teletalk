@@ -5,9 +5,11 @@ import type {
 	PrivateChatItem,
 	PrivateChats,
 	UserId,
+	VoidNoArgsFn,
+	VoidWithArg,
 } from "@repo/type-store";
 
-import { StoreSetFn, VoidNoArgsFn, VoidWithArg } from "~/types";
+import { StoreSetFn } from "~/types";
 
 export interface SelectedChatInfo {
 	chatId: ChatId;

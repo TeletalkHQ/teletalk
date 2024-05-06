@@ -1,11 +1,11 @@
-import { EventName, JoinIO } from "@repo/type-store";
+import { SocketOnHandler } from "@repo/hl-types";
+import { EventName } from "@repo/type-store";
 
 import { clientStatusStore } from "~/classes/ClientStatusStore";
 import { services } from "~/services";
-import { SocketOnHandler } from "~/types";
 import { utils } from "~/utils";
 
-export const join: SocketOnHandler<JoinIO> = async (socket) => {
+export const join: SocketOnHandler<"join"> = async (socket) => {
 	const {
 		user: { userId },
 	} = await services.user.findBySessionId({
@@ -29,6 +29,6 @@ export const join: SocketOnHandler<JoinIO> = async (socket) => {
 	);
 
 	return {
-		data: {},
+		data: undefined,
 	};
 };

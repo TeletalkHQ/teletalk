@@ -1,23 +1,22 @@
 import { ErrorReason, NativeError, errorStore } from "@repo/error-store";
-import { IO } from "@repo/type-store";
+import { SocketEvent, SocketResponse } from "@repo/hl-types";
+import { EventName, IOCollection } from "@repo/type-store";
 import chai from "chai";
 import { Socket as Client } from "socket.io-client";
-
-import { SocketEvent, SocketResponse, StringMap } from "~/types";
 
 import { RequesterOptions } from "@/types";
 import { loggerHelper } from "@/utils/logHelper";
 import { FIELD_TYPE } from "@/variables";
 
-export class Requester<IOType extends IO> {
+export class Requester<T extends EventName> {
 	private error?: NativeError;
-	private event: SocketEvent<IOType>;
+	private event: SocketEvent<T>;
 	private options: RequesterOptions = {};
-	private requestData: IOType["input"];
-	private response: SocketResponse<IOType["output"]>;
+	private requestData: IOCollection[T]["input"];
+	private response: SocketResponse<T>;
 	private socket: Client;
 
-	constructor(socket: Client, event: SocketEvent<IOType>) {
+	constructor(socket: Client, event: SocketEvent<T>) {
 		this.setSocket(socket);
 		this.setEvent(event);
 	}
@@ -69,7 +68,7 @@ export class Requester<IOType extends IO> {
 	private getEmitData() {
 		return this.requestData;
 	}
-	private setEmitData(requestData: StringMap) {
+	private setEmitData(requestData: IOCollection[T]["input"]) {
 		this.requestData = requestData;
 		return this;
 	}
@@ -78,7 +77,7 @@ export class Requester<IOType extends IO> {
 		const response = (await new Promise((resolve, _reject) => {
 			// this.socket.connect();
 			this.socket.emit(this.getEventName(), this.getEmitData(), resolve);
-		})) as SocketResponse;
+		})) as SocketResponse<T>;
 
 		// this.socket.disconnect();
 		this.setResponse(response);
@@ -87,7 +86,7 @@ export class Requester<IOType extends IO> {
 	}
 
 	async emitFull(
-		data: IOType["input"] = {},
+		data: IOCollection[T]["input"],
 		reason?: ErrorReason,
 		options: Partial<RequesterOptions> = this.getOptions()
 	) {
@@ -119,7 +118,7 @@ export class Requester<IOType extends IO> {
 		return this.response;
 	}
 
-	private setResponse(response: SocketResponse) {
+	private setResponse(response: SocketResponse<T>) {
 		this.response = response;
 		return this;
 	}
@@ -152,7 +151,7 @@ export class Requester<IOType extends IO> {
 	}
 }
 
-export const requesterMaker = <IOType extends IO>(
+export const requesterMaker = <T extends EventName>(
 	socket: Client,
-	event: SocketEvent<IOType>
+	event: SocketEvent<T>
 ) => new Requester(socket, event);

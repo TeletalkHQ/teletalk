@@ -37,6 +37,7 @@
 		"@repo/vars": "workspace:*"
 	},
 	"devDependencies": {
+		"@repo/hl-types": "workspace:*",
 		"@repo/type-store": "workspace:*",
 		"@repo/typescript-config": "workspace:*"
 	},

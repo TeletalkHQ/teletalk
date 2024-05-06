@@ -8,7 +8,7 @@ import {
 	Environments,
 	SocketMiddlewareEvent,
 	SocketNext,
-} from "~/types";
+} from "@repo/hl-types";
 import logLevel from "loglevel";
 
 declare global {
