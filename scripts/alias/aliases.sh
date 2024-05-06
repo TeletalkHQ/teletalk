@@ -1,3 +1,4 @@
+#! LINUX|MAC USERS ONLY. I haven't tested it on Mac, so use with caution
 #* To use these aliases, you need to manually load this file with "source ./aliases.sh"
 #* or run loader.sh to add it to your current shell configurations,
 #* so the aliases can Automatically loaded when opening the shell.
@@ -11,15 +12,16 @@ WORKING_DIR="$SCRIPT_DIR/../../"
 #? cwd
 alias ttk="cd $WORKING_DIR"
 
-#? Docker aliases
-# alias docb="docker build . -t PATH_HERE"
-# alias docr="docker run -it -u 0 -p 3000:3000 PATH_HERE"
+#? Docker
+alias docb="docker build . -t stalwart95/teletalk-server"
+alias docr="docker run -it -u 0 -p 8080:8080 stalwart95/teletalk-server"
+alias doccu="docker compose up --build"
 
-#? Railway aliases
+#? Railway
 alias rwl="railway logs"
 alias rwu="railway up"
 
-#? Liara aliases
+#? Liara
 alias lrdd="liara deploy --platform=docker"
 alias lrdn="liara deploy --platform=node"
 alias lrl="liara logs"
@@ -31,19 +33,21 @@ alias nrcl="npm run check:lint"
 alias nrclf="npm run check:lint:fix"
 alias nrclfs="npm run check:lint:fix:strict"
 alias nrcs="npm run check:style"
-alias nrsd="npm run start:dev"
-alias nrsp="npm run start:production"
-alias nrtd="npm run test:dev"
-alias nrtdc="npm run test:dev:coverage"
-alias nrtdw="npm run test:dev:watch"
-alias nrsdw="npm run start:dev:watch"
 alias nrct="npm run check:types"
 alias nrctw="npm run check:types:watch"
-alias nrsdd="npm run start:dev:dashboard"
-alias nrsdm="npm run start:dev:map-view"
+alias nrsd="npm run start:dev"
+alias nrsdw="npm run start:dev:watch"
+alias nrsp="npm run start:production"
+alias nrspl="npm run start:production:local"
+alias nrspr="npm run start:production:railway"
+alias nrtc="npm run test:coverage"
+alias nrtd="npm run test:dev"
+alias nrtdw="npm run test:dev:watch"
 
 #? yarn
 alias ya="yarn add"
 alias yd="yarn dev"
 alias ys="yarn start"
 alias yy="yarn"
+
+#? npm
