@@ -31,6 +31,7 @@
 		"start:production": "turbo start:production",
 		"test": "turbo run test",
 		"test:dev": "turbo run test:dev",
+		"test:coverage": "turbo run test:coverage",
 		"test:dev:coverage": "turbo run test:dev:coverage",
 		"test:dev:watch": "turbo run test:dev:watch"
 	},

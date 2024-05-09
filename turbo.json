@@ -37,6 +37,7 @@
 			"persistent": true
 		},
 		"test": {},
+		"test:coverage": {},
 		"test:dev": {},
 		"test:dev:coverage": {},
 		"test:dev:watch": {
