@@ -14,8 +14,6 @@ import { utils } from "./utils";
 
 PrettyError.start();
 
-await configManager.setup();
-
 export const runner = async () => {
 	const { USE_CLUSTERS, LOG_ENVS } = configManager.getConfigs().APP;
 

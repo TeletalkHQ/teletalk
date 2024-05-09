@@ -1,15 +1,17 @@
 import dotenv from "dotenv";
 import path from "path";
 
-import { EnvFileName } from "~/types";
+import { EnvFileName, Environments, NodeEnvValue } from "~/types";
 
 class EnvironmentManager {
 	getEnv() {
-		return process.env;
+		return process.env as unknown as Environments;
 	}
 
 	getNodeEnv() {
-		return this.getEnv().NODE_ENV;
+		const e = this.getEnv().NODE_ENV;
+		if (e) return e as NodeEnvValue;
+		return undefined;
 	}
 
 	registerEnvironments(fileName: EnvFileName) {

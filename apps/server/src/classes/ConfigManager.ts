@@ -1,72 +1,109 @@
 import logLevel from "loglevel";
 
 import { envManager } from "~/classes/EnvironmentManager";
-import { EnvFileName, Environments } from "~/types";
+import { NodeEnvValue } from "~/types";
+
+interface Configs {
+	APP: {
+		ENVIRONMENT: NodeEnvValue;
+		HOSTNAME: "localhost";
+		LOG_ENVS: boolean | `${boolean}`;
+		PORT: number | string;
+		SELF_EXEC: boolean;
+		SESSION_SECRET: string;
+		USE_CLUSTERS: boolean | `${boolean}`;
+	};
+	DB: {
+		MONGO_URI: string;
+		REDIS_HOST: string;
+		REDIS_PASSWORD: string;
+		REDIS_PORT: number | string;
+	};
+	SMS_CLIENT: {
+		SMS_PROVIDER_1_HOST: string;
+		SMS_PROVIDER_1_ROUTE: string;
+		SMS_PROVIDER_1_SENDER: string;
+		SMS_PROVIDER_1_SESSION: string;
+		SMS_PROVIDER_2_HOST: string;
+		SMS_PROVIDER_2_REPORT_URL: string;
+		SMS_PROVIDER_2_ROUTE: string;
+		SMS_PROVIDER_2_SESSION: string;
+		SMS_PROVIDER_SELECTOR: number;
+	};
+	TEST: {
+		RUNNER: "MOCHA" | "JEST";
+	};
+}
 
 class ConfigManager {
-	private ENVIRONMENTS: Environments;
+	private configs: Configs;
 
-	async setup() {
+	constructor() {
+		this.setup();
+	}
+
+	setPort(port: number) {
+		this.configs.APP.PORT = port;
+	}
+
+	getConfigs() {
+		return this.configs;
+	}
+
+	private setup() {
 		this.registerCustomGlobals();
 		envManager.registerEnvironments("base");
 
 		const NODE_ENV = envManager.getNodeEnv();
-		//TODO: Remove assertion
-		if (NODE_ENV) envManager.registerEnvironments(NODE_ENV as EnvFileName);
+		if (NODE_ENV) envManager.registerEnvironments(NODE_ENV);
 
-		//TODO: Remove assertion
-		this.setConfigs(envManager.getEnv() as unknown as Environments);
+		this.setupConfigsByEnvs();
+
 		this.setLogLevel();
-	}
-
-	setPort(port: number) {
-		this.ENVIRONMENTS.PORT = port;
-	}
-
-	private setLogLevel() {
-		logger.enableAll();
-	}
-
-	private setConfigs(e: Environments) {
-		this.ENVIRONMENTS = e;
 	}
 
 	private registerCustomGlobals() {
 		global.logger = logLevel;
 	}
 
-	getConfigs() {
-		return {
+	private setupConfigsByEnvs() {
+		const ENVS = envManager.getEnv();
+
+		this.configs = {
 			APP: {
-				ENVIRONMENT: this.ENVIRONMENTS.NODE_ENV,
+				ENVIRONMENT: ENVS.NODE_ENV,
 				HOSTNAME: "localhost",
-				LOG_ENVS: this.ENVIRONMENTS.LOG_ENVS,
-				PORT: this.ENVIRONMENTS.CUSTOM_PORT || this.ENVIRONMENTS.PORT,
-				SELF_EXEC: this.ENVIRONMENTS.SELF_EXEC,
-				SESSION_SECRET: this.ENVIRONMENTS.SESSION_SECRET,
-				USE_CLUSTERS: this.ENVIRONMENTS.USE_CLUSTERS,
+				LOG_ENVS: ENVS.LOG_ENVS,
+				PORT: ENVS.CUSTOM_PORT || ENVS.PORT,
+				SELF_EXEC: ENVS.SELF_EXEC,
+				SESSION_SECRET: ENVS.SESSION_SECRET,
+				USE_CLUSTERS: ENVS.USE_CLUSTERS,
 			},
 			DB: {
-				MONGO_URI: this.ENVIRONMENTS.MONGO_URI,
-				REDIS_HOST: this.ENVIRONMENTS.REDIS_HOST,
-				REDIS_PASSWORD: this.ENVIRONMENTS.REDIS_PASSWORD,
-				REDIS_PORT: this.ENVIRONMENTS.REDIS_PORT,
+				MONGO_URI: ENVS.MONGO_URI,
+				REDIS_HOST: ENVS.REDIS_HOST,
+				REDIS_PASSWORD: ENVS.REDIS_PASSWORD,
+				REDIS_PORT: ENVS.REDIS_PORT,
 			},
 			SMS_CLIENT: {
-				SMS_PROVIDER_1_HOST: this.ENVIRONMENTS.SMS_PROVIDER_1_HOST,
-				SMS_PROVIDER_1_ROUTE: this.ENVIRONMENTS.SMS_PROVIDER_1_ROUTE,
-				SMS_PROVIDER_1_SENDER: this.ENVIRONMENTS.SMS_PROVIDER_1_SENDER,
-				SMS_PROVIDER_1_SESSION: this.ENVIRONMENTS.SMS_PROVIDER_1_SESSION,
-				SMS_PROVIDER_2_HOST: this.ENVIRONMENTS.SMS_PROVIDER_2_HOST,
-				SMS_PROVIDER_2_REPORT_URL: this.ENVIRONMENTS.SMS_PROVIDER_2_REPORT_URL,
-				SMS_PROVIDER_2_ROUTE: this.ENVIRONMENTS.SMS_PROVIDER_2_ROUTE,
-				SMS_PROVIDER_2_SESSION: this.ENVIRONMENTS.SMS_PROVIDER_2_SESSION,
-				SMS_PROVIDER_SELECTOR: this.ENVIRONMENTS.SMS_PROVIDER_SELECTOR,
+				SMS_PROVIDER_1_HOST: ENVS.SMS_PROVIDER_1_HOST,
+				SMS_PROVIDER_1_ROUTE: ENVS.SMS_PROVIDER_1_ROUTE,
+				SMS_PROVIDER_1_SENDER: ENVS.SMS_PROVIDER_1_SENDER,
+				SMS_PROVIDER_1_SESSION: ENVS.SMS_PROVIDER_1_SESSION,
+				SMS_PROVIDER_2_HOST: ENVS.SMS_PROVIDER_2_HOST,
+				SMS_PROVIDER_2_REPORT_URL: ENVS.SMS_PROVIDER_2_REPORT_URL,
+				SMS_PROVIDER_2_ROUTE: ENVS.SMS_PROVIDER_2_ROUTE,
+				SMS_PROVIDER_2_SESSION: ENVS.SMS_PROVIDER_2_SESSION,
+				SMS_PROVIDER_SELECTOR: ENVS.SMS_PROVIDER_SELECTOR,
 			},
 			TEST: {
-				RUNNER: this.ENVIRONMENTS.TEST_RUNNER,
+				RUNNER: ENVS.TEST_RUNNER,
 			},
 		};
+	}
+
+	private setLogLevel() {
+		logger.enableAll();
 	}
 }
 
