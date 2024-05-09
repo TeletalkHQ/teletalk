@@ -24,8 +24,7 @@ jobs:
 
       - name: Install redis
         run: |
-          chmod +x ./scripts/redis-loader/portable.sh
-          ./scripts/redis-loader/portable.sh
+          npm run setup:redis:portable
 
       - name: Use Node.js version ${{ matrix.node-version }}
         uses: actions/setup-node@v4

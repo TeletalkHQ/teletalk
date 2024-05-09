@@ -21,6 +21,7 @@
 		"prepare": "husky",
 		"setup:alias:load": "./scripts/alias/loader.sh",
 		"setup:alias:unload": "./scripts/alias/unloader.sh",
+		"setup:redis:portable": "./scripts/redis-loader/portable.sh",
 		"setup:app": "pnpm run setup:git",
 		"setup:git": "npx husky",
 		"start": "pnpm run start:production",
