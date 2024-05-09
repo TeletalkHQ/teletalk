@@ -1,0 +1,9 @@
+{
+	"name": "@repo/logger",
+	"version": "0.0.0",
+	"private": true,
+	"main": "./src/index.ts",
+	"devDependencies": {
+		"@repo/eslint-config": "workspace:*"
+	}
+}
