@@ -257,7 +257,7 @@
 		"typescript-plugin-css-modules": "5.1.0",
 		"yargs": "^17.7.2"
 	},
-	"packageManager": "pnpm@9.0.6",
+	"packageManager": "pnpm@9.1.0",
 	"engines": {
 		"node": ">=18"
 	},
