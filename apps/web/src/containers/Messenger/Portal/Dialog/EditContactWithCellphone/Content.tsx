@@ -1,11 +1,11 @@
 import type { FullName } from "@repo/type-store";
 
 import { Box, Input } from "~/components";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 interface Props {
 	fullName: FullName;
-	onChange: CommonOnChange;
+	onChange: OnInputChange;
 }
 const Content: React.FC<Props> = ({ fullName, onChange }) => {
 	return (

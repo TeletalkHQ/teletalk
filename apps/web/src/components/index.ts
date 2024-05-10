@@ -5,6 +5,7 @@ import { Loading as LoadingComponents } from "./Loading";
 import { Other } from "./Other";
 import { Template as TemplateComponents } from "./Template";
 
+// TODO: Move to UI pkg
 export const Box = {
 	...BaseComponent.Box,
 };

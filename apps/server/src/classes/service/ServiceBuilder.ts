@@ -4,6 +4,7 @@ import { serviceHandler } from "./ServiceHandler";
 
 export class ServiceBuilder<Query, Return, MiddlewareQueryData> {
 	private body: ServiceFn<Query & MiddlewareQueryData, Return>;
+	// TODO: Use Array instead
 	private middlewaresBeforeRun: ServiceMiddleware<any, any>[] = [];
 	private middlewaresAfterRun: ServiceMiddleware<any, any>[] = [];
 

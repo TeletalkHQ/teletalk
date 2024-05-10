@@ -55,7 +55,8 @@ export const usePing = () => {
 		const client = websocket.initialize({
 			url,
 		});
-		websocket.setClient(client);
+
+		websocket.client = client;
 	};
 
 	const emitPingEvent = () => {

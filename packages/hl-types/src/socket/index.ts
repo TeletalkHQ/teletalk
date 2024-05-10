@@ -58,7 +58,7 @@ export type SocketOnAnyHandler<T extends EventName> = (
 	| SocketHandlerReturnValue<T>
 	| Promise<SocketHandlerReturnValue<T>>;
 
-export interface SocketRoute<T extends EventName> extends Route {
+export interface SocketRoute<T extends EventName = EventName> extends Route {
 	name: T;
 	handler: SocketOnHandler<T>;
 	method: SocketMethods;

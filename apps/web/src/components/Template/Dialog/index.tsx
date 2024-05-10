@@ -1,11 +1,12 @@
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { VoidNoArgsFn } from "@repo/type-store";
+import { CSSProperties } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { BaseComponent } from "~/components/Base";
 import { useGlobalStore } from "~/store";
-import { Style, TransitionName } from "~/types";
+import { TransitionName } from "~/types";
 
 import Actions from "./Actions";
 import Content from "./Content";
@@ -13,17 +14,17 @@ import Title from "./Title";
 
 interface Props {
 	actions: JSX.Element;
-	isClosable?: boolean;
 	content: JSX.Element;
-	dialogStyle?: Style;
+	dialogStyle?: CSSProperties;
+	isClosable?: boolean;
+	onAfterClose?: VoidNoArgsFn;
 	onClose?: VoidNoArgsFn;
 	onKeyDown?: VoidNoArgsFn;
 	open: boolean;
-	paperStyle?: Style;
+	paperStyle?: CSSProperties;
 	title?: string | JSX.Element;
 	transitionDuration?: number;
 	transitionName?: TransitionName;
-	onAfterClose?: VoidNoArgsFn;
 }
 
 const Dialog: React.FC<Props> = ({

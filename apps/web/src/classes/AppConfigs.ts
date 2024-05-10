@@ -1,6 +1,7 @@
 import { merge } from "lodash";
 
-import { RuntimeMode, UiConfig, Url } from "~/types";
+import { GlobalStore } from "~/store";
+import { RuntimeMode, TransitionName, Url } from "~/types";
 
 import { storage } from "./Storage";
 
@@ -8,6 +9,13 @@ type BaseUrl = {
 	[key in RuntimeMode]: Url;
 };
 
+export interface UiConfig {
+	dialogDefaultTransition: TransitionName;
+	drawerDefaultAnchor: GlobalStore.DrawerAnchor;
+	maxNotification: number;
+}
+
+//TODO: Merge with ConfigManager
 export class AppConfigs {
 	private RUNTIME_MODE = process.env.NEXT_PUBLIC_RUNTIME_MODE;
 

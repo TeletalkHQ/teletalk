@@ -1,11 +1,11 @@
 import type { FullName, UnknownCellphone } from "@repo/type-store";
 
 import { Box, Input } from "~/components";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 interface Props {
 	contact: UnknownCellphone & FullName;
-	onChange: CommonOnChange;
+	onChange: OnInputChange;
 }
 
 const Content: React.FC<Props> = ({ contact, onChange }) => {

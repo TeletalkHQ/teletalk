@@ -1,9 +1,9 @@
 import { stuffStore } from "~/classes/StuffStore";
 import { BaseComponent } from "~/components/Base";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 interface Props {
-	onChange: CommonOnChange;
+	onChange: OnInputChange;
 	value: string;
 }
 

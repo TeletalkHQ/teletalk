@@ -1,9 +1,9 @@
 import { BaseComponent } from "~/components/Base";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 interface Props {
 	value: string;
-	onChange: CommonOnChange;
+	onChange: OnInputChange;
 }
 
 const CountryCode: React.FC<Props> = ({ value, onChange }) => {

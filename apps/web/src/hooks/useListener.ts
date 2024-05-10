@@ -1,14 +1,14 @@
 import { SocketResponse } from "@repo/hl-types";
+import { EventName } from "@repo/type-store";
 
 import { websocket } from "~/classes/websocket/Websocket";
-import { EventName } from "~/types";
+import "~/types";
 
 export const useListener = <EvName extends EventName>({
 	evName,
 	cb,
 }: {
 	evName: EvName;
-	//@ts-expect-error //FIXME
 	cb: (response: SocketResponse<EvName>) => void;
 }) => {
 	websocket.client.off(evName);

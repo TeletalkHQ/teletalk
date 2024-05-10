@@ -5,12 +5,12 @@ import {
 	SocketResponseCallback,
 } from "@repo/hl-types";
 import { EventName, IOCollection, VoidNoArgsFn } from "@repo/type-store";
+import { AutoBind } from "@repo/utils";
 import Timeout from "await-timeout";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
 import type { SocketRoute, UpdateLoadingFn } from "~/types";
-import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
 
 interface Options {

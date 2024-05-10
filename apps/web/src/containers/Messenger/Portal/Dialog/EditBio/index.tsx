@@ -1,7 +1,7 @@
 import { Template } from "~/components";
 import { useDialogState, useUpdateProfile } from "~/hooks";
 import { useGlobalStore, useSettingsStore } from "~/store";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 import Actions from "./Actions";
 import Content from "./Content";
@@ -13,7 +13,7 @@ const EditBio = () => {
 	const { handler: profileUpdater, loading } = useUpdateProfile();
 	const dialogState = useDialogState("editBio");
 
-	const handleInputChange: CommonOnChange = (e) => {
+	const handleInputChange: OnInputChange = (e) => {
 		settingsStore.updateProfile({ [e.target.name]: e.target.value });
 	};
 

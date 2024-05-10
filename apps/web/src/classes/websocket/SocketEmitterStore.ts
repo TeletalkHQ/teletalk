@@ -1,6 +1,8 @@
+import { EventName } from "@repo/type-store";
+
 import { stuffStore } from "~/classes/StuffStore";
 import { EventHandler, eventHandler } from "~/classes/websocket/EventHandler";
-import { EventName, SocketRoute } from "~/types";
+import { SocketRoute } from "~/types";
 
 type Events = {
 	//TODO: Remove any

@@ -1,10 +1,9 @@
 import { VoidNoArgsFn } from "@repo/type-store";
 
 import { Button } from "~/components";
-import { CommonOnClose } from "~/types";
 
 interface Props {
-	onClose: CommonOnClose;
+	onClose: VoidNoArgsFn;
 	onEdit: VoidNoArgsFn;
 	onDelete: VoidNoArgsFn;
 }

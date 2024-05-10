@@ -1,6 +1,6 @@
-import { SpanProps } from "~/types";
+import { ComponentProps } from "react";
 
-const Span: React.FC<SpanProps> = (props) => {
+const Span: React.FC<ComponentProps<"span">> = (props) => {
 	return <span {...props} />;
 };
 

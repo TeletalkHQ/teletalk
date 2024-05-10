@@ -2,7 +2,7 @@ import { stuffStore } from "~/classes/StuffStore";
 import { Template } from "~/components";
 import { useDialogState, useUpdateProfile } from "~/hooks";
 import { useGlobalStore, useSettingsStore } from "~/store";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 import Actions from "./Actions";
 import Content from "./Content";
@@ -14,7 +14,7 @@ const EditUsername = () => {
 	const dialogState = useDialogState("editUsername");
 	const { handler: profileUpdater, loading } = useUpdateProfile();
 
-	const handleInputChange: CommonOnChange = (e) => {
+	const handleInputChange: OnInputChange = (e) => {
 		settingsState.updateProfile({
 			[e.target.name]: e.target.value,
 		});

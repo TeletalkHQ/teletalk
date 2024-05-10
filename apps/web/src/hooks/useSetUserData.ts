@@ -71,7 +71,7 @@ export const useSetUserData = ({
 	}, [globalStore.isInitialized]);
 
 	return {
-		loading,
 		handler,
+		loading,
 	};
 };

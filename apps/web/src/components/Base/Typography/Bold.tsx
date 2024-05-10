@@ -1,8 +1,8 @@
-import { SpanProps } from "~/types";
+import { ComponentProps } from "react";
 
 import { Box } from "../Box";
 
-interface Props extends SpanProps {}
+interface Props extends ComponentProps<"span"> {}
 
 const Bold: React.FC<Props> = ({ style = {}, children, ...rest }) => {
 	return (

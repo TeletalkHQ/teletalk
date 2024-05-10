@@ -1,10 +1,10 @@
-import { Style } from "~/types";
+import { CSSProperties } from "react";
 
 import Span from "./Span";
 
 interface Props {
 	children: JSX.Element;
-	overrideStyle?: Style;
+	overrideStyle?: CSSProperties;
 }
 
 const SquareBadge: React.FC<Props> = ({ children, overrideStyle = {} }) => {

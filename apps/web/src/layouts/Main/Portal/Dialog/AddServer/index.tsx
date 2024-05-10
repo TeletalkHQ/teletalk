@@ -5,12 +5,7 @@ import { notificationManager } from "~/classes/NotificationManager";
 import { Template } from "~/components";
 import { useDialogState, usePing } from "~/hooks";
 import { useGlobalStore } from "~/store";
-import {
-	CommonChangeEvent,
-	CommonSelectChangeEvent,
-	Protocol,
-	Url,
-} from "~/types";
+import { OnInputChange, OnSelectOnChange, Protocol, Url } from "~/types";
 
 import Actions from "./Actions";
 import Content from "./Content";
@@ -23,7 +18,7 @@ const AddServer = () => {
 	const [protocol, setProtocol] = useState<Protocol>("https");
 	const { loading, handler: pinger, setStatus, status } = usePing();
 
-	const handleInputChange = (event: CommonChangeEvent) => {
+	const handleInputChange: OnInputChange = (event) => {
 		setInputValue(event.target.value);
 		setStatus("idle");
 	};
@@ -49,7 +44,7 @@ const AddServer = () => {
 		setStatus("idle");
 	};
 
-	const handleSelectChange = (e: CommonSelectChangeEvent) => {
+	const handleSelectChange: OnSelectOnChange = (e) => {
 		setProtocol(e.target.value as Protocol);
 	};
 

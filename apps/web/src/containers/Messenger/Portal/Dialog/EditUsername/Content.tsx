@@ -1,8 +1,8 @@
 import { Box, Input, Typography } from "~/components";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 interface Props {
-	onChange: CommonOnChange;
+	onChange: OnInputChange;
 	username: string;
 	usernameLength: string | number;
 }

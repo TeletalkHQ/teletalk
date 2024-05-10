@@ -1,7 +1,7 @@
 import { Box, Button, Components, Icon, Input, Typography } from "~/components";
 import { useCreate, useCustomRouter } from "~/hooks";
 import { useAuthStore } from "~/store";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 import { utils } from "~/utils";
 
 const Create = () => {
@@ -9,11 +9,11 @@ const Create = () => {
 	const router = useCustomRouter();
 	const { handler, loading } = useCreate();
 
-	const handleFirstNameInputChange: CommonOnChange = (e) => {
+	const handleFirstNameInputChange: OnInputChange = (e) => {
 		authStore.updateFirstName(e.target.value);
 	};
 
-	const handleLastNameInputChange: CommonOnChange = (e) => {
+	const handleLastNameInputChange: OnInputChange = (e) => {
 		authStore.updateLastName(e.target.value);
 	};
 

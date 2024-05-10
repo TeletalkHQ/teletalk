@@ -1,12 +1,11 @@
 import DoneAllIcon from "@mui/icons-material/DoneAll";
+import { CSSProperties } from "react";
 
 import { Box, Typography } from "~/components";
-// import { SlideProps } from "@mui/material";
-import { Style } from "~/types";
 
 interface Props {
 	chatDate: string;
-	justify: Style["justifyContent"];
+	justify: CSSProperties["justifyContent"];
 	message: string;
 	messageTime: string;
 	// transitionDirection: SlideProps["direction"];

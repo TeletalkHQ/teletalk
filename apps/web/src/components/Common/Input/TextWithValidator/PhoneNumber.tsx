@@ -1,8 +1,8 @@
 import { BaseComponent } from "~/components/Base";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 interface Props {
-	onChange: CommonOnChange;
+	onChange: OnInputChange;
 	value: unknown;
 }
 

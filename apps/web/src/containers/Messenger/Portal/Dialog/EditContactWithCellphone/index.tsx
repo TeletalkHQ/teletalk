@@ -10,7 +10,7 @@ import {
 	useFindSelectedUserForActions,
 } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 import { utils } from "~/utils";
 
 import Actions from "./Actions";
@@ -30,7 +30,7 @@ const EditContactWithCellphone = () => {
 			setFullName(extractor.fullName(selectedUserForActions));
 	}, [dialogState.open, selectedUserForActions, selectedUserForActions.userId]);
 
-	const handleInputChange: CommonOnChange = (e) => {
+	const handleInputChange: OnInputChange = (e) => {
 		setFullName({
 			...fullName,
 			[e.target.name]: e.target.value,

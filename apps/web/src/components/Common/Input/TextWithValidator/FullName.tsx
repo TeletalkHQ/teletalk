@@ -1,11 +1,11 @@
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 import FirstName from "./FirstName";
 import LastName from "./LastName";
 
 interface Props {
-	onFirstNameInputChange: CommonOnChange;
-	onLastNameInputChange: CommonOnChange;
+	onFirstNameInputChange: OnInputChange;
+	onLastNameInputChange: OnInputChange;
 	firstName: string;
 	lastName: string;
 }

@@ -1,36 +1,12 @@
 import { ErrorReason, ErrorSide, NativeError } from "@repo/error-store";
 import { Route } from "@repo/hl-types";
-import type {
-	Cellphone,
-	ContactItem,
-	EventName as MainEventName,
-	VoidWithArg,
-} from "@repo/type-store";
-import { CSSProperties } from "react";
+import type { EventName, VoidWithArg } from "@repo/type-store";
 
 import { Transition } from "~/components";
-import { GlobalStore } from "~/store/global";
 
 export type TransitionName = keyof typeof Transition;
 
-export interface UiConfig {
-	drawerDefaultAnchor: GlobalStore.DrawerAnchor;
-	dialogDefaultTransition: TransitionName;
-	maxNotification: number;
-}
-
-export type Style = CSSProperties;
-
-export type FullContact = ContactItem & Cellphone;
-
-//TODO: Remove or merge with main event name
-export type EventName =
-	| MainEventName
-	| "connect"
-	| "connect_error"
-	| "disconnect"
-	| "pong";
-
+// TODO: Move name to Route interface
 export interface SocketRoute extends Route {
 	name: EventName;
 }
@@ -73,4 +49,3 @@ export type UpdateLoadingFn = VoidWithArg<boolean>;
 
 export type * from "./components";
 export type * from "./models";
-export type * from "./utils";

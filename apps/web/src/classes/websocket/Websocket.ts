@@ -13,7 +13,7 @@ export class Websocket {
 	client: Socket = this.initialize();
 
 	setAndInitialize(options = this.getDefaultOptions()) {
-		this.setClient(this.initialize(options));
+		this.client = this.initialize(options);
 	}
 
 	initialize(options = this.getDefaultOptions()) {
@@ -24,14 +24,11 @@ export class Websocket {
 			},
 		});
 	}
+
 	getDefaultOptions() {
 		return {
 			url: appConfigs.getConfigs().api.selectedServerUrl,
 		} as Options;
-	}
-
-	setClient(client: Socket) {
-		this.client = client;
 	}
 
 	updateSession(session: EncryptedSession) {

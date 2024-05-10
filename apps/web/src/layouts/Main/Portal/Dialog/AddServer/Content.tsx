@@ -2,16 +2,16 @@ import { FormControl, InputLabel } from "@mui/material";
 
 import { Box, Components, Input } from "~/components";
 import {
-	CommonOnChange,
-	CommonSelectOnChange,
+	OnInputChange,
+	OnSelectOnChange,
 	ServerAvailabilityStatus,
 } from "~/types";
 
 interface Props {
 	disabled: boolean;
 	inputValue: string;
-	onChange: CommonOnChange;
-	onSelectChange: CommonSelectOnChange;
+	onChange: OnInputChange;
+	onSelectChange: OnSelectOnChange;
 	protocol: string;
 	status: ServerAvailabilityStatus;
 }

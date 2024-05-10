@@ -3,7 +3,7 @@ import { validators } from "@repo/validator";
 import { Box, Button, Components, Icon, Input, Typography } from "~/components";
 import { useCustomRouter, useVerify } from "~/hooks";
 import { useAuthStore } from "~/store";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 const Verify = () => {
 	const authStore = useAuthStore();
@@ -20,7 +20,7 @@ const Verify = () => {
 		router.back();
 	};
 
-	const handleVerificationCodeInputChange: CommonOnChange = (e) => {
+	const handleVerificationCodeInputChange: OnInputChange = (e) => {
 		authStore.updateVerificationCode(e.target.value);
 	};
 

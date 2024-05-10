@@ -1,9 +1,9 @@
 import { Box, Input, Typography } from "~/components";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 interface Props {
 	bio: string;
-	onChange: CommonOnChange;
+	onChange: OnInputChange;
 }
 
 const Content: React.FC<Props> = ({ bio, onChange }) => {

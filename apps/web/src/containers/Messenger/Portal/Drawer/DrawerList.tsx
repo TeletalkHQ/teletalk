@@ -1,16 +1,39 @@
 import { ElementName, VoidWithArg, VoidWithTwoArgs } from "@repo/type-store";
+import { MouseEvent } from "react";
 
 import { Box, Icon } from "~/components";
-import { HTMLDivMouseEvent } from "~/types";
+
+type HTMLDivMouseEvent = MouseEvent<HTMLDivElement, globalThis.MouseEvent>;
 
 const drawerList = [
-	{ Icon: Icon.Calls, disabled: true },
-	{ Icon: Icon.Contacts, disabled: false },
-	{ Icon: Icon.LogoutOutlined, disabled: false },
-	{ Icon: Icon.NewChannelOutlined, disabled: true },
-	{ Icon: Icon.NewGroupOutlined, disabled: true },
-	{ Icon: Icon.NightModeOutlined, disabled: true },
-	{ Icon: Icon.SettingsOutlined, disabled: false },
+	{
+		disabled: true,
+		Icon: Icon.Calls,
+	},
+	{
+		disabled: false,
+		Icon: Icon.Contacts,
+	},
+	{
+		disabled: false,
+		Icon: Icon.LogoutOutlined,
+	},
+	{
+		disabled: true,
+		Icon: Icon.NewChannelOutlined,
+	},
+	{
+		disabled: true,
+		Icon: Icon.NewGroupOutlined,
+	},
+	{
+		disabled: true,
+		Icon: Icon.NightModeOutlined,
+	},
+	{
+		disabled: false,
+		Icon: Icon.SettingsOutlined,
+	},
 ];
 
 interface Props {

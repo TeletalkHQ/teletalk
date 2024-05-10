@@ -2,12 +2,12 @@ import { VoidNoArgsFn } from "@repo/type-store";
 import AvatarEditor from "react-avatar-editor";
 
 import { Box, Button } from "~/components";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 
 interface Props {
 	avatarSrc: string;
 	editor: React.MutableRefObject<AvatarEditor | null>;
-	onFileChange: CommonOnChange;
+	onFileChange: OnInputChange;
 	onOpenFileSelector: VoidNoArgsFn;
 	fileInputRef: React.LegacyRef<HTMLInputElement>;
 }

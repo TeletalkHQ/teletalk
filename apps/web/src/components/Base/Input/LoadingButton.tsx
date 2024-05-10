@@ -12,6 +12,7 @@ const LoadingButton: React.FC<CustomLoadingButtonProps> = ({
 	...props
 }) => {
 	return (
+		// TODO: Move to ui pkg
 		<MuiLoadingButton
 			{...props}
 			fullWidth

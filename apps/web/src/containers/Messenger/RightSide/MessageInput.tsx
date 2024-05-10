@@ -1,13 +1,13 @@
 import { Box, Button, Icon, Input, Progress } from "~/components";
 import { useEmitter } from "~/hooks";
 import { useMessageStore } from "~/store";
-import { CommonChangeEvent } from "~/types";
+import { OnInputChange } from "~/types";
 
 const MessageInput = () => {
 	const messageStore = useMessageStore();
 	const { handler, loading } = useEmitter("sendMessage");
 
-	const handleInputChange = (event: CommonChangeEvent) => {
+	const handleInputChange: OnInputChange = (event) => {
 		messageStore.messageInputOnChange(event.target.value);
 	};
 

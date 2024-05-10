@@ -1,7 +1,7 @@
 import { Template } from "~/components";
 import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
-import { CommonOnChange } from "~/types";
+import { OnInputChange } from "~/types";
 import { utils } from "~/utils";
 
 import Actions from "./Actions";
@@ -15,7 +15,7 @@ const AddContactWithUserId = () => {
 	const { loading, handler } = useEmitter("addContactWithUserId");
 	const dialogState = useDialogState("addContactWithUserId");
 
-	const handleChange: CommonOnChange = (e) => {
+	const handleChange: OnInputChange = (e) => {
 		userStore.updateAddingContactWithUserId({
 			[e.target.name]: e.target.value,
 		});

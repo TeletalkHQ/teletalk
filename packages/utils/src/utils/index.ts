@@ -33,6 +33,8 @@ const isDataHasEqualityWithTargetCellphone = (
 	);
 };
 
+export * from "./decorators";
+
 export const utils = {
 	isDataHasEqualityWithTargetCellphone,
 	makeScreamingSnakeCase,
