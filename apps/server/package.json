@@ -30,16 +30,14 @@
 	},
 	"dependencies": {
 		"@repo/classes": "workspace:*",
-		"@repo/error-store": "workspace:*",
 		"@repo/logger": "workspace:*",
-		"@repo/model": "workspace:*",
+		"@repo/schema": "workspace:*",
 		"@repo/utils": "workspace:*",
-		"@repo/validator": "workspace:*",
-		"@repo/vars": "workspace:*"
+		"@repo/vars": "workspace:*",
+		"@repo/socket": "workspace:*"
 	},
 	"devDependencies": {
-		"@repo/hl-types": "workspace:*",
-		"@repo/type-store": "workspace:*",
+		"@repo/types": "workspace:*",
 		"@repo/typescript-config": "workspace:*"
 	},
 	"engines": {

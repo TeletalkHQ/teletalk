@@ -1,5 +1,5 @@
 import { randomMaker } from "@repo/classes";
-import type { Countries } from "@repo/type-store";
+import type { Countries } from "@repo/types";
 
 const addUniqueIdToEachCountry = (countries: Countries) => {
 	return {

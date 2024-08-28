@@ -1,4 +1,4 @@
-import { UserItem } from "@repo/type-store";
+import { UserItem } from "@repo/types";
 
 import { Template } from "~/components";
 import { useContextMenu, useDialogState } from "~/hooks";

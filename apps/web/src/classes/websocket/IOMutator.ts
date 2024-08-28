@@ -2,8 +2,8 @@ import {
 	Interceptors,
 	RequestTransformer,
 	ResponseTransformer,
-} from "@repo/hl-types";
-import { EventName, IOCollection } from "@repo/type-store";
+} from "@repo/types";
+import { EventName, IOCollection } from "@repo/types";
 
 //UNUSED, //!UNSTABLE
 export class IOMutator<T extends EventName> {

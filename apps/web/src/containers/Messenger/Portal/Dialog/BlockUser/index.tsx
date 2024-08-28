@@ -17,7 +17,7 @@ const BlockUser = () => {
 	const selectedUserForActions = useFindSelectedUserForActions();
 
 	const { handler: addBlockHandler, loading: addBlockLoading } =
-		useEmitter("addBlock");
+		useEmitter("blockUser");
 
 	const { handler: removeBlockHandler, loading: removeBlockLoading } =
 		useEmitter("removeBlock");

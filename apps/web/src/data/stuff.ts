@@ -844,7 +844,7 @@ export const stuff = {
 				},
 			},
 			isAuthRequired: true,
-			name: "addBlock",
+			name: "blockUser",
 		},
 		{
 			method: "customOn",

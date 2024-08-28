@@ -1,4 +1,4 @@
-import { StringMap } from "@repo/type-store";
+import { StringMap } from "@repo/types";
 
 class ObjectUtils {
 	constructor() {

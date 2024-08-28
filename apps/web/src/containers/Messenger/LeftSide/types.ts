@@ -1,4 +1,4 @@
-import type { ChatId, UserId, VoidWithArg } from "@repo/type-store";
+import type { ChatId, UserId, VoidWithArg } from "@repo/types";
 
 export type HandleChatListItemClick = VoidWithArg<{
 	userId: UserId;

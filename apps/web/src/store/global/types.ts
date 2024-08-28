@@ -4,7 +4,7 @@ import type {
 	VoidNoArgsFn,
 	VoidWithArg,
 	VoidWithTwoArgs,
-} from "@repo/type-store";
+} from "@repo/types";
 import { CSSProperties } from "react";
 
 import { dialogNames } from "~/store/global/initialState";

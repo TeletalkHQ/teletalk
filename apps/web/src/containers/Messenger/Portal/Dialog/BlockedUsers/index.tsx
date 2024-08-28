@@ -1,4 +1,4 @@
-import type { UserId } from "@repo/type-store";
+import type { UserId } from "@repo/types";
 
 import { Template } from "~/components";
 import { useDialogState } from "~/hooks";

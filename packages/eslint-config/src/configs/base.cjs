@@ -86,7 +86,7 @@ const baseConfig = defineConfig({
 				amd: true,
 				commonjs: true,
 				esmodule: true,
-				ignore: ["type-fest", "@repo/type-store"],
+				ignore: ["type-fest", "@repo/types"],
 			},
 		],
 		"import/no-unused-modules": [

@@ -1,5 +1,5 @@
 import { extractor, maker } from "@repo/classes";
-import { UserItem } from "@repo/type-store";
+import { UserItem } from "@repo/types";
 
 import { initialState } from "./initialState";
 import { Handlers, SetState } from "./types";
@@ -38,7 +38,7 @@ export const handlers: (set: SetState) => Handlers = (set) => ({
 		});
 	},
 
-	addBlock({ userId }) {
+	blockUser({ userId }) {
 		this.updateUser({
 			userId,
 			isBlocked: true,

@@ -10,7 +10,7 @@ import type {
 	VerificationCode,
 	VoidNoArgsFn,
 	VoidWithArg,
-} from "@repo/type-store";
+} from "@repo/types";
 
 import { GlobalStore } from "../global";
 import { StoreSetFn } from "../utils";

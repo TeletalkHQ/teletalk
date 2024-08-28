@@ -1,5 +1,5 @@
 import { userUtils } from "@repo/classes";
-import type { AvatarSrc, VoidNoArgsFn } from "@repo/type-store";
+import type { AvatarSrc, VoidNoArgsFn } from "@repo/types";
 
 import { Box } from "~/components";
 import { SettingsStore } from "~/store";

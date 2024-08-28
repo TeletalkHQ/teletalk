@@ -1,6 +1,6 @@
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
-import { VoidWithArg } from "@repo/type-store";
+import { VoidWithArg } from "@repo/types";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { Box, Input } from "~/components";

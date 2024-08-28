@@ -1,4 +1,4 @@
-import type { FullName, UnknownCellphone } from "@repo/type-store";
+import type { FullName, UnknownCellphone } from "@repo/types";
 
 import { Box, Input } from "~/components";
 import { OnInputChange } from "~/types";

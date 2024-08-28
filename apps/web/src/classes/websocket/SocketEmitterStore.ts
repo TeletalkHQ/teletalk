@@ -1,4 +1,4 @@
-import { EventName } from "@repo/type-store";
+import { EventName } from "@repo/schema";
 
 import { stuffStore } from "~/classes/StuffStore";
 import { EventHandler, eventHandler } from "~/classes/websocket/EventHandler";

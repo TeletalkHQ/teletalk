@@ -1,4 +1,4 @@
-import type { UserId, UserItem } from "@repo/type-store";
+import type { UserId, UserItem } from "@repo/types";
 import { useEffect } from "react";
 
 import { useUserStore } from "~/store";

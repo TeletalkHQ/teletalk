@@ -1,19 +1,19 @@
-import { Cellphone } from "@repo/type-store";
+import { BaseSchema } from "@repo/schema";
 import { utils } from "@repo/utils";
 
 class DataUsageManager {
-	private usedCellphones: Cellphone[];
+	private usedCellphones: BaseSchema.Cellphone[];
 
 	constructor() {
 		this.usedCellphones = [];
 	}
 
-	addUsedCellphone(cellphone: Cellphone) {
+	addUsedCellphone(cellphone: BaseSchema.Cellphone) {
 		this.usedCellphones.push(cellphone);
 		return this;
 	}
 
-	isCellphoneUsed(cellphone: Cellphone) {
+	isCellphoneUsed(cellphone: BaseSchema.Cellphone) {
 		return this.usedCellphones.some((c) =>
 			utils.isDataHasEqualityWithTargetCellphone(c, cellphone)
 		);

@@ -1,4 +1,4 @@
-import type { AvatarSrc } from "@repo/type-store";
+import type { AvatarSrc } from "@repo/types";
 
 import { Box } from "~/components";
 

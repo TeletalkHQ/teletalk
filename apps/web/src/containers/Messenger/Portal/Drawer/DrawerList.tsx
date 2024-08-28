@@ -1,4 +1,4 @@
-import { ElementName, VoidWithArg, VoidWithTwoArgs } from "@repo/type-store";
+import { ElementName, VoidWithArg, VoidWithTwoArgs } from "@repo/types";
 import { MouseEvent } from "react";
 
 import { Box, Icon } from "~/components";

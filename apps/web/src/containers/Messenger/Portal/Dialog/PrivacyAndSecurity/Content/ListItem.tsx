@@ -1,4 +1,4 @@
-import { VoidWithArg } from "@repo/type-store";
+import { VoidWithArg } from "@repo/types";
 
 import { Box } from "~/components";
 import { GlobalStore } from "~/store";

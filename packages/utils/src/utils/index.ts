@@ -1,4 +1,5 @@
-import { ExtendedUnknownCellphone, UnknownCellphone } from "@repo/type-store";
+import { BaseSchema } from "@repo/schema";
+import { StringMap } from "@repo/types";
 import lodash from "lodash";
 import { ScreamingSnakeCase } from "type-fest";
 
@@ -8,8 +9,8 @@ const makeScreamingSnakeCase = <T extends string>(value: T) =>
 const upperSnake = (value: string) => lodash.snakeCase(value).toUpperCase();
 
 const isDataHasEqualityWithTargetCellphone = (
-	data: ExtendedUnknownCellphone,
-	targetCellphone: UnknownCellphone
+	data: BaseSchema.Cellphone & StringMap,
+	targetCellphone: BaseSchema.Cellphone
 ): never | boolean => {
 	if (
 		[

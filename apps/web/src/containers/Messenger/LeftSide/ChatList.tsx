@@ -1,4 +1,4 @@
-import type { PrivateChatItem, UserId } from "@repo/type-store";
+import type { PrivateChatItem, UserId } from "@repo/types";
 
 import { MessageStore, useMessageStore, useUserStore } from "~/store";
 

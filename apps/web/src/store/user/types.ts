@@ -14,7 +14,7 @@ import type {
 	Users,
 	VoidNoArgsFn,
 	VoidWithArg,
-} from "@repo/type-store";
+} from "@repo/types";
 
 import { StoreSetFn } from "../utils";
 
@@ -44,7 +44,7 @@ export interface State {
 export type ExtendedCountryItem = CountryItem & StringMap;
 
 export interface Handlers {
-	addBlock: VoidWithArg<BlacklistItem>;
+	blockUser: VoidWithArg<BlacklistItem>;
 	addContactWithUserId: VoidWithArg<ContactItemWithEmptyCellphone>;
 	addContactWithCellphone: VoidWithArg<ContactItem>;
 	removeBlock: VoidWithArg<BlacklistItem>;

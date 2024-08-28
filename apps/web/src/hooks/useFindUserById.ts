@@ -1,5 +1,5 @@
 import { maker } from "@repo/classes";
-import type { UserId } from "@repo/type-store";
+import type { UserId } from "@repo/types";
 
 import { useUserStore } from "~/store";
 

@@ -1,0 +1,230 @@
+[
+	{
+		"_id": "8487f295-e64b-433b-91b5-48135a8b4729",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "912ee1d7-89bc-46ef-aa23-c40e3498d032",
+		"name": "signIn",
+		"url": "{{baseUrl}}/auth/signIn",
+		"method": "POST",
+		"sortNum": 15000,
+		"created": "2022-04-10T19:07:05.854Z",
+		"modified": "2023-01-03T21:06:17.550Z",
+		"headers": [],
+		"params": [],
+		"body": {
+			"type": "json",
+			"raw": "{\n  \"phoneNumber\": \"9012700470\",\n  \"countryName\": \"Iran, Islamic Republic of\",\n  \"countryCode\": \"98\"\n}",
+			"form": []
+		},
+		"tests": []
+	},
+	{
+		"_id": "64f71f9d-5049-4c27-8e0c-8cdf43c2e0c0",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "912ee1d7-89bc-46ef-aa23-c40e3498d032",
+		"name": "verifySignInNormalUser",
+		"url": "{{baseUrl}}/auth/verify",
+		"method": "POST",
+		"sortNum": 20000,
+		"created": "2022-04-10T19:07:05.855Z",
+		"modified": "2023-01-05T01:35:41.320Z",
+		"headers": [],
+		"params": [],
+		"body": {
+			"type": "json",
+			"raw": "{\n    \"verificationCode\":\"813159\"\n}",
+			"form": []
+		},
+		"auth": {
+			"type": "bearer",
+			"bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudHJ5Q29kZSI6Ijk4IiwiY291bnRyeU5hbWUiOiJJcmFuLCBJc2xhbWljIFJlcHVibGljIG9mIiwicGhvbmVOdW1iZXIiOiI5MDEyNzAwNDcwIiwiaWF0IjoxNjcyNzgwMTE5fQ.JiYl_2vJE9tnraKNa2ebMUak3MCRjewWSsZ5rDcUX0Q"
+		},
+		"tests": []
+	},
+	{
+		"_id": "b7d99c8f-7a3c-47a9-9ea7-972f9d75bb84",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "3707a95e-cdc1-435d-a3d3-325b78b14ccf",
+		"name": "removeContact",
+		"url": "{{baseUrl}}/cellphone/remove/contact",
+		"method": "DELETE",
+		"sortNum": 30000,
+		"created": "2022-04-10T19:07:05.856Z",
+		"modified": "2022-04-10T19:07:05.856Z",
+		"headers": [],
+		"params": [],
+		"body": {
+			"type": "json",
+			"raw": "{\n  \"cellphone\": {\n    \"countryCode\": \"\",\n    \"countryName\": \"\",\n    \"phoneNumber\" : \"\"\n  } \n}",
+			"form": []
+		},
+		"tests": []
+	},
+	{
+		"_id": "7203ee20-cf09-4fde-9886-11fb3e1ce5de",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "3707a95e-cdc1-435d-a3d3-325b78b14ccf",
+		"name": "removeBlock",
+		"url": "{{baseUrl}}/cellphone/remove/block",
+		"method": "DELETE",
+		"sortNum": 40000,
+		"created": "2022-04-10T19:07:05.857Z",
+		"modified": "2022-04-10T19:07:05.857Z",
+		"headers": [],
+		"params": [],
+		"body": {
+			"type": "json",
+			"raw": "{\n  \"cellphone\": {\n    \"countryCode\": \"\",\n    \"countryName\": \"\",\n    \"phoneNumber\" : \"\"\n  } \n}",
+			"form": []
+		},
+		"tests": []
+	},
+	{
+		"_id": "03426795-3696-4ddc-8d09-2f56af9d01d3",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "3707a95e-cdc1-435d-a3d3-325b78b14ccf",
+		"name": "updateContact",
+		"url": "{{baseUrl}}/cellphone/edit/contact",
+		"method": "PATCH",
+		"sortNum": 50000,
+		"created": "2022-04-10T19:07:05.858Z",
+		"modified": "2022-04-10T19:07:05.858Z",
+		"headers": [],
+		"params": [],
+		"body": {
+			"type": "json",
+			"raw": "{\n  \"cellphone\": {\n    \"countryCode\": \"\",\n    \"countryName\": \"\",\n    \"phoneNumber\" : \"\"\n  },\n  \"firstName\": \"\",\n  \"lastName\": \"\"\n}",
+			"form": []
+		},
+		"tests": []
+	},
+	{
+		"_id": "c686a306-4a2e-4a06-9001-e591e40b7868",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "3707a95e-cdc1-435d-a3d3-325b78b14ccf",
+		"name": "addContact",
+		"url": "{{baseUrl}}/cellphone/addContact",
+		"method": "POST",
+		"sortNum": 60000,
+		"created": "2022-04-10T19:07:05.859Z",
+		"modified": "2022-05-03T15:56:15.697Z",
+		"headers": [],
+		"params": [],
+		"body": {
+			"type": "json",
+			"raw": "{\n  \"countryCode\": \"98\",\n  \"countryName\": \"Iran, Islamic Republic of\",\n  \"phoneNumber\": \"9119119191\",\n  \"firstName\": \"sasan\",\n  \"lastName\": \"\"\n}",
+			"form": []
+		},
+		"tests": []
+	},
+	{
+		"_id": "1276103c-75dd-4d0f-a986-f1c74359fdec",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "3707a95e-cdc1-435d-a3d3-325b78b14ccf",
+		"name": "blockUser",
+		"url": "{{baseUrl}}/cellphone/add/block",
+		"method": "POST",
+		"sortNum": 70000,
+		"created": "2022-04-10T19:07:05.867Z",
+		"modified": "2022-04-10T19:07:05.867Z",
+		"headers": [],
+		"params": [],
+		"body": {
+			"type": "json",
+			"raw": "{\n  \"cellphone\": {\n    \"countryCode\": \"\",\n    \"countryName\": \"\",\n    \"phoneNumber\" : \"\"\n  } \n}",
+			"form": []
+		},
+		"tests": []
+	},
+	{
+		"_id": "d426dcd0-2810-47c3-a3cf-8c8498fdedb5",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "8173ef98-530a-4efe-9fae-176242f805be",
+		"name": "sendMessage",
+		"url": "{{baseUrl}}/chat/private/send/message",
+		"method": "POST",
+		"sortNum": 80000,
+		"created": "2022-04-10T19:07:05.868Z",
+		"modified": "2022-04-10T19:07:05.868Z",
+		"headers": [],
+		"params": [],
+		"body": {
+			"type": "json",
+			"raw": "{\n  \"chatID\":\"\",\n  \"participantID\":\"\",\n  \"messageText\":\"\"\n}",
+			"form": []
+		},
+		"tests": []
+	},
+	{
+		"_id": "d2cd420c-9ff2-4beb-b3d4-641c6ec60793",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "ce68116e-d26c-4cec-be4b-a976e34b7b39",
+		"name": "getAllStuff",
+		"url": "{{baseUrl}}/stuff/getAllStuff",
+		"method": "POST",
+		"sortNum": 90000,
+		"created": "2022-04-10T19:24:50.497Z",
+		"modified": "2022-12-20T16:10:02.664Z",
+		"headers": [],
+		"params": [],
+		"body": {
+			"type": "json",
+			"raw": "{\n  \"language\": \"en\"\n}",
+			"form": []
+		},
+		"tests": []
+	},
+	{
+		"_id": "4d3b95b8-a0e6-4f66-8674-8bc55dd5ad7f",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "912ee1d7-89bc-46ef-aa23-c40e3498d032",
+		"name": "createNewUserUser",
+		"url": "{{baseUrl}}/auth/createNewUser",
+		"method": "POST",
+		"sortNum": 100000,
+		"created": "2022-05-03T15:36:53.163Z",
+		"modified": "2023-01-03T21:08:20.413Z",
+		"headers": [],
+		"params": [],
+		"body": {
+			"type": "json",
+			"raw": "{\n  \"firstName\": \"testUser01\",\n  \"lastName\":\"lastName  01\"\n}",
+			"form": []
+		},
+		"auth": {
+			"type": "bearer",
+			"bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudHJ5Q29kZSI6Ijk4IiwiY291bnRyeU5hbWUiOiJJcmFuLCBJc2xhbWljIFJlcHVibGljIG9mIiwicGhvbmVOdW1iZXIiOiI5MDEyNzAwNDcwIiwiaWF0IjoxNjcyNzc5OTc5fQ._c3uM4W5DNTB_xj0MpP39X2ytdXLZTLYX4YCyE3ohho"
+		},
+		"tests": []
+	},
+	{
+		"_id": "6579351e-18fa-4227-b2ff-bd81252f7ef1",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "2e4f9be5-df9e-494d-a46c-255533181c0a",
+		"name": "getWelcomeMessage",
+		"url": "",
+		"method": "GET",
+		"sortNum": 110000,
+		"created": "2022-12-24T18:35:07.799Z",
+		"modified": "2022-12-24T18:35:07.799Z",
+		"headers": []
+	},
+	{
+		"_id": "d88993e7-9b59-4d19-bac4-11eaf4a1b130",
+		"colId": "fe4d5b8e-f47a-4f16-865b-98c0be0389d4",
+		"containerId": "912ee1d7-89bc-46ef-aa23-c40e3498d032",
+		"name": "logout",
+		"url": "{{baseUrl}}/auth/logout",
+		"method": "POST",
+		"sortNum": 120000,
+		"created": "2023-01-03T21:17:53.565Z",
+		"modified": "2023-01-03T21:21:26.245Z",
+		"headers": [],
+		"params": [],
+		"auth": {
+			"type": "bearer",
+			"bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3VudHJ5Q29kZSI6Ijk4IiwiY291bnRyeU5hbWUiOiJJcmFuLCBJc2xhbWljIFJlcHVibGljIG9mIiwicGhvbmVOdW1iZXIiOiI5MDEyNzAwNDcwIiwidXNlcklkIjoiQmtuWjZRZFZRdjJaTW5QdWlBSVNJaDNaX01QMXVRemJkSFUiLCJpYXQiOjE2NzI3ODA4Nzh9.ilmyymVf23uYZsUq-_vr5ZQVq2IqWNr4gizjYtiYC5M"
+		},
+		"tests": []
+	}
+]

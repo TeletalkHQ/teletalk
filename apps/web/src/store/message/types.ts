@@ -7,7 +7,7 @@ import type {
 	UserId,
 	VoidNoArgsFn,
 	VoidWithArg,
-} from "@repo/type-store";
+} from "@repo/types";
 
 import { StoreSetFn } from "../utils";
 

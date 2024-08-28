@@ -1,4 +1,4 @@
-import { UserId } from "@repo/type-store";
+import { UserId } from "@repo/types";
 import { useEffect } from "react";
 
 import defaultAvatar from "~/assets/images/default-avatar.png";

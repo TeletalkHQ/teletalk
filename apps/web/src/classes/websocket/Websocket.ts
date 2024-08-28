@@ -1,4 +1,4 @@
-import { EncryptedSession } from "@repo/type-store";
+import { EncryptedSession } from "@repo/types";
 import io, { Socket } from "socket.io-client";
 
 import { appConfigs } from "~/classes/AppConfigs";

@@ -1,4 +1,4 @@
-import type { UserId, VoidWithArg } from "@repo/type-store";
+import type { UserId, VoidWithArg } from "@repo/types";
 
 import { Box } from "~/components";
 import { useUserStore } from "~/store";

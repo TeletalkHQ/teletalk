@@ -3,8 +3,8 @@ import {
 	SocketErrorCallback,
 	SocketResponse,
 	SocketResponseCallback,
-} from "@repo/hl-types";
-import { EventName, IOCollection, VoidNoArgsFn } from "@repo/type-store";
+} from "@repo/types";
+import { EventName, IOCollection, VoidNoArgsFn } from "@repo/types";
 import { AutoBind } from "@repo/utils";
 import Timeout from "await-timeout";
 

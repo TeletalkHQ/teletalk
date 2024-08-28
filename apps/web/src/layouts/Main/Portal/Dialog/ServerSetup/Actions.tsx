@@ -1,4 +1,4 @@
-import { VoidNoArgsFn } from "@repo/type-store";
+import { VoidNoArgsFn } from "@repo/types";
 
 import { Button } from "~/components";
 import { ServerAvailabilityStatus } from "~/types";

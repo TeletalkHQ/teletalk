@@ -1,6 +1,6 @@
 import { maker } from "@repo/classes";
 import { extractor } from "@repo/classes";
-import type { FullName } from "@repo/type-store";
+import type { FullName } from "@repo/types";
 import React, { useEffect, useState } from "react";
 
 import { Template } from "~/components";

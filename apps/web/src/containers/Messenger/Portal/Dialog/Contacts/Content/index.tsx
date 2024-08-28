@@ -1,4 +1,4 @@
-import { UserItem, Users, VoidWithArg } from "@repo/type-store";
+import { UserItem, Users, VoidWithArg } from "@repo/types";
 
 import { GlobalStore } from "~/store";
 

@@ -1,19 +1,11 @@
-import {
-	EmptyUserData,
-	EmptyUserDataWithoutSessions,
-	ExtendedCellphone,
-	ExtendedUnknownCellphone,
-	UserItem,
-	UserPublicData,
-} from "@repo/type-store";
+import { BaseSchema } from "@repo/schema";
+import { StringMap } from "@repo/types";
 import { utils } from "@repo/utils";
-
-type EmptyDBUserData = Omit<EmptyUserData, "contacts"> & { contacts: [] };
 
 export class UserUtils {
 	concatFirstNameWithLastName(
-		userItem: Partial<UserItem>,
-		publicData?: UserPublicData
+		userItem: Partial<BaseSchema.ClientUser>,
+		publicData?: BaseSchema.PublicData
 	) {
 		const fn =
 			userItem.firstName ||
@@ -30,22 +22,14 @@ export class UserUtils {
 	}
 
 	concatCountryCodeWithPhoneNumber(
-		data: ExtendedUnknownCellphone,
+		data: BaseSchema.Cellphone & StringMap,
 		fallbackValue = ""
 	) {
 		if (!data.countryCode || !data.phoneNumber) return fallbackValue;
 		return `+${data.countryCode} ${data.phoneNumber}`;
 	}
 
-	//CLEANME: Remove this method
-	getDBDefaultUserData(): EmptyDBUserData {
-		return {
-			...this.getDefaultUserData(),
-			contacts: [],
-		};
-	}
-
-	getDefaultUserData(): EmptyUserData {
+	getDefaultUserData(): BaseSchema.DBUserData {
 		return {
 			avatarSrc: "",
 			bio: "",
@@ -66,15 +50,15 @@ export class UserUtils {
 		};
 	}
 
-	getDefaultUserDataWithoutSessions(): EmptyUserDataWithoutSessions {
+	getDefaultUserDataWithoutSessions(): BaseSchema.UserData {
 		const { sessions, ...rest } = this.getDefaultUserData();
 		return rest;
 	}
 
 	findByCellphone(
-		items: ExtendedCellphone[],
-		targetCellphone: ExtendedCellphone
-	): { index: number; item?: ExtendedCellphone } {
+		items: (BaseSchema.Cellphone & StringMap)[],
+		targetCellphone: BaseSchema.Cellphone & StringMap
+	): { index: number; item?: BaseSchema.Cellphone & StringMap } {
 		const item = items.find((cellphone) =>
 			utils.isDataHasEqualityWithTargetCellphone(cellphone, targetCellphone)
 		);

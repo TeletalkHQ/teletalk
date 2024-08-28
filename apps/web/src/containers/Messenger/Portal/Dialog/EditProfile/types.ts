@@ -1,4 +1,4 @@
-import { ElementLabel, VoidWithArg } from "@repo/type-store";
+import { ElementLabel, VoidWithArg } from "@repo/types";
 
 import { GlobalStore } from "~/store";
 import { IconType } from "~/types";

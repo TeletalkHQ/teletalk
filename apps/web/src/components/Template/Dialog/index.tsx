@@ -1,6 +1,6 @@
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { VoidNoArgsFn } from "@repo/type-store";
+import { VoidNoArgsFn } from "@repo/types";
 import { CSSProperties } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";

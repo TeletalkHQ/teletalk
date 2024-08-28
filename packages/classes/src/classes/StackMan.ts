@@ -1,19 +1,19 @@
 export interface StackManOptions {
-	fullLine: boolean;
+	isFullLine: boolean;
 }
-
+// UNUSED - Replace with pkg
 export class StackMan {
 	options: StackManOptions;
 
-	constructor(fullLine: boolean) {
+	constructor(isFullLine: boolean) {
 		this.options = {
-			fullLine,
+			isFullLine,
 		};
 	}
 
 	getFileName(): string {
 		const fileName = this.getStackLines().trim().split(/\(|\)/g)[1];
-		if (this.options.fullLine) return fileName;
+		if (this.options.isFullLine) return fileName;
 
 		return fileName.split("/").at(-1) || "";
 	}

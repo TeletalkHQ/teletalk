@@ -1,4 +1,4 @@
-import type { PrivateChats, UserId } from "@repo/type-store";
+import type { PrivateChats, UserId } from "@repo/types";
 import { useEffect } from "react";
 
 import { domUtils } from "~/classes/DomUtils";

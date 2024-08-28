@@ -1,27 +1,8 @@
-import {
-	Cellphone,
-	ContactItem,
-	CurrentUserData,
-	DBUserData,
-	ExtendedCellphone,
-	ExtendedContactItem,
-	ExtendedCurrentUserData,
-	ExtendedFullName,
-	ExtendedUnknownCellphone,
-	ExtendedUserData,
-	ExtendedUserPublicData,
-	FullName,
-	FullNameWithUserId,
-	StringMap,
-	UnknownCellphone,
-	UserData,
-	UserDataWithoutSessions,
-	UserId,
-	UserPublicData,
-} from "@repo/type-store";
+import { BaseSchema } from "@repo/schema";
+import { StringMap } from "@repo/types";
 
 export class Extractor {
-	cellphone(data: ExtendedCellphone): Cellphone {
+	cellphone(data: BaseSchema.Cellphone & StringMap): BaseSchema.Cellphone {
 		return {
 			countryCode: data.countryCode,
 			countryName: data.countryName,
@@ -29,16 +10,7 @@ export class Extractor {
 		};
 	}
 
-	// eslint-disable-next-line sonarjs/no-identical-functions
-	unknownCellphone(data: ExtendedUnknownCellphone): UnknownCellphone {
-		return {
-			countryCode: data.countryCode,
-			countryName: data.countryName,
-			phoneNumber: data.phoneNumber,
-		};
-	}
-
-	contact(data: ExtendedContactItem): ContactItem {
+	contact(data: BaseSchema.ContactsItem & StringMap): BaseSchema.ContactsItem {
 		return {
 			...this.cellphone(data),
 			...this.fullName(data),
@@ -46,20 +18,19 @@ export class Extractor {
 		};
 	}
 
-	fullName(data: ExtendedFullName): FullName {
+	fullName(data: BaseSchema.FullName & StringMap): BaseSchema.FullName {
 		return {
 			firstName: data.firstName,
 			lastName: data.lastName,
 		};
 	}
 
-	userData(data: ExtendedUserData): UserData {
+	userData(data: BaseSchema.UserData & StringMap): BaseSchema.UserData {
 		return {
 			...this.contact(data),
 			avatarSrc: data.avatarSrc,
 			bio: data.bio,
 			blacklist: data.blacklist,
-			sessions: data.sessions,
 			contacts: data.contacts,
 			createdAt: data.createdAt,
 			status: data.status,
@@ -67,32 +38,14 @@ export class Extractor {
 		};
 	}
 
-	// eslint-disable-next-line sonarjs/no-identical-functions
-	dbUserData(data: DBUserData & StringMap): DBUserData {
+	currentUserData(data: BaseSchema.UserData & StringMap): BaseSchema.UserData {
 		return {
 			...this.contact(data),
-			avatarSrc: data.avatarSrc,
-			bio: data.bio,
-			blacklist: data.blacklist,
-			sessions: data.sessions,
-			contacts: data.contacts,
-			createdAt: data.createdAt,
-			status: data.status,
-			username: data.username,
-		};
-	}
-
-	userDataWithoutSessions(data: ExtendedUserData): UserDataWithoutSessions {
-		const { sessions, ...rest } = this.userData(data);
-		return rest;
-	}
-
-	currentUserData(data: ExtendedCurrentUserData): CurrentUserData {
-		return {
-			...this.cellphone(data),
 			...this.fullName(data),
 			avatarSrc: data.avatarSrc,
 			bio: data.bio,
+			blacklist: data.blacklist,
+			contacts: data.contacts,
 			createdAt: data.createdAt,
 			status: data.status,
 			userId: data.userId,
@@ -100,7 +53,9 @@ export class Extractor {
 		};
 	}
 
-	userPublicData(data: ExtendedUserPublicData): UserPublicData {
+	userPublicData(
+		data: BaseSchema.PublicData & StringMap
+	): BaseSchema.PublicData {
 		return {
 			...this.fullName(data),
 			bio: data.bio,
@@ -110,8 +65,8 @@ export class Extractor {
 	}
 
 	contactWithUserId(
-		data: ExtendedFullName & { userId: UserId }
-	): FullNameWithUserId {
+		data: BaseSchema.FullName & { userId: BaseSchema.UserId } & StringMap
+	): BaseSchema.FullName & { userId: BaseSchema.UserId } {
 		return {
 			firstName: data.firstName,
 			lastName: data.lastName,

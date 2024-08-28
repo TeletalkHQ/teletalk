@@ -1,4 +1,4 @@
-import { StringMap } from "@repo/type-store";
+import { StringMap } from "@repo/types";
 
 import { websocket } from "~/classes/websocket/Websocket";
 

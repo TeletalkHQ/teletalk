@@ -1,5 +1,5 @@
-import { UserId } from "@repo/type-store";
-import { VoidNoArgsFn } from "@repo/type-store";
+import { UserId } from "@repo/types";
+import { VoidNoArgsFn } from "@repo/types";
 
 import { Box, Typography } from "~/components";
 import { useGetAvatar } from "~/hooks";

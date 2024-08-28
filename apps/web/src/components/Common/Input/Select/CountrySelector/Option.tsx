@@ -1,5 +1,5 @@
 import { ListItemProps } from "@mui/material";
-import type { CountryItem } from "@repo/type-store";
+import type { CountryItem } from "@repo/types";
 
 import { BaseComponent } from "~/components/Base";
 

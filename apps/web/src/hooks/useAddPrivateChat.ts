@@ -1,4 +1,4 @@
-import type { ChatId } from "@repo/type-store";
+import type { ChatId } from "@repo/types";
 
 import { useMessageStore } from "~/store";
 

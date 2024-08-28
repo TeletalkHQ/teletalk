@@ -1,4 +1,4 @@
-import { VoidNoArgsFn } from "@repo/type-store";
+import { VoidNoArgsFn } from "@repo/types";
 import AvatarEditor from "react-avatar-editor";
 
 import { Box, Button } from "~/components";

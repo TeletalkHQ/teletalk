@@ -1,5 +1,5 @@
-import { SocketResponse } from "@repo/hl-types";
-import { EventName } from "@repo/type-store";
+import { EventName } from "@repo/schema";
+import { SocketResponse } from "@repo/types";
 
 import { websocket } from "~/classes/websocket/Websocket";
 import "~/types";

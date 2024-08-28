@@ -1,6 +1,6 @@
 import { ErrorReason, ErrorSide, NativeError } from "@repo/error-store";
-import { Route } from "@repo/hl-types";
-import type { EventName, VoidWithArg } from "@repo/type-store";
+import { Route } from "@repo/types";
+import type { EventName, VoidWithArg } from "@repo/types";
 
 import { Transition } from "~/components";
 

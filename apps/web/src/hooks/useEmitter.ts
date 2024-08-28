@@ -1,4 +1,4 @@
-import type { EventName } from "@repo/type-store";
+import type { EventName } from "@repo/types";
 
 import { storage } from "~/classes/Storage";
 import { stuffStore } from "~/classes/StuffStore";

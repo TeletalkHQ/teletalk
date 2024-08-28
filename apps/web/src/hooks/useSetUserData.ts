@@ -1,7 +1,7 @@
 import { maker } from "@repo/classes";
 import { extractor } from "@repo/classes";
-import { SocketErrorCallback, SocketResponseCallback } from "@repo/hl-types";
-import type { UserItem } from "@repo/type-store";
+import { SocketErrorCallback, SocketResponseCallback } from "@repo/types";
+import type { UserItem } from "@repo/types";
 import { useEffect } from "react";
 
 import { storage } from "~/classes/Storage";

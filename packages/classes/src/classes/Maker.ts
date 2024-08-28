@@ -1,27 +1,12 @@
-import {
-	AddingContactWithCellphone,
-	Cellphone,
-	CountryCode,
-	CountryName,
-	EmptyCellphone,
-	EmptyContact,
-	EmptyFullName,
-	ExtendedFullName,
-	FirstName,
-	FullName,
-	FullNameWithUserId,
-	LastName,
-	PhoneNumber,
-	UserItem,
-	UserPublicData,
-} from "@repo/type-store";
+import { BaseSchema } from "@repo/schema";
+import { StringMap } from "@repo/types";
 
 export class Maker {
 	cellphone(
-		countryCode: CountryCode,
-		countryName: CountryName,
-		phoneNumber: PhoneNumber
-	): Cellphone {
+		countryCode: BaseSchema.CountryCode,
+		countryName: BaseSchema.CountryName,
+		phoneNumber: BaseSchema.PhoneNumber
+	): BaseSchema.Cellphone {
 		return {
 			countryCode,
 			countryName,
@@ -29,14 +14,17 @@ export class Maker {
 		};
 	}
 
-	fullName(firstName: FirstName, lastName: LastName): FullName {
+	fullName(
+		firstName: BaseSchema.FirstName,
+		lastName: BaseSchema.LastName
+	): BaseSchema.FullName {
 		return {
 			firstName,
 			lastName,
 		};
 	}
 
-	emptyCellphone(): EmptyCellphone {
+	emptyCellphone(): BaseSchema.Cellphone {
 		return {
 			countryCode: "",
 			countryName: "",
@@ -44,14 +32,14 @@ export class Maker {
 		};
 	}
 
-	emptyFullName(): EmptyFullName {
+	emptyFullName(): BaseSchema.FullName {
 		return {
 			firstName: "",
 			lastName: "",
 		};
 	}
 
-	emptyContact(): EmptyContact {
+	emptyContact(): BaseSchema.ContactsItem {
 		return {
 			...this.emptyCellphone(),
 			...this.emptyFullName(),
@@ -59,7 +47,7 @@ export class Maker {
 		};
 	}
 
-	emptyUserPublicData(): UserPublicData {
+	emptyUserPublicData(): BaseSchema.PublicData {
 		return {
 			...this.emptyFullName(),
 			bio: "",
@@ -68,21 +56,23 @@ export class Maker {
 		};
 	}
 
-	emptyContactWithUserId(): FullNameWithUserId {
+	emptyContactWithUserId(): BaseSchema.FullName & {
+		userId: BaseSchema.UserId;
+	} {
 		return {
 			...this.emptyFullName(),
 			userId: "",
 		};
 	}
 
-	originalFullName(d: Partial<ExtendedFullName>) {
+	originalFullName(d: Partial<BaseSchema.FullName & StringMap>) {
 		return {
 			originalFirstName: d.firstName || "",
 			originalLastName: d.lastName || "",
 		};
 	}
 
-	emptyUser(): UserItem {
+	emptyUser(): BaseSchema.ClientUser {
 		return {
 			...this.emptyUserPublicData(),
 			...this.emptyCellphone(),
@@ -95,9 +85,9 @@ export class Maker {
 	}
 
 	userWithPublicData(
-		publicData: UserPublicData,
-		userItem?: UserItem
-	): UserItem {
+		publicData: BaseSchema.PublicData,
+		userItem?: BaseSchema.ClientUser
+	): BaseSchema.ClientUser {
 		return {
 			...this.emptyUser(),
 			...publicData,
@@ -106,7 +96,8 @@ export class Maker {
 		};
 	}
 
-	emptyAddingContactWithCellphone(): AddingContactWithCellphone {
+	emptyAddingContactWithCellphone(): BaseSchema.Cellphone &
+		BaseSchema.FullName {
 		return {
 			...this.emptyCellphone(),
 			...this.emptyFullName(),

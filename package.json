@@ -38,6 +38,7 @@
 		"test:dev:watch": "turbo run test:dev:watch"
 	},
 	"dependencies": {
+		"@anatine/zod-mock": "^3.13.4",
 		"@emotion/cache": "^11.11.0",
 		"@emotion/react": "^11.11.4",
 		"@emotion/server": "^11.11.0",
@@ -115,7 +116,9 @@
 		"web-vitals": "^3.5.2",
 		"winston": "^3.13.0",
 		"word-wrap": "^1.2.5",
+		"ws": "^8.18.0",
 		"zod": "^3.23.6",
+		"zod-validation-error": "^3.3.1",
 		"zustand": "^4.5.2"
 	},
 	"devDependencies": {

@@ -1,4 +1,4 @@
-import type { PrivateChatItem } from "@repo/type-store";
+import type { PrivateChatItem } from "@repo/types";
 
 import { initialState } from "./initialState";
 import { Handlers, SetState } from "./types";

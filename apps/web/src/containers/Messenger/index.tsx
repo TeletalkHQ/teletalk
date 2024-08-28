@@ -84,8 +84,8 @@ const Messenger = () => {
 	});
 
 	useListener({
-		evName: "addBlock",
-		cb: (response) => userStore.addBlock(response.data.blockedUser),
+		evName: "blockUser",
+		cb: (response) => userStore.blockUser(response.data.blockedUser),
 	});
 	useListener({
 		evName: "removeBlock",

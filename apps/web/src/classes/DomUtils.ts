@@ -1,4 +1,4 @@
-import { ElementId, ElementName } from "@repo/type-store";
+import { ElementId, ElementName } from "@repo/types";
 
 class DomUtils {
 	private document = document;
