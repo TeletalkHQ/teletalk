@@ -1,20 +1,37 @@
 {
-	"extends": "@repo/typescript-config/src/configs/node.json",
 	"compilerOptions": {
-		"baseUrl": ".",
+		"module": "NodeNext",
+		"declaration": true,
+		"removeComments": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"target": "ESNext",
+		"sourceMap": true,
+		"outDir": "./dist",
+		"baseUrl": "./",
 		"paths": {
 			"~/*": ["src/*"],
 			"#/*": ["public/*"],
 			"@/*": ["testSrc/*"]
-		}
+		},
+		"incremental": true,
+		"skipLibCheck": true,
+		"moduleResolution": "NodeNext",
+		"strictNullChecks": true,
+		"plugins": [
+			{
+				"transform": "./scripts/transformers/fileExtensionFixer.ts"
+			}
+		],
+		"noImplicitAny": true,
+		"strictBindCallApply": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true
 	},
-	"exclude": ["node_modules", "testSrc", "./src/socket", "./src/services"],
-	"include": [
-		"src/**/*.ts",
-		"configs/**/*.ts",
-		"./index.ts",
-		// "testSrc/**/*.ts",
-		// "configs/jest/jest.setup.ts",
-		"src/types/global.d.ts"
-	]
+	"ts-node": {
+		"esm": true,
+		"experimentalSpecifierResolution": "node"
+	},
+	"exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
 }

@@ -4,6 +4,7 @@
 	"version": "1.0.0",
 	"main": "index.ts",
 	"type": "module",
+	"license": "MIT",
 	"scripts": {
 		"app-runner": "node --no-warnings --loader ./loader.js ./index.ts",
 		"build": "node ./configs/esbuild.js",
@@ -15,6 +16,19 @@
 		"check:types": "tsc --noEmit",
 		"check:types:watch": "npm run check:types -- --watch",
 		"dev": "npm run start:dev",
+		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+		"nest:build": "nest build",
+		"nest:lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+		"nest:start": "nest start",
+		"nest:start:debug": "nest start --debug --watch",
+		"nest:start:dev": "nest start --watch",
+		"nest:start:prod": "node dist/main",
+		"nest:test": "jest",
+		"nest:test:cov": "jest --coverage",
+		"nest:test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+		"nest:test:e2e": "jest --config ./test/jest-e2e.json",
+		"nest:test:watch": "jest --watch",
+		"setup:app": "ts-patch install -s",
 		"start": "npm run start:production:local",
 		"start:dev": "cross-env NODE_ENV=development CUSTOM_PORT=${PORT}  nodemon ./index.ts",
 		"start:production": "cross-env NODE_ENV=production npm run app-runner",
@@ -41,6 +55,6 @@
 		"@repo/typescript-config": "workspace:*"
 	},
 	"engines": {
-		"node": ">=18.10.0"
+		"node": ">=20"
 	}
 }

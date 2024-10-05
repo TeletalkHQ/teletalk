@@ -12,6 +12,7 @@ const baseConfig = defineConfig({
 		"plugin:@cspell/recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:import/typescript",
+		// TODO: Enable these
 		// "plugin:import/errors",
 		// "plugin:import/warnings",
 		"plugin:json/recommended",
@@ -45,6 +46,7 @@ const baseConfig = defineConfig({
 	overrides: [],
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
+		// TODO: Setup project
 		ecmaVersion: "latest",
 		requireConfigFile: false,
 		sourceType: "module",
@@ -52,6 +54,8 @@ const baseConfig = defineConfig({
 	plugins: [
 		"@cspell",
 		"@typescript-eslint",
+		// FIXME: Duplicate?
+		"@typescript-eslint/eslint-plugin",
 		"import",
 		"promise",
 		"sonarjs",
