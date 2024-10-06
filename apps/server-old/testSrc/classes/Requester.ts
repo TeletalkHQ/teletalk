@@ -1,4 +1,4 @@
-import { EventName, SocketIOCollection } from "@repo/schema";
+import { EventName, IOCollection } from "@repo/schema";
 import { SocketResponse, SocketRoute } from "@repo/socket";
 import chai from "chai";
 import { Socket as Client } from "socket.io-client";
@@ -11,7 +11,7 @@ export class Requester<T extends EventName> {
 	private error?: Error;
 	private event: SocketRoute<T>;
 	private options: RequesterOptions = {};
-	private requestData: SocketIOCollection[T]["input"];
+	private requestData: IOCollection[T]["input"];
 	private response: SocketResponse<T>;
 	private socket: Client;
 
@@ -67,7 +67,7 @@ export class Requester<T extends EventName> {
 	private getEmitData() {
 		return this.requestData;
 	}
-	private setEmitData(requestData: SocketIOCollection[T]["input"]) {
+	private setEmitData(requestData: IOCollection[T]["input"]) {
 		this.requestData = requestData;
 		return this;
 	}
@@ -85,7 +85,7 @@ export class Requester<T extends EventName> {
 	}
 
 	async emitFull(
-		data: SocketIOCollection[T]["input"],
+		data: IOCollection[T]["input"],
 		reason?: ErrorReason,
 		options: Partial<RequesterOptions> = this.getOptions()
 	) {

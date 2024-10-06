@@ -1,5 +1,5 @@
-import { eventSchema } from "@repo/schema";
-import { EventName } from "@repo/schema";
+import { socketEvents } from "@repo/schema";
+import { EventShortName } from "@repo/schema";
 import { SocketOnHandler } from "@repo/socket";
 import { Socket } from "socket.io";
 
@@ -15,9 +15,9 @@ const handlers = {
 	...privateChatHandlers,
 	// FIXME: Fix the rule
 	// eslint-disable-next-line no-use-before-define
-} satisfies { [K in EventName]: SocketOnHandler<K> };
+} satisfies { [K in EventShortName]: SocketOnHandler<K> };
 
-export const events = eventSchema.map((item) => ({
+export const events = socketEvents.map((item) => ({
 	...item.schema,
 	handler: handlers[item.schema.name],
 }));

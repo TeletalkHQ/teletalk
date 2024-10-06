@@ -1,11 +1,11 @@
 import { SocketMethods } from "../../../socket/src/types";
-import { EventShortName, socketIOCollection } from "../schema";
+import { EventShortName, ioCollection } from "../schema";
 
 export type EventSchema<T extends EventShortName> = {
 	name: T;
 	isAuthRequired: boolean;
 	method: SocketMethods;
-	io: (typeof socketIOCollection)[T];
+	io: (typeof ioCollection)[T];
 };
 
 export class EventSchemaGenerator<T extends EventShortName> {
@@ -14,7 +14,7 @@ export class EventSchemaGenerator<T extends EventShortName> {
 	constructor(schema: Omit<EventSchema<T>, "io">) {
 		this.schema = {
 			...schema,
-			io: socketIOCollection[schema.name],
+			io: ioCollection[schema.name],
 		};
 	}
 }

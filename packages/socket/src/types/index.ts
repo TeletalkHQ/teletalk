@@ -1,4 +1,4 @@
-import { EventShortName, SocketIOCollection } from "@repo/schema";
+import { EventShortName, IOCollection } from "@repo/schema";
 import { VoidNoArgsFn, VoidWithArg } from "@repo/types";
 import { Event, Socket } from "socket.io";
 import { ZodSchema, z } from "zod";
@@ -14,7 +14,7 @@ export interface Route {
 export type SocketResponseErrors = Error[];
 
 export interface SocketResponse<T extends EventShortName> {
-	data: z.infer<SocketIOCollection[T]["output"]>;
+	data: z.infer<IOCollection[T]["output"]>;
 	errors: SocketResponseErrors;
 	ok: boolean;
 	eventName: EventShortName;
@@ -34,18 +34,18 @@ export interface SocketOnHandlerReturnOptions {
 }
 
 export interface SocketHandlerReturnValue<T extends EventShortName> {
-	data: z.infer<SocketIOCollection[T]["output"]>;
+	data: z.infer<IOCollection[T]["output"]>;
 	options?: Partial<SocketOnHandlerReturnOptions>;
 }
 
 export type SocketOnHandler<T extends EventShortName> = (
 	socket: Socket,
-	data: SocketIOCollection[T]["input"]
+	data: IOCollection[T]["input"]
 ) => SocketHandlerReturnValue<T> | Promise<SocketHandlerReturnValue<T>>;
 
 export type SocketOnAnyHandler<T extends EventShortName> = (
 	socket: Socket,
-	data: SocketIOCollection[T]["input"],
+	data: IOCollection[T]["input"],
 	eventName: EventShortName
 ) =>
 	| void
@@ -74,7 +74,7 @@ export type SocketNext = (error?: Error | undefined) => void;
 
 export type SocketMiddlewareEvent<T extends EventShortName> = [
 	EventShortName,
-	SocketIOCollection[T]["input"],
+	IOCollection[T]["input"],
 	ResponseCallback<T>,
 	...any[],
 ];
@@ -106,15 +106,15 @@ export type SocketResponseCallback<T extends EventShortName> = (
 export type SocketErrorCallback = VoidWithArg<SocketResponseErrors>;
 
 export type RequestTransformer<T extends EventShortName> = (
-	requestData: SocketIOCollection[T]["input"]
-) => SocketIOCollection[T]["input"];
+	requestData: IOCollection[T]["input"]
+) => IOCollection[T]["input"];
 
 export type ResponseTransformer<T extends EventShortName> = (
-	response: SocketIOCollection[T]["output"]
-) => SocketIOCollection[T]["output"];
+	response: IOCollection[T]["output"]
+) => IOCollection[T]["output"];
 
 export type Interceptor<T extends EventShortName> = (
-	data: SocketIOCollection[T]["input"] | SocketIOCollection[T]["output"]
-) => SocketIOCollection[T]["input"] | SocketIOCollection[T]["output"];
+	data: IOCollection[T]["input"] | IOCollection[T]["output"]
+) => IOCollection[T]["input"] | IOCollection[T]["output"];
 
 export type Interceptors<T extends EventShortName> = Interceptor<T>[];

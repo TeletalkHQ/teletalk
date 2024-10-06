@@ -1,10 +1,10 @@
 import { ZodSchema, z } from "zod";
 
-import { baseSchema } from "../../base";
+import { baseSchema } from "../base";
 
 export type IOSchema = { input: ZodSchema; output: ZodSchema };
 
-export const socketIOCollection: Record<string, IOSchema> = {
+export const ioCollection: Record<string, IOSchema> = {
 	addBlock: {
 		input: z.object({
 			userId: baseSchema.userId,
@@ -229,6 +229,6 @@ export const socketIOCollection: Record<string, IOSchema> = {
 	},
 };
 
-export type SocketIOCollection = typeof socketIOCollection;
+export type IOCollection = typeof ioCollection;
 
-export type EventShortName = keyof SocketIOCollection;
+export type EventShortName = keyof IOCollection;

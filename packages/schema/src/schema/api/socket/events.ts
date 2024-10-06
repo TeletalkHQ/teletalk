@@ -1,6 +1,6 @@
 import { EventSchemaGenerator } from "../../../classes";
 
-export const eventSchema = [
+export const socketEvents = [
 	new EventSchemaGenerator({
 		isAuthRequired: true,
 		method: "on",
