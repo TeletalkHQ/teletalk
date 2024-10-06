@@ -1,154 +1,119 @@
-import { EventSchemaGenerator } from "../../../classes";
+import { EventGenerator } from "../../../classes";
 
 export const socketEvents = [
-	new EventSchemaGenerator({
+	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		name: "addContactWithCellphone",
+		ioName: "addContactWithCellphone",
 	}),
-	new EventSchemaGenerator({
+	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		name: "addBlock",
+		ioName: "addBlock",
 	}),
-	// new EventSchemaGenerator({
+	// new EventGenerator({
 	// 	isAuthRequired: false,
 	// 	method: "on",
-	// 	name: "connect",
+	// 	ioName: "connect",
 	// }),
-	// new EventSchemaGenerator({
+	// new EventGenerator({
 	// 	isAuthRequired: false,
 	// 	method: "on",
-	// 	name: "connect_error",
+	// 	ioName: "connect_error",
 	// }),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "createNewUser",
-	}),
-	new EventSchemaGenerator({
+	new EventGenerator({
 		isAuthRequired: false,
 		method: "on",
-		name: "disconnect",
+		ioName: "ping",
 	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "getAvatar",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "getChatInfo",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "getClientStatus",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "getContacts",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: false,
-		method: "on",
-		name: "getCountries",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "getOnlineClients",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "getPrivateChat",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "getPrivateChats",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "getPublicData",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: false,
-		method: "on",
-		name: "getStuff",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "getUserData",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: false,
-		method: "on",
-		name: "getWelcomeMessage",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "join",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "logout",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: false,
-		method: "on",
-		name: "ping",
-	}),
-	// new EventSchemaGenerator({
+	// new EventGenerator({
 	// 	isAuthRequired: false,
 	// 	method: "on",
-	// 	name: "pong",
+	// 	ioName: "pong",
 	// }),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "removeBlock",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "removeContact",
-	}),
-	new EventSchemaGenerator({
-		isAuthRequired: true,
-		method: "on",
-		name: "sendMessage",
-	}),
-	new EventSchemaGenerator({
+	new EventGenerator({
 		isAuthRequired: false,
 		method: "on",
-		name: "signIn",
+		ioName: "disconnect",
 	}),
-	new EventSchemaGenerator({
+	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		name: "updateAvatar",
+		ioName: "getChatInfo",
 	}),
-	new EventSchemaGenerator({
+	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		name: "updateContact",
+		ioName: "getClientStatus",
 	}),
-	new EventSchemaGenerator({
+	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		name: "updatePublicData",
+		ioName: "getContacts",
 	}),
-	new EventSchemaGenerator({
+	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		name: "verify",
+		ioName: "getOnlineClients",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "getPrivateChat",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "getPrivateChats",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "getPublicData",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "getUserData",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "join",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "logout",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "removeBlock",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "removeContact",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "sendMessage",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "updateAvatar",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "updateContact",
+	}),
+	new EventGenerator({
+		isAuthRequired: true,
+		method: "on",
+		ioName: "updatePublicData",
 	}),
 ] as const;

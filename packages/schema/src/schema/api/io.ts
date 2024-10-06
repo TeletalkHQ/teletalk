@@ -4,7 +4,7 @@ import { baseSchema } from "../base";
 
 export type IOSchema = { input: ZodSchema; output: ZodSchema };
 
-export const ioCollection: Record<string, IOSchema> = {
+export const ioCollection = {
 	addBlock: {
 		input: z.object({
 			userId: baseSchema.userId,
@@ -227,8 +227,8 @@ export const ioCollection: Record<string, IOSchema> = {
 			sessionId: baseSchema.sessionId,
 		}),
 	},
-};
+} satisfies Record<string, IOSchema>;
 
 export type IOCollection = typeof ioCollection;
 
-export type EventShortName = keyof IOCollection;
+export type IOName = keyof IOCollection;
