@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"module": "NodeNext",
+		"module": "CommonJS",
 		"declaration": true,
 		"removeComments": true,
 		"emitDecoratorMetadata": true,
@@ -17,7 +17,6 @@
 		},
 		"incremental": true,
 		"skipLibCheck": true,
-		"moduleResolution": "NodeNext",
 		"strictNullChecks": true,
 		"plugins": [
 			{

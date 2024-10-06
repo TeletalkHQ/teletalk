@@ -3,7 +3,7 @@
 	"description": "teletalk messenger - server (node)",
 	"version": "1.0.0",
 	"main": "index.ts",
-	"type": "module",
+	"type": "commonjs",
 	"license": "MIT",
 	"scripts": {
 		"app-runner": "node --no-warnings --loader ./loader.js ./index.ts",
@@ -46,9 +46,9 @@
 		"@repo/classes": "workspace:*",
 		"@repo/logger": "workspace:*",
 		"@repo/schema": "workspace:*",
+		"@repo/socket": "workspace:*",
 		"@repo/utils": "workspace:*",
-		"@repo/vars": "workspace:*",
-		"@repo/socket": "workspace:*"
+		"@repo/vars": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/types": "workspace:*",
