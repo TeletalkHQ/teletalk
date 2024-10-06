@@ -44,3 +44,8 @@ export const httpRoutes = [
 		rootPath: "auth",
 	}),
 ] as const;
+
+export type HTTPRouteShortName =
+	(typeof httpRoutes)[number]["schema"]["ioName"];
+
+export type HTTPRoutes = typeof httpRoutes;

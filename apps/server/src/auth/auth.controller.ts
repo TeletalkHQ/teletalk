@@ -1,24 +1,25 @@
-import { Body, Controller, Get } from "@nestjs/common";
+import { Body, Controller, Post } from "@nestjs/common";
+import { GetInput, getPathname, getRootPath } from "@repo/schema";
 
 import { AuthService } from "./auth.service";
 
-interface IAuthController {
-	getHello: (data: boolean) => string;
-}
+interface IAuthController {}
 
-@Controller("auth")
+@Controller(getRootPath("auth"))
 export class AuthController implements IAuthController {
-	constructor(private readonly appService: AuthService) {}
+	constructor(private readonly authService: AuthService) {}
 
-	@Get("hello2")
-	getHello(@Body() data: boolean) {
-		console.log(data);
+	@Post(getPathname("signIn"))
+	signIn(@Body() data: GetInput<"signIn">) {}
 
-		return "hello";
-	}
+	@Post(getPathname("verify"))
+	verify(@Body() data: GetInput<"verify">) {}
 
-	@Get("is-authenticated")
-	isAuthenticated(): boolean {
-		return false;
-	}
+	@Post(getPathname("createNewUser"))
+	createNewUser(@Body() data: GetInput<"createNewUser">) {}
+
+	// @Get("is-authenticated")
+	// isAuthenticated(): boolean {
+	// 	return false;
+	// }
 }

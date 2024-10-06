@@ -2,13 +2,15 @@ import { HTTPMethod } from "@repo/types";
 
 import { IOName, ioCollection } from "../schema";
 
+export type HTTPRootPath = "auth" | "user" | "private-chat" | "stuff";
+
 export type RouteSchema<T extends IOName> = {
+	io: (typeof ioCollection)[T];
 	ioName: T;
 	isAuthRequired: boolean;
 	method: HTTPMethod;
-	io: (typeof ioCollection)[T];
 	pathname: string;
-	rootPath: "auth" | "user" | "private-chat" | "stuff";
+	rootPath: HTTPRootPath;
 };
 
 export class RouteGenerator<T extends IOName> {

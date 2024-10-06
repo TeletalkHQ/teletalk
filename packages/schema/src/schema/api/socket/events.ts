@@ -117,3 +117,5 @@ export const socketEvents = [
 		ioName: "updatePublicData",
 	}),
 ] as const;
+
+export type SocketEvents = typeof socketEvents;
