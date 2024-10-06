@@ -13,7 +13,7 @@
 		"^#/(.*)$",
 		"^[./]"
 	],
-	"importOrderParserPlugins": ["jsx", "typescript", "decorators"],
+	"importOrderParserPlugins": ["jsx", "typescript", "decorators-legacy"],
 	"importOrderSeparation": true,
 	"importOrderSortSpecifiers": true,
 	"insertPragma": false,
