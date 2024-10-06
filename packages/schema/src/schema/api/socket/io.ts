@@ -1,11 +1,18 @@
 import { ZodSchema, z } from "zod";
 
-import { EventName } from "../../classes";
-import { baseSchema } from "../base";
+import { baseSchema } from "../../base";
 
 export type IOSchema = { input: ZodSchema; output: ZodSchema };
 
-export const ioCollection = {
+export const socketIOCollection: Record<string, IOSchema> = {
+	addBlock: {
+		input: z.object({
+			userId: baseSchema.userId,
+		}),
+		output: z.object({
+			blockedUser: baseSchema.blockedUser,
+		}),
+	},
 	addContactWithCellphone: {
 		input: z.object({
 			countryCode: baseSchema.countryCode,
@@ -16,14 +23,6 @@ export const ioCollection = {
 		}),
 		output: z.object({
 			newContact: baseSchema.contactsItem,
-		}),
-	},
-	addBlock: {
-		input: z.object({
-			userId: baseSchema.userId,
-		}),
-		output: z.object({
-			blockedUser: baseSchema.blockedUser,
 		}),
 	},
 	// connect: {
@@ -228,6 +227,8 @@ export const ioCollection = {
 			sessionId: baseSchema.sessionId,
 		}),
 	},
-} satisfies { [key in EventName]: IOSchema };
+};
 
-export type IOCollection = typeof ioCollection;
+export type SocketIOCollection = typeof socketIOCollection;
+
+export type EventShortName = keyof SocketIOCollection;

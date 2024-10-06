@@ -1,2 +1,2 @@
-export * from "./event";
-export * from "./io";
+export * from "./socket/events";
+export * from "./socket/io";

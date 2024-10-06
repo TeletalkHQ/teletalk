@@ -1,4 +1,4 @@
-import { EventSchemaGenerator } from "../../classes";
+import { EventSchemaGenerator } from "../../../classes";
 
 export const eventSchema = [
 	new EventSchemaGenerator({

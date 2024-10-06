@@ -1,4 +1,4 @@
-import { EventName, IOCollection } from "@repo/schema";
+import { EventName, SocketIOCollection } from "@repo/schema";
 import {
 	SocketMiddleware,
 	SocketMiddlewareEvent,
@@ -101,7 +101,7 @@ const resolveResponseError = (error: UnknownError) =>
 
 const createSuccessResponse = <T extends EventName>(
 	eventName: T,
-	data: z.infer<IOCollection[T]["output"]>
+	data: z.infer<SocketIOCollection[T]["output"]>
 ): SocketResponse<T> => ({
 	data,
 	errors: [],
