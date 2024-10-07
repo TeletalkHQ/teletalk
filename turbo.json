@@ -12,6 +12,9 @@
 			"env": [".env"],
 			"outputs": [".next/**", "!.next/cache/**"]
 		},
+		"nest:build": {
+			"cache": false
+		},
 		"check:lint": {},
 		"check:lint:fix": {},
 		"check:lint:fix:strict": {},

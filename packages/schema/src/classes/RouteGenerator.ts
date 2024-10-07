@@ -17,6 +17,8 @@ export class RouteGenerator<T extends IOName> {
 	public schema: RouteSchema<T>;
 
 	constructor(schema: Omit<RouteSchema<T>, "io">) {
+		console.log("ioCollection:", ioCollection);
+
 		this.schema = {
 			...schema,
 			io: ioCollection[schema.ioName],

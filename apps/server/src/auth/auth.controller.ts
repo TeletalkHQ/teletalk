@@ -10,7 +10,11 @@ export class AuthController implements IAuthController {
 	constructor(private readonly authService: AuthService) {}
 
 	@Post(getPathname("signIn"))
-	signIn(@Body() data: GetInput<"signIn">) {}
+	signIn(@Body() data: GetInput<"signIn">) {
+		return {
+			data: "hello",
+		};
+	}
 
 	@Post(getPathname("verify"))
 	verify(@Body() data: GetInput<"verify">) {}

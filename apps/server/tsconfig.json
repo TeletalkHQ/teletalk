@@ -1,36 +1,41 @@
 {
 	"compilerOptions": {
-		"module": "CommonJS",
-		"declaration": true,
-		"removeComments": true,
+		"baseUrl": ".",
+		"declaration": false,
+		"declarationMap": false,
 		"emitDecoratorMetadata": true,
+		"esModuleInterop": true,
 		"experimentalDecorators": true,
-		"allowSyntheticDefaultImports": true,
-		"target": "ESNext",
-		"sourceMap": true,
-		"outDir": "./dist",
-		"baseUrl": "./",
+		"forceConsistentCasingInFileNames": true,
+		"lib": ["ESNext"],
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"noImplicitReturns": true,
+		"outDir": "./lib",
 		"paths": {
 			"~/*": ["src/*"],
 			"#/*": ["public/*"],
 			"@/*": ["testSrc/*"]
 		},
-		"incremental": true,
+		"removeComments": true,
+		"resolveJsonModule": true,
 		"skipLibCheck": true,
-		"strictNullChecks": true,
-		"plugins": [
-			{
-				"transform": "./scripts/transformers/fileExtensionFixer.ts"
-			}
-		],
-		"noImplicitAny": true,
-		"strictBindCallApply": true,
-		"forceConsistentCasingInFileNames": true,
-		"noFallthroughCasesInSwitch": true
+		"sourceMap": true,
+		"strict": true,
+		"strictPropertyInitialization": false,
+		"target": "ESNext"
 	},
+	"exclude": ["node_modules"],
+	"include": [
+		"src/**/*.ts",
+		"configs/**/*.ts",
+		"./index.ts",
+		"testSrc/**/*.ts",
+		"configs/jest/jest.setup.ts"
+	],
 	"ts-node": {
 		"esm": true,
-		"experimentalSpecifierResolution": "node"
-	},
-	"exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+		"experimentalSpecifierResolution": "node",
+		"files": true
+	}
 }

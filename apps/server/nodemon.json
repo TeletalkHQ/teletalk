@@ -1,7 +1,7 @@
 {
 	"$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/nodemon.json",
-	"ignore": ["./testSrc/**", "./thunder-tests/**"],
+	"watch": ["src"],
+	"ignore": ["./testSrc/**"],
 	"exec": "node --no-warnings --loader ./loader.js",
-	"ext": "ts,json",
-	"watch": ["src", "../../packages"]
+	"ext": "ts,json"
 }
