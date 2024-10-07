@@ -1,27 +1,33 @@
 {
 	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
 		"baseUrl": ".",
-		"declaration": false,
-		"declarationMap": false,
+		"declaration": true,
+		"declarationMap": true,
 		"emitDecoratorMetadata": true,
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
 		"forceConsistentCasingInFileNames": true,
+		"incremental": true,
 		"lib": ["ESNext"],
 		"module": "ESNext",
 		"moduleResolution": "node",
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": true,
 		"noImplicitReturns": true,
 		"outDir": "./lib",
 		"paths": {
-			"~/*": ["src/*"],
+			"@/*": ["testSrc/*"],
 			"#/*": ["public/*"],
-			"@/*": ["testSrc/*"]
+			"~/*": ["src/*"]
 		},
 		"removeComments": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
+		"strictBindCallApply": true,
+		"strictNullChecks": true,
 		"strictPropertyInitialization": false,
 		"target": "ESNext"
 	},
