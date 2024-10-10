@@ -58,18 +58,6 @@ const executeMiddlewares = async ({
 
 const logEnvironments = () => logger.debug(sortEnvironments());
 
-const passwordGenerator = (options: generatePassword.GenerateOptions = {}) => {
-	return generatePassword.generate({
-		exclude: "",
-		length: 6,
-		lowercase: false,
-		numbers: true,
-		symbols: false,
-		uppercase: false,
-		...options,
-	});
-};
-
 const sortEnvironments = () =>
 	Object.entries(envManager.getEnv())
 		.map(([prop, value]) => ({ prop, value }))

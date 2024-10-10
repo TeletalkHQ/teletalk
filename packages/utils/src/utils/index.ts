@@ -1,5 +1,6 @@
 import { BaseSchema } from "@repo/schema";
 import { StringMap } from "@repo/types";
+import generatePassword from "generate-password";
 import lodash from "lodash";
 import { ScreamingSnakeCase } from "type-fest";
 
@@ -34,10 +35,23 @@ const isDataHasEqualityWithTargetCellphone = (
 	);
 };
 
+const passwordGenerator = (options: generatePassword.GenerateOptions = {}) => {
+	return generatePassword.generate({
+		exclude: "",
+		length: 6,
+		lowercase: false,
+		numbers: true,
+		symbols: false,
+		uppercase: false,
+		...options,
+	});
+};
+
 export * from "./decorators";
 
 export const utils = {
 	isDataHasEqualityWithTargetCellphone,
 	makeScreamingSnakeCase,
+	passwordGenerator,
 	upperSnake,
 };

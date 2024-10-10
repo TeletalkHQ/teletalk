@@ -1,4 +1,3 @@
-import { errorStore } from "@repo/error-store";
 import { escapeChars } from "@repo/vars";
 import axios from "axios";
 

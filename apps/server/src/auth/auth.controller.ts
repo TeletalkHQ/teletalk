@@ -1,5 +1,9 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Post, Req } from "@nestjs/common";
+import { extractor } from "@repo/classes";
 import { GetInput, getPathname, getRootPath } from "@repo/schema";
+import { utils } from "@repo/utils";
+
+import { smsClient } from "~/classes";
 
 import { AuthService } from "./auth.service";
 
@@ -10,17 +14,37 @@ export class AuthController implements IAuthController {
 	constructor(private readonly authService: AuthService) {}
 
 	@Post(getPathname("signIn"))
-	signIn(@Body() data: GetInput<"signIn">) {
+	async signIn(@Body() data: GetInput<"signIn">, @Req() _req: Request) {
+		const verificationCode = utils.passwordGenerator();
+
+		const cellphone = extractor.cellphone(data);
+
+		const fullNumber = `+${cellphone.countryCode}${cellphone.phoneNumber}`;
+
+		//FIXME: Get host from socket
+		// const host = getHostFromRequest(req);
+		await smsClient.sendVerificationCode(fullNumber, "host", verificationCode);
+
+		const sessionId = sessionManager.generateSessionId();
+
+		await authSessionStore.add(sessionId, {
+			...cellphone,
+			isVerified: false,
+			verificationCode,
+		});
+
+		const session = await sessionManager.sign(sessionId);
+
 		return {
 			data: "hello",
 		};
 	}
 
 	@Post(getPathname("verify"))
-	verify(@Body() data: GetInput<"verify">) {}
+	async verify(@Body() data: GetInput<"verify">) {}
 
 	@Post(getPathname("createNewUser"))
-	createNewUser(@Body() data: GetInput<"createNewUser">) {}
+	async createNewUser(@Body() data: GetInput<"createNewUser">) {}
 
 	// @Get("is-authenticated")
 	// isAuthenticated(): boolean {
