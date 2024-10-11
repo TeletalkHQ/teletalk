@@ -1,3 +1,4 @@
+import "@sindresorhus/is";
 import { RedisClientType } from "redis";
 
 export class Store {
@@ -24,7 +25,7 @@ export class Store {
 	async find(id: string) {
 		const session = await this.storage.json.get(this.makeStateKey(id));
 
-		return session ? JSON.parse(session as string) : null;
+		if (isStrin) return session ? JSON.parse(session as string) : null;
 	}
 
 	async add(id: string, data: unknown) {

@@ -10,19 +10,15 @@ export class SmsClient {
 
 	templates() {
 		return {
-			verificationCode: (verificationCode: string, host: string) =>
-				`verification code: ${verificationCode} ${escapeChars.newLine}${escapeChars.newLine} ${host}
+			signInCode: (verificationCode: string, host: string) =>
+				`your sign in verification code: ${verificationCode} ${escapeChars.newLine}${escapeChars.newLine} ${host}
         `,
 		};
 	}
 
-	async sendVerificationCode(
-		sendTo: string,
-		host: string,
-		verificationCode: string
-	) {
+	async sendSignInCode(sendTo: string, host: string, code: string) {
 		try {
-			const text = this.templates().verificationCode(verificationCode, host);
+			const text = this.templates().signInCode(code, host);
 
 			await this.devProvider(sendTo, text);
 		} catch (error) {

@@ -15,7 +15,7 @@ export class AuthController implements IAuthController {
 
 	@Post(getPathname("signIn"))
 	async signIn(@Body() data: GetInput<"signIn">, @Req() _req: Request) {
-		const verificationCode = utils.passwordGenerator();
+		const signInCode = utils.stringGenerator();
 
 		const cellphone = extractor.cellphone(data);
 
@@ -23,14 +23,14 @@ export class AuthController implements IAuthController {
 
 		//FIXME: Get host from socket
 		// const host = getHostFromRequest(req);
-		await smsClient.sendVerificationCode(fullNumber, "host", verificationCode);
+		await smsClient.sendSignInCode(fullNumber, "host", signInCode);
 
 		const sessionId = sessionManager.generateSessionId();
 
 		await authSessionStore.add(sessionId, {
 			...cellphone,
 			isVerified: false,
-			verificationCode,
+			signInCode,
 		});
 
 		const session = await sessionManager.sign(sessionId);

@@ -1,4 +1,4 @@
-import { BaseSchema, baseSchema, getZodStringMaxLength } from "@repo/schema";
+import { BaseSchema, baseSchema, getStringMaxLength } from "@repo/schema";
 import { countries } from "@repo/vars";
 import { nanoid } from "nanoid";
 
@@ -44,7 +44,7 @@ class RandomMaker {
 		return Math.floor(Math.random() * (max - min)) + min;
 	}
 
-	id(size = getZodStringMaxLength(baseSchema.userId)) {
+	id(size: number) {
 		return nanoid(size);
 	}
 
@@ -54,7 +54,7 @@ class RandomMaker {
 	}
 
 	cellphone(
-		phoneNumberLength = getZodStringMaxLength(baseSchema.phoneNumber)
+		phoneNumberLength = getStringMaxLength(baseSchema.phoneNumber)
 	): BaseSchema.Cellphone {
 		const country = this.country();
 
@@ -66,7 +66,7 @@ class RandomMaker {
 	}
 
 	unusedCellphone(
-		phoneNumberLength = getZodStringMaxLength(baseSchema.phoneNumber)
+		phoneNumberLength = getStringMaxLength(baseSchema.phoneNumber)
 	): BaseSchema.Cellphone {
 		const cellphone = this.cellphone(phoneNumberLength);
 
@@ -79,10 +79,10 @@ class RandomMaker {
 	}
 
 	contact(
-		firstNameLength = getZodStringMaxLength(baseSchema.firstName),
-		lastNameLength = getZodStringMaxLength(baseSchema.lastName),
-		idLength = getZodStringMaxLength(baseSchema.userId),
-		phoneNumberLength = getZodStringMaxLength(baseSchema.phoneNumber)
+		firstNameLength = getStringMaxLength(baseSchema.firstName),
+		lastNameLength = getStringMaxLength(baseSchema.lastName),
+		idLength = getStringMaxLength(baseSchema.userId),
+		phoneNumberLength = getStringMaxLength(baseSchema.phoneNumber)
 	) {
 		return {
 			...this.fullName(firstNameLength, lastNameLength),
@@ -92,9 +92,9 @@ class RandomMaker {
 	}
 
 	unusedContact(
-		firstNameLength = getZodStringMaxLength(baseSchema.firstName),
-		lastNameLength = getZodStringMaxLength(baseSchema.lastName),
-		idLength = getZodStringMaxLength(baseSchema.userId)
+		firstNameLength = getStringMaxLength(baseSchema.firstName),
+		lastNameLength = getStringMaxLength(baseSchema.lastName),
+		idLength = getStringMaxLength(baseSchema.userId)
 	): BaseSchema.ContactsItem {
 		return {
 			...this.fullName(firstNameLength, lastNameLength),
@@ -104,8 +104,8 @@ class RandomMaker {
 	}
 
 	fullName(
-		firstNameLength = getZodStringMaxLength(baseSchema.firstName),
-		lastNameLength = getZodStringMaxLength(baseSchema.lastName)
+		firstNameLength = getStringMaxLength(baseSchema.firstName),
+		lastNameLength = getStringMaxLength(baseSchema.lastName)
 	) {
 		return maker.fullName(
 			this.string(firstNameLength),

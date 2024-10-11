@@ -4,8 +4,12 @@ import { ZodString } from "zod";
 import { HTTPRootPath } from "../classes";
 import { HTTPRouteShortName, httpRoutes } from "../schema";
 
-export const getZodStringMaxLength = <T extends ZodString>(schema: T) => {
-	return schema._def.checks.find((item) => item.kind === "max")!.value;
+export const getStringMaxLength = <T extends ZodString>(schema: T) => {
+	const result = schema._def.checks.find((item) => item.kind === "max")?.value;
+
+	if (!result) throw new InternalServerErrorException("INVALID_SCHEMA");
+
+	return result;
 };
 
 export const findHttpRoute = (name: HTTPRouteShortName) => {

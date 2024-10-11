@@ -41,6 +41,8 @@ const username = z.string().min(0).max(12).trim();
 
 const sessionId = z.string().min(100).max(150).trim();
 
+const encryptedSession = z.string().min(100).max(400).trim();
+
 const verificationCode = z
 	.string()
 	.length(6)
@@ -256,6 +258,8 @@ export namespace BaseSchema {
 	export type CountryName = z.infer<typeof countryName>;
 	export type CountryShortName = z.infer<typeof countryShortName>;
 	export type CreatedAt = z.infer<typeof createdAt>;
+	export type DBUserData = z.infer<typeof DBUserData>;
+	export type EncryptedSession = z.infer<typeof encryptedSession>;
 	export type FirstName = z.infer<typeof firstName>;
 	export type FullName = z.infer<typeof fullName>;
 	export type IsActive = z.infer<typeof isActive>;
@@ -285,7 +289,6 @@ export namespace BaseSchema {
 	export type Username = z.infer<typeof username>;
 	export type VerificationCode = z.infer<typeof verificationCode>;
 	export type WelcomeMessage = z.infer<typeof welcomeMessage>;
-	export type DBUserData = z.infer<typeof DBUserData>;
 }
 
 export type BaseSchemaName = keyof typeof baseSchema;

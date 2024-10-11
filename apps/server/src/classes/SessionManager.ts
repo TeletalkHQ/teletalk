@@ -1,19 +1,19 @@
 import { randomMaker } from "@repo/classes";
-import { models } from "@repo/model";
-import { EncryptedSession, SessionId } from "@repo/types";
-import { SignJWT, jwtVerify } from "jose";
+import { BaseSchema, baseSchema, getStringMaxLength } from "@repo/schema";
+import { JWTPayload, JWTVerifyResult, SignJWT, jwtVerify } from "jose";
 
 import { configManager } from "~/classes/ConfigManager";
-import { VerifiedSession } from "~/types";
+
+export interface SessionPayload extends JWTPayload {
+	sessionId: string;
+}
+
+export interface VerifiedSession extends JWTVerifyResult {
+	payload: SessionPayload;
+}
 
 class SessionManager {
-	private options = {};
-
-	getOptions() {
-		return this.options;
-	}
-
-	sign(sessionId?: SessionId) {
+	sign(sessionId?: BaseSchema.SessionId) {
 		return new SignJWT({
 			sessionId: sessionId ?? this.generateSessionId(),
 		})
@@ -25,17 +25,17 @@ class SessionManager {
 	}
 
 	generateSessionId() {
-		return randomMaker.id(models.native.sessionId.max);
+		return randomMaker.id(getStringMaxLength(baseSchema.sessionId));
 	}
 
-	verify(session: EncryptedSession) {
+	verify(session: BaseSchema.EncryptedSession) {
 		return jwtVerify(
 			session,
 			this.getEncodedSecret()
 		) as Promise<VerifiedSession>;
 	}
 
-	getSessionId(verifiedSession: VerifiedSession): SessionId {
+	getSessionId(verifiedSession: VerifiedSession): BaseSchema.SessionId {
 		return verifiedSession.payload.sessionId;
 	}
 

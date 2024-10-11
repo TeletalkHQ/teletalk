@@ -35,7 +35,7 @@ const isDataHasEqualityWithTargetCellphone = (
 	);
 };
 
-const passwordGenerator = (options: generatePassword.GenerateOptions = {}) => {
+const stringGenerator = (options: generatePassword.GenerateOptions = {}) => {
 	return generatePassword.generate({
 		exclude: "",
 		length: 6,
@@ -52,6 +52,6 @@ export * from "./decorators";
 export const utils = {
 	isDataHasEqualityWithTargetCellphone,
 	makeScreamingSnakeCase,
-	passwordGenerator,
+	stringGenerator,
 	upperSnake,
 };
