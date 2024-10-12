@@ -20,7 +20,7 @@
 		"nest:test:e2e": "jest --config ./test/jest-e2e.json",
 		"setup:app": "ts-patch install -s",
 		"start": "npm run start:production:local",
-		"start:dev": "cross-env NODE_ENV=development CUSTOM_PORT=${PORT}  nodemon ./src/main.ts",
+		"start:dev": "cross-env NODE_ENV=development PORT=${PORT:-8090}  nodemon ./src/main.ts",
 		"start:production": "cross-env NODE_ENV=production npm run app-runner",
 		"start:production:local": "cross-env NODE_ENV=production_local npm run app-runner",
 		"start:production:railway": "cross-env NODE_ENV=production_railway npm run app-runner",

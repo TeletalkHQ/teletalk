@@ -1,9 +1,10 @@
 {
 	"globalEnv": [
-		"NODE_ENV",
-		"NEXT_PUBLIC_RUNTIME_MODE",
 		"NEXT_PUBLIC_CLIENT_BASE_URL",
-		"NEXT_PUBLIC_SERVER_BASE_URL"
+		"NEXT_PUBLIC_RUNTIME_MODE",
+		"NEXT_PUBLIC_SERVER_BASE_URL",
+		"NODE_ENV",
+		"PORT"
 	],
 	"$schema": "https://turbo.build/schema.json",
 	"globalDependencies": [".env"],
