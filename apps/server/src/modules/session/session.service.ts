@@ -1,8 +1,10 @@
+import { Injectable } from "@nestjs/common";
 import { randomMaker } from "@repo/classes";
 import { BaseSchema, baseSchema, getStringMaxLength } from "@repo/schema";
 import { JWTPayload, JWTVerifyResult, SignJWT, jwtVerify } from "jose";
 
-import { configManager } from "~/classes/ConfigManager";
+import { ConfigService } from "../config/config.service";
+import { Environments } from "../env/env.service";
 
 export interface SessionPayload extends JWTPayload {
 	sessionId: string;
@@ -12,7 +14,14 @@ export interface VerifiedSession extends JWTVerifyResult {
 	payload: SessionPayload;
 }
 
-class SessionManager {
+@Injectable()
+export class SessionService {
+	private SESSION_SECRET: Environments["SESSION_SECRET"];
+
+	constructor(private configService: ConfigService) {
+		this.SESSION_SECRET = this.configService.getConfigs().APP.SESSION_SECRET;
+	}
+
 	sign(sessionId?: BaseSchema.SessionId) {
 		return new SignJWT({
 			sessionId: sessionId ?? this.generateSessionId(),
@@ -40,12 +49,10 @@ class SessionManager {
 	}
 
 	private getEncodedSecret() {
-		return this.encodeString(configManager.getConfigs().APP.SESSION_SECRET);
+		return this.encodeString(this.SESSION_SECRET);
 	}
 
 	private encodeString(str: string) {
 		return new TextEncoder().encode(str);
 	}
 }
-
-export const sessionManager = new SessionManager();

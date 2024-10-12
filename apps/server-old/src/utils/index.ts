@@ -22,11 +22,6 @@ type UnknownError = any;
 const isEventNameMatch = (url: Url, reqUrl: string) =>
 	(Array.isArray(url) && url.some((u) => u === reqUrl)) || url === reqUrl;
 
-const crashServer = (message: unknown) => {
-	logger.error(message);
-	process.exit(1);
-};
-
 interface ExecuteMiddlewaresArgs {
 	middlewares: SocketMiddleware<any>[];
 	next: SocketNext;

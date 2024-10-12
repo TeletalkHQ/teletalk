@@ -1,11 +1,13 @@
+import { Injectable } from "@nestjs/common";
 import { InternalServerErrorException, Logger } from "@nestjs/common";
 import { escapeChars } from "@repo/vars";
 
-export class SmsClient {
+@Injectable()
+export class SmsClientService {
 	logger: Logger;
 
 	constructor() {
-		this.logger = new Logger(SmsClient.name);
+		this.logger = new Logger(SmsClientService.name);
 	}
 
 	templates() {
@@ -33,5 +35,3 @@ export class SmsClient {
 		this.logger.debug(`verificationCode sending to:${sendTo}`, `text:${text}`);
 	}
 }
-
-export const smsClient = new SmsClient();

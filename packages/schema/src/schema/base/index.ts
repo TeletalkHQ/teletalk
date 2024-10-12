@@ -39,6 +39,7 @@ const phoneNumber = z
 
 const username = z.string().min(0).max(12).trim();
 
+const session = z.string().min(100).max(400).trim();
 const sessionId = z.string().min(100).max(150).trim();
 
 const encryptedSession = z.string().min(100).max(400).trim();
@@ -156,6 +157,7 @@ const userData = z.object({
 	username,
 });
 
+// TODO: Use intersection
 const DBUserData = userData.and(
 	z.object({
 		sessions,
@@ -193,6 +195,7 @@ const clientUser = publicData.and(
 );
 
 export const baseSchema = {
+	DBUserData,
 	avatarSrc,
 	bio,
 	blacklist,
@@ -209,7 +212,6 @@ export const baseSchema = {
 	countryName,
 	countryShortName,
 	createdAt,
-	DBUserData,
 	firstName,
 	fullName,
 	isActive,
@@ -218,9 +220,9 @@ export const baseSchema = {
 	lastName,
 	macAddress,
 	messageId,
+	messageText,
 	messages,
 	messagesItem,
-	messageText,
 	onlineClients,
 	participantId,
 	participants,
@@ -231,6 +233,7 @@ export const baseSchema = {
 	privateChatsItem,
 	publicData,
 	senderId,
+	session,
 	sessionId,
 	sessions,
 	status,
@@ -281,6 +284,7 @@ export namespace BaseSchema {
 	export type PrivateChatsItem = z.infer<typeof privateChatsItem>;
 	export type PublicData = z.infer<typeof publicData>;
 	export type SenderId = z.infer<typeof senderId>;
+	export type Session = z.infer<typeof session>;
 	export type SessionId = z.infer<typeof sessionId>;
 	export type Sessions = z.infer<typeof sessions>;
 	export type Status = z.infer<typeof status>;

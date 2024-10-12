@@ -1,30 +1,33 @@
-import { NodeEnv, envManager } from "./EnvironmentManager";
+import { Injectable } from "@nestjs/common";
+
+import { EnvService, Environments } from "../env/env.service";
 
 interface Configs {
 	APP: {
-		ENVIRONMENT: NodeEnv;
-		HOSTNAME: "localhost";
-		PORT: number | string;
-		SELF_EXEC: boolean;
-		SESSION_SECRET: string;
-		USE_CLUSTERS: boolean;
+		ENVIRONMENT: Environments["NODE_ENV"];
+		HOSTNAME: Environments["HOSTNAME"];
+		PORT: Environments["PORT"];
+		SELF_EXEC: Environments["SELF_EXEC"];
+		SESSION_SECRET: Environments["SESSION_SECRET"];
+		USE_CLUSTERS: Environments["USE_CLUSTERS"];
 	};
 	DB: {
-		MONGO_URI: string;
-		REDIS_HOST: string;
-		REDIS_PASSWORD: string;
-		REDIS_PORT: number | string;
+		MONGO_URI: Environments["MONGO_URI"];
+		REDIS_HOST: Environments["REDIS_HOST"];
+		REDIS_PASSWORD: Environments["REDIS_PASSWORD"];
+		REDIS_PORT: Environments["REDIS_PORT"];
 	};
 	SMS_CLIENT: {};
 	TEST: {
-		RUNNER: "MOCHA" | "JEST";
+		RUNNER: Environments["TEST_RUNNER"];
 	};
 }
 
-class ConfigManager {
+@Injectable()
+export class ConfigService {
 	private configs: Configs;
 
-	constructor() {
+	constructor(private envManager: EnvService) {
 		this.setup();
 	}
 
@@ -37,18 +40,7 @@ class ConfigManager {
 	}
 
 	private setup() {
-		envManager.registerEnvs("base");
-
-		const NODE_ENV = envManager.getNodeEnv();
-		envManager.registerEnvs(NODE_ENV);
-
-		this.setupConfigsByEnvs();
-
-		// this.setLogLevel();
-	}
-
-	private setupConfigsByEnvs() {
-		const ENVS = envManager.getEnvs();
+		const ENVS = this.envManager.getEnvs();
 
 		this.configs = {
 			APP: {
@@ -72,5 +64,3 @@ class ConfigManager {
 		};
 	}
 }
-
-export const configManager = new ConfigManager();

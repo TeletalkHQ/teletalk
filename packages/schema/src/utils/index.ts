@@ -28,3 +28,5 @@ export const getPathname = (name: HTTPRouteShortName) => {
 export const getRootPath = (name: HTTPRootPath) => {
 	return name;
 };
+
+export const parseToInt = (val: string) => parseInt(val);

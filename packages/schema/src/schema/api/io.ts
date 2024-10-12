@@ -181,7 +181,7 @@ export const ioCollection = {
 	signIn: {
 		input: baseSchema.cellphone,
 		output: z.object({
-			sessionId: baseSchema.sessionId,
+			session: baseSchema.session,
 		}),
 	},
 	updateAvatar: {
