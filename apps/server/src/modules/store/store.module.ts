@@ -39,21 +39,20 @@ export class StoreModule implements OnApplicationShutdown {
 }
 
 const storeInitializer = async (configService: ConfigService) => {
-	const { REDIS_HOST, REDIS_PASSWORD, REDIS_PORT } =
-		configService.getConfigs().DB;
+	const { REDIS } = configService.getConfigs().DB;
 
 	const storage = createClient({
-		password: REDIS_PASSWORD,
+		password: REDIS.PASSWORD,
 		socket: {
-			host: REDIS_HOST,
-			port: REDIS_PORT,
+			host: REDIS.HOST,
+			port: REDIS.PORT,
 			tls: false,
 		},
 	});
 
 	storage.on("connect", () =>
 		// eslint-disable-next-line no-console
-		console.info(`Redis connected to: ${REDIS_HOST}:${REDIS_PORT}`)
+		console.info(`Redis connected to: ${REDIS.HOST}:${REDIS.PORT}`)
 	);
 	storage.on("error", crashServer);
 

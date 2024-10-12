@@ -12,10 +12,16 @@ interface Configs {
 		USE_CLUSTERS: Environments["USE_CLUSTERS"];
 	};
 	DB: {
-		MONGO_URI: Environments["MONGO_URI"];
-		REDIS_HOST: Environments["REDIS_HOST"];
-		REDIS_PASSWORD: Environments["REDIS_PASSWORD"];
-		REDIS_PORT: Environments["REDIS_PORT"];
+		REDIS: {
+			HOST: Environments["REDIS_HOST"];
+			PASSWORD: Environments["REDIS_PASSWORD"];
+			PORT: Environments["REDIS_PORT"];
+		};
+		MONGO: {
+			URI: Environments["MONGO_URI"];
+			URL: Environments["MONGO_URL"];
+			COLLECTION_NAME: Environments["COLLECTION_NAME"];
+		};
 	};
 	// SMS_CLIENT: {};
 	TEST: {
@@ -52,10 +58,16 @@ export class ConfigService {
 				USE_CLUSTERS: ENVS.USE_CLUSTERS,
 			},
 			DB: {
-				MONGO_URI: ENVS.MONGO_URI,
-				REDIS_HOST: ENVS.REDIS_HOST,
-				REDIS_PASSWORD: ENVS.REDIS_PASSWORD,
-				REDIS_PORT: ENVS.REDIS_PORT,
+				REDIS: {
+					HOST: ENVS.REDIS_HOST,
+					PASSWORD: ENVS.REDIS_PASSWORD,
+					PORT: ENVS.REDIS_PORT,
+				},
+				MONGO: {
+					COLLECTION_NAME: ENVS.COLLECTION_NAME,
+					URI: ENVS.MONGO_URI,
+					URL: ENVS.MONGO_URL,
+				},
 			},
 			// SMS_CLIENT: {},
 			TEST: {
