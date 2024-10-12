@@ -18,10 +18,8 @@ import { SessionService } from "../session/session.service";
 import { SmsClientService } from "../sms-client/sms-client.service";
 import { AuthService } from "./auth.service";
 
-interface IAuthController {}
-
 @Controller(getRootPath("auth"))
-export class AuthController implements IAuthController {
+export class AuthController {
 	constructor(
 		private authService: AuthService,
 		private sessionStore: SessionStoreService,
@@ -62,10 +60,10 @@ export class AuthController implements IAuthController {
 	}
 
 	@Post(getPathname("verify"))
-	async verify(@Body() data: GetInput<"verify">) {}
+	async verify(@Body() _data: GetInput<"verify">) {}
 
 	@Post(getPathname("createNewUser"))
-	async createNewUser(@Body() data: GetInput<"createNewUser">) {}
+	async createNewUser(@Body() _data: GetInput<"createNewUser">) {}
 
 	// @Get("is-authenticated")
 	// isAuthenticated(): boolean {

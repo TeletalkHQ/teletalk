@@ -27,7 +27,7 @@ import { StoreService } from "./store.service";
 export class StoreModule implements OnApplicationShutdown {
 	constructor(private readonly moduleRef: ModuleRef) {}
 
-	async onApplicationShutdown(signal?: string): Promise<void> {
+	async onApplicationShutdown(_signal?: string): Promise<void> {
 		return new Promise<void>((resolve) => {
 			const redis = this.moduleRef.get(STORE_KEY);
 			redis.quit();
@@ -52,6 +52,7 @@ const storeInitializer = async (configService: ConfigService) => {
 	});
 
 	storage.on("connect", () =>
+		// eslint-disable-next-line no-console
 		console.info(`Redis connected to: ${REDIS_HOST}:${REDIS_PORT}`)
 	);
 	storage.on("error", crashServer);

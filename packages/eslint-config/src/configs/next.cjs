@@ -10,7 +10,6 @@ const nextConfig = defineConfig({
 	},
 	extends: [
 		...baseConfig.extends,
-		"eslint-config-turbo",
 		"next",
 		"next/core-web-vitals",
 		"plugin:react-hooks/recommended",
@@ -37,7 +36,6 @@ const nextConfig = defineConfig({
 	plugins: [...baseConfig.plugins, "react", "react-hooks"],
 	rules: {
 		...baseConfig.rules,
-		"no-console": "off",
 		"react/prop-types": "off",
 		"react/jsx-sort-props": [
 			"warn",

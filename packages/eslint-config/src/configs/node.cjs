@@ -7,10 +7,18 @@ const nodeConfig = defineConfig({
 	env: {
 		...baseConfig.env,
 		mocha: true,
+		node: true,
+		jest: true,
 	},
 	globals: {
 		...baseConfig.globals,
 		NodeJS: true,
+	},
+	parserOptions: {
+		...baseConfig.parserOptions,
+		ecmaFeatures: {
+			...baseConfig.parserOptions.ecmaFeatures,
+		},
 	},
 	plugins: [
 		...baseConfig.plugins,
@@ -21,30 +29,8 @@ const nodeConfig = defineConfig({
 		...baseConfig.rules,
 		// "security/detect-object-injection": "off",
 		// "chai-friendly/no-unused-expressions": 1,
-
-		"@typescript-eslint/interface-name-prefix": "off",
-		"@typescript-eslint/explicit-function-return-type": "off",
-		"@typescript-eslint/explicit-module-boundary-types": "off",
-		"@typescript-eslint/no-explicit-any": "off",
-
-		parserOptions: {
-			project: "tsconfig.json",
-			tsconfigRootDir: __dirname,
-			sourceType: "module",
-		},
-		plugins: ["@typescript-eslint/eslint-plugin"],
-		extends: [
-			"plugin:@typescript-eslint/recommended",
-			"plugin:prettier/recommended",
-		],
-		root: true,
-		env: {
-			node: true,
-			jest: true,
-		},
-		ignorePatterns: [".eslintrc.js"],
-		rules: {},
 	},
+	ignorePatterns: [".eslintrc.js"],
 });
 
 module.exports = nodeConfig;

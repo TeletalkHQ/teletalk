@@ -8,16 +8,19 @@ const baseConfig = defineConfig({
 		node: true,
 	},
 	extends: [
+		"eslint-config-turbo",
 		"eslint:recommended",
 		"plugin:@cspell/recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:import/typescript",
+		"plugin:json/recommended",
+		"plugin:promise/recommended",
 		// TODO: Enable these
 		// "plugin:import/errors",
 		// "plugin:import/warnings",
-		"plugin:json/recommended",
-		"plugin:promise/recommended",
-		"plugin:sonarjs/recommended",
+
+		// "plugin:prettier/recommended",
+		// "plugin:sonarjs/recommended",
 	],
 	globals: {
 		logger: true,
@@ -54,7 +57,6 @@ const baseConfig = defineConfig({
 	plugins: [
 		"@cspell",
 		"@typescript-eslint",
-		// FIXME: Duplicate?
 		"@typescript-eslint/eslint-plugin",
 		"import",
 		"promise",
@@ -73,6 +75,9 @@ const baseConfig = defineConfig({
 			},
 		],
 		"@typescript-eslint/ban-ts-comment": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/interface-name-prefix": "off",
 		"@typescript-eslint/no-explicit-any": "off",
 		"@typescript-eslint/no-namespace": 0,
 		"@typescript-eslint/no-non-null-assertion": "off",
@@ -102,7 +107,7 @@ const baseConfig = defineConfig({
 		],
 		"linebreak-style": ["error", "unix"],
 		"multiline-ternary": 0,
-		"no-console": "error",
+		"no-console": "warn",
 		"no-delete-var": "warn",
 		"no-mixed-operators": 0,
 		"no-mixed-spaces-and-tabs": 0,
@@ -156,17 +161,6 @@ const baseConfig = defineConfig({
 		"import/parsers": {
 			"@typescript-eslint/parser": [".ts"],
 		},
-
-		// "import/resolver": {
-		// 	"eslint-import-resolver-custom-alias": {
-		// 		alias: {
-		// 			"@": "./testSrc",
-		// 			"~": "./src",
-		// 		},
-		// 		extensions: [".ts", ".js", ".json"],
-		// 	},
-		// 	node: true,
-		// },
 	},
 });
 

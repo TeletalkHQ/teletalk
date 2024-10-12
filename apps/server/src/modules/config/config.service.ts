@@ -17,7 +17,7 @@ interface Configs {
 		REDIS_PASSWORD: Environments["REDIS_PASSWORD"];
 		REDIS_PORT: Environments["REDIS_PORT"];
 	};
-	SMS_CLIENT: {};
+	// SMS_CLIENT: {};
 	TEST: {
 		RUNNER: Environments["TEST_RUNNER"];
 	};
@@ -57,7 +57,7 @@ export class ConfigService {
 				REDIS_PASSWORD: ENVS.REDIS_PASSWORD,
 				REDIS_PORT: ENVS.REDIS_PORT,
 			},
-			SMS_CLIENT: {},
+			// SMS_CLIENT: {},
 			TEST: {
 				RUNNER: ENVS.TEST_RUNNER,
 			},
