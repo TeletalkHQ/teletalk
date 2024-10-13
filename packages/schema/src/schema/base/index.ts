@@ -39,6 +39,10 @@ const phoneNumber = z
 
 const username = z.string().min(0).max(12).trim();
 
+const email = z.string().min(5).max(100).trim();
+
+const password = z.string().min(4).max(100).trim();
+
 const session = z.string().min(100).max(400).trim();
 const sessionId = z.string().min(100).max(150).trim();
 
@@ -158,6 +162,7 @@ const userData = z.object({
 });
 
 // TODO: Use intersection
+// TODO: Rename
 const DBUserData = userData.and(
 	z.object({
 		sessions,
@@ -212,6 +217,7 @@ export const baseSchema = {
 	countryShortName,
 	createdAt,
 	DBUserData,
+	email,
 	encryptedSession,
 	firstName,
 	fullName,
@@ -228,6 +234,7 @@ export const baseSchema = {
 	participantId,
 	participants,
 	participantsItem,
+	password,
 	phoneNumber,
 	pong,
 	privateChats,
@@ -263,6 +270,7 @@ export namespace BaseSchema {
 	export type CountryShortName = z.infer<typeof countryShortName>;
 	export type CreatedAt = z.infer<typeof createdAt>;
 	export type DBUserData = z.infer<typeof DBUserData>;
+	export type Email = z.infer<typeof email>;
 	export type EncryptedSession = z.infer<typeof encryptedSession>;
 	export type FirstName = z.infer<typeof firstName>;
 	export type FullName = z.infer<typeof fullName>;
@@ -279,6 +287,7 @@ export namespace BaseSchema {
 	export type ParticipantId = z.infer<typeof participantId>;
 	export type Participants = z.infer<typeof participants>;
 	export type ParticipantsItem = z.infer<typeof participantsItem>;
+	export type Password = z.infer<typeof password>;
 	export type PhoneNumber = z.infer<typeof phoneNumber>;
 	export type Pong = z.infer<typeof pong>;
 	export type PrivateChats = z.infer<typeof privateChats>;
