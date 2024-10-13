@@ -27,7 +27,7 @@ export class UserService {
 		});
 	}
 
-	async update(userToUpdate: Partial<User>) {
+	async update(userToUpdate: Partial<BaseSchema.DBUserData>) {
 		const user = await this.findOne(userToUpdate);
 		if (!user) {
 			throw new NotFoundException("USER_NOT_FOUND");
@@ -36,7 +36,7 @@ export class UserService {
 		return this.repo.save(user);
 	}
 
-	async remove(userToRemove: Partial<User>) {
+	async remove(userToRemove: Partial<BaseSchema.DBUserData>) {
 		const user = await this.findOne(userToRemove);
 		if (!user) {
 			throw new NotFoundException("USER_NOT_FOUND");
