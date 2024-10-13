@@ -4,6 +4,7 @@
 		"NEXT_PUBLIC_RUNTIME_MODE",
 		"NEXT_PUBLIC_SERVER_BASE_URL",
 		"NODE_ENV",
+		"SELF_EXEC",
 		"PORT"
 	],
 	"$schema": "https://turbo.build/schema.json",

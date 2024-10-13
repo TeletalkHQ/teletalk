@@ -24,7 +24,7 @@ const envSchema = z.object({
 	REDIS_PORT: z.string().transform(parseToInt),
 	SELF_EXEC: z.string().transform(Boolean).optional(),
 	SESSION_SECRET: z.string(),
-	TEST_RUNNER: z.enum(["JEST", "MOCHA"]).optional(), //TODO: Move to testSrc scope
+	TEST_RUNNER: z.enum(["JEST", "MOCHA"]).optional(),
 	USE_CLUSTERS: z.string().transform(Boolean),
 });
 
@@ -44,6 +44,8 @@ export class EnvService {
 		this.registerEnvs(NODE_ENV);
 		this.envs = envSchema.parse(process.env);
 	}
+
+	static registerEnvs() {}
 
 	getEnvs() {
 		return this.envs;

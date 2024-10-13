@@ -1,6 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
+import { NestFactory } from "@nestjs/core";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { getFullPath, getRequestMethod } from "@repo/schema";
+import cookieParser from "cookie-parser";
 
 import { SessionIdMiddleware } from "~/middlewares";
 
@@ -54,3 +56,21 @@ export class AppModule implements NestModule {
 			.forRoutes("*");
 	}
 }
+
+export const appInitializer = async () => {
+	const app = await NestFactory.create(AppModule);
+
+	app.use(cookieParser());
+
+	await app.listen(getPort());
+
+	return app;
+};
+
+const getPort = () => {
+	const PORT = Number(process.env.PORT);
+
+	if (isNaN(PORT)) throw Error("UNKNOWN_PORT");
+
+	return PORT;
+};

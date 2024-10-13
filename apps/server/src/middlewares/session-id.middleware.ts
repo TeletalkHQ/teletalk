@@ -13,7 +13,9 @@ export class SessionIdMiddleware implements NestMiddleware {
 	constructor(private sessionService: SessionService) {}
 
 	async use(req: Request, _res: Response, next: NextFunction) {
-		const session = req.cookies[COOKIE_NAMES.SESSION];
+		// FIXME: Remove `?`
+		const session = req.cookies?.[COOKIE_NAMES.SESSION];
+
 		if (!session) throw new UnauthorizedException("SESSION_NOT_FOUND");
 
 		const verifiedSession = await this.sessionService.verify(session);
