@@ -195,7 +195,6 @@ const clientUser = publicData.and(
 );
 
 export const baseSchema = {
-	DBUserData,
 	avatarSrc,
 	bio,
 	blacklist,
@@ -212,6 +211,8 @@ export const baseSchema = {
 	countryName,
 	countryShortName,
 	createdAt,
+	DBUserData,
+	encryptedSession,
 	firstName,
 	fullName,
 	isActive,
@@ -220,9 +221,9 @@ export const baseSchema = {
 	lastName,
 	macAddress,
 	messageId,
-	messageText,
 	messages,
 	messagesItem,
+	messageText,
 	onlineClients,
 	participantId,
 	participants,
