@@ -38,9 +38,7 @@ export const ioCollection = {
 			firstName: baseSchema.firstName,
 			lastName: baseSchema.lastName,
 		}),
-		output: z.object({
-			sessionId: baseSchema.sessionId,
-		}),
+		output: z.object({}),
 	},
 	disconnect: {
 		input: z.undefined(),
@@ -180,9 +178,7 @@ export const ioCollection = {
 	},
 	signIn: {
 		input: baseSchema.cellphone,
-		output: z.object({
-			session: baseSchema.session,
-		}),
+		output: z.object({}),
 	},
 	updateAvatar: {
 		input: z.object({
@@ -224,7 +220,6 @@ export const ioCollection = {
 		}),
 		output: z.object({
 			isNewUser: baseSchema.isNewUser,
-			sessionId: baseSchema.sessionId,
 		}),
 	},
 } satisfies Record<string, IOSchema>;

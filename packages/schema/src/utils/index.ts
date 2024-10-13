@@ -1,4 +1,5 @@
-import { InternalServerErrorException } from "@nestjs/common";
+import { InternalServerErrorException, RequestMethod } from "@nestjs/common";
+import { HTTPMethod } from "@repo/types";
 import { ZodString } from "zod";
 
 import { HTTPRootPath } from "../classes";
@@ -25,8 +26,33 @@ export const getPathname = (name: HTTPRouteShortName) => {
 	return findHttpRoute(name).schema.pathname;
 };
 
+export const getRootName = (name: HTTPRouteShortName) => {
+	return findHttpRoute(name).schema.rootPath;
+};
+
 export const getRootPath = (name: HTTPRootPath) => {
 	return name;
+};
+
+export const getFullPath = (name: HTTPRouteShortName) => {
+	return `${getRootName(name)}/${getPathname(name)}`;
+};
+
+export const getRequestMethod = (name: HTTPRouteShortName) => {
+	const method = getMethod(name);
+
+	return fixedMethodForNest[method];
+};
+const fixedMethodForNest = {
+	delete: RequestMethod.DELETE,
+	get: RequestMethod.GET,
+	patch: RequestMethod.PATCH,
+	post: RequestMethod.POST,
+	put: RequestMethod.PUT,
+} satisfies Record<HTTPMethod, RequestMethod>;
+
+export const getMethod = (name: HTTPRouteShortName) => {
+	return findHttpRoute(name).schema.method;
 };
 
 export const parseToInt = (val: string) => parseInt(val);

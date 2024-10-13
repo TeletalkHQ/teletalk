@@ -37,7 +37,8 @@
 		"configs/**/*.ts",
 		"./index.ts",
 		"testSrc/**/*.ts",
-		"configs/jest/jest.setup.ts"
+		"configs/jest/jest.setup.ts",
+		"./global.d.ts"
 	],
 	"ts-node": {
 		"esm": true,

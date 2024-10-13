@@ -27,13 +27,16 @@ export class UserService {
 		});
 	}
 
-	async update(userToUpdate: Partial<BaseSchema.DBUserData>) {
-		const user = await this.findOne(userToUpdate);
+	async update(
+		dataToFind: Partial<BaseSchema.DBUserData>,
+		dataToUpdate: Partial<BaseSchema.DBUserData>
+	) {
+		const user = await this.findOne(dataToFind);
 		if (!user) {
 			throw new NotFoundException("USER_NOT_FOUND");
 		}
-		Object.assign(user, userToUpdate);
-		return this.repo.save(user);
+
+		return this.repo.save({ ...user, ...dataToUpdate });
 	}
 
 	async remove(userToRemove: Partial<BaseSchema.DBUserData>) {
@@ -42,5 +45,26 @@ export class UserService {
 			throw new NotFoundException("USER_NOT_FOUND");
 		}
 		return this.repo.remove(user);
+	}
+
+	async isExist(userToFind: Partial<BaseSchema.DBUserData>) {
+		return this.repo.exists({
+			where: userToFind,
+		});
+	}
+
+	async addSessionId(
+		userId: BaseSchema.UserId,
+		sessionId: BaseSchema.SessionId
+	) {
+		const user = await this.findOne({ userId });
+		if (!user) {
+			throw new NotFoundException("USER_NOT_FOUND");
+		}
+
+		this.repo.save({
+			...user,
+			sessions: [...user.sessions, { sessionId }],
+		});
 	}
 }

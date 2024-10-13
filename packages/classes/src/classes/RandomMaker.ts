@@ -48,6 +48,10 @@ class RandomMaker {
 		return nanoid(size);
 	}
 
+	userId(size = getStringMaxLength(baseSchema.userId)) {
+		return nanoid(size);
+	}
+
 	country(): BaseSchema.CountriesItem {
 		const index = this.numberWithRange(0, countries.length);
 		return countries[index] || this.country();

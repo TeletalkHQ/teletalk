@@ -25,4 +25,8 @@ export class SessionStoreService {
 	async update(sessionId: BaseSchema.SessionId, newData: SessionItem) {
 		await this.store.update(sessionId, newData);
 	}
+
+	async remove(sessionId: BaseSchema.SessionId) {
+		await this.store.remove(sessionId);
+	}
 }
