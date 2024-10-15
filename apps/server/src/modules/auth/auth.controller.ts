@@ -64,7 +64,9 @@ export class AuthController {
 		});
 
 		return {
-			data: {},
+			data: {
+				hello: "!yay",
+			},
 		};
 	}
 

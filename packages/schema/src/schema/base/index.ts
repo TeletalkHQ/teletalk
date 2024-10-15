@@ -137,7 +137,7 @@ const blacklistItem = z.object({
 const blacklist = z.array(blacklistItem);
 
 // TODO: Mix with `userData`
-const publicData = z.object({
+const userPublicInfo = z.object({
 	firstName,
 	lastName,
 	bio,
@@ -187,7 +187,7 @@ const isNewUser = z.boolean();
 const isBlocked = z.boolean();
 const isContact = z.boolean();
 
-const clientUser = publicData.and(
+const clientUser = userPublicInfo.and(
 	cellphone.and(
 		z.object({
 			avatarSrc,
@@ -239,7 +239,7 @@ export const baseSchema = {
 	pong,
 	privateChats,
 	privateChatsItem,
-	publicData,
+	publicData: userPublicInfo,
 	senderId,
 	session,
 	sessionId,
@@ -292,7 +292,6 @@ export namespace BaseSchema {
 	export type Pong = z.infer<typeof pong>;
 	export type PrivateChats = z.infer<typeof privateChats>;
 	export type PrivateChatsItem = z.infer<typeof privateChatsItem>;
-	export type PublicData = z.infer<typeof publicData>;
 	export type SenderId = z.infer<typeof senderId>;
 	export type Session = z.infer<typeof session>;
 	export type SessionId = z.infer<typeof sessionId>;
@@ -300,6 +299,7 @@ export namespace BaseSchema {
 	export type Status = z.infer<typeof status>;
 	export type UserData = z.infer<typeof userData>;
 	export type UserId = z.infer<typeof userId>;
+	export type UserPublicInfo = z.infer<typeof userPublicInfo>;
 	export type Username = z.infer<typeof username>;
 	export type VerificationCode = z.infer<typeof verificationCode>;
 	export type WelcomeMessage = z.infer<typeof welcomeMessage>;

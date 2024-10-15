@@ -1,4 +1,4 @@
-import { extractor, maker } from "@repo/classes";
+import { emptyMaker, extractor } from "@repo/classes";
 import { UserItem } from "@repo/types";
 
 import { initialState } from "./initialState";
@@ -68,9 +68,9 @@ export const handlers: (set: SetState) => Handlers = (set) => ({
 
 			if (index < 0) {
 				newUsers.push({
-					...maker.emptyUser(),
+					...emptyMaker.emptyUser(),
 					...updatedUser,
-					...maker.originalFullName(updatedUser),
+					...emptyMaker.originalFullName(updatedUser),
 				});
 			} else {
 				const item = newUsers[index] as UserItem;

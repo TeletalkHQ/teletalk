@@ -1,4 +1,4 @@
-import { maker } from "@repo/classes";
+import { emptyMaker } from "@repo/classes";
 import { extractor } from "@repo/classes";
 import { SocketErrorCallback, SocketResponseCallback } from "@repo/types";
 import type { UserItem } from "@repo/types";
@@ -36,7 +36,7 @@ export const useSetUserData = ({
 					);
 
 					const users: UserItem[] = response.data.user.contacts.map((item) => ({
-						...maker.emptyUser(),
+						...emptyMaker.emptyUser(),
 						...item,
 						isContact: true,
 						isBlocked: response.data.user.blacklist.some(
@@ -48,7 +48,7 @@ export const useSetUserData = ({
 						response.data.user.blacklist
 							.filter((i) => !users.some((j) => i.userId === j.userId))
 							.map((item) => ({
-								...maker.emptyUser(),
+								...emptyMaker.emptyUser(),
 								...item,
 								isBlocked: true,
 							}));

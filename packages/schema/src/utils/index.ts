@@ -2,7 +2,7 @@ import { InternalServerErrorException, RequestMethod } from "@nestjs/common";
 import { HTTPMethod } from "@repo/types";
 import { ZodString } from "zod";
 
-import { HTTPRootPath } from "../classes";
+import { HTTPRootPath, RouteGenerator } from "../classes";
 import { HTTPRouteShortName, httpRoutes } from "../schema";
 
 export const getStringMaxLength = <T extends ZodString>(schema: T) => {
@@ -13,13 +13,13 @@ export const getStringMaxLength = <T extends ZodString>(schema: T) => {
 	return result;
 };
 
-export const findHttpRoute = (name: HTTPRouteShortName) => {
+export const findHttpRoute = <T extends HTTPRouteShortName>(name: T) => {
 	const foundRoute = httpRoutes.find((item) => item.schema.ioName === name);
 
 	if (!foundRoute)
 		throw new InternalServerErrorException("http route not found");
 
-	return foundRoute;
+	return foundRoute as RouteGenerator<T>;
 };
 
 export const getPathname = (name: HTTPRouteShortName) => {

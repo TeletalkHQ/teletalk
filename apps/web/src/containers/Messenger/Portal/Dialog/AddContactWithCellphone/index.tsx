@@ -1,4 +1,4 @@
-import { maker } from "@repo/classes";
+import { emptyMaker } from "@repo/classes";
 import React from "react";
 
 import { Template } from "~/components";
@@ -34,7 +34,7 @@ const AddContactWithCellphone = () => {
 
 	const resetStates = () => {
 		userStore.updateAddingContactWithCellphone(
-			maker.emptyAddingContactWithCellphone()
+			emptyMaker.emptyAddingContactWithCellphone()
 		);
 	};
 

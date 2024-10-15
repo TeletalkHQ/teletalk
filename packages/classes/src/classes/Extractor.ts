@@ -54,8 +54,8 @@ export class Extractor {
 	}
 
 	userPublicData(
-		data: BaseSchema.PublicData & StringMap
-	): BaseSchema.PublicData {
+		data: BaseSchema.UserPublicInfo & StringMap
+	): BaseSchema.UserPublicInfo {
 		return {
 			...this.fullName(data),
 			bio: data.bio,

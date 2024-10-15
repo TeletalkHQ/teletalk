@@ -8,7 +8,7 @@
 	],
 	"package": "./package.json",
 	"reporter": "spec",
-	"spec": ["./test/__tests__/app/app.e2e-spec.ts"],
+	"spec": ["./test/__tests__/**"],
 	"timeout": 60000,
 	"ui": "bdd",
 	"watch-ignore": "",

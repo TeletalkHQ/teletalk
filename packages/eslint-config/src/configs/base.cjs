@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { defineConfig } = require("eslint-define-config");
 const restrictedGlobals = require("eslint-restricted-globals");
 require("@rushstack/eslint-patch/modern-module-resolution");
@@ -117,6 +118,7 @@ const baseConfig = defineConfig({
 		"no-undef": "error",
 		"no-unused-expressions": 0,
 		"no-unused-vars": "off",
+		"@typescript-eslint/no-empty-object-type": "off",
 		"no-use-before-define": [
 			"error",
 			{

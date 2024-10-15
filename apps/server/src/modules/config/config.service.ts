@@ -41,6 +41,10 @@ export class ConfigService {
 		this.configs.APP.PORT = port;
 	}
 
+	getPort() {
+		return this.configs.APP.PORT;
+	}
+
 	getConfigs() {
 		return this.configs;
 	}

@@ -1,16 +1,16 @@
-import { SocketRoute } from "@repo/types";
-import { Cellphone, EventName, FullName } from "@repo/types";
+import { IOName, socketEvents } from "@repo/schema";
+import { SocketRoute } from "@repo/socket";
+import { Cellphone, FullName } from "@repo/types";
 import { Socket } from "socket.io-client";
 
-import { events } from "~/socket/eventHandlers";
-
 import { randomMaker } from "@/classes/RandomMaker";
-import { requesterMaker } from "@/classes/Requester";
 import { RequesterMaker } from "@/types";
 
-export const requesterMakerHelper = <T extends EventName>(eventName: T) => {
-	const event = events.find(
-		(i) => i.name === eventName
+import { requesterMaker } from "../classes/Requester";
+
+export const requesterMakerHelper = <T extends IOName>(ioName: T) => {
+	const event = socketEvents.find(
+		(i) => i.schema.ioName === ioName
 	) as unknown as SocketRoute<T>;
 
 	return (socket: Socket) => {
@@ -18,7 +18,7 @@ export const requesterMakerHelper = <T extends EventName>(eventName: T) => {
 	};
 };
 
-export const setupRequester = async <T extends EventName>(
+export const setupRequester = async <T extends IOName>(
 	requester: RequesterMaker<T>,
 	cellphone?: Cellphone,
 	fullName?: FullName
@@ -32,9 +32,8 @@ export const setupRequester = async <T extends EventName>(
 };
 
 export const requesterCollection = {
-	blockUser: requesterMakerHelper("blockUser"),
 	addContactWithCellphone: requesterMakerHelper("addContactWithCellphone"),
-	addContactWithUserId: requesterMakerHelper("addContactWithUserId"),
+	blockUser: requesterMakerHelper("addBlock"),
 	createNewUser: requesterMakerHelper("createNewUser"),
 	disconnect: requesterMakerHelper("disconnect"),
 	getAvatar: requesterMakerHelper("getAvatar"),
@@ -52,7 +51,6 @@ export const requesterCollection = {
 	join: requesterMakerHelper("join"),
 	logout: requesterMakerHelper("logout"),
 	ping: requesterMakerHelper("ping"),
-	pong: requesterMakerHelper("pong"),
 	removeBlock: requesterMakerHelper("removeBlock"),
 	removeContact: requesterMakerHelper("removeContact"),
 	sendMessage: requesterMakerHelper("sendMessage"),

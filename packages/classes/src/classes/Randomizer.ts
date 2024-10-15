@@ -3,14 +3,15 @@ import { countries } from "@repo/vars";
 import { nanoid } from "nanoid";
 
 import { dataUsageManager } from "./DataUsageManager";
-import { maker } from "./Maker";
+import { extractor } from "./Extractor";
+import { emptyMaker } from "./Maker";
 
 type Min = number;
 type Max = number;
 type Length = number;
 
 // TODO: Replace methods with faker if possible
-class RandomMaker {
+export class Randomizer {
 	private _stringNumber = "0123456789";
 	private characters = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz${this._stringNumber}`;
 
@@ -20,6 +21,12 @@ class RandomMaker {
 				characters.charAt(Math.floor(Math.random() * characters.length))
 			)
 			.join("");
+	}
+
+	sessionId(
+		length = getStringMaxLength(baseSchema.sessionId)
+	): BaseSchema.SessionId {
+		return this.string(length);
 	}
 
 	string(length: Length) {
@@ -44,12 +51,12 @@ class RandomMaker {
 		return Math.floor(Math.random() * (max - min)) + min;
 	}
 
-	id(size: number) {
-		return nanoid(size);
+	id(length: number) {
+		return nanoid(length);
 	}
 
-	userId(size = getStringMaxLength(baseSchema.userId)) {
-		return nanoid(size);
+	userId(length = getStringMaxLength(baseSchema.userId)) {
+		return this.id(length);
 	}
 
 	country(): BaseSchema.CountriesItem {
@@ -62,7 +69,7 @@ class RandomMaker {
 	): BaseSchema.Cellphone {
 		const country = this.country();
 
-		return maker.cellphone(
+		return emptyMaker.cellphone(
 			country.countryCode,
 			country.countryName,
 			this.stringNumber(phoneNumberLength)
@@ -74,8 +81,8 @@ class RandomMaker {
 	): BaseSchema.Cellphone {
 		const cellphone = this.cellphone(phoneNumberLength);
 
-		const isCellphoneUsedBefore = dataUsageManager.isCellphoneUsed(cellphone);
-		if (isCellphoneUsedBefore) return this.unusedCellphone();
+		const isUsed = dataUsageManager.isCellphoneUsed(cellphone);
+		if (isUsed) return this.unusedCellphone();
 
 		dataUsageManager.addUsedCellphone(cellphone);
 
@@ -95,6 +102,19 @@ class RandomMaker {
 		};
 	}
 
+	contactWithCellphone(): Omit<BaseSchema.ContactsItem, "userId"> {
+		const { userId, ...rest } = this.contact();
+		return rest;
+	}
+
+	contactWithUserId(): BaseSchema.FullName & { userId: BaseSchema.UserId } {
+		const contact = this.contact();
+		return {
+			...extractor.fullName(contact),
+			userId: contact.userId,
+		};
+	}
+
 	unusedContact(
 		firstNameLength = getStringMaxLength(baseSchema.firstName),
 		lastNameLength = getStringMaxLength(baseSchema.lastName),
@@ -111,13 +131,51 @@ class RandomMaker {
 		firstNameLength = getStringMaxLength(baseSchema.firstName),
 		lastNameLength = getStringMaxLength(baseSchema.lastName)
 	) {
-		return maker.fullName(
+		return emptyMaker.fullName(
 			this.string(firstNameLength),
 			this.string(lastNameLength)
 		);
 	}
+
+	userPublicInfo(): BaseSchema.UserPublicInfo {
+		return {
+			...this.fullName(),
+			bio: this.string(getStringMaxLength(baseSchema.bio)),
+			username: this.string(getStringMaxLength(baseSchema.username)),
+			userId: this.id(getStringMaxLength(baseSchema.userId)),
+		};
+	}
+
+	arrayOfUserPublicInfo(
+		length: number,
+		userId?: BaseSchema.UserId
+	): BaseSchema.UserPublicInfo[] {
+		const data: BaseSchema.UserPublicInfo[] = [];
+
+		for (let i = 0; i < length; i++) {
+			const publicInfo = this.userPublicInfo();
+			data.push({
+				...publicInfo,
+				userId: userId || publicInfo.userId,
+			});
+		}
+		return data;
+	}
+
+	privateMessageItem(): BaseSchema.MessagesItem {
+		return {
+			createdAt: Date.now(),
+			messageId: this.id(getStringMaxLength(baseSchema.messageId)),
+			messageText: this.messageText(),
+			sender: {
+				senderId: this.userId(),
+			},
+		};
+	}
+
+	messageText(): BaseSchema.MessageText {
+		return this.string(getStringMaxLength(baseSchema.messageText));
+	}
 }
 
-const randomMaker = new RandomMaker();
-
-export { randomMaker, RandomMaker };
+export const randomMaker = new Randomizer();

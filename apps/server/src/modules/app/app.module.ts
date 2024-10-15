@@ -1,5 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
-import { NestFactory } from "@nestjs/core";
+import { APP_INTERCEPTOR, NestFactory } from "@nestjs/core";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { getFullPath, getRequestMethod } from "@repo/schema";
 import cookieParser from "cookie-parser";
@@ -12,6 +12,7 @@ import { ConfigService } from "../config/config.service";
 import { SessionModule } from "../session/session.module";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { ResponseInterceptor } from "./response.interceptor";
 
 const createMongoDBModule = () => {
 	return TypeOrmModule.forRootAsync({
@@ -38,7 +39,13 @@ const createMongoDBModule = () => {
 @Module({
 	imports: [AuthModule, SessionModule, createMongoDBModule()],
 	controllers: [AppController],
-	providers: [AppService],
+	providers: [
+		AppService,
+		{
+			provide: APP_INTERCEPTOR,
+			useClass: ResponseInterceptor,
+		},
+	],
 })
 export class AppModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {

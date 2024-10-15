@@ -1,4 +1,4 @@
-import { maker } from "@repo/classes";
+import { emptyMaker } from "@repo/classes";
 import { SocketOnHandler } from "@repo/socket";
 
 import { services } from "~/services";
@@ -18,7 +18,7 @@ export const addContactWithUserId: SocketOnHandler<
 		data: {
 			newContact: {
 				...rest,
-				...maker.emptyCellphone(),
+				...emptyMaker.emptyCellphone(),
 			},
 		},
 	};

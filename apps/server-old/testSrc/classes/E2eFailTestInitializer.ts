@@ -10,7 +10,7 @@ import { EventName, IOCollection } from "@repo/types";
 import { RequesterOptions } from "@/types";
 import { utils } from "@/utils";
 
-import { randomMaker } from "./RandomMaker";
+import { randomMaker } from "./Randomizer";
 import { Requester } from "./Requester";
 
 class E2eFailTestInitializer<

@@ -15,7 +15,6 @@ import { ServiceName } from "@/types";
 import {
 	requesterCollection,
 	requesterMakerHelper,
-	setupRequester,
 } from "./requesterCollection";
 import { createTestMessage } from "./testMessageCreators";
 
@@ -186,5 +185,4 @@ export const utils = {
 	jestDescribe,
 	requesterCollection,
 	requesterMakerHelper,
-	setupRequester,
 };

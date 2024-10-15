@@ -1,4 +1,4 @@
-import { maker } from "@repo/classes";
+import { emptyMaker } from "@repo/classes";
 
 import { useUserStore } from "~/store";
 
@@ -8,6 +8,6 @@ export const useFindSelectedUserForActions = () => {
 	return (
 		userStore.users.find(
 			(item) => item.userId === userStore.selectedUserIdForActions
-		) || maker.emptyUser()
+		) || emptyMaker.emptyUser()
 	);
 };

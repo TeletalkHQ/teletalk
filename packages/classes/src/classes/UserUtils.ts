@@ -5,7 +5,7 @@ import { utils } from "@repo/utils";
 export class UserUtils {
 	concatFirstNameWithLastName(
 		userItem: Partial<BaseSchema.ClientUser>,
-		publicData?: BaseSchema.PublicData
+		publicData?: BaseSchema.UserPublicInfo
 	) {
 		const fn =
 			userItem.firstName ||

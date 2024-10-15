@@ -1,4 +1,4 @@
-import { maker } from "@repo/classes";
+import { emptyMaker } from "@repo/classes";
 import { extractor } from "@repo/classes";
 import type { FullName } from "@repo/types";
 import React, { useEffect, useState } from "react";
@@ -23,7 +23,9 @@ const EditContactWithCellphone = () => {
 	const dialogState = useDialogState("editContactWithCellphone");
 	const { handler, loading } = useEmitter("updateContact");
 	const selectedUserForActions = useFindSelectedUserForActions();
-	const [fullName, setFullName] = useState<FullName>(maker.emptyFullName());
+	const [fullName, setFullName] = useState<FullName>(
+		emptyMaker.emptyFullName()
+	);
 
 	useEffect(() => {
 		if (dialogState.open)
@@ -54,7 +56,7 @@ const EditContactWithCellphone = () => {
 
 	const resetStates = () => {
 		userStore.updateSelectedUserIdForActions("");
-		setFullName(maker.emptyFullName());
+		setFullName(emptyMaker.emptyFullName());
 	};
 
 	const isSubmitDisabled = utils.isFullNameValid(fullName);
