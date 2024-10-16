@@ -1,14 +1,11 @@
-import { findHttpRoute } from "@repo/schema";
-
-import { appInitializer } from "~/modules/app/app.module";
-
 import { randomizer } from "@/classes";
-import { httpHandler } from "@/classes/HTTPHandler";
+import { httpHandlerCollection } from "@/utils/httpHandlerCollection";
+import { testAppInitializer } from "@/utils/testAppInitializer";
 import { messageCreators } from "@/utils/testMessageCreators";
 
 describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
-	beforeEach(async () => {
-		await appInitializer();
+	before(async () => {
+		await testAppInitializer();
 	});
 
 	it(
@@ -18,8 +15,27 @@ describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 			"should sign as new user"
 		),
 		async () => {
-			const handler = httpHandler(findHttpRoute("signIn").schema);
+			const handler = httpHandlerCollection.signIn();
 			await handler.send(randomizer.unusedCellphone());
+		}
+	);
+
+	it(
+		messageCreators.e2eSuccessTest(
+			"verify",
+			"httpRoute",
+			"should get verified as new user"
+		),
+		async () => {
+			const handler = httpHandlerCollection.signIn();
+			await handler.send(randomizer.unusedCellphone());
+			const handler2 = httpHandlerCollection.verify({
+				session: handler.getSessionCookie().value,
+			});
+
+			await handler2.send({
+				signInCode: "123123",
+			});
 		}
 	);
 });

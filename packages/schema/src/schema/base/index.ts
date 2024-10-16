@@ -48,11 +48,7 @@ const sessionId = z.string().min(100).max(150).trim();
 
 const encryptedSession = z.string().min(100).max(400).trim();
 
-const verificationCode = z
-	.string()
-	.length(6)
-	.trim()
-	.regex(regex.numbers.enNumber);
+const signInCode = z.string().length(6).trim().regex(regex.numbers.enNumber);
 
 const chatId = z.string().min(30).max(35).trim();
 
@@ -248,7 +244,7 @@ export const baseSchema = {
 	userData,
 	userId,
 	username,
-	verificationCode,
+	signInCode,
 	welcomeMessage,
 };
 
@@ -301,7 +297,7 @@ export namespace BaseSchema {
 	export type UserId = z.infer<typeof userId>;
 	export type UserPublicInfo = z.infer<typeof userPublicInfo>;
 	export type Username = z.infer<typeof username>;
-	export type VerificationCode = z.infer<typeof verificationCode>;
+	export type SignInCode = z.infer<typeof signInCode>;
 	export type WelcomeMessage = z.infer<typeof welcomeMessage>;
 }
 

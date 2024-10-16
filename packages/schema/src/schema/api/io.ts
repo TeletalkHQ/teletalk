@@ -216,7 +216,7 @@ export const ioCollection = {
 	},
 	verify: {
 		input: z.object({
-			verificationCode: baseSchema.verificationCode,
+			signInCode: baseSchema.signInCode,
 		}),
 		output: z.object({
 			isNewUser: baseSchema.isNewUser,

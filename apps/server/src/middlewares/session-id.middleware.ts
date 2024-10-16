@@ -1,5 +1,6 @@
 import {
 	Injectable,
+	InternalServerErrorException,
 	NestMiddleware,
 	UnauthorizedException,
 } from "@nestjs/common";
@@ -13,8 +14,10 @@ export class SessionIdMiddleware implements NestMiddleware {
 	constructor(private sessionService: SessionService) {}
 
 	async use(req: Request, _res: Response, next: NextFunction) {
-		// FIXME: Remove `?`
-		const session = req.cookies?.[COOKIE_NAMES.SESSION];
+		if (!req.cookies)
+			throw new InternalServerErrorException("COOKIES_NOT_FOUND");
+
+		const session = req.cookies[COOKIE_NAMES.SESSION];
 
 		if (!session) throw new UnauthorizedException("SESSION_NOT_FOUND");
 

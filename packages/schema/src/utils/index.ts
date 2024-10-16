@@ -55,4 +55,5 @@ export const getMethod = (name: HTTPRouteShortName) => {
 	return findHttpRoute(name).schema.method;
 };
 
+// TODO: Move to global utils
 export const parseToInt = (val: string) => parseInt(val);

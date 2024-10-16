@@ -64,8 +64,8 @@ export class AppModule implements NestModule {
 	}
 }
 
-export const appInitializer = async () => {
-	const app = await NestFactory.create(AppModule);
+export const appInitializer = async (module = AppModule) => {
+	const app = await NestFactory.create(module);
 
 	app.use(cookieParser());
 

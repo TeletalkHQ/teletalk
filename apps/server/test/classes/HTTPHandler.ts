@@ -2,6 +2,7 @@ import { IOName, RouteSchema } from "@repo/schema";
 import axios, { AxiosResponse } from "axios";
 import { expect } from "chai";
 
+import { COOKIE_NAMES } from "~/constants";
 import { ConfigService } from "~/modules/config/config.service";
 import { GetAPIInput, GetAPIOutput } from "~/types";
 
@@ -13,7 +14,8 @@ import { logHelper } from "./LogHelper";
 const configService = await getServiceInstance(ConfigService);
 
 export interface HTTPHandlerOptions {
-	shouldLogDetails: boolean;
+	shouldLogDetails?: boolean;
+	session?: string;
 }
 
 // TODO: Remove
@@ -22,7 +24,9 @@ interface CustomError {
 	reason: ErrorReason;
 }
 
-type ResponseType<T extends IOName> = AxiosResponse<
+export type CookieItem = { value: string; flags: Record<string, boolean> };
+
+export type HTTPHandlerResponse<T extends IOName> = AxiosResponse<
 	Awaited<GetAPIOutput<T>> | { errors: Array<CustomError> }
 >;
 
@@ -33,23 +37,26 @@ export class HTTPHandler<T extends IOName> {
 
 	private options: HTTPHandlerOptions = {
 		shouldLogDetails: false,
+		session: undefined,
 	};
 
 	private body: RequestBody<T>;
-	private response: ResponseType<T>;
+	private response: HTTPHandlerResponse<T>;
 
-	constructor(private routeSchema: RouteSchema<T>) {}
-
-	private getOptions() {
-		return this.options;
+	constructor(
+		private routeSchema: RouteSchema<T>,
+		options: HTTPHandlerOptions = {}
+	) {
+		this.updateOptions(options);
 	}
+
 	updateOptions(newOptions: Partial<HTTPHandlerOptions>) {
 		this.options = this.mergeOptions(newOptions);
 		return this;
 	}
 	private mergeOptions(newOptions: Partial<HTTPHandlerOptions>) {
 		return {
-			...this.getOptions(),
+			...this.options,
 			...newOptions,
 		};
 	}
@@ -70,7 +77,7 @@ export class HTTPHandler<T extends IOName> {
 	async send(
 		data: RequestBody<T>,
 		reason?: ErrorReason,
-		options: Partial<HTTPHandlerOptions> = this.getOptions()
+		options: Partial<HTTPHandlerOptions> = this.options
 	) {
 		if (this.options.shouldLogDetails) logHelper.logStartTestRequest();
 
@@ -93,6 +100,9 @@ export class HTTPHandler<T extends IOName> {
 			data: this.getBody(),
 			// FIXME: `pathname` may include query parameter!
 			url: `http://localhost:${configService.getPort()}/${this.routeSchema.rootPath}/${this.routeSchema.pathname}`,
+			headers: {
+				Authorization: this.options.session,
+			},
 		});
 
 		this.setResponse(response);
@@ -108,7 +118,44 @@ export class HTTPHandler<T extends IOName> {
 		return this.response;
 	}
 
-	private setResponse(response: ResponseType<T>) {
+	getSessionCookie() {
+		const cookies = this.extractCookies(this.getResponse().headers);
+		if (!(COOKIE_NAMES.SESSION in cookies))
+			throw new Error("SESSION_COOKIE_NOT_FOUND");
+
+		// if (typeof cookies.SESSION !== "string")
+		// 	throw new Error("SESSION_COOKIE_TYPE_ERROR");
+
+		return cookies.SESSION;
+	}
+
+	extractCookies(headers: AxiosResponse["headers"]) {
+		const cookies = headers["set-cookie"];
+
+		if (!cookies) throw new Error("SESSION_COOKIE_NOT_FOUND");
+
+		return cookies.reduce(
+			(shapedCookies, cookieString) => {
+				const [rawCookie, ...flags] = cookieString.split("; ");
+				const [cookieName, value] = rawCookie.split("=");
+				return {
+					...shapedCookies,
+					[cookieName]: { value, flags: this.shapeFlags(flags) },
+				};
+			},
+			{} as Record<string, CookieItem>
+		);
+	}
+
+	shapeFlags(flags: string[]) {
+		return flags.reduce((shapedFlags, flag) => {
+			const [flagName, rawValue] = flag.split("=");
+			const value = rawValue ? rawValue.replace(";", "") : true;
+			return { ...shapedFlags, [flagName]: value };
+		}, {});
+	}
+
+	private setResponse(response: HTTPHandlerResponse<T>) {
 		this.response = response;
 		return this;
 	}
@@ -149,5 +196,7 @@ export class HTTPHandler<T extends IOName> {
 	}
 }
 
-export const httpHandler = <T extends IOName>(routeSchema: RouteSchema<T>) =>
-	new HTTPHandler<T>(routeSchema);
+export const httpHandler = <T extends IOName>(
+	routeSchema: RouteSchema<T>,
+	options?: HTTPHandlerOptions
+) => new HTTPHandler<T>(routeSchema, options);
