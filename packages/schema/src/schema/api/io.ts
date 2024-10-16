@@ -118,7 +118,7 @@ export const ioCollection = {
 		input: z.undefined(),
 		output: z.undefined(),
 	},
-	getUserData: {
+	getUserInfo: {
 		input: z.undefined(),
 		output: baseSchema.userData,
 	},

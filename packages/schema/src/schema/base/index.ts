@@ -98,7 +98,9 @@ const sessions = z.array(
 	})
 );
 
-const status = z.object({});
+const status = z.object({
+	isActive,
+});
 
 const blockedUser = z.object({
 	userId,
@@ -141,25 +143,23 @@ const userPublicInfo = z.object({
 	username,
 });
 
-const userData = z.object({
-	avatarSrc,
-	bio,
-	blacklist,
-	contacts,
-	countryCode,
-	countryName,
-	createdAt,
-	firstName,
-	lastName,
-	phoneNumber,
-	status,
-	userId,
-	username,
-});
+const userInfo = z.intersection(
+	userPublicInfo,
+	z.object({
+		avatarSrc,
+		blacklist,
+		contacts,
+		countryCode,
+		countryName,
+		createdAt,
+		phoneNumber,
+		status,
+	})
+);
 
-// TODO: Use intersection
 // TODO: Rename
-const DBUserData = userData.and(
+const DBUserData = z.intersection(
+	userInfo,
 	z.object({
 		sessions,
 	})
@@ -241,7 +241,7 @@ export const baseSchema = {
 	sessionId,
 	sessions,
 	status,
-	userData,
+	userData: userInfo,
 	userId,
 	username,
 	signInCode,
@@ -265,6 +265,7 @@ export namespace BaseSchema {
 	export type CountryName = z.infer<typeof countryName>;
 	export type CountryShortName = z.infer<typeof countryShortName>;
 	export type CreatedAt = z.infer<typeof createdAt>;
+	// TODO: Remove
 	export type DBUserData = z.infer<typeof DBUserData>;
 	export type Email = z.infer<typeof email>;
 	export type EncryptedSession = z.infer<typeof encryptedSession>;
@@ -293,7 +294,7 @@ export namespace BaseSchema {
 	export type SessionId = z.infer<typeof sessionId>;
 	export type Sessions = z.infer<typeof sessions>;
 	export type Status = z.infer<typeof status>;
-	export type UserData = z.infer<typeof userData>;
+	export type UserInfo = z.infer<typeof userInfo>;
 	export type UserId = z.infer<typeof userId>;
 	export type UserPublicInfo = z.infer<typeof userPublicInfo>;
 	export type Username = z.infer<typeof username>;

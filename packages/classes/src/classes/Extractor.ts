@@ -25,7 +25,7 @@ export class Extractor {
 		};
 	}
 
-	userData(data: BaseSchema.UserData & StringMap): BaseSchema.UserData {
+	userData(data: BaseSchema.UserInfo & StringMap): BaseSchema.UserInfo {
 		return {
 			...this.contact(data),
 			avatarSrc: data.avatarSrc,
@@ -38,7 +38,7 @@ export class Extractor {
 		};
 	}
 
-	currentUserData(data: BaseSchema.UserData & StringMap): BaseSchema.UserData {
+	currentUserData(data: BaseSchema.UserInfo & StringMap): BaseSchema.UserInfo {
 		return {
 			...this.contact(data),
 			...this.fullName(data),

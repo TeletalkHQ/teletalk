@@ -15,7 +15,8 @@ class AuthHelper {
 	private createResponse: HTTPHandlerResponse<"createNewUser">;
 	private signInResponse: HTTPHandlerResponse<"signIn">;
 	private verifyResponse: HTTPHandlerResponse<"verify">;
-	private sessionCookie: CookieItem;
+	// TODO: Add session as well
+	sessionCookie: CookieItem;
 
 	constructor(
 		private cellphone: BaseSchema.Cellphone,

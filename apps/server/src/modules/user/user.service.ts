@@ -3,33 +3,46 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { BaseSchema } from "@repo/schema";
 import { Repository } from "typeorm";
 
+import { EntityFilterer } from "~/types";
+
 import { User } from "./user.entity";
+
+type DBUserData = EntityFilterer<User>;
 
 @Injectable()
 export class UserService {
-	constructor(@InjectRepository(User) private repo: Repository<User>) {}
+	constructor(@InjectRepository(User) private repo: Repository<DBUserData>) {}
 
-	create(userToCreate: Partial<BaseSchema.DBUserData>) {
+	create(userToCreate: Partial<DBUserData>) {
 		const user = this.repo.create(userToCreate);
-
 		return this.repo.save(user);
 	}
 
-	findOne(user: Partial<BaseSchema.DBUserData>) {
+	findOne(user: Partial<DBUserData>) {
 		return this.repo.findOne({
 			where: user,
 		});
 	}
 
-	find(user: Partial<BaseSchema.DBUserData>) {
+	findBySessionId(sessionId: BaseSchema.SessionId) {
+		return this.repo.findOne({
+			where: {
+				sessions: {
+					sessionId,
+				},
+			},
+		});
+	}
+
+	find(user: Partial<DBUserData>) {
 		return this.repo.find({
 			where: user,
 		});
 	}
 
 	async update(
-		dataToFind: Partial<BaseSchema.DBUserData>,
-		dataToUpdate: Partial<BaseSchema.DBUserData>
+		dataToFind: Partial<DBUserData>,
+		dataToUpdate: Partial<DBUserData>
 	) {
 		const user = await this.findOne(dataToFind);
 		if (!user) {
@@ -39,7 +52,7 @@ export class UserService {
 		return this.repo.save({ ...user, ...dataToUpdate });
 	}
 
-	async remove(userToRemove: Partial<BaseSchema.DBUserData>) {
+	async remove(userToRemove: Partial<DBUserData>) {
 		const user = await this.findOne(userToRemove);
 		if (!user) {
 			throw new NotFoundException("USER_NOT_FOUND");
@@ -47,7 +60,7 @@ export class UserService {
 		return this.repo.remove(user);
 	}
 
-	async isExist(userToFind: Partial<BaseSchema.DBUserData>) {
+	async isExist(userToFind: Partial<DBUserData>) {
 		return this.repo.exists({
 			where: userToFind,
 		});

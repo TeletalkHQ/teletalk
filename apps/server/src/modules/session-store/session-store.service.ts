@@ -8,6 +8,7 @@ export interface SessionItem extends BaseSchema.Cellphone {
 	signInCode: string;
 }
 
+//TODO: Rename to TempSessionStoreService
 @Injectable()
 export class SessionStoreService {
 	constructor(@Inject(StoreService) private readonly store: StoreService) {
@@ -22,6 +23,7 @@ export class SessionStoreService {
 		await this.store.add(sessionId, data);
 	}
 
+	// TODO: Rename to `set`
 	async update(sessionId: BaseSchema.SessionId, newData: SessionItem) {
 		await this.store.update(sessionId, newData);
 	}

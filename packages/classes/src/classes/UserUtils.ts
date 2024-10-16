@@ -50,7 +50,7 @@ export class UserUtils {
 		};
 	}
 
-	getDefaultUserDataWithoutSessions(): BaseSchema.UserData {
+	getDefaultUserDataWithoutSessions(): BaseSchema.UserInfo {
 		const { sessions, ...rest } = this.getDefaultUserData();
 		return rest;
 	}

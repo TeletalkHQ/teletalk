@@ -27,7 +27,7 @@ interface CustomError {
 export type CookieItem = { value: string; flags: Record<string, boolean> };
 
 export type HTTPHandlerResponse<T extends IOName> = AxiosResponse<
-	Awaited<GetAPIOutput<T>> | { errors: Array<CustomError> }
+	Awaited<GetAPIOutput<T>>
 >;
 
 type RequestBody<T extends IOName> = GetAPIInput<T>;
@@ -36,7 +36,7 @@ export class HTTPHandler<T extends IOName> {
 	private expectedError?: CustomError;
 
 	private options: HTTPHandlerOptions = {
-		shouldLogDetails: false,
+		shouldLogDetails: true,
 		session: undefined,
 	};
 
@@ -181,7 +181,9 @@ export class HTTPHandler<T extends IOName> {
 
 		const expectedReason = this.expectedError?.reason;
 
-		const response = this.getResponse();
+		const response = this.getResponse() as unknown as AxiosResponse<{
+			errors: Array<CustomError>;
+		}>;
 
 		if (!("errors" in response.data)) throw Error("ERRORS_ARRAY_MISSING");
 

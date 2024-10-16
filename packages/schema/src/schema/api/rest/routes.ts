@@ -1,5 +1,6 @@
 import { RouteGenerator } from "../../../classes";
 
+// TODO: split different roots
 export const httpRoutes = [
 	new RouteGenerator({
 		ioName: "createNewUser",
@@ -42,6 +43,13 @@ export const httpRoutes = [
 		method: "post",
 		pathname: "verify",
 		rootPath: "auth",
+	}),
+	new RouteGenerator({
+		ioName: "getUserInfo",
+		isAuthRequired: true,
+		method: "get",
+		pathname: "user-info",
+		rootPath: "user",
 	}),
 ] as const;
 

@@ -74,7 +74,7 @@ export const socketEvents = [
 	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		ioName: "getUserData",
+		ioName: "getUserInfo",
 	}),
 	new EventGenerator({
 		isAuthRequired: true,

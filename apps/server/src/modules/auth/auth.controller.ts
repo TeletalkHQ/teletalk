@@ -26,7 +26,7 @@ import { AuthService } from "./auth.service";
 export class AuthController {
 	constructor(
 		private authService: AuthService,
-		private sessionStore: SessionStoreService,
+		private sessionStoreService: SessionStoreService,
 		private sessionService: SessionService,
 		private smsService: SmsService,
 		private userService: UserService
@@ -50,7 +50,7 @@ export class AuthController {
 
 		const sessionId = this.sessionService.generateSessionId();
 
-		await this.sessionStore.add(sessionId, {
+		await this.sessionStoreService.add(sessionId, {
 			...cellphone,
 			isVerified: false,
 			signInCode,
@@ -78,7 +78,7 @@ export class AuthController {
 	): GetAPIOutput<"verify"> {
 		const { sessionId } = req;
 
-		const storedSession = await this.sessionStore.find(sessionId);
+		const storedSession = await this.sessionStoreService.find(sessionId);
 
 		if (!storedSession)
 			throw new UnauthorizedException("STORED_SESSION_NOT_FOUND");
@@ -98,7 +98,7 @@ export class AuthController {
 
 			await this.userService.addSessionId(user.userId, sessionId);
 
-			await this.sessionStore.remove(sessionId);
+			await this.sessionStoreService.remove(sessionId);
 
 			return {
 				data: {
@@ -122,13 +122,15 @@ export class AuthController {
 	): GetAPIOutput<"createNewUser"> {
 		const { firstName, lastName } = data;
 
-		const storedSession = await this.sessionStore.find(req.sessionId);
+		const storedSession = await this.sessionStoreService.find(req.sessionId);
 		if (!storedSession) throw new UnauthorizedException("SESSION_NOT_FOUND");
+
 		if (!storedSession.isVerified)
 			throw new UnauthorizedException("SESSION_NOT_VERIFIED");
 
 		const sessionId = this.sessionService.generateSessionId();
 		const session = await this.sessionService.sign(sessionId);
+		//TODO: Move to another service
 		res.cookie(COOKIE_NAMES.SESSION, session, {
 			httpOnly: true,
 			maxAge: 60 * 1000 * 60 * 24 * 3,
@@ -149,7 +151,7 @@ export class AuthController {
 			},
 		});
 
-		await this.sessionStore.remove(req.sessionId);
+		await this.sessionStoreService.remove(req.sessionId);
 
 		return {
 			data: {},

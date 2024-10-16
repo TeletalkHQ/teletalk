@@ -6,7 +6,8 @@ import {
 	AfterUpdate,
 	Column,
 	Entity,
-	PrimaryGeneratedColumn,
+	ObjectId,
+	ObjectIdColumn,
 } from "typeorm";
 
 import { createLogger } from "~/utils";
@@ -19,8 +20,8 @@ export class User {
 		this.logger = createLogger("entity", User.name);
 	}
 
-	@PrimaryGeneratedColumn()
-	id: number;
+	@ObjectIdColumn()
+	id: ObjectId;
 
 	@Column()
 	avatarSrc: BaseSchema.AvatarSrc;
@@ -28,10 +29,10 @@ export class User {
 	@Column()
 	bio: BaseSchema.Bio;
 
-	@Column({ default: [] })
+	@Column({ default: [], type: "jsonb" })
 	blacklist: BaseSchema.Blacklist;
 
-	@Column({ default: [] })
+	@Column({ default: [], type: "jsonb" })
 	contacts: BaseSchema.Contacts;
 
 	@Column()
@@ -67,7 +68,7 @@ export class User {
 	@Column()
 	password: BaseSchema.Password;
 
-	@Column({ default: [] })
+	@Column({ default: [], type: "jsonb" })
 	sessions: BaseSchema.Sessions;
 
 	@AfterInsert()

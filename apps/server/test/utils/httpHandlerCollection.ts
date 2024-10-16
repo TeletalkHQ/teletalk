@@ -40,7 +40,7 @@ export const httpHandlerCollection = {
 	// getPrivateChats: httpHandlerMaker("getPrivateChats"),
 	// getPublicData: httpHandlerMaker("getPublicData"),
 	// getStuff: httpHandlerMaker("getStuff"),
-	// getUserData: httpHandlerMaker("getUserData"),
+	getUserInfo: httpHandlerMaker("getUserInfo"),
 	getWelcomeMessage: httpHandlerMaker("getWelcomeMessage"),
 	// join: httpHandlerMaker("join"),
 	// logout: httpHandlerMaker("logout"),

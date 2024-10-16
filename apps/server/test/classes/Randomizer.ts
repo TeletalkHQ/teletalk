@@ -1,20 +1,27 @@
-import { Randomizer as RandomizerMain, userUtils } from "@repo/classes";
+import {
+	Randomizer as RandomizerMain,
+	extractor,
+	userUtils,
+} from "@repo/classes";
 import { BaseSchema } from "@repo/schema";
-import { Socket } from "socket.io-client";
 
 import { SessionService } from "~/modules/session/session.service";
 import { UserService } from "~/modules/user/user.service";
 
 import { getServiceInstance } from "@/utils/app";
+import { httpHandlerCollection } from "@/utils/httpHandlerCollection";
 
-interface _UserByE2E {
-	user: BaseSchema.UserData;
-	socket: Socket;
+import { authHelper } from "./AuthHelper";
+
+interface UserByE2E {
+	session: string;
+	userInfo: BaseSchema.UserInfo;
 }
 
-interface ServiceUser {
-	user: BaseSchema.UserData;
+interface UserByService {
+	session: BaseSchema.Session;
 	sessionId: BaseSchema.SessionId;
+	userInfo: BaseSchema.UserInfo;
 }
 
 const sessionService = await getServiceInstance(SessionService);
@@ -25,45 +32,46 @@ export class Randomizer extends RandomizerMain {
 		super();
 	}
 
-	// async userByE2E(
-	// 	cellphone = this.unusedCellphone(),
-	// 	fullName = this.fullName()
-	// ): Promise<UserByE2E> {
-	// 	const ah = authHelper(cellphone, fullName);
-	// 	await ah.createComplete();
+	async userByE2E(
+		cellphone = this.unusedCellphone(),
+		fullName = this.fullName()
+	): Promise<UserByE2E> {
+		const ah = authHelper(cellphone, fullName);
+		await ah.createComplete();
 
-	// 	const response = await utils.requesterCollection
-	// 		.getUserData(ah.getClientSocket())
-	// 		.emitFull(undefined);
+		const response = await httpHandlerCollection
+			.getUserInfo({
+				session: ah.sessionCookie.value,
+			})
+			.send(undefined);
 
-	// 	return {
-	// 		...ah.getResponses().create.data,
-	// 		user: response.data.user,
-	// 		socket: ah.getClientSocket(),
-	// 	};
-	// }
+		return {
+			userInfo: response.data.data,
+			session: ah.sessionCookie.value,
+		};
+	}
 
-	// async arrayOfUsersByE2E(length: number) {
-	// 	const users: UserByE2E[] = [];
-	// 	for (let i = 0; i < length; i++) users.push(await this.userByE2E());
+	async arrayOfUsersByE2E(length: number) {
+		const users: UserByE2E[] = [];
+		for (let i = 0; i < length; i++) users.push(await this.userByE2E());
 
-	// 	return users;
-	// }
+		return users;
+	}
 
-	// arrayOfUsersByE2E_batch(length: number, cellphone?: BaseSchema.Cellphone) {
-	// 	const users: Promise<UserByE2E>[] = [];
-	// 	for (let i = 0; i < length; i++) users.push(this.userByE2E(cellphone));
+	arrayOfUsersByE2E_batch(length: number, cellphone?: BaseSchema.Cellphone) {
+		const users: Promise<UserByE2E>[] = [];
+		for (let i = 0; i < length; i++) users.push(this.userByE2E(cellphone));
 
-	// 	return users;
-	// }
+		return users;
+	}
 
 	async userByService(
 		cellphone = this.unusedCellphone(),
 		fullName = this.fullName()
-	): Promise<ServiceUser> {
+	): Promise<UserByService> {
 		const sessionId = sessionService.generateSessionId();
 
-		const userData: BaseSchema.DBUserData = {
+		const dbUserData: BaseSchema.DBUserData = {
 			...userUtils.getDefaultUserData(),
 			...cellphone,
 			...fullName,
@@ -75,19 +83,17 @@ export class Randomizer extends RandomizerMain {
 			],
 		};
 
-		await userService.create(userData);
+		await userService.create(dbUserData);
 
 		return {
 			sessionId,
-			user: {
-				...userData,
-				contacts: [],
-			},
+			session: await sessionService.sign(sessionId),
+			userInfo: extractor.userData(dbUserData),
 		};
 	}
 
 	async arrayOfUserByService(length: number) {
-		const users: ServiceUser[] = [];
+		const users: UserByService[] = [];
 
 		for (let i = 0; i < length; i++) users.push(await this.userByService());
 
@@ -95,28 +101,12 @@ export class Randomizer extends RandomizerMain {
 	}
 
 	arrayOfUserByService_batch(length: number) {
-		const users: Promise<ServiceUser>[] = [];
+		const users: Promise<UserByService>[] = [];
 
 		for (let i = 0; i < length; i++) users.push(this.userByService());
 
 		return users;
 	}
-
-	// async sockets(length: number, cellphone = this.unusedCellphone()) {
-	// 	const sockets = [];
-
-	// 	for (let i = 0; i < length; i++) {
-	// 		const ah = authHelper(cellphone);
-	// 		await ah.signIn();
-	// 		await ah.verify();
-
-	// 		sockets.push({
-	// 			socket: ah.getClientSocket(),
-	// 		});
-	// 	}
-
-	// 	return sockets;
-	// }
 
 	async sessions(length: number, userId: BaseSchema.UserId) {
 		const sessions: BaseSchema.Sessions = [];
