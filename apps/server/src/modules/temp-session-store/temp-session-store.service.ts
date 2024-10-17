@@ -10,7 +10,7 @@ export interface SessionItem extends BaseSchema.Cellphone {
 
 //TODO: Rename to TempSessionStoreService
 @Injectable()
-export class SessionStoreService {
+export class TempSessionStoreService {
 	constructor(@Inject(StoreService) private readonly store: StoreService) {
 		this.store.setStoreKey("SESSION_ID");
 	}

@@ -6,25 +6,25 @@ import {
 import { GetInput } from "@repo/schema";
 import { NextFunction, Request, Response } from "express";
 
-import { SessionStoreService } from "../session-store/session-store.service";
+import { TempSessionStoreService } from "../temp-session-store/temp-session-store.service";
 
 @Injectable()
 export class AuthIdMiddleware implements NestMiddleware {
-	constructor(private sessionStoreService: SessionStoreService) {}
+	constructor(private tempSessionStoreService: TempSessionStoreService) {}
 
 	async use(
 		req: Request<any, any, GetInput<"verify">>,
 		_res: Response,
 		next: NextFunction
 	) {
-		const tempSession = await this.sessionStoreService.find(req.sessionId);
+		const tempSession = await this.tempSessionStoreService.find(req.sessionId);
 
 		if (!tempSession) throw new UnauthorizedException("SESSION_NOT_FOUND");
 
 		if (req.body.signInCode !== tempSession.signInCode)
 			throw new UnauthorizedException("VERIFICATION_CODE_INVALID");
 
-		await this.sessionStoreService.update(req.sessionId, {
+		await this.tempSessionStoreService.update(req.sessionId, {
 			...tempSession,
 			isVerified: true,
 		});

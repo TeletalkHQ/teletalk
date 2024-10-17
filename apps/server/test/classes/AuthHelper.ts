@@ -1,7 +1,7 @@
 import { BaseSchema } from "@repo/schema";
 
-import { SessionStoreService } from "~/modules/session-store/session-store.service";
 import { SessionService } from "~/modules/session/session.service";
+import { TempSessionStoreService } from "~/modules/temp-session-store/temp-session-store.service";
 
 import { getServiceInstance } from "@/utils/app";
 import { httpHandlerCollection } from "@/utils/httpHandlerCollection";
@@ -9,7 +9,9 @@ import { httpHandlerCollection } from "@/utils/httpHandlerCollection";
 import { CookieItem, HTTPHandlerResponse } from "./HTTPHandler";
 
 const sessionService = await getServiceInstance(SessionService);
-const sessionStoreService = await getServiceInstance(SessionStoreService);
+const tempSessionStoreService = await getServiceInstance(
+	TempSessionStoreService
+);
 
 class AuthHelper {
 	private createResponse: HTTPHandlerResponse<"createNewUser">;
@@ -35,7 +37,7 @@ class AuthHelper {
 			this.sessionCookie.value
 		);
 		const sessionId = sessionService.getSessionId(verifiedSession);
-		const storedSession = await sessionStoreService.find(sessionId);
+		const storedSession = await tempSessionStoreService.find(sessionId);
 
 		if (!storedSession) throw new Error("STORED_SESSION_NOT_FOUND");
 

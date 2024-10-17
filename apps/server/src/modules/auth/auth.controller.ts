@@ -16,9 +16,9 @@ import { COOKIE_NAMES } from "~/constants";
 import { GetAPIOutput } from "~/types";
 import { getHostFromRequest } from "~/utils";
 
-import { SessionStoreService } from "../session-store/session-store.service";
 import { SessionService } from "../session/session.service";
 import { SmsService } from "../sms/sms.service";
+import { TempSessionStoreService } from "../temp-session-store/temp-session-store.service";
 import { UserService } from "../user/user.service";
 import { AuthService } from "./auth.service";
 
@@ -26,7 +26,7 @@ import { AuthService } from "./auth.service";
 export class AuthController {
 	constructor(
 		private authService: AuthService,
-		private sessionStoreService: SessionStoreService,
+		private tempSessionStoreService: TempSessionStoreService,
 		private sessionService: SessionService,
 		private smsService: SmsService,
 		private userService: UserService
@@ -50,7 +50,7 @@ export class AuthController {
 
 		const sessionId = this.sessionService.generateSessionId();
 
-		await this.sessionStoreService.add(sessionId, {
+		await this.tempSessionStoreService.add(sessionId, {
 			...cellphone,
 			isVerified: false,
 			signInCode,
@@ -78,7 +78,7 @@ export class AuthController {
 	): GetAPIOutput<"verify"> {
 		const { sessionId } = req;
 
-		const storedSession = await this.sessionStoreService.find(sessionId);
+		const storedSession = await this.tempSessionStoreService.find(sessionId);
 
 		if (!storedSession)
 			throw new UnauthorizedException("STORED_SESSION_NOT_FOUND");
@@ -98,7 +98,7 @@ export class AuthController {
 
 			await this.userService.addSessionId(user.userId, sessionId);
 
-			await this.sessionStoreService.remove(sessionId);
+			await this.tempSessionStoreService.remove(sessionId);
 
 			return {
 				data: {
@@ -122,7 +122,9 @@ export class AuthController {
 	): GetAPIOutput<"createNewUser"> {
 		const { firstName, lastName } = data;
 
-		const storedSession = await this.sessionStoreService.find(req.sessionId);
+		const storedSession = await this.tempSessionStoreService.find(
+			req.sessionId
+		);
 		if (!storedSession) throw new UnauthorizedException("SESSION_NOT_FOUND");
 
 		if (!storedSession.isVerified)
@@ -151,7 +153,7 @@ export class AuthController {
 			},
 		});
 
-		await this.sessionStoreService.remove(req.sessionId);
+		await this.tempSessionStoreService.remove(req.sessionId);
 
 		return {
 			data: {},

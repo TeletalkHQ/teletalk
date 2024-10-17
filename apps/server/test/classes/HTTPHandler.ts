@@ -14,8 +14,8 @@ import { logHelper } from "./LogHelper";
 const configService = await getServiceInstance(ConfigService);
 
 export interface HTTPHandlerOptions {
-	shouldLogDetails?: boolean;
 	session?: string;
+	shouldLogDetails?: boolean;
 }
 
 // TODO: Remove
@@ -36,8 +36,8 @@ export class HTTPHandler<T extends IOName> {
 	private expectedError?: CustomError;
 
 	private options: HTTPHandlerOptions = {
-		shouldLogDetails: true,
 		session: undefined,
+		shouldLogDetails: false,
 	};
 
 	private body: RequestBody<T>;

@@ -1,5 +1,5 @@
-import { SessionStoreService } from "~/modules/session-store/session-store.service";
 import { SessionService } from "~/modules/session/session.service";
+import { TempSessionStoreService } from "~/modules/temp-session-store/temp-session-store.service";
 
 import { randomizer } from "@/classes";
 import { getServiceInstance } from "@/utils/app";
@@ -8,7 +8,9 @@ import { testAppInitializer } from "@/utils/testAppInitializer";
 import { messageCreators } from "@/utils/testMessageCreators";
 
 const sessionService = await getServiceInstance(SessionService);
-const sessionStoreService = await getServiceInstance(SessionStoreService);
+const tempSessionStoreService = await getServiceInstance(
+	TempSessionStoreService
+);
 
 describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 	before(async () => {
@@ -48,7 +50,7 @@ describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 
 			const sessionId = sessionService.getSessionId(verifiedSession!);
 
-			const storedSession = await sessionStoreService.find(sessionId);
+			const storedSession = await tempSessionStoreService.find(sessionId);
 
 			if (!storedSession) throw new Error("STORED_SESSION_NOT_FOUND");
 
