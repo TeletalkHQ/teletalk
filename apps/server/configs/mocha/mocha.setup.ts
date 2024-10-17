@@ -1,6 +1,6 @@
-import { testServerInitializer } from "../utils";
+import { testAppInitializer } from "@/utils/testAppInitializer";
 
-await testServerInitializer();
+await testAppInitializer();
 
 const registerTests = async () => {
 	//? E2E's

@@ -95,6 +95,7 @@ const privateChats = z.array(privateChatsItem);
 const sessions = z.array(
 	z.object({
 		sessionId,
+		isExpired: z.boolean(),
 	})
 );
 

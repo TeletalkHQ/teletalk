@@ -41,13 +41,13 @@ export class Randomizer extends RandomizerMain {
 
 		const response = await httpHandlerCollection
 			.getUserInfo({
-				session: ah.sessionCookie.value,
+				session: ah.getSession(),
 			})
 			.send(undefined);
 
 		return {
 			userInfo: response.data.data,
-			session: ah.sessionCookie.value,
+			session: ah.getSession(),
 		};
 	}
 
@@ -79,6 +79,7 @@ export class Randomizer extends RandomizerMain {
 			sessions: [
 				{
 					sessionId,
+					isExpired: false,
 				},
 			],
 		};
@@ -116,6 +117,7 @@ export class Randomizer extends RandomizerMain {
 			await userService.addSessionId(userId, sessionId);
 
 			sessions.push({
+				isExpired: false,
 				sessionId,
 			});
 		}

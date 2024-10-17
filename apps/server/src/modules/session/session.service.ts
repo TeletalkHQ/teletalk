@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { randomMaker } from "@repo/classes";
+import { randomizer } from "@repo/classes";
 import { BaseSchema, baseSchema, getStringMaxLength } from "@repo/schema";
 import { JWTPayload, JWTVerifyResult, SignJWT, jwtVerify } from "jose";
 
@@ -34,7 +34,7 @@ export class SessionService {
 	}
 
 	generateSessionId() {
-		return randomMaker.id(getStringMaxLength(baseSchema.sessionId));
+		return randomizer.id(getStringMaxLength(baseSchema.sessionId));
 	}
 
 	verify(session: BaseSchema.EncryptedSession) {

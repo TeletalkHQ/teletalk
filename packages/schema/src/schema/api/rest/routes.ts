@@ -51,6 +51,13 @@ export const httpRoutes = [
 		pathname: "user-info",
 		rootPath: "user",
 	}),
+	new RouteGenerator({
+		ioName: "logout",
+		isAuthRequired: true,
+		method: "get",
+		pathname: "logout",
+		rootPath: "auth",
+	}),
 ] as const;
 
 export type HTTPRouteShortName =

@@ -1,8 +1,8 @@
-import { InternalServerErrorException } from "@nestjs/common";
 import { Inject, Injectable } from "@nestjs/common";
 import isString from "lodash/isString";
 import { RedisClientType } from "redis";
 
+import { ErrorStoreService } from "../error-store/error-store.service";
 import { STORE_KEY } from "./store.constants";
 
 @Injectable()
@@ -12,7 +12,8 @@ export class StoreService {
 
 	constructor(
 		@Inject(STORE_KEY)
-		private storage: RedisClientType
+		private storage: RedisClientType,
+		private errorStoreService: ErrorStoreService
 	) {}
 
 	getStorage() {
@@ -33,7 +34,8 @@ export class StoreService {
 	async find(id: string) {
 		const session = await this.storage.json.get(this.makeStateKey(id));
 
-		if (!isString(session)) throw new InternalServerErrorException();
+		if (!isString(session))
+			this.errorStoreService.throw("notFound", "SESSION_NOT_FOUND");
 
 		return session ? JSON.parse(session as string) : null;
 	}

@@ -4,7 +4,6 @@ import { TempSessionStoreService } from "~/modules/temp-session-store/temp-sessi
 import { randomizer } from "@/classes";
 import { getServiceInstance } from "@/utils/app";
 import { httpHandlerCollection } from "@/utils/httpHandlerCollection";
-import { testAppInitializer } from "@/utils/testAppInitializer";
 import { messageCreators } from "@/utils/testMessageCreators";
 
 const sessionService = await getServiceInstance(SessionService);
@@ -13,15 +12,11 @@ const tempSessionStoreService = await getServiceInstance(
 );
 
 describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
-	before(async () => {
-		await testAppInitializer();
-	});
-
 	it(
 		messageCreators.e2eSuccessTest(
 			"signIn",
 			"httpRoute",
-			"should sign as new user"
+			"should sign in as new user"
 		),
 		async () => {
 			const handler = httpHandlerCollection.signIn();
@@ -36,16 +31,17 @@ describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 			"should get verified as new user"
 		),
 		async () => {
-			const handler = httpHandlerCollection.signIn();
-			await handler.send(randomizer.unusedCellphone());
-			const handler2 = httpHandlerCollection.verify({
-				session: handler.getSessionCookie().value,
+			const signInHandler = httpHandlerCollection.signIn();
+			await signInHandler.send(randomizer.unusedCellphone());
+
+			const verifyHandler = httpHandlerCollection.verify({
+				session: signInHandler.getSession(),
 			});
 
 			await randomizer.userByE2E();
 
 			const verifiedSession = await sessionService.verify(
-				handler.getSessionCookie().value
+				signInHandler.getSession()
 			);
 
 			const sessionId = sessionService.getSessionId(verifiedSession!);
@@ -54,7 +50,7 @@ describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 
 			if (!storedSession) throw new Error("STORED_SESSION_NOT_FOUND");
 
-			await handler2.send({
+			await verifyHandler.send({
 				signInCode: storedSession.signInCode,
 			});
 		}

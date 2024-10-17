@@ -9,6 +9,7 @@ import { SessionIdMiddleware } from "~/middlewares";
 import { AuthModule } from "../auth/auth.module";
 import { ConfigModule } from "../config/config.module";
 import { ConfigService } from "../config/config.service";
+import { ErrorStoreModule } from "../error-store/error-store.module";
 import { SessionModule } from "../session/session.module";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
@@ -37,7 +38,7 @@ const createMongoDBModule = () => {
 };
 
 @Module({
-	imports: [AuthModule, SessionModule, createMongoDBModule()],
+	imports: [AuthModule, SessionModule, ErrorStoreModule, createMongoDBModule()],
 	controllers: [AppController],
 	providers: [
 		AppService,

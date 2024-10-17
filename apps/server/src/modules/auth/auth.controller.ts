@@ -1,13 +1,5 @@
-import {
-	BadRequestException,
-	Body,
-	Controller,
-	Post,
-	Req,
-	Res,
-	UnauthorizedException,
-} from "@nestjs/common";
-import { extractor, randomMaker, userUtils } from "@repo/classes";
+import { Body, Controller, Get, Post, Req, Res } from "@nestjs/common";
+import { extractor, randomizer, userUtils } from "@repo/classes";
 import { GetInput, getPathname, getRootPath } from "@repo/schema";
 import { utils } from "@repo/utils";
 import { Request, Response } from "express";
@@ -16,6 +8,7 @@ import { COOKIE_NAMES } from "~/constants";
 import { GetAPIOutput } from "~/types";
 import { getHostFromRequest } from "~/utils";
 
+import { ErrorStoreService } from "../error-store/error-store.service";
 import { SessionService } from "../session/session.service";
 import { SmsService } from "../sms/sms.service";
 import { TempSessionStoreService } from "../temp-session-store/temp-session-store.service";
@@ -29,7 +22,8 @@ export class AuthController {
 		private tempSessionStoreService: TempSessionStoreService,
 		private sessionService: SessionService,
 		private smsService: SmsService,
-		private userService: UserService
+		private userService: UserService,
+		private errorStoreService: ErrorStoreService
 	) {}
 
 	@Post(getPathname("signIn"))
@@ -45,7 +39,7 @@ export class AuthController {
 		const fullNumber = `+${cellphone.countryCode}${cellphone.phoneNumber}`;
 
 		const host = getHostFromRequest(req);
-		if (!host) throw new BadRequestException("INVALID_HOST");
+		if (!host) this.errorStoreService.throw("badRequest", "INVALID_HOST");
 		await this.smsService.sendSignInCode(fullNumber, host, signInCode);
 
 		const sessionId = this.sessionService.generateSessionId();
@@ -81,7 +75,7 @@ export class AuthController {
 		const storedSession = await this.tempSessionStoreService.find(sessionId);
 
 		if (!storedSession)
-			throw new UnauthorizedException("STORED_SESSION_NOT_FOUND");
+			this.errorStoreService.throw("unauthorized", "STORED_SESSION_NOT_FOUND");
 
 		const user = await this.userService.findOne(
 			extractor.cellphone(storedSession)
@@ -125,10 +119,11 @@ export class AuthController {
 		const storedSession = await this.tempSessionStoreService.find(
 			req.sessionId
 		);
-		if (!storedSession) throw new UnauthorizedException("SESSION_NOT_FOUND");
+		if (!storedSession)
+			this.errorStoreService.throw("unauthorized", "SESSION_NOT_FOUND");
 
 		if (!storedSession.isVerified)
-			throw new UnauthorizedException("SESSION_NOT_VERIFIED");
+			this.errorStoreService.throw("unauthorized", "SESSION_NOT_VERIFIED");
 
 		const sessionId = this.sessionService.generateSessionId();
 		const session = await this.sessionService.sign(sessionId);
@@ -139,15 +134,20 @@ export class AuthController {
 		});
 
 		const cellphone = extractor.cellphone(storedSession);
-		const userId = randomMaker.userId();
+		const userId = randomizer.userId();
 		await this.userService.create({
 			...userUtils.getDefaultUserData(),
 			...cellphone,
+			createdAt: Date.now(),
 			firstName,
 			lastName,
-			createdAt: Date.now(),
 			userId,
-			sessions: [{ sessionId }],
+			sessions: [
+				{
+					isExpired: false,
+					sessionId,
+				},
+			],
 			status: {
 				isActive: true,
 			},
@@ -160,7 +160,33 @@ export class AuthController {
 		};
 	}
 
-	// @Get("is-authenticated")
+	@Get(getPathname("logout"))
+	async logout(@Req() req: Request): GetAPIOutput<"logout"> {
+		const foundUser = await this.userService.findBySessionId(req.sessionId);
+
+		if (!foundUser)
+			this.errorStoreService.throw("notFound", "USER_BY_SESSION_ID_NOT_FOUND");
+
+		const foundSession = foundUser.sessions.find(
+			(item) => item.sessionId === req.sessionId
+		);
+
+		if (!foundSession)
+			this.errorStoreService.throw(
+				"notFound",
+				"SESSION_NOT_FOUND_BY_SESSION_ID"
+			);
+
+		// foundSession.isExpired = true;
+
+		await this.userService.update({ userId: foundUser.userId }, foundUser);
+
+		return {
+			data: undefined,
+		};
+	}
+
+	// @Get()
 	// isAuthenticated(): boolean {
 	// 	return false;
 	// }

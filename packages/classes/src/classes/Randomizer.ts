@@ -15,7 +15,7 @@ export class Randomizer {
 	private _stringNumber = "0123456789";
 	private characters = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz${this._stringNumber}`;
 
-	randomizer(characters = this.characters, length: Length) {
+	randomize(characters = this.characters, length: Length) {
 		return Array.from({ length })
 			.map(() =>
 				characters.charAt(Math.floor(Math.random() * characters.length))
@@ -31,7 +31,7 @@ export class Randomizer {
 
 	string(length: Length) {
 		const characters = this.characters;
-		return this.randomizer(characters, length);
+		return this.randomize(characters, length);
 	}
 
 	number(length: Length) {
@@ -40,7 +40,7 @@ export class Randomizer {
 
 	stringNumber(length: Length) {
 		const characters = this._stringNumber;
-		return this.randomizer(characters, length);
+		return this.randomize(characters, length);
 	}
 
 	stringNumberWithRange(min: Min, max: Max) {
@@ -178,4 +178,4 @@ export class Randomizer {
 	}
 }
 
-export const randomMaker = new Randomizer();
+export const randomizer = new Randomizer();

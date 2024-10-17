@@ -12,8 +12,8 @@ export class SmsService {
 
 	templates() {
 		return {
-			signInCode: (verificationCode: string, host: string) =>
-				`your sign in verification code: ${verificationCode} ${escapeChars.newLine}${escapeChars.newLine} ${host}
+			signInCode: (signInCode: string, host: string) =>
+				`your sign-in code: ${signInCode} ${escapeChars.newLine}${escapeChars.newLine} ${host}
         `,
 		};
 	}
@@ -32,6 +32,6 @@ export class SmsService {
 	}
 
 	private async devProvider(sendTo: string, text: string) {
-		this.logger.debug(`verificationCode sending to:${sendTo}`, `text:${text}`);
+		this.logger.debug(`sending sign-in code to:${sendTo}`, `text:${text}`);
 	}
 }

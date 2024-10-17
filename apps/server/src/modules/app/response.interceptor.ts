@@ -2,7 +2,6 @@ import {
 	CallHandler,
 	ExecutionContext,
 	Injectable,
-	InternalServerErrorException,
 	NestInterceptor,
 } from "@nestjs/common";
 import { IOName, RouteGenerator, httpRoutes } from "@repo/schema";
@@ -12,10 +11,14 @@ import { map } from "rxjs/operators";
 
 import { GetAPIOutput } from "~/types";
 
+import { ErrorStoreService } from "../error-store/error-store.service";
+
 type Data = Awaited<GetAPIOutput<IOName>>;
 
 @Injectable()
 export class ResponseInterceptor implements NestInterceptor {
+	constructor(private errorStoreService: ErrorStoreService) {}
+
 	intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
 		return next.handle().pipe(
 			map((data: Data) => {
@@ -40,7 +43,8 @@ export class ResponseInterceptor implements NestInterceptor {
 			return requestObj.url === fullPath;
 		});
 
-		if (!routeSchema) throw new InternalServerErrorException();
+		if (!routeSchema)
+			this.errorStoreService.throw("internal", "ROUTE_SCHEMA_NOT_FOUND");
 
 		return routeSchema;
 	}

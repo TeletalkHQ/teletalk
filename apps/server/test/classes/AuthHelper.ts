@@ -18,7 +18,7 @@ class AuthHelper {
 	private signInResponse: HTTPHandlerResponse<"signIn">;
 	private verifyResponse: HTTPHandlerResponse<"verify">;
 	// TODO: Add session as well
-	sessionCookie: CookieItem;
+	private sessionCookie: CookieItem;
 
 	constructor(
 		private cellphone: BaseSchema.Cellphone,
@@ -33,9 +33,7 @@ class AuthHelper {
 	}
 
 	async verify() {
-		const verifiedSession = await sessionService.verify(
-			this.sessionCookie.value
-		);
+		const verifiedSession = await sessionService.verify(this.getSession());
 		const sessionId = sessionService.getSessionId(verifiedSession);
 		const storedSession = await tempSessionStoreService.find(sessionId);
 
@@ -43,7 +41,7 @@ class AuthHelper {
 
 		this.verifyResponse = await httpHandlerCollection
 			.verify({
-				session: this.sessionCookie.value,
+				session: this.getSession(),
 			})
 			.send({
 				signInCode: storedSession.signInCode,
@@ -54,7 +52,7 @@ class AuthHelper {
 
 	async create() {
 		const handler = httpHandlerCollection.createNewUser({
-			session: this.sessionCookie.value,
+			session: this.getSession(),
 		});
 
 		this.createResponse = await handler.send(
@@ -79,6 +77,10 @@ class AuthHelper {
 			signIn: this.signInResponse,
 			verify: this.verifyResponse,
 		};
+	}
+
+	getSession() {
+		return this.sessionCookie.value;
 	}
 }
 

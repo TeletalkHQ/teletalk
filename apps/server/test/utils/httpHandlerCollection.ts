@@ -43,7 +43,7 @@ export const httpHandlerCollection = {
 	getUserInfo: httpHandlerMaker("getUserInfo"),
 	getWelcomeMessage: httpHandlerMaker("getWelcomeMessage"),
 	// join: httpHandlerMaker("join"),
-	// logout: httpHandlerMaker("logout"),
+	logout: httpHandlerMaker("logout"),
 	// ping: httpHandlerMaker("ping"),
 	// removeBlock: httpHandlerMaker("removeBlock"),
 	// removeContact: httpHandlerMaker("removeContact"),

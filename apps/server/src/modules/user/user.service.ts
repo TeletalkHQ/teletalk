@@ -1,17 +1,21 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { BaseSchema } from "@repo/schema";
-import { Repository } from "typeorm";
+import { MongoRepository } from "typeorm";
 
 import { EntityFilterer } from "~/types";
 
+import { ErrorStoreService } from "../error-store/error-store.service";
 import { User } from "./user.entity";
 
 type DBUserData = EntityFilterer<User>;
 
 @Injectable()
 export class UserService {
-	constructor(@InjectRepository(User) private repo: Repository<DBUserData>) {}
+	constructor(
+		@InjectRepository(User) private repo: MongoRepository<DBUserData>,
+		private errorStoreService: ErrorStoreService
+	) {}
 
 	create(userToCreate: Partial<DBUserData>) {
 		const user = this.repo.create(userToCreate);
@@ -28,7 +32,10 @@ export class UserService {
 		return this.repo.findOne({
 			where: {
 				sessions: {
-					sessionId,
+					$elemMatch: {
+						sessionId,
+						isExpired: false,
+					},
 				},
 			},
 		});
@@ -45,18 +52,15 @@ export class UserService {
 		dataToUpdate: Partial<DBUserData>
 	) {
 		const user = await this.findOne(dataToFind);
-		if (!user) {
-			throw new NotFoundException("USER_NOT_FOUND");
-		}
+		if (!user) this.errorStoreService.throw("notFound", "USER_NOT_FOUND");
 
 		return this.repo.save({ ...user, ...dataToUpdate });
 	}
 
 	async remove(userToRemove: Partial<DBUserData>) {
 		const user = await this.findOne(userToRemove);
-		if (!user) {
-			throw new NotFoundException("USER_NOT_FOUND");
-		}
+		if (!user) this.errorStoreService.throw("notFound", "USER_NOT_FOUND");
+
 		return this.repo.remove(user);
 	}
 
@@ -71,9 +75,7 @@ export class UserService {
 		sessionId: BaseSchema.SessionId
 	) {
 		const user = await this.findOne({ userId });
-		if (!user) {
-			throw new NotFoundException("USER_NOT_FOUND");
-		}
+		if (!user) this.errorStoreService.throw("notFound", "USER_NOT_FOUND");
 
 		this.repo.save({
 			...user,

@@ -118,6 +118,10 @@ export class HTTPHandler<T extends IOName> {
 		return this.response;
 	}
 
+	getSession() {
+		return this.getSessionCookie().value;
+	}
+
 	getSessionCookie() {
 		const cookies = this.extractCookies(this.getResponse().headers);
 		if (!(COOKIE_NAMES.SESSION in cookies))
