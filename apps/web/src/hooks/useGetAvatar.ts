@@ -26,7 +26,7 @@ export const useGetAvatar = (userId: UserId) => {
 		const user = userStore.users.find((i) => i.userId === userId);
 		if (user?.avatarSrc) return;
 
-		getAvatarHandler.emitFull({ userId }, (response) => {
+		getAvatarHandler.send({ userId }, (response) => {
 			userStore.updateUser({
 				userId: response.data.userId,
 				avatarSrc: response.data.avatarSrc || defaultAvatar.src,

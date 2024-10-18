@@ -8,7 +8,7 @@ import { ValidationSchema } from "fastest-validator";
 import { configManager } from "~/classes/ConfigManager";
 import { utils as mainUtils } from "~/utils";
 
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { mergedServices } from "@/services";
 import { ServiceName } from "@/types";
 
@@ -34,7 +34,7 @@ async function asyncDescribe(...args: AsyncDescribeArgs) {
 }
 
 const getWrongCountryCode = (): string => {
-	const randomCountryCode = randomMaker.stringNumber(
+	const randomCountryCode = randomizer.stringNumber(
 		models.native.countryCode.max
 	);
 
@@ -59,16 +59,16 @@ function generateDynamicData(
 		switch (field.type) {
 			case "string":
 				if (FIELD_NAME === "countryCode") {
-					data[fieldName] = randomMaker.country().countryCode;
+					data[fieldName] = randomizer.country().countryCode;
 					break;
 				}
 				if (FIELD_NAME === "countryName") {
-					data[fieldName] = randomMaker.country().countryName;
+					data[fieldName] = randomizer.country().countryName;
 					break;
 				}
 				if (FIELD_NAME === "phoneNumber") {
 					// @ts-ignore
-					data[fieldName] = randomMaker.stringNumber(fieldModel.max);
+					data[fieldName] = randomizer.stringNumber(fieldModel.max);
 					break;
 				}
 
@@ -152,15 +152,11 @@ const generateServiceFailTest = async <T extends ServiceName>(
 				| Promise<Parameters<(typeof mergedServices)[T]>[0]>)
 ) => {
 	await asyncDescribe(
-		utils.createTestMessage.unitFailDescribe(serviceName, "service"),
+		messageCreators.unitFailDescribe(serviceName, "service"),
 		async () => {
 			return () => {
 				it(
-					utils.createTestMessage.unitFailTest(
-						serviceName,
-						"service",
-						errorReason
-					),
+					messageCreators.unitFailTest(serviceName, "service", errorReason),
 					async () => {
 						await utils.expectToFail_async(async () => {
 							const data = typeof arg === "function" ? await arg() : arg;

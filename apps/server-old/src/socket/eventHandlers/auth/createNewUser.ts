@@ -1,4 +1,4 @@
-import { randomMaker } from "@repo/classes";
+import { randomizer } from "@repo/classes";
 import { extractor } from "@repo/classes";
 import { userUtils } from "@repo/classes";
 import { errorStore } from "@repo/error-store";
@@ -56,4 +56,4 @@ const checkClientVerification = (authSession: StoredAuthSession) => {
 		};
 };
 
-const getRandomId = () => randomMaker.id(models.native.userId.max);
+const getRandomId = () => randomizer.id(models.native.userId.max);

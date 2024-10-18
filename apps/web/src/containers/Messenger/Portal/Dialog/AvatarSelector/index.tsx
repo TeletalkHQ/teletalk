@@ -40,7 +40,7 @@ const AvatarSelector = () => {
 		if (editor.current) {
 			const canvas = editor.current.getImage();
 
-			handler.emitFull(
+			handler.send(
 				{
 					avatarSrc: canvas.toDataURL(),
 				},

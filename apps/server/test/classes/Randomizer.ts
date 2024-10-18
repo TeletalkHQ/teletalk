@@ -4,6 +4,7 @@ import {
 	userUtils,
 } from "@repo/classes";
 import { BaseSchema } from "@repo/schema";
+import { Socket } from "socket.io-client";
 
 import { SessionService } from "~/modules/session/session.service";
 import { UserService } from "~/modules/user/user.service";
@@ -12,10 +13,12 @@ import { getServiceInstance } from "@/utils/app";
 import { httpHandlerCollection } from "@/utils/httpHandlerCollection";
 
 import { authHelper } from "./AuthHelper";
+import { clientInitializer } from "./ClientInitializer";
 
 interface UserByE2E {
 	session: string;
 	userInfo: BaseSchema.UserInfo;
+	socket: Socket;
 }
 
 interface UserByService {
@@ -43,11 +46,16 @@ export class Randomizer extends RandomizerMain {
 			.getUserInfo({
 				session: ah.getSession(),
 			})
-			.send(undefined);
+			.send({
+				data: undefined,
+			});
+
+		const socket = clientInitializer(ah.getSession()).getClient();
 
 		return {
 			userInfo: response.data.data,
 			session: ah.getSession(),
+			socket,
 		};
 	}
 
@@ -89,7 +97,7 @@ export class Randomizer extends RandomizerMain {
 		return {
 			sessionId,
 			session: await sessionService.sign(sessionId),
-			userInfo: extractor.userData(dbUserData),
+			userInfo: extractor.userInfo(dbUserData),
 		};
 	}
 

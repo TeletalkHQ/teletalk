@@ -3,32 +3,29 @@ import { FullNameWithUserId } from "@repo/types";
 import { services } from "~/services";
 
 import { assertion } from "@/classes/Assertion";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
 describe(
-	utils.createTestMessage.unitSuccessDescribe(
-		"addContactWithUserId",
-		"service"
-	),
+	messageCreators.unitSuccessDescribe("addContactWithUserId", "service"),
 	() => {
 		it(
-			utils.createTestMessage.unitSuccessTest(
+			messageCreators.unitSuccessTest(
 				"addContactWithUserId",
 				"service",
 				"should add new contact with target user id"
 			),
 			async () => {
-				const { sessionId } = await randomMaker.serviceUser();
+				const { sessionId } = await randomizer.serviceUser();
 
 				const addingContacts: FullNameWithUserId[] = [];
 
 				const length = 10;
-				const users = await Promise.all(randomMaker.serviceBatchUsers(length));
+				const users = await Promise.all(randomizer.serviceBatchUsers(length));
 
 				for (const { user: targetUser } of users) {
 					const item: FullNameWithUserId = {
-						...randomMaker.fullName(),
+						...randomizer.fullName(),
 						userId: targetUser.userId,
 					};
 
@@ -45,8 +42,8 @@ describe(
 					});
 
 					assertion().contactsWithUserId({
-						testValue: contacts,
-						equalValue: addingContacts,
+						test: contacts,
+						equal: addingContacts,
 					});
 				}
 			}
@@ -58,11 +55,11 @@ await utils.generateServiceFailTest(
 	"addContactWithUserId",
 	"CONTACT_ITEM_EXIST",
 	async () => {
-		const { sessionId } = await randomMaker.serviceUser();
-		const { user: targetUser } = await randomMaker.serviceUser();
+		const { sessionId } = await randomizer.serviceUser();
+		const { user: targetUser } = await randomizer.serviceUser();
 
 		const targetContact: FullNameWithUserId = {
-			...randomMaker.fullName(),
+			...randomizer.fullName(),
 			userId: targetUser.userId,
 		};
 
@@ -84,9 +81,9 @@ await utils.generateServiceFailTest(
 	"addContactWithUserId",
 	"CURRENT_USER_NOT_EXIST",
 	{
-		currentSessionId: randomMaker.sessionId(),
-		fullName: randomMaker.fullName(),
-		targetUserId: randomMaker.userId(),
+		currentSessionId: randomizer.sessionId(),
+		fullName: randomizer.fullName(),
+		targetUserId: randomizer.userId(),
 	}
 );
 
@@ -94,12 +91,12 @@ await utils.generateServiceFailTest(
 	"addContactWithUserId",
 	"TARGET_USER_NOT_EXIST",
 	async () => {
-		const { sessionId } = await randomMaker.serviceUser();
+		const { sessionId } = await randomizer.serviceUser();
 
 		return {
 			currentSessionId: sessionId,
-			fullName: randomMaker.fullName(),
-			targetUserId: randomMaker.userId(),
+			fullName: randomizer.fullName(),
+			targetUserId: randomizer.userId(),
 		};
 	}
 );

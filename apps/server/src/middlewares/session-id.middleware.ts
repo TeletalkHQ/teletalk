@@ -14,12 +14,20 @@ export class SessionIdMiddleware implements NestMiddleware {
 
 	async use(req: Request, _res: Response, next: NextFunction) {
 		if (!req.cookies)
-			this.errorStoreService.throw("internal", "COOKIES_NOT_FOUND");
+			this.errorStoreService.throw(
+				"internal",
+				"COOKIES_NOT_FOUND",
+				SessionIdMiddleware.name
+			);
 
 		const session = req.cookies[COOKIE_NAMES.SESSION];
 
 		if (!session)
-			this.errorStoreService.throw("unauthorized", "SESSION_NOT_FOUND");
+			this.errorStoreService.throw(
+				"unauthorized",
+				"SESSION_NOT_FOUND",
+				SessionIdMiddleware.name
+			);
 
 		const verifiedSession = await this.sessionService.verify(session);
 		req.sessionId = this.sessionService.getSessionId(verifiedSession);

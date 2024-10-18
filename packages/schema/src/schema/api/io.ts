@@ -13,13 +13,14 @@ export const ioCollection = {
 			blockedUser: baseSchema.blockedUser,
 		}),
 	},
-	addContactWithCellphone: {
+	addContact: {
 		input: z.object({
-			countryCode: baseSchema.countryCode,
-			countryName: baseSchema.countryName,
+			countryCode: baseSchema.countryCode.optional(),
+			countryName: baseSchema.countryName.optional(),
 			firstName: baseSchema.firstName,
-			lastName: baseSchema.lastName,
-			phoneNumber: baseSchema.phoneNumber,
+			lastName: baseSchema.lastName.optional(),
+			phoneNumber: baseSchema.phoneNumber.optional(),
+			userId: baseSchema.userId,
 		}),
 		output: z.object({
 			newContact: baseSchema.contactsItem,
@@ -106,12 +107,12 @@ export const ioCollection = {
 			privateChats: baseSchema.privateChats,
 		}),
 	},
-	getPublicData: {
+	getPublicInfo: {
 		input: z.object({
 			userId: baseSchema.userId,
 		}),
 		output: z.object({
-			publicData: baseSchema.publicData,
+			publicInfo: baseSchema.publicInfo,
 		}),
 	},
 	getStuff: {
@@ -190,20 +191,12 @@ export const ioCollection = {
 		}),
 	},
 	updateContact: {
-		input: z.object({
-			firstName: baseSchema.firstName,
-			lastName: baseSchema.lastName,
-			userId: baseSchema.userId,
-		}),
+		input: baseSchema.contactsItem,
 		output: z.object({
-			updatedContact: z.object({
-				firstName: baseSchema.firstName,
-				lastName: baseSchema.lastName,
-				userId: baseSchema.userId,
-			}),
+			updatedContact: baseSchema.contactsItem,
 		}),
 	},
-	updatePublicData: {
+	updatePublicInfo: {
 		input: z.object({
 			firstName: baseSchema.firstName,
 			lastName: baseSchema.lastName,
@@ -211,7 +204,7 @@ export const ioCollection = {
 			username: baseSchema.username,
 		}),
 		output: z.object({
-			updatedPublicData: baseSchema.publicData,
+			updatedPublicData: baseSchema.publicInfo,
 		}),
 	},
 	verify: {

@@ -118,6 +118,15 @@ const fullName = z.object({
 });
 
 const contactsItem = z.object({
+	countryCode: countryCode.optional(),
+	countryName: countryName.optional(),
+	firstName,
+	lastName: lastName.optional(),
+	phoneNumber: phoneNumber.optional(),
+	userId,
+});
+
+const contactsItemWithoutOptionals = z.object({
 	countryCode,
 	countryName,
 	firstName,
@@ -135,7 +144,7 @@ const blacklistItem = z.object({
 const blacklist = z.array(blacklistItem);
 
 // TODO: Mix with `userData`
-const userPublicInfo = z.object({
+const publicInfo = z.object({
 	firstName,
 	lastName,
 	bio,
@@ -144,7 +153,7 @@ const userPublicInfo = z.object({
 });
 
 const userInfo = z.intersection(
-	userPublicInfo,
+	publicInfo,
 	z.object({
 		avatarSrc,
 		blacklist,
@@ -183,7 +192,7 @@ const isNewUser = z.boolean();
 const isBlocked = z.boolean();
 const isContact = z.boolean();
 
-const clientUser = userPublicInfo.and(
+const clientUser = publicInfo.and(
 	cellphone.and(
 		z.object({
 			avatarSrc,
@@ -235,7 +244,7 @@ export const baseSchema = {
 	pong,
 	privateChats,
 	privateChatsItem,
-	publicData: userPublicInfo,
+	publicInfo,
 	senderId,
 	session,
 	sessionId,
@@ -260,6 +269,9 @@ export namespace BaseSchema {
 	export type ClientUser = z.infer<typeof clientUser>;
 	export type Contacts = z.infer<typeof contacts>;
 	export type ContactsItem = z.infer<typeof contactsItem>;
+	export type ContactsItemWithoutOptionals = z.infer<
+		typeof contactsItemWithoutOptionals
+	>;
 	export type Countries = z.infer<typeof countries>;
 	export type CountriesItem = z.infer<typeof countriesItem>;
 	export type CountryCode = z.infer<typeof countryCode>;
@@ -299,7 +311,7 @@ export namespace BaseSchema {
 	export type Status = z.infer<typeof status>;
 	export type UserId = z.infer<typeof userId>;
 	export type UserInfo = z.infer<typeof userInfo>;
-	export type UserPublicInfo = z.infer<typeof userPublicInfo>;
+	export type PublicInfo = z.infer<typeof publicInfo>;
 	export type Username = z.infer<typeof username>;
 	export type WelcomeMessage = z.infer<typeof welcomeMessage>;
 }

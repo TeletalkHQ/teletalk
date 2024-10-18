@@ -13,7 +13,7 @@ const UserInfo = () => {
 	const messageStore = useMessageStore();
 	const dialogState = useDialogState("userInfo");
 	const { isOnline } = useIsOnline(messageStore.selectedChatInfo.userId);
-	const { publicData } = useGetPublicData(messageStore.selectedChatInfo.userId);
+	const { publicInfo } = useGetPublicData(messageStore.selectedChatInfo.userId);
 
 	const connectionStatus = isOnline ? "online" : "offline";
 
@@ -23,10 +23,10 @@ const UserInfo = () => {
 				actions={<Actions onClose={globalStore.closeDialog} />}
 				content={
 					<Content
-						avatarSrc={publicData.avatarSrc}
+						avatarSrc={publicInfo.avatarSrc}
 						connectionStatus={connectionStatus}
-						fullName={userUtils.concatFirstNameWithLastName(publicData)}
-						fullNumber={userUtils.concatCountryCodeWithPhoneNumber(publicData)}
+						fullName={userUtils.concatFirstNameWithLastName(publicInfo)}
+						fullNumber={userUtils.concatCountryCodeWithPhoneNumber(publicInfo)}
 					/>
 				}
 				open={dialogState.open}

@@ -4,7 +4,7 @@ import { SessionId, UserId } from "@repo/types";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
 
-export const blockUser = serviceBuilder
+export const addBlock = serviceBuilder
 	.create<
 		{
 			currentSessionId: SessionId;

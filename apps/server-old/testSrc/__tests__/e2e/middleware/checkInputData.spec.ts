@@ -4,7 +4,7 @@ import { eventsWithoutDisconnect } from "@/socket/events";
 import { utils } from "@/utils";
 
 await utils.asyncDescribe(
-	utils.createTestMessage.unitFailDescribe("checkInputData", "middleware"),
+	messageCreators.unitFailDescribe("checkInputData", "middleware"),
 	async () => {
 		const eventsWithInputFields = eventsWithoutDisconnect.filter(
 			(i) => Object.keys(i.inputValidator || {}).length
@@ -17,7 +17,7 @@ await utils.asyncDescribe(
 
 		return () => {
 			for (const _event of eventsWithInputFieldsExceptAuth) {
-				// const title = utils.createTestMessage.unitFailTest(
+				// const title = messageCreators.unitFailTest(
 				// 	event.name,
 				// 	"middleware",
 				// 	"INPUT_FIELDS_MISSING"
@@ -27,12 +27,12 @@ await utils.asyncDescribe(
 					// await requesterMaker(socket, event as any)
 					// 	.setError("INPUT_FIELDS_MISSING")
 					// 	.setOptions({ shouldFilterRequestData: false })
-					// 	.emitFull();
+					// 	.send();
 				});
 			}
 
 			for (const _event of eventsWithoutDisconnect) {
-				// const title = utils.createTestMessage.unitFailTest(
+				// const title = messageCreators.unitFailTest(
 				// 	event.name,
 				// 	"middleware",
 				// 	"INPUT_FIELDS_OVERLOAD"
@@ -44,9 +44,9 @@ await utils.asyncDescribe(
 					// 	.setOptions({
 					// 		shouldFilterRequestData: false,
 					// 	})
-					// 	.emitFull({
+					// 	.send({
 					// 		...utils.generateDynamicData(event.inputFields),
-					// 		[randomMaker.string(10)]: randomMaker.string(10),
+					// 		[randomizer.string(10)]: randomizer.string(10),
 					// 	});
 				});
 			}

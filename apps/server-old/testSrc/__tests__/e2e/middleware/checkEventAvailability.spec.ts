@@ -23,7 +23,7 @@ await utils.asyncDescribe(
 		const clientSocket = initializer.getClient();
 
 		return () => {
-			const message = utils.createTestMessage.unitFailTest(
+			const message = messageCreators.unitFailTest(
 				//@ts-expect-error //FIXME
 				"unknownEvent",
 				"middleware",
@@ -33,17 +33,14 @@ await utils.asyncDescribe(
 			it(message, async () => {
 				await createRequester(clientSocket, unknownEvent)
 					.setError("EVENT_NOT_FOUND")
-					.emitFull(undefined);
+					.send(undefined);
 			});
 		};
 	}
 );
 
 await utils.asyncDescribe(
-	utils.createTestMessage.unitSuccessDescribe(
-		"checkEventAvailability",
-		"middleware"
-	),
+	messageCreators.unitSuccessDescribe("checkEventAvailability", "middleware"),
 	async () => {
 		const initializer = clientInitializer();
 		await initializer.init();
@@ -53,7 +50,7 @@ await utils.asyncDescribe(
 
 		return () => {
 			for (const event of eventsWithoutDisconnect) {
-				const message = utils.createTestMessage.unitSuccessTest(
+				const message = messageCreators.unitSuccessTest(
 					event.name,
 					"middleware",
 					`should not get error ${"EVENT_NOT_FOUND" as ErrorReason}`

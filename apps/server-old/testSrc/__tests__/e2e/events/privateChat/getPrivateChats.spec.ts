@@ -2,41 +2,39 @@ import { ParticipantId, Participants } from "@repo/types";
 import chai from "chai";
 
 import { assertion } from "@/classes/Assertion";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
 describe(
-	utils.createTestMessage.e2eSuccessDescribe("getPrivateChats", "event"),
+	messageCreators.e2eSuccessSuite("getPrivateChats", "httpRoute"),
 	() => {
 		it(
-			utils.createTestMessage.e2eSuccessTest(
+			messageCreators.e2eSuccessTest(
 				"getPrivateChats",
-				"event",
+				"httpRoute",
 				"should get private chats related to session"
 			),
 			async () => {
 				const { user: currentUser, socket: currentUserSocket } =
-					await randomMaker.e2eUser();
-				const { user: targetUser } = await randomMaker.e2eUser();
+					await randomizer.userByE2E();
+				const { user: targetUser } = await randomizer.userByE2E();
 
 				const messageText = "Hello! Im messages!";
-				await utils.requesterCollection
-					.sendMessage(currentUserSocket)
-					.emitFull({
-						messageText,
-						targetParticipantId: targetUser.userId,
-					});
+				await httpHandlerCollection.sendMessage(currentUserSocket).send({
+					messageText,
+					targetParticipantId: targetUser.userId,
+				});
 
 				const {
 					data: { privateChats },
-				} = await utils.requesterCollection
+				} = await httpHandlerCollection
 					.getPrivateChats(currentUserSocket)
-					.emitFull(undefined);
+					.send(undefined);
 
 				for (const item of privateChats) {
 					assertion().chatId(
 						{
-							testValue: item.chatId,
+							test: item.chatId,
 						},
 						{
 							stringEquality: false,
@@ -53,20 +51,20 @@ describe(
 					const messageItem = item.messages.at(0)!;
 					assertion()
 						.messageText({
-							equalValue: messageText,
-							testValue: messageItem.messageText,
+							equal: messageText,
+							test: messageItem.messageText,
 						})
 						.messageId(
 							{
-								testValue: messageItem.messageId,
+								test: messageItem.messageId,
 							},
 							{
 								stringEquality: false,
 							}
 						)
 						.senderId({
-							equalValue: messageItem.sender.senderId,
-							testValue: currentUser.userId,
+							equal: messageItem.sender.senderId,
+							test: currentUser.userId,
 						});
 				}
 			}

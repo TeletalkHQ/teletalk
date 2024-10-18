@@ -6,7 +6,7 @@ import { ErrorStoreService } from "../error-store/error-store.service";
 import { TempSessionStoreService } from "../temp-session-store/temp-session-store.service";
 
 @Injectable()
-export class AuthIdMiddleware implements NestMiddleware {
+export class AuthMiddleware implements NestMiddleware {
 	constructor(
 		private tempSessionStoreService: TempSessionStoreService,
 		private errorStoreService: ErrorStoreService
@@ -20,10 +20,18 @@ export class AuthIdMiddleware implements NestMiddleware {
 		const tempSession = await this.tempSessionStoreService.find(req.sessionId);
 
 		if (!tempSession)
-			this.errorStoreService.throw("notFound", "SESSION_NOT_FOUND");
+			this.errorStoreService.throw(
+				"notFound",
+				"SESSION_NOT_FOUND",
+				AuthMiddleware.name
+			);
 
 		if (req.body.signInCode !== tempSession.signInCode)
-			this.errorStoreService.throw("unauthorized", "SIGN_IN_CODE_INVALID");
+			this.errorStoreService.throw(
+				"unauthorized",
+				"SIGN_IN_CODE_INVALID",
+				AuthMiddleware.name
+			);
 
 		await this.tempSessionStoreService.update(req.sessionId, {
 			...tempSession,

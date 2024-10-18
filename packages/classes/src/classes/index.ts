@@ -1,3 +1,4 @@
+export * from "./Assertion";
 export * from "./DataUsageManager";
 export * from "./Extractor";
 export * from "./Maker";

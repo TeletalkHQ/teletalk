@@ -9,7 +9,7 @@ export const useAddPrivateChat = () => {
 	const { handler: getPrivateChatHandler } = useEmitter("getPrivateChat");
 
 	const handler = (chatId: ChatId) => {
-		return getPrivateChatHandler.emitFull({ chatId }, ({ data }) => {
+		return getPrivateChatHandler.send({ chatId }, ({ data }) => {
 			messageStore.addPrivateChat(data.privateChat);
 		});
 	};

@@ -31,14 +31,14 @@ export const handlers: (set: SetState) => Handlers = (set) => ({
 		});
 	},
 
-	addContactWithCellphone(newContact) {
+	addContact(newContact) {
 		this.updateUser({
 			...newContact,
 			isContact: true,
 		});
 	},
 
-	blockUser({ userId }) {
+	addBlock({ userId }) {
 		this.updateUser({
 			userId,
 			isBlocked: true,
@@ -115,13 +115,13 @@ export const handlers: (set: SetState) => Handlers = (set) => ({
 		});
 	},
 
-	updateCurrentUserPublicData(publicData) {
+	updateCurrentUserPublicData(publicInfo) {
 		set((prevState) => ({
 			currentUserData: {
 				...extractor.currentUserData({
 					...prevState.currentUserData,
 				}),
-				...publicData,
+				...publicInfo,
 			},
 		}));
 	},

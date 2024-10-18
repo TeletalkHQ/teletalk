@@ -95,7 +95,7 @@ export class EventHandler<T extends EventName> {
 		return this;
 	}
 
-	async emitFull(
+	async send(
 		data: FoundInput<T>,
 		responseCallback: SocketResponseCallback<T> = () => undefined,
 		errorCallback: SocketErrorCallback = (_errors) => {},

@@ -52,14 +52,24 @@ export class UserService {
 		dataToUpdate: Partial<DBUserData>
 	) {
 		const user = await this.findOne(dataToFind);
-		if (!user) this.errorStoreService.throw("notFound", "USER_NOT_FOUND");
+		if (!user)
+			this.errorStoreService.throw(
+				"notFound",
+				"USER_NOT_FOUND",
+				UserService.name
+			);
 
 		return this.repo.save({ ...user, ...dataToUpdate });
 	}
 
 	async remove(userToRemove: Partial<DBUserData>) {
 		const user = await this.findOne(userToRemove);
-		if (!user) this.errorStoreService.throw("notFound", "USER_NOT_FOUND");
+		if (!user)
+			this.errorStoreService.throw(
+				"notFound",
+				"USER_NOT_FOUND",
+				UserService.name
+			);
 
 		return this.repo.remove(user);
 	}
@@ -75,7 +85,12 @@ export class UserService {
 		sessionId: BaseSchema.SessionId
 	) {
 		const user = await this.findOne({ userId });
-		if (!user) this.errorStoreService.throw("notFound", "USER_NOT_FOUND");
+		if (!user)
+			this.errorStoreService.throw(
+				"notFound",
+				"USER_NOT_FOUND",
+				UserService.name
+			);
 
 		this.repo.save({
 			...user,

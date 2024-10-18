@@ -4,12 +4,13 @@ import { ContactItem } from "@repo/types";
 
 import { services } from "~/services";
 
-export const addContactWithCellphone: SocketOnHandler<
-	"addContactWithCellphone"
-> = async (socket, data) => {
+export const addContact: SocketOnHandler<"addContact"> = async (
+	socket,
+	data
+) => {
 	const {
 		newContact: { isCellphoneAccessible, ...rest },
-	} = await services.user.addContactWithCellphone({
+	} = await services.user.addContact({
 		currentSessionId: socket.sessionId,
 		addingContact: data,
 		targetUserCellphone: extractor.unknownCellphone(data),

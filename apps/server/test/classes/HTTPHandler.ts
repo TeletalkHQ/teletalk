@@ -1,5 +1,5 @@
 import { FIELD_TYPE } from "@repo/constants";
-import { IOName, RouteSchema } from "@repo/schema";
+import { HTTPRouteShortName, RouteSchema } from "@repo/schema";
 import axios, { AxiosResponse } from "axios";
 import { expect } from "chai";
 
@@ -26,13 +26,13 @@ interface CustomError {
 
 export type CookieItem = { value: string; flags: Record<string, boolean> };
 
-export type HTTPHandlerResponse<T extends IOName> = AxiosResponse<
+export type HTTPHandlerResponse<T extends HTTPRouteShortName> = AxiosResponse<
 	Awaited<GetAPIOutput<T>>
 >;
 
-type RequestBody<T extends IOName> = GetAPIInput<T>;
+type RequestBody<T extends HTTPRouteShortName> = GetAPIInput<T>;
 
-export class HTTPHandler<T extends IOName> {
+export class HTTPHandler<T extends HTTPRouteShortName> {
 	private expectedError?: CustomError;
 
 	private options: HTTPHandlerOptions = {
@@ -97,7 +97,7 @@ export class HTTPHandler<T extends IOName> {
 
 		const response = await axios({
 			method: this.routeSchema.method,
-			data: this.getBody(),
+			data: this.getBody().data,
 			// FIXME: `pathname` may include query parameter!
 			url: `http://localhost:${configService.getPort()}/${this.routeSchema.rootPath}/${this.routeSchema.pathname}`,
 			headers: {
@@ -189,7 +189,7 @@ export class HTTPHandler<T extends IOName> {
 			errors: Array<CustomError>;
 		}>;
 
-		if (!("errors" in response.data)) throw Error("ERRORS_ARRAY_MISSING");
+		if (!response.data.errors) throw Error("ERRORS_ARRAY_MISSING");
 
 		expect(response.data.errors).to.be.an(FIELD_TYPE.ARRAY);
 
@@ -202,7 +202,7 @@ export class HTTPHandler<T extends IOName> {
 	}
 }
 
-export const httpHandler = <T extends IOName>(
+export const httpHandler = <T extends HTTPRouteShortName>(
 	routeSchema: RouteSchema<T>,
 	options?: HTTPHandlerOptions
 ) => new HTTPHandler<T>(routeSchema, options);

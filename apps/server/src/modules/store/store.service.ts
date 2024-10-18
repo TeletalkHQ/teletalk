@@ -35,7 +35,11 @@ export class StoreService {
 		const session = await this.storage.json.get(this.makeStateKey(id));
 
 		if (!isString(session))
-			this.errorStoreService.throw("notFound", "SESSION_NOT_FOUND");
+			this.errorStoreService.throw(
+				"notFound",
+				"SESSION_NOT_FOUND",
+				StoreService.name
+			);
 
 		return session ? JSON.parse(session as string) : null;
 	}

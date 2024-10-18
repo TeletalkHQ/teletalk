@@ -39,7 +39,12 @@ export class AuthController {
 		const fullNumber = `+${cellphone.countryCode}${cellphone.phoneNumber}`;
 
 		const host = getHostFromRequest(req);
-		if (!host) this.errorStoreService.throw("badRequest", "INVALID_HOST");
+		if (!host)
+			this.errorStoreService.throw(
+				"badRequest",
+				"INVALID_HOST",
+				AuthController.name
+			);
 		await this.smsService.sendSignInCode(fullNumber, host, signInCode);
 
 		const sessionId = this.sessionService.generateSessionId();
@@ -75,7 +80,11 @@ export class AuthController {
 		const storedSession = await this.tempSessionStoreService.find(sessionId);
 
 		if (!storedSession)
-			this.errorStoreService.throw("unauthorized", "STORED_SESSION_NOT_FOUND");
+			this.errorStoreService.throw(
+				"unauthorized",
+				"STORED_SESSION_NOT_FOUND",
+				AuthController.name
+			);
 
 		const user = await this.userService.findOne(
 			extractor.cellphone(storedSession)
@@ -120,10 +129,18 @@ export class AuthController {
 			req.sessionId
 		);
 		if (!storedSession)
-			this.errorStoreService.throw("unauthorized", "SESSION_NOT_FOUND");
+			this.errorStoreService.throw(
+				"unauthorized",
+				"SESSION_NOT_FOUND",
+				AuthController.name
+			);
 
 		if (!storedSession.isVerified)
-			this.errorStoreService.throw("unauthorized", "SESSION_NOT_VERIFIED");
+			this.errorStoreService.throw(
+				"unauthorized",
+				"SESSION_NOT_VERIFIED",
+				AuthController.name
+			);
 
 		const sessionId = this.sessionService.generateSessionId();
 		const session = await this.sessionService.sign(sessionId);
@@ -165,7 +182,11 @@ export class AuthController {
 		const foundUser = await this.userService.findBySessionId(req.sessionId);
 
 		if (!foundUser)
-			this.errorStoreService.throw("notFound", "USER_BY_SESSION_ID_NOT_FOUND");
+			this.errorStoreService.throw(
+				"notFound",
+				"USER_BY_SESSION_ID_NOT_FOUND",
+				AuthController.name
+			);
 
 		const foundSession = foundUser.sessions.find(
 			(item) => item.sessionId === req.sessionId
@@ -174,7 +195,8 @@ export class AuthController {
 		if (!foundSession)
 			this.errorStoreService.throw(
 				"notFound",
-				"SESSION_NOT_FOUND_BY_SESSION_ID"
+				"SESSION_NOT_FOUND_BY_SESSION_ID",
+				AuthController.name
 			);
 
 		// foundSession.isExpired = true;

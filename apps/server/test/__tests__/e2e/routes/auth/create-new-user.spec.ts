@@ -1,5 +1,5 @@
 import { randomizer } from "@/classes";
-import { authHelper } from "@/classes/AuthHelper";
+import { authHelper } from "@/classes";
 import { messageCreators } from "@/utils/testMessageCreators";
 
 describe(messageCreators.e2eSuccessSuite("createNewUser", "httpRoute"), () => {

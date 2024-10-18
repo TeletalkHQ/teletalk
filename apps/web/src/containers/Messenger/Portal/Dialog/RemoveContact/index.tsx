@@ -18,7 +18,7 @@ const RemoveContact = () => {
 	const { handler, loading } = useEmitter("removeContact");
 
 	const handleRemoveContact = () => {
-		handler.emitFull(
+		handler.send(
 			{
 				userId: selectedUserForActions.userId,
 			},

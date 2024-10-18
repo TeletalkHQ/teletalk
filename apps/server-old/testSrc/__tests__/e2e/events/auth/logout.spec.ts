@@ -1,24 +1,18 @@
 import { authHelper } from "@/classes/AuthHelper";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
-describe(utils.createTestMessage.e2eSuccessDescribe("logout", "event"), () => {
+describe(messageCreators.e2eSuccessSuite("logout", "httpRoute"), () => {
 	it(
-		utils.createTestMessage.e2eSuccessTest(
-			"logout",
-			"event",
-			"should logout user"
-		),
+		messageCreators.e2eSuccessTest("logout", "event", "should logout user"),
 		async () => {
-			const cellphone = randomMaker.unusedCellphone();
-			const fullName = randomMaker.fullName();
+			const cellphone = randomizer.unusedCellphone();
+			const fullName = randomizer.fullName();
 			const ah = authHelper(cellphone, fullName);
 
 			await ah.createComplete();
 
-			await utils.requesterCollection
-				.logout(ah.getClientSocket())
-				.emitFull(undefined);
+			await httpHandlerCollection.logout(ah.getClientSocket()).send(undefined);
 		}
 	);
 });

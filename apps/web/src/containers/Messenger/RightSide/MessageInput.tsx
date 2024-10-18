@@ -12,7 +12,7 @@ const MessageInput = () => {
 	};
 
 	const handleSendMessage = () => {
-		handler.emitFull(
+		handler.send(
 			{
 				messageText: messageStore.messageInputTextValue,
 				targetParticipantId: messageStore.selectedChatInfo.userId,

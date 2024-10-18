@@ -7,6 +7,7 @@ import { getServiceInstance } from "@/utils/app";
 import { httpHandlerCollection } from "@/utils/httpHandlerCollection";
 
 import { CookieItem, HTTPHandlerResponse } from "./HTTPHandler";
+import { randomizer } from "./Randomizer";
 
 const sessionService = await getServiceInstance(SessionService);
 const tempSessionStoreService = await getServiceInstance(
@@ -22,12 +23,14 @@ class AuthHelper {
 
 	constructor(
 		private cellphone: BaseSchema.Cellphone,
-		private fullName?: BaseSchema.FullName
+		private fullName = randomizer.fullName()
 	) {}
 
 	async signIn() {
 		const handler = httpHandlerCollection.signIn();
-		this.signInResponse = await handler.send(this.cellphone);
+		this.signInResponse = await handler.send({
+			data: this.cellphone,
+		});
 		this.sessionCookie = handler.getSessionCookie();
 		return this;
 	}
@@ -44,7 +47,9 @@ class AuthHelper {
 				session: this.getSession(),
 			})
 			.send({
-				signInCode: storedSession.signInCode,
+				data: {
+					signInCode: storedSession.signInCode,
+				},
 			});
 
 		return this;
@@ -55,9 +60,9 @@ class AuthHelper {
 			session: this.getSession(),
 		});
 
-		this.createResponse = await handler.send(
-			this.fullName as BaseSchema.FullName
-		);
+		this.createResponse = await handler.send({
+			data: this.fullName,
+		});
 
 		this.sessionCookie = handler.getSessionCookie();
 

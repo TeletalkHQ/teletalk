@@ -13,7 +13,7 @@ const Logout = () => {
 	const router = useCustomRouter();
 
 	const handleLogout = () => {
-		handler.emitFull(undefined, () => {
+		handler.send(undefined, () => {
 			globalStore.closeDialog();
 			storage.remove("session");
 			router.push("signIn");

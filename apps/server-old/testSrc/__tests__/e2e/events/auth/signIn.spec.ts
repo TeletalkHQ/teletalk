@@ -1,18 +1,18 @@
 import { extractor } from "@repo/classes";
 
 import { authHelper } from "@/classes/AuthHelper";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
-describe(utils.createTestMessage.e2eSuccessDescribe("signIn", "event"), () => {
+describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 	it(
-		utils.createTestMessage.e2eSuccessTest(
+		messageCreators.e2eSuccessTest(
 			"signIn",
-			"event",
+			"httpRoute",
 			"should sign as new user"
 		),
 		async () => {
-			const cellphone = randomMaker.unusedCellphone();
+			const cellphone = randomizer.unusedCellphone();
 			const helper = authHelper(cellphone);
 
 			await helper.signIn();
@@ -20,13 +20,13 @@ describe(utils.createTestMessage.e2eSuccessDescribe("signIn", "event"), () => {
 	);
 
 	it(
-		utils.createTestMessage.e2eSuccessTest(
+		messageCreators.e2eSuccessTest(
 			"signIn",
-			"event",
+			"httpRoute",
 			"should sign as existed user"
 		),
 		async () => {
-			const { user } = await randomMaker.e2eUser();
+			const { user } = await randomizer.userByE2E();
 			const cellphone = extractor.cellphone(user);
 			const helper = authHelper(cellphone);
 

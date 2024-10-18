@@ -1,4 +1,4 @@
-import { randomMaker } from "@repo/classes";
+import { randomizer } from "@repo/classes";
 import { models } from "@repo/model";
 import { UserId } from "@repo/types";
 
@@ -18,7 +18,7 @@ export const create = serviceBuilder
 	.setBeforeRunMiddlewares(serviceMiddlewares.throwIfPrivateChatExist)
 	.setBody(async (data) => {
 		await coreServices.create({
-			chatId: randomMaker.id(models.native.chatId.max),
+			chatId: randomizer.id(models.native.chatId.max),
 			createdAt: Date.now(),
 			currentParticipantId: data.currentParticipantId,
 			targetParticipantId: data.targetParticipantId,

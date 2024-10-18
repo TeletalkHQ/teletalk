@@ -28,7 +28,7 @@ export const useSetUserData = ({
 			router.pathname.includes("messenger") &&
 			storage.get("session")
 		) {
-			return getUserDataHandler.emitFull(
+			return getUserDataHandler.send(
 				undefined,
 				(response) => {
 					userStore.updateCurrentUserData(

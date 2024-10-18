@@ -1,19 +1,19 @@
 import chai from "chai";
 
 import { authHelper } from "@/classes/AuthHelper";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
-describe(utils.createTestMessage.e2eSuccessDescribe("verify", "event"), () => {
+describe(messageCreators.e2eSuccessSuite("verify", "httpRoute"), () => {
 	it(
-		utils.createTestMessage.e2eSuccessTest(
+		messageCreators.e2eSuccessTest(
 			"verify",
-			"event",
+			"httpRoute",
 			"should sign and verify as new user"
 		),
 		async () => {
-			const cellphone = randomMaker.unusedCellphone();
-			const fullName = randomMaker.fullName();
+			const cellphone = randomizer.unusedCellphone();
+			const fullName = randomizer.fullName();
 
 			const helper = authHelper(cellphone, fullName);
 			await helper.signIn();
@@ -23,14 +23,14 @@ describe(utils.createTestMessage.e2eSuccessDescribe("verify", "event"), () => {
 	);
 
 	it(
-		utils.createTestMessage.e2eSuccessTest(
+		messageCreators.e2eSuccessTest(
 			"verify",
-			"event",
+			"httpRoute",
 			"should verify as existing user"
 		),
 		async () => {
-			const cellphone = randomMaker.unusedCellphone();
-			const fullName = randomMaker.fullName();
+			const cellphone = randomizer.unusedCellphone();
+			const fullName = randomizer.fullName();
 			await authHelper(cellphone, fullName).createComplete();
 
 			const helper = authHelper(cellphone, fullName);

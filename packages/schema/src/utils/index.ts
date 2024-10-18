@@ -2,8 +2,13 @@ import { InternalServerErrorException, RequestMethod } from "@nestjs/common";
 import { HTTPMethod } from "@repo/types";
 import { ZodString, ZodTypeAny, z } from "zod";
 
-import { HTTPRootPath, RouteGenerator } from "../classes";
-import { HTTPRouteShortName, httpRoutes } from "../schema";
+import { EventGenerator, HTTPRootPath, RouteGenerator } from "../classes";
+import {
+	EventShortName,
+	HTTPRouteShortName,
+	httpRoutes,
+	socketEvents,
+} from "../schema";
 
 export const getStringSchemaMaxLength = <T extends ZodString>(schema: T) => {
 	const result = schema._def.checks.find((item) => item.kind === "max")?.value;
@@ -49,9 +54,18 @@ export const findHttpRoute = <T extends HTTPRouteShortName>(name: T) => {
 	const foundRoute = httpRoutes.find((item) => item.schema.ioName === name);
 
 	if (!foundRoute)
-		throw new InternalServerErrorException("http route not found");
+		throw new InternalServerErrorException("HTTP_ROUTE_SCHEMA_NOT_FOUND");
 
 	return foundRoute as RouteGenerator<T>;
+};
+
+export const findEvent = <T extends EventShortName>(name: T) => {
+	const foundEvent = socketEvents.find((item) => item.schema.ioName === name);
+
+	if (!foundEvent)
+		throw new InternalServerErrorException("EVENT_SCHEMA_NOT_FOUND");
+
+	return foundEvent as EventGenerator<T>;
 };
 
 export const getPathname = (name: HTTPRouteShortName) => {

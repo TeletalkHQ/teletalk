@@ -24,7 +24,7 @@ const createMessage = (
 	)}] [description:${description}]`;
 };
 
-const e2eSuccessDescribe = (name: Name, prefix: Prefix, description?: string) =>
+const e2eSuccessSuite = (name: Name, prefix: Prefix, description?: string) =>
 	createMessage("suite", "e2e", "success", name, prefix, description);
 const e2eFailDescribe = (name: Name, prefix: Prefix, description?: string) =>
 	createMessage("suite", "e2e", "failure", name, prefix, description);
@@ -68,7 +68,7 @@ const unitFailTest = (name: Name, prefix: Prefix, reason: ErrorReason) => {
 export const createTestMessage = {
 	e2eFailDescribe,
 	e2eFailTest,
-	e2eSuccessDescribe,
+	e2eSuccessSuite,
 	e2eSuccessTest,
 	unitFailDescribe,
 	unitFailTest,

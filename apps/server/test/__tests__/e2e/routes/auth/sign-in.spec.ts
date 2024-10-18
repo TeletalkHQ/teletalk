@@ -20,7 +20,9 @@ describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 		),
 		async () => {
 			const handler = httpHandlerCollection.signIn();
-			await handler.send(randomizer.unusedCellphone());
+			await handler.send({
+				data: randomizer.unusedCellphone(),
+			});
 		}
 	);
 
@@ -32,7 +34,9 @@ describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 		),
 		async () => {
 			const signInHandler = httpHandlerCollection.signIn();
-			await signInHandler.send(randomizer.unusedCellphone());
+			await signInHandler.send({
+				data: randomizer.unusedCellphone(),
+			});
 
 			const verifyHandler = httpHandlerCollection.verify({
 				session: signInHandler.getSession(),
@@ -51,7 +55,9 @@ describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 			if (!storedSession) throw new Error("STORED_SESSION_NOT_FOUND");
 
 			await verifyHandler.send({
-				signInCode: storedSession.signInCode,
+				data: {
+					signInCode: storedSession.signInCode,
+				},
 			});
 		}
 	);

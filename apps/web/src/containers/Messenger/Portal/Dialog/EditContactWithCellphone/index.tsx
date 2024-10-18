@@ -40,7 +40,7 @@ const EditContactWithCellphone = () => {
 	};
 
 	const handleAddContactClick = () => {
-		handler.emitFull(
+		handler.send(
 			{
 				...extractor.fullName(fullName),
 				userId: selectedUserForActions.userId,

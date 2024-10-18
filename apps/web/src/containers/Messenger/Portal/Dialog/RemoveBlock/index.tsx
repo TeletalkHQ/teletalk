@@ -18,7 +18,7 @@ const RemoveBlock = () => {
 	const { handler, loading } = useEmitter("removeBlock");
 
 	const handleRemoveContact = () => {
-		handler.emitFull(
+		handler.send(
 			{
 				userId: selectedUserForActions.userId,
 			},

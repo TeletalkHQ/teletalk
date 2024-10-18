@@ -12,7 +12,7 @@ export const useVerify = () => {
 	const { handler: verifyHandler, loading } = useEmitter("verify");
 
 	const handler = () => {
-		verifyHandler.emitFull(
+		verifyHandler.send(
 			{
 				verificationCode: authStore.verificationCode,
 			},

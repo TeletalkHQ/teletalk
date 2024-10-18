@@ -1,5 +1,5 @@
 import { clientInitializer } from "@/classes/ClientInitializer";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { requesterMaker } from "@/classes/Requester";
 import { eventsWithoutDisconnect } from "@/socket/events";
 import { utils } from "@/utils";
@@ -9,21 +9,21 @@ const filteredEvents = eventsWithoutDisconnect.filter(
 );
 
 await utils.asyncDescribe(
-	utils.createTestMessage.unitFailDescribe("attachSessionId", "middleware"),
+	messageCreators.unitFailDescribe("attachSessionId", "middleware"),
 	async () => {
 		const initializer = clientInitializer();
 		await initializer.init();
-		initializer.reinitializeWithSession(randomMaker.sessionId());
+		initializer.reinitializeWithSession(randomizer.sessionId());
 
 		return () => {
 			for (const event of filteredEvents) {
-				const title = utils.createTestMessage.unitFailTest(
+				const title = messageCreators.unitFailTest(
 					event.name,
 					"middleware",
 					"SESSION_ID_INVALID"
 				);
 				it(title, async () => {
-					await requesterMaker(initializer.getClient(), event as any).emitFull(
+					await requesterMaker(initializer.getClient(), event as any).send(
 						undefined,
 						"SESSION_ID_INVALID"
 					);
@@ -31,7 +31,7 @@ await utils.asyncDescribe(
 			}
 
 			for (const event of filteredEvents) {
-				const title = utils.createTestMessage.unitFailTest(
+				const title = messageCreators.unitFailTest(
 					event.name,
 					"middleware",
 					"SESSION_NOT_FOUND"
@@ -41,7 +41,7 @@ await utils.asyncDescribe(
 						.connect()
 						.getClient();
 
-					await requesterMaker(client, event as any).emitFull(
+					await requesterMaker(client, event as any).send(
 						undefined,
 						"SESSION_NOT_FOUND"
 					);

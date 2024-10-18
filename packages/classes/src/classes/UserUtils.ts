@@ -5,17 +5,17 @@ import { utils } from "@repo/utils";
 export class UserUtils {
 	concatFirstNameWithLastName(
 		userItem: Partial<BaseSchema.ClientUser>,
-		publicData?: BaseSchema.UserPublicInfo
+		publicInfo?: BaseSchema.PublicInfo
 	) {
 		const fn =
 			userItem.firstName ||
 			userItem.originalFirstName ||
-			publicData?.firstName ||
+			publicInfo?.firstName ||
 			"";
 		const ln =
 			userItem.lastName ||
 			userItem.originalLastName ||
-			publicData?.lastName ||
+			publicInfo?.lastName ||
 			"";
 
 		return `${fn} ${ln}`;

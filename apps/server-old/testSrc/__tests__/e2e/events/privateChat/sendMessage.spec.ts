@@ -1,55 +1,52 @@
 import { assertion } from "@/classes/Assertion";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
-describe(
-	utils.createTestMessage.e2eSuccessDescribe("sendMessage", "event"),
-	() => {
-		it(
-			utils.createTestMessage.e2eSuccessTest(
-				"sendMessage",
-				"event",
-				"should start new chat and send message"
-			),
-			async () => {
-				const { socket, user: currentUser } = await randomMaker.e2eUser();
-				const { user: targetUser } = await randomMaker.e2eUser();
+describe(messageCreators.e2eSuccessSuite("sendMessage", "httpRoute"), () => {
+	it(
+		messageCreators.e2eSuccessTest(
+			"sendMessage",
+			"httpRoute",
+			"should start new chat and send message"
+		),
+		async () => {
+			const { socket, user: currentUser } = await randomizer.userByE2E();
+			const { user: targetUser } = await randomizer.userByE2E();
 
-				const messageText = "Hello! Im message";
+			const messageText = "Hello! Im message";
 
-				const { data: sendMessageResponse } = await utils.requesterCollection
-					.sendMessage(socket)
-					.emitFull({
-						targetParticipantId: targetUser.userId,
-						messageText,
-					});
+			const { data: sendMessageResponse } = await httpHandlerCollection
+				.sendMessage(socket)
+				.send({
+					targetParticipantId: targetUser.userId,
+					messageText,
+				});
 
-				assertion()
-					.chatId(
-						{
-							testValue: sendMessageResponse.chatId,
-						},
-						{
-							stringEquality: false,
-						}
-					)
-					.messageText({
-						equalValue: messageText,
-						testValue: sendMessageResponse.addedMessage.messageText,
-					})
-					.messageId(
-						{
-							testValue: sendMessageResponse.addedMessage.messageId,
-						},
-						{
-							stringEquality: false,
-						}
-					)
-					.userId({
-						equalValue: currentUser.userId,
-						testValue: sendMessageResponse.addedMessage.sender.senderId,
-					});
-			}
-		);
-	}
-);
+			assertion()
+				.chatId(
+					{
+						test: sendMessageResponse.chatId,
+					},
+					{
+						stringEquality: false,
+					}
+				)
+				.messageText({
+					equal: messageText,
+					test: sendMessageResponse.addedMessage.messageText,
+				})
+				.messageId(
+					{
+						test: sendMessageResponse.addedMessage.messageId,
+					},
+					{
+						stringEquality: false,
+					}
+				)
+				.userId({
+					equal: currentUser.userId,
+					test: sendMessageResponse.addedMessage.sender.senderId,
+				});
+		}
+	);
+});

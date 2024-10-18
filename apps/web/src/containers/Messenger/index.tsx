@@ -68,9 +68,8 @@ const Messenger = () => {
 	});
 
 	useListener({
-		evName: "addContactWithCellphone",
-		cb: (response) =>
-			userStore.addContactWithCellphone(response.data.newContact),
+		evName: "addContact",
+		cb: (response) => userStore.addContact(response.data.newContact),
 	});
 
 	useListener({
@@ -84,8 +83,8 @@ const Messenger = () => {
 	});
 
 	useListener({
-		evName: "blockUser",
-		cb: (response) => userStore.blockUser(response.data.blockedUser),
+		evName: "addBlock",
+		cb: (response) => userStore.addBlock(response.data.blockedUser),
 	});
 	useListener({
 		evName: "removeBlock",
@@ -93,14 +92,14 @@ const Messenger = () => {
 	});
 
 	useListener({
-		evName: "getPublicData",
+		evName: "getPublicInfo",
 		cb: async (response) => {
-			userStore.updateUser(response.data.publicData);
+			userStore.updateUser(response.data.publicInfo);
 		},
 	});
 
 	useListener({
-		evName: "updatePublicData",
+		evName: "updatePublicInfo",
 		cb: ({ data: { userPublicData } }) =>
 			userStore.currentUserData.userId === userPublicData.userId
 				? userStore.updateCurrentUserPublicData(userPublicData)

@@ -19,7 +19,11 @@ export class UserController {
 		const userInfo = await this.userService.findBySessionId(req.sessionId);
 
 		if (!userInfo)
-			this.errorStoreService.throw("notFound", "USER_INFO_NOT_FOUND");
+			this.errorStoreService.throw(
+				"notFound",
+				"USER_INFO_NOT_FOUND",
+				UserController.name
+			);
 
 		return {
 			data: userInfo,

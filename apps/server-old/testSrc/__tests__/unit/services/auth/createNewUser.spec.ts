@@ -4,14 +4,14 @@ import { DBUserData } from "@repo/types";
 import { services } from "~/services";
 
 import { assertion } from "@/classes/Assertion";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
 describe(
-	utils.createTestMessage.unitSuccessDescribe("createNewUser", "service"),
+	messageCreators.unitSuccessDescribe("createNewUser", "service"),
 	() => {
 		it(
-			utils.createTestMessage.unitSuccessTest(
+			messageCreators.unitSuccessTest(
 				"createNewUser",
 				"service",
 				"should successfully create new user"
@@ -19,7 +19,7 @@ describe(
 			async () => {
 				const userData: DBUserData = {
 					...userUtils.getDBDefaultUserData(),
-					...randomMaker.unusedContact(),
+					...randomizer.unusedContact(),
 				};
 
 				await services.user.createNewUser(userData);
@@ -29,8 +29,8 @@ describe(
 				});
 
 				assertion().dbUserData({
-					testValue: foundUser,
-					equalValue: userData,
+					test: foundUser,
+					equal: userData,
 				});
 			}
 		);
@@ -40,7 +40,7 @@ describe(
 await utils.generateServiceFailTest("createNewUser", "USER_EXIST", async () => {
 	const userData: DBUserData = {
 		...userUtils.getDBDefaultUserData(),
-		...randomMaker.unusedContact(),
+		...randomizer.unusedContact(),
 	};
 
 	await services.user.createNewUser(userData);

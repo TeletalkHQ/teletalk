@@ -3,30 +3,29 @@ import { DBUserData, FullNameWithUserId } from "@repo/types";
 import { services } from "~/services";
 
 import { assertion } from "@/classes/Assertion";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
 describe(
-	utils.createTestMessage.unitSuccessDescribe("removeContact", "service"),
+	messageCreators.unitSuccessDescribe("removeContact", "service"),
 	() => {
 		it(
-			utils.createTestMessage.unitSuccessTest(
+			messageCreators.unitSuccessTest(
 				"removeContact",
 				"service",
 				"should remove contact with specified userId"
 			),
 			async () => {
-				const { user: currentUser, sessionId } =
-					await randomMaker.serviceUser();
+				const { user: currentUser, sessionId } = await randomizer.serviceUser();
 
 				const removingContacts: FullNameWithUserId[] = [];
 
 				const length = 10;
-				const users = await Promise.all(randomMaker.serviceBatchUsers(length));
+				const users = await Promise.all(randomizer.serviceBatchUsers(length));
 
 				for (const { user: targetUser } of users) {
 					const addingContact = {
-						...randomMaker.fullName(),
+						...randomizer.fullName(),
 						userId: targetUser.userId,
 					};
 
@@ -52,8 +51,8 @@ describe(
 					})) as DBUserData;
 
 					assertion().contactsWithUserId({
-						testValue: contacts,
-						equalValue: removingContacts,
+						test: contacts,
+						equal: removingContacts,
 					});
 				}
 			}
@@ -62,19 +61,19 @@ describe(
 );
 
 await utils.generateServiceFailTest("removeContact", "CURRENT_USER_NOT_EXIST", {
-	currentSessionId: randomMaker.sessionId(),
-	targetUserId: randomMaker.userId(),
+	currentSessionId: randomizer.sessionId(),
+	targetUserId: randomizer.userId(),
 });
 
 await utils.generateServiceFailTest(
 	"removeContact",
 	"CONTACT_ITEM_NOT_EXIST",
 	async () => {
-		const { sessionId } = await randomMaker.serviceUser();
+		const { sessionId } = await randomizer.serviceUser();
 
 		return {
 			currentSessionId: sessionId,
-			targetUserId: randomMaker.userId(),
+			targetUserId: randomizer.userId(),
 		};
 	}
 );

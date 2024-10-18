@@ -8,13 +8,13 @@ import { useFindUserById } from "./useFindUserById";
 
 type UseUserPublicData = (userId: UserId) => {
 	loading: boolean;
-	publicData: UserItem;
+	publicInfo: UserItem;
 };
 
 export const useGetPublicData: UseUserPublicData = (userId) => {
 	const userStore = useUserStore();
-	const { data: publicData } = useFindUserById(userId);
-	const { handler: getPublicData, loading } = useEmitter("getPublicData");
+	const { data: publicInfo } = useFindUserById(userId);
+	const { handler: getPublicInfo, loading } = useEmitter("getPublicInfo");
 	useEffect(() => {
 		if (!userId || !userStore.isUserDataSettled) return;
 
@@ -25,14 +25,14 @@ export const useGetPublicData: UseUserPublicData = (userId) => {
 	const handler = () => {
 		if (userStore.users.some((i) => i.userId === userId)) return;
 
-		getPublicData.emitFull({
+		getPublicInfo.send({
 			userId,
 		});
 	};
 
 	return {
 		loading,
-		publicData,
+		publicInfo,
 		handler,
 	};
 };

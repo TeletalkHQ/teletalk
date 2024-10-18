@@ -2,19 +2,19 @@ import { SocketOnHandler } from "@repo/socket";
 
 import { services } from "~/services";
 
-export const getPublicData: SocketOnHandler<"getPublicData"> = async (
+export const getPublicInfo: SocketOnHandler<"getPublicInfo"> = async (
 	_socket,
 	data
 ) => {
 	const { userId } = data;
 
-	const { publicData } = await services.user.getPublicData({
+	const { publicInfo } = await services.user.getPublicInfo({
 		targetUserId: userId,
 	});
 
 	return {
 		data: {
-			publicData,
+			publicInfo,
 		},
 	};
 };

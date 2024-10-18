@@ -29,8 +29,8 @@ const RightSide = () => {
 
 	useEffect(() => {
 		if (userStore.currentUserData.userId)
-			joinHandler.emitFull(undefined, () => {
-				getOnlineClientsHandler.emitFull(undefined);
+			joinHandler.send(undefined, () => {
+				getOnlineClientsHandler.send(undefined);
 			});
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps

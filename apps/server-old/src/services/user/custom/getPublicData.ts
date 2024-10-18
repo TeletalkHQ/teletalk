@@ -5,13 +5,13 @@ import { UserId, UserPublicData } from "@repo/types";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
 
-export const getPublicData = serviceBuilder
+export const getPublicInfo = serviceBuilder
 	.create<
 		{
 			targetUserId: UserId;
 		},
 		{
-			publicData: UserPublicData;
+			publicInfo: UserPublicData;
 		},
 		{
 			targetUser: HydratedUser;
@@ -20,7 +20,7 @@ export const getPublicData = serviceBuilder
 	.setBeforeRunMiddlewares(serviceMiddlewares.findTargetUser)
 	.setBody(async (data) => {
 		return {
-			publicData: extractor.userPublicData(data.targetUser),
+			publicInfo: extractor.userPublicData(data.targetUser),
 		};
 	})
 	.build();

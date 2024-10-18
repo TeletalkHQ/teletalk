@@ -9,7 +9,7 @@ import {
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
 
-export const addContactWithCellphone = serviceBuilder
+export const addContact = serviceBuilder
 	.create<
 		{
 			addingContact: UnknownCellphone & FullName;

@@ -47,7 +47,7 @@ export class EmptyMaker {
 		};
 	}
 
-	emptyUserPublicData(): BaseSchema.UserPublicInfo {
+	emptyUserPublicData(): BaseSchema.PublicInfo {
 		return {
 			...this.emptyFullName(),
 			bio: "",
@@ -85,14 +85,14 @@ export class EmptyMaker {
 	}
 
 	userWithPublicData(
-		publicData: BaseSchema.UserPublicInfo,
+		publicInfo: BaseSchema.PublicInfo,
 		userItem?: BaseSchema.ClientUser
 	): BaseSchema.ClientUser {
 		return {
 			...this.emptyUser(),
-			...publicData,
+			...publicInfo,
 			...(userItem || {}),
-			...this.originalFullName(publicData),
+			...this.originalFullName(publicInfo),
 		};
 	}
 

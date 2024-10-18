@@ -44,7 +44,11 @@ export class ResponseInterceptor implements NestInterceptor {
 		});
 
 		if (!routeSchema)
-			this.errorStoreService.throw("internal", "ROUTE_SCHEMA_NOT_FOUND");
+			this.errorStoreService.throw(
+				"internal",
+				"ROUTE_SCHEMA_NOT_FOUND",
+				ResponseInterceptor.name
+			);
 
 		return routeSchema;
 	}

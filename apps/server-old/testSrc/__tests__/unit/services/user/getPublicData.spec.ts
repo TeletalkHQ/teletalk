@@ -3,34 +3,34 @@ import { extractor } from "@repo/classes";
 import { services } from "~/services";
 
 import { assertion } from "@/classes/Assertion";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
 describe(
-	utils.createTestMessage.unitSuccessDescribe("getPublicData", "service"),
+	messageCreators.unitSuccessDescribe("getPublicInfo", "service"),
 	() => {
 		it(
-			utils.createTestMessage.unitSuccessTest(
-				"getPublicData",
+			messageCreators.unitSuccessTest(
+				"getPublicInfo",
 				"service",
 				"should add new blacklist item with target user id"
 			),
 			async () => {
-				const { user: currentUser } = await randomMaker.serviceUser();
+				const { user: currentUser } = await randomizer.serviceUser();
 
-				const { publicData } = await services.user.getPublicData({
+				const { publicInfo } = await services.user.getPublicInfo({
 					targetUserId: currentUser.userId,
 				});
 
 				assertion().userPublicData({
-					testValue: publicData,
-					equalValue: extractor.userPublicData(currentUser),
+					test: publicInfo,
+					equal: extractor.userPublicData(currentUser),
 				});
 			}
 		);
 	}
 );
 
-await utils.generateServiceFailTest("getPublicData", "TARGET_USER_NOT_EXIST", {
-	targetUserId: randomMaker.userId(),
+await utils.generateServiceFailTest("getPublicInfo", "TARGET_USER_NOT_EXIST", {
+	targetUserId: randomizer.userId(),
 });

@@ -23,10 +23,10 @@ const ChatListItem: React.FC<Props> = ({
 	selected,
 	userId,
 }) => {
-	const { publicData } = useGetPublicData(userId);
+	const { publicInfo } = useGetPublicData(userId);
 	const { avatarSrc } = useGetAvatar(userId);
 
-	const fullName = userUtils.concatFirstNameWithLastName(publicData);
+	const fullName = userUtils.concatFirstNameWithLastName(publicInfo);
 
 	return (
 		<Box.ListItemButton

@@ -60,14 +60,9 @@ export const usePing = () => {
 	};
 
 	const emitPingEvent = () => {
-		return pingHandler.emitFull(
-			undefined,
-			successPingCallback,
-			failPingCallback,
-			{
-				timeout: 0,
-			}
-		);
+		return pingHandler.send(undefined, successPingCallback, failPingCallback, {
+			timeout: 0,
+		});
 	};
 
 	const successPingCallback = () => {

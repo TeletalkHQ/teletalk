@@ -13,11 +13,11 @@ import Content from "./Content";
 
 const BlockUser = () => {
 	const globalStore = useGlobalStore();
-	const dialogState = useDialogState("blockUser");
+	const dialogState = useDialogState("addBlock");
 	const selectedUserForActions = useFindSelectedUserForActions();
 
 	const { handler: addBlockHandler, loading: addBlockLoading } =
-		useEmitter("blockUser");
+		useEmitter("addBlock");
 
 	const { handler: removeBlockHandler, loading: removeBlockLoading } =
 		useEmitter("removeBlock");
@@ -26,7 +26,7 @@ const BlockUser = () => {
 		(selectedUserForActions.isBlocked
 			? removeBlockHandler
 			: addBlockHandler
-		).emitFull(
+		).send(
 			{
 				userId: selectedUserForActions.userId,
 			},

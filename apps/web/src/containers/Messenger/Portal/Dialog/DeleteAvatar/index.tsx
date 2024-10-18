@@ -11,7 +11,7 @@ const DeleteAvatar = () => {
 	const { handler, loading } = useEmitter("updateAvatar");
 
 	const handleDelete = () => {
-		handler.emitFull(
+		handler.send(
 			{
 				avatarSrc: "",
 			},

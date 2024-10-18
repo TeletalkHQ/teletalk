@@ -844,7 +844,7 @@ export const stuff = {
 				},
 			},
 			isAuthRequired: true,
-			name: "blockUser",
+			name: "addBlock",
 		},
 		{
 			method: "customOn",
@@ -870,7 +870,7 @@ export const stuff = {
 				},
 			},
 			isAuthRequired: true,
-			name: "addContactWithCellphone",
+			name: "addContact",
 		},
 		{
 			method: "customOn",
@@ -962,7 +962,7 @@ export const stuff = {
 			method: "customOn",
 			inputFields: { userId: { required: true, type: "string" } },
 			outputFields: {
-				publicData: {
+				publicInfo: {
 					required: true,
 					type: "object",
 					value: {
@@ -975,7 +975,7 @@ export const stuff = {
 				},
 			},
 			isAuthRequired: true,
-			name: "getPublicData",
+			name: "getPublicInfo",
 		},
 		{
 			method: "customOn",
@@ -1104,7 +1104,7 @@ export const stuff = {
 				},
 			},
 			isAuthRequired: true,
-			name: "updatePublicData",
+			name: "updatePublicInfo",
 		},
 	],
 	validationModels: {

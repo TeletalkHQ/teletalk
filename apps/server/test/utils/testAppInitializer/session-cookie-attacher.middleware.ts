@@ -12,7 +12,11 @@ export class SessionCookieAttacher implements NestMiddleware {
 		const session = req.headers.authorization;
 
 		if (!session)
-			this.errorStoreService.throw("unauthorized", "SESSION_NOT_FOUND");
+			this.errorStoreService.throw(
+				"unauthorized",
+				"SESSION_NOT_FOUND",
+				SessionCookieAttacher.name
+			);
 
 		req.cookies[COOKIE_NAMES.SESSION] = session;
 

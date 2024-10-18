@@ -14,8 +14,8 @@ import Title from "./Title";
 const AddContactWithCellphone = () => {
 	const globalStore = useGlobalStore();
 	const userStore = useUserStore();
-	const { handler, loading } = useEmitter("addContactWithCellphone");
-	const dialogState = useDialogState("addContactWithCellphone");
+	const { handler, loading } = useEmitter("addContact");
+	const dialogState = useDialogState("addContact");
 
 	const handleChange: OnInputChange = (e) => {
 		userStore.updateAddingContactWithCellphone({
@@ -24,7 +24,7 @@ const AddContactWithCellphone = () => {
 	};
 
 	const handleAddClick = () => {
-		handler.emitFull(userStore.addingContactWithCellphone, handleClose);
+		handler.send(userStore.addingContactWithCellphone, handleClose);
 	};
 
 	const handleClose = () => {

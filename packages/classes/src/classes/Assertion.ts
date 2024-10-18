@@ -107,9 +107,36 @@ export class Assertion {
 		const testValue = baseSchema.contactsItem.parse(values.test);
 
 		if (values.equal) {
-			this.fullName(values);
+			this.firstName({
+				test: testValue.firstName,
+				equal: values.equal.firstName,
+			});
 
-			this.cellphone(values);
+			if (testValue.lastName) {
+				this.lastName({
+					test: testValue.lastName,
+					equal: values.equal.lastName,
+				});
+			}
+
+			if (testValue.countryCode) {
+				this.countryCode({
+					test: testValue.countryCode,
+					equal: values.equal.countryCode,
+				});
+			}
+			if (testValue.countryName) {
+				this.lastName({
+					test: testValue.countryName,
+					equal: values.equal.countryName,
+				});
+			}
+			if (testValue.phoneNumber) {
+				this.lastName({
+					test: testValue.phoneNumber,
+					equal: values.equal.phoneNumber,
+				});
+			}
 
 			this.userId({
 				equal: values.equal.userId,
@@ -325,33 +352,31 @@ export class Assertion {
 		}
 	});
 
-	userPublicInfo = this.multiInitializer<BaseSchema.UserPublicInfo>(
-		(values) => {
-			const testValue = baseSchema.publicData.parse(values.test);
+	userPublicInfo = this.multiInitializer<BaseSchema.PublicInfo>((values) => {
+		const testValue = baseSchema.publicInfo.parse(values.test);
 
-			if (values.equal) {
-				this.bio({
-					test: testValue.bio,
-					equal: values.equal.bio,
-				});
+		if (values.equal) {
+			this.bio({
+				test: testValue.bio,
+				equal: values.equal.bio,
+			});
 
-				this.fullName({
-					equal: values.equal,
-					test: testValue,
-				});
+			this.fullName({
+				equal: values.equal,
+				test: testValue,
+			});
 
-				this.userId({
-					test: testValue.userId,
-					equal: values.equal.userId,
-				});
+			this.userId({
+				test: testValue.userId,
+				equal: values.equal.userId,
+			});
 
-				this.username({
-					test: testValue.username,
-					equal: values.equal.username,
-				});
-			}
+			this.username({
+				test: testValue.username,
+				equal: values.equal.username,
+			});
 		}
-	);
+	});
 }
 
 export const assertion = () => new Assertion();

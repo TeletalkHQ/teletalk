@@ -1,4 +1,4 @@
-import { randomMaker } from "@repo/classes";
+import { randomizer } from "@repo/classes";
 import { HydratedPrivateChat, HydratedUser, models } from "@repo/model";
 import {
 	ChatId,
@@ -43,7 +43,7 @@ export const sendMessage = serviceBuilder
 	.setBody(async (data) => {
 		const newMessage = {
 			createdAt: Date.now(),
-			messageId: randomMaker.id(chatModels.messageId.max),
+			messageId: randomizer.id(chatModels.messageId.max),
 			messageText: data.messageText,
 			sender: {
 				senderId: data.currentParticipant.userId,

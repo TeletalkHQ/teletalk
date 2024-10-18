@@ -4,13 +4,13 @@ import { SocketOnHandler } from "@repo/socket";
 import { services } from "~/services";
 import { utils } from "~/utils";
 
-export const updatePublicData: SocketOnHandler<"updatePublicData"> = async (
+export const updatePublicInfo: SocketOnHandler<"updatePublicInfo"> = async (
 	socket,
 	data
 ) => {
 	const { bio, firstName, lastName, username } = data;
 
-	const result = await services.user.updatePublicData({
+	const result = await services.user.updatePublicInfo({
 		currentSessionId: socket.sessionId,
 		updateProperties: {
 			bio,
@@ -31,8 +31,8 @@ export const updatePublicData: SocketOnHandler<"updatePublicData"> = async (
 	socket
 		.to("public")
 		.emit<EventName>(
-			"updatePublicData",
-			utils.createSuccessResponse("updatePublicData", returnData)
+			"updatePublicInfo",
+			utils.createSuccessResponse("updatePublicInfo", returnData)
 		);
 
 	return {

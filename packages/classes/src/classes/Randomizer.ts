@@ -137,7 +137,7 @@ export class Randomizer {
 		);
 	}
 
-	userPublicInfo(): BaseSchema.UserPublicInfo {
+	userPublicInfo(): BaseSchema.PublicInfo {
 		return {
 			...this.fullName(),
 			bio: this.string(getStringSchemaMaxLength(baseSchema.bio)),
@@ -149,8 +149,8 @@ export class Randomizer {
 	arrayOfUserPublicInfo(
 		length: number,
 		userId?: BaseSchema.UserId
-	): BaseSchema.UserPublicInfo[] {
-		const data: BaseSchema.UserPublicInfo[] = [];
+	): BaseSchema.PublicInfo[] {
+		const data: BaseSchema.PublicInfo[] = [];
 
 		for (let i = 0; i < length; i++) {
 			const publicInfo = this.userPublicInfo();

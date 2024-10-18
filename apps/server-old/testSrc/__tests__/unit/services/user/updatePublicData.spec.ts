@@ -4,32 +4,31 @@ import { DBUserData } from "@repo/types";
 import { services } from "~/services";
 
 import { assertion } from "@/classes/Assertion";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
 describe(
-	utils.createTestMessage.unitSuccessDescribe("updatePublicData", "service"),
+	messageCreators.unitSuccessDescribe("updatePublicInfo", "service"),
 	() => {
 		it(
-			utils.createTestMessage.unitSuccessTest(
-				"updatePublicData",
+			messageCreators.unitSuccessTest(
+				"updatePublicInfo",
 				"service",
 				"should update user public data"
 			),
 			async () => {
-				const { user: currentUser, sessionId } =
-					await randomMaker.serviceUser();
+				const { user: currentUser, sessionId } = await randomizer.serviceUser();
 
 				const length = 10;
-				const usersPublicData = randomMaker.usersPublicData(
+				const usersPublicData = randomizer.usersPublicData(
 					length,
 					currentUser.userId
 				);
 
-				for (const publicData of usersPublicData) {
-					await services.user.updatePublicData({
+				for (const publicInfo of usersPublicData) {
+					await services.user.updatePublicInfo({
 						currentSessionId: sessionId,
-						updateProperties: publicData,
+						updateProperties: publicInfo,
 					});
 
 					const user = (await services.user.findByUserId({
@@ -37,8 +36,8 @@ describe(
 					})) as DBUserData;
 
 					assertion().userPublicData({
-						testValue: extractor.userPublicData(user),
-						equalValue: publicData,
+						test: extractor.userPublicData(user),
+						equal: publicInfo,
 					});
 				}
 			}
@@ -47,10 +46,10 @@ describe(
 );
 
 await utils.generateServiceFailTest(
-	"updatePublicData",
+	"updatePublicInfo",
 	"CURRENT_USER_NOT_EXIST",
 	{
-		currentSessionId: randomMaker.sessionId(),
-		updateProperties: randomMaker.userPublicData(),
+		currentSessionId: randomizer.sessionId(),
+		updateProperties: randomizer.userPublicData(),
 	}
 );

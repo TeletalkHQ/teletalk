@@ -1,156 +1,149 @@
-// import { IOCollection, IOName } from "@repo/schema";
-// import { SocketResponse, SocketRoute } from "@repo/socket";
-// import chai from "chai";
-// import { Socket as Client } from "socket.io-client";
+import { FIELD_TYPE } from "@repo/constants";
+import { EventSchema, EventShortName } from "@repo/schema";
+import { SocketRequest, SocketResponse } from "@repo/socket";
+import { expect } from "chai";
+import { Socket } from "socket.io-client";
 
-// import { RequesterOptions } from "@/types";
-// import { loggerHelper } from "@/utils/logHelper";
-// import { FIELD_TYPE } from "@/variables";
+import { logHelper } from "./LogHelper";
 
-// export class Requester<T extends IOName> {
-// 	private error?: Error;
-// 	private event: SocketRoute<T>;
-// 	private options: RequesterOptions = {};
-// 	private requestData: IOCollection[T]["input"];
-// 	private response: SocketResponse<T>;
-// 	private socket: Client;
+export interface EventHandlerOptions {
+	session?: string;
+	shouldLogDetails?: boolean;
+}
 
-// 	constructor(socket: Client, event: SocketRoute<T>) {
-// 		this.setSocket(socket);
-// 		this.setEvent(event);
-// 	}
+// TODO: Remove
+type ErrorReason = string;
+interface CustomError {
+	reason: ErrorReason;
+}
 
-// 	getOptions() {
-// 		return { ...this.options };
-// 	}
-// 	setOptions(newOptions: Partial<RequesterOptions>) {
-// 		this.options = this.mergeOptions(newOptions);
-// 		return this;
-// 	}
-// 	mergeOptions(newOptions: Partial<RequesterOptions>) {
-// 		return {
-// 			...this.getOptions(),
-// 			...newOptions,
-// 		};
-// 	}
+export type EventHandlerResponse<T extends EventShortName> = SocketResponse<T>;
 
-// 	getSocket() {
-// 		return this.socket;
-// 	}
-// 	setSocket(socket: Client) {
-// 		this.socket = socket;
-// 		return this;
-// 	}
+type RequestBody<T extends EventShortName> = SocketRequest<T>;
 
-// 	getEvent() {
-// 		return this.event;
-// 	}
-// 	getEventName() {
-// 		return this.getEvent().name;
-// 	}
-// 	setEvent(event: typeof this.event) {
-// 		this.event = event;
-// 		return this;
-// 	}
-// 	getInputFields() {
-// 		return this.getEvent().inputValidator;
-// 	}
+export class EventHandler<T extends EventShortName> {
+	private expectedError?: CustomError;
 
-// 	getError() {
-// 		return this.error;
-// 	}
-// 	setError(reason: ErrorReason) {
-// 		this.error = errorStore.find(reason);
-// 		return this;
-// 	}
+	private options: EventHandlerOptions = {
+		session: undefined,
+		shouldLogDetails: false,
+	};
 
-// 	private getEmitData() {
-// 		return this.requestData;
-// 	}
-// 	private setEmitData(requestData: IOCollection[T]["input"]) {
-// 		this.requestData = requestData;
-// 		return this;
-// 	}
+	private body: RequestBody<T>;
+	private response: EventHandlerResponse<T>;
 
-// 	async emit() {
-// 		const response = (await new Promise((resolve, _reject) => {
-// 			// this.socket.connect();
-// 			this.socket.emit(this.getEventName(), this.getEmitData(), resolve);
-// 		})) as SocketResponse<T>;
+	constructor(
+		private eventSchema: EventSchema<T>,
+		private socket: Socket,
+		options: EventHandlerOptions = {}
+	) {
+		this.updateOptions(options);
+	}
 
-// 		// this.socket.disconnect();
-// 		this.setResponse(response);
+	updateOptions(newOptions: Partial<EventHandlerOptions>) {
+		this.options = this.mergeOptions(newOptions);
+		return this;
+	}
+	private mergeOptions(newOptions: Partial<EventHandlerOptions>) {
+		return {
+			...this.options,
+			...newOptions,
+		};
+	}
 
-// 		return this;
-// 	}
+	// TODO: Remove
+	setExpectedError(_reason: ErrorReason) {
+		// this.error = errorStore.find(reason);
+		return this;
+	}
 
-// 	async emitFull(
-// 		data: IOCollection[T]["input"],
-// 		reason?: ErrorReason,
-// 		options: Partial<RequesterOptions> = this.getOptions()
-// 	) {
-// 		loggerHelper.logStartTestRequest();
+	private getBody() {
+		return this.body;
+	}
+	private setBody(body: RequestBody<T>) {
+		this.body = body;
+		return this;
+	}
 
-// 		const finalOptions = this.mergeOptions(options);
+	async send(
+		data: RequestBody<T>,
+		reason?: ErrorReason,
+		options: Partial<EventHandlerOptions> = this.options
+	) {
+		if (this.options.shouldLogDetails) logHelper.logStartTestRequest();
 
-// 		if (data) this.setEmitData(data);
+		const finalOptions = this.mergeOptions(options);
 
-// 		loggerHelper.logRequestDetails(
-// 			finalOptions,
-// 			this.getEmitData(),
-// 			this.getEvent(),
-// 			this.getError()
-// 		);
+		if (data) this.setBody(data);
 
-// 		if (reason) this.setError(reason);
+		if (this.options.shouldLogDetails)
+			logHelper.logRequestDetails(
+				finalOptions,
+				this.getBody(),
+				this.eventSchema,
+				this.expectedError
+			);
 
-// 		await this.emit();
+		if (reason) this.setExpectedError(reason);
 
-// 		this.checkOk().checkErrors();
+		const response = (await new Promise((resolve, _reject) => {
+			// this.socket.connect();
+			this.socket.emit(this.eventSchema.ioName, this.getBody(), resolve);
+		})) as SocketResponse<T>;
+		// this.socket.disconnect();
 
-// 		loggerHelper.logEndTestRequest();
+		this.setResponse(response);
 
-// 		return this.getResponse();
-// 	}
+		this.checkErrors();
 
-// 	getResponse() {
-// 		return this.response;
-// 	}
+		if (this.options.shouldLogDetails) logHelper.logEndTestRequest();
 
-// 	private setResponse(response: SocketResponse<T>) {
-// 		this.response = response;
-// 		return this;
-// 	}
+		return this.getResponse();
+	}
 
-// 	private checkOk() {
-// 		const requestOk = this.getError() ? false : true;
-// 		const responseOk = this.getResponse().ok;
-// 		chai.expect(responseOk).to.be.equal(requestOk);
-// 		return this;
-// 	}
+	getResponse() {
+		return this.response;
+	}
 
-// 	private checkErrors() {
-// 		const responseOk = this.getResponse().ok;
-// 		if (responseOk !== true) this.checkErrorReason();
+	getSession() {
+		return this.options.session;
+	}
 
-// 		return this;
-// 	}
-// 	private checkErrorReason() {
-// 		const expectedError = this.getError();
-// 		if (!expectedError) throw "Error is not defined";
+	private setResponse(response: EventHandlerResponse<T>) {
+		this.response = response;
+		return this;
+	}
 
-// 		const { reason: expectedReason } = expectedError;
-// 		const { errors } = this.getResponse();
-// 		chai.expect(errors).to.be.an(FIELD_TYPE.ARRAY);
+	private isEventFailed() {
+		return this.getResponse().ok === false;
+	}
 
-// 		const error = errors?.find((i) => i.reason === expectedReason);
-// 		chai.expect(error?.reason).to.be.equal(expectedReason);
+	private checkErrors() {
+		if (this.isEventFailed() && !this.expectedError)
+			throw Error("ERROR_NOT_SPECIFIED", { cause: "REQUEST_FAILED" });
 
-// 		return this;
-// 	}
-// }
+		if (!this.isEventFailed() && this.expectedError)
+			throw Error("REQUEST_DID_NOT_FAILED", { cause: "ERROR_EXPECTED" });
 
-// export const requesterMaker = <T extends IOName>(
-// 	socket: Client,
-// 	event: SocketRoute<T>
-// ) => new Requester(socket, event);
+		if (!this.isEventFailed() && !this.expectedError) return;
+
+		const expectedReason = this.expectedError?.reason;
+
+		const response = this.getResponse();
+
+		if (!response.errors) throw Error("ERRORS_ARRAY_MISSING");
+
+		expect(response.errors).to.be.an(FIELD_TYPE.ARRAY);
+
+		const foundError = response.errors.find((i) => i.reason === expectedReason);
+		expect(foundError?.reason).to.be.equal(expectedReason);
+
+		return this;
+	}
+}
+
+export const eventHandler = <T extends EventShortName>(
+	eventSchema: EventSchema<T>,
+	socket: Socket,
+	options?: EventHandlerOptions
+) => new EventHandler<T>(eventSchema, socket, options);

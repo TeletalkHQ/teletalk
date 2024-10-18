@@ -3,58 +3,55 @@ import { DBUserData, Sessions } from "@repo/types";
 import { services } from "~/services";
 
 import { assertion } from "@/classes/Assertion";
-import { randomMaker } from "@/classes/RandomMaker";
+import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
-describe(
-	utils.createTestMessage.unitSuccessDescribe("addSession", "service"),
-	() => {
-		it(
-			utils.createTestMessage.unitSuccessTest(
-				"addSession",
-				"service",
-				"should add new session"
-			),
-			async () => {
-				const { user: currentUser, sessionId } =
-					await randomMaker.serviceUser();
+describe(messageCreators.unitSuccessDescribe("addSession", "service"), () => {
+	it(
+		messageCreators.unitSuccessTest(
+			"addSession",
+			"service",
+			"should add new session"
+		),
+		async () => {
+			const { user: currentUser, sessionId } = await randomizer.serviceUser();
 
-				const length = 10;
+			const length = 10;
 
-				const addingSessions: Sessions = [
+			const addingSessions: Sessions = [
+				{
+					sessionId,
+				},
+			];
+
+			for (let i = 0; i < length; i++) {
+				const randomSessionId = randomizer.sessionId();
+
+				await services.user.addSession({
+					currentUserId: currentUser.userId,
+					sessionId: randomSessionId,
+				});
+
+				addingSessions.push({
+					sessionId: randomSessionId,
+				});
+
+				const { sessions: currentSessions } = (await services.user.findByUserId(
 					{
-						sessionId,
-					},
-				];
+						targetUserId: currentUser.userId,
+					}
+				)) as DBUserData;
 
-				for (let i = 0; i < length; i++) {
-					const randomSessionId = randomMaker.sessionId();
-
-					await services.user.addSession({
-						currentUserId: currentUser.userId,
-						sessionId: randomSessionId,
-					});
-
-					addingSessions.push({
-						sessionId: randomSessionId,
-					});
-
-					const { sessions: currentSessions } =
-						(await services.user.findByUserId({
-							targetUserId: currentUser.userId,
-						})) as DBUserData;
-
-					assertion().sessions({
-						testValue: currentSessions,
-						equalValue: addingSessions,
-					});
-				}
+				assertion().sessions({
+					test: currentSessions,
+					equal: addingSessions,
+				});
 			}
-		);
-	}
-);
+		}
+	);
+});
 
 await utils.generateServiceFailTest("addSession", "CURRENT_USER_NOT_EXIST", {
-	currentUserId: randomMaker.userId(),
-	sessionId: randomMaker.sessionId(),
+	currentUserId: randomizer.userId(),
+	sessionId: randomizer.sessionId(),
 });

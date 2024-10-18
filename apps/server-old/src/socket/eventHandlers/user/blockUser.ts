@@ -2,8 +2,8 @@ import { SocketOnHandler } from "@repo/socket";
 
 import { services } from "~/services";
 
-export const blockUser: SocketOnHandler<"blockUser"> = async (socket, data) => {
-	await services.user.blockUser({
+export const addBlock: SocketOnHandler<"addBlock"> = async (socket, data) => {
+	await services.user.addBlock({
 		targetUserId: data.userId,
 		currentSessionId: socket.sessionId,
 	});

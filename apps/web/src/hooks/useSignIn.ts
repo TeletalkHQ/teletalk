@@ -13,7 +13,7 @@ export const useSignIn = () => {
 	const { handler: signInHandler, loading } = useEmitter("signIn");
 
 	const handler = () => {
-		signInHandler.emitFull(
+		signInHandler.send(
 			extractor.unknownCellphone(authStore),
 			({ data }) => {
 				storage.set("session", data.session);

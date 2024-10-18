@@ -13,7 +13,7 @@ export const useCreate = () => {
 	const { handler: createHandler, loading } = useEmitter("createNewUser");
 
 	const handler = async () => {
-		createHandler.emitFull(extractor.fullName(authStore), ({ data }) => {
+		createHandler.send(extractor.fullName(authStore), ({ data }) => {
 			authStore.updateFirstName("");
 			authStore.updateLastName("");
 

@@ -41,10 +41,15 @@ export class ErrorStoreService {
 		shouldLogError: true,
 	};
 
-	throw(type: ErrorType, reason: ErrorReason, options = this.options): never {
+	throw(
+		type: ErrorType,
+		reason: ErrorReason,
+		ctxName: string,
+		options = this.options
+	): never {
 		const ErrorClass = errorTypes[type];
 
-		this.handleLogs(type, reason, options);
+		this.handleLogs(type, reason, ctxName, options);
 
 		throw new ErrorClass(reason);
 	}
@@ -52,6 +57,7 @@ export class ErrorStoreService {
 	private handleLogs(
 		type: ErrorType,
 		reason: ErrorReason,
+		ctxName: string,
 		options = this.options
 	) {
 		const { shouldLogError } = this.mergeOptions(options);
@@ -60,6 +66,7 @@ export class ErrorStoreService {
 			this.logger.error({
 				type,
 				reason,
+				ctxName,
 			});
 	}
 

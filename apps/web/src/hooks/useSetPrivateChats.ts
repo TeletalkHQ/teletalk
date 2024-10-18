@@ -14,7 +14,7 @@ export const useSetPrivateChats = () => {
 	}, [userStore.currentUserData.userId]);
 
 	const handler = () => {
-		getPrivateChatsHandler.emitFull(undefined, ({ data }) => {
+		getPrivateChatsHandler.send(undefined, ({ data }) => {
 			messageStore.setPrivateChats(data.privateChats);
 		});
 	};

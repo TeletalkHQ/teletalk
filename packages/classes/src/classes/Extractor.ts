@@ -10,10 +10,22 @@ export class Extractor {
 		};
 	}
 
-	contact(data: BaseSchema.ContactsItem & StringMap): BaseSchema.ContactsItem {
+	contact(
+		data: BaseSchema.Cellphone & BaseSchema.FullName & StringMap
+	): BaseSchema.ContactsItemWithoutOptionals {
 		return {
 			...this.cellphone(data),
 			...this.fullName(data),
+			userId: data.userId,
+		};
+	}
+	contactWithUserId(
+		data: BaseSchema.FullName & { userId: BaseSchema.UserId } & StringMap
+	): BaseSchema.FullName & { userId: BaseSchema.UserId } {
+		return {
+			firstName: data.firstName,
+			// TODO: Remove `lastName`
+			lastName: data.lastName,
 			userId: data.userId,
 		};
 	}
@@ -25,7 +37,7 @@ export class Extractor {
 		};
 	}
 
-	userData(data: BaseSchema.UserInfo & StringMap): BaseSchema.UserInfo {
+	userInfo(data: BaseSchema.UserInfo & StringMap): BaseSchema.UserInfo {
 		return {
 			...this.contact(data),
 			avatarSrc: data.avatarSrc,
@@ -38,7 +50,8 @@ export class Extractor {
 		};
 	}
 
-	currentUserData(data: BaseSchema.UserInfo & StringMap): BaseSchema.UserInfo {
+	// TODO: Rename or remove
+	currentUserInfo(data: BaseSchema.UserInfo & StringMap): BaseSchema.UserInfo {
 		return {
 			...this.contact(data),
 			...this.fullName(data),
@@ -53,24 +66,14 @@ export class Extractor {
 		};
 	}
 
-	userPublicData(
-		data: BaseSchema.UserPublicInfo & StringMap
-	): BaseSchema.UserPublicInfo {
+	userPublicInfo(
+		data: BaseSchema.PublicInfo & StringMap
+	): BaseSchema.PublicInfo {
 		return {
 			...this.fullName(data),
 			bio: data.bio,
 			userId: data.userId,
 			username: data.username,
-		};
-	}
-
-	contactWithUserId(
-		data: BaseSchema.FullName & { userId: BaseSchema.UserId } & StringMap
-	): BaseSchema.FullName & { userId: BaseSchema.UserId } {
-		return {
-			firstName: data.firstName,
-			lastName: data.lastName,
-			userId: data.userId,
 		};
 	}
 }

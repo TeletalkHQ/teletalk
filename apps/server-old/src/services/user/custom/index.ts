@@ -1,26 +1,26 @@
-import { addContactWithCellphone } from "./addContactWithCellphone";
+import { addBlock } from "./addBlock";
+import { addContact } from "./addContact";
 import { addContactWithUserId } from "./addContactWithUserId";
 import { addSession } from "./addSession";
-import { blockUser } from "./blockUser";
 import { createNewUser } from "./createNewUser";
 import { findByCellphone } from "./findByCellphone";
 import { findBySessionId } from "./findBySessionId";
 import { findByUserId } from "./findByUserId";
 import { getAvatar } from "./getAvatar";
 import { getContacts } from "./getContacts";
-import { getPublicData } from "./getPublicData";
+import { getPublicInfo } from "./getPublicInfo";
 import { isUserExist } from "./isUserExist";
 import { logout } from "./logout";
 import { removeBlock } from "./removeBlock";
 import { removeContact } from "./removeContact";
 import { updateAvatar } from "./updateAvatar";
 import { updateContact } from "./updateContact";
-import { updatePublicData } from "./updatePublicData";
+import { updatePublicInfo } from "./updatePublicInfo";
 
 export const userServices = {
-	blockUser,
+	addBlock,
 	addSession,
-	addContactWithCellphone,
+	addContact,
 	addContactWithUserId,
 	createNewUser,
 	findByCellphone,
@@ -28,12 +28,12 @@ export const userServices = {
 	findByUserId,
 	getAvatar,
 	getContacts,
-	getPublicData,
+	getPublicInfo,
 	isUserExist,
 	logout,
 	removeBlock,
 	removeContact,
 	updateAvatar,
 	updateContact,
-	updatePublicData,
+	updatePublicInfo,
 };

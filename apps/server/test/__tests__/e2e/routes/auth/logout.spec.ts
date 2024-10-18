@@ -1,5 +1,5 @@
 import { randomizer } from "@/classes";
-import { authHelper } from "@/classes/AuthHelper";
+import { authHelper } from "@/classes";
 import { httpHandlerCollection } from "@/utils/httpHandlerCollection";
 import { messageCreators } from "@/utils/testMessageCreators";
 
@@ -15,7 +15,9 @@ describe(messageCreators.e2eSuccessSuite("logout", "httpRoute"), () => {
 				.logout({
 					session: ah.getSession(),
 				})
-				.send(undefined);
+				.send({
+					data: undefined,
+				});
 		}
 	);
 });

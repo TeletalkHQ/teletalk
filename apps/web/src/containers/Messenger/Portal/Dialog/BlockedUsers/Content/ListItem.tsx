@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
-	const { publicData } = useGetPublicData(userItem.userId);
+	const { publicInfo } = useGetPublicData(userItem.userId);
 
 	return (
 		<Box.ListItemButton
@@ -36,7 +36,7 @@ const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
 				}}
 			>
 				<Box.Span>
-					{userUtils.concatFirstNameWithLastName(userItem, publicData)}
+					{userUtils.concatFirstNameWithLastName(userItem, publicInfo)}
 				</Box.Span>
 				<Box.Span>
 					{userUtils.concatCountryCodeWithPhoneNumber(

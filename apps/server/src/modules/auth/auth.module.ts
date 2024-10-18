@@ -6,7 +6,7 @@ import { SmsModule } from "../sms/sms.module";
 import { TempSessionStoreModule } from "../temp-session-store/temp-session-store.module";
 import { UserModule } from "../user/user.module";
 import { AuthController } from "./auth.controller";
-import { AuthIdMiddleware } from "./auth.middleware";
+import { AuthMiddleware } from "./auth.middleware";
 import { AuthService } from "./auth.service";
 
 @Module({
@@ -16,6 +16,6 @@ import { AuthService } from "./auth.service";
 })
 export class AuthModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {
-		consumer.apply(AuthIdMiddleware).forRoutes(`${getFullPath("verify")}`);
+		consumer.apply(AuthMiddleware).forRoutes(`${getFullPath("verify")}`);
 	}
 }

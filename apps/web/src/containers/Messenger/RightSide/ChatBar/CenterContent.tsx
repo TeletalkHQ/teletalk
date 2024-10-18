@@ -7,9 +7,9 @@ import { useMessageStore } from "~/store";
 const ChatBarCenterContent = () => {
 	const messageStore = useMessageStore();
 
-	const { publicData } = useGetPublicData(messageStore.selectedChatInfo.userId);
+	const { publicInfo } = useGetPublicData(messageStore.selectedChatInfo.userId);
 
-	const fullName = userUtils.concatFirstNameWithLastName(publicData);
+	const fullName = userUtils.concatFirstNameWithLastName(publicInfo);
 
 	return (
 		<Box.Flex ai="center">

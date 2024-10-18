@@ -9,21 +9,21 @@
 // import { FIELD_TYPE } from "@/variables";
 
 // describe(
-// 	utils.createTestMessage.e2eSuccessDescribe("getStuff", "event"),
+// 	messageCreators.e2eSuccessSuite("getStuff", "httpRoute"),
 // 	() => {
 // 		it(
-// 			utils.createTestMessage.e2eSuccessTest(
+// 			messageCreators.e2eSuccessTest(
 // 				"getStuff",
-// 				"event",
+// 				"httpRoute",
 // 				"should get all requirements for clients"
 // 			),
 // 			async () => {
 // 				const clientSocket = (await clientInitializer().init()).getClient();
 // 				clientSocket.connect();
 
-// 				const requester = utils.requesterCollection.getStuff(clientSocket);
+// 				const requester = httpHandlerCollection.getStuff(clientSocket);
 
-// 				const { data } = await requester.emitFull();
+// 				const { data } = await requester.send();
 
 // 				testEvents(data.events);
 // 				testModels(data.models);

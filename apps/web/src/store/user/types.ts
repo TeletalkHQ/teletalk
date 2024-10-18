@@ -44,9 +44,9 @@ export interface State {
 export type ExtendedCountryItem = CountryItem & StringMap;
 
 export interface Handlers {
-	blockUser: VoidWithArg<BlacklistItem>;
+	addBlock: VoidWithArg<BlacklistItem>;
 	addContactWithUserId: VoidWithArg<ContactItemWithEmptyCellphone>;
-	addContactWithCellphone: VoidWithArg<ContactItem>;
+	addContact: VoidWithArg<ContactItem>;
 	removeBlock: VoidWithArg<BlacklistItem>;
 	removeContact: VoidWithArg<RemoveContactIO["output"]["removedContact"]>;
 	reset: VoidNoArgsFn;

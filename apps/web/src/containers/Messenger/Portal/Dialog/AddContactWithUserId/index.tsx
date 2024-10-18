@@ -26,7 +26,7 @@ const AddContactWithUserId = () => {
 	);
 
 	const handleConfirm = () => {
-		handler.emitFull(
+		handler.send(
 			{
 				...userStore.addingContactWithUserId,
 				userId: messageStore.selectedChatInfo.userId,

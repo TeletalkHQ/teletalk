@@ -10,14 +10,14 @@ export const defaultDialogState = {
 };
 
 export const dialogNames = [
-	"addContactWithCellphone",
+	"addContact",
 	"addContactWithUserId",
 	"addServer",
 	"advanced",
 	"avatarSelector",
 	"avatarViewer",
 	"blockedUsers",
-	"blockUser",
+	"addBlock",
 	"callSettings",
 	"chatSettings",
 	"contacts",

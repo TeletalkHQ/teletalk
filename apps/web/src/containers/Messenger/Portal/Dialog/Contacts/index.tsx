@@ -32,7 +32,7 @@ const Contacts = () => {
 		},
 		{
 			text: `${isBlocked ? "Unblock" : "Block"}`,
-			handler: onContextMenuHandler("blockUser"),
+			handler: onContextMenuHandler("addBlock"),
 		},
 	];
 
@@ -44,7 +44,7 @@ const Contacts = () => {
 	const { onContextMenu } = useContextMenu(createContextMenuList());
 
 	const handleAddContactClick = () => {
-		globalStore.openDialog("addContactWithCellphone");
+		globalStore.openDialog("addContact");
 	};
 
 	const handleContactItemClicked = (contact: UserItem) => {

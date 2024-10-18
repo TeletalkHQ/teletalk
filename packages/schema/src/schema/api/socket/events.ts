@@ -4,7 +4,7 @@ export const socketEvents = [
 	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		ioName: "addContactWithCellphone",
+		ioName: "addContact",
 	}),
 	new EventGenerator({
 		isAuthRequired: true,
@@ -69,7 +69,7 @@ export const socketEvents = [
 	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		ioName: "getPublicData",
+		ioName: "getPublicInfo",
 	}),
 	new EventGenerator({
 		isAuthRequired: true,
@@ -114,8 +114,10 @@ export const socketEvents = [
 	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		ioName: "updatePublicData",
+		ioName: "updatePublicInfo",
 	}),
 ] as const;
+
+export type EventShortName = (typeof socketEvents)[number]["schema"]["ioName"];
 
 export type SocketEvents = typeof socketEvents;
