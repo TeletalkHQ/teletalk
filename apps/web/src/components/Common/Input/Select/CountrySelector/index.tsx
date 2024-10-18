@@ -1,7 +1,7 @@
 import { ListItemProps } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
+import { countries } from "@repo/constants";
 import type { CountryItem, VoidWithArg } from "@repo/types";
-import { countries } from "@repo/vars";
 
 import { GlobalStore } from "~/store";
 

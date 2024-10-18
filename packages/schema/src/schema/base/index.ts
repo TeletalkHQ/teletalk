@@ -1,4 +1,4 @@
-import { regex } from "@repo/vars";
+import { regex } from "@repo/constants";
 import { z } from "zod";
 
 const avatarSrc = z.string().min(0).max(800000).trim();
@@ -92,12 +92,11 @@ const privateChatsItem = z.object({
 
 const privateChats = z.array(privateChatsItem);
 
-const sessions = z.array(
-	z.object({
-		sessionId,
-		isExpired: z.boolean(),
-	})
-);
+const sessionItem = z.object({
+	sessionId,
+	isExpired: z.boolean(),
+});
+const sessions = z.array(sessionItem);
 
 const status = z.object({
 	isActive,
@@ -158,7 +157,7 @@ const userInfo = z.intersection(
 	})
 );
 
-// TODO: Rename
+// TODO: Rename | Remove
 const DBUserData = z.intersection(
 	userInfo,
 	z.object({
@@ -240,12 +239,13 @@ export const baseSchema = {
 	senderId,
 	session,
 	sessionId,
+	sessionItem,
 	sessions,
+	signInCode,
 	status,
 	userData: userInfo,
 	userId,
 	username,
-	signInCode,
 	welcomeMessage,
 };
 
@@ -293,13 +293,14 @@ export namespace BaseSchema {
 	export type SenderId = z.infer<typeof senderId>;
 	export type Session = z.infer<typeof session>;
 	export type SessionId = z.infer<typeof sessionId>;
+	export type SessionItem = z.infer<typeof sessionItem>;
 	export type Sessions = z.infer<typeof sessions>;
+	export type SignInCode = z.infer<typeof signInCode>;
 	export type Status = z.infer<typeof status>;
-	export type UserInfo = z.infer<typeof userInfo>;
 	export type UserId = z.infer<typeof userId>;
+	export type UserInfo = z.infer<typeof userInfo>;
 	export type UserPublicInfo = z.infer<typeof userPublicInfo>;
 	export type Username = z.infer<typeof username>;
-	export type SignInCode = z.infer<typeof signInCode>;
 	export type WelcomeMessage = z.infer<typeof welcomeMessage>;
 }
 

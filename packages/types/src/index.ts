@@ -30,10 +30,11 @@ export interface StringMap {
 
 export type PromiseVoidNoArgsFn = () => Promise<void>;
 
-export type VoidNoArgsFn = () => void;
+export type VoidNoArgs = () => void;
 
 export type VoidWithArg<Arg> = (arg: Arg) => void;
 
+// TODO: Remove
 export type VoidWithTwoArgs<Arg1, Arg2> = (arg1: Arg1, arg2: Arg2) => void;
 
 export * from "./http";

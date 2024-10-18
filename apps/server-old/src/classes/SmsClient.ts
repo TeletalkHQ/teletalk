@@ -1,4 +1,4 @@
-import { escapeChars } from "@repo/vars";
+import { escapeChars } from "@repo/constants";
 import axios from "axios";
 
 import { configManager } from "~/classes/ConfigManager";
@@ -26,6 +26,8 @@ export class SmsClient {
 			await providers[SMS_PROVIDER_SELECTOR](sendTo, text);
 		} catch (error) {
 			throw {
+				// @ts-ignore
+				// eslint-disable-next-line no-undef
 				...errorStore.find("SEND_SMS_FAILED"),
 				providerError: error,
 			};
@@ -62,6 +64,8 @@ export class SmsClient {
 			}
 		);
 
+		// @ts-ignore
+		// eslint-disable-next-line no-undef
 		if (smsResult.status !== 200) throw errorStore.find("SEND_SMS_FAILED");
 	}
 	private async provider2(sendTo: string, text: string) {

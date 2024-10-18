@@ -10,7 +10,7 @@
 		"@repo/logger": "workspace:*",
 		"@repo/schema": "workspace:*",
 		"@repo/utils": "workspace:*",
-		"@repo/vars": "workspace:*",
+		"@repo/constants": "workspace:*",
 		"@repo/socket": "workspace:*"
 	},
 	"devDependencies": {

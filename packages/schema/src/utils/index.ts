@@ -1,16 +1,48 @@
 import { InternalServerErrorException, RequestMethod } from "@nestjs/common";
 import { HTTPMethod } from "@repo/types";
-import { ZodString } from "zod";
+import { ZodString, ZodTypeAny, z } from "zod";
 
 import { HTTPRootPath, RouteGenerator } from "../classes";
 import { HTTPRouteShortName, httpRoutes } from "../schema";
 
-export const getStringMaxLength = <T extends ZodString>(schema: T) => {
+export const getStringSchemaMaxLength = <T extends ZodString>(schema: T) => {
 	const result = schema._def.checks.find((item) => item.kind === "max")?.value;
 
 	if (!result) throw new InternalServerErrorException("INVALID_SCHEMA");
 
 	return result;
+};
+export const getStringSchemaMinLength = <T extends ZodString>(schema: T) => {
+	const result = schema._def.checks.find((item) => item.kind === "min")?.value;
+
+	if (!result) throw new InternalServerErrorException("INVALID_SCHEMA");
+
+	return result;
+};
+export const getStringSchemaLength = <T extends ZodString>(schema: T) => {
+	const result = schema._def.checks.find(
+		(item) => item.kind === "length"
+	)?.value;
+
+	if (!result) throw new InternalServerErrorException("INVALID_SCHEMA");
+
+	return result;
+};
+
+export const getSchemaType = (schema: ZodTypeAny): string => {
+	if (schema instanceof z.ZodString) return "string";
+	if (schema instanceof z.ZodNumber) return "number";
+	if (schema instanceof z.ZodBoolean) return "boolean";
+	if (schema instanceof z.ZodArray) return "array";
+	if (schema instanceof z.ZodObject) return "object";
+	if (schema instanceof z.ZodLiteral) return "literal";
+	if (schema instanceof z.ZodEnum) return "enum";
+	if (schema instanceof z.ZodOptional)
+		return `optional(${getSchemaType(schema.unwrap())})`;
+	if (schema instanceof z.ZodNullable)
+		return `nullable(${getSchemaType(schema.unwrap())})`;
+
+	return "unknown";
 };
 
 export const findHttpRoute = <T extends HTTPRouteShortName>(name: T) => {

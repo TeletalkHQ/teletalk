@@ -1,5 +1,5 @@
 import { IOCollection, IOName } from "@repo/schema";
-import { SocketMethods, VoidNoArgsFn, VoidWithArg } from "@repo/types";
+import { SocketMethods, VoidNoArgs, VoidWithArg } from "@repo/types";
 import { Event, Socket } from "socket.io";
 import { ZodSchema, z } from "zod";
 
@@ -28,7 +28,7 @@ export interface SocketOnHandlerReturnOptions {
 	shouldEmitReturnValue: boolean;
 	shouldCallResponseCallback: boolean;
 	shouldEmitToUserRooms: boolean;
-	cbAfterEmit: VoidNoArgsFn;
+	cbAfterEmit: VoidNoArgs;
 }
 
 export interface SocketHandlerReturnValue<T extends IOName> {

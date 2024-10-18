@@ -34,11 +34,11 @@
 	},
 	"dependencies": {
 		"@repo/classes": "workspace:*",
+		"@repo/constants": "workspace:*",
 		"@repo/logger": "workspace:*",
 		"@repo/schema": "workspace:*",
 		"@repo/socket": "workspace:*",
-		"@repo/utils": "workspace:*",
-		"@repo/vars": "workspace:*"
+		"@repo/utils": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/types": "workspace:*",

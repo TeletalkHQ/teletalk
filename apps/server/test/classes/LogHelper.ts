@@ -1,6 +1,6 @@
 import { Logger } from "@nestjs/common";
+import { escapeChars } from "@repo/constants";
 import { IOName, RouteSchema } from "@repo/schema";
-import { escapeChars } from "@repo/vars";
 
 export class LogHelper {
 	logger: Logger;

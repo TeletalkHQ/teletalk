@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
+import { countries } from "@repo/constants";
 import { ErrorReason, NativeError } from "@repo/error-store";
 import { Field, models } from "@repo/model";
-import { countries } from "@repo/vars";
 import chai from "chai";
 import { ValidationSchema } from "fastest-validator";
 

@@ -1,3 +1,4 @@
+import { FIELD_TYPE } from "@repo/constants";
 import { IOName, RouteSchema } from "@repo/schema";
 import axios, { AxiosResponse } from "axios";
 import { expect } from "chai";
@@ -6,7 +7,6 @@ import { COOKIE_NAMES } from "~/constants";
 import { ConfigService } from "~/modules/config/config.service";
 import { GetAPIInput, GetAPIOutput } from "~/types";
 
-import { FIELD_TYPE } from "@/constants";
 import { getServiceInstance } from "@/utils/app";
 
 import { logHelper } from "./LogHelper";

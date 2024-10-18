@@ -1,5 +1,5 @@
-import { BaseSchema, baseSchema, getStringMaxLength } from "@repo/schema";
-import { countries } from "@repo/vars";
+import { countries } from "@repo/constants";
+import { BaseSchema, baseSchema, getStringSchemaMaxLength } from "@repo/schema";
 import { nanoid } from "nanoid";
 
 import { dataUsageManager } from "./DataUsageManager";
@@ -24,7 +24,7 @@ export class Randomizer {
 	}
 
 	sessionId(
-		length = getStringMaxLength(baseSchema.sessionId)
+		length = getStringSchemaMaxLength(baseSchema.sessionId)
 	): BaseSchema.SessionId {
 		return this.string(length);
 	}
@@ -55,7 +55,7 @@ export class Randomizer {
 		return nanoid(length);
 	}
 
-	userId(length = getStringMaxLength(baseSchema.userId)) {
+	userId(length = getStringSchemaMaxLength(baseSchema.userId)) {
 		return this.id(length);
 	}
 
@@ -65,7 +65,7 @@ export class Randomizer {
 	}
 
 	cellphone(
-		phoneNumberLength = getStringMaxLength(baseSchema.phoneNumber)
+		phoneNumberLength = getStringSchemaMaxLength(baseSchema.phoneNumber)
 	): BaseSchema.Cellphone {
 		const country = this.country();
 
@@ -77,7 +77,7 @@ export class Randomizer {
 	}
 
 	unusedCellphone(
-		phoneNumberLength = getStringMaxLength(baseSchema.phoneNumber)
+		phoneNumberLength = getStringSchemaMaxLength(baseSchema.phoneNumber)
 	): BaseSchema.Cellphone {
 		const cellphone = this.cellphone(phoneNumberLength);
 
@@ -90,10 +90,10 @@ export class Randomizer {
 	}
 
 	contact(
-		firstNameLength = getStringMaxLength(baseSchema.firstName),
-		lastNameLength = getStringMaxLength(baseSchema.lastName),
-		idLength = getStringMaxLength(baseSchema.userId),
-		phoneNumberLength = getStringMaxLength(baseSchema.phoneNumber)
+		firstNameLength = getStringSchemaMaxLength(baseSchema.firstName),
+		lastNameLength = getStringSchemaMaxLength(baseSchema.lastName),
+		idLength = getStringSchemaMaxLength(baseSchema.userId),
+		phoneNumberLength = getStringSchemaMaxLength(baseSchema.phoneNumber)
 	) {
 		return {
 			...this.fullName(firstNameLength, lastNameLength),
@@ -116,9 +116,9 @@ export class Randomizer {
 	}
 
 	unusedContact(
-		firstNameLength = getStringMaxLength(baseSchema.firstName),
-		lastNameLength = getStringMaxLength(baseSchema.lastName),
-		idLength = getStringMaxLength(baseSchema.userId)
+		firstNameLength = getStringSchemaMaxLength(baseSchema.firstName),
+		lastNameLength = getStringSchemaMaxLength(baseSchema.lastName),
+		idLength = getStringSchemaMaxLength(baseSchema.userId)
 	): BaseSchema.ContactsItem {
 		return {
 			...this.fullName(firstNameLength, lastNameLength),
@@ -128,8 +128,8 @@ export class Randomizer {
 	}
 
 	fullName(
-		firstNameLength = getStringMaxLength(baseSchema.firstName),
-		lastNameLength = getStringMaxLength(baseSchema.lastName)
+		firstNameLength = getStringSchemaMaxLength(baseSchema.firstName),
+		lastNameLength = getStringSchemaMaxLength(baseSchema.lastName)
 	) {
 		return emptyMaker.fullName(
 			this.string(firstNameLength),
@@ -140,9 +140,9 @@ export class Randomizer {
 	userPublicInfo(): BaseSchema.UserPublicInfo {
 		return {
 			...this.fullName(),
-			bio: this.string(getStringMaxLength(baseSchema.bio)),
-			username: this.string(getStringMaxLength(baseSchema.username)),
-			userId: this.id(getStringMaxLength(baseSchema.userId)),
+			bio: this.string(getStringSchemaMaxLength(baseSchema.bio)),
+			username: this.string(getStringSchemaMaxLength(baseSchema.username)),
+			userId: this.id(getStringSchemaMaxLength(baseSchema.userId)),
 		};
 	}
 
@@ -165,7 +165,7 @@ export class Randomizer {
 	privateMessageItem(): BaseSchema.MessagesItem {
 		return {
 			createdAt: Date.now(),
-			messageId: this.id(getStringMaxLength(baseSchema.messageId)),
+			messageId: this.id(getStringSchemaMaxLength(baseSchema.messageId)),
 			messageText: this.messageText(),
 			sender: {
 				senderId: this.userId(),
@@ -174,7 +174,7 @@ export class Randomizer {
 	}
 
 	messageText(): BaseSchema.MessageText {
-		return this.string(getStringMaxLength(baseSchema.messageText));
+		return this.string(getStringSchemaMaxLength(baseSchema.messageText));
 	}
 }
 

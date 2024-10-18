@@ -7,7 +7,7 @@
 	"dependencies": {
 		"@repo/classes": "workspace:*",
 		"@repo/utils": "workspace:*",
-		"@repo/vars": "workspace:*"
+		"@repo/constants": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/types": "workspace:*",
