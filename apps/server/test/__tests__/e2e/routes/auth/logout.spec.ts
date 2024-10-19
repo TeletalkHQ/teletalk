@@ -16,7 +16,7 @@ describe(messageCreators.e2eSuccessSuite("logout", "httpRoute"), () => {
 					session: ah.getSession(),
 				})
 				.send({
-					data: undefined,
+					data: {},
 				});
 		}
 	);

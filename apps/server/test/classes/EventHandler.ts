@@ -1,6 +1,10 @@
 import { FIELD_TYPE } from "@repo/constants";
-import { EventSchema, EventShortName } from "@repo/schema";
-import { SocketRequest, SocketResponse } from "@repo/socket";
+import {
+	EventSchema,
+	EventShortName,
+	SocketRequestBody,
+	SocketResponse,
+} from "@repo/schema";
 import { expect } from "chai";
 import { Socket } from "socket.io-client";
 
@@ -19,7 +23,7 @@ interface CustomError {
 
 export type EventHandlerResponse<T extends EventShortName> = SocketResponse<T>;
 
-type RequestBody<T extends EventShortName> = SocketRequest<T>;
+type RequestBody<T extends EventShortName> = SocketRequestBody<T>;
 
 export class EventHandler<T extends EventShortName> {
 	private expectedError?: CustomError;
@@ -66,7 +70,7 @@ export class EventHandler<T extends EventShortName> {
 	}
 
 	async send(
-		data: RequestBody<T>,
+		body: RequestBody<T>,
 		reason?: ErrorReason,
 		options: Partial<EventHandlerOptions> = this.options
 	) {
@@ -74,7 +78,7 @@ export class EventHandler<T extends EventShortName> {
 
 		const finalOptions = this.mergeOptions(options);
 
-		if (data) this.setBody(data);
+		if (body) this.setBody(body);
 
 		if (this.options.shouldLogDetails)
 			logHelper.logRequestDetails(

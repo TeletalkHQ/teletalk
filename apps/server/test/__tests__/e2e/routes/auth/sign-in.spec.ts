@@ -1,15 +1,8 @@
-import { SessionService } from "~/modules/session/session.service";
-import { TempSessionStoreService } from "~/modules/temp-session-store/temp-session-store.service";
+import { extractor } from "@repo/classes";
 
-import { randomizer } from "@/classes";
-import { getServiceInstance } from "@/utils/app";
+import { authHelper, randomizer } from "@/classes";
 import { httpHandlerCollection } from "@/utils/httpHandlerCollection";
 import { messageCreators } from "@/utils/testMessageCreators";
-
-const sessionService = await getServiceInstance(SessionService);
-const tempSessionStoreService = await getServiceInstance(
-	TempSessionStoreService
-);
 
 describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 	it(
@@ -28,37 +21,16 @@ describe(messageCreators.e2eSuccessSuite("signIn", "httpRoute"), () => {
 
 	it(
 		messageCreators.e2eSuccessTest(
-			"verify",
+			"signIn",
 			"httpRoute",
-			"should get verified as new user"
+			"should be able to sign in as existing user"
 		),
 		async () => {
-			const signInHandler = httpHandlerCollection.signIn();
-			await signInHandler.send({
-				data: randomizer.unusedCellphone(),
-			});
+			const { userInfo } = await randomizer.userByE2E();
+			const cellphone = extractor.cellphone(userInfo);
+			const helper = authHelper(cellphone);
 
-			const verifyHandler = httpHandlerCollection.verify({
-				session: signInHandler.getSession(),
-			});
-
-			await randomizer.userByE2E();
-
-			const verifiedSession = await sessionService.verify(
-				signInHandler.getSession()
-			);
-
-			const sessionId = sessionService.getSessionId(verifiedSession!);
-
-			const storedSession = await tempSessionStoreService.find(sessionId);
-
-			if (!storedSession) throw new Error("STORED_SESSION_NOT_FOUND");
-
-			await verifyHandler.send({
-				data: {
-					signInCode: storedSession.signInCode,
-				},
-			});
+			await helper.signIn();
 		}
 	);
 });

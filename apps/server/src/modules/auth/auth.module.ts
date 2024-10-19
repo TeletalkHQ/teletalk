@@ -6,13 +6,14 @@ import { SmsModule } from "../sms/sms.module";
 import { TempSessionStoreModule } from "../temp-session-store/temp-session-store.module";
 import { UserModule } from "../user/user.module";
 import { AuthController } from "./auth.controller";
+import { AuthGateway } from "./auth.gateway";
 import { AuthMiddleware } from "./auth.middleware";
 import { AuthService } from "./auth.service";
 
 @Module({
 	imports: [TempSessionStoreModule, SessionModule, SmsModule, UserModule],
 	controllers: [AuthController],
-	providers: [AuthService],
+	providers: [AuthService, AuthGateway],
 })
 export class AuthModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {

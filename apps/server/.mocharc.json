@@ -1,5 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/mocharc",
+	"exit": true,
 	"extension": ["ts"],
 	"node-option": [
 		"experimental-specifier-resolution=node",
@@ -7,11 +8,10 @@
 		"no-warnings"
 	],
 	"package": "./package.json",
+	"recursive": true,
 	"reporter": "spec",
 	"spec": ["./configs/mocha/mocha.setup.ts"],
 	"timeout": 60000,
 	"ui": "bdd",
-	"watch-ignore": "",
-	"exit": true,
-	"recursive": true
+	"watch-ignore": ""
 }

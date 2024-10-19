@@ -38,10 +38,7 @@ export class SessionService {
 	}
 
 	verify(session: BaseSchema.EncryptedSession) {
-		return jwtVerify(
-			session,
-			this.getEncodedSecret()
-		) as Promise<VerifiedSession>;
+		return jwtVerify<SessionPayload>(session, this.getEncodedSecret());
 	}
 
 	getSessionId(verifiedSession: VerifiedSession): BaseSchema.SessionId {

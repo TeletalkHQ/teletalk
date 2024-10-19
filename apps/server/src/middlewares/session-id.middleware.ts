@@ -5,6 +5,7 @@ import { COOKIE_NAMES } from "~/constants";
 import { ErrorStoreService } from "~/modules/error-store/error-store.service";
 import { SessionService } from "~/modules/session/session.service";
 
+// TODO: Move to modules
 @Injectable()
 export class SessionIdMiddleware implements NestMiddleware {
 	constructor(

@@ -11,11 +11,16 @@ export type ErrorReason =
 	| "USER_NOT_FOUND"
 	| "SESSION_NOT_FOUND"
 	| "SIGN_IN_CODE_INVALID"
+	| "INTERCEPTOR_NOT_FOUND"
 	| "ROUTE_SCHEMA_NOT_FOUND"
 	| "USER_BY_SESSION_ID_NOT_FOUND"
+	| "INPUT_DATA_INVALID"
 	| "SESSION_NOT_FOUND_BY_SESSION_ID"
 	| "COOKIES_NOT_FOUND"
+	| "OUTPUT_DATA_INVALID"
+	| "TEMP_SESSION_NOT_FOUND"
 	| "INVALID_HOST"
+	| "EVENT_CALLBACK_NOT_FOUND"
 	| "SESSION_NOT_VERIFIED"
 	| "STORED_SESSION_NOT_FOUND"
 	| "USER_INFO_NOT_FOUND";
@@ -47,11 +52,13 @@ export class ErrorStoreService {
 		ctxName: string,
 		options = this.options
 	): never {
-		const ErrorClass = errorTypes[type];
-
 		this.handleLogs(type, reason, ctxName, options);
+		throw this.generate(type, reason);
+	}
 
-		throw new ErrorClass(reason);
+	generate(type: ErrorType, reason: ErrorReason) {
+		const ErrorClass = errorTypes[type];
+		return new ErrorClass(reason);
 	}
 
 	private handleLogs(

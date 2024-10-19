@@ -1,11 +1,15 @@
 import { FIELD_TYPE } from "@repo/constants";
-import { HTTPRouteShortName, RouteSchema } from "@repo/schema";
+import {
+	HTTPRequestBody,
+	HTTPResponse,
+	HTTPRouteShortName,
+	RouteSchema,
+} from "@repo/schema";
 import axios, { AxiosResponse } from "axios";
 import { expect } from "chai";
 
 import { COOKIE_NAMES } from "~/constants";
 import { ConfigService } from "~/modules/config/config.service";
-import { GetAPIInput, GetAPIOutput } from "~/types";
 
 import { getServiceInstance } from "@/utils/app";
 
@@ -27,10 +31,12 @@ interface CustomError {
 export type CookieItem = { value: string; flags: Record<string, boolean> };
 
 export type HTTPHandlerResponse<T extends HTTPRouteShortName> = AxiosResponse<
-	Awaited<GetAPIOutput<T>>
+	Awaited<HTTPResponse<T>>
 >;
 
-type RequestBody<T extends HTTPRouteShortName> = GetAPIInput<T>;
+type RequestBody<T extends HTTPRouteShortName> = {
+	data: HTTPRequestBody<T>;
+};
 
 export class HTTPHandler<T extends HTTPRouteShortName> {
 	private expectedError?: CustomError;
@@ -40,7 +46,7 @@ export class HTTPHandler<T extends HTTPRouteShortName> {
 		shouldLogDetails: false,
 	};
 
-	private body: RequestBody<T>;
+	private body: HTTPRequestBody<T>;
 	private response: HTTPHandlerResponse<T>;
 
 	constructor(
@@ -69,13 +75,13 @@ export class HTTPHandler<T extends HTTPRouteShortName> {
 	private getBody() {
 		return this.body;
 	}
-	private setBody(body: RequestBody<T>) {
-		this.body = body;
+	private setBody(data: HTTPRequestBody<T>) {
+		this.body = data;
 		return this;
 	}
 
 	async send(
-		data: RequestBody<T>,
+		{ data }: RequestBody<T>,
 		reason?: ErrorReason,
 		options: Partial<HTTPHandlerOptions> = this.options
 	) {
@@ -97,7 +103,7 @@ export class HTTPHandler<T extends HTTPRouteShortName> {
 
 		const response = await axios({
 			method: this.routeSchema.method,
-			data: this.getBody().data,
+			data: this.getBody(),
 			// FIXME: `pathname` may include query parameter!
 			url: `http://localhost:${configService.getPort()}/${this.routeSchema.rootPath}/${this.routeSchema.pathname}`,
 			headers: {

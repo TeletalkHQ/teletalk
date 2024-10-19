@@ -1,11 +1,15 @@
 import { Body, Controller, Get, Post, Req, Res } from "@nestjs/common";
 import { extractor, randomizer, userUtils } from "@repo/classes";
-import { GetInput, getPathname, getRootPath } from "@repo/schema";
+import {
+	HTTPHandlerReturnType,
+	HTTPRequestBody,
+	getPathname,
+	getRootPath,
+} from "@repo/schema";
 import { utils } from "@repo/utils";
 import { Request, Response } from "express";
 
 import { COOKIE_NAMES } from "~/constants";
-import { GetAPIOutput } from "~/types";
 import { getHostFromRequest } from "~/utils";
 
 import { ErrorStoreService } from "../error-store/error-store.service";
@@ -28,10 +32,10 @@ export class AuthController {
 
 	@Post(getPathname("signIn"))
 	async signIn(
-		@Body() data: GetInput<"signIn">,
+		@Body() data: HTTPRequestBody<"signIn">,
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response
-	): GetAPIOutput<"signIn"> {
+	): HTTPHandlerReturnType<"signIn"> {
 		const signInCode = utils.stringGenerator();
 
 		const cellphone = extractor.cellphone(data);
@@ -71,15 +75,16 @@ export class AuthController {
 
 	@Post(getPathname("verify"))
 	async verify(
-		@Body() _data: GetInput<"verify">,
+		@Body() _data: HTTPRequestBody<"verify">,
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response
-	): GetAPIOutput<"verify"> {
+	): HTTPHandlerReturnType<"verify"> {
 		const { sessionId } = req;
 
-		const storedSession = await this.tempSessionStoreService.find(sessionId);
+		const tempStoredSession =
+			await this.tempSessionStoreService.find(sessionId);
 
-		if (!storedSession)
+		if (!tempStoredSession)
 			this.errorStoreService.throw(
 				"unauthorized",
 				"STORED_SESSION_NOT_FOUND",
@@ -87,7 +92,7 @@ export class AuthController {
 			);
 
 		const user = await this.userService.findOne(
-			extractor.cellphone(storedSession)
+			extractor.cellphone(tempStoredSession)
 		);
 
 		if (user) {
@@ -121,21 +126,21 @@ export class AuthController {
 	async createNewUser(
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response,
-		@Body() data: GetInput<"createNewUser">
-	): GetAPIOutput<"createNewUser"> {
+		@Body() data: HTTPRequestBody<"createNewUser">
+	): HTTPHandlerReturnType<"createNewUser"> {
 		const { firstName, lastName } = data;
 
-		const storedSession = await this.tempSessionStoreService.find(
+		const tempStoredSession = await this.tempSessionStoreService.find(
 			req.sessionId
 		);
-		if (!storedSession)
+		if (!tempStoredSession)
 			this.errorStoreService.throw(
 				"unauthorized",
 				"SESSION_NOT_FOUND",
 				AuthController.name
 			);
 
-		if (!storedSession.isVerified)
+		if (!tempStoredSession.isVerified)
 			this.errorStoreService.throw(
 				"unauthorized",
 				"SESSION_NOT_VERIFIED",
@@ -150,7 +155,7 @@ export class AuthController {
 			maxAge: 60 * 1000 * 60 * 24 * 3,
 		});
 
-		const cellphone = extractor.cellphone(storedSession);
+		const cellphone = extractor.cellphone(tempStoredSession);
 		const userId = randomizer.userId();
 		await this.userService.create({
 			...userUtils.getDefaultUserData(),
@@ -178,7 +183,7 @@ export class AuthController {
 	}
 
 	@Get(getPathname("logout"))
-	async logout(@Req() req: Request): GetAPIOutput<"logout"> {
+	async logout(@Req() req: Request): HTTPHandlerReturnType<"logout"> {
 		const foundUser = await this.userService.findBySessionId(req.sessionId);
 
 		if (!foundUser)
@@ -204,7 +209,7 @@ export class AuthController {
 		await this.userService.update({ userId: foundUser.userId }, foundUser);
 
 		return {
-			data: undefined,
+			data: {},
 		};
 	}
 

@@ -27,12 +27,12 @@ export const ioCollection = {
 		}),
 	},
 	// connect: {
-	// 	input: z.undefined(),
-	// 	output: z.undefined(),
+	// 	input: z.object({}),
+	// 	output: z.object({}),
 	// },
 	// connect_error: {
-	// 	input: z.undefined(),
-	// 	output: z.undefined(),
+	// 	input: z.object({}),
+	// 	output: z.object({}),
 	// },
 	createNewUser: {
 		input: z.object({
@@ -42,8 +42,8 @@ export const ioCollection = {
 		output: z.object({}),
 	},
 	disconnect: {
-		input: z.undefined(),
-		output: z.undefined(),
+		input: z.object({}),
+		output: z.object({}),
 	},
 	getAvatar: {
 		input: z.object({
@@ -76,19 +76,19 @@ export const ioCollection = {
 		}),
 	},
 	getContacts: {
-		input: z.undefined(),
+		input: z.object({}),
 		output: z.object({
 			contacts: baseSchema.contacts,
 		}),
 	},
 	getCountries: {
-		input: z.undefined(),
+		input: z.object({}),
 		output: z.object({
 			countries: baseSchema.countries,
 		}),
 	},
 	getOnlineClients: {
-		input: z.undefined(),
+		input: z.object({}),
 		output: z.object({
 			onlineClients: baseSchema.onlineClients,
 		}),
@@ -102,7 +102,7 @@ export const ioCollection = {
 		}),
 	},
 	getPrivateChats: {
-		input: z.undefined(),
+		input: z.object({}),
 		output: z.object({
 			privateChats: baseSchema.privateChats,
 		}),
@@ -116,36 +116,36 @@ export const ioCollection = {
 		}),
 	},
 	getStuff: {
-		input: z.undefined(),
-		output: z.undefined(),
+		input: z.object({}),
+		output: z.object({}),
 	},
 	getUserInfo: {
-		input: z.undefined(),
+		input: z.object({}),
 		output: baseSchema.userData,
 	},
 	getWelcomeMessage: {
-		input: z.undefined(),
+		input: z.object({}),
 		output: z.object({
 			welcomeMessage: baseSchema.welcomeMessage,
 		}),
 	},
 	join: {
-		input: z.undefined(),
-		output: z.undefined(),
+		input: z.object({}),
+		output: z.object({}),
 	},
 	logout: {
-		input: z.undefined(),
-		output: z.undefined(),
+		input: z.object({}),
+		output: z.object({}),
 	},
 	ping: {
-		input: z.undefined(),
+		input: z.object({}),
 		output: z.object({
 			pong: baseSchema.pong,
 		}),
 	},
 	// pong: {
-	// 	input: z.undefined(),
-	// 	output: z.undefined(),
+	// 	input: z.object({}),
+	// 	output: z.object({}),
 	// },
 	removeBlock: {
 		input: z.object({

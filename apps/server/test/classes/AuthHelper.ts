@@ -38,9 +38,9 @@ class AuthHelper {
 	async verify() {
 		const verifiedSession = await sessionService.verify(this.getSession());
 		const sessionId = sessionService.getSessionId(verifiedSession);
-		const storedSession = await tempSessionStoreService.find(sessionId);
+		const tempStoredSession = await tempSessionStoreService.find(sessionId);
 
-		if (!storedSession) throw new Error("STORED_SESSION_NOT_FOUND");
+		if (!tempStoredSession) throw new Error("STORED_SESSION_NOT_FOUND");
 
 		this.verifyResponse = await httpHandlerCollection
 			.verify({
@@ -48,7 +48,7 @@ class AuthHelper {
 			})
 			.send({
 				data: {
-					signInCode: storedSession.signInCode,
+					signInCode: tempStoredSession.signInCode,
 				},
 			});
 

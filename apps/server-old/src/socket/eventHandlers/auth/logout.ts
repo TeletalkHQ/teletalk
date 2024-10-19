@@ -11,7 +11,7 @@ export const logout: SocketOnHandler<"logout"> = async (socket) => {
 	await authSessionStore.remove(socket.sessionId);
 
 	return {
-		data: undefined,
+		data: {},
 		options: {
 			cbAfterEmit: () => {
 				socket.rooms.clear();

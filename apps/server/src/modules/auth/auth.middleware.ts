@@ -1,5 +1,5 @@
 import { Injectable, NestMiddleware } from "@nestjs/common";
-import { GetInput } from "@repo/schema";
+import { HTTPRequestBody } from "@repo/schema";
 import { NextFunction, Request, Response } from "express";
 
 import { ErrorStoreService } from "../error-store/error-store.service";
@@ -13,7 +13,15 @@ export class AuthMiddleware implements NestMiddleware {
 	) {}
 
 	async use(
-		req: Request<any, any, GetInput<"verify">>,
+		req: Request<any, any, HTTPRequestBody<"verify">>,
+		_res: Response,
+		next: NextFunction
+	) {
+		this.verifySignInCode(req, _res, next);
+	}
+
+	async verifySignInCode(
+		req: Request<any, any, HTTPRequestBody<"verify">>,
 		_res: Response,
 		next: NextFunction
 	) {
@@ -22,7 +30,7 @@ export class AuthMiddleware implements NestMiddleware {
 		if (!tempSession)
 			this.errorStoreService.throw(
 				"notFound",
-				"SESSION_NOT_FOUND",
+				"TEMP_SESSION_NOT_FOUND",
 				AuthMiddleware.name
 			);
 

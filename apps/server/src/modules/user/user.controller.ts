@@ -1,8 +1,6 @@
 import { Controller, Get, Req } from "@nestjs/common";
-import { getPathname } from "@repo/schema";
+import { HTTPHandlerReturnType, getPathname } from "@repo/schema";
 import { Request } from "express";
-
-import { GetAPIOutput } from "~/types";
 
 import { ErrorStoreService } from "../error-store/error-store.service";
 import { UserService } from "./user.service";
@@ -15,7 +13,7 @@ export class UserController {
 	) {}
 
 	@Get(getPathname("getUserInfo"))
-	async getUserInfo(@Req() req: Request): GetAPIOutput<"getUserInfo"> {
+	async getUserInfo(@Req() req: Request): HTTPHandlerReturnType<"getUserInfo"> {
 		const userInfo = await this.userService.findBySessionId(req.sessionId);
 
 		if (!userInfo)

@@ -29,6 +29,6 @@ export const join: SocketOnHandler<"join"> = async (socket) => {
 	);
 
 	return {
-		data: undefined,
+		data: {},
 	};
 };

@@ -16,7 +16,7 @@ describe(messageCreators.e2eSuccessSuite("getUserInfo", "event"), () => {
 
 			const { data: receivedUserInfo } = await eventHandlerCollection
 				.getUserInfo(socket)
-				.send({ data: undefined });
+				.send({ data: {} });
 
 			assertion().userInfo({
 				equal: userInfo,

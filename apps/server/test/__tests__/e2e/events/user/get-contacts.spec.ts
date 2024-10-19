@@ -25,7 +25,7 @@ describe(messageCreators.e2eSuccessSuite("getContacts", "event"), () => {
 			const {
 				data: { contacts },
 			} = await eventHandlerCollection.getContacts(socket).send({
-				data: undefined,
+				data: {},
 			});
 
 			assertion().oneContact({

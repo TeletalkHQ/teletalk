@@ -5,7 +5,6 @@ import {
 	SocketNext,
 	SocketResponse,
 } from "@repo/socket";
-import generatePassword from "generate-password";
 import { Socket } from "socket.io";
 import { z } from "zod";
 
@@ -96,7 +95,7 @@ const createFailureResponse = <T extends EventName>(
 	eventName: EventName,
 	errors: UnknownError
 ): SocketResponse<T> => ({
-	data: undefined,
+	data: {},
 	errors: resolveResponseError(errors),
 	eventName,
 	ok: false,

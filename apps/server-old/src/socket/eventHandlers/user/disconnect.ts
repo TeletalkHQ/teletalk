@@ -26,7 +26,7 @@ export const disconnect: SocketOnHandler<"disconnect"> = async (socket) => {
 	}
 
 	return {
-		data: undefined,
+		data: {},
 		options: {
 			shouldEmitReturnValue: false,
 			shouldEmitToUserRooms: false,
