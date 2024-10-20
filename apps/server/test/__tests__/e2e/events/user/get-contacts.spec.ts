@@ -4,6 +4,7 @@ import { randomizer } from "@/classes";
 import { eventHandlerCollection } from "@/utils/eventHandlerCollection";
 import { messageCreators } from "@/utils/testMessageCreators";
 
+// TODO: Stress test
 describe(messageCreators.e2eSuccessSuite("getContacts", "event"), () => {
 	it(
 		messageCreators.e2eSuccessTest(
@@ -13,8 +14,6 @@ describe(messageCreators.e2eSuccessSuite("getContacts", "event"), () => {
 		),
 		async () => {
 			const { socket } = await randomizer.userByE2E();
-
-			// TODO: Stress test
 
 			const { userInfo: targetUserInfo } = await randomizer.userByE2E();
 			const addingContact = extractor.contact(targetUserInfo);
@@ -28,9 +27,9 @@ describe(messageCreators.e2eSuccessSuite("getContacts", "event"), () => {
 				data: {},
 			});
 
-			assertion().oneContact({
-				test: contacts.at(0)!,
-				equal: addingContact,
+			assertion().contacts({
+				test: contacts,
+				equal: [addingContact],
 			});
 		}
 	);

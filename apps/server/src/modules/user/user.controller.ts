@@ -14,17 +14,12 @@ export class UserController {
 
 	@Get(getPathname("getUserInfo"))
 	async getUserInfo(@Req() req: Request): HTTPHandlerReturnType<"getUserInfo"> {
-		const userInfo = await this.userService.findBySessionId(req.sessionId);
-
-		if (!userInfo)
-			this.errorStoreService.throw(
-				"notFound",
-				"USER_INFO_NOT_FOUND",
-				UserController.name
-			);
+		const userInfo = await this.userService.getUserInfo(req.sessionId);
 
 		return {
-			data: userInfo,
+			data: {
+				userInfo,
+			},
 		};
 	}
 }

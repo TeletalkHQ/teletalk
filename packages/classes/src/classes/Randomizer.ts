@@ -3,8 +3,7 @@ import { BaseSchema, baseSchema, getStringSchemaMaxLength } from "@repo/schema";
 import { nanoid } from "nanoid";
 
 import { dataUsageManager } from "./DataUsageManager";
-import { extractor } from "./Extractor";
-import { emptyMaker } from "./Maker";
+import { maker } from "./Maker";
 
 type Min = number;
 type Max = number;
@@ -69,7 +68,7 @@ export class Randomizer {
 	): BaseSchema.Cellphone {
 		const country = this.country();
 
-		return emptyMaker.cellphone(
+		return maker.cellphone(
 			country.countryCode,
 			country.countryName,
 			this.stringNumber(phoneNumberLength)
@@ -107,14 +106,6 @@ export class Randomizer {
 		return rest;
 	}
 
-	contactWithUserId(): BaseSchema.FullName & { userId: BaseSchema.UserId } {
-		const contact = this.contact();
-		return {
-			...extractor.fullName(contact),
-			userId: contact.userId,
-		};
-	}
-
 	unusedContact(
 		firstNameLength = getStringSchemaMaxLength(baseSchema.firstName),
 		lastNameLength = getStringSchemaMaxLength(baseSchema.lastName),
@@ -131,13 +122,13 @@ export class Randomizer {
 		firstNameLength = getStringSchemaMaxLength(baseSchema.firstName),
 		lastNameLength = getStringSchemaMaxLength(baseSchema.lastName)
 	) {
-		return emptyMaker.fullName(
+		return maker.fullName(
 			this.string(firstNameLength),
 			this.string(lastNameLength)
 		);
 	}
 
-	userPublicInfo(): BaseSchema.PublicInfo {
+	userPublicInfo(): BaseSchema.UserPublicInfo {
 		return {
 			...this.fullName(),
 			bio: this.string(getStringSchemaMaxLength(baseSchema.bio)),
@@ -149,8 +140,8 @@ export class Randomizer {
 	arrayOfUserPublicInfo(
 		length: number,
 		userId?: BaseSchema.UserId
-	): BaseSchema.PublicInfo[] {
-		const data: BaseSchema.PublicInfo[] = [];
+	): BaseSchema.UserPublicInfo[] {
+		const data: BaseSchema.UserPublicInfo[] = [];
 
 		for (let i = 0; i < length; i++) {
 			const publicInfo = this.userPublicInfo();

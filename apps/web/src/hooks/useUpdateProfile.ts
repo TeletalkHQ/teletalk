@@ -6,8 +6,9 @@ import { useEmitter } from "./useEmitter";
 
 export const useUpdateProfile = () => {
 	const settingsStore = useSettingsStore();
-	const { handler: updatePublicDataHandler, loading } =
-		useEmitter("updatePublicInfo");
+	const { handler: updatePublicDataHandler, loading } = useEmitter(
+		"updateUserPublicInfo"
+	);
 
 	const handler = (cb?: VoidNoArgsFn) => {
 		const { countryCode, countryName, phoneNumber, ...restProfile } =

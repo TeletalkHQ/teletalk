@@ -19,16 +19,6 @@ export class Extractor {
 			userId: data.userId,
 		};
 	}
-	contactWithUserId(
-		data: BaseSchema.FullName & { userId: BaseSchema.UserId } & StringMap
-	): BaseSchema.FullName & { userId: BaseSchema.UserId } {
-		return {
-			firstName: data.firstName,
-			// TODO: Remove `lastName`
-			lastName: data.lastName,
-			userId: data.userId,
-		};
-	}
 
 	fullName(data: BaseSchema.FullName & StringMap): BaseSchema.FullName {
 		return {
@@ -67,8 +57,8 @@ export class Extractor {
 	}
 
 	userPublicInfo(
-		data: BaseSchema.PublicInfo & StringMap
-	): BaseSchema.PublicInfo {
+		data: BaseSchema.UserPublicInfo & StringMap
+	): BaseSchema.UserPublicInfo {
 		return {
 			...this.fullName(data),
 			bio: data.bio,

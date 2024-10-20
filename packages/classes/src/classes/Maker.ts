@@ -1,7 +1,7 @@
 import { BaseSchema } from "@repo/schema";
 import { StringMap } from "@repo/types";
 
-export class EmptyMaker {
+export class Maker {
 	cellphone(
 		countryCode: BaseSchema.CountryCode,
 		countryName: BaseSchema.CountryName,
@@ -47,7 +47,7 @@ export class EmptyMaker {
 		};
 	}
 
-	emptyUserPublicData(): BaseSchema.PublicInfo {
+	emptyUserPublicInfo(): BaseSchema.UserPublicInfo {
 		return {
 			...this.emptyFullName(),
 			bio: "",
@@ -74,25 +74,13 @@ export class EmptyMaker {
 
 	emptyUser(): BaseSchema.ClientUser {
 		return {
-			...this.emptyUserPublicData(),
+			...this.emptyUserPublicInfo(),
 			...this.emptyCellphone(),
 			avatarSrc: "",
 			isBlocked: false,
 			isContact: false,
 			originalFirstName: "",
 			originalLastName: "",
-		};
-	}
-
-	userWithPublicData(
-		publicInfo: BaseSchema.PublicInfo,
-		userItem?: BaseSchema.ClientUser
-	): BaseSchema.ClientUser {
-		return {
-			...this.emptyUser(),
-			...publicInfo,
-			...(userItem || {}),
-			...this.originalFullName(publicInfo),
 		};
 	}
 
@@ -105,4 +93,4 @@ export class EmptyMaker {
 	}
 }
 
-export const emptyMaker = new EmptyMaker();
+export const maker = new Maker();

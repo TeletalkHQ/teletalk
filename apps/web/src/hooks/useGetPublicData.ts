@@ -14,7 +14,8 @@ type UseUserPublicData = (userId: UserId) => {
 export const useGetPublicData: UseUserPublicData = (userId) => {
 	const userStore = useUserStore();
 	const { data: publicInfo } = useFindUserById(userId);
-	const { handler: getPublicInfo, loading } = useEmitter("getPublicInfo");
+	const { handler: getUserPublicInfo, loading } =
+		useEmitter("getUserPublicInfo");
 	useEffect(() => {
 		if (!userId || !userStore.isUserDataSettled) return;
 
@@ -25,7 +26,7 @@ export const useGetPublicData: UseUserPublicData = (userId) => {
 	const handler = () => {
 		if (userStore.users.some((i) => i.userId === userId)) return;
 
-		getPublicInfo.send({
+		getUserPublicInfo.send({
 			userId,
 		});
 	};

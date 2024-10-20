@@ -975,7 +975,7 @@ export const stuff = {
 				},
 			},
 			isAuthRequired: true,
-			name: "getPublicInfo",
+			name: "getUserPublicInfo",
 		},
 		{
 			method: "customOn",
@@ -1104,7 +1104,7 @@ export const stuff = {
 				},
 			},
 			isAuthRequired: true,
-			name: "updatePublicInfo",
+			name: "updateUserPublicInfo",
 		},
 	],
 	validationModels: {

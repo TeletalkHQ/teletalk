@@ -5,7 +5,7 @@ import { UserId, UserPublicData } from "@repo/types";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
 
-export const getPublicInfo = serviceBuilder
+export const getUserPublicInfo = serviceBuilder
 	.create<
 		{
 			targetUserId: UserId;

@@ -8,14 +8,14 @@ import { findBySessionId } from "./findBySessionId";
 import { findByUserId } from "./findByUserId";
 import { getAvatar } from "./getAvatar";
 import { getContacts } from "./getContacts";
-import { getPublicInfo } from "./getPublicInfo";
+import { getUserPublicInfo } from "./getUserPublicInfo";
 import { isUserExist } from "./isUserExist";
 import { logout } from "./logout";
 import { removeBlock } from "./removeBlock";
 import { removeContact } from "./removeContact";
 import { updateAvatar } from "./updateAvatar";
 import { updateContact } from "./updateContact";
-import { updatePublicInfo } from "./updatePublicInfo";
+import { updateUserPublicInfo } from "./updateUserPublicInfo";
 
 export const userServices = {
 	addBlock,
@@ -28,12 +28,12 @@ export const userServices = {
 	findByUserId,
 	getAvatar,
 	getContacts,
-	getPublicInfo,
+	getUserPublicInfo,
 	isUserExist,
 	logout,
 	removeBlock,
 	removeContact,
 	updateAvatar,
 	updateContact,
-	updatePublicInfo,
+	updateUserPublicInfo,
 };

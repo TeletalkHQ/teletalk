@@ -8,13 +8,13 @@ import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
 describe(
-	messageCreators.unitSuccessDescribe("updatePublicInfo", "service"),
+	messageCreators.unitSuccessDescribe("updateUserPublicInfo", "service"),
 	() => {
 		it(
 			messageCreators.unitSuccessTest(
-				"updatePublicInfo",
+				"updateUserPublicInfo",
 				"service",
-				"should update user public data"
+				"should update user public info"
 			),
 			async () => {
 				const { user: currentUser, sessionId } = await randomizer.serviceUser();
@@ -26,7 +26,7 @@ describe(
 				);
 
 				for (const publicInfo of usersPublicData) {
-					await services.user.updatePublicInfo({
+					await services.user.updateUserPublicInfo({
 						currentSessionId: sessionId,
 						updateProperties: publicInfo,
 					});
@@ -46,7 +46,7 @@ describe(
 );
 
 await utils.generateServiceFailTest(
-	"updatePublicInfo",
+	"updateUserPublicInfo",
 	"CURRENT_USER_NOT_EXIST",
 	{
 		currentSessionId: randomizer.sessionId(),

@@ -53,7 +53,7 @@ export class Randomizer extends RandomizerMain {
 		const socket = clientInitializer(ah.getSession()).getClient();
 
 		return {
-			userInfo: response.data.data,
+			userInfo: response.data.data.userInfo,
 			session: ah.getSession(),
 			socket,
 		};

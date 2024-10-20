@@ -4,7 +4,7 @@ import { SessionId, UserId, UserPublicData } from "@repo/types";
 import { serviceBuilder } from "~/classes/service/ServiceBuilder";
 import { serviceMiddlewares } from "~/services/middlewares";
 
-export const updatePublicInfo = serviceBuilder
+export const updateUserPublicInfo = serviceBuilder
 	.create<
 		{
 			currentSessionId: SessionId;

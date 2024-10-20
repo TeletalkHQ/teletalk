@@ -14,9 +14,9 @@ describe(messageCreators.e2eSuccessSuite("getUserInfo", "event"), () => {
 		async () => {
 			const { socket, userInfo } = await randomizer.userByE2E();
 
-			const { data: receivedUserInfo } = await eventHandlerCollection
-				.getUserInfo(socket)
-				.send({ data: {} });
+			const {
+				data: { userInfo: receivedUserInfo },
+			} = await eventHandlerCollection.getUserInfo(socket).send({ data: {} });
 
 			assertion().userInfo({
 				equal: userInfo,

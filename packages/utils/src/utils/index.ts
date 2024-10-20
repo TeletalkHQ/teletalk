@@ -4,12 +4,13 @@ import generatePassword from "generate-password";
 import lodash from "lodash";
 import { ScreamingSnakeCase } from "type-fest";
 
-const makeScreamingSnakeCase = <T extends string>(value: T) =>
+export const makeScreamingSnakeCase = <T extends string>(value: T) =>
 	upperSnake(value) as ScreamingSnakeCase<T>;
 
-const upperSnake = (value: string) => lodash.snakeCase(value).toUpperCase();
+export const upperSnake = (value: string) =>
+	lodash.snakeCase(value).toUpperCase();
 
-const isDataHasEqualityWithTargetCellphone = (
+export const isDataHasEqualityWithTargetCellphone = (
 	data: BaseSchema.Cellphone & StringMap,
 	targetCellphone: BaseSchema.Cellphone
 ): never | boolean => {
@@ -35,7 +36,9 @@ const isDataHasEqualityWithTargetCellphone = (
 	);
 };
 
-const stringGenerator = (options: generatePassword.GenerateOptions = {}) => {
+export const stringGenerator = (
+	options: generatePassword.GenerateOptions = {}
+) => {
 	return generatePassword.generate({
 		exclude: "",
 		length: 6,
@@ -48,10 +51,3 @@ const stringGenerator = (options: generatePassword.GenerateOptions = {}) => {
 };
 
 export * from "./decorators";
-
-export const utils = {
-	isDataHasEqualityWithTargetCellphone,
-	makeScreamingSnakeCase,
-	stringGenerator,
-	upperSnake,
-};

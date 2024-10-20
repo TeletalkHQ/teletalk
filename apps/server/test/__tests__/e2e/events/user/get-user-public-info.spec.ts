@@ -4,19 +4,19 @@ import { randomizer } from "@/classes";
 import { eventHandlerCollection } from "@/utils/eventHandlerCollection";
 import { messageCreators } from "@/utils/testMessageCreators";
 
-describe(messageCreators.e2eSuccessSuite("getPublicInfo", "event"), () => {
+describe(messageCreators.e2eSuccessSuite("getUserPublicInfo", "event"), () => {
 	it(
 		messageCreators.e2eSuccessTest(
-			"getPublicInfo",
+			"getUserPublicInfo",
 			"event",
-			"should get current user public data"
+			"should get current user public info"
 		),
 		async () => {
 			const { socket, userInfo } = await randomizer.userByE2E();
 
 			const {
 				data: { publicInfo },
-			} = await eventHandlerCollection.getPublicInfo(socket).send({
+			} = await eventHandlerCollection.getUserPublicInfo(socket).send({
 				data: {
 					userId: userInfo.userId,
 				},
@@ -31,9 +31,9 @@ describe(messageCreators.e2eSuccessSuite("getPublicInfo", "event"), () => {
 
 	it(
 		messageCreators.e2eSuccessTest(
-			"getPublicInfo",
+			"getUserPublicInfo",
 			"event",
-			"should get target user public data"
+			"should get target user public info"
 		),
 		async () => {
 			const { socket } = await randomizer.userByE2E();
@@ -41,7 +41,7 @@ describe(messageCreators.e2eSuccessSuite("getPublicInfo", "event"), () => {
 
 			const {
 				data: { publicInfo },
-			} = await eventHandlerCollection.getPublicInfo(socket).send({
+			} = await eventHandlerCollection.getUserPublicInfo(socket).send({
 				data: {
 					userId: targetUserInfo.userId,
 				},

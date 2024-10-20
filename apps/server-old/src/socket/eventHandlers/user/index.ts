@@ -6,13 +6,13 @@ import { getAvatar } from "./getAvatar";
 import { getClientStatus } from "./getClientStatus";
 import { getContacts } from "./getContacts";
 import { getOnlineClients } from "./getOnlineClients";
-import { getPublicInfo } from "./getPublicInfo";
 import { getUserData } from "./getUserData";
+import { getUserPublicInfo } from "./getUserPublicInfo";
 import { removeBlock } from "./removeBlock";
 import { removeContact } from "./removeContact";
 import { updateAvatar } from "./updateAvatar";
 import { updateContact } from "./updateContact";
-import { updatePublicInfo } from "./updatePublicInfo";
+import { updateUserPublicInfo } from "./updateUserPublicInfo";
 
 export const userHandlers = {
 	addContact,
@@ -23,11 +23,11 @@ export const userHandlers = {
 	getClientStatus,
 	getContacts,
 	getOnlineClients,
-	getPublicInfo,
+	getUserPublicInfo,
 	getUserData,
 	removeBlock,
 	removeContact,
 	updateAvatar,
 	updateContact,
-	updatePublicInfo,
+	updateUserPublicInfo,
 };

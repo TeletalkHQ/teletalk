@@ -46,7 +46,9 @@
 		},
 		"test": {},
 		"test:coverage": {},
-		"test:dev": {},
+		"test:dev": {
+			"cache": false
+		},
 		"test:dev:coverage": {},
 		"test:dev:watch": {
 			"cache": false,

@@ -7,18 +7,18 @@ import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
 describe(
-	messageCreators.unitSuccessDescribe("getPublicInfo", "service"),
+	messageCreators.unitSuccessDescribe("getUserPublicInfo", "service"),
 	() => {
 		it(
 			messageCreators.unitSuccessTest(
-				"getPublicInfo",
+				"getUserPublicInfo",
 				"service",
 				"should add new blacklist item with target user id"
 			),
 			async () => {
 				const { user: currentUser } = await randomizer.serviceUser();
 
-				const { publicInfo } = await services.user.getPublicInfo({
+				const { publicInfo } = await services.user.getUserPublicInfo({
 					targetUserId: currentUser.userId,
 				});
 
@@ -31,6 +31,10 @@ describe(
 	}
 );
 
-await utils.generateServiceFailTest("getPublicInfo", "TARGET_USER_NOT_EXIST", {
-	targetUserId: randomizer.userId(),
-});
+await utils.generateServiceFailTest(
+	"getUserPublicInfo",
+	"TARGET_USER_NOT_EXIST",
+	{
+		targetUserId: randomizer.userId(),
+	}
+);

@@ -6,7 +6,7 @@ import {
 	getPathname,
 	getRootPath,
 } from "@repo/schema";
-import { utils } from "@repo/utils";
+import { stringGenerator } from "@repo/utils";
 import { Request, Response } from "express";
 
 import { COOKIE_NAMES } from "~/constants";
@@ -36,7 +36,7 @@ export class AuthController {
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response
 	): HTTPHandlerReturnType<"signIn"> {
-		const signInCode = utils.stringGenerator();
+		const signInCode = stringGenerator();
 
 		const cellphone = extractor.cellphone(data);
 

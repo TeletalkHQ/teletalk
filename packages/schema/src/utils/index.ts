@@ -68,6 +68,11 @@ export const findEvent = <T extends EventShortName>(name: T) => {
 	return foundEvent as EventGenerator<T>;
 };
 
+export const getEventName = <T extends EventShortName>(name: T) => {
+	const foundEvent = findEvent(name);
+	return foundEvent.schema.ioName;
+};
+
 export const getPathname = (name: HTTPRouteShortName) => {
 	return findHttpRoute(name).schema.pathname;
 };

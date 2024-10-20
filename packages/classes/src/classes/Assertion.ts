@@ -126,13 +126,13 @@ export class Assertion {
 				});
 			}
 			if (testValue.countryName) {
-				this.lastName({
+				this.countryName({
 					test: testValue.countryName,
 					equal: values.equal.countryName,
 				});
 			}
 			if (testValue.phoneNumber) {
-				this.lastName({
+				this.phoneNumber({
 					test: testValue.phoneNumber,
 					equal: values.equal.phoneNumber,
 				});
@@ -294,7 +294,7 @@ export class Assertion {
 	});
 
 	userInfo = this.multiInitializer<BaseSchema.UserInfo>((values) => {
-		const testValue = baseSchema.userData.parse(values.test);
+		const testValue = baseSchema.userInfo.parse(values.test);
 
 		if (values.equal) {
 			this.avatarSrc({
@@ -352,31 +352,33 @@ export class Assertion {
 		}
 	});
 
-	userPublicInfo = this.multiInitializer<BaseSchema.PublicInfo>((values) => {
-		const testValue = baseSchema.publicInfo.parse(values.test);
+	userPublicInfo = this.multiInitializer<BaseSchema.UserPublicInfo>(
+		(values) => {
+			const testValue = baseSchema.userPublicInfo.parse(values.test);
 
-		if (values.equal) {
-			this.bio({
-				test: testValue.bio,
-				equal: values.equal.bio,
-			});
+			if (values.equal) {
+				this.bio({
+					test: testValue.bio,
+					equal: values.equal.bio,
+				});
 
-			this.fullName({
-				equal: values.equal,
-				test: testValue,
-			});
+				this.fullName({
+					equal: values.equal,
+					test: testValue,
+				});
 
-			this.userId({
-				test: testValue.userId,
-				equal: values.equal.userId,
-			});
+				this.userId({
+					test: testValue.userId,
+					equal: values.equal.userId,
+				});
 
-			this.username({
-				test: testValue.username,
-				equal: values.equal.username,
-			});
+				this.username({
+					test: testValue.username,
+					equal: values.equal.username,
+				});
+			}
 		}
-	});
+	);
 }
 
 export const assertion = () => new Assertion();

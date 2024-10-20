@@ -5,6 +5,7 @@ import { randomizer } from "@/classes";
 import { eventHandlerCollection } from "@/utils/eventHandlerCollection";
 import { messageCreators } from "@/utils/testMessageCreators";
 
+// TODO: Add more tests
 describe(messageCreators.e2eSuccessSuite("addContact", "event"), () => {
 	it(
 		messageCreators.e2eSuccessTest(
@@ -15,8 +16,6 @@ describe(messageCreators.e2eSuccessSuite("addContact", "event"), () => {
 		async () => {
 			const { socket } = await randomizer.userByE2E();
 			const { userInfo: targetUserInfo } = await randomizer.userByE2E();
-
-			// TODO: Add more tests
 
 			const dataToSend: BaseSchema.ContactsItem = {
 				...extractor.cellphone(targetUserInfo),
@@ -32,7 +31,7 @@ describe(messageCreators.e2eSuccessSuite("addContact", "event"), () => {
 
 			assertion().oneContact({
 				test: newContact,
-				equal: { ...dataToSend, userId: targetUserInfo.userId },
+				equal: dataToSend,
 			});
 		}
 	);

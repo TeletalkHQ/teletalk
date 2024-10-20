@@ -92,14 +92,14 @@ const Messenger = () => {
 	});
 
 	useListener({
-		evName: "getPublicInfo",
+		evName: "getUserPublicInfo",
 		cb: async (response) => {
 			userStore.updateUser(response.data.publicInfo);
 		},
 	});
 
 	useListener({
-		evName: "updatePublicInfo",
+		evName: "updateUserPublicInfo",
 		cb: ({ data: { userPublicData } }) =>
 			userStore.currentUserData.userId === userPublicData.userId
 				? userStore.updateCurrentUserPublicData(userPublicData)

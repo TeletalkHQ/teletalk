@@ -107,12 +107,12 @@ export const ioCollection = {
 			privateChats: baseSchema.privateChats,
 		}),
 	},
-	getPublicInfo: {
+	getUserPublicInfo: {
 		input: z.object({
 			userId: baseSchema.userId,
 		}),
 		output: z.object({
-			publicInfo: baseSchema.publicInfo,
+			publicInfo: baseSchema.userPublicInfo,
 		}),
 	},
 	getStuff: {
@@ -121,7 +121,9 @@ export const ioCollection = {
 	},
 	getUserInfo: {
 		input: z.object({}),
-		output: baseSchema.userData,
+		output: z.object({
+			userInfo: baseSchema.userInfo,
+		}),
 	},
 	getWelcomeMessage: {
 		input: z.object({}),
@@ -196,15 +198,15 @@ export const ioCollection = {
 			updatedContact: baseSchema.contactsItem,
 		}),
 	},
-	updatePublicInfo: {
+	updateUserPublicInfo: {
 		input: z.object({
-			firstName: baseSchema.firstName,
-			lastName: baseSchema.lastName,
-			bio: baseSchema.bio,
-			username: baseSchema.username,
+			bio: baseSchema.bio.optional(),
+			firstName: baseSchema.firstName.optional(),
+			lastName: baseSchema.lastName.optional(),
+			username: baseSchema.username.optional(),
 		}),
 		output: z.object({
-			updatedPublicData: baseSchema.publicInfo,
+			updatedPublicInfo: baseSchema.userPublicInfo,
 		}),
 	},
 	verify: {

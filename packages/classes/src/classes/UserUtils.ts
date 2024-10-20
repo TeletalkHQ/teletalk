@@ -1,11 +1,11 @@
 import { BaseSchema } from "@repo/schema";
 import { StringMap } from "@repo/types";
-import { utils } from "@repo/utils";
+import { isDataHasEqualityWithTargetCellphone } from "@repo/utils";
 
 export class UserUtils {
 	concatFirstNameWithLastName(
 		userItem: Partial<BaseSchema.ClientUser>,
-		publicInfo?: BaseSchema.PublicInfo
+		publicInfo?: BaseSchema.UserPublicInfo
 	) {
 		const fn =
 			userItem.firstName ||
@@ -60,7 +60,7 @@ export class UserUtils {
 		targetCellphone: BaseSchema.Cellphone & StringMap
 	): { index: number; item?: BaseSchema.Cellphone & StringMap } {
 		const item = items.find((cellphone) =>
-			utils.isDataHasEqualityWithTargetCellphone(cellphone, targetCellphone)
+			isDataHasEqualityWithTargetCellphone(cellphone, targetCellphone)
 		);
 
 		return {

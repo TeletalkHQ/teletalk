@@ -21,7 +21,7 @@ export const eventHandlerCollection = {
 	getOnlineClients: eventHandlerMaker("getOnlineClients"),
 	getPrivateChat: eventHandlerMaker("getPrivateChat"),
 	getPrivateChats: eventHandlerMaker("getPrivateChats"),
-	getPublicInfo: eventHandlerMaker("getPublicInfo"),
+	getUserPublicInfo: eventHandlerMaker("getUserPublicInfo"),
 	getUserInfo: eventHandlerMaker("getUserInfo"),
 	join: eventHandlerMaker("join"),
 	logout: eventHandlerMaker("logout"),
@@ -31,5 +31,5 @@ export const eventHandlerCollection = {
 	sendMessage: eventHandlerMaker("sendMessage"),
 	updateAvatar: eventHandlerMaker("updateAvatar"),
 	updateContact: eventHandlerMaker("updateContact"),
-	updatePublicInfo: eventHandlerMaker("updatePublicInfo"),
+	updateUserPublicInfo: eventHandlerMaker("updateUserPublicInfo"),
 };
