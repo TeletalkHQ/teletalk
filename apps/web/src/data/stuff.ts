@@ -766,7 +766,7 @@ export const stuff = {
 				},
 			},
 			isAuthRequired: true,
-			name: "getPrivateChat",
+			name: "getOnePrivateChat",
 		},
 		{
 			method: "customOn",

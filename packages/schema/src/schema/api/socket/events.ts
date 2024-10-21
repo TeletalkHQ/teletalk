@@ -59,7 +59,7 @@ export const socketEvents = [
 	new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
-		ioName: "getPrivateChat",
+		ioName: "getOnePrivateChat",
 	}),
 	new EventGenerator({
 		isAuthRequired: true,

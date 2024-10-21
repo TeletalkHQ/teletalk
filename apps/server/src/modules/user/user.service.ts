@@ -1,51 +1,41 @@
 import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
+import { InjectModel } from "@nestjs/mongoose";
 import { extractor } from "@repo/classes";
 import { BaseSchema } from "@repo/schema";
-import { MongoRepository } from "typeorm";
+import { Model } from "mongoose";
 
 import { EntityFilterer } from "~/types";
 
 import { ErrorStoreService } from "../error-store/error-store.service";
 import { User } from "./user.entity";
 
-type DBUserData = EntityFilterer<User>;
+export type DBUser = EntityFilterer<User>;
 
 @Injectable()
 export class UserService {
 	constructor(
-		@InjectRepository(User) private repo: MongoRepository<DBUserData>,
+		@InjectModel(User.name) private repo: Model<User>,
 		private errorStoreService: ErrorStoreService
 	) {}
 
-	create(userToCreate: Partial<DBUserData>) {
-		const user = this.repo.create(userToCreate);
-		return this.repo.save(user);
+	async create(userToCreate: Partial<DBUser>) {
+		const user = await this.repo.create(userToCreate);
+		user.save();
+		return user;
 	}
 
-	findOne(user: Partial<DBUserData>) {
-		return this.repo.findOne({
-			where: user,
-		});
+	findOne(dataToFind: Partial<DBUser>) {
+		return this.repo.findOne(dataToFind);
 	}
 
 	findBySessionId(sessionId: BaseSchema.SessionId) {
 		return this.repo.findOne({
-			where: {
-				sessions: {
-					$elemMatch: {
-						sessionId,
-						isExpired: false,
-					},
-				},
-			},
+			["sessions.sessionId"]: sessionId,
 		});
 	}
 
-	find(info: Partial<DBUserData>) {
-		return this.repo.find({
-			where: info,
-		});
+	find(dataToFind: Partial<DBUser>) {
+		return this.repo.find(dataToFind);
 	}
 
 	async getContacts(sessionId: BaseSchema.SessionId) {
@@ -66,7 +56,7 @@ export class UserService {
 		return currentUser;
 	}
 
-	async getTargetUser(info: Partial<DBUserData>) {
+	async getTargetUser(info: Partial<DBUser>) {
 		const targetUser = await this.findOne(info);
 
 		if (!targetUser)
@@ -88,7 +78,7 @@ export class UserService {
 	}
 
 	async throwIfBlacklistItemExist(
-		blacklist: BaseSchema.DBUserData["blacklist"],
+		blacklist: DBUser["blacklist"],
 		targetUserId: BaseSchema.UserId
 	) {
 		const foundItem = blacklist.some((i) => i.userId === targetUserId);
@@ -101,7 +91,7 @@ export class UserService {
 	}
 
 	async throwIfBlacklistItemNotExist(
-		blacklist: BaseSchema.DBUserData["blacklist"],
+		blacklist: DBUser["blacklist"],
 		targetUserId: BaseSchema.UserId
 	) {
 		const foundItem = blacklist.some((i) => i.userId === targetUserId);
@@ -160,8 +150,40 @@ export class UserService {
 		);
 	}
 
+	async throwIfParticipantIsInBlacklist({
+		currentUserBlacklist,
+		currentUserId,
+		targetUserBlacklist,
+		targetUserId,
+	}: {
+		currentUserBlacklist: DBUser["blacklist"];
+		currentUserId: BaseSchema.UserId;
+		targetUserBlacklist: DBUser["blacklist"];
+		targetUserId: BaseSchema.UserId;
+	}) {
+		const isBlockedFromCurrent = currentUserBlacklist.some(
+			(i) => i.userId === targetUserId
+		);
+		if (isBlockedFromCurrent)
+			throw this.errorStoreService.throw(
+				"badRequest",
+				"TARGET_USER_IS_BLACKLISTED",
+				this.throwIfParticipantIsInBlacklist.name
+			);
+
+		const isBlockedFromTarget = targetUserBlacklist.some(
+			(i) => i.userId === currentUserId
+		);
+		if (isBlockedFromTarget)
+			throw this.errorStoreService.throw(
+				"badRequest",
+				"CURRENT_USER_IS_BLACKLISTED",
+				this.throwIfParticipantIsInBlacklist.name
+			);
+	}
+
 	async throwIfContactExist(
-		currentUserContacts: DBUserData["contacts"],
+		currentUserContacts: DBUser["contacts"],
 		targetUserId: BaseSchema.UserId
 	) {
 		if (currentUserContacts.some((i) => i.userId == targetUserId))
@@ -189,7 +211,7 @@ export class UserService {
 		await this.throwIfSelfRequested(currentUser.userId, targetUser.userId);
 
 		await this.throwIfContactExist(currentUser.contacts, targetUser.userId);
-		const newContactsItem: DBUserData["contacts"][number] = {
+		const newContactsItem: DBUser["contacts"][number] = {
 			userId: targetUser.userId,
 			firstName: targetUserInfo.firstName,
 			lastName: targetUserInfo.lastName,
@@ -233,7 +255,7 @@ export class UserService {
 
 	// TODO: Refactor all `throw` methods - return index instead
 	async throwIfContactNotExist(
-		contacts: DBUserData["contacts"],
+		contacts: DBUser["contacts"],
 		targetUserId: BaseSchema.UserId
 	) {
 		const isContactExist = contacts.some((i) => i.userId === targetUserId);
@@ -246,37 +268,31 @@ export class UserService {
 			);
 	}
 
-	async update(
-		dataToFind: Partial<DBUserData>,
-		dataToUpdate: Partial<DBUserData>
-	) {
+	async update(dataToFind: Partial<DBUser>, dataToUpdate: Partial<DBUser>) {
 		const user = await this.findOne(dataToFind);
 		if (!user)
-			this.errorStoreService.throw(
-				"notFound",
-				"USER_NOT_FOUND",
-				UserService.name
-			);
+			this.errorStoreService.throw("notFound", "USER_NOT_FOUND", [
+				UserService.name,
+				this.update.name,
+			]);
 
-		return this.repo.save({ ...user, ...dataToUpdate });
+		await user.updateOne(dataToUpdate);
+		return user;
 	}
 
-	async remove(userToRemove: Partial<DBUserData>) {
+	async remove(userToRemove: Partial<DBUser>) {
 		const user = await this.findOne(userToRemove);
 		if (!user)
-			this.errorStoreService.throw(
-				"notFound",
-				"USER_NOT_FOUND",
-				UserService.name
-			);
+			this.errorStoreService.throw("notFound", "USER_NOT_FOUND", [
+				UserService.name,
+				this.remove.name,
+			]);
 
-		return this.repo.remove(user);
+		await user.deleteOne();
 	}
 
-	async isExist(userToFind: Partial<DBUserData>) {
-		return this.repo.exists({
-			where: userToFind,
-		});
+	async isExist(userToFind: Partial<DBUser>) {
+		return this.repo.exists(userToFind);
 	}
 
 	async addSessionId(
@@ -285,15 +301,18 @@ export class UserService {
 	) {
 		const user = await this.findOne({ userId });
 		if (!user)
-			this.errorStoreService.throw(
-				"notFound",
-				"USER_NOT_FOUND",
-				UserService.name
-			);
+			this.errorStoreService.throw("notFound", "USER_NOT_FOUND", [
+				UserService.name,
+				this.addSessionId.name,
+			]);
 
-		this.repo.save({
-			...user,
-			sessions: [...user.sessions, { sessionId }],
+		const sessionItem: BaseSchema.SessionItem = {
+			isExpired: false,
+			sessionId,
+		};
+
+		await user.updateOne({
+			sessions: [...user.sessions, sessionItem],
 		});
 	}
 

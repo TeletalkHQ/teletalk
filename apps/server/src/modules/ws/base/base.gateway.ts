@@ -9,7 +9,11 @@ import { Server } from "socket.io";
 import { BaseInterceptor } from "./base.interceptor";
 
 @UseInterceptors(BaseInterceptor)
-@WebSocketGateway()
+@WebSocketGateway({
+	cors: {
+		origin: "*",
+	},
+})
 export class BaseGateway implements OnGatewayInit {
 	logger = new Logger(BaseGateway.name);
 

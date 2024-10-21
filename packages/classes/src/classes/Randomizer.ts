@@ -58,6 +58,14 @@ export class Randomizer {
 		return this.id(length);
 	}
 
+	chatId(length = getStringSchemaMaxLength(baseSchema.chatId)) {
+		return this.id(length);
+	}
+
+	messageId(length = getStringSchemaMaxLength(baseSchema.messageId)) {
+		return this.id(length);
+	}
+
 	country(): BaseSchema.CountriesItem {
 		const index = this.numberWithRange(0, countries.length);
 		return countries[index] || this.country();

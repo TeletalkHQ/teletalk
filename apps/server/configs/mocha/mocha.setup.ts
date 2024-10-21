@@ -9,7 +9,6 @@ const registerTests = async () => {
 	await import("@/__tests__/e2e/routes/auth/logout.spec");
 	await import("@/__tests__/e2e/routes/auth/sign-in.spec");
 	await import("@/__tests__/e2e/routes/auth/verify.spec");
-
 	//? // // User
 	await import("@/__tests__/e2e/events/user/add-block.spec");
 	await import("@/__tests__/e2e/events/user/add-contact.spec");
@@ -20,10 +19,11 @@ const registerTests = async () => {
 	await import("@/__tests__/e2e/events/user/get-user-public-info.spec");
 	await import("@/__tests__/e2e/events/user/update-user-public-info.spec");
 	await import("@/__tests__/e2e/events/user/update-contact.spec");
-
-	// await import("@/__tests__/e2e/events/privateChat/getPrivateChat.spec");
-	// await import("@/__tests__/e2e/events/privateChat/getPrivateChats.spec");
-	// await import("@/__tests__/e2e/events/privateChat/sendMessage.spec");
+	//? // // PrivateChat
+	await import("@/__tests__/e2e/events/private-chat/get-one-private-chat.spec");
+	await import("@/__tests__/e2e/events/private-chat/get-private-chats.spec");
+	await import("@/__tests__/e2e/events/private-chat/send-message.spec");
+	//? // // Middleware
 	// await import("@/__tests__/e2e/middleware/attachSessionId.spec");
 	// await import("@/__tests__/e2e/middleware/checkDataFields.spec");
 	// await import("@/__tests__/e2e/middleware/checkEventAvailability.spec");

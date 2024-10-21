@@ -1,6 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { APP_INTERCEPTOR, NestFactory } from "@nestjs/core";
-import { TypeOrmModule } from "@nestjs/typeorm";
+import { MongooseModule } from "@nestjs/mongoose";
 import { getFullPath, getRequestMethod } from "@repo/schema";
 import cookieParser from "cookie-parser";
 
@@ -12,6 +12,7 @@ import { AuthModule } from "../auth/auth.module";
 import { ConfigModule } from "../config/config.module";
 import { ConfigService } from "../config/config.service";
 import { ErrorStoreModule } from "../error-store/error-store.module";
+import { PrivateChatModule } from "../private-chat/private-chat.module";
 import { SessionModule } from "../session/session.module";
 import { UserModule } from "../user/user.module";
 import { AppController } from "./app.controller";
@@ -19,20 +20,16 @@ import { AppInterceptor } from "./app.interceptor";
 import { AppService } from "./app.service";
 
 const createMongoDBModule = () => {
-	return TypeOrmModule.forRootAsync({
+	return MongooseModule.forRootAsync({
 		imports: [ConfigModule],
 		useFactory: (configService: ConfigService) => {
 			const { MONGO } = configService.getConfigs().DB;
 
 			return {
-				type: "mongodb",
 				url: MONGO.URL,
-				database: MONGO.COLLECTION_NAME,
-				autoLoadEntities: true,
-				// : [__dirname + "/**/*.entity{.ts,.js}"],
+				dbName: MONGO.COLLECTION_NAME,
+				uri: MONGO.URI,
 				ssl: false,
-				useUnifiedTopology: true,
-				useNewUrlParser: true,
 			};
 		},
 
@@ -47,6 +44,7 @@ const createMongoDBModule = () => {
 		ErrorStoreModule,
 		SessionModule,
 		UserModule,
+		PrivateChatModule,
 		WsRateLimitModule,
 		createMongoDBModule(),
 	],

@@ -12,7 +12,7 @@ export class Extractor {
 
 	contact(
 		data: BaseSchema.Cellphone & BaseSchema.FullName & StringMap
-	): BaseSchema.ContactsItemWithoutOptionals {
+	): BaseSchema.ContactsItem {
 		return {
 			...this.cellphone(data),
 			...this.fullName(data),
@@ -29,7 +29,9 @@ export class Extractor {
 
 	userInfo(data: BaseSchema.UserInfo & StringMap): BaseSchema.UserInfo {
 		return {
-			...this.contact(data),
+			...this.cellphone(data),
+			...this.fullName(data),
+			userId: data.userId,
 			avatarSrc: data.avatarSrc,
 			bio: data.bio,
 			blacklist: data.blacklist,
@@ -43,7 +45,7 @@ export class Extractor {
 	// TODO: Rename or remove
 	currentUserInfo(data: BaseSchema.UserInfo & StringMap): BaseSchema.UserInfo {
 		return {
-			...this.contact(data),
+			...this.cellphone(data),
 			...this.fullName(data),
 			avatarSrc: data.avatarSrc,
 			bio: data.bio,
@@ -64,6 +66,17 @@ export class Extractor {
 			bio: data.bio,
 			userId: data.userId,
 			username: data.username,
+		};
+	}
+
+	privateChat(
+		data: BaseSchema.PrivateChatsItem & StringMap
+	): BaseSchema.PrivateChatsItem {
+		return {
+			chatId: data.chatId,
+			createdAt: data.createdAt,
+			messages: data.messages,
+			participants: data.participants,
 		};
 	}
 }

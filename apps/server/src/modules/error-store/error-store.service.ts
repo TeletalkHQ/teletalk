@@ -18,7 +18,9 @@ export type ErrorReason =
 	| "CONTACT_ITEM_EXIST"
 	| "CURRENT_USER_NOT_EXIST"
 	| "USER_BY_SESSION_ID_NOT_FOUND"
+	| "PRIVATE_CHAT_NOT_FOUND"
 	| "BLACKLIST_ITEM_NOT_EXIST"
+	| "PRIVATE_CHAT_ALREADY_EXIST"
 	| "CONTACT_ITEM_NOT_EXIST"
 	| "INPUT_DATA_INVALID"
 	| "BLACKLIST_ITEM_EXIST"
@@ -29,6 +31,8 @@ export type ErrorReason =
 	| "INVALID_HOST"
 	| "EVENT_CALLBACK_NOT_FOUND"
 	| "SESSION_NOT_VERIFIED"
+	| "TARGET_USER_IS_BLACKLISTED"
+	| "CURRENT_USER_IS_BLACKLISTED"
 	| "STORED_SESSION_NOT_FOUND"
 	| "USER_INFO_NOT_FOUND";
 
@@ -56,7 +60,7 @@ export class ErrorStoreService {
 	throw(
 		type: ErrorType,
 		reason: ErrorReason,
-		ctxName: string,
+		ctxName: string | string[],
 		options = this.options
 	): never {
 		this.handleLogs(type, reason, ctxName, options);
@@ -71,7 +75,7 @@ export class ErrorStoreService {
 	private handleLogs(
 		type: ErrorType,
 		reason: ErrorReason,
-		ctxName: string,
+		ctxName: string | string[],
 		options = this.options
 	) {
 		const { shouldLogError } = this.mergeOptions(options);

@@ -15,11 +15,7 @@ import { Socket } from "socket.io";
 import { BaseGateway } from "../ws/base/base.gateway";
 import { UserService } from "./user.service";
 
-@WebSocketGateway({
-	cors: {
-		origin: "*",
-	},
-})
+@WebSocketGateway()
 export class UserGateway extends BaseGateway {
 	logger = new Logger(UserGateway.name);
 
@@ -38,19 +34,6 @@ export class UserGateway extends BaseGateway {
 		);
 
 		this.server.emit("message", `Server received: ${message}`);
-	}
-
-	@SubscribeMessage(getEventName("getUserInfo"))
-	async handleCustomEvent(
-		@ConnectedSocket() socket: Socket
-	): SocketHandlerReturnType_Promise<"getUserInfo"> {
-		const userInfo = await this.userService.getUserInfo(socket.sessionId);
-
-		return {
-			data: {
-				userInfo,
-			},
-		};
 	}
 
 	@SubscribeMessage(getEventName("addBlock"))

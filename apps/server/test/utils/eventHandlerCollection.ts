@@ -19,7 +19,7 @@ export const eventHandlerCollection = {
 	getClientStatus: eventHandlerMaker("getClientStatus"),
 	getContacts: eventHandlerMaker("getContacts"),
 	getOnlineClients: eventHandlerMaker("getOnlineClients"),
-	getPrivateChat: eventHandlerMaker("getPrivateChat"),
+	getOnePrivateChat: eventHandlerMaker("getOnePrivateChat"),
 	getPrivateChats: eventHandlerMaker("getPrivateChats"),
 	getUserPublicInfo: eventHandlerMaker("getUserPublicInfo"),
 	getUserInfo: eventHandlerMaker("getUserInfo"),

@@ -1,18 +1,11 @@
 import { Logger } from "@nestjs/common";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { BaseSchema } from "@repo/schema";
-import {
-	AfterInsert,
-	AfterRemove,
-	AfterUpdate,
-	Column,
-	Entity,
-	ObjectId,
-	ObjectIdColumn,
-} from "typeorm";
+import { HydratedDocument } from "mongoose";
 
 import { createLogger } from "~/utils";
 
-@Entity()
+@Schema()
 export class User {
 	logger: Logger;
 
@@ -20,69 +13,75 @@ export class User {
 		this.logger = createLogger("entity", User.name);
 	}
 
-	@ObjectIdColumn()
-	id: ObjectId;
-
-	@Column()
+	@Prop()
 	avatarSrc: BaseSchema.AvatarSrc;
 
-	@Column()
+	@Prop()
 	bio: BaseSchema.Bio;
 
-	@Column({ default: [], type: "jsonb" })
+	@Prop({ default: [] })
 	blacklist: BaseSchema.Blacklist;
 
-	@Column({ default: [], type: "jsonb" })
+	@Prop({ default: [] })
 	contacts: BaseSchema.Contacts;
 
-	@Column()
+	@Prop()
 	countryCode: BaseSchema.CountryCode;
 
-	@Column()
+	@Prop()
 	countryName: BaseSchema.CountryName;
 
-	@Column()
+	@Prop()
 	createdAt: BaseSchema.CreatedAt;
 
-	@Column()
+	@Prop()
 	firstName: BaseSchema.FirstName;
 
-	@Column()
+	@Prop()
 	lastName: BaseSchema.LastName;
 
-	@Column()
+	@Prop()
 	phoneNumber: BaseSchema.PhoneNumber;
 
-	@Column()
+	@Prop({
+		type: "object",
+		default: {
+			isActive: false,
+		},
+	})
 	status: BaseSchema.Status;
 
-	@Column()
+	@Prop()
 	userId: BaseSchema.UserId;
 
-	@Column()
+	@Prop()
 	username: BaseSchema.Username;
 
-	@Column()
+	@Prop()
 	email: BaseSchema.Email;
 
-	@Column()
+	@Prop()
 	password: BaseSchema.Password;
 
-	@Column({ default: [], type: "jsonb" })
+	@Prop({ default: [] })
 	sessions: BaseSchema.Sessions;
 
-	@AfterInsert()
-	logInsert() {
-		this.logger.log(`Inserted User with id: ${this.id}`);
-	}
+	// @AfterInsert()
+	// logInsert() {
+	// 	this.logger.log(`Inserted ${User.name} with id: ${this.id}`);
+	// }
 
-	@AfterUpdate()
-	logUpdate() {
-		this.logger.log(`Updated User with id: ${this.id}`);
-	}
+	// @AfterUpdate()
+	// logUpdate() {
+	// 	this.logger.log(`Updated ${User.name} with id: ${this.id}`);
+	// }
 
-	@AfterRemove()
-	logRemove() {
-		this.logger.log(`Removed User with id: ${this.id}`);
-	}
+	// @AfterRemove()
+	// logRemove() {
+	// 	this.logger.log(`Removed ${User.name} with id: ${this.id}`);
+	// }
 }
+
+export type UserDocument = HydratedDocument<User>;
+
+export const UserSchema = SchemaFactory.createForClass(User);

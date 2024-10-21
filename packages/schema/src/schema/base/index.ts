@@ -126,15 +126,6 @@ const contactsItem = z.object({
 	userId,
 });
 
-const contactsItemWithoutOptionals = z.object({
-	countryCode,
-	countryName,
-	firstName,
-	lastName,
-	phoneNumber,
-	userId,
-});
-
 const contacts = z.array(contactsItem);
 
 const blacklistItem = z.object({
@@ -243,6 +234,7 @@ export const baseSchema = {
 	phoneNumber,
 	pong,
 	privateChats,
+	// TODO: Rename all `NAME_Item` to `one_NAME`
 	privateChatsItem,
 	senderId,
 	session,
@@ -269,9 +261,6 @@ export namespace BaseSchema {
 	export type ClientUser = z.infer<typeof clientUser>;
 	export type Contacts = z.infer<typeof contacts>;
 	export type ContactsItem = z.infer<typeof contactsItem>;
-	export type ContactsItemWithoutOptionals = z.infer<
-		typeof contactsItemWithoutOptionals
-	>;
 	export type Countries = z.infer<typeof countries>;
 	export type CountriesItem = z.infer<typeof countriesItem>;
 	export type CountryCode = z.infer<typeof countryCode>;

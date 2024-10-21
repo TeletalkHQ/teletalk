@@ -93,7 +93,7 @@ export const ioCollection = {
 			onlineClients: baseSchema.onlineClients,
 		}),
 	},
-	getPrivateChat: {
+	getOnePrivateChat: {
 		input: z.object({
 			chatId: baseSchema.chatId,
 		}),

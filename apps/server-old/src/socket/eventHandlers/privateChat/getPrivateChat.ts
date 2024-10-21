@@ -2,7 +2,7 @@ import { SocketOnHandler } from "@repo/socket";
 
 import { services } from "~/services";
 
-export const getPrivateChat: SocketOnHandler<"getPrivateChat"> = async (
+export const getOnePrivateChat: SocketOnHandler<"getOnePrivateChat"> = async (
 	_socket,
 	data
 ) => {

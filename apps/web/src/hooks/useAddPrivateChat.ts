@@ -6,7 +6,7 @@ import { useEmitter } from "./useEmitter";
 
 export const useAddPrivateChat = () => {
 	const messageStore = useMessageStore();
-	const { handler: getPrivateChatHandler } = useEmitter("getPrivateChat");
+	const { handler: getPrivateChatHandler } = useEmitter("getOnePrivateChat");
 
 	const handler = (chatId: ChatId) => {
 		return getPrivateChatHandler.send({ chatId }, ({ data }) => {

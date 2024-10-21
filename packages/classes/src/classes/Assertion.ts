@@ -155,12 +155,12 @@ export class Assertion {
 					testValue.find((j) => j.chatId === item.chatId)
 				);
 
-				this.privateChatItem({ test: foundChat, equal: item });
+				this.onePrivateChat({ test: foundChat, equal: item });
 			});
 		}
 	});
 
-	privateChatItem = this.multiInitializer<BaseSchema.PrivateChatsItem>(
+	onePrivateChat = this.multiInitializer<BaseSchema.PrivateChatsItem>(
 		(values) => {
 			const testValue = baseSchema.privateChatsItem.parse(values.test);
 
