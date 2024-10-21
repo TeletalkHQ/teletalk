@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-import { countries } from "@repo/constants";
 import { ErrorReason, NativeError } from "@repo/error-store";
 import { Field, models } from "@repo/model";
 import chai from "chai";
@@ -32,20 +31,6 @@ async function asyncDescribe(...args: AsyncDescribeArgs) {
 		mainUtils.crashServer(error);
 	}
 }
-
-const getWrongCountryCode = (): string => {
-	const randomCountryCode = randomizer.stringNumber(
-		models.native.countryCode.max
-	);
-
-	const isCountryExist = countries.some(
-		(c) => c.countryCode === randomCountryCode
-	);
-
-	if (isCountryExist) return getWrongCountryCode();
-
-	return randomCountryCode;
-};
 
 function generateDynamicData(
 	schema: ValidationSchema
@@ -177,7 +162,6 @@ export const utils = {
 	expectToFail_async,
 	generateDynamicData,
 	generateServiceFailTest,
-	getWrongCountryCode,
 	jestDescribe,
 	requesterCollection,
 	requesterMakerHelper,

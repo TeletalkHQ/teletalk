@@ -32,14 +32,7 @@
 		"target": "ESNext"
 	},
 	"exclude": ["node_modules"],
-	"include": [
-		"src/**/*.ts",
-		"configs/**/*.ts",
-		"./index.ts",
-		"test/**/*.ts",
-		"configs/jest/jest.setup.ts",
-		"./global.d.ts"
-	],
+	"include": ["src/**/*.ts", "test/**/*.ts", "./global.d.ts"],
 	"ts-node": {
 		"esm": true,
 		"experimentalSpecifierResolution": "node",
