@@ -1,0 +1,10 @@
+@use "../../../../styles/sass/utilities/colors" as *;
+
+.overlay {
+	cursor: not-allowed;
+	background-color: rgba(0, 0, 0, 0.386);
+	position: absolute;
+	width: 100%;
+	border-radius: 15px;
+	height: 100%;
+}

@@ -1,3 +1,6 @@
+import { CircularProgressProps } from "@mui/material";
+import { ChangeEventHandler } from "react";
+
 export type SnakeCase<S extends string> = S extends `${infer T1}_${infer T2}`
 	? `${SnakeCase<T1>}_${SnakeCase<T2>}`
 	: S extends `${infer T1}${infer T2}`
@@ -36,6 +39,22 @@ export type VoidWithArg<Arg> = (arg: Arg) => void;
 
 // TODO: Remove
 export type VoidWithTwoArgs<Arg1, Arg2> = (arg1: Arg1, arg2: Arg2) => void;
+
+export type StoreSetFn<StoreType> = (
+	partial:
+		| StoreType
+		| Partial<StoreType>
+		| ((state: StoreType) => StoreType | Partial<StoreType>),
+	replace?: boolean | undefined
+) => void;
+
+export type LoadingType = "FULL_PAGE" | "OVERLAY";
+
+export type ProgressColor = CircularProgressProps["color"];
+
+export type CommonOnChange = ChangeEventHandler<
+	HTMLInputElement | HTMLTextAreaElement
+>;
 
 export * from "./http";
 export * from "./socket";

@@ -14,7 +14,7 @@
 		"moduleResolution": "node",
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitAny": true,
-		"noImplicitReturns": true,
+		"noImplicitReturns": false,
 		"outDir": "./lib",
 		"paths": {
 			"@/*": ["test/*"],

@@ -1,21 +1,18 @@
 {
-	"extends": "@repo/typescript-config/src/configs/nextJS.json",
+	"extends": "@repo/typescript-config/nextjs.json",
 	"compilerOptions": {
-		"baseUrl": ".",
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"module": "commonjs",
-		"paths": {
-			"@/*": ["testSrc/*"],
-			"#/*": ["public/*"],
-			"~/*": ["src/*"]
-		},
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "es2016",
-		"types": ["mocha"],
-		"noEmit": true
+		"plugins": [
+			{
+				"name": "next"
+			}
+		]
 	},
-	"exclude": ["node_modules"],
-	"include": ["src", "next-env.d.ts", "./src/types/global.d.ts"]
+	"include": [
+		"next-env.d.ts",
+		"next.config.mjs",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts"
+	],
+	"exclude": ["node_modules"]
 }

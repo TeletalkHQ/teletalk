@@ -4,7 +4,7 @@ import { JestConfigWithTsJest, pathsToModuleNameMapper } from "ts-jest";
 import tsconfig from "./tsconfig.json";
 
 const maxThreads = os.cpus().length;
-const maxWorkers = process.env.MAXIMIZE_THREADS ? maxThreads : maxThreads / 2;
+const maxWorkers = process.env.USE_ALL_THREADS ? maxThreads : maxThreads / 2;
 
 let baseOptions: JestConfigWithTsJest = {
 	automock: false,

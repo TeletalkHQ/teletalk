@@ -175,6 +175,7 @@ const countriesItem = z.object({
 	countryCode,
 	countryName,
 	countryShortName,
+	uuid: z.string(),
 });
 
 const countries = z.array(countriesItem);
@@ -194,6 +195,8 @@ const clientUser = userPublicInfo.and(
 		})
 	)
 );
+
+const themeName = z.enum(["dark", "light"]);
 
 export const baseSchema = {
 	avatarSrc,
@@ -243,6 +246,7 @@ export const baseSchema = {
 	sessions,
 	signInCode,
 	status,
+	themeName,
 	userId,
 	userInfo,
 	username,
@@ -297,6 +301,7 @@ export namespace BaseSchema {
 	export type Sessions = z.infer<typeof sessions>;
 	export type SignInCode = z.infer<typeof signInCode>;
 	export type Status = z.infer<typeof status>;
+	export type ThemeName = z.infer<typeof themeName>;
 	export type UserId = z.infer<typeof userId>;
 	export type UserInfo = z.infer<typeof userInfo>;
 	export type UserPublicInfo = z.infer<typeof userPublicInfo>;

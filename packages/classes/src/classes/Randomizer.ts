@@ -68,7 +68,11 @@ export class Randomizer {
 
 	country(): BaseSchema.CountriesItem {
 		const index = this.numberWithRange(0, countries.length);
-		return countries[index] || this.country();
+		return {
+			...(countries[index] || this.country()),
+			// FIXME:
+			uuid: "uuid",
+		};
 	}
 
 	cellphone(

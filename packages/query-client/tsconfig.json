@@ -1,0 +1,4 @@
+{
+	"extends": "@repo/typescript-config/nextjs.json",
+	"include": ["src", "../../react-app-env.d.ts", "../../theme.d.ts"]
+}

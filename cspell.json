@@ -226,6 +226,7 @@
 		"uncategorizedErrors",
 		"upsert",
 		"urlencoded",
+		"usehooks",
 		"userconfig",
 		"validators",
 		"vercel",

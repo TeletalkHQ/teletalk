@@ -1,0 +1,78 @@
+$color-primary-017: var(--color-primary-017);
+$color-primary-010: var(--color-primary-010);
+$color-primary-004: var(--color-primary-004);
+$color-primary-007: var(--color-primary-007);
+
+@mixin default {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+	background: var(--color-primary-010);
+	border: 2px;
+	box-shadow:
+		2px 2px 2px 0px rgba(0, 0, 0, 0.25),
+		-1px -1px 1px 0px rgba(105, 105, 105, 0.25);
+	border-radius: 5px;
+	outline: none;
+	border: 1px solid transparent;
+}
+
+@mixin iconColor($color) {
+	&[data-svg-style="stroke"] {
+		svg {
+			path {
+				stroke: $color !important;
+			}
+			circle {
+				fill: $color !important;
+			}
+		}
+	}
+	&[data-svg-style="fill"] {
+		svg {
+			path {
+				fill: $color !important;
+			}
+			circle {
+				fill: $color !important;
+			}
+		}
+	}
+	&[data-svg-style="fill&stroke"] {
+		svg {
+			path {
+				fill: $color !important;
+				stroke: $color !important;
+			}
+		}
+	}
+}
+
+@mixin squareSecondary() {
+	@include iconColor(var(--color-primary-010));
+	box-shadow:
+		2px 2px 2px 0px rgba(0, 0, 0, 0.25) inset,
+		-1px -1px 1px 0px rgba(105, 105, 105, 0.25) inset;
+}
+
+.container {
+	@include default;
+	@include iconColor(var(--color-primary-010));
+	&:not(:disabled):hover {
+		@include squareSecondary;
+	}
+	&:disabled {
+		background-color: $color-primary-007;
+		cursor: not-allowed;
+	}
+	&:active {
+		@include squareSecondary;
+	}
+}
+
+.active {
+	@include default;
+	@include squareSecondary;
+	border: 1px solid $color-primary-010;
+}

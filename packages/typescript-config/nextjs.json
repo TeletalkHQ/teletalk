@@ -1,0 +1,24 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "./base.json",
+	"display": "NextJS",
+	"compilerOptions": {
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"jsx": "preserve",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"moduleDetection": "force",
+		"plugins": [
+			{
+				"name": "next"
+			},
+			{
+				"name": "typescript-plugin-css-modules"
+			}
+		],
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ES5",
+		"types": ["mocha", "node"]
+	}
+}
