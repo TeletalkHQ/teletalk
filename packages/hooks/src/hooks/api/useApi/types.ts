@@ -64,12 +64,12 @@ type AnyFn = (...arg: any[]) => any;
 
 // export type GetHandlerOptionsByUrl<T extends IO> = HandlerOptions<T>;
 
+export type GetOptionsByAPI<API extends AnyFn> = Parameters<API>[0];
+
 export type RequestHandler<API extends AnyFn, U = void> = (
 	options: GetOptionsByAPI<API>,
 	extraOptions: U
 ) => Promise<ReturnType<API>["0"]>;
-
-export type GetOptionsByAPI<API extends AnyFn> = Parameters<API>[0];
 
 export type GetReturnTypeByAPI<API extends AnyFn> = ReturnType<API>;
 

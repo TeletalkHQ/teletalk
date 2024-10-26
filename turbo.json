@@ -51,6 +51,9 @@
 		"test:dev": {
 			"cache": false
 		},
+		"start:production": {
+			"cache": false
+		},
 		"test:dev:coverage": {},
 		"test:dev:watch": {
 			"cache": false,

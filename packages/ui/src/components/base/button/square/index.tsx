@@ -18,8 +18,8 @@ export const SquareButton: FC<Props> = ({
 }) => {
 	return (
 		<Button
-			fullWidth
 			className={`${isActive ? styles.active : styles.container} ${className}`}
+			fullWidth
 			style={{
 				minWidth: "0px",
 				height: "100%",

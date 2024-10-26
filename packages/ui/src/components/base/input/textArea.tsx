@@ -7,5 +7,5 @@ export const TextArea: React.FC<Props> = ({
 	maxRows = 8,
 	...rest
 }) => {
-	return <Field multiline maxRows={maxRows} minRows={minRows} {...rest} />;
+	return <Field maxRows={maxRows} minRows={minRows} multiline {...rest} />;
 };

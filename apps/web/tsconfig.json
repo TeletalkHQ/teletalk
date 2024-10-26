@@ -12,7 +12,9 @@
 		"next.config.mjs",
 		"**/*.ts",
 		"**/*.tsx",
-		".next/types/**/*.ts"
+		".next/types/**/*.ts",
+		"../../react-app-env.d.ts",
+		"../../theme.d.ts"
 	],
 	"exclude": ["node_modules"]
 }

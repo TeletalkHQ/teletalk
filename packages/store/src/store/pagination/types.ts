@@ -1,17 +1,6 @@
 import { StoreSetFn, VoidWithArg } from "@repo/types";
 
-export type TableName =
-	| "organisations"
-	| "packages"
-	| "permissions"
-	| "roles"
-	| "rawData"
-	| "sensors"
-	| "sensorTypes"
-	| "sensorVendors"
-	| "stations"
-	| "users"
-	| "calculatedData";
+export type TableName = "users";
 
 export interface PaginationDefaultProps {
 	page: number;

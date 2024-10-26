@@ -29,8 +29,8 @@ export const Field: React.FC<FieldInputBaseProps> = ({
 
 	return (
 		<TextField
-			fullWidth
 			autoComplete={fixedAutoComplete}
+			fullWidth
 			margin={m || margin}
 			{...rest}
 		/>

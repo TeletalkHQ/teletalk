@@ -6,7 +6,7 @@
 	"type": "module",
 	"license": "MIT",
 	"scripts": {
-		"app-runner": "node --no-warnings --loader ./loader.js ./index.ts",
+		"app-runner": "node --no-warnings --loader ./loader.js ./src/main.ts",
 		"check:format": "prettier --write  --list-different ./",
 		"check:lint": "eslint --fix ./",
 		"check:lint:default": "eslint 'src/**/*.ts'",

@@ -8,16 +8,6 @@ const defaultPaginationState = {
 
 export const initialState: State = {
 	pagination: {
-		calculatedData: defaultPaginationState,
-		organisations: defaultPaginationState,
-		packages: defaultPaginationState,
-		permissions: defaultPaginationState,
-		roles: defaultPaginationState,
-		rawData: defaultPaginationState,
-		sensors: defaultPaginationState,
-		sensorTypes: defaultPaginationState,
-		sensorVendors: defaultPaginationState,
-		stations: defaultPaginationState,
 		users: defaultPaginationState,
 	},
 };

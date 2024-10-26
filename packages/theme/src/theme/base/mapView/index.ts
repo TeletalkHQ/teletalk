@@ -25,8 +25,11 @@ const FONT_SIZE = {
 } as const;
 
 const FONTS = {
+	// eslint-disable-next-line @cspell/spellchecker
 	HELVETICA: "'HelveticaNeueCyr', sans-serif",
+	// eslint-disable-next-line @cspell/spellchecker
 	HELVETICA_BOLD: "'HelveticaNeueCyrBold', sans-serif",
+	// eslint-disable-next-line @cspell/spellchecker
 	HELVETICA_LIGHT: "'HelveticaNeueCyrLight', sans-serif",
 	INTER: "'Inter', sans-serif",
 	INTER_BOLD: "'InterBold', sans-serifs",

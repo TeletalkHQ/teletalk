@@ -10,7 +10,7 @@
 	"package": "./package.json",
 	"recursive": true,
 	"reporter": "spec",
-	"spec": ["./configs/mocha/mocha.setup.ts"],
+	"spec": ["./test/configs/mocha/mocha.setup.ts"],
 	"timeout": 60000,
 	"ui": "bdd",
 	"watch-ignore": ""

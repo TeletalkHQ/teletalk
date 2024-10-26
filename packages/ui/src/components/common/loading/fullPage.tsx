@@ -11,9 +11,9 @@ export const FullPageLoading = () => {
 		loadingStore.globalLoading.open &&
 		loadingStore.globalLoading.type === "FULL_PAGE" && (
 			<Box.Flex
+				ai="center"
 				fullHeight
 				fullWidth
-				ai="center"
 				jc="center"
 				sx={(theme) => ({
 					zIndex: theme.zIndex.tooltip + 1000,
@@ -24,8 +24,8 @@ export const FullPageLoading = () => {
 				})}
 			>
 				<MoonLoader
-					loading
 					color={loadingStore.globalLoading.color}
+					loading
 					size={loadingStore.globalLoading.size}
 					speedMultiplier={loadingStore.globalLoading.speedMultiplier}
 				/>

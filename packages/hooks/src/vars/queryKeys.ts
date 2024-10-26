@@ -1,4 +1,4 @@
-type Keys = Array<string | number | undefined>;
+type _Keys = Array<string | number | undefined>;
 
 // TODO: Remove userId as possible - Refactor to custom hook
 export const queryKeys = {};

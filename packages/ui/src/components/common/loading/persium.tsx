@@ -1,3 +1,6 @@
+// TODO: Remove
+
+/* eslint-disable @next/next/no-img-element */
 import { useTheme } from "@mui/material";
 
 import { Box } from "../../base";
@@ -7,9 +10,9 @@ export const PersiumLoading = () => {
 
 	return (
 		<Box.Flex
+			ai="center"
 			fullHeight
 			fullWidth
-			ai="center"
 			jc="center"
 			style={{
 				maxHeight: "500px",

@@ -32,6 +32,9 @@ export class Storage {
 		try {
 			if (value) return JSON.parse(value);
 		} catch (error) {
+			// eslint-disable-next-line no-console
+			console.log("error:", error);
+
 			return value || defaultValue;
 		}
 	}

@@ -3,7 +3,7 @@ import { Path, UseFormGetValues, useController } from "react-hook-form";
 
 import { Field, FieldInputBaseProps } from "./field";
 
-export type FieldWithValidatorProps<Name extends BaseSchemaName> =
+export type FieldWithValidatorProps<_Name extends BaseSchemaName> =
 	FieldInputBaseProps & {
 		control: any;
 		// control: Control<Name>;
