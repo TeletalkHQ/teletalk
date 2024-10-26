@@ -1,3 +1,5 @@
+"use client";
+
 import { VoidNoArgs } from "@repo/types";
 import { useEffect } from "react";
 

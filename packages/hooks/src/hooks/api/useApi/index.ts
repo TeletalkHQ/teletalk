@@ -1,3 +1,5 @@
+"use client";
+
 import { HTTPRouteShortName } from "@repo/schema";
 import { useState } from "react";
 import { ZodSchema, z } from "zod";

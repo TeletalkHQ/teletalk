@@ -1,3 +1,5 @@
+"use client";
+
 import { configManager } from "@repo/classes";
 import { logger } from "@repo/logger";
 import { useQueryClient } from "@tanstack/react-query";

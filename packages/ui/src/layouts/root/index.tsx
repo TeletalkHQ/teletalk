@@ -1,3 +1,5 @@
+"use client";
+
 import { useIsMounted } from "@repo/hooks";
 import { logger } from "@repo/logger";
 import { QueryClientProvider } from "@repo/query-client";

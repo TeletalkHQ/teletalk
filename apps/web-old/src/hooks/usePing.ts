@@ -1,3 +1,5 @@
+"use client";
+
 import Timeout from "await-timeout";
 import { useState } from "react";
 

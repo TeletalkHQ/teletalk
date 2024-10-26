@@ -1,3 +1,5 @@
+"use client";
+
 import { Switch as MuiSwitch, SwitchProps, styled } from "@mui/material";
 
 import { Skeleton, SkeletonProps } from "../../common/loading";

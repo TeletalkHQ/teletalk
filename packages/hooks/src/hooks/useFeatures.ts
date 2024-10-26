@@ -1,3 +1,5 @@
+"use client";
+
 import { STORAGE_KEY } from "@repo/classes";
 import { logger } from "@repo/logger";
 import { usePermissionStore } from "@repo/store";

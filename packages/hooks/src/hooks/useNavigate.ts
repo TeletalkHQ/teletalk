@@ -1,3 +1,5 @@
+"use client";
+
 import { LoadingStore } from "@repo/store";
 import Timeout from "await-timeout";
 import { useRouter } from "next/router";
