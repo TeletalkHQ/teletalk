@@ -175,6 +175,7 @@ const countriesItem = z.object({
 	countryCode,
 	countryName,
 	countryShortName,
+	// TODO: Implement `uuid` schema
 	uuid: z.string(),
 });
 

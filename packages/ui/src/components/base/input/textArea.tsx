@@ -1,4 +1,4 @@
-import { Field, FieldInputBaseProps } from "./field";
+import { FieldInputBaseProps, TextField } from "./field";
 
 interface Props extends Omit<FieldInputBaseProps, "multiline"> {}
 
@@ -7,5 +7,5 @@ export const TextArea: React.FC<Props> = ({
 	maxRows = 8,
 	...rest
 }) => {
-	return <Field maxRows={maxRows} minRows={minRows} multiline {...rest} />;
+	return <TextField maxRows={maxRows} minRows={minRows} multiline {...rest} />;
 };

@@ -24,7 +24,10 @@ class ConfigManager {
 			},
 			URLS: {
 				HTTP: {
-					development: process.env.NEXT_PUBLIC_API_HTTP_URL_PRODUCTION, //TODO: Replace with NEXT_PUBLIC_API_URL_DEV
+					development:
+						// @ts-ignore
+						"http://localhost:8090" ||
+						process.env.NEXT_PUBLIC_API_HTTP_URL_PRODUCTION, //TODO: Replace with NEXT_PUBLIC_API_URL_DEV
 					production: process.env.NEXT_PUBLIC_API_HTTP_URL_PRODUCTION,
 					stage: process.env.NEXT_PUBLIC_API_HTTP_URL_STAGE,
 				},

@@ -1,10 +1,9 @@
-import { useFCMClient } from "@repo/hooks";
 import { PropsWithChildren } from "react";
 
 interface Props extends PropsWithChildren {}
 
 export function AuthLayout({ children }: Props) {
-	useFCMClient();
+	// useFCMClient();
 
 	return <>{children}</>;
 }

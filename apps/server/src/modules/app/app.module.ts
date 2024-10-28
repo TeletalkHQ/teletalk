@@ -1,8 +1,9 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
 import { APP_INTERCEPTOR, NestFactory } from "@nestjs/core";
 import { MongooseModule } from "@nestjs/mongoose";
-import { getFullPath, getRequestMethod } from "@repo/schema";
+import { getFullPath, getRequestMethod, httpRoutes } from "@repo/schema";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 import { RedisIoAdapter } from "~/classes/RedisIoAdapter";
 import { SessionIdMiddleware } from "~/middlewares";
@@ -12,6 +13,7 @@ import { AuthModule } from "../auth/auth.module";
 import { ConfigModule } from "../config/config.module";
 import { ConfigService } from "../config/config.service";
 import { ErrorStoreModule } from "../error-store/error-store.module";
+import { HTTPModule } from "../http/http.module";
 import { PrivateChatModule } from "../private-chat/private-chat.module";
 import { SessionModule } from "../session/session.module";
 import { UserModule } from "../user/user.module";
@@ -46,6 +48,7 @@ const createMongoDBModule = () => {
 		UserModule,
 		PrivateChatModule,
 		WsRateLimitModule,
+		HTTPModule,
 		createMongoDBModule(),
 	],
 	providers: [
@@ -58,18 +61,19 @@ const createMongoDBModule = () => {
 })
 export class AppModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {
-		consumer
-			.apply(SessionIdMiddleware)
-			.exclude({
-				method: getRequestMethod("signIn"),
-				path: getFullPath("signIn"),
-			})
-			// TODO: Add ping to excludes
-			.exclude({
-				method: getRequestMethod("getWelcomeMessage"),
-				path: getFullPath("getWelcomeMessage"),
-			})
-			.forRoutes("*");
+		const middlewareProxy = consumer.apply(SessionIdMiddleware);
+
+		// TODO: Add `httpRoutesArr`
+		Object.values(httpRoutes)
+			.filter((item) => item.schema.isAuthRequired === false)
+			.forEach((item) => {
+				middlewareProxy.exclude({
+					method: getRequestMethod(item.schema.ioName),
+					path: getFullPath(item.schema.ioName),
+				});
+			});
+
+		middlewareProxy.forRoutes("*");
 	}
 }
 
@@ -82,6 +86,12 @@ export const appInitializer = async (module = AppModule) => {
 	app.useWebSocketAdapter(redisIoAdapter);
 
 	app.use(cookieParser());
+
+	app.use(
+		cors({
+			credentials: true,
+		})
+	);
 
 	await app.listen(getPort());
 

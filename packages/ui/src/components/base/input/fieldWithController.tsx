@@ -1,7 +1,7 @@
 import { BaseSchemaName } from "@repo/schema";
 import { Path, UseFormGetValues, useController } from "react-hook-form";
 
-import { Field, FieldInputBaseProps } from "./field";
+import { FieldInputBaseProps, TextField } from "./field";
 
 export type FieldWithValidatorProps<_Name extends BaseSchemaName> =
 	FieldInputBaseProps & {
@@ -28,5 +28,5 @@ export const FieldWithController = <Name extends BaseSchemaName>({
 		// name: name as Path<UseFormGetValues<Control<Name>>>,
 	});
 
-	return <Field {...rest} {...field} />;
+	return <TextField {...rest} {...field} />;
 };

@@ -27,7 +27,7 @@ type Arg<
 	defaultBaseUrl?: string;
 	endpoint: EndPoint<Pathnames>;
 	endpointShortName: T;
-	initialData: z.infer<Output>;
+	initialData: { data: z.infer<Output>; errors: Array<unknown> };
 	method?: Method;
 	phase?: RequestPhase;
 	io: {
@@ -106,7 +106,7 @@ export const useApi = <
 
 		await handleOutputValidation(response, features.apiValidation, IO.output);
 
-		await options.config.onSuccess?.(response);
+		await options.config.onSuccess?.(response.data.data);
 
 		setData(response.data);
 		return response.data;

@@ -1,4 +1,4 @@
-import { TextField, TextFieldProps } from "@mui/material";
+import { TextField as TextFieldMui, TextFieldProps } from "@mui/material";
 
 import { ElementLabel } from "../../../types";
 
@@ -17,7 +17,7 @@ export type FieldInputBasePropsWithOptionalName = Omit<
 	name?: string;
 };
 
-export const Field: React.FC<FieldInputBaseProps> = ({
+export const TextField: React.FC<FieldInputBaseProps> = ({
 	autoComplete,
 	m,
 	margin,
@@ -28,7 +28,7 @@ export const Field: React.FC<FieldInputBaseProps> = ({
 		autoComplete === "off" ? "one-time-code" : autoComplete;
 
 	return (
-		<TextField
+		<TextFieldMui
 			autoComplete={fixedAutoComplete}
 			fullWidth
 			margin={m || margin}

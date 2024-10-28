@@ -1,4 +1,4 @@
-import { Field as TextInput } from "./base";
+import { TextField as TextInput } from "./base";
 import { LoadingButton } from "./base/button";
 import { TextWithValidator } from "./common";
 

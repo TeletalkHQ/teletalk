@@ -17,7 +17,10 @@ export const useSendApi = () => {
 		// TODO: `sendFCMToken`
 		endpointShortName: "userFcm",
 		initialData: {
-			message: "",
+			data: {
+				message: "",
+			},
+			errors: [],
 		},
 		method: "put",
 		io: {

@@ -12,7 +12,7 @@ export const useVerify = () => {
 			data,
 			config: {
 				onSuccess: ({ data }) => {
-					if (data.isNewUser) router.replace("create");
+					if (data.data.isNewUser) router.replace("create");
 					else {
 						router.push("messenger");
 					}

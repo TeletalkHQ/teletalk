@@ -9,7 +9,10 @@ export const usePostApi = () =>
 		endpoint: route.schema.pathname,
 		endpointShortName: route.schema.ioName,
 		initialData: {
-			isNewUser: false,
+			data: {
+				isNewUser: false,
+			},
+			errors: [],
 		},
 		io: {
 			input: route.schema.io.input,

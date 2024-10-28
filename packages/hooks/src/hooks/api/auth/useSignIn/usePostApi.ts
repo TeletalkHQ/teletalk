@@ -8,7 +8,7 @@ export const usePostApi = () =>
 	useApi({
 		endpoint: route.schema.pathname,
 		endpointShortName: route.schema.ioName,
-		initialData: {},
+		initialData: { data: {}, errors: [] },
 		io: {
 			input: route.schema.io.input,
 			output: route.schema.io.output,

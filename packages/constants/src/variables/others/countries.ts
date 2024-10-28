@@ -1,3 +1,4 @@
+// TODO: Move to DB
 export const countries = [
 	{
 		countryCode: "376",

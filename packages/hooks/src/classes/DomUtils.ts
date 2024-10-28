@@ -1,5 +1,3 @@
-import "typescript/lib/lib.dom";
-
 type ElementName = string;
 type ElementId = string;
 

@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 export type UrlName = "create" | "messenger" | "signIn" | "verify";
 

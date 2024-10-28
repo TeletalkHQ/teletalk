@@ -1,6 +1,9 @@
 import { BaseSchemaName } from "@repo/schema";
 
-import { Field, FieldWithValidatorWithOptionalNameProps } from "../../../base";
+import {
+	FieldWithValidatorWithOptionalNameProps,
+	TextField,
+} from "../../../base";
 
 type Props<Name extends BaseSchemaName> =
 	FieldWithValidatorWithOptionalNameProps<Name>;
@@ -10,7 +13,7 @@ export const Search = <Name extends BaseSchemaName>({
 	...rest
 }: Props<Name>) => {
 	return (
-		<Field
+		<TextField
 			autoComplete="off"
 			hiddenLabel
 			name="search"

@@ -36,7 +36,9 @@ export class AppConfigs {
 		production: process.env.NEXT_PUBLIC_CLIENT_BASE_URL!,
 	};
 	private SERVER_BASE_URLS: BaseUrl = {
-		development: process.env.NEXT_PUBLIC_SERVER_BASE_URL!,
+		development:
+			// @ts-ignore
+			"http://localhost:8090" || process.env.NEXT_PUBLIC_SERVER_BASE_URL!,
 		production: process.env.NEXT_PUBLIC_SERVER_BASE_URL!,
 	};
 

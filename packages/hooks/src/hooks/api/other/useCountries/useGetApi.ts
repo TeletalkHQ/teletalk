@@ -6,10 +6,13 @@ const route = findHttpRoute("getCountries");
 
 export const useGetApi = () => {
 	return useApi({
-		endpoint: route.schema.pathname,
+		endpoint: `${route.schema.rootPath}/${route.schema.pathname}`,
 		endpointShortName: "getCountries",
 		initialData: {
-			countries: [],
+			data: {
+				countries: [],
+			},
+			errors: [],
 		},
 		io: {
 			input: route.schema.io.input,

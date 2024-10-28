@@ -15,7 +15,7 @@ export const useCountries = (enabled?: boolean) => {
 		enabled,
 	});
 
-	const countries = query.data?.countries || getApi.data.countries;
+	const countries = query.data?.data.countries || getApi.data.data.countries;
 
 	const sortedCountries: BaseSchema.Countries = useMemo(() => {
 		return countries.sort((a, b) => {

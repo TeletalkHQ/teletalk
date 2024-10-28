@@ -18,7 +18,9 @@ export type EndPoint<T extends IO["pathnames"]> = T extends ZodSchema
 export type Method = "get" | "post" | "put" | "patch" | "delete";
 
 export type GetResponseBySchema<T extends IO> = AxiosResponse<
-	T["output"] extends ZodSchema ? z.infer<T["output"]> : undefined,
+	T["output"] extends ZodSchema
+		? { data: z.infer<T["output"]>; errors: Array<unknown> }
+		: undefined,
 	any
 >;
 

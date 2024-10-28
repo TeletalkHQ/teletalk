@@ -88,7 +88,7 @@ export const handleOutputValidation = async (
 	validator: ZodSchema
 ) => {
 	if (shouldValidate) {
-		const result = await validator.safeParseAsync(response.data);
+		const result = await validator.safeParseAsync(response.data.data);
 
 		if (result.success) return;
 
