@@ -56,5 +56,7 @@ export type CommonOnChange = ChangeEventHandler<
 	HTMLInputElement | HTMLTextAreaElement
 >;
 
+export type PickFromUnion<T, U> = T extends U ? T : never;
+
 export * from "./http";
 export * from "./socket";

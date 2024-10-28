@@ -1,7 +1,7 @@
 import { logger } from "@repo/logger";
 import { getToken, isSupported, onMessage } from "firebase/messaging";
 
-import { useFeatures } from "../../../useFeatures";
+import { useFeatures } from "../../../utils/useFeatures";
 import { useEffectIfAuthenticated } from "../useEffectIfAuthenticated";
 import { firebaseMessaging } from "./app";
 import { useSendApi } from "./useSendApi";

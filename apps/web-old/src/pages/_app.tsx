@@ -1,3 +1,4 @@
+import createCache from "@emotion/cache";
 import { EmotionCache } from "@emotion/react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { AppProps } from "next/app";
@@ -8,13 +9,27 @@ import { DevLayout } from "~/layouts/Dev";
 import MainLayout from "~/layouts/Main";
 import MUIThemeProvider from "~/providers/MUIThemeProvider";
 import ReactQueryProvider from "~/providers/ReactQueryProvider";
-import { utils } from "~/utils";
 
 export interface CustomAppProps extends AppProps {
 	emotionCache?: EmotionCache;
 }
 
-const clientSideEmotionCache = utils.createEmotionCache();
+const isBrowser = typeof document !== "undefined";
+
+const createEmotionCache = () => {
+	let insertionPoint: HTMLElement | undefined;
+
+	if (isBrowser) {
+		const emotionInsertionPoint = document.querySelector<HTMLMetaElement>(
+			"meta[name='emotion-insertion-point']"
+		);
+		insertionPoint = emotionInsertionPoint ?? undefined;
+	}
+
+	return createCache({ key: "mui-style", insertionPoint });
+};
+
+const clientSideEmotionCache = createEmotionCache();
 
 export default function _app(props: CustomAppProps) {
 	const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;

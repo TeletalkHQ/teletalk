@@ -118,6 +118,6 @@ export const socketEvents = [
 	}),
 ] as const;
 
-export type EventShortName = (typeof socketEvents)[number]["schema"]["ioName"];
+export type EventName = (typeof socketEvents)[number]["schema"]["ioName"];
 
 export type SocketEvents = typeof socketEvents;

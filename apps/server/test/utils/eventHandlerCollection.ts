@@ -1,9 +1,9 @@
-import { EventSchema, EventShortName, findEvent } from "@repo/schema";
+import { EventName, EventSchema, findEvent } from "@repo/schema";
 import { Socket } from "socket.io-client";
 
 import { EventHandlerOptions, eventHandler } from "@/classes";
 
-export const eventHandlerMaker = <T extends EventShortName>(name: T) => {
+export const eventHandlerMaker = <T extends EventName>(name: T) => {
 	const foundEvent = findEvent(name);
 
 	return (socket: Socket, options?: EventHandlerOptions) => {

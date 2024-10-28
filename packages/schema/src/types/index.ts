@@ -1,7 +1,7 @@
 import { VoidNoArgs } from "@repo/types";
 import { z } from "zod";
 
-import { EventShortName, IOCollection, IOName } from "../schema";
+import { EventName, IOCollection, IOName } from "../schema";
 
 export type GetInput<T extends IOName> = z.infer<IOCollection[T]["input"]>;
 export type GetOutput<T extends IOName> = z.infer<IOCollection[T]["output"]>;
@@ -19,7 +19,7 @@ export type HTTPHandlerReturnType<T extends IOName> = Promise<
 // 	Omit<HTTPResponse<T>, "errors">
 // >;
 
-export interface SocketRequestBody<T extends EventShortName> {
+export interface SocketRequestBody<T extends EventName> {
 	data: z.infer<IOCollection[T]["input"]>;
 }
 
@@ -36,42 +36,42 @@ export interface SocketOnHandlerReturnOptions {
 	cbAfterEmit: VoidNoArgs;
 }
 
-export type SocketHandlerReturnType<T extends EventShortName> = {
+export type SocketHandlerReturnType<T extends EventName> = {
 	data: GetOutput<T>;
 	options?: Partial<SocketOnHandlerReturnOptions>;
 };
 
-export type SocketHandlerReturnType_Promise<T extends EventShortName> = Promise<
+export type SocketHandlerReturnType_Promise<T extends EventName> = Promise<
 	SocketHandlerReturnType<T>
 >;
 
-export interface SocketResponse<T extends EventShortName>
+export interface SocketResponse<T extends EventName>
 	extends SocketHandlerReturnType<T> {
 	errors: SocketResponseErrors;
 	ok: boolean;
 	eventName: IOName;
 }
 
-export type ResponseCallback<T extends EventShortName> = (
+export type ResponseCallback<T extends EventName> = (
 	response: SocketResponse<T>
 ) => void | Promise<void>;
 
-// export type SocketResponseCallback<T extends EventShortName> = (
+// export type SocketResponseCallback<T extends EventName> = (
 // 	response: SocketResponse<T>
 // ) => Promise<void> | void;
 
 // export type SocketErrorCallback = VoidWithArg<SocketResponseErrors>;
 
-// export type RequestTransformer<T extends EventShortName> = (
+// export type RequestTransformer<T extends EventName> = (
 // 	requestData: IOCollection[T]["input"]
 // ) => IOCollection[T]["input"];
 
-// export type ResponseTransformer<T extends EventShortName> = (
+// export type ResponseTransformer<T extends EventName> = (
 // 	response: IOCollection[T]["output"]
 // ) => IOCollection[T]["output"];
 
-// export type Interceptor<T extends EventShortName> = (
+// export type Interceptor<T extends EventName> = (
 // 	data: IOCollection[T]["input"] | IOCollection[T]["output"]
 // ) => IOCollection[T]["input"] | IOCollection[T]["output"];
 
-// export type Interceptors<T extends EventShortName> = Interceptor<T>[];
+// export type Interceptors<T extends EventName> = Interceptor<T>[];

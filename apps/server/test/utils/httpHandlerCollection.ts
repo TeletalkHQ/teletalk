@@ -1,12 +1,17 @@
-import { HTTPRouteShortName, RouteSchema, findHttpRoute } from "@repo/schema";
+import { HTTPRouteName, RouteSchema, findHttpRoute } from "@repo/schema";
+import { ZodSchema } from "zod";
 
 import { HTTPHandlerOptions, httpHandler } from "@/classes";
 
-export const httpHandlerMaker = <T extends HTTPRouteShortName>(name: T) => {
+export const httpHandlerMaker = <T extends HTTPRouteName>(name: T) => {
 	const foundRoute = findHttpRoute(name);
 
 	return (options?: HTTPHandlerOptions) => {
-		return httpHandler(foundRoute.schema as RouteSchema<T>, options);
+		return httpHandler(
+			// FIXME: Read from somewhere else
+			foundRoute.schema as RouteSchema<T, ZodSchema, ZodSchema>,
+			options
+		);
 	};
 };
 

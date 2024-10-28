@@ -1,11 +1,10 @@
 "use client";
 
-import { HTTPRouteShortName } from "@repo/schema";
+import { RouteName } from "@repo/schema";
 import { useState } from "react";
 import { ZodSchema, z } from "zod";
 
-import { useBoolean } from "../../useBoolean";
-import { useFeatures } from "../../useFeatures";
+import { useBoolean, useFeatures } from "../../utils";
 import { axiosInstance } from "./axiosInstance";
 import { EndPoint, HandlerOptions, Method, RequestPhase } from "./types";
 import { useApiPhase } from "./useApiPhase";
@@ -19,7 +18,7 @@ import {
 } from "./utils";
 
 type Arg<
-	T extends HTTPRouteShortName,
+	T extends RouteName,
 	Input extends ZodSchema | undefined,
 	Output extends ZodSchema,
 	Pathnames extends ZodSchema<any> | undefined,
@@ -40,7 +39,7 @@ type Arg<
 };
 
 export const useApi = <
-	T extends HTTPRouteShortName,
+	T extends RouteName,
 	Input extends ZodSchema | undefined,
 	Output extends ZodSchema,
 	Pathnames extends ZodSchema | undefined,
@@ -120,6 +119,7 @@ export const useApi = <
 
 	return {
 		data,
+		endpointShortName,
 		getDefaultHandlerOptions,
 		handler,
 		hasError,

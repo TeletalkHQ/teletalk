@@ -1,4 +1,4 @@
-import { HTTPRouteShortName } from "@repo/schema";
+import { HTTPRouteName } from "@repo/schema";
 import {
 	LoadingType,
 	ProgressColor,
@@ -21,7 +21,7 @@ export interface LoadingItem {
 }
 
 export type Phases = {
-	[key in HTTPRouteShortName]: LoadingItem;
+	[key in HTTPRouteName]: LoadingItem;
 };
 
 export interface State {
@@ -37,12 +37,12 @@ export interface State {
 }
 
 export interface Handlers {
-	finishLoading: VoidWithArg<HTTPRouteShortName>;
-	finishUpdating: VoidWithArg<HTTPRouteShortName>;
+	finishLoading: VoidWithArg<HTTPRouteName>;
+	finishUpdating: VoidWithArg<HTTPRouteName>;
 	setLoadingClose: VoidWithArg<LoadingType>;
 	setOverlayLoadingClose: VoidNoArgs;
-	startLoading: VoidWithArg<HTTPRouteShortName>;
-	startUpdating: VoidWithArg<HTTPRouteShortName>;
+	startLoading: VoidWithArg<HTTPRouteName>;
+	startUpdating: VoidWithArg<HTTPRouteName>;
 }
 
 export type SetState = StoreSetFn<State>;

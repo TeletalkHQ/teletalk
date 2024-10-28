@@ -37,8 +37,6 @@ export type ServerAvailabilityStatus =
 
 export type StatusColors = { [key in ServerAvailabilityStatus]: string };
 
-export type UrlName = "create" | "messenger" | "signIn" | "verify";
-
 export interface ServerTestResult {
 	url: Url;
 	ping: number | undefined;

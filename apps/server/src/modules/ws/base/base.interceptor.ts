@@ -6,7 +6,7 @@ import {
 	NestInterceptor,
 } from "@nestjs/common";
 import {
-	EventShortName,
+	EventName,
 	SocketHandlerReturnType,
 	SocketRequestBody,
 	SocketResponse,
@@ -26,7 +26,7 @@ export class BaseInterceptor implements NestInterceptor {
 	constructor(private errorStoreService: ErrorStoreService) {}
 
 	intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-		const eventName = context.switchToWs().getPattern() as EventShortName;
+		const eventName = context.switchToWs().getPattern() as EventName;
 
 		const body: SocketRequestBody<any> = context.switchToWs().getData();
 
@@ -37,14 +37,14 @@ export class BaseInterceptor implements NestInterceptor {
 		);
 
 		return next.handle().pipe(
-			map((dataFromHandler: SocketHandlerReturnType<EventShortName>) => {
+			map((dataFromHandler: SocketHandlerReturnType<EventName>) => {
 				this.validateData(
 					this.getEventSchema(eventName).schema.io.output,
 					dataFromHandler.data,
 					"OUTPUT_DATA_INVALID"
 				);
 
-				const response: SocketResponse<EventShortName> = {
+				const response: SocketResponse<EventName> = {
 					data: dataFromHandler.data,
 					errors: [],
 					eventName,

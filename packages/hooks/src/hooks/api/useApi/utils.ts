@@ -85,10 +85,10 @@ export const handleOutputValidation = async (
 	response: AxiosResponse,
 	//TODO: Use features interface
 	shouldValidate: boolean,
-	outputValidator: ZodSchema<typeof response>
+	validator: ZodSchema
 ) => {
 	if (shouldValidate) {
-		const result = await outputValidator.safeParseAsync(response.data);
+		const result = await validator.safeParseAsync(response.data);
 
 		if (result.success) return;
 

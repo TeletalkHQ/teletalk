@@ -15,7 +15,7 @@ export const useSendApi = () => {
 	return useApi({
 		endpoint: "user/fcm-token",
 		// TODO: `sendFCMToken`
-		endpointShortName: "createNewUser",
+		endpointShortName: "userFcm",
 		initialData: {
 			message: "",
 		},

@@ -8,7 +8,7 @@ import {
 	HTTPRequestBody,
 	HTTPResponse,
 	IOName,
-	httpRoutes,
+	findHttpRouteByUrl,
 } from "@repo/schema";
 import { Request, Response } from "express";
 import { Observable } from "rxjs";
@@ -59,11 +59,7 @@ export class AppInterceptor implements NestInterceptor {
 	}
 
 	getRouteSchema(url: string) {
-		const routeSchema = httpRoutes.find((item) => {
-			const fullPath = `/${item.schema.rootPath}/${item.schema.pathname}`;
-
-			return url === fullPath;
-		});
+		const routeSchema = findHttpRouteByUrl(url);
 
 		if (!routeSchema)
 			this.errorStoreService.throw(

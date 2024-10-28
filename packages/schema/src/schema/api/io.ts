@@ -2,7 +2,12 @@ import { ZodSchema, z } from "zod";
 
 import { baseSchema } from "../base";
 
-export type IOSchema = { input: ZodSchema; output: ZodSchema };
+export type IOSchema = {
+	endpoint?: ZodSchema;
+	input: ZodSchema;
+	output: ZodSchema;
+	pathname?: ZodSchema;
+};
 
 export const ioCollection = {
 	addBlock: {
@@ -87,12 +92,6 @@ export const ioCollection = {
 			countries: baseSchema.countries,
 		}),
 	},
-	getOnlineClients: {
-		input: z.object({}),
-		output: z.object({
-			onlineClients: baseSchema.onlineClients,
-		}),
-	},
 	getOnePrivateChat: {
 		input: z.object({
 			chatId: baseSchema.chatId,
@@ -101,18 +100,16 @@ export const ioCollection = {
 			privateChat: baseSchema.privateChatsItem,
 		}),
 	},
+	getOnlineClients: {
+		input: z.object({}),
+		output: z.object({
+			onlineClients: baseSchema.onlineClients,
+		}),
+	},
 	getPrivateChats: {
 		input: z.object({}),
 		output: z.object({
 			privateChats: baseSchema.privateChats,
-		}),
-	},
-	getUserPublicInfo: {
-		input: z.object({
-			userId: baseSchema.userId,
-		}),
-		output: z.object({
-			publicInfo: baseSchema.userPublicInfo,
 		}),
 	},
 	getStuff: {
@@ -123,6 +120,14 @@ export const ioCollection = {
 		input: z.object({}),
 		output: z.object({
 			userInfo: baseSchema.userInfo,
+		}),
+	},
+	getUserPublicInfo: {
+		input: z.object({
+			userId: baseSchema.userId,
+		}),
+		output: z.object({
+			publicInfo: baseSchema.userPublicInfo,
 		}),
 	},
 	getWelcomeMessage: {
@@ -208,6 +213,12 @@ export const ioCollection = {
 		output: z.object({
 			updatedPublicInfo: baseSchema.userPublicInfo,
 		}),
+	},
+	userFcm: {
+		input: z.object({
+			token: z.string(),
+		}),
+		output: z.object({}),
 	},
 	verify: {
 		input: z.object({

@@ -2,11 +2,12 @@ import { FIELD_TYPE } from "@repo/constants";
 import {
 	HTTPRequestBody,
 	HTTPResponse,
-	HTTPRouteShortName,
+	HTTPRouteName,
 	RouteSchema,
 } from "@repo/schema";
 import axios, { AxiosResponse } from "axios";
 import { expect } from "chai";
+import { ZodSchema } from "zod";
 
 import { COOKIE_NAMES } from "~/constants";
 import { ConfigService } from "~/modules/config/config.service";
@@ -30,15 +31,15 @@ interface CustomError {
 
 export type CookieItem = { value: string; flags: Record<string, boolean> };
 
-export type HTTPHandlerResponse<T extends HTTPRouteShortName> = AxiosResponse<
+export type HTTPHandlerResponse<T extends HTTPRouteName> = AxiosResponse<
 	Awaited<HTTPResponse<T>>
 >;
 
-type RequestBody<T extends HTTPRouteShortName> = {
+type RequestBody<T extends HTTPRouteName> = {
 	data: HTTPRequestBody<T>;
 };
 
-export class HTTPHandler<T extends HTTPRouteShortName> {
+export class HTTPHandler<T extends HTTPRouteName> {
 	private expectedError?: CustomError;
 
 	private options: HTTPHandlerOptions = {
@@ -50,7 +51,8 @@ export class HTTPHandler<T extends HTTPRouteShortName> {
 	private response: HTTPHandlerResponse<T>;
 
 	constructor(
-		private routeSchema: RouteSchema<T>,
+		// FIXME: Read from somewhere else
+		private routeSchema: RouteSchema<T, ZodSchema, ZodSchema>,
 		options: HTTPHandlerOptions = {}
 	) {
 		this.updateOptions(options);
@@ -182,10 +184,10 @@ export class HTTPHandler<T extends HTTPRouteShortName> {
 
 	private checkErrors() {
 		if (this.isRequestFailed() && !this.expectedError)
-			throw Error("ERROR_NOT_SPECIFIED", { cause: "REQUEST_FAILED" });
+			throw Error("ERROR_NOT_SPECIFIED");
 
 		if (!this.isRequestFailed() && this.expectedError)
-			throw Error("REQUEST_DID_NOT_FAILED", { cause: "ERROR_EXPECTED" });
+			throw Error("REQUEST_DID_NOT_FAILED");
 
 		if (!this.isRequestFailed() && !this.expectedError) return;
 
@@ -208,7 +210,8 @@ export class HTTPHandler<T extends HTTPRouteShortName> {
 	}
 }
 
-export const httpHandler = <T extends HTTPRouteShortName>(
-	routeSchema: RouteSchema<T>,
+export const httpHandler = <T extends HTTPRouteName>(
+	// FIXME: Read from somewhere else
+	routeSchema: RouteSchema<T, ZodSchema, ZodSchema>,
 	options?: HTTPHandlerOptions
 ) => new HTTPHandler<T>(routeSchema, options);

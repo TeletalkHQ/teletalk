@@ -1,7 +1,7 @@
 import { FIELD_TYPE } from "@repo/constants";
 import {
+	EventName,
 	EventSchema,
-	EventShortName,
 	SocketRequestBody,
 	SocketResponse,
 } from "@repo/schema";
@@ -21,11 +21,11 @@ interface CustomError {
 	reason: ErrorReason;
 }
 
-export type EventHandlerResponse<T extends EventShortName> = SocketResponse<T>;
+export type EventHandlerResponse<T extends EventName> = SocketResponse<T>;
 
-type RequestBody<T extends EventShortName> = SocketRequestBody<T>;
+type RequestBody<T extends EventName> = SocketRequestBody<T>;
 
-export class EventHandler<T extends EventShortName> {
+export class EventHandler<T extends EventName> {
 	private expectedError?: CustomError;
 
 	private options: EventHandlerOptions = {
@@ -124,10 +124,10 @@ export class EventHandler<T extends EventShortName> {
 
 	private checkErrors() {
 		if (this.isEventFailed() && !this.expectedError)
-			throw Error("ERROR_NOT_SPECIFIED", { cause: "REQUEST_FAILED" });
+			throw Error("ERROR_NOT_SPECIFIED");
 
 		if (!this.isEventFailed() && this.expectedError)
-			throw Error("REQUEST_DID_NOT_FAILED", { cause: "ERROR_EXPECTED" });
+			throw Error("REQUEST_DID_NOT_FAILED");
 
 		if (!this.isEventFailed() && !this.expectedError) return;
 
@@ -146,7 +146,7 @@ export class EventHandler<T extends EventShortName> {
 	}
 }
 
-export const eventHandler = <T extends EventShortName>(
+export const eventHandler = <T extends EventName>(
 	eventSchema: EventSchema<T>,
 	socket: Socket,
 	options?: EventHandlerOptions

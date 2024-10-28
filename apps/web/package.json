@@ -15,10 +15,14 @@
 		"start:production": "cross-env PORT=${PORT:-4090} next start"
 	},
 	"dependencies": {
+		"@repo/hooks": "workspace:*",
+		"@repo/schema": "workspace:*",
+		"@repo/store": "workspace:*",
 		"@repo/ui": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",
+		"@repo/types": "workspace:*",
 		"@repo/typescript-config": "workspace:*"
 	}
 }

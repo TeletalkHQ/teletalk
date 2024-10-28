@@ -2,13 +2,8 @@ import { InternalServerErrorException, RequestMethod } from "@nestjs/common";
 import { HTTPMethod } from "@repo/types";
 import { ZodString, ZodTypeAny, z } from "zod";
 
-import { EventGenerator, HTTPRootPath, RouteGenerator } from "../classes";
-import {
-	EventShortName,
-	HTTPRouteShortName,
-	httpRoutes,
-	socketEvents,
-} from "../schema";
+import { EventGenerator, HTTPRootPath } from "../classes";
+import { EventName, HTTPRouteName, httpRoutes, socketEvents } from "../schema";
 
 export const getStringSchemaMaxLength = <T extends ZodString>(schema: T) => {
 	const result = schema._def.checks.find((item) => item.kind === "max")?.value;
@@ -50,34 +45,36 @@ export const getSchemaType = (schema: ZodTypeAny): string => {
 	return "unknown";
 };
 
-export const findHttpRoute = <T extends HTTPRouteShortName>(name: T) => {
-	const foundRoute = httpRoutes.find((item) => item.schema.ioName === name);
+export const findHttpRouteByUrl = (url: string) => {
+	return Object.values(httpRoutes).find((item) => {
+		const fullPath = `/${item.schema.rootPath}/${item.schema.pathname}`;
 
-	if (!foundRoute)
-		throw new InternalServerErrorException("HTTP_ROUTE_SCHEMA_NOT_FOUND");
-
-	return foundRoute as RouteGenerator<T>;
+		return url === fullPath;
+	});
 };
 
-export const findEvent = <T extends EventShortName>(name: T) => {
-	const foundEvent = socketEvents.find((item) => item.schema.ioName === name);
-
-	if (!foundEvent)
-		throw new InternalServerErrorException("EVENT_SCHEMA_NOT_FOUND");
-
-	return foundEvent as EventGenerator<T>;
+export const findHttpRoute = <T extends HTTPRouteName>(name: T) => {
+	return httpRoutes[name];
 };
 
-export const getEventName = <T extends EventShortName>(name: T) => {
+export const findEvent = <T extends EventName>(name: T) => {
+	const result = socketEvents.find((item) => item.schema.ioName === name);
+
+	if (!result) throw new InternalServerErrorException("EVENT_SCHEMA_NOT_FOUND");
+
+	return result as EventGenerator<T>;
+};
+
+export const getEventName = <T extends EventName>(name: T) => {
 	const foundEvent = findEvent(name);
 	return foundEvent.schema.ioName;
 };
 
-export const getPathname = (name: HTTPRouteShortName) => {
+export const getPathname = (name: HTTPRouteName) => {
 	return findHttpRoute(name).schema.pathname;
 };
 
-export const getRootName = (name: HTTPRouteShortName) => {
+export const getRootName = (name: HTTPRouteName) => {
 	return findHttpRoute(name).schema.rootPath;
 };
 
@@ -85,11 +82,11 @@ export const getRootPath = (name: HTTPRootPath) => {
 	return name;
 };
 
-export const getFullPath = (name: HTTPRouteShortName) => {
+export const getFullPath = (name: HTTPRouteName) => {
 	return `${getRootName(name)}/${getPathname(name)}`;
 };
 
-export const getRequestMethod = (name: HTTPRouteShortName) => {
+export const getRequestMethod = (name: HTTPRouteName) => {
 	const method = getMethod(name);
 
 	return fixedMethodForNest[method];
@@ -102,7 +99,7 @@ const fixedMethodForNest = {
 	put: RequestMethod.PUT,
 } satisfies Record<HTTPMethod, RequestMethod>;
 
-export const getMethod = (name: HTTPRouteShortName) => {
+export const getMethod = (name: HTTPRouteName) => {
 	return findHttpRoute(name).schema.method;
 };
 

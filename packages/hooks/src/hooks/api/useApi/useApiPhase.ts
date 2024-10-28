@@ -1,7 +1,7 @@
-import { HTTPRouteShortName } from "@repo/schema";
+import { HTTPRouteName } from "@repo/schema";
 import { defaultLoadingItem, useLoadingStore } from "@repo/store";
 
-export const useApiPhase = (name: HTTPRouteShortName) => {
+export const useApiPhase = (name: HTTPRouteName) => {
 	const loadingStore = useLoadingStore();
 
 	function startLoading() {

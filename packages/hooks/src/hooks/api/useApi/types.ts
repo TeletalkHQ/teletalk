@@ -1,7 +1,9 @@
+import { HTTPRoutes, RouteName } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { ZodSchema, z } from "zod";
 
+// TODO: Merge with `GetHandlerOptionsByUrl`
 export type IO = {
 	input: ZodSchema | undefined;
 	output: ZodSchema | string | undefined;
@@ -62,7 +64,12 @@ export type HandlerOptions<T extends IO> = (T["params"] extends ZodSchema
 
 type AnyFn = (...arg: any[]) => any;
 
-// export type GetHandlerOptionsByUrl<T extends IO> = HandlerOptions<T>;
+export type GetHandlerOptionsByUrl<T extends RouteName> = HandlerOptions<{
+	input: HTTPRoutes[T]["schema"]["io"]["input"];
+	output: HTTPRoutes[T]["schema"]["io"]["output"];
+	params: HTTPRoutes[T]["schema"]["params"];
+	pathnames: HTTPRoutes[T]["schema"]["pathnames"];
+}>;
 
 export type GetOptionsByAPI<API extends AnyFn> = Parameters<API>[0];
 
