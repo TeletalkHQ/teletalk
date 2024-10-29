@@ -38,9 +38,6 @@ export const LoadingButton: React.FC<LoadingButtonProps> = ({
 				...style,
 				width,
 			}}
-			// sx={{
-			// 	width,
-			// }}
 			variant={variant}
 		/>
 	);

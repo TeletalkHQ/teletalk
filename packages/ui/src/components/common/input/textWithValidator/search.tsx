@@ -1,14 +1,14 @@
-import { BaseSchemaName } from "@repo/schema";
+import { FormSchemaName } from "@repo/schema";
 
 import {
 	FieldWithValidatorWithOptionalNameProps,
 	TextField,
 } from "../../../base";
 
-type Props<Name extends BaseSchemaName> =
+type Props<Name extends FormSchemaName> =
 	FieldWithValidatorWithOptionalNameProps<Name>;
 
-export const Search = <Name extends BaseSchemaName>({
+export const Search = <Name extends FormSchemaName>({
 	placeholder,
 	...rest
 }: Props<Name>) => {

@@ -1,6 +1,12 @@
 "use client";
 
-import { SubmitHandler, useApiPhase, useForm, useSignIn } from "@repo/hooks";
+import {
+	SubmitHandler,
+	useApiPhase,
+	useCustomRouter,
+	useForm,
+	useSignIn,
+} from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
 import {
 	Box,
@@ -13,12 +19,16 @@ import {
 } from "@repo/ui";
 import { useFormState, useWatch } from "react-hook-form";
 
-import AuthFooter from "./_parts/AuthFooter";
+import { useAuthUrlQueries } from "~/hooks";
+
+import AuthFooter from "../common/AuthFooter";
 
 const SignInPage = () => {
 	const {
 		handlers: { signIn },
 	} = useSignIn();
+
+	const router = useCustomRouter();
 
 	const schemaName: FormSchemaName = "signIn";
 	const { control, handleSubmit, setValue } = useForm<typeof schemaName>({
@@ -28,6 +38,8 @@ const SignInPage = () => {
 	const { countryCode, countryName } = useWatch({
 		control,
 	});
+
+	const { setCountryCode, setPhoneNumber } = useAuthUrlQueries();
 
 	const signInPhase = useApiPhase("signIn");
 
@@ -42,8 +54,16 @@ const SignInPage = () => {
 	};
 
 	const submitSignInForm: SubmitHandler<typeof schemaName> = (data) => {
+		setCountryCode(data.countryCode);
+		setPhoneNumber(data.phoneNumber);
+
 		signIn({
 			data,
+			config: {
+				onSuccess: () => {
+					router.push("verify");
+				},
+			},
 		});
 	};
 

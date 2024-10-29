@@ -1,4 +1,4 @@
-import { BaseSchemaName } from "@repo/schema";
+import { FormSchemaName } from "@repo/schema";
 
 import {
 	Box,
@@ -6,10 +6,10 @@ import {
 	FieldWithValidatorWithOptionalNameProps,
 } from "../../../base";
 
-interface Props<Name extends BaseSchemaName>
+interface Props<Name extends FormSchemaName>
 	extends FieldWithValidatorWithOptionalNameProps<Name> {}
 
-export const CountryCode = <Name extends BaseSchemaName>({
+export const CountryCode = <Name extends FormSchemaName>({
 	style,
 	...rest
 }: Props<Name>) => (

@@ -1,21 +1,21 @@
-import { BaseSchemaName } from "@repo/schema";
+import { Control } from "@repo/hooks";
+import { FormSchemaName } from "@repo/schema";
 import { Path, UseFormGetValues, useController } from "react-hook-form";
 
 import { FieldInputBaseProps, TextField } from "./field";
 
-export type FieldWithValidatorProps<_Name extends BaseSchemaName> =
+export type FieldWithValidatorProps<Name extends FormSchemaName> =
 	FieldInputBaseProps & {
-		control: any;
-		// control: Control<Name>;
+		control: Control<Name>;
 	};
 
 export type FieldWithValidatorWithOptionalNameProps<
-	Name extends BaseSchemaName,
+	Name extends FormSchemaName,
 > = Omit<FieldWithValidatorProps<Name>, "name"> & {
 	name?: string;
 };
 
-export const FieldWithController = <Name extends BaseSchemaName>({
+export const FieldWithController = <Name extends FormSchemaName>({
 	autoComplete,
 	control,
 	m,

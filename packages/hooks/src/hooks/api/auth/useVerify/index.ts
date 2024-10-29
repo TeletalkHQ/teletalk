@@ -29,7 +29,7 @@ export const useVerify = () => {
 
 	return {
 		api: {
-			post: {
+			postApi: {
 				...postApi,
 				handler,
 			},

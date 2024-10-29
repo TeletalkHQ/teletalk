@@ -1,14 +1,14 @@
-import { BaseSchemaName } from "@repo/schema";
+import { FormSchemaName } from "@repo/schema";
 
 import {
 	FieldWithController,
 	FieldWithValidatorWithOptionalNameProps,
 } from "../../../base";
 
-interface Props<Name extends BaseSchemaName>
+interface Props<Name extends FormSchemaName>
 	extends FieldWithValidatorWithOptionalNameProps<Name> {}
 
-export const Email = <Name extends BaseSchemaName>(props: Props<Name>) => (
+export const Email = <Name extends FormSchemaName>(props: Props<Name>) => (
 	<FieldWithController
 		hiddenLabel
 		name="email"

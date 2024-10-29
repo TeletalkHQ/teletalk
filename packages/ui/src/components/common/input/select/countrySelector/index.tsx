@@ -42,10 +42,18 @@ export const CountrySelector: React.FC<Props> = ({
 	const renderOption = (
 		{ key, ...rest }: ListItemProps,
 		option: BaseSchema.CountriesItem
-	) => <Option key={option.uuid} option={option} props={rest} />;
+	) => (
+		<Option
+			key={`${option.countryCode}-${option.countryShortName}--${option.countryName}-`}
+			option={option}
+			props={rest}
+		/>
+	);
 
-	const foundSelectedCountry =
-		countries.find((i) => i.countryCode === countryCode) || null;
+	const foundSelectedCountry = useMemo(
+		() => countries.find((i) => i.countryCode === countryCode) || null,
+		[countryCode, countries]
+	);
 
 	const fixedCountries = useMemo(() => {
 		return countries.map((item) => ({

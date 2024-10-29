@@ -3,7 +3,7 @@
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
-import { BaseSchemaName } from "@repo/schema";
+import { FormSchemaName } from "@repo/schema";
 import { useState } from "react";
 
 import {
@@ -12,10 +12,10 @@ import {
 } from "../../../base";
 import { IconButton } from "../../../base/button";
 
-interface Props<Name extends BaseSchemaName>
+interface Props<Name extends FormSchemaName>
 	extends FieldWithValidatorWithOptionalNameProps<Name> {}
 
-export const Password = <Name extends BaseSchemaName>(props: Props<Name>) => {
+export const Password = <Name extends FormSchemaName>(props: Props<Name>) => {
 	const [showPassword, setShowPassword] = useState(false);
 
 	const handleClickShowPassword = () => setShowPassword((show) => !show);

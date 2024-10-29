@@ -8,8 +8,19 @@ const signIn = z.object({
 	phoneNumber: baseSchema.phoneNumber,
 });
 
+const verifySignInCode = z.object({
+	signInCode: baseSchema.signInCode,
+});
+
+const createNewUser = z.object({
+	firstName: baseSchema.firstName,
+	lastName: baseSchema.lastName,
+});
+
 export const formSchema = {
 	signIn,
+	verifySignInCode,
+	createNewUser,
 };
 
 export type FormSchema = typeof formSchema;

@@ -8,12 +8,13 @@ import {
 interface Props<Name extends FormSchemaName>
 	extends FieldWithValidatorWithOptionalNameProps<Name> {}
 
-export const Name = <Name extends FormSchemaName>(props: Props<Name>) => (
-	<FieldWithController
-		hiddenLabel
-		name="name"
-		placeholder="Name"
-		required
-		{...props}
-	/>
-);
+export const FirstName = <Name extends FormSchemaName>(props: Props<Name>) => {
+	return (
+		<FieldWithController
+			id="firstName"
+			label="First Name"
+			name="firstName"
+			{...props}
+		/>
+	);
+};

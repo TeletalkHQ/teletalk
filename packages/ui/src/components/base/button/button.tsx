@@ -1,5 +1,6 @@
 import { ButtonProps, Button as MuiButton } from "@mui/material";
 
+// TODO: Remove
 export const Button: React.FC<ButtonProps> = ({
 	fullWidth = true,
 	size = "large",
