@@ -4,7 +4,7 @@ import { RouteName } from "@repo/schema";
 import { useState } from "react";
 import { ZodSchema, z } from "zod";
 
-import { useBoolean, useFeatures } from "../../utils";
+import { useBoolean, useConfigs, useFeatures } from "../../utils";
 import { axiosInstance } from "./axiosInstance";
 import { EndPoint, HandlerOptions, Method, RequestPhase } from "./types";
 import { useApiPhase } from "./useApiPhase";
@@ -55,6 +55,8 @@ export const useApi = <
 }: Arg<T, Input, Output, Pathnames, Parameters>) => {
 	const apiPhase = useApiPhase(endpointShortName);
 
+	const { getApiHTTPBaseUrl } = useConfigs();
+
 	const { features } = useFeatures();
 
 	const { update: setHasError, value: hasError } = useBoolean();
@@ -100,6 +102,7 @@ export const useApi = <
 			method,
 			options,
 			endpoint,
+			baseUrl: getApiHTTPBaseUrl(),
 		});
 
 		const response = await axiosInstance<FoundOutput>(axiosConfig);

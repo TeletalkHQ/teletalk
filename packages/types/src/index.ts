@@ -58,5 +58,17 @@ export type CommonOnChange = ChangeEventHandler<
 
 export type PickFromUnion<T, U> = T extends U ? T : never;
 
+export enum STORAGE_KEY {
+	FEATURES = "FEATURES",
+	IS_PERMISSION_SET = "IS_PERMISSION_HAS_SET",
+	LOCATION_PERMISSION = "LOCATION_PERMISSION",
+	NOTIFICATION_PERMISSION = "NOTIFICATION_PERMISSION",
+	THEME = "THEME",
+	CONFIGS = "CONFIGS",
+}
+
+export type TransitionName = "Grow" | "Slide" | "Zoom";
+export type DrawerAnchor = "bottom" | "left" | "right" | "top";
+
 export * from "./http";
 export * from "./socket";

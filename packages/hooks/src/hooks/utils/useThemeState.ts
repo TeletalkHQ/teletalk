@@ -1,5 +1,5 @@
-import { STORAGE_KEY } from "@repo/classes";
 import { BaseSchema } from "@repo/schema";
+import { STORAGE_KEY } from "@repo/types";
 import { useIsomorphicLayoutEffect, useLocalStorage } from "usehooks-ts";
 
 export const useThemeState = () => {

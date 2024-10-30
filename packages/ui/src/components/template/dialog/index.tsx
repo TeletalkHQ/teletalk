@@ -1,10 +1,10 @@
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
+import { useConfigs } from "@repo/hooks";
 import { DialogStore, useDialogStore } from "@repo/store";
-import { VoidNoArgs } from "@repo/types";
+import { TransitionName, VoidNoArgs } from "@repo/types";
 import React from "react";
 
-import { TransitionName, configManager } from "../../../../../classes/src";
 import { Box, DialogProps, Transitions } from "../../base";
 import { Actions } from "./actions";
 import { Content } from "./content";
@@ -41,18 +41,19 @@ export const DialogTemplate: React.FC<Props> = ({
 	paperStyle,
 	title,
 	transitionDuration,
-	transitionName = configManager.getConfigs().UI.DIALOG_DEFAULT_TRANSITION,
+	transitionName,
 	...rest
 }) => {
 	const dialogStore = useDialogStore();
+
+	const { configs } = useConfigs();
 
 	const theme = useTheme();
 
 	const smFullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-	const FoundTransition =
-		Transitions[transitionName] ||
-		Transitions[configManager.getConfigs().UI.DIALOG_DEFAULT_TRANSITION];
+	const SelectedTransition =
+		Transitions[transitionName || configs.ui.dialogDefaultTransition];
 
 	const handleClose = () => {
 		const oc = onClose || dialogStore.setCloseAllDialog;
@@ -85,7 +86,7 @@ export const DialogTemplate: React.FC<Props> = ({
 				zIndex: dialogState.props.zIndex,
 				...dialogStyle,
 			}}
-			TransitionComponent={FoundTransition}
+			TransitionComponent={SelectedTransition}
 			transitionDuration={transitionDuration || 500}
 		>
 			<Title>{title}</Title>

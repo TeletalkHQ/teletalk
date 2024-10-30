@@ -11,7 +11,6 @@ import { Socket } from "socket.io-client";
 import { logHelper } from "./LogHelper";
 
 export interface EventHandlerOptions {
-	session?: string;
 	shouldLogDetails?: boolean;
 }
 
@@ -29,7 +28,6 @@ export class EventHandler<T extends EventName> {
 	private expectedError?: CustomError;
 
 	private options: EventHandlerOptions = {
-		session: undefined,
 		shouldLogDetails: false,
 	};
 
@@ -107,10 +105,6 @@ export class EventHandler<T extends EventName> {
 
 	getResponse() {
 		return this.response;
-	}
-
-	getSession() {
-		return this.options.session;
 	}
 
 	private setResponse(response: EventHandlerResponse<T>) {

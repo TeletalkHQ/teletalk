@@ -1,8 +1,8 @@
 "use client";
 
-import { STORAGE_KEY } from "@repo/classes";
 import { logger } from "@repo/logger";
 import { usePermissionStore } from "@repo/store";
+import { STORAGE_KEY } from "@repo/types";
 import { enqueueSnackbar } from "notistack";
 import { useEffect, useRef } from "react";
 import { useState } from "react";

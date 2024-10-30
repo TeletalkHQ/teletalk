@@ -1,4 +1,3 @@
-import { configManager } from "@repo/classes";
 import { logger } from "@repo/logger";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { enqueueSnackbar } from "notistack";
@@ -46,6 +45,7 @@ export interface CreateConfigParams<T extends IO> {
 	options: MergedOptions<T>;
 	token?: string | null;
 	endpoint: EndPoint<T["pathnames"]>;
+	baseUrl: string;
 }
 
 export const createAxiosConfig = <T extends IO>({
@@ -54,13 +54,14 @@ export const createAxiosConfig = <T extends IO>({
 	options,
 	token,
 	endpoint,
+	baseUrl,
 }: CreateConfigParams<T>): AxiosRequestConfig => {
 	const END_POINT = createEndpoint(options.pathnames, endpoint);
-	const BASE_URL =
-		options.config.url || defaultBaseUrl || configManager.getApiHTTPUrl();
+	const BASE_URL = options.config.baseURL || defaultBaseUrl || baseUrl;
+	const { url } = options.config;
 
 	return {
-		url: `${BASE_URL}/${END_POINT}`,
+		url: url || `${BASE_URL}/${END_POINT}`,
 		method,
 		shouldSendAuthHeader: options.config.shouldSendAuthHeader,
 		data: options.data,

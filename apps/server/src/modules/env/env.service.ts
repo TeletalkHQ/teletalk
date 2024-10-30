@@ -45,8 +45,6 @@ export class EnvService {
 		this.envs = envSchema.parse(process.env);
 	}
 
-	static registerEnvs() {}
-
 	getEnvs() {
 		return this.envs;
 	}

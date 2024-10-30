@@ -5,5 +5,3 @@ export * from "./Maker";
 export * from "./ObjectUtils";
 export * from "./Randomizer";
 export * from "./UserUtils";
-export * from "./configManager";
-export * from "./storage";

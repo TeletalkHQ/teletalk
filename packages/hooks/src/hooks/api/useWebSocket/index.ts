@@ -1,11 +1,12 @@
 "use client";
 
-import { configManager } from "@repo/classes";
 import { logger } from "@repo/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
 import useWebSocketPkg, { Options, ReadyState } from "react-use-websocket";
 import z, { ZodSchema } from "zod";
+
+import { useConfigs } from "../../utils";
 
 export type Command<C extends ZodSchema> = {
 	command: "execute" | "auth" | "ping";
@@ -35,8 +36,6 @@ export type WebSocketArg<
 	options?: Options;
 	updater?: Array<string | number | boolean | undefined>;
 };
-
-const wsUrl = configManager.getApiWSUrl();
 
 const heartbeat = {
 	message: JSON.stringify({
@@ -76,7 +75,12 @@ export function useWebSocket<
 	const [error, setError] = useState<string | null>(null);
 	const [command, setCommand] = useState<Command<z.infer<Input>>>(null);
 
-	const socketUrl = getSocketURL(eventName, defaultBaseUrl);
+	const { getApiWSBaseUrl } = useConfigs();
+
+	const socketUrl = getSocketURL(
+		eventName,
+		defaultBaseUrl || getApiWSBaseUrl()
+	);
 	const { sendJsonMessage, readyState } = useWebSocketPkg(
 		isEnabled ? socketUrl : null,
 		{
@@ -159,5 +163,5 @@ export function useWebSocket<
 	};
 }
 
-const getSocketURL = (eventName: string, defaultBaseUrl: string | undefined) =>
-	`${defaultBaseUrl ?? wsUrl}${eventName ? "/" + eventName : ""}`;
+const getSocketURL = (eventName: string, baseUrl: string | undefined) =>
+	`${baseUrl}${eventName ? "/" + eventName : ""}`;

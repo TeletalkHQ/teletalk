@@ -68,6 +68,7 @@
 		"codecov",
 		"codeql",
 		"codestream",
+		"commitlint",
 		"compressorjs",
 		"cors",
 		"cvfz",
