@@ -11,7 +11,7 @@
 		"check:types:watch": "npm run check:types -- --watch",
 		"dev": "npm run start:dev",
 		"start": "npm run start:production",
-		"start:dev": "cross-env PORT=${PORT:-3090} next dev --turbo",
+		"start:dev": "cross-env PORT=${PORT:-4090} next dev --turbo",
 		"start:production": "cross-env PORT=${PORT:-4090} next start"
 	},
 	"dependencies": {

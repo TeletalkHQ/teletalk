@@ -21,13 +21,13 @@ export type Notification = NativeError;
 
 export interface Environments {
 	NEXT_PUBLIC_CLIENT_BASE_URL: Url;
-	NEXT_PUBLIC_RUNTIME_MODE: "development" | "production";
+	NODE_ENV: "development" | "production";
 	NEXT_PUBLIC_SERVER_BASE_URL: Url;
 }
 
 export type EnvName = keyof Environments;
 
-export type RuntimeMode = Environments["NEXT_PUBLIC_RUNTIME_MODE"];
+export type RuntimeMode = Environments["NODE_ENV"];
 
 export type ServerAvailabilityStatus =
 	| "idle"

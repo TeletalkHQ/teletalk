@@ -20,7 +20,7 @@ type Servers = Array<{ url: Url; id: number }>;
 export const useConfigs = () => {
 	const { envs } = useEnv();
 
-	const environment = envs.NEXT_PUBLIC_RUNTIME_MODE;
+	const environment = envs.NODE_ENV;
 
 	const getInitialConfigs = () => ({
 		api: {
@@ -28,8 +28,7 @@ export const useConfigs = () => {
 				http: envs.NEXT_PUBLIC_SERVER_BASE_URL,
 				ws: envs.NEXT_PUBLIC_SERVER_BASE_URL,
 			},
-			defaultTimeout:
-				envs.NEXT_PUBLIC_RUNTIME_MODE === "development" ? 1000 : 0,
+			defaultTimeout: envs.NODE_ENV === "development" ? 1000 : 0,
 			requestTimeout: 60000,
 			selectedServerId: 0,
 			servers: [
