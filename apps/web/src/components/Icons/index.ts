@@ -26,13 +26,11 @@ import {
 	Telegram as TelegramIcon,
 	VerifiedUser as VerifiedUserIcon,
 } from "@mui/icons-material";
-import { ElementLabel, ElementName } from "@repo/types";
-
-import { IconType } from "~/types";
+import { ElementLabel, IconType } from "@repo/ui";
 
 const iconProperties = (
 	text: ElementLabel,
-	name: ElementName,
+	name: string,
 	Element: IconType
 ) => ({
 	Element,
@@ -40,7 +38,7 @@ const iconProperties = (
 	text,
 });
 
-export const Icon = {
+export const Icons = {
 	AccountCircleOutlined: iconProperties(
 		"Account",
 		"account",
