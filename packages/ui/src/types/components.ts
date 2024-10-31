@@ -1,13 +1,55 @@
-import { SelectChangeEvent, SvgIconTypeMap } from "@mui/material";
+import { SelectChangeEvent, SelectProps, SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
 import {
 	ChangeEvent,
+	ChangeEventHandler,
 	DetailedHTMLProps,
 	HTMLAttributes,
 	MouseEvent,
 } from "react";
+
+export type ElementName =
+	| "account"
+	| "addContacts"
+	| "allChats"
+	| "attachFile"
+	| "back"
+	| "bio"
+	| "bot"
+	| "calls"
+	| "channels"
+	| "check"
+	| "close"
+	| "contacts"
+	| "countryCode"
+	| "countryName"
+	| "editChats"
+	| "emojiEmotions"
+	| "firstName"
+	| "groups"
+	| "lastName"
+	| "lock"
+	| "logout"
+	| "menu"
+	| "messageBox"
+	| "micNone"
+	| "more"
+	| "newChannel"
+	| "newGroup"
+	| "nightMode"
+	| "personal"
+	| "phoneNumber"
+	| "root"
+	| "search"
+	| "send"
+	| "settings"
+	| "unread"
+	| "username"
+	| "verificationCode";
+
+export type ElementId = ElementName;
 
 export type DivProps = DetailedHTMLProps<
 	HTMLAttributes<HTMLDivElement>,
@@ -55,3 +97,9 @@ export type HTMLDivMouseEvent = MouseEvent<
 >;
 
 export type OnDialogClose = VoidWithArg<DialogStore.DialogName>;
+
+export type OnInputChange = ChangeEventHandler<
+	HTMLInputElement | HTMLTextAreaElement
+>;
+
+export type OnSelectOnChange = SelectProps["onChange"];

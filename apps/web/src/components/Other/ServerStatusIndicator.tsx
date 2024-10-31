@@ -1,12 +1,17 @@
 import CircleIcon from "@mui/icons-material/Circle";
+import { Box } from "@repo/ui";
 
-import { ServerAvailabilityStatus, StatusColors } from "~/types";
-
-import { Box } from "..";
+export type ServerAvailabilityStatusType =
+	| "idle"
+	| "offline"
+	| "online"
+	| "pending";
 
 interface Props {
-	status: ServerAvailabilityStatus;
+	status: ServerAvailabilityStatusType;
 }
+
+export type StatusColors = Record<ServerAvailabilityStatusType, string>;
 
 export const statusColors: StatusColors = {
 	idle: "white",
@@ -15,7 +20,7 @@ export const statusColors: StatusColors = {
 	pending: "yellow",
 };
 
-const ServerStatusIndicator: React.FC<Props> = ({ status }) => {
+export const ServerStatusIndicator: React.FC<Props> = ({ status }) => {
 	return (
 		<Box.Span>
 			<CircleIcon
@@ -28,5 +33,3 @@ const ServerStatusIndicator: React.FC<Props> = ({ status }) => {
 		</Box.Span>
 	);
 };
-
-export default ServerStatusIndicator;

@@ -1,13 +1,22 @@
-import { ServerAvailabilityStatus as ServerAvailabilityStatusType } from "~/types";
+import { Url } from "@repo/hooks";
+import { Box } from "@repo/ui";
 
-import { Box } from "..";
-import ServerStatusIndicator from "./ServerStatusIndicator";
+import {
+	ServerAvailabilityStatusType,
+	ServerStatusIndicator,
+} from "./ServerStatusIndicator";
 
 interface Props {
 	status: ServerAvailabilityStatusType;
 }
 
-const ServerAvailabilityStatus: React.FC<Props> = ({ status }) => {
+export interface ServerTestResult {
+	url: Url;
+	ping: number | undefined;
+	status: ServerAvailabilityStatusType;
+}
+
+export const ServerAvailabilityStatus: React.FC<Props> = ({ status }) => {
 	return (
 		<Box.Flex
 			bgcolor={(theme) => theme.palette.background.paper}
@@ -24,5 +33,3 @@ const ServerAvailabilityStatus: React.FC<Props> = ({ status }) => {
 		</Box.Flex>
 	);
 };
-
-export default ServerAvailabilityStatus;
