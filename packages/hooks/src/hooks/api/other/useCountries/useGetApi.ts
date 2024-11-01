@@ -1,24 +1,13 @@
-import { findHttpRoute } from "@repo/schema";
-
-import { useApi } from "../../useApi";
-
-const route = findHttpRoute("getCountries");
+import { useMainApi } from "../../useMainApi";
 
 export const useGetApi = () => {
-	return useApi({
-		endpoint: `${route.schema.rootPath}/${route.schema.pathname}`,
-		endpointShortName: "getCountries",
+	return useMainApi({
 		initialData: {
 			data: {
 				countries: [],
 			},
 			errors: [],
 		},
-		io: {
-			input: route.schema.io.input,
-			output: route.schema.io.output,
-			params: undefined,
-			pathnames: undefined,
-		},
+		name: "getCountries",
 	});
 };

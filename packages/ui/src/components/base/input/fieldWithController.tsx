@@ -1,3 +1,5 @@
+"use client";
+
 import { Control } from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
 import { Path, UseFormGetValues, useController } from "react-hook-form";

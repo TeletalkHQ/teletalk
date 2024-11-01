@@ -20,7 +20,6 @@ export const CountryCode = <Name extends FormSchemaName>({
 		}}
 		name="countryCode"
 		placeholder="Code"
-		required
 		style={{
 			width: "100px",
 			...style,

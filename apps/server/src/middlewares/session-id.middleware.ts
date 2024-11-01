@@ -24,10 +24,8 @@ export class SessionIdMiddleware implements NestMiddleware {
 		const session = req.cookies[COOKIE_NAMES.SESSION];
 
 		if (!session)
-			this.errorStoreService.throw(
-				"unauthorized",
-				"SESSION_NOT_FOUND",
-				SessionIdMiddleware.name
+			return next(
+				this.errorStoreService.generate("unauthorized", "SESSION_NOT_FOUND")
 			);
 
 		const verifiedSession = await this.sessionService.verify(session);

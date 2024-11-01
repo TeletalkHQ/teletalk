@@ -1,23 +1,12 @@
-import { findHttpRoute } from "@repo/schema";
-
-import { useApi } from "../../useApi";
-
-const route = findHttpRoute("verify");
+import { useMainApi } from "../../useMainApi";
 
 export const usePostApi = () =>
-	useApi({
-		endpoint: route.schema.pathname,
-		endpointShortName: route.schema.ioName,
+	useMainApi({
 		initialData: {
 			data: {
 				isNewUser: false,
 			},
 			errors: [],
 		},
-		io: {
-			input: route.schema.io.input,
-			output: route.schema.io.output,
-			params: route.schema.params,
-			pathnames: route.schema.pathnames,
-		},
+		name: "verify",
 	});

@@ -11,9 +11,9 @@ interface Props<Name extends FormSchemaName>
 export const SignInCode = <Name extends FormSchemaName>(props: Props<Name>) => {
 	return (
 		<FieldWithController
+			id="signInCode"
 			label="Sign In Code"
 			name="signInCode"
-			required
 			{...props}
 		/>
 	);

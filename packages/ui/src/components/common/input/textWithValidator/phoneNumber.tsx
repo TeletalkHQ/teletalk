@@ -1,8 +1,8 @@
 import { FormSchemaName } from "@repo/schema";
 
 import {
+	FieldWithController,
 	FieldWithValidatorWithOptionalNameProps,
-	TextField,
 } from "../../../base";
 
 interface Props<Name extends FormSchemaName>
@@ -12,14 +12,11 @@ export const PhoneNumber = <Name extends FormSchemaName>(
 	props: Props<Name>
 ) => {
 	return (
-		<TextField
+		<FieldWithController
 			autoComplete="off"
+			id="phoneNumber"
 			name="phoneNumber"
 			placeholder="Phone Number"
-			required
-			style={{
-				marginLeft: "5px",
-			}}
 			{...props}
 		/>
 	);

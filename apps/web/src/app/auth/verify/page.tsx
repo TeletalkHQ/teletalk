@@ -11,6 +11,7 @@ import { FormSchemaName } from "@repo/schema";
 import { Box, Button, Field, Form, IconButton, Typography } from "@repo/ui";
 import { useFormState } from "react-hook-form";
 
+import { domUtils } from "~/classes";
 import { useAuthUrlQueries } from "~/hooks";
 
 import AuthFooter from "../common/AuthFooter";
@@ -38,7 +39,23 @@ const Verify = () => {
 	};
 
 	const submitForm: SubmitHandler<typeof schemaName> = (data) => {
-		postApi.handler({ data });
+		postApi.handler({
+			data,
+			config: {
+				onError: () => {
+					domUtils()
+						.setElementById("signInCode")
+						.focusElement()
+						.selectAllValue();
+				},
+				onSuccess: ({ data }) => {
+					if (data.data.isNewUser) router.replace("create");
+					else {
+						router.push("/messenger");
+					}
+				},
+			},
+		});
 	};
 
 	const onSubmit = handleSubmit(submitForm);

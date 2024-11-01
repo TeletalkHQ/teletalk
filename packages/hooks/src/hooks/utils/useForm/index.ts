@@ -49,6 +49,7 @@ export const useForm = <Name extends FormSchemaName>({
 	} = RHFUseForm<FormValues, any, FormValues>({
 		...rest,
 		resolver: zodResolver(schema),
+		reValidateMode: "onChange",
 	});
 
 	const reset = () => resetRhf(formInitialData[schemaName]);

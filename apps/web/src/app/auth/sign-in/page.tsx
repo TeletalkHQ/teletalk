@@ -17,7 +17,7 @@ import {
 	SelectedCountry,
 	Typography,
 } from "@repo/ui";
-import { useFormState, useWatch } from "react-hook-form";
+import { useWatch } from "react-hook-form";
 
 import { useAuthUrlQueries } from "~/hooks";
 
@@ -25,21 +25,25 @@ import AuthFooter from "../common/AuthFooter";
 
 const SignInPage = () => {
 	const {
-		handlers: { signIn },
+		api: { postApi },
 	} = useSignIn();
 
 	const router = useCustomRouter();
 
+	const authQueries = useAuthUrlQueries();
+
 	const schemaName: FormSchemaName = "signIn";
 	const { control, handleSubmit, setValue } = useForm<typeof schemaName>({
 		schemaName,
+		defaultValues: {
+			countryCode: authQueries.countryCode,
+			phoneNumber: authQueries.phoneNumber,
+		},
 	});
 
 	const { countryCode, countryName } = useWatch({
 		control,
 	});
-
-	const { setCountryCode, setPhoneNumber } = useAuthUrlQueries();
 
 	const signInPhase = useApiPhase("signIn");
 
@@ -50,26 +54,26 @@ const SignInPage = () => {
 	const handleCountrySelectChange = (value: SelectedCountry) => {
 		setValue("countryName", value?.countryName || "");
 		setValue("countryCode", value?.countryCode || "");
-		// userStore.setNewCountryCode(value?.country_code || "");
 	};
 
 	const submitSignInForm: SubmitHandler<typeof schemaName> = (data) => {
-		setCountryCode(data.countryCode);
-		setPhoneNumber(data.phoneNumber);
+		authQueries.setCountryCode(data.countryCode);
+		authQueries.setPhoneNumber(data.phoneNumber);
 
-		signIn({
+		postApi.handler({
 			data,
 			config: {
 				onSuccess: () => {
-					router.push("verify");
+					router.push("verify", {
+						countryCode: data.countryCode,
+						phoneNumber: data.phoneNumber,
+					});
 				},
 			},
 		});
 	};
 
 	const onSubmit = handleSubmit(submitSignInForm);
-
-	const { isValid } = useFormState({ control });
 
 	return (
 		<Box.Container mw="xl">
@@ -112,7 +116,7 @@ const SignInPage = () => {
 							</Box.Flex>
 
 							<Button
-								disabled={!isValid}
+								// disabled={!isValid}
 								loading={signInPhase.isLoading}
 								loadingIndicatorText="Sign in..."
 								sx={{

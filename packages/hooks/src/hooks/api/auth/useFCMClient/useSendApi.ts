@@ -13,6 +13,8 @@ const input = z.object({
 
 export const useSendApi = () => {
 	return useApi({
+		// TODO: Add `baseUrl`
+		baseUrl: "",
 		endpoint: "user/fcm-token",
 		// TODO: `sendFCMToken`
 		endpointShortName: "userFcm",

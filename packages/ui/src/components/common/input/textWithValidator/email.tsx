@@ -13,7 +13,6 @@ export const Email = <Name extends FormSchemaName>(props: Props<Name>) => (
 		hiddenLabel
 		name="email"
 		placeholder="Email"
-		required
 		{...props}
 	/>
 );

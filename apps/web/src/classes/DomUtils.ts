@@ -55,19 +55,23 @@ class DomUtils {
 	}
 
 	focusElement() {
-		(this.getElement() as HTMLInputElement).focus();
+		const el = this.getElement();
+
+		if (el && "focus" in el && typeof el.focus === "function") el.focus();
+
 		return this;
 	}
 
 	selectAllValue() {
-		(this.getElement() as HTMLInputElement).select();
+		const el = this.getElement();
+		if (el && "select" in el && typeof el.select === "function") el.select();
+
 		return this;
 	}
 
 	setElementByName(elementName: ElementName) {
 		const element = this.getFirstElementByName(elementName);
 		this.setElement(element);
-
 		this.setElementName(elementName);
 
 		return this;

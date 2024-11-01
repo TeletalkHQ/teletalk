@@ -18,7 +18,6 @@ export const Search = <Name extends FormSchemaName>({
 			hiddenLabel
 			name="search"
 			placeholder={placeholder || "Search"}
-			required
 			{...rest}
 		/>
 	);

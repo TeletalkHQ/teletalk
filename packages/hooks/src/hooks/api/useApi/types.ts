@@ -1,4 +1,4 @@
-import { HTTPRoutes, RouteName } from "@repo/schema";
+import { HTTPRoutes, IOCollection, RouteName } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { ZodSchema, z } from "zod";
@@ -17,15 +17,21 @@ export type EndPoint<T extends IO["pathnames"]> = T extends ZodSchema
 
 export type Method = "get" | "post" | "put" | "patch" | "delete";
 
-export type GetResponseBySchema<T extends IO> = AxiosResponse<
-	T["output"] extends ZodSchema
-		? { data: z.infer<T["output"]>; errors: Array<unknown> }
-		: undefined,
+export type InitialData<T extends RouteName> = {
+	data: z.infer<IOCollection[T]["output"]>;
+	errors: Array<unknown>;
+};
+
+export type GetResponseBySchema<
+	T extends IO,
+	U extends RouteName,
+> = AxiosResponse<
+	T["output"] extends ZodSchema ? InitialData<U> : undefined,
 	any
 >;
 
-export type HandlerCallbacks<T extends IO> = {
-	onSuccess: (response: GetResponseBySchema<T>) => void | Promise<void>;
+export type HandlerCallbacks<T extends IO, U extends RouteName> = {
+	onSuccess: (response: GetResponseBySchema<T, U>) => void | Promise<void>;
 	onError: VoidNoArgs;
 	onSettled: VoidNoArgs;
 };
@@ -34,13 +40,16 @@ export type RequestConfig = Omit<AxiosRequestConfig, "params">;
 
 export type RequestPhase = "load" | "update";
 
-export type HandlerConfig<T extends IO> = RequestConfig &
-	Partial<HandlerCallbacks<T>> & {
+export type HandlerConfig<T extends IO, U extends RouteName> = RequestConfig &
+	Partial<HandlerCallbacks<T, U>> & {
 		phase?: RequestPhase;
 		shouldSendAuthHeader?: boolean;
 	};
 
-export type HandlerOptions<T extends IO> = (T["params"] extends ZodSchema
+export type HandlerOptions<
+	T extends IO,
+	U extends RouteName,
+> = (T["params"] extends ZodSchema
 	? {
 			params: z.infer<T["params"]>;
 		}
@@ -61,17 +70,20 @@ export type HandlerOptions<T extends IO> = (T["params"] extends ZodSchema
 		: {
 				data?: never;
 			}) & {
-		config?: HandlerConfig<T>;
+		config?: HandlerConfig<T, U>;
 	};
 
 type AnyFn = (...arg: any[]) => any;
 
-export type GetHandlerOptionsByUrl<T extends RouteName> = HandlerOptions<{
-	input: HTTPRoutes[T]["schema"]["io"]["input"];
-	output: HTTPRoutes[T]["schema"]["io"]["output"];
-	params: HTTPRoutes[T]["schema"]["params"];
-	pathnames: HTTPRoutes[T]["schema"]["pathnames"];
-}>;
+export type GetHandlerOptionsByUrl<T extends RouteName> = HandlerOptions<
+	{
+		input: HTTPRoutes[T]["schema"]["io"]["input"];
+		output: HTTPRoutes[T]["schema"]["io"]["output"];
+		params: HTTPRoutes[T]["schema"]["params"];
+		pathnames: HTTPRoutes[T]["schema"]["pathnames"];
+	},
+	T
+>;
 
 export type GetOptionsByAPI<API extends AnyFn> = Parameters<API>[0];
 

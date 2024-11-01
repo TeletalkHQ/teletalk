@@ -28,17 +28,21 @@ export class AuthMiddleware implements NestMiddleware {
 		const tempSession = await this.tempSessionStoreService.find(req.sessionId);
 
 		if (!tempSession)
-			this.errorStoreService.throw(
-				"notFound",
-				"TEMP_SESSION_NOT_FOUND",
-				AuthMiddleware.name
+			return next(
+				this.errorStoreService.generate(
+					"notFound",
+					"TEMP_SESSION_NOT_FOUND"
+					// AuthMiddleware.name
+				)
 			);
 
 		if (req.body.signInCode !== tempSession.signInCode)
-			this.errorStoreService.throw(
-				"unauthorized",
-				"SIGN_IN_CODE_INVALID",
-				AuthMiddleware.name
+			return next(
+				this.errorStoreService.generate(
+					"unauthorized",
+					"SIGN_IN_CODE_INVALID"
+					// AuthMiddleware.name
+				)
 			);
 
 		await this.tempSessionStoreService.update(req.sessionId, {

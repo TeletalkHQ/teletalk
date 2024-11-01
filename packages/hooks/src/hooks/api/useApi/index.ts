@@ -2,11 +2,17 @@
 
 import { RouteName } from "@repo/schema";
 import { useState } from "react";
-import { ZodSchema, z } from "zod";
+import { ZodSchema } from "zod";
 
-import { useBoolean, useConfigs, useFeatures } from "../../utils";
+import { useBoolean, useFeatures } from "../../utils";
 import { axiosInstance } from "./axiosInstance";
-import { EndPoint, HandlerOptions, Method, RequestPhase } from "./types";
+import {
+	EndPoint,
+	HandlerOptions,
+	InitialData,
+	Method,
+	RequestPhase,
+} from "./types";
 import { useApiPhase } from "./useApiPhase";
 import {
 	MergedOptions,
@@ -17,17 +23,17 @@ import {
 	mergeOptions,
 } from "./utils";
 
-type Arg<
+export type UseApiArg<
 	T extends RouteName,
 	Input extends ZodSchema | undefined,
 	Output extends ZodSchema,
 	Pathnames extends ZodSchema<any> | undefined,
 	Parameters extends ZodSchema | undefined,
 > = {
-	defaultBaseUrl?: string;
+	baseUrl: string;
 	endpoint: EndPoint<Pathnames>;
 	endpointShortName: T;
-	initialData: { data: z.infer<Output>; errors: Array<unknown> };
+	initialData: InitialData<T>;
 	method?: Method;
 	phase?: RequestPhase;
 	io: {
@@ -45,25 +51,21 @@ export const useApi = <
 	Pathnames extends ZodSchema | undefined,
 	Parameters extends ZodSchema | undefined,
 >({
-	defaultBaseUrl,
+	baseUrl,
 	endpointShortName,
 	initialData,
 	method = "get",
 	phase,
 	endpoint,
 	io: IO,
-}: Arg<T, Input, Output, Pathnames, Parameters>) => {
+}: UseApiArg<T, Input, Output, Pathnames, Parameters>) => {
 	const apiPhase = useApiPhase(endpointShortName);
-
-	const { getApiHTTPBaseUrl } = useConfigs();
 
 	const { features } = useFeatures();
 
 	const { update: setHasError, value: hasError } = useBoolean();
 
-	type FoundOutput = typeof initialData;
-
-	const [data, setData] = useState<FoundOutput>(initialData);
+	const [data, setData] = useState<InitialData<T>>(initialData);
 
 	type InferredIO = {
 		input: Input;
@@ -73,8 +75,8 @@ export const useApi = <
 	};
 
 	const handler = async (
-		options: HandlerOptions<InferredIO>
-	): Promise<FoundOutput> => {
+		options: HandlerOptions<InferredIO, T>
+	): Promise<InitialData<T>> => {
 		const mergedOptions = mergeOptions(options);
 
 		try {
@@ -94,22 +96,21 @@ export const useApi = <
 		}
 	};
 
-	const tryToSendRequest = async (options: MergedOptions<InferredIO>) => {
+	const tryToSendRequest = async (options: MergedOptions<InferredIO, T>) => {
 		handleStartLoadings(phase || options.config.phase);
 
-		const axiosConfig = createAxiosConfig<InferredIO>({
-			defaultBaseUrl,
+		const axiosConfig = createAxiosConfig<InferredIO, T>({
 			method,
 			options,
 			endpoint,
-			baseUrl: getApiHTTPBaseUrl(),
+			baseUrl,
 		});
 
-		const response = await axiosInstance<FoundOutput>(axiosConfig);
+		const response = await axiosInstance<InitialData<T>>(axiosConfig);
 
 		await handleOutputValidation(response, features.apiValidation, IO.output);
 
-		await options.config.onSuccess?.(response.data.data);
+		await options.config.onSuccess?.(response as any);
 
 		setData(response.data);
 		return response.data;
