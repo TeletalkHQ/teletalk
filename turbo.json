@@ -1,4 +1,6 @@
 {
+	"$schema": "https://turbo.build/schema.json",
+	"globalDependencies": [".env"],
 	"globalEnv": [
 		"COVERAGE",
 		"NEXT_PUBLIC_CLIENT_BASE_URL",
@@ -7,17 +9,12 @@
 		"NODE_ENV",
 		"PORT",
 		"SELF_EXEC",
-		"USE_ALL_THREADS"
+		"USE_CLUSTER"
 	],
-	"$schema": "https://turbo.build/schema.json",
-	"globalDependencies": [".env"],
 	"tasks": {
 		"build": {
 			"env": [".env"],
 			"outputs": [".next/**", "!.next/cache/**"]
-		},
-		"nest:build": {
-			"cache": false
 		},
 		"check:lint": {},
 		"check:lint:fix": {},
@@ -34,6 +31,13 @@
 			"cache": false,
 			"persistent": true
 		},
+		"nest:build": {
+			"cache": false
+		},
+		"nest:start:dev": {
+			"cache": false,
+			"persistent": true
+		},
 		"start": {
 			"cache": false,
 			"persistent": true
@@ -42,16 +46,12 @@
 			"cache": false,
 			"persistent": true
 		},
-		"nest:start:dev": {
-			"cache": false,
-			"persistent": true
+		"start:production": {
+			"cache": false
 		},
 		"test": {},
 		"test:coverage": {},
 		"test:dev": {
-			"cache": false
-		},
-		"start:production": {
 			"cache": false
 		},
 		"test:dev:coverage": {},
