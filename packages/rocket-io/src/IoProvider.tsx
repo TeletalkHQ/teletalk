@@ -15,6 +15,7 @@ import type {
 export const IoProvider = function ({ children }: React.PropsWithChildren<object>) {
   const connections = useRef<Record<string, number>>({});
   const eventSubscriptions = useRef<Record<string, number>>({});
+
   const sockets = useRef<
     Record<
       IoNamespace,
