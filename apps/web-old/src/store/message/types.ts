@@ -5,7 +5,7 @@ import type {
 	PrivateChatItem,
 	PrivateChats,
 	UserId,
-	VoidNoArgsFn,
+	VoidNoArgs,
 	VoidWithArg,
 } from "@repo/types";
 
@@ -31,11 +31,11 @@ export interface Handlers {
 	addMessage: VoidWithArg<AddMessagePayload>;
 	addPrivateChat: VoidWithArg<PrivateChatItem>;
 	createNewPrivateChat: VoidWithArg<PrivateChatItem>;
-	deselectChat: VoidNoArgsFn;
+	deselectChat: VoidNoArgs;
 	messageInputOnChange: VoidWithArg<MessageText>;
 	setPrivateChats: VoidWithArg<PrivateChats>;
 	updateSelectedChatInfo: VoidWithArg<{ chatId: ChatId; userId: UserId }>;
-	reset: VoidNoArgsFn;
+	reset: VoidNoArgs;
 }
 
 export type SetState = StoreSetFn<State>;

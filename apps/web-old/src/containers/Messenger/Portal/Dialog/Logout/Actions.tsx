@@ -1,11 +1,11 @@
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { Box, Button } from "~/components";
 
 interface Props {
 	loading: boolean;
-	onClose: VoidNoArgsFn;
-	onLogout: VoidNoArgsFn;
+	onClose: VoidNoArgs;
+	onLogout: VoidNoArgs;
 }
 
 const Actions: React.FC<Props> = ({ loading, onClose, onLogout }) => (

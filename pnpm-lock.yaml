@@ -910,6 +910,9 @@ importers:
 
   packages/hooks:
     dependencies:
+      '@repo/rocket-io':
+        specifier: workspace:*
+        version: link:../rocket-io
       '@repo/store':
         specifier: workspace:*
         version: link:../store

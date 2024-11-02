@@ -1,12 +1,12 @@
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { Box, Button } from "~/components";
 
 interface Props {
 	isAddContactButtonDisabled: boolean;
 	loading: boolean;
-	onAddContactClick: VoidNoArgsFn;
-	onCancelClick: VoidNoArgsFn;
+	onAddContactClick: VoidNoArgs;
+	onCancelClick: VoidNoArgs;
 }
 
 const Actions: React.FC<Props> = ({

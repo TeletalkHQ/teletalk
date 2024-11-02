@@ -1,11 +1,11 @@
-import type { AvatarSrc, VoidNoArgsFn } from "@repo/types";
+import type { AvatarSrc, VoidNoArgs } from "@repo/types";
 
 import { Box, Typography } from "~/components";
 
 interface Props {
 	fullName: string;
 	avatarSrc: AvatarSrc;
-	onAvatarClick: VoidNoArgsFn;
+	onAvatarClick: VoidNoArgs;
 }
 const Header: React.FC<Props> = ({ avatarSrc, fullName, onAvatarClick }) => {
 	return (

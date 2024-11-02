@@ -1,12 +1,12 @@
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { Button } from "~/components";
 
 interface Props {
 	isSaveDisabled: boolean;
 	loading: boolean;
-	onClose: VoidNoArgsFn;
-	onSave: VoidNoArgsFn;
+	onClose: VoidNoArgs;
+	onSave: VoidNoArgs;
 }
 
 const Actions: React.FC<Props> = ({

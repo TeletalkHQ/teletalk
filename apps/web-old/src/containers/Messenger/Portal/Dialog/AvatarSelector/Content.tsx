@@ -1,4 +1,4 @@
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 import AvatarEditor from "react-avatar-editor";
 
 import { Box, Button } from "~/components";
@@ -8,7 +8,7 @@ interface Props {
 	avatarSrc: string;
 	editor: React.MutableRefObject<AvatarEditor | null>;
 	onFileChange: OnInputChange;
-	onOpenFileSelector: VoidNoArgsFn;
+	onOpenFileSelector: VoidNoArgs;
 	fileInputRef: React.LegacyRef<HTMLInputElement>;
 }
 

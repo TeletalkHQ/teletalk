@@ -1,4 +1,4 @@
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { Box } from "~/components";
 import { IconType } from "~/types";
@@ -6,7 +6,7 @@ import { IconType } from "~/types";
 import { SettingDisplayName } from "../types";
 
 interface Props {
-	onClick: VoidNoArgsFn;
+	onClick: VoidNoArgs;
 	displayName: SettingDisplayName;
 	disabled: boolean;
 	Icon: IconType;

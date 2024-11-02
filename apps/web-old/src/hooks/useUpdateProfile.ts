@@ -1,4 +1,4 @@
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { useSettingsStore } from "~/store";
 
@@ -10,7 +10,7 @@ export const useUpdateProfile = () => {
 		"updateUserPublicInfo"
 	);
 
-	const handler = (cb?: VoidNoArgsFn) => {
+	const handler = (cb?: VoidNoArgs) => {
 		const { countryCode, countryName, phoneNumber, ...restProfile } =
 			settingsStore.profile;
 

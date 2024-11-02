@@ -1,11 +1,6 @@
 import CircleIcon from "@mui/icons-material/Circle";
+import { ServerAvailabilityStatusType } from "@repo/hooks";
 import { Box } from "@repo/ui";
-
-export type ServerAvailabilityStatusType =
-	| "idle"
-	| "offline"
-	| "online"
-	| "pending";
 
 interface Props {
 	status: ServerAvailabilityStatusType;

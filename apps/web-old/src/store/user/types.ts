@@ -12,7 +12,7 @@ import type {
 	UserItem,
 	UserPublicData,
 	Users,
-	VoidNoArgsFn,
+	VoidNoArgs,
 	VoidWithArg,
 } from "@repo/types";
 
@@ -49,7 +49,7 @@ export interface Handlers {
 	addContact: VoidWithArg<ContactItem>;
 	removeBlock: VoidWithArg<BlacklistItem>;
 	removeContact: VoidWithArg<RemoveContactIO["output"]["removedContact"]>;
-	reset: VoidNoArgsFn;
+	reset: VoidNoArgs;
 	updateAddingContactWithCellphone: VoidWithArg<
 		Partial<AddingContactWithCellphone>
 	>;

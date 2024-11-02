@@ -1,5 +1,5 @@
 import { UserId } from "@repo/types";
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { Box, Typography } from "~/components";
 import { useGetAvatar } from "~/hooks";
@@ -9,7 +9,7 @@ interface Props {
 	fullName: string;
 	//REFACTOR: To template string
 	lastSeen: string;
-	onContactClick: VoidNoArgsFn;
+	onContactClick: VoidNoArgs;
 	onContextMenu: GlobalStore.OnContextMenu;
 	userId: UserId;
 }

@@ -167,11 +167,11 @@ export function createSocketHooks<
         ev: TKey,
         ...args: Parameters<TEmitEvents[keyof TEmitEvents]>
       ) => {
-        if (isNil(socketInstance)) return void queue.current.push([ev, ...args] as any);
+        if (isNil(socket)) return void queue.current.push([ev, ...args] as any);
 
-        socketInstance.emit(ev as any, ...args);
+        socket.emit(ev as any, ...args);
       },
-      []
+      [socket]
     );
   };
 

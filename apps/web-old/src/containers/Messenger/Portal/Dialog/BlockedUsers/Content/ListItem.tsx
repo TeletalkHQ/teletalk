@@ -1,13 +1,13 @@
 import LockOpenTwoToneIcon from "@mui/icons-material/LockOpenTwoTone";
 import { userUtils } from "@repo/classes";
-import { UserItem, VoidNoArgsFn } from "@repo/types";
+import { UserItem, VoidNoArgs } from "@repo/types";
 
 import { Box, Button } from "~/components";
 import { useGetPublicData } from "~/hooks";
 
 interface Props {
 	userItem: UserItem;
-	onItemLick: VoidNoArgsFn;
+	onItemLick: VoidNoArgs;
 }
 
 const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {

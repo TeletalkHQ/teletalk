@@ -67,6 +67,13 @@ export const httpRoutes = {
 		pathname: "logout",
 		rootPath: "auth",
 	}),
+	ping: new RouteGenerator({
+		ioName: "ping",
+		isAuthRequired: false,
+		method: "get",
+		pathname: "ping",
+		rootPath: "serverInfo",
+	}),
 } satisfies Record<RouteName, RouteGenerator<RouteName, ZodSchema, ZodSchema>>;
 
 export type HTTPRouteName = RouteName;

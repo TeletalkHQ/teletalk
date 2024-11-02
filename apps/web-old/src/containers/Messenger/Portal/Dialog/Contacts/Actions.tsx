@@ -1,10 +1,10 @@
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { Box, Button } from "~/components";
 
 interface Props {
-	onClose: VoidNoArgsFn;
-	onAddContactClick: VoidNoArgsFn;
+	onClose: VoidNoArgs;
+	onAddContactClick: VoidNoArgs;
 }
 
 const Actions: React.FC<Props> = ({ onClose, onAddContactClick }) => (

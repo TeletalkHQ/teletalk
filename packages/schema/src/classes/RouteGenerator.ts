@@ -3,7 +3,12 @@ import { ZodSchema } from "zod";
 
 import { IOCollection, IOName, ioCollection } from "../schema/api/io";
 
-export type HTTPRootPath = "auth" | "user" | "private-chat" | "stuff";
+export type HTTPRootPath =
+	| "auth"
+	| "user"
+	| "private-chat"
+	| "stuff"
+	| "serverInfo";
 
 export type RouteName = PickFromUnion<
 	IOName,
@@ -13,6 +18,7 @@ export type RouteName = PickFromUnion<
 	| "getUserInfo"
 	| "getWelcomeMessage"
 	| "logout"
+	| "ping"
 	| "signIn"
 	| "userFcm"
 	| "verify"

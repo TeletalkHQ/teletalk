@@ -1,5 +1,5 @@
 import { userUtils } from "@repo/classes";
-import type { AvatarSrc, VoidNoArgsFn } from "@repo/types";
+import type { AvatarSrc, VoidNoArgs } from "@repo/types";
 
 import { Box } from "~/components";
 import { SettingsStore } from "~/store";
@@ -10,7 +10,7 @@ import List from "./List";
 
 interface Props {
 	avatarSrc: AvatarSrc;
-	onAvatarClick: VoidNoArgsFn;
+	onAvatarClick: VoidNoArgs;
 	onClick: EditProfileListItemOnClick;
 	profile: SettingsStore.Profile;
 }

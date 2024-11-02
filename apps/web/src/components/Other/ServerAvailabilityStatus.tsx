@@ -1,18 +1,9 @@
-import { Url } from "@repo/hooks";
+import { ServerAvailabilityStatusType } from "@repo/hooks";
 import { Box } from "@repo/ui";
 
-import {
-	ServerAvailabilityStatusType,
-	ServerStatusIndicator,
-} from "./ServerStatusIndicator";
+import { ServerStatusIndicator } from "./ServerStatusIndicator";
 
 interface Props {
-	status: ServerAvailabilityStatusType;
-}
-
-export interface ServerTestResult {
-	url: Url;
-	ping: number | undefined;
 	status: ServerAvailabilityStatusType;
 }
 

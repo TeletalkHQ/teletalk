@@ -1,12 +1,12 @@
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { Box, Button } from "~/components";
 
 interface Props {
 	isConfirmDisabled: boolean;
 	loading: boolean;
-	onCancel: VoidNoArgsFn;
-	onConfirm: VoidNoArgsFn;
+	onCancel: VoidNoArgs;
+	onConfirm: VoidNoArgs;
 }
 
 const Actions: React.FC<Props> = ({

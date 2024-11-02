@@ -3,7 +3,7 @@ import type {
 	Cellphone,
 	FullName,
 	Username,
-	VoidNoArgsFn,
+	VoidNoArgs,
 	VoidWithArg,
 } from "@repo/types";
 
@@ -20,7 +20,7 @@ export interface State {
 
 export interface Handlers {
 	updateProfile: VoidWithArg<Partial<Profile>>;
-	reset: VoidNoArgsFn;
+	reset: VoidNoArgs;
 }
 
 export type SetState = StoreSetFn<State>;

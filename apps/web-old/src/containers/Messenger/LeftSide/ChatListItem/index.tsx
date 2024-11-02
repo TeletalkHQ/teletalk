@@ -2,7 +2,7 @@
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { userUtils } from "@repo/classes";
 import type { MessageText, UserId } from "@repo/types";
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { Box } from "~/components";
 import { useGetAvatar, useGetPublicData } from "~/hooks";
@@ -12,7 +12,7 @@ import Upper from "./Upper";
 
 interface Props {
 	messageText: MessageText;
-	onClick: VoidNoArgsFn;
+	onClick: VoidNoArgs;
 	selected: boolean;
 	userId: UserId;
 }

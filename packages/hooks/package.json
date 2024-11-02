@@ -15,6 +15,7 @@
 		"check:types:watch": "pnpm run check:types --watch"
 	},
 	"dependencies": {
+		"@repo/rocket-io": "workspace:*",
 		"@repo/store": "workspace:*",
 		"@repo/theme": "workspace:*",
 		"@repo/utils": "workspace:*"

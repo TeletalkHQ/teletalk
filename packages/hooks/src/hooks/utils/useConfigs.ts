@@ -28,13 +28,13 @@ export const useConfigs = () => {
 				http: envs.NEXT_PUBLIC_SERVER_BASE_URL,
 				ws: envs.NEXT_PUBLIC_SERVER_BASE_URL,
 			},
-			defaultTimeout: envs.NODE_ENV === "development" ? 1000 : 0,
+			requestDelay: envs.NODE_ENV === "development" ? 1000 : 0,
 			requestTimeout: 60000,
-			selectedServerId: 0,
+			selectedServerId: 1,
 			servers: [
 				{
 					url: envs.NEXT_PUBLIC_SERVER_BASE_URL as Url,
-					id: 0,
+					id: 1,
 				},
 			] satisfies Servers,
 			shouldCheckInputDataFields: true,
@@ -67,13 +67,23 @@ export const useConfigs = () => {
 	);
 
 	function addServerUrl(url: Url) {
-		configs.api.servers.push({ url, id: 0 });
-		setConfigs(configs);
+		setConfigs({
+			...configs,
+			api: {
+				...configs.api,
+				servers: [...configs.api.servers, { url, id: Math.random() }],
+			},
+		});
 	}
 
 	function updateSelectedServer(id: number) {
-		configs.api.selectedServerId = id;
-		setConfigs(configs);
+		setConfigs({
+			...configs,
+			api: {
+				...configs.api,
+				selectedServerId: id,
+			},
+		});
 	}
 
 	function setDebugLevel() {}

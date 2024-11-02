@@ -1,6 +1,7 @@
 "use client";
 
 import { RouteName } from "@repo/schema";
+import Timeout from "await-timeout";
 import { useState } from "react";
 import { ZodSchema } from "zod";
 
@@ -42,6 +43,7 @@ export type UseApiArg<
 		params: Parameters;
 		pathnames: Pathnames;
 	};
+	requestDelay?: number;
 };
 
 export const useApi = <
@@ -58,6 +60,7 @@ export const useApi = <
 	phase,
 	endpoint,
 	io: IO,
+	requestDelay,
 }: UseApiArg<T, Input, Output, Pathnames, Parameters>) => {
 	const apiPhase = useApiPhase(endpointShortName);
 
@@ -105,6 +108,8 @@ export const useApi = <
 			endpoint,
 			baseUrl,
 		});
+
+		if (requestDelay) await Timeout.set(requestDelay);
 
 		const response = await axiosInstance<InitialData<T>>(axiosConfig);
 

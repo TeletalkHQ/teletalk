@@ -1,11 +1,11 @@
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { Button } from "~/components";
 
 interface Props {
-	onClose: VoidNoArgsFn;
-	onEdit: VoidNoArgsFn;
-	onDelete: VoidNoArgsFn;
+	onClose: VoidNoArgs;
+	onEdit: VoidNoArgs;
+	onDelete: VoidNoArgs;
 }
 
 const Actions: React.FC<Props> = ({ onClose, onDelete, onEdit }) => (

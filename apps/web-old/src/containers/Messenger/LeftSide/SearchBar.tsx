@@ -1,9 +1,9 @@
-import { VoidNoArgsFn } from "@repo/types";
+import { VoidNoArgs } from "@repo/types";
 
 import { Box, Button, Icon } from "~/components";
 
 interface Props {
-	onDrawerIconClick: VoidNoArgsFn;
+	onDrawerIconClick: VoidNoArgs;
 }
 
 const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {

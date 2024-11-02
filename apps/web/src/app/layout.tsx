@@ -9,6 +9,7 @@ import localFont from "next/font/local";
 // };
 import { themes } from "../../../../packages/theme/src";
 import "./globals.css";
+import { DialogContainer } from "./portal/dialog";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -34,6 +35,7 @@ export default function Layout({
 					shouldUseBaseline
 					themes={themes.mapView}
 				>
+					<DialogContainer />
 					{children}
 				</RootLayout>
 			</body>

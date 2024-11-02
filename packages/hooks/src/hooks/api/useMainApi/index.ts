@@ -14,7 +14,7 @@ export const useMainApi = <T extends HTTPRouteName>({
 	name,
 	phase,
 }: UseMainApiArg<T>) => {
-	const { getApiHTTPBaseUrl } = useConfigs();
+	const { getApiHTTPBaseUrl, configs } = useConfigs();
 
 	const { schema } = httpRoutes[name];
 
@@ -31,5 +31,6 @@ export const useMainApi = <T extends HTTPRouteName>({
 		},
 		method: schema.method,
 		phase,
+		requestDelay: configs.api.requestDelay,
 	});
 };
