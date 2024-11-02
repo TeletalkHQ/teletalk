@@ -205,3 +205,8 @@ export function createSocketHooks<
     useEmitEffect,
   };
 }
+
+export * from './IoProvider';
+export * from './IoContext';
+export * from './useSocket';
+export * from './useSocketEvent';

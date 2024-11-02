@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"@repo/hooks": "workspace:*",
+		"@repo/rocket-io": "workspace:*",
 		"@repo/schema": "workspace:*",
 		"@repo/store": "workspace:*",
 		"@repo/ui": "workspace:*"

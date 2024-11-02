@@ -177,6 +177,7 @@
 		"outfile",
 		"parens",
 		"parseable",
+		"parseuri",
 		"pefe",
 		"persium",
 		"predeploy",
