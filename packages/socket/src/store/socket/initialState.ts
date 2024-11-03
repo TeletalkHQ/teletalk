@@ -1,5 +1,3 @@
 import { State } from "./types";
 
-export const initialState: State = {
-	socketCollection: [],
-};
+export const initialState: State = {};

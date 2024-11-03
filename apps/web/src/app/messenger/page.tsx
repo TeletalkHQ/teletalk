@@ -26,7 +26,6 @@ const Messenger = () => {
 	useEffect(() => {
 		const fn = async () => {
 			const response = await emitter({ data: {} });
-
 			console.log("response:", response);
 		};
 		fn();

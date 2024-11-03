@@ -1,12 +1,12 @@
 import { SocketMethods } from "@repo/types";
 import { ZodSchema, z } from "zod";
 
-import { SocketStore } from "../store/socket";
+import { SocketOptions } from "../providers";
 
 export type BaseArg = {
 	baseUrl: string;
 	namespace: string;
-	options?: SocketStore.SocketOptions;
+	options?: SocketOptions;
 };
 
 export interface EmitterParameters<

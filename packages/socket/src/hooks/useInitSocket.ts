@@ -1,7 +1,8 @@
-import { useCallback, useLayoutEffect } from "react";
+import { useCallback, useContext, useLayoutEffect } from "react";
 import { io } from "socket.io-client";
 
-import { useSocketStore } from "../store/socket";
+import { IoContext } from "../providers";
+import { SocketItem } from "../providers/io/context";
 import { BaseArg } from "./types";
 
 export const useInitSocket = ({
@@ -9,22 +10,24 @@ export const useInitSocket = ({
 	namespace,
 	options = {},
 }: BaseArg) => {
-	const socketStore = useSocketStore();
+	const { socketCollection } = useContext(IoContext);
 
 	const findSocket = useCallback(
 		() =>
-			socketStore.socketCollection.find(
+			socketCollection.current.find(
 				(item) => item.baseUrl === baseUrl && item.namespace === namespace
 			),
-		[baseUrl, namespace, socketStore.socketCollection]
+		[baseUrl, namespace, socketCollection]
 	);
+
+	const addSocket = (item: SocketItem) => {
+		socketCollection.current.push(item);
+	};
 
 	useLayoutEffect(() => {
 		if (!findSocket()) {
-			console.log("options:", options);
-
 			const socket = io(baseUrl, options);
-			socketStore.addSocket({
+			addSocket({
 				baseUrl,
 				namespace,
 				options,

@@ -1,28 +1,8 @@
-import { StoreSetFn, VoidWithArg } from "@repo/types";
-import {
-	ManagerOptions,
-	Socket,
-	SocketOptions as SocketOptions_pkg,
-} from "socket.io-client";
+import { StoreSetFn } from "@repo/types";
 
-export type SocketOptions = Partial<ManagerOptions & SocketOptions_pkg>;
+export interface State {}
 
-interface SocketItem {
-	baseUrl: string;
-	namespace: string;
-	options: SocketOptions;
-	socket: Socket;
-}
-
-type SocketCollection = Array<SocketItem>;
-
-export interface State {
-	socketCollection: SocketCollection;
-}
-
-export interface Handlers {
-	addSocket: VoidWithArg<SocketItem>;
-}
+export interface Handlers {}
 
 export type SetState = StoreSetFn<State>;
 
