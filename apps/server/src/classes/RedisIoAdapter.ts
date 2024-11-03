@@ -1,5 +1,6 @@
 import { IoAdapter } from "@nestjs/platform-socket.io";
 import { createAdapter } from "@socket.io/redis-adapter";
+import { CorsOptions } from "cors";
 import { createClient } from "redis";
 import { ServerOptions } from "socket.io";
 
@@ -19,7 +20,13 @@ export class RedisIoAdapter extends IoAdapter {
 	}
 
 	createIOServer(port: number, options?: ServerOptions): any {
-		const server = super.createIOServer(port, options);
+		const server = super.createIOServer(port, {
+			...options,
+			cors: {
+				credentials: true,
+				origin: true,
+			} satisfies CorsOptions,
+		});
 		server.adapter(this.adapterConstructor);
 		return server;
 	}

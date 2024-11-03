@@ -13,8 +13,11 @@
 		"check:types": "npx tsc --noEmit",
 		"check:types:watch": "pnpm run check:types --watch"
 	},
+	"dependencies": {
+		"@repo/schema": "workspace:*",
+		"@repo/store": "workspace:*"
+	},
 	"devDependencies": {
-		"@repo/types": "workspace:*",
-		"@repo/schema": "workspace:*"
+		"@repo/types": "workspace:*"
 	}
 }

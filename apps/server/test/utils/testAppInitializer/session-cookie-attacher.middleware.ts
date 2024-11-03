@@ -17,5 +17,7 @@ export class SessionCookieAttacher implements NestMiddleware {
 			);
 
 		req.cookies[COOKIE_NAMES.SESSION] = session;
+
+		next();
 	}
 }

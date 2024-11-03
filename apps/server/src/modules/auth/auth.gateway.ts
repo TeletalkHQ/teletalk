@@ -15,7 +15,13 @@ export class AuthGateway implements OnGatewayInit {
 
 	afterInit(server: Server) {
 		server.use(async (socket, next) => {
-			const { session } = socket.handshake.auth;
+			// FIXME: Remove `handshake.auth`
+			const session =
+				socket.handshake.auth.session ||
+				(socket.handshake.headers.cookie || "").split("SESSION=")[1];
+
+			// TODO: Throw an error
+			if (!session) return next();
 
 			const verifiedSession = await this.sessionService.verify(session);
 			const sessionId = this.sessionService.getSessionId(verifiedSession);

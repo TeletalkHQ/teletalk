@@ -3,6 +3,7 @@ import {
 	ExecutionContext,
 	Injectable,
 	InternalServerErrorException,
+	Logger,
 	NestInterceptor,
 } from "@nestjs/common";
 import {
@@ -23,12 +24,16 @@ import {
 
 @Injectable()
 export class BaseInterceptor implements NestInterceptor {
+	private logger = new Logger(BaseInterceptor.name);
+
 	constructor(private errorStoreService: ErrorStoreService) {}
 
 	intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
 		const eventName = context.switchToWs().getPattern() as EventName;
 
 		const body: SocketRequestBody<any> = context.switchToWs().getData();
+
+		this.logger.log("body.data:", body.data);
 
 		this.validateData(
 			this.getEventSchema(eventName).schema.io.input,
@@ -69,7 +74,9 @@ export class BaseInterceptor implements NestInterceptor {
 	validateData(schema: ZodSchema, data: unknown, errorReason: ErrorReason) {
 		try {
 			return schema.parse(data);
-		} catch {
+		} catch (error) {
+			this.logger.log(this.validateData.name, "error:", error);
+
 			this.errorStoreService.throw(
 				"badRequest",
 				errorReason,

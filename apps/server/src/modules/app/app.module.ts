@@ -28,10 +28,10 @@ const createMongoDBModule = () => {
 			const { MONGO } = configService.getConfigs().DB;
 
 			return {
-				url: MONGO.URL,
 				dbName: MONGO.COLLECTION_NAME,
-				uri: MONGO.URI,
 				ssl: false,
+				uri: MONGO.URI,
+				url: MONGO.URL,
 			};
 		},
 
@@ -90,6 +90,7 @@ export const appInitializer = async (module = AppModule) => {
 	app.use(
 		cors({
 			credentials: true,
+			origin: true,
 		})
 	);
 
