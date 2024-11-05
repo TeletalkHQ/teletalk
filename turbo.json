@@ -46,6 +46,14 @@
 			"cache": false,
 			"persistent": true
 		},
+		"start:dev:server": {
+			"cache": false,
+			"persistent": true
+		},
+		"start:dev:web": {
+			"cache": false,
+			"persistent": true
+		},
 		"start:production": {
 			"cache": false
 		},
