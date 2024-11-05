@@ -970,6 +970,12 @@ importers:
 
   packages/hooks:
     dependencies:
+      '@repo/classes':
+        specifier: workspace:*
+        version: link:../classes
+      '@repo/socket':
+        specifier: workspace:*
+        version: link:../socket
       '@repo/store':
         specifier: workspace:*
         version: link:../store

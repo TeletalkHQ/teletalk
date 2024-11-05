@@ -84,6 +84,20 @@ export class Maker {
 		};
 	}
 
+	emptyUserInfo(): BaseSchema.UserInfo {
+		return {
+			...this.emptyUserPublicInfo(),
+			...this.emptyCellphone(),
+			avatarSrc: "",
+			blacklist: [],
+			contacts: [],
+			createdAt: -1,
+			status: {
+				isActive: false,
+			},
+		};
+	}
+
 	emptyAddingContactWithCellphone(): BaseSchema.Cellphone &
 		BaseSchema.FullName {
 		return {

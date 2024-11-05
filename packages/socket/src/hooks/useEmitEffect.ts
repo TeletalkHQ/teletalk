@@ -1,9 +1,7 @@
-import { VoidNoArgs } from "@repo/types";
 import { useEffect } from "react";
 import { ZodSchema, z } from "zod";
 
-import { EmitterParameters } from "./types";
-import { useEmitter } from "./useEmitter";
+import { UseEmitterParameters, useEmitter } from "./useEmitter";
 
 export const useEmitEffect = <
 	T extends string,
@@ -17,8 +15,8 @@ export const useEmitEffect = <
 	eventName,
 	io,
 	data,
-}: EmitterParameters<T, I, O> & {
-	fn: VoidNoArgs;
+	initialData,
+}: UseEmitterParameters<T, I, O> & {
 	deps: unknown[];
 	data: z.infer<I>;
 }) => {
@@ -28,6 +26,7 @@ export const useEmitEffect = <
 		options,
 		eventName,
 		io,
+		initialData,
 	});
 
 	useEffect(() => {

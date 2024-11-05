@@ -1,28 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
-
-import { useMainEmitter } from "~/hooks";
+import { useUserInfo, useUserPublicInfo } from "@repo/hooks";
 
 const Messenger = () => {
-	const getUserInfo = useMainEmitter({ name: "getUserInfo" });
-	const getUserPublicInfo = useMainEmitter({ name: "getUserPublicInfo" });
+	const {
+		data: { userInfo },
+	} = useUserInfo();
 
-	useEffect(() => {
-		const fn = async () => {
-			const response = await getUserInfo.emitter({
-				data: {},
-			});
-			if (response.data) {
-				const res2 = await getUserPublicInfo.emitter({
-					data: {
-						userId: response.data.userInfo.userId,
-					},
-				});
-			}
-		};
-		fn();
-	}, [getUserInfo, getUserPublicInfo]);
+	const {
+		data: { userPublicInfo },
+	} = useUserPublicInfo({ userId: userInfo.userId });
 
 	return <div>hello</div>;
 };

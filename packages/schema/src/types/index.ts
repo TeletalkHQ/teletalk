@@ -46,11 +46,18 @@ export type SocketHandlerReturnType_Promise<T extends EventName> = Promise<
 	SocketHandlerReturnType<T>
 >;
 
+// TODO: Refactor
 export interface SocketResponse<T extends EventName>
 	extends SocketHandlerReturnType<T> {
 	errors: SocketResponseErrors;
 	ok: boolean;
 	eventName: IOName;
+}
+
+export interface _SocketResponse<T extends EventName> {
+	data: GetOutput<T>;
+	errors: SocketResponseErrors;
+	ok: boolean;
 }
 
 export type ResponseCallback<T extends EventName> = (

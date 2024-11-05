@@ -9,18 +9,6 @@ export type BaseArg = {
 	options?: SocketOptions;
 };
 
-export interface EmitterParameters<
-	T extends string,
-	I extends ZodSchema,
-	O extends ZodSchema,
-> extends BaseArg {
-	eventName: T;
-	io: {
-		input: I;
-		output: O;
-	};
-}
-
 export interface ListenerParameters extends BaseArg {
 	listenMethod: SocketMethods;
 }

@@ -1,10 +1,23 @@
-import { useCallback, useContext, useEffect, useRef } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { Socket } from "socket.io-client";
 import { ZodSchema, z } from "zod";
 
 import { IoContext } from "../providers";
-import { EmitResponse, EmitterHandler, EmitterParameters } from "./types";
+import { BaseArg, EmitResponse, EmitterHandler } from "./types";
 import { useSocket } from "./useSocket";
+
+export interface UseEmitterParameters<
+	T extends string,
+	I extends ZodSchema,
+	O extends ZodSchema,
+> extends BaseArg {
+	eventName: T;
+	initialData: EmitResponse<O>;
+	io: {
+		input: I;
+		output: O;
+	};
+}
 
 export const useEmitter = <
 	T extends string,
@@ -13,10 +26,13 @@ export const useEmitter = <
 >({
 	baseUrl,
 	eventName,
+	initialData,
 	io,
 	namespace,
 	options,
-}: EmitterParameters<T, I, O>) => {
+}: UseEmitterParameters<T, I, O>) => {
+	const [data, setData] = useState<EmitResponse<O>>(initialData);
+
 	const { socket } = useSocket({ baseUrl, namespace, options });
 
 	const { inputTransformer } = useContext(IoContext);
@@ -32,6 +48,11 @@ export const useEmitter = <
 			})) as EmitResponse<O>;
 
 			await io.output.parseAsync(response.data);
+
+			setData({
+				...response,
+				data: response.data,
+			});
 
 			return {
 				...response,
@@ -59,19 +80,18 @@ export const useEmitter = <
 					eventName,
 				});
 
-				return {
-					data: undefined,
-					errors: [],
-					ok: false,
-				};
+				return initialData;
 			}
 
 			return _emit(eventName, socket, data);
 		},
-		[_emit, eventName, socket]
+		[_emit, eventName, initialData, socket]
 	);
 
 	return {
+		data,
 		emitter,
+		initialData,
+		socket,
 	};
 };
