@@ -1,123 +1,117 @@
-import { EventGenerator } from "../../../classes";
+import { EventGenerator, EventName } from "../../../classes";
 
-export const socketEvents = [
-	new EventGenerator({
+export const socketEvents = {
+	addContact: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "addContact",
 	}),
-	new EventGenerator({
+	addBlock: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "addBlock",
 	}),
-	// new EventGenerator({
+	// connect: new EventGenerator({
 	// 	isAuthRequired: false,
 	// 	method: "on",
 	// 	ioName: "connect",
 	// }),
-	// new EventGenerator({
+	// connect_error: new EventGenerator({
 	// 	isAuthRequired: false,
 	// 	method: "on",
 	// 	ioName: "connect_error",
 	// }),
-	new EventGenerator({
+	ping: new EventGenerator({
 		isAuthRequired: false,
 		method: "on",
 		ioName: "ping",
 	}),
-	// new EventGenerator({
-	// 	isAuthRequired: false,
-	// 	method: "on",
-	// 	ioName: "pong",
-	// }),
-	new EventGenerator({
+	disconnect: new EventGenerator({
 		isAuthRequired: false,
 		method: "on",
 		ioName: "disconnect",
 	}),
-	new EventGenerator({
+	getChatInfo: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "getChatInfo",
 	}),
-	new EventGenerator({
+	getClientStatus: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "getClientStatus",
 	}),
-	new EventGenerator({
+	getContacts: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "getContacts",
 	}),
-	new EventGenerator({
+	getOnlineClients: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "getOnlineClients",
 	}),
-	new EventGenerator({
+	getOnePrivateChat: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "getOnePrivateChat",
 	}),
-	new EventGenerator({
+	getPrivateChats: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "getPrivateChats",
 	}),
-	new EventGenerator({
+	getUserPublicInfo: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "getUserPublicInfo",
 	}),
-	new EventGenerator({
+	getUserInfo: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "getUserInfo",
 	}),
-	new EventGenerator({
+	join: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "join",
 	}),
-	new EventGenerator({
+	logout: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "logout",
 	}),
-	new EventGenerator({
+	removeBlock: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "removeBlock",
 	}),
-	new EventGenerator({
+	removeContact: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "removeContact",
 	}),
-	new EventGenerator({
+	sendMessage: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "sendMessage",
 	}),
-	new EventGenerator({
+	updateAvatar: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "updateAvatar",
 	}),
-	new EventGenerator({
+	updateContact: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "updateContact",
 	}),
-	new EventGenerator({
+	updateUserPublicInfo: new EventGenerator({
 		isAuthRequired: true,
 		method: "on",
 		ioName: "updateUserPublicInfo",
 	}),
-] as const;
-
-export type EventName = (typeof socketEvents)[number]["schema"]["ioName"];
+} satisfies Record<EventName, EventGenerator<EventName>>;
 
 export type SocketEvents = typeof socketEvents;
+export type Namespace = SocketEvents[EventName]["schema"]["namespace"];

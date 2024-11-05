@@ -34,6 +34,7 @@ export class BaseInterceptor implements NestInterceptor {
 		const body: SocketRequestBody<any> = context.switchToWs().getData();
 
 		this.logger.log("body.data:", body.data);
+		this.logger.log("eventName:", { eventName });
 
 		this.validateData(
 			this.getEventSchema(eventName).schema.io.input,
@@ -62,13 +63,11 @@ export class BaseInterceptor implements NestInterceptor {
 	}
 
 	getEventSchema(eventName: string) {
-		const foundEvent = socketEvents.find(
-			(item) => item.schema.ioName === eventName
-		);
-		if (!foundEvent)
-			throw new InternalServerErrorException("EVENT_SCHEMA_NOT_FOUND");
+		if (eventName in socketEvents) {
+			return socketEvents[eventName as EventName];
+		}
 
-		return foundEvent;
+		throw new InternalServerErrorException("EVENT_SCHEMA_NOT_FOUND");
 	}
 
 	validateData(schema: ZodSchema, data: unknown, errorReason: ErrorReason) {

@@ -15,7 +15,7 @@ describe(messageCreators.e2eSuccessSuite("getUserPublicInfo", "event"), () => {
 			const { socket, userInfo } = await randomizer.userByE2E();
 
 			const {
-				data: { publicInfo },
+				data: { userPublicInfo },
 			} = await eventHandlerCollection.getUserPublicInfo(socket).send({
 				data: {
 					userId: userInfo.userId,
@@ -23,7 +23,7 @@ describe(messageCreators.e2eSuccessSuite("getUserPublicInfo", "event"), () => {
 			});
 
 			assertion().userPublicInfo({
-				test: publicInfo,
+				test: userPublicInfo,
 				equal: extractor.userPublicInfo(userInfo),
 			});
 		}
@@ -40,7 +40,7 @@ describe(messageCreators.e2eSuccessSuite("getUserPublicInfo", "event"), () => {
 			const { userInfo: targetUserInfo } = await randomizer.userByE2E();
 
 			const {
-				data: { publicInfo },
+				data: { userPublicInfo },
 			} = await eventHandlerCollection.getUserPublicInfo(socket).send({
 				data: {
 					userId: targetUserInfo.userId,
@@ -48,7 +48,7 @@ describe(messageCreators.e2eSuccessSuite("getUserPublicInfo", "event"), () => {
 			});
 
 			assertion().userPublicInfo({
-				test: publicInfo,
+				test: userPublicInfo,
 				equal: extractor.userPublicInfo(targetUserInfo),
 			});
 		}

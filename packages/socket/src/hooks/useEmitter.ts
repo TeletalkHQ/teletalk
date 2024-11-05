@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { Socket } from "socket.io-client";
 import { ZodSchema, z } from "zod";
 
-import { EmitterHandler, EmitterParameters } from "./types";
+import { IoContext } from "../providers";
+import { EmitResponse, EmitterHandler, EmitterParameters } from "./types";
 import { useSocket } from "./useSocket";
 
 export const useEmitter = <
@@ -18,19 +19,26 @@ export const useEmitter = <
 }: EmitterParameters<T, I, O>) => {
 	const { socket } = useSocket({ baseUrl, namespace, options });
 
+	const { inputTransformer } = useContext(IoContext);
+
 	const queue = useRef<{ eventName: string; data: z.infer<I> }[]>([]);
 
 	const _emit = useCallback(
 		async (eventName: string, socket: Socket, data: z.infer<I>) => {
-			const parsedData = data || (await io.input.parseAsync(data));
+			const parsedData = await io.input.parseAsync(inputTransformer(data));
 
 			const response = (await new Promise((resolve, _reject) => {
 				socket.emit(eventName, { data: parsedData }, resolve);
-			})) as { data: z.infer<O> };
+			})) as EmitResponse<O>;
 
-			return response.data || io.output.parse(response.data);
+			await io.output.parseAsync(response.data);
+
+			return {
+				...response,
+				data: response.data,
+			};
 		},
-		[io.input, io.output]
+		[inputTransformer, io.input, io.output]
 	);
 
 	useEffect(() => {
@@ -53,6 +61,8 @@ export const useEmitter = <
 
 				return {
 					data: undefined,
+					errors: [],
+					ok: false,
 				};
 			}
 

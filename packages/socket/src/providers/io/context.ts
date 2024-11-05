@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext } from "react";
 import {
 	ManagerOptions,
@@ -14,14 +16,18 @@ export interface SocketItem {
 	socket: Socket;
 }
 
+export type InputTransformer<T = unknown> = (data: T) => unknown;
+
 export type SocketCollection = Array<SocketItem>;
 
 type ContextValue = {
 	socketCollection: React.MutableRefObject<SocketCollection>;
+	inputTransformer: InputTransformer;
 };
 
 export const IoContext = createContext<ContextValue>({
 	socketCollection: {
 		current: [],
 	},
+	inputTransformer: (data) => data,
 });

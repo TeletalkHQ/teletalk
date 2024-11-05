@@ -25,10 +25,14 @@ export interface ListenerParameters extends BaseArg {
 	listenMethod: SocketMethods;
 }
 
+export type EmitResponse<O extends ZodSchema> = {
+	data: z.infer<O>;
+	ok: boolean;
+	errors: Array<unknown>;
+};
+
 export type EmitterHandler<I extends ZodSchema, O extends ZodSchema> = ({
 	data,
 }: {
 	data: z.infer<I>;
-}) => Promise<{
-	data: z.infer<O>;
-}>;
+}) => Promise<EmitResponse<O>>;

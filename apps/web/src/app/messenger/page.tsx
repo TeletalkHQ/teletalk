@@ -1,31 +1,17 @@
 "use client";
 
-import { useConfigs } from "@repo/hooks";
-import { socketEvents } from "@repo/schema";
-import { useEmitter } from "@repo/socket";
 import { useEffect } from "react";
 
+import { useMainEmitter } from "~/hooks";
+
 const Messenger = () => {
-	const { getApiWSBaseUrl } = useConfigs();
-
-	const { schema } = socketEvents.find(
-		(item) => item.schema.ioName === "getUserInfo"
-	)!;
-
-	const { emitter } = useEmitter({
-		baseUrl: getApiWSBaseUrl(),
-		eventName: "getUserInfo",
-		io: schema.io,
-		namespace: "",
-		options: {
-			autoConnect: true,
-			withCredentials: true,
-		},
-	});
+	const { emitter } = useMainEmitter({ name: "getUserPublicInfo" });
 
 	useEffect(() => {
 		const fn = async () => {
-			const response = await emitter({ data: {} });
+			const response = await emitter({
+				data: { userId: "1231212312312321313112312312313123" },
+			});
 			console.log("response:", response);
 		};
 		fn();

@@ -127,7 +127,7 @@ export const ioCollection = {
 			userId: baseSchema.userId,
 		}),
 		output: z.object({
-			publicInfo: baseSchema.userPublicInfo,
+			userPublicInfo: baseSchema.userPublicInfo,
 		}),
 	},
 	getWelcomeMessage: {

@@ -129,6 +129,8 @@ export class UserGateway extends BaseGateway {
 	): SocketHandlerReturnType_Promise<"getUserInfo"> {
 		const userInfo = await this.userService.getUserInfo(socket.sessionId);
 
+		console.log("userInfo:", userInfo);
+
 		return {
 			data: {
 				userInfo,
@@ -140,13 +142,13 @@ export class UserGateway extends BaseGateway {
 	async getUserPublicInfo(
 		@ConnectedSocket() socket: Socket
 	): SocketHandlerReturnType_Promise<"getUserPublicInfo"> {
-		const publicInfo = await this.userService.getUserPublicInfo(
+		const userPublicInfo = await this.userService.getUserPublicInfo(
 			socket.sessionId
 		);
 
 		return {
 			data: {
-				publicInfo,
+				userPublicInfo,
 			},
 		};
 	}
