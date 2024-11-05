@@ -5,17 +5,24 @@ import { useEffect } from "react";
 import { useMainEmitter } from "~/hooks";
 
 const Messenger = () => {
-	const { emitter } = useMainEmitter({ name: "getUserPublicInfo" });
+	const getUserInfo = useMainEmitter({ name: "getUserInfo" });
+	const getUserPublicInfo = useMainEmitter({ name: "getUserPublicInfo" });
 
 	useEffect(() => {
 		const fn = async () => {
-			const response = await emitter({
-				data: { userId: "1231212312312321313112312312313123" },
+			const response = await getUserInfo.emitter({
+				data: {},
 			});
-			console.log("response:", response);
+			if (response.data) {
+				const res2 = await getUserPublicInfo.emitter({
+					data: {
+						userId: response.data.userInfo.userId,
+					},
+				});
+			}
 		};
 		fn();
-	}, [emitter]);
+	}, [getUserInfo, getUserPublicInfo]);
 
 	return <div>hello</div>;
 };

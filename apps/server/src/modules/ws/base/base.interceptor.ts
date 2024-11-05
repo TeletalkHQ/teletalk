@@ -29,12 +29,13 @@ export class BaseInterceptor implements NestInterceptor {
 	constructor(private errorStoreService: ErrorStoreService) {}
 
 	intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+		// TODO: Remove `assertion`
 		const eventName = context.switchToWs().getPattern() as EventName;
 
 		const body: SocketRequestBody<any> = context.switchToWs().getData();
 
-		this.logger.log("body.data:", body.data);
-		this.logger.log("eventName:", { eventName });
+		// this.logger.log("body.data:", body.data);
+		// this.logger.log("eventName:", { eventName });
 
 		this.validateData(
 			this.getEventSchema(eventName).schema.io.input,

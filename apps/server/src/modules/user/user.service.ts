@@ -61,9 +61,9 @@ export class UserService {
 
 		if (!targetUser)
 			this.errorStoreService.throw(
-				"unauthorized",
+				"badRequest",
 				"TARGET_USER_NOT_EXIST",
-				this.getCurrentUser.name
+				this.getTargetUser.name
 			);
 
 		return targetUser;
@@ -321,9 +321,9 @@ export class UserService {
 		return extractor.userInfo(currentUser);
 	}
 
-	async getUserPublicInfo(sessionId: BaseSchema.SessionId) {
-		const currentUser = await this.getCurrentUser(sessionId);
-		return extractor.userPublicInfo(currentUser);
+	async getUserPublicInfo(userId: BaseSchema.UserId) {
+		const targetUser = await this.getTargetUser({ userId });
+		return extractor.userPublicInfo(targetUser);
 	}
 
 	async updateUserPublicInfo(
