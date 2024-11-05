@@ -1,3 +1,5 @@
+"use client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormSchemaName, formSchema } from "@repo/schema";
 import {

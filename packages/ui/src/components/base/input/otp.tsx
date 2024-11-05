@@ -1,3 +1,5 @@
+"use client";
+
 import { MuiOtpInputProps } from "mui-one-time-password-input";
 import dynamic from "next/dynamic";
 
