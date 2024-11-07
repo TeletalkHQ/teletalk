@@ -17,10 +17,15 @@ const createNewUser = z.object({
 	lastName: baseSchema.lastName,
 });
 
+const messageInput = z.object({
+	messageText: baseSchema.messageText,
+});
+
 export const formSchema = {
+	createNewUser,
+	messageInput,
 	signIn,
 	verifySignInCode,
-	createNewUser,
 };
 
 export type FormSchema = typeof formSchema;

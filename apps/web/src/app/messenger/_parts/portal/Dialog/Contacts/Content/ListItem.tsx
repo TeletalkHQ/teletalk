@@ -1,7 +1,7 @@
 import { UserId } from "@repo/types";
 import { VoidNoArgs } from "@repo/types";
+import { Box, Typography } from "@repo/ui";
 
-import { Box, Typography } from "~/components";
 import { useGetAvatar } from "~/hooks";
 import { GlobalStore } from "~/store";
 

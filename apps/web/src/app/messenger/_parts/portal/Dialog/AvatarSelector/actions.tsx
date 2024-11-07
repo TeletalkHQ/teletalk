@@ -1,6 +1,5 @@
 import { VoidNoArgs } from "@repo/types";
-
-import { Button } from "~/components";
+import { Button } from "@repo/ui";
 
 interface Props {
 	isSaveDisabled: boolean;

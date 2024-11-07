@@ -1,9 +1,9 @@
 import { emptyMaker } from "@repo/classes";
 import { extractor } from "@repo/classes";
 import type { FullName } from "@repo/types";
+import { Template } from "@repo/ui";
 import React, { useEffect, useState } from "react";
 
-import { Template } from "~/components";
 import {
 	useDialogState,
 	useEmitter,

@@ -1,6 +1,5 @@
 import { VoidNoArgs } from "@repo/types";
-
-import { Box, Button, Icon } from "~/components";
+import { Box, IconButton, Icons, InputAdornment, TextField } from "@repo/ui";
 
 interface Props {
 	onDrawerIconClick: VoidNoArgs;
@@ -24,26 +23,29 @@ const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
 				style={{ width: "100%" }}
 			>
 				<Box.Div style={{ padding: "5px 15px" }}>
-					<Button.Icon onClick={onDrawerIconClick}>
-						<Icon.Menu.Element />
-					</Button.Icon>
+					<IconButton onClick={onDrawerIconClick}>
+						<Icons.Menu.Element />
+					</IconButton>
 				</Box.Div>
-				{/*
-        <Box.Div style={{ width: "90%", marginRight: 5 }}>
-          <Input.Text
-            fullWidth
-            size="small"
-            placeholder="Search"
-            InputProps={{
-              style: { borderRadius: 10 },
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Icons.Search.Icon />
-                </InputAdornment>
-              ),
-            }}
-          />
-        </Box.Div> */}
+
+				<Box.Div style={{ width: "90%", marginRight: 5 }}>
+					<TextField
+						fullWidth
+						InputProps={{
+							style: {
+								borderRadius: 10,
+							},
+							startAdornment: (
+								<InputAdornment position="start">
+									<Icons.Search.Element />
+								</InputAdornment>
+							),
+						}}
+						name="search"
+						placeholder="Search"
+						size="small"
+					/>
+				</Box.Div>
 			</Box.Flex>
 		</Box.Paper>
 	);

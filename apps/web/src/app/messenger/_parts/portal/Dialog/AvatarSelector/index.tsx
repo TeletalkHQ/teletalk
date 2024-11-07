@@ -1,8 +1,8 @@
+import { Template } from "@repo/ui";
 import { useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
 
 import { compressor } from "~/classes";
-import { Template } from "~/components";
 import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore } from "~/store";
 import { utils } from "~/utils";

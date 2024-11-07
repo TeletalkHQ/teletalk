@@ -1,7 +1,7 @@
 import { emptyMaker } from "@repo/classes";
+import { Template } from "@repo/ui";
 import React from "react";
 
-import { Template } from "~/components";
 import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 import { OnInputChange } from "~/types";

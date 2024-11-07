@@ -23,8 +23,6 @@ export const useUserInfo = () => {
 		enabled: !!socket,
 	});
 
-	console.log("query.data:", query.data);
-
 	return {
 		data: {
 			userInfo: query.data?.data.userInfo || initialData.data.userInfo,

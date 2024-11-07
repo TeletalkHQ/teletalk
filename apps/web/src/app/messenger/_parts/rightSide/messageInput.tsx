@@ -1,79 +1,98 @@
-import { Box, Button, Icon, Input, Progress } from "~/components";
-import { useEmitter } from "~/hooks";
-import { useMessageStore } from "~/store";
-import { OnInputChange } from "~/types";
+import { SubmitHandler, useForm, useSendMessage } from "@repo/hooks";
+import { FormSchemaName } from "@repo/schema";
+import {
+	Box,
+	FieldWithController,
+	Form,
+	IconButton,
+	Icons,
+	Progress,
+} from "@repo/ui";
+import { useWatch } from "react-hook-form";
 
 const MessageInput = () => {
-	const messageStore = useMessageStore();
-	const { handler, loading } = useEmitter("sendMessage");
+	const { emitter, isLoading } = useSendMessage();
 
-	const handleInputChange: OnInputChange = (event) => {
-		messageStore.messageInputOnChange(event.target.value);
-	};
+	const schemaName: FormSchemaName = "messageInput";
 
-	const handleSendMessage = () => {
-		handler.send(
-			{
-				messageText: messageStore.messageInputTextValue,
-				targetParticipantId: messageStore.selectedChatInfo.userId,
+	const { control, handleSubmit, setValue } = useForm<typeof schemaName>({
+		schemaName,
+		defaultValues: {
+			messageText: "",
+		},
+	});
+
+	const submitForm: SubmitHandler<typeof schemaName> = ({ messageText }) => {
+		console.log("messageText:", messageText);
+
+		emitter({
+			data: {
+				messageText,
+				targetParticipantId: "messageStore.selectedChatInfo.userId",
 			},
-			() => {
-				messageStore.messageInputOnChange("");
-			}
-		);
+			options: {
+				onSuccess: () => {
+					setValue("messageText", "");
+				},
+			},
+		});
 	};
+
+	const { messageText } = useWatch({ control });
+
+	const onSubmit = handleSubmit(submitForm);
 
 	return (
-		<Box.Paper style={{ borderRadius: 0 }}>
-			<Box.Flex ai="center" gap={1} jc="space-between" style={{ padding: 5 }}>
-				<Box.Div>
-					<Button.Icon onClick={() => {}}>
-						<Icon.AttachFile.Element />
-					</Button.Icon>
-				</Box.Div>
+		<Form.Base onSubmit={onSubmit}>
+			<Box.Paper style={{ borderRadius: 0 }}>
+				<Box.Flex ai="center" gap={1} jc="space-between" style={{ padding: 5 }}>
+					<Box.Div>
+						<IconButton onClick={() => {}}>
+							<Icons.AttachFile.Element />
+						</IconButton>
+					</Box.Div>
 
-				<Box.Div style={{ width: "100%" }}>
-					<Input.Base.Text
-						autoFocus
-						maxRows={8}
-						multiline
-						placeholder={
-							!messageStore.messageInputTextValue ? "Message..." : " "
-						}
-						value={messageStore.messageInputTextValue}
-						onChange={handleInputChange}
-					/>
-				</Box.Div>
+					<Box.Div style={{ width: "100%" }}>
+						<FieldWithController
+							autoFocus
+							control={control}
+							maxRows={8}
+							multiline
+							name="messageText"
+							placeholder="Type a message..."
+						/>
+					</Box.Div>
 
-				<Box.Div>
-					<Button.Icon>
-						<Icon.EmojiEmotions.Element />
-					</Button.Icon>
-				</Box.Div>
+					<Box.Div>
+						<IconButton>
+							<Icons.EmojiEmotions.Element />
+						</IconButton>
+					</Box.Div>
 
-				<Box.Div>
-					{messageStore.messageInputTextValue ? (
-						<Button.Icon onClick={() => !loading && handleSendMessage()}>
-							{loading ? (
-								<Progress.Circular />
-							) : (
-								<Icon.Send.Element color="primary" />
-							)}
-						</Button.Icon>
-					) : (
-						<>
-							<Button.Icon
-								onClick={() => {
-									console.debug("Mic clicked");
-								}}
-							>
-								<Icon.MicNone.Element />
-							</Button.Icon>
-						</>
-					)}
-				</Box.Div>
-			</Box.Flex>
-		</Box.Paper>
+					<Box.Div>
+						{messageText ? (
+							<IconButton disabled={isLoading} type="submit">
+								{isLoading ? (
+									<Progress.Circular />
+								) : (
+									<Icons.Send.Element color="primary" />
+								)}
+							</IconButton>
+						) : (
+							<>
+								<IconButton
+									onClick={() => {
+										console.debug("Mic clicked");
+									}}
+								>
+									<Icons.MicNone.Element />
+								</IconButton>
+							</>
+						)}
+					</Box.Div>
+				</Box.Flex>
+			</Box.Paper>
+		</Form.Base>
 	);
 };
 

@@ -1,4 +1,4 @@
-import { Box, Typography } from "~/components";
+import { Box, Typography } from "@repo/ui";
 
 interface Props {
 	fullName: string;

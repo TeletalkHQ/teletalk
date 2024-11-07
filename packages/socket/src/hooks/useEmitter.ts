@@ -1,11 +1,10 @@
 "use client";
 
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { Socket } from "socket.io-client";
-import { ZodSchema, z } from "zod";
+import { ZodSchema } from "zod";
 
 import { IoContext } from "../providers";
-import { BaseArg, EmitResponse, EmitterHandler } from "./types";
+import { BaseArg, EmitResponse, EmitterHandler, _EmitFnArg } from "./types";
 import { useSocket } from "./useSocket";
 
 export interface UseEmitterParameters<
@@ -35,57 +34,73 @@ export const useEmitter = <
 }: UseEmitterParameters<T, I, O>) => {
 	const [data, setData] = useState<EmitResponse<O>>(initialData);
 
+	const [isLoading, setIsLoading] = useState(false);
+	const [hasError, setHasError] = useState(false);
+
 	const { socket } = useSocket({ baseUrl, namespace, options });
 
 	const { inputTransformer } = useContext(IoContext);
 
-	const queue = useRef<{ eventName: string; data: z.infer<I> }[]>([]);
+	const queue = useRef<Omit<_EmitFnArg<I, O>, "socket">[]>([]);
 
 	const _emit = useCallback(
-		async (eventName: string, socket: Socket, data: z.infer<I>) => {
-			const parsedData = await io.input.parseAsync(inputTransformer(data));
+		async ({ data, eventName, socket, options }: _EmitFnArg<I, O>) => {
+			try {
+				setIsLoading(true);
+				setHasError(false);
 
-			const response = (await new Promise((resolve, _reject) => {
-				socket.emit(eventName, { data: parsedData }, resolve);
-			})) as EmitResponse<O>;
+				const parsedData = await io.input.parseAsync(inputTransformer(data));
 
-			await io.output.parseAsync(response.data);
+				const response = (await new Promise((resolve, _reject) => {
+					socket.emit(eventName, { data: parsedData }, resolve);
+				})) as EmitResponse<O>;
 
-			setData({
-				...response,
-				data: response.data,
-			});
+				await io.output.parseAsync(response.data);
 
-			return {
-				...response,
-				data: response.data,
-			};
+				setData(response);
+
+				options?.onSuccess?.(response);
+
+				return {
+					...response,
+					data: response.data,
+				};
+			} catch (error) {
+				console.log("emit error:", error);
+				setHasError(true);
+				options?.onError?.([error]);
+
+				return initialData;
+			} finally {
+				setIsLoading(false);
+			}
 		},
-		[inputTransformer, io.input, io.output]
+		[initialData, inputTransformer, io.input, io.output]
 	);
 
 	useEffect(() => {
 		if (!socket || queue.current.length === 0) return;
 
 		queue.current.forEach(({ eventName, data }) =>
-			_emit(eventName, socket, data)
+			_emit({ eventName, socket, data })
 		);
 
 		queue.current = [];
 	}, [_emit, socket]);
 
 	const emitter: EmitterHandler<I, O> = useCallback(
-		async ({ data }) => {
+		async ({ data, options }) => {
 			if (!socket) {
 				queue.current.push({
 					data,
 					eventName,
+					options,
 				});
 
 				return initialData;
 			}
 
-			return _emit(eventName, socket, data);
+			return _emit({ eventName, socket, data, options });
 		},
 		[_emit, eventName, initialData, socket]
 	);
@@ -93,7 +108,9 @@ export const useEmitter = <
 	return {
 		data,
 		emitter,
+		hasError,
 		initialData,
+		isLoading,
 		socket,
 	};
 };

@@ -1,6 +1,6 @@
 import { VoidWithArg } from "@repo/types";
+import { Box } from "@repo/ui";
 
-import { Box } from "~/components";
 import { GlobalStore } from "~/store";
 
 import ListItem from "./ListItem";

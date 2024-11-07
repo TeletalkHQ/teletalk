@@ -1,6 +1,6 @@
 import { userUtils } from "@repo/classes";
+import { Template } from "@repo/ui";
 
-import { Template } from "~/components";
 import { useDialogState, useGetPublicData, useIsOnline } from "~/hooks";
 import { useGlobalStore, useMessageStore } from "~/store";
 

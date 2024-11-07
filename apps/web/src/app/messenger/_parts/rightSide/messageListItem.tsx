@@ -1,7 +1,6 @@
 import DoneAllIcon from "@mui/icons-material/DoneAll";
+import { Box, Typography } from "@repo/ui";
 import { CSSProperties } from "react";
-
-import { Box, Typography } from "~/components";
 
 interface Props {
 	chatDate: string;

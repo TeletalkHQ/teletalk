@@ -1,7 +1,7 @@
 import { VoidNoArgs } from "@repo/types";
+import { Box, Button } from "@repo/ui";
 import AvatarEditor from "react-avatar-editor";
 
-import { Box, Button } from "~/components";
 import { OnInputChange } from "~/types";
 
 interface Props {

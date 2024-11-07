@@ -1,38 +1,37 @@
-import { ElementName, VoidWithArg, VoidWithTwoArgs } from "@repo/types";
+import { VoidWithArg, VoidWithTwoArgs } from "@repo/types";
+import { Box, ElementName, Icons } from "@repo/ui";
 import { MouseEvent } from "react";
-
-import { Box, Icon } from "~/components";
 
 type HTMLDivMouseEvent = MouseEvent<HTMLDivElement, globalThis.MouseEvent>;
 
 const drawerList = [
 	{
 		disabled: true,
-		Icon: Icon.Calls,
+		Icon: Icons.Calls,
 	},
 	{
 		disabled: false,
-		Icon: Icon.Contacts,
+		Icon: Icons.Contacts,
 	},
 	{
 		disabled: false,
-		Icon: Icon.LogoutOutlined,
+		Icon: Icons.LogoutOutlined,
 	},
 	{
 		disabled: true,
-		Icon: Icon.NewChannelOutlined,
+		Icon: Icons.NewChannelOutlined,
 	},
 	{
 		disabled: true,
-		Icon: Icon.NewGroupOutlined,
+		Icon: Icons.NewGroupOutlined,
 	},
 	{
 		disabled: true,
-		Icon: Icon.NightModeOutlined,
+		Icon: Icons.NightModeOutlined,
 	},
 	{
 		disabled: false,
-		Icon: Icon.SettingsOutlined,
+		Icon: Icons.SettingsOutlined,
 	},
 ];
 

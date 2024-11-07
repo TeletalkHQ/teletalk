@@ -1,7 +1,6 @@
 import { Divider } from "@mui/material";
 import type { AvatarSrc, Username } from "@repo/types";
-
-import { Box } from "~/components";
+import { Box } from "@repo/ui";
 
 import { OnSettingItemClick } from "../types";
 import List from "./List";

@@ -1,7 +1,7 @@
+import { Box } from "@repo/ui";
 import { useEffect } from "react";
 
 import { storage } from "~/classes/Storage";
-import { Box } from "~/components";
 import ChatBar from "~/containers/Messenger/RightSide/ChatBar";
 import MessageInput from "~/containers/Messenger/RightSide/MessageInput";
 import MessageList from "~/containers/Messenger/RightSide/MessageList";

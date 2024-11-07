@@ -1,8 +1,8 @@
 import type { PrivateChats, UserId } from "@repo/types";
+import { Box } from "@repo/ui";
 import { useEffect } from "react";
 
 import { domUtils } from "~/classes/DomUtils";
-import { Box } from "~/components";
 import MessageListItem from "~/containers/Messenger/RightSide/MessageListItem";
 import { useMessageStore, useUserStore } from "~/store";
 

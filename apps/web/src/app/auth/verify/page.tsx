@@ -8,7 +8,15 @@ import {
 	useVerify,
 } from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
-import { Box, Button, Field, Form, IconButton, Typography } from "@repo/ui";
+import {
+	Box,
+	Button,
+	Field,
+	Form,
+	IconButton,
+	Icons,
+	Typography,
+} from "@repo/ui";
 import { useFormState } from "react-hook-form";
 
 import { domUtils } from "~/classes";
@@ -65,7 +73,7 @@ const Verify = () => {
 			<Box.Container maxWidth="xl">
 				<Box.Div style={{ marginTop: 1 }}>
 					<IconButton onClick={handleBackToSignInClick}>
-						{/* <Icon.ArrowBack.Element /> */}
+						<Icons.ArrowBack.Element />
 					</IconButton>
 				</Box.Div>
 				<Box.Div
@@ -82,7 +90,7 @@ const Verify = () => {
 							backgroundColor: theme.palette.secondary.dark,
 						})}
 					>
-						{/* <Icon.VerifiedUser.Element /> */}
+						<Icons.VerifiedUser.Element />
 					</Box.Avatar>
 					<Box.Container maxWidth="xs">
 						<Box.Div style={{ marginTop: 1 }}>

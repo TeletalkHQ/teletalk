@@ -1,8 +1,8 @@
 import LockOpenTwoToneIcon from "@mui/icons-material/LockOpenTwoTone";
 import { userUtils } from "@repo/classes";
 import { UserItem, VoidNoArgs } from "@repo/types";
+import { Box, IconButton } from "@repo/ui";
 
-import { Box, Button } from "~/components";
 import { useGetPublicData } from "~/hooks";
 
 interface Props {
@@ -46,14 +46,14 @@ const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
 				</Box.Span>
 			</Box.Span>
 			<Box.Span>
-				<Button.Icon
+				<IconButton
 					onClick={(e) => {
 						e.stopPropagation();
 						onItemLick();
 					}}
 				>
 					<LockOpenTwoToneIcon color="error" />
-				</Button.Icon>
+				</IconButton>
 			</Box.Span>
 		</Box.ListItemButton>
 	);

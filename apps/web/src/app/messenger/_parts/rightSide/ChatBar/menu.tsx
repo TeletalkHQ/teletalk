@@ -1,9 +1,9 @@
 "use client";
 
+import { Box, IconButton, Icons } from "@repo/ui";
 import { useState } from "react";
 
-import { Box, Button, Icon } from "~/components";
-import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
+import { useGlobalStore } from "~/store";
 
 const ChatBarMenu = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -43,7 +43,7 @@ const ChatBarMenu = () => {
 				e.stopPropagation();
 			}}
 		>
-			<Button.Icon
+			<IconButton
 				aria-controls={isOpen ? "long-menu" : undefined}
 				aria-expanded={isOpen ? "true" : undefined}
 				aria-haspopup="true"
@@ -51,8 +51,8 @@ const ChatBarMenu = () => {
 				id="long-button"
 				onClick={handleClick}
 			>
-				<Icon.MoreVertical.Element />
-			</Button.Icon>
+				<Icons.MoreVertical.Element />
+			</IconButton>
 			<Box.Menu
 				anchorEl={anchorEl}
 				id="long-menu"

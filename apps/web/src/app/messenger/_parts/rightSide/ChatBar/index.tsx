@@ -1,4 +1,5 @@
-import { Box } from "~/components";
+import { Box } from "@repo/ui";
+
 import { useGlobalStore } from "~/store";
 
 import ChatBarCenterContent from "./CenterContent";

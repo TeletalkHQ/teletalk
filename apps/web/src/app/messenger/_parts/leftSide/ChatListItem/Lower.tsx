@@ -1,7 +1,6 @@
 import PushPinTwoToneIcon from "@mui/icons-material/PushPinTwoTone";
 import type { MessageText } from "@repo/types";
-
-import { Box, Typography } from "~/components";
+import { Box, Typography } from "@repo/ui";
 
 interface Props {
 	messageText: MessageText;

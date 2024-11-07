@@ -14,6 +14,7 @@ import {
 	CountrySelector,
 	Field,
 	Form,
+	Icons,
 	SelectedCountry,
 	Typography,
 } from "@repo/ui";
@@ -84,7 +85,7 @@ const SignInPage = () => {
 						backgroundColor: theme.palette.secondary.main,
 					})}
 				>
-					{/* <Icon.LockOutlined.Element /> */}
+					<Icons.LockOutlined.Element />
 				</Box.Avatar>
 
 				<Typography variant="h5">Teletalk</Typography>

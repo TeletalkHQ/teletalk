@@ -8,7 +8,15 @@ import {
 	useForm,
 } from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
-import { Box, Button, Field, Form, IconButton, Typography } from "@repo/ui";
+import {
+	Box,
+	Button,
+	Field,
+	Form,
+	IconButton,
+	Icons,
+	Typography,
+} from "@repo/ui";
 import { useFormState } from "react-hook-form";
 
 import AuthFooter from "../common/AuthFooter";
@@ -53,15 +61,15 @@ const Create = () => {
 					}}
 				>
 					<IconButton onClick={handleBackToSignInClick}>
-						{/* <Icon.ArrowBack.Element /> */}
+						<Icons.ArrowBack.Element />
 					</IconButton>
 				</Box.Div>
 				<Box.Flex ai="center" col sx={{ marginTop: 8 }}>
 					<Box.Div>
-						{/* <Icon.AccountCircleOutlined.Element
-						color="primary"
-						fontSize="large"
-					/> */}
+						<Icons.AccountCircleOutlined.Element
+							color="primary"
+							fontSize="large"
+						/>
 					</Box.Div>
 					<Box.Container mw="xs">
 						<Typography variant="greyCaption">

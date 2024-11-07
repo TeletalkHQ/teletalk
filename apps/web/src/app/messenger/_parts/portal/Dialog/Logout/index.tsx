@@ -1,5 +1,6 @@
+import { Template } from "@repo/ui";
+
 import { storage } from "~/classes/Storage";
-import { Template } from "~/components";
 import { useCustomRouter, useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore } from "~/store";
 

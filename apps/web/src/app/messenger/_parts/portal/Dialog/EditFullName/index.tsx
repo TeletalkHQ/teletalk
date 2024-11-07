@@ -1,4 +1,5 @@
-import { Template } from "~/components";
+import { Template } from "@repo/ui";
+
 import { useDialogState, useUpdateProfile } from "~/hooks";
 import { useGlobalStore, useSettingsStore } from "~/store";
 import { OnInputChange } from "~/types";

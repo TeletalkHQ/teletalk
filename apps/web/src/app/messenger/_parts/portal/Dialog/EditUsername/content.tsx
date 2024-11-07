@@ -1,4 +1,5 @@
-import { Box, Input, Typography } from "~/components";
+import { Box, Input, Typography } from "@repo/ui";
+
 import { OnInputChange } from "~/types";
 
 interface Props {

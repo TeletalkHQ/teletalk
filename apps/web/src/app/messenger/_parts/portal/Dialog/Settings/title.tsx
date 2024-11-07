@@ -1,4 +1,4 @@
-import { Box } from "~/components";
+import { Box } from "@repo/ui";
 
 export const Title = () => {
 	return (

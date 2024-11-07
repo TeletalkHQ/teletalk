@@ -1,6 +1,6 @@
 import { UserItem } from "@repo/types";
+import { Template } from "@repo/ui";
 
-import { Template } from "~/components";
 import { useContextMenu, useDialogState } from "~/hooks";
 import {
 	GlobalStore,

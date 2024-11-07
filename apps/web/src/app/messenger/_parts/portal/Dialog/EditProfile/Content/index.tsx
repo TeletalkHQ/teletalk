@@ -1,7 +1,7 @@
 import { userUtils } from "@repo/classes";
 import type { AvatarSrc, VoidNoArgs } from "@repo/types";
+import { Box } from "@repo/ui";
 
-import { Box } from "~/components";
 import { SettingsStore } from "~/store";
 
 import { EditProfileListItemOnClick } from "../types";

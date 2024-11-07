@@ -1,6 +1,6 @@
 import type { FullName } from "@repo/types";
+import { Box, Input } from "@repo/ui";
 
-import { Box, Input } from "~/components";
 import { OnInputChange } from "~/types";
 
 interface Props {

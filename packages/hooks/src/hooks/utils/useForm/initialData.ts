@@ -6,6 +6,9 @@ export const formInitialData = {
 		firstName: "",
 		lastName: "",
 	},
+	messageInput: {
+		messageText: "",
+	},
 	signIn: {
 		countryCode: "",
 		countryName: "",

@@ -1,4 +1,5 @@
-import { Template } from "~/components";
+import { Template } from "@repo/ui";
+
 import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore } from "~/store";
 

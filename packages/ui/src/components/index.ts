@@ -10,5 +10,6 @@ export const Field = {
 };
 
 export * from "./base";
+export * from "./icon";
 export * from "./common";
 export * from "./template";

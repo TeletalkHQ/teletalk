@@ -1,6 +1,5 @@
 import type { AvatarSrc } from "@repo/types";
-
-import { Box } from "~/components";
+import { Box } from "@repo/ui";
 
 interface Props {
 	avatarSrc: AvatarSrc;

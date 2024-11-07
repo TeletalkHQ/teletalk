@@ -1,6 +1,6 @@
 import type { UserId } from "@repo/types";
+import { Template } from "@repo/ui";
 
-import { Template } from "~/components";
 import { useDialogState } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 

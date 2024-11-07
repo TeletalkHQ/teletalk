@@ -1,13 +1,13 @@
-import { Box, Icon } from "~/components";
+import { Box, Icons } from "@repo/ui";
 
 const sidebarList = [
-	Icon.AllChatsOutlined,
-	Icon.UnreadOutlined,
-	Icon.PersonalOutlined,
-	Icon.ChannelsOutlined,
-	Icon.Groups,
-	Icon.BotOutlined,
-	Icon.EditChatsOutlined,
+	Icons.AllChatsOutlined,
+	Icons.UnreadOutlined,
+	Icons.PersonalOutlined,
+	Icons.ChannelsOutlined,
+	Icons.Groups,
+	Icons.BotOutlined,
+	Icons.EditChatsOutlined,
 ];
 
 const SideBarList = () => {

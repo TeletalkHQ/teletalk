@@ -1,4 +1,5 @@
-import { Button, Icon } from "~/components";
+import { IconButton, Icons } from "@repo/ui";
+
 import { useMessageStore } from "~/store";
 
 const ChatBarCloseButton = () => {
@@ -9,14 +10,14 @@ const ChatBarCloseButton = () => {
 	};
 
 	return (
-		<Button.Icon
+		<IconButton
 			onClick={(e) => {
 				e.stopPropagation();
 				handleMessageContainerClose();
 			}}
 		>
-			<Icon.Close.Element />
-		</Button.Icon>
+			<Icons.Close.Element />
+		</IconButton>
 	);
 };
 

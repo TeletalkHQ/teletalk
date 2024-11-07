@@ -1,6 +1,5 @@
 import { VoidNoArgs } from "@repo/types";
-
-import { Box, Button } from "~/components";
+import { Box, Button } from "@repo/ui";
 
 interface Props {
 	isAddContactButtonDisabled: boolean;
