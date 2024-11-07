@@ -98,6 +98,17 @@ export class Maker {
 		};
 	}
 
+	emptyMessageItem(): BaseSchema.MessagesItem {
+		return {
+			createdAt: -1,
+			messageId: "",
+			messageText: "",
+			sender: {
+				senderId: "",
+			},
+		};
+	}
+
 	emptyAddingContactWithCellphone(): BaseSchema.Cellphone &
 		BaseSchema.FullName {
 		return {

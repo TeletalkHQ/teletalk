@@ -15,6 +15,7 @@
 		"start:production": "cross-env PORT=${PORT:-4090} next start"
 	},
 	"dependencies": {
+		"@repo/classes": "workspace:*",
 		"@repo/hooks": "workspace:*",
 		"@repo/rocket-io": "workspace:*",
 		"@repo/schema": "workspace:*",

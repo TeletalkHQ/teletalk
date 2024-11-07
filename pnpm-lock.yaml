@@ -904,6 +904,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@repo/classes':
+        specifier: workspace:*
+        version: link:../../packages/classes
       '@repo/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks

@@ -2,6 +2,8 @@
 
 import { useUserInfo, useUserPublicInfo } from "@repo/hooks";
 
+import { MessengerContainer } from "./_parts";
+
 const Messenger = () => {
 	const {
 		data: { userInfo },
@@ -11,7 +13,7 @@ const Messenger = () => {
 		data: { userPublicInfo },
 	} = useUserPublicInfo({ userId: userInfo.userId });
 
-	return <div>hello</div>;
+	return <MessengerContainer />;
 };
 
 export default Messenger;

@@ -10,9 +10,9 @@ import { DialogTemplate, OnInputChange, OnSelectOnChange } from "@repo/ui";
 import { enqueueSnackbar } from "notistack";
 import React, { useState } from "react";
 
-import Actions from "./actions";
-import Content from "./content";
-import Title from "./title";
+import { Actions } from "./actions";
+import { Content } from "./content";
+import { Title } from "./title";
 
 const AddServer = () => {
 	const dialogState = useDialogState("addServer");
