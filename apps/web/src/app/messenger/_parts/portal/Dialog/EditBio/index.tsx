@@ -24,7 +24,7 @@ const EditBio = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={
 					<Actions
 						loading={loading}

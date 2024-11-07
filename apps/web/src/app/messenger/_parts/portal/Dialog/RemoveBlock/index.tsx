@@ -30,7 +30,7 @@ const RemoveBlock = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={
 					<Actions
 						loading={loading}

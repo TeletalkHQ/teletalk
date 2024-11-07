@@ -21,7 +21,7 @@ const AvatarViewer = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={
 					<Actions
 						onClose={globalStore.closeDialog}

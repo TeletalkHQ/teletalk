@@ -41,7 +41,7 @@ const EditProfile = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={<Actions onCancel={globalStore.closeDialog} />}
 				content={
 					<Content

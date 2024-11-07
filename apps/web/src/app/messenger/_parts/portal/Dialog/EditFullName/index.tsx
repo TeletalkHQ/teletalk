@@ -26,7 +26,7 @@ const EditFullName = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={
 					<Actions
 						loading={loading}

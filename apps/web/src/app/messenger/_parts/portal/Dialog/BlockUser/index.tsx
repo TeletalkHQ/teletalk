@@ -38,7 +38,7 @@ const BlockUser = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={
 					<Actions
 						loading={loading}

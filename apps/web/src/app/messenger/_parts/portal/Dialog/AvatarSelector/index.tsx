@@ -59,7 +59,7 @@ const AvatarSelector = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={
 					<Actions
 						isSaveDisabled={!avatarSrc}

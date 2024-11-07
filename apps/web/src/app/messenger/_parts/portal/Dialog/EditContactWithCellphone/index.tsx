@@ -63,7 +63,7 @@ const EditContactWithCellphone = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={
 					<Actions
 						isAddContactButtonDisabled={isSubmitDisabled}

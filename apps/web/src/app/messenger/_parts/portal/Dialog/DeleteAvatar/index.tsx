@@ -22,7 +22,7 @@ const DeleteAvatar = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={
 					<Actions
 						loading={loading}

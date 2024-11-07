@@ -19,7 +19,7 @@ const UserInfo = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={<Actions onClose={globalStore.closeDialog} />}
 				content={
 					<Content

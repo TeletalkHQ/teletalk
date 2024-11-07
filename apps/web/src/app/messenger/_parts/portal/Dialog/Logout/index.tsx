@@ -1,7 +1,6 @@
-import { Template } from "@repo/ui";
+import { useCustomRouter, useDialogState } from "@repo/hooks";
+import { DialogTemplate } from "@repo/ui";
 
-import { storage } from "~/classes/Storage";
-import { useCustomRouter, useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore } from "~/store";
 
 import { Actions } from "./actions";
@@ -23,7 +22,7 @@ const Logout = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={
 					<Actions
 						loading={loading}

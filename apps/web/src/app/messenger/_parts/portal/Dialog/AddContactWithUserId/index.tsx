@@ -38,7 +38,7 @@ const AddContactWithUserId = () => {
 
 	return (
 		<>
-			<Template.Dialog
+			<DialogTemplate
 				actions={
 					<Actions
 						isConfirmDisabled={isConfirmDisabled}

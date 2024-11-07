@@ -64,7 +64,7 @@ const Contacts = () => {
 	};
 
 	return (
-		<Template.Dialog
+		<DialogTemplate
 			actions={
 				<Actions
 					onAddContactClick={handleAddContactClick}
