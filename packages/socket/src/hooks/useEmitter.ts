@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { Socket } from "socket.io-client";
 import { ZodSchema, z } from "zod";
