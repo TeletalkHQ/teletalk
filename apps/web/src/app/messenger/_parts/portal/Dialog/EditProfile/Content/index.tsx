@@ -15,7 +15,7 @@ interface Props {
 	profile: SettingsStore.Profile;
 }
 
-const Content: React.FC<Props> = ({
+export const Content: React.FC<Props> = ({
 	avatarSrc,
 	onAvatarClick,
 	onClick,

@@ -6,7 +6,7 @@ interface Props {
 	avatarSrc: AvatarSrc;
 }
 
-const Content: React.FC<Props> = ({ avatarSrc }) => {
+export const Content: React.FC<Props> = ({ avatarSrc }) => {
 	return (
 		<>
 			<Box.Flex

@@ -12,7 +12,7 @@ interface Props {
 	fileInputRef: React.LegacyRef<HTMLInputElement>;
 }
 
-const Content: React.FC<Props> = ({
+export const Content: React.FC<Props> = ({
 	avatarSrc,
 	editor,
 	fileInputRef,

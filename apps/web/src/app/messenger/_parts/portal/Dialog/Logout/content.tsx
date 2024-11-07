@@ -1,6 +1,6 @@
 import { Box, Typography } from "~/components";
 
-const Content = () => (
+export const Content = () => (
 	<>
 		<Box.Div style={{ textAlign: "center", fontSize: 18 }}>
 			<Box.Span>Are you sure you want to</Box.Span>{" "}

@@ -7,7 +7,11 @@ interface Props {
 	usernameLength: string | number;
 }
 
-const Content: React.FC<Props> = ({ onChange, username, usernameLength }) => {
+export const Content: React.FC<Props> = ({
+	onChange,
+	username,
+	usernameLength,
+}) => {
 	return (
 		<Box.Flex col style={{ maxWidth: 400 }}>
 			<Input.Text.Username value={username} onChange={onChange} />

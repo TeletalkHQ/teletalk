@@ -1,6 +1,6 @@
 import { Box, Typography } from "~/components";
 
-const Title = () => {
+export const Title = () => {
 	return (
 		<>
 			<Box.Flex ai="center" jc="space-between">

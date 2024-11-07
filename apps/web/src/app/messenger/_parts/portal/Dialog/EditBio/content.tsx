@@ -6,7 +6,7 @@ interface Props {
 	onChange: OnInputChange;
 }
 
-const Content: React.FC<Props> = ({ bio, onChange }) => {
+export const Content: React.FC<Props> = ({ bio, onChange }) => {
 	return (
 		<Box.Flex
 			col

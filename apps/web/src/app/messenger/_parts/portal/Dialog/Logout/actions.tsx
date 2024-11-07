@@ -8,7 +8,7 @@ interface Props {
 	onLogout: VoidNoArgs;
 }
 
-const Actions: React.FC<Props> = ({ loading, onClose, onLogout }) => (
+export const Actions: React.FC<Props> = ({ loading, onClose, onLogout }) => (
 	<>
 		<Box.Div style={{ width: "35%" }}>
 			<Button.PrimaryClose onClick={onClose} />
@@ -29,5 +29,3 @@ const Actions: React.FC<Props> = ({ loading, onClose, onLogout }) => (
 		</Box.Div>
 	</>
 );
-
-export default Actions;

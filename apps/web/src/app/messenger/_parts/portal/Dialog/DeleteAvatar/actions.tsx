@@ -8,7 +8,7 @@ interface Props {
 	onDelete: VoidNoArgs;
 }
 
-const Actions: React.FC<Props> = ({ loading, onClose, onDelete }) => (
+export const Actions: React.FC<Props> = ({ loading, onClose, onDelete }) => (
 	<>
 		<Box.Div style={{ width: "65%" }}>
 			<Button.PrimaryClose onClick={onClose} />
@@ -27,5 +27,3 @@ const Actions: React.FC<Props> = ({ loading, onClose, onDelete }) => (
 		</Box.Div>
 	</>
 );
-
-export default Actions;

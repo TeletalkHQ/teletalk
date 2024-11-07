@@ -9,7 +9,7 @@ interface Props {
 	onSave: VoidNoArgs;
 }
 
-const Actions: React.FC<Props> = ({
+export const Actions: React.FC<Props> = ({
 	isSaveDisabled,
 	loading,
 	onClose,
@@ -28,5 +28,3 @@ const Actions: React.FC<Props> = ({
 		</Button.Primary>
 	</>
 );
-
-export default Actions;

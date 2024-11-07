@@ -9,7 +9,7 @@ interface Props {
 	onConfirm: VoidNoArgs;
 }
 
-const Actions: React.FC<Props> = ({
+export const Actions: React.FC<Props> = ({
 	isConfirmDisabled,
 	loading,
 	onCancel,
@@ -36,5 +36,3 @@ const Actions: React.FC<Props> = ({
 		</>
 	);
 };
-
-export default Actions;

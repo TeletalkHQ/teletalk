@@ -4,7 +4,7 @@ interface Props {
 	fullName: string;
 }
 
-const Content: React.FC<Props> = ({ fullName }) => (
+export const Content: React.FC<Props> = ({ fullName }) => (
 	<>
 		<Box.Div style={{ textAlign: "center", fontSize: 18 }}>
 			<Box.Span>Are you sure you want to</Box.Span>{" "}

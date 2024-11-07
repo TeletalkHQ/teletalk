@@ -8,12 +8,14 @@ interface Props {
 	onSaveClick: VoidNoArgs;
 }
 
-const Actions: React.FC<Props> = ({ loading, onCancel, onSaveClick }) => (
+export const Actions: React.FC<Props> = ({
+	loading,
+	onCancel,
+	onSaveClick,
+}) => (
 	<>
 		<Button.SecondaryCancel onClick={onCancel} />
 
 		<Button.PrimaryConfirm loading={loading} onClick={onSaveClick} />
 	</>
 );
-
-export default Actions;

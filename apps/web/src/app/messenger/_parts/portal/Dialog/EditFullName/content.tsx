@@ -8,7 +8,7 @@ interface Props {
 	onChange: OnInputChange;
 }
 
-const Content: React.FC<Props> = ({ fullName, onChange }) => {
+export const Content: React.FC<Props> = ({ fullName, onChange }) => {
 	return (
 		<Box.Flex col>
 			<Input.Text.FullName

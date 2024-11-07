@@ -1,6 +1,6 @@
 import { Box } from "~/components";
 
-const Title = () => {
+export const Title = () => {
 	return <Box.Div>User Info</Box.Div>;
 };
 

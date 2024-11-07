@@ -8,7 +8,7 @@ interface Props {
 	onAddContactClick: VoidNoArgs;
 	onCancel: VoidNoArgs;
 }
-const Actions: React.FC<Props> = ({
+export const Actions: React.FC<Props> = ({
 	isAddContactButtonDisabled,
 	loading,
 	onAddContactClick,
@@ -35,5 +35,3 @@ const Actions: React.FC<Props> = ({
 		</>
 	);
 };
-
-export default Actions;

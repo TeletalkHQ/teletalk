@@ -8,7 +8,7 @@ interface Props {
 	onConfirm: VoidNoArgs;
 }
 
-const Actions: React.FC<Props> = ({ loading, onCancel, onConfirm }) => {
+export const Actions: React.FC<Props> = ({ loading, onCancel, onConfirm }) => {
 	return (
 		<>
 			<Button.PrimaryClose onClick={onCancel} />
@@ -17,5 +17,3 @@ const Actions: React.FC<Props> = ({ loading, onCancel, onConfirm }) => {
 		</>
 	);
 };
-
-export default Actions;

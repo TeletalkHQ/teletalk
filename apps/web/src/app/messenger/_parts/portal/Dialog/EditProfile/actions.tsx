@@ -6,10 +6,8 @@ interface Props {
 	onCancel: VoidNoArgs;
 }
 
-const Actions: React.FC<Props> = ({ onCancel }) => (
+export const Actions: React.FC<Props> = ({ onCancel }) => (
 	<>
 		<Button.PrimaryClose onClick={onCancel} />
 	</>
 );
-
-export default Actions;

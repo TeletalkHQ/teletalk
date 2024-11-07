@@ -7,7 +7,7 @@ interface Props {
 	onAddContactClick: VoidNoArgs;
 }
 
-const Actions: React.FC<Props> = ({ onClose, onAddContactClick }) => (
+export const Actions: React.FC<Props> = ({ onClose, onAddContactClick }) => (
 	<>
 		<Box.Flex
 			ai="center"
@@ -24,5 +24,3 @@ const Actions: React.FC<Props> = ({ onClose, onAddContactClick }) => (
 		</Box.Flex>
 	</>
 );
-
-export default Actions;

@@ -15,7 +15,7 @@ interface Props {
 	onSettingItemClick: OnSettingItemClick;
 }
 
-const Content: React.FC<Props> = ({
+export const Content: React.FC<Props> = ({
 	avatarSrc,
 	fullName,
 	fullNumber,

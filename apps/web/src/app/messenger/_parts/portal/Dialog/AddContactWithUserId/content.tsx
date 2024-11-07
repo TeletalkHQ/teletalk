@@ -8,7 +8,7 @@ interface Props {
 	onChange: OnInputChange;
 }
 
-const Content: React.FC<Props> = ({ contact, onChange }) => {
+export const Content: React.FC<Props> = ({ contact, onChange }) => {
 	return (
 		<>
 			<Box.Div>

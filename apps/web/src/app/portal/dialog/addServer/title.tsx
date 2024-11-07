@@ -1,6 +1,6 @@
 import { Box } from "@repo/ui";
 
-const Title = () => {
+export const Title = () => {
 	return <Box.Div>Add Server</Box.Div>;
 };
 

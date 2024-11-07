@@ -8,12 +8,10 @@ interface Props {
 	onRemove: VoidNoArgs;
 }
 
-const Actions: React.FC<Props> = ({ loading, onClose, onRemove }) => (
+export const Actions: React.FC<Props> = ({ loading, onClose, onRemove }) => (
 	<>
 		<Button.PrimaryClose onClick={onClose} />
 
 		<Button.SecondaryConfirm loading={loading} onClick={onRemove} />
 	</>
 );
-
-export default Actions;

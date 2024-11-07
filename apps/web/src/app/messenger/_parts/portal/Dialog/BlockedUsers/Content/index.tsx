@@ -6,7 +6,7 @@ interface Props {
 	onItemLick: VoidWithArg<UserId>;
 }
 
-const Content: React.FC<Props> = ({ onItemLick }) => {
+export const Content: React.FC<Props> = ({ onItemLick }) => {
 	return (
 		<>
 			<List onItemLick={onItemLick} />

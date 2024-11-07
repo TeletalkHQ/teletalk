@@ -9,7 +9,7 @@ interface Props {
 	fullNumber: string;
 }
 
-const Content: React.FC<Props> = ({
+export const Content: React.FC<Props> = ({
 	avatarSrc,
 	connectionStatus,
 	fullName,

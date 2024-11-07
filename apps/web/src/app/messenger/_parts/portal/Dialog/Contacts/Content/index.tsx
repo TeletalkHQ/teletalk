@@ -10,7 +10,7 @@ interface Props {
 	onContextMenu: GlobalStore.ExtendedOnContextMenu<UserItem>;
 }
 
-const Content: React.FC<Props> = ({
+export const Content: React.FC<Props> = ({
 	contacts,
 	onContactItemClicked,
 	onContextMenu,

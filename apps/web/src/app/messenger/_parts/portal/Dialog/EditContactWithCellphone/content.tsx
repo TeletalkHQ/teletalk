@@ -7,7 +7,7 @@ interface Props {
 	fullName: FullName;
 	onChange: OnInputChange;
 }
-const Content: React.FC<Props> = ({ fullName, onChange }) => {
+export const Content: React.FC<Props> = ({ fullName, onChange }) => {
 	return (
 		<>
 			<Box.Div>

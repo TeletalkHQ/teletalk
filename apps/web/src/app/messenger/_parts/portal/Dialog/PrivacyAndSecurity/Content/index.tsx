@@ -8,7 +8,7 @@ interface Props {
 	onItemClick: VoidWithArg<GlobalStore.DialogName>;
 }
 
-const Content: React.FC<Props> = ({ onItemClick }) => (
+export const Content: React.FC<Props> = ({ onItemClick }) => (
 	<>
 		<List onItemClick={onItemClick} />
 	</>

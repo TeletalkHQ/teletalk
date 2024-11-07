@@ -11,7 +11,7 @@ interface Props {
 	onTestClick: VoidNoArgs;
 }
 
-const Actions: React.FC<Props> = ({
+export const Actions: React.FC<Props> = ({
 	isAddDisabled,
 	isCloseDisabled,
 	isLoading,
@@ -44,5 +44,3 @@ const Actions: React.FC<Props> = ({
 		</>
 	);
 };
-
-export default Actions;
