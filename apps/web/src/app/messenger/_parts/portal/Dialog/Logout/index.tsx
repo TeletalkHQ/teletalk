@@ -1,22 +1,34 @@
-import { useCustomRouter, useDialogState } from "@repo/hooks";
+import {
+	useApiPhase,
+	useCustomRouter,
+	useDialogState,
+	useLogout,
+} from "@repo/hooks";
 import { DialogTemplate } from "@repo/ui";
-
-import { useGlobalStore } from "~/store";
 
 import { Actions } from "./actions";
 import { Content } from "./content";
 
 export const Logout = () => {
-	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("logout");
-	const { handler, loading } = useEmitter("logout");
+
+	const {
+		api: { getApi },
+	} = useLogout();
+
+	const logoutPhase = useApiPhase("logout");
+
 	const router = useCustomRouter();
 
 	const handleLogout = () => {
-		handler.send(undefined, () => {
-			globalStore.closeDialog();
-			storage.remove("session");
-			router.push("signIn");
+		getApi.handler({
+			data: {},
+			config: {
+				onSuccess: () => {
+					dialogState.close();
+					router.push("/auth/sign-in");
+				},
+			},
 		});
 	};
 
@@ -25,13 +37,13 @@ export const Logout = () => {
 			<DialogTemplate
 				actions={
 					<Actions
-						loading={loading}
-						onClose={globalStore.closeDialog}
+						loading={logoutPhase.isLoading}
+						onClose={dialogState.close}
 						onLogout={handleLogout}
 					/>
 				}
 				content={<Content />}
-				open={dialogState.open}
+				dialogState={dialogState}
 			/>
 		</>
 	);

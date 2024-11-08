@@ -3,12 +3,16 @@
 import { StringMap } from "@repo/types";
 import { useRouter } from "next/navigation";
 
-export type UrlName = "create" | "messenger" | "signIn" | "verify";
+export type Path =
+	| "/auth/create"
+	| "messenger"
+	| "/auth/sign-in"
+	| "/auth/verify";
 
 export const useCustomRouter = () => {
 	const router = useRouter();
 
-	const push = (url: UrlName | `/${UrlName}`, queries: StringMap = {}) => {
+	const push = (url: Path, queries: StringMap = {}) => {
 		const queriesLength = Object.keys(queries).length;
 
 		const queryString = Object.entries(queries)

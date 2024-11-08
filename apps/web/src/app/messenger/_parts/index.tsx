@@ -1,6 +1,7 @@
 import { Box } from "@repo/ui";
 
 import { LeftSide } from "./leftSide";
+import { Portal } from "./portal";
 
 //REFACTOR
 export const MessengerContainer = () => {
@@ -107,7 +108,7 @@ export const MessengerContainer = () => {
 				height: "100vh",
 			}}
 		>
-			{/* <Portal /> */}
+			<Portal />
 			<LeftSide />
 			{/* <RightSide /> */}
 		</Box.Grid>

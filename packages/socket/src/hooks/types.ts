@@ -35,5 +35,5 @@ export type EmitterHandler<I extends ZodSchema, O extends ZodSchema> = ({
 	data,
 }: {
 	data: _EmitFnArg<I, O>["data"];
-	options: _EmitFnArg<I, O>["options"];
+	options?: _EmitFnArg<I, O>["options"];
 }) => Promise<EmitResponse<O>>;

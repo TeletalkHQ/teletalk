@@ -10,7 +10,7 @@ interface Props {
 export const Actions: React.FC<Props> = ({ loading, onClose, onLogout }) => (
 	<>
 		<Box.Div style={{ width: "35%" }}>
-			<Button.PrimaryClose onClick={onClose} />
+			<Button onClick={onClose}>Close</Button>
 		</Box.Div>
 
 		<Box.Div
@@ -18,13 +18,14 @@ export const Actions: React.FC<Props> = ({ loading, onClose, onLogout }) => (
 				width: "65%",
 			}}
 		>
-			<Button.Secondary
+			<Button
+				color="secondary"
 				loading={loading}
 				loadingIndicatorText="Logging out..."
 				onClick={onLogout}
 			>
 				Log out
-			</Button.Secondary>
+			</Button>
 		</Box.Div>
 	</>
 );

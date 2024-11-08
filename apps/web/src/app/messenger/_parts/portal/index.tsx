@@ -17,36 +17,35 @@
 // import { RemoveContact } from "./Dialog/RemoveContact";
 // import { Settings } from "./Dialog/Settings";
 // import { UserInfo } from "./Dialog/UserInfo";
+// import { Drawer } from "./Drawer";
+import { Logout } from "./Dialog/Logout";
 import { Drawer } from "./Drawer";
 
 export const Portal = () => {
 	return (
 		<>
 			<Drawer />
+
+			<Logout />
 			{/* 
-			{[
-				AddContactWithCellphone,
-				AddContactWithUserId,
-				AvatarSelector,
-				AvatarViewer,
-				BlockedUsers,
-				BlockUser,
-				Contacts,
-				DeleteAvatar,
-				EditBio,
-				EditContactWithCellphone,
-				EditFullName,
-				EditProfile,
-				EditUsername,
-				Logout,
-				PrivacyAndSecurity,
-				RemoveBlock,
-				RemoveContact,
-				Settings,
-				UserInfo,
-			].map((Component, i) => (
-				<Component key={i} />
-			))} */}
+			<AddContactWithCellphone />
+			<AddContactWithUserId />
+			<AvatarSelector />
+			<AvatarViewer />
+			<BlockedUsers />
+			<BlockUser />
+			<Contacts />
+			<DeleteAvatar />
+			<EditBio />
+			<EditContactWithCellphone />
+			<EditFullName />
+			<EditProfile />
+			<EditUsername />
+			<PrivacyAndSecurity />
+			<RemoveBlock />
+			<RemoveContact />
+			<Settings />
+			<UserInfo /> */}
 		</>
 	);
 };

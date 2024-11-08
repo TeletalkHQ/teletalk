@@ -1,4 +1,9 @@
-import { HTTPRouteName, httpRoutes } from "@repo/schema";
+import {
+	GetOutput,
+	HTTPResponse,
+	HTTPRouteName,
+	httpRoutes,
+} from "@repo/schema";
 
 import { useConfigs } from "../../utils";
 import { InitialData, RequestPhase, useApi } from "../useApi";
@@ -33,4 +38,14 @@ export const useMainApi = <T extends HTTPRouteName>({
 		phase,
 		requestDelay: configs.api.requestDelay,
 	});
+};
+
+export const createRequestInitialData = <T extends HTTPRouteName>(
+	_name: T,
+	data: GetOutput<T>
+): HTTPResponse<T> => {
+	return {
+		data,
+		errors: [],
+	};
 };
