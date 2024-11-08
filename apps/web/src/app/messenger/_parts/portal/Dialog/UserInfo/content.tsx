@@ -27,13 +27,13 @@ export const Content: React.FC<Props> = ({
 			</Box.Div>
 
 			<Box.Flex col>
-				<Typography.Bold
+				<Typography
 					style={{
 						fontSize: 20,
 					}}
 				>
 					{fullName} : {connectionStatus}
-				</Typography.Bold>
+				</Typography>
 
 				<Box.Div
 					style={{

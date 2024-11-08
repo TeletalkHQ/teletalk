@@ -24,13 +24,13 @@ export const PersonalData: React.FC<Props> = ({
 		<Box.Div>
 			<Box.Avatar src={avatarSrc} />
 		</Box.Div>
-		<Typography.Bold
+		<Typography
 			style={{
 				fontSize: 18,
 			}}
 		>
 			{fullName}
-		</Typography.Bold>
+		</Typography>
 		<Box.Div
 			style={{
 				fontSize: 14,

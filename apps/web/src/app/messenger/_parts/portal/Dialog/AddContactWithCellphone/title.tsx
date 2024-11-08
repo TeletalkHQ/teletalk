@@ -5,7 +5,7 @@ export const Title = () => {
 		<>
 			<Box.Flex ai="center" jc="space-between">
 				<Box.Div>
-					<Typography.H5>New Contact</Typography.H5>
+					<Typography fontWeight="bold">New Contact</Typography>
 				</Box.Div>
 				<Box.Div></Box.Div>
 			</Box.Flex>

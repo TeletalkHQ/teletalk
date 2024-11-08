@@ -1,6 +1,4 @@
-import { Box, Input, Typography } from "@repo/ui";
-
-import { OnInputChange } from "~/types";
+import { Box, OnInputChange, Typography } from "@repo/ui";
 
 interface Props {
 	onChange: OnInputChange;
@@ -15,14 +13,14 @@ export const Content: React.FC<Props> = ({
 }) => {
 	return (
 		<Box.Flex col style={{ maxWidth: 400 }}>
-			<Input.Text.Username value={username} onChange={onChange} />
+			{/* <TextWithValidator.Username value={username} onChange={onChange} /> */}
 
-			<Typography.GreyTextParagraph>
+			<Typography variant="greyCaption">
 				You can choose a username on Teletalk. If you do, other people will be
 				able to find you by this username and contact you without knowing your
 				phone number. You can use a-z, 0-9 and underscores. Minimum length is{" "}
 				{usernameLength} characters.
-			</Typography.GreyTextParagraph>
+			</Typography>
 		</Box.Flex>
 	);
 };

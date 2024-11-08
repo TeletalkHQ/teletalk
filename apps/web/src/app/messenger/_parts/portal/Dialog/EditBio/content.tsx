@@ -1,6 +1,4 @@
-import { Box, Input, Typography } from "@repo/ui";
-
-import { OnInputChange } from "~/types";
+import { Box, OnInputChange, Typography } from "@repo/ui";
 
 interface Props {
 	bio: string;
@@ -15,11 +13,11 @@ export const Content: React.FC<Props> = ({ bio, onChange }) => {
 				maxWidth: 400,
 			}}
 		>
-			<Input.Text.Bio value={bio} onChange={onChange} />
-			<Typography.GreyTextParagraph>
+			{/* <TextWithValidator.Bio value={bio} onChange={onChange} /> */}
+			<Typography variant="greyCaption">
 				any details such as age, occupation or city. Example: 23 y.o. designer
 				from San Francisco
-			</Typography.GreyTextParagraph>
+			</Typography>
 		</Box.Flex>
 	);
 };

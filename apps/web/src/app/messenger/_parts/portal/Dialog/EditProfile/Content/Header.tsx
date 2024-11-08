@@ -19,13 +19,13 @@ export const Header: React.FC<Props> = ({
 				onClick={onAvatarClick}
 			/>
 
-			<Typography.Bold
+			<Typography
 				style={{
 					fontSize: 20,
 				}}
 			>
 				{fullName}
-			</Typography.Bold>
+			</Typography>
 			<div id="croppie"></div>
 		</Box.Flex>
 	);

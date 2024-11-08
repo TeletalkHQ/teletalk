@@ -9,7 +9,7 @@ export const Content = () => (
 			}}
 		>
 			<Box.Span>Are you sure you want to</Box.Span>{" "}
-			<Typography.Bold>delete</Typography.Bold>
+			<Typography>delete</Typography>
 			<Box.Span> your avatar?</Box.Span>
 		</Box.Div>
 	</>

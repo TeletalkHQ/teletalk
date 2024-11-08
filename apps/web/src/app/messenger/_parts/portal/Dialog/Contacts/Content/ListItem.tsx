@@ -1,4 +1,4 @@
-import { UserId } from "@repo/types";
+import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
 import { Box, Typography } from "@repo/ui";
 
@@ -11,7 +11,7 @@ interface Props {
 	lastSeen: string;
 	onContactClick: VoidNoArgs;
 	onContextMenu: GlobalStore.OnContextMenu;
-	userId: UserId;
+	userId: BaseSchema.UserId;
 }
 
 export const ListItem: React.FC<Props> = ({
@@ -40,7 +40,7 @@ export const ListItem: React.FC<Props> = ({
 
 			<Box.Div style={{ width: "100%" }}>
 				<Box.Flex ai="center" jc="space-between">
-					<Typography.Bold style={{ fontSize: 18 }}>{fullName}</Typography.Bold>
+					<Typography style={{ fontSize: 18 }}>{fullName}</Typography>
 					{/* <Box.Div>time</Box.Div> */}
 				</Box.Flex>
 

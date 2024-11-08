@@ -1,11 +1,11 @@
-import type { AvatarSrc, Username } from "@repo/types";
+import { BaseSchema } from "@repo/schema";
 import { Box, Typography } from "@repo/ui";
 
 interface Props {
-	avatarSrc: AvatarSrc;
+	avatarSrc: BaseSchema.AvatarSrc;
 	fullName: string;
 	fullNumber: string;
-	username: Username;
+	username: BaseSchema.Username;
 }
 
 export const ProfileOverview: React.FC<Props> = ({
@@ -21,13 +21,14 @@ export const ProfileOverview: React.FC<Props> = ({
 			</Box.Div>
 
 			<Box.Flex col>
-				<Typography.Bold
+				<Typography
+					fontWeight={"bold"}
 					style={{
 						fontSize: 20,
 					}}
 				>
 					{fullName}
-				</Typography.Bold>
+				</Typography>
 
 				<Box.Div
 					style={{
@@ -43,9 +44,7 @@ export const ProfileOverview: React.FC<Props> = ({
 							fontSize: 16,
 						}}
 					>
-						<Typography.GreyTextParagraph>
-							@{username}
-						</Typography.GreyTextParagraph>
+						<Typography variant="greyCaption">@{username}</Typography>
 					</Box.Div>
 				)}
 			</Box.Flex>
