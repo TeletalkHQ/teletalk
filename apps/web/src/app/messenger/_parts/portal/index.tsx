@@ -1,5 +1,4 @@
 // import { AddContactWithCellphone } from "./Dialog/AddContactWithCellphone";
-// import { AddContactWithUserId } from "./Dialog/AddContactWithUserId";
 // import { AvatarSelector } from "./Dialog/AvatarSelector";
 // import { AvatarViewer } from "./Dialog/AvatarViewer";
 // import { BlockUser } from "./Dialog/BlockUser";
@@ -29,7 +28,6 @@ export const Portal = () => {
 			<Logout />
 			{/* 
 			<AddContactWithCellphone />
-			<AddContactWithUserId />
 			<AvatarSelector />
 			<AvatarViewer />
 			<BlockedUsers />

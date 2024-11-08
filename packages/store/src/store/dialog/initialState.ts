@@ -2,7 +2,6 @@ import { DialogState, State } from "./types";
 
 export const dialogNames = [
 	"addContact",
-	"addContactWithUserId",
 	"addServer",
 	"advanced",
 	"avatarSelector",

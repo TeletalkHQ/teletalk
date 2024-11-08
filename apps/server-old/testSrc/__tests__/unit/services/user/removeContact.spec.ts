@@ -29,7 +29,7 @@ describe(
 						userId: targetUser.userId,
 					};
 
-					await services.user.addContactWithUserId({
+					await services.user.addContact({
 						currentSessionId: sessionId,
 						fullName: addingContact,
 						targetUserId: addingContact.userId,
