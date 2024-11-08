@@ -70,5 +70,3 @@ export const Content: React.FC<Props> = ({
 		</>
 	);
 };
-
-export default Content;

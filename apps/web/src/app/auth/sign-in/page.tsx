@@ -22,9 +22,9 @@ import { useWatch } from "react-hook-form";
 
 import { useAuthUrlQueries } from "~/hooks";
 
-import AuthFooter from "../common/AuthFooter";
+import { AuthFooter } from "../common/AuthFooter";
 
-const SignInPage = () => {
+export const SignInPage = () => {
 	const {
 		api: { postApi },
 	} = useSignIn();
@@ -137,5 +137,3 @@ const SignInPage = () => {
 		</Box.Container>
 	);
 };
-
-export default SignInPage;

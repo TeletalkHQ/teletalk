@@ -3,11 +3,11 @@ import { BaseSchema } from "@repo/schema";
 
 import { useChatStore } from "~/store";
 
-import ChatListItem from "./ChatListItem";
+import { ChatListItem } from "./ChatListItem";
 
 interface Props {}
 
-const ChatList: React.FC<Props> = () => {
+export const ChatList: React.FC<Props> = () => {
 	const chatStore = useChatStore();
 
 	const handleChatItemClick = (chatId: BaseSchema.ChatId) => {
@@ -26,6 +26,7 @@ const ChatList: React.FC<Props> = () => {
 						key={index}
 						messageText={lastMessage.messageText}
 						selected={item.chatId === chatStore.selectedChatId}
+						senderId={lastMessage.sender.senderId}
 						onClick={() => handleChatItemClick(item.chatId)}
 					/>
 				);
@@ -33,5 +34,3 @@ const ChatList: React.FC<Props> = () => {
 		</>
 	);
 };
-
-export default ChatList;

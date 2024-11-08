@@ -8,7 +8,7 @@ interface Props {
 	username: Username;
 }
 
-const ProfileOverview: React.FC<Props> = ({
+export const ProfileOverview: React.FC<Props> = ({
 	avatarSrc,
 	fullName,
 	fullNumber,
@@ -52,5 +52,3 @@ const ProfileOverview: React.FC<Props> = ({
 		</Box.Flex>
 	);
 };
-
-export default ProfileOverview;

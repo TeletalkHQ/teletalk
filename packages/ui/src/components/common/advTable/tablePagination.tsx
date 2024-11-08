@@ -36,7 +36,7 @@ const paginationAmount: Array<PaginationAmount> = [
 		value: 100,
 	},
 ];
-const TablePagination: React.FC<Props> = ({ tableName }) => {
+export const TablePagination: React.FC<Props> = ({ tableName }) => {
 	const { pagination, updatePagination } = useTablePagination(tableName);
 	const { palette } = useTheme();
 
@@ -92,5 +92,3 @@ const TablePagination: React.FC<Props> = ({ tableName }) => {
 		</Paper>
 	);
 };
-
-export default TablePagination;

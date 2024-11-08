@@ -1,5 +1,3 @@
-import { Template } from "@repo/ui";
-
 import { useDialogState, useUpdateProfile } from "~/hooks";
 import { useGlobalStore, useSettingsStore } from "~/store";
 import { OnInputChange } from "~/types";
@@ -8,7 +6,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-const EditFullName = () => {
+export const EditFullName = () => {
 	const globalStore = useGlobalStore();
 	const settingsState = useSettingsStore();
 	const dialogState = useDialogState("editFullName");
@@ -46,5 +44,3 @@ const EditFullName = () => {
 		</>
 	);
 };
-
-export default EditFullName;

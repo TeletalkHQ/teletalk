@@ -19,7 +19,7 @@ const useSelectedServer = () => {
 	return foundServer;
 };
 
-const ServerSetup = () => {
+export const ServerSetup = () => {
 	const { configs, updateSelectedServer } = useConfigs();
 
 	const selectedServer = useSelectedServer();
@@ -131,5 +131,3 @@ const ServerSetup = () => {
 		</>
 	);
 };
-
-export default ServerSetup;

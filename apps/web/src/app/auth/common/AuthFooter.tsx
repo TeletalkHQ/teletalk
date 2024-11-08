@@ -1,6 +1,6 @@
-import Copyright from "./Copyright";
+import { Copyright } from "./Copyright";
 
-const AuthFooter = () => {
+export const AuthFooter = () => {
 	return (
 		<Copyright
 			sx={{
@@ -10,5 +10,3 @@ const AuthFooter = () => {
 		/>
 	);
 };
-
-export default AuthFooter;

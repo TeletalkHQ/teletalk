@@ -1,4 +1,3 @@
-import { Template } from "@repo/ui";
 import { useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
 
@@ -10,7 +9,7 @@ import { utils } from "~/utils";
 import { Actions } from "./actions";
 import { Content } from "./content";
 
-const AvatarSelector = () => {
+export const AvatarSelector = () => {
 	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("avatarSelector");
 	const [avatarSrc, setAvatarSrc] = useState("");
@@ -82,5 +81,3 @@ const AvatarSelector = () => {
 		</>
 	);
 };
-
-export default AvatarSelector;

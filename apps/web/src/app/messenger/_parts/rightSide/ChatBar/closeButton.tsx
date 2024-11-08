@@ -1,12 +1,12 @@
 import { IconButton, Icons } from "@repo/ui";
 
-import { useMessageStore } from "~/store";
+import { useChatStore } from "~/store";
 
-const ChatBarCloseButton = () => {
-	const messageStore = useMessageStore();
+export const ChatBarCloseButton = () => {
+	const setSelectedChatId = useChatStore((state) => state.setSelectedChatId);
 
 	const handleMessageContainerClose = () => {
-		messageStore.deselectChat();
+		setSelectedChatId(undefined);
 	};
 
 	return (
@@ -20,5 +20,3 @@ const ChatBarCloseButton = () => {
 		</IconButton>
 	);
 };
-
-export default ChatBarCloseButton;

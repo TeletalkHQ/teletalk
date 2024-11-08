@@ -40,7 +40,7 @@ interface Props {
 	onClick: VoidWithArg<ElementName>;
 }
 
-const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
+export const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
 	<Box.List style={{ padding: 10 }}>
 		{drawerList.map(({ Icon, disabled }, index) => (
 			<Box.ListItemButton
@@ -64,5 +64,3 @@ const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
 		))}
 	</Box.List>
 );
-
-export default DrawerList;

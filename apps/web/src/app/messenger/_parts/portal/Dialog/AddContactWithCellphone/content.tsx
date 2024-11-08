@@ -33,5 +33,3 @@ export const Content: React.FC<Props> = ({ contact, onChange }) => {
 		</>
 	);
 };
-
-export default Content;

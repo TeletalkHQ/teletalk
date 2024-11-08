@@ -1,5 +1,4 @@
 import { userUtils } from "@repo/classes";
-import { Template } from "@repo/ui";
 
 import { useDialogState, useGetPublicData, useIsOnline } from "~/hooks";
 import { useGlobalStore, useMessageStore } from "~/store";
@@ -8,7 +7,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-const UserInfo = () => {
+export const UserInfo = () => {
 	const globalStore = useGlobalStore();
 	const messageStore = useMessageStore();
 	const dialogState = useDialogState("userInfo");
@@ -35,5 +34,3 @@ const UserInfo = () => {
 		</>
 	);
 };
-
-export default UserInfo;

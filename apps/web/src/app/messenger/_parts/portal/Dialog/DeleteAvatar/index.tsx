@@ -1,12 +1,10 @@
-import { Template } from "@repo/ui";
-
 import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore } from "~/store";
 
 import { Actions } from "./actions";
 import { Content } from "./content";
 
-const DeleteAvatar = () => {
+export const DeleteAvatar = () => {
 	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("deleteAvatar");
 	const { handler, loading } = useEmitter("updateAvatar");
@@ -36,5 +34,3 @@ const DeleteAvatar = () => {
 		</>
 	);
 };
-
-export default DeleteAvatar;

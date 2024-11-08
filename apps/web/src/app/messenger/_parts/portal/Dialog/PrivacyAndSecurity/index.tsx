@@ -1,12 +1,10 @@
-import { Template } from "@repo/ui";
-
 import { useDialogState } from "~/hooks";
 import { GlobalStore, useGlobalStore } from "~/store";
 
 import { Actions } from "./actions";
 import { Content } from "./content";
 
-const PrivacyAndSecurity = () => {
+export const PrivacyAndSecurity = () => {
 	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("privacyAndSecurity");
 
@@ -24,5 +22,3 @@ const PrivacyAndSecurity = () => {
 		</>
 	);
 };
-
-export default PrivacyAndSecurity;

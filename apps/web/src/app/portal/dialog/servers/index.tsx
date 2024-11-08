@@ -13,7 +13,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-const Servers = () => {
+export const Servers = () => {
 	const dialogState = useDialogState("servers");
 	const list = useRef<Array<ServerTestResult & { id: number }>>([]);
 	const [forceUpdate, setForceUpdate] = useState(false);
@@ -116,5 +116,3 @@ const Servers = () => {
 		/>
 	);
 };
-
-export default Servers;

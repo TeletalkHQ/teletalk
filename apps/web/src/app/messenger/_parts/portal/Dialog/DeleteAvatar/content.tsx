@@ -14,5 +14,3 @@ export const Content = () => (
 		</Box.Div>
 	</>
 );
-
-export default Content;

@@ -1,5 +1,3 @@
-import { Template } from "@repo/ui";
-
 import { stuffStore } from "~/classes/StuffStore";
 import { useDialogState, useUpdateProfile } from "~/hooks";
 import { useGlobalStore, useSettingsStore } from "~/store";
@@ -9,7 +7,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-const EditUsername = () => {
+export const EditUsername = () => {
 	const globalStore = useGlobalStore();
 	const settingsState = useSettingsStore();
 	const dialogState = useDialogState("editUsername");
@@ -48,5 +46,3 @@ const EditUsername = () => {
 		</>
 	);
 };
-
-export default EditUsername;

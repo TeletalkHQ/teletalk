@@ -1,5 +1,4 @@
 import type { UserId } from "@repo/types";
-import { Template } from "@repo/ui";
 
 import { useDialogState } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
@@ -7,7 +6,7 @@ import { useGlobalStore, useUserStore } from "~/store";
 import { Actions } from "./actions";
 import { Content } from "./content";
 
-const BlockedUsers = () => {
+export const BlockedUsers = () => {
 	const globalStore = useGlobalStore();
 	const userStore = useUserStore();
 	const dialogState = useDialogState("blockedUsers");
@@ -27,5 +26,3 @@ const BlockedUsers = () => {
 		</>
 	);
 };
-
-export default BlockedUsers;

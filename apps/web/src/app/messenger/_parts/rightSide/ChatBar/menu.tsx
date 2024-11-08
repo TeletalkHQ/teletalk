@@ -1,15 +1,13 @@
 "use client";
 
+import { useDialogState } from "@repo/hooks";
 import { Box, IconButton, Icons } from "@repo/ui";
 import { useState } from "react";
 
-import { useGlobalStore } from "~/store";
-
-const ChatBarMenu = () => {
+export const ChatBarMenu = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-	const userStore = useUserStore();
-	const messageStore = useMessageStore();
-	const globalStore = useGlobalStore();
+
+	const addContactDialog = useDialogState("addContact");
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
@@ -19,21 +17,21 @@ const ChatBarMenu = () => {
 	};
 
 	const handleAddToContacts = () => {
-		globalStore.openDialog("addContactWithUserId");
+		addContactDialog.open();
 	};
 
 	const handleRemoveFromContacts = () => {
-		const userItem = userStore.users.find(
-			(i) => i.userId === messageStore.selectedChatInfo.userId
-		)!;
-
-		userStore.updateSelectedUserIdForActions(userItem.userId);
-		globalStore.openDialog("removeContact");
+		// const userItem = userStore.users.find(
+		// 	(i) => i.userId === messageStore.selectedChatInfo.userId
+		// )!;
+		// userStore.updateSelectedUserIdForActions(userItem.userId);
+		// globalStore.openDialog("removeContact");
 	};
 
-	const { isContact } = userStore.users.find(
-		(i) => i.userId === messageStore.selectedChatInfo.userId
-	) || { isContact: false };
+	// const { isContact } = userStore.users.find(
+	// 	(i) => i.userId === messageStore.selectedChatInfo.userId
+	// ) || { isContact: false };
+	const isContact = true;
 
 	const isOpen = !!anchorEl;
 
@@ -82,5 +80,3 @@ const ChatBarMenu = () => {
 		</Box.Div>
 	);
 };
-
-export default ChatBarMenu;

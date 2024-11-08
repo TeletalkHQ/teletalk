@@ -10,7 +10,7 @@ interface Props {
 	// transitionDirection: SlideProps["direction"];
 }
 
-const MessageListItem: React.FC<Props> = ({
+export const MessageListItem: React.FC<Props> = ({
 	chatDate,
 	// transitionDirection,
 	justify,
@@ -31,9 +31,7 @@ const MessageListItem: React.FC<Props> = ({
 					elevation={0}
 					style={{ padding: 5, borderRadius: 10 }}
 				>
-					<Typography.Base style={{ wordBreak: "break-word" }}>
-						{message}
-					</Typography.Base>
+					<Typography style={{ wordBreak: "break-word" }}>{message}</Typography>
 
 					<Box.Flex
 						alignItems="center"
@@ -41,15 +39,15 @@ const MessageListItem: React.FC<Props> = ({
 						justifyContent="flex-end"
 						style={{ fontSize: 12 }}
 					>
-						<Typography.GreyTextParagraph>
+						<Typography variant="greyCaption">
 							{messageTime || "12:24"}
-						</Typography.GreyTextParagraph>
-						<Typography.GreyTextParagraph>
-							{chatDate}
-						</Typography.GreyTextParagraph>
-						<Typography.GreyTextParagraph>
+						</Typography>
+
+						<Typography variant="greyCaption">{chatDate}</Typography>
+
+						<Typography variant="greyCaption">
 							<DoneAllIcon fontSize="small" />
-						</Typography.GreyTextParagraph>
+						</Typography>
 					</Box.Flex>
 				</Box.Paper>
 				{/* </Transitions.Slide> */}
@@ -57,5 +55,3 @@ const MessageListItem: React.FC<Props> = ({
 		</>
 	);
 };
-
-export default MessageListItem;

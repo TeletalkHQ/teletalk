@@ -6,8 +6,6 @@ type Props = Omit<
 	"type"
 >;
 
-const Base: React.FC<Props> = (props) => {
+export const Base: React.FC<Props> = (props) => {
 	return <input {...props} type="file" />;
 };
-
-export default Base;

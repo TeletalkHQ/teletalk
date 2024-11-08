@@ -9,7 +9,7 @@ interface Props {
 	onItemLick: VoidWithArg<UserId>;
 }
 
-const List: React.FC<Props> = ({ onItemLick }) => {
+export const List: React.FC<Props> = ({ onItemLick }) => {
 	const userStore = useUserStore();
 
 	return (
@@ -26,5 +26,3 @@ const List: React.FC<Props> = ({ onItemLick }) => {
 		</Box.List>
 	);
 };
-
-export default List;

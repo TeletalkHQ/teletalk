@@ -1,12 +1,10 @@
-import { Template } from "@repo/ui";
-
 import { useDialogState } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 
 import { Actions } from "./actions";
 import { Content } from "./content";
 
-const AvatarViewer = () => {
+export const AvatarViewer = () => {
 	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("avatarViewer");
 	const userStore = useUserStore();
@@ -35,5 +33,3 @@ const AvatarViewer = () => {
 		</>
 	);
 };
-
-export default AvatarViewer;

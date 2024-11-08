@@ -1,26 +1,28 @@
+import { ListItemAvatar } from "@mui/material";
 import { useUserPublicInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
+import { Box } from "@repo/ui";
 
-import Lower from "./Lower";
-import Upper from "./Upper";
+import { Lower } from "./Lower";
+import { Upper } from "./Upper";
 
 interface Props {
 	messageText: BaseSchema.MessageText;
 	onClick: VoidNoArgs;
 	selected: boolean;
-	userId: BaseSchema.UserId;
+	senderId: BaseSchema.UserId;
 }
 
-const ChatListItem: React.FC<Props> = ({
+export const ChatListItem: React.FC<Props> = ({
 	messageText,
 	onClick,
 	selected,
-	userId,
+	senderId,
 }) => {
-	const { publicInfo } = useUserPublicInfo({ userId });
-
-	const fullName = userUtils.concatFirstNameWithLastName(publicInfo);
+	const {
+		data: { userPublicInfo },
+	} = useUserPublicInfo({ userId: senderId });
 
 	return (
 		<Box.ListItemButton
@@ -37,15 +39,20 @@ const ChatListItem: React.FC<Props> = ({
 			onClick={onClick}
 		>
 			<ListItemAvatar>
-				<Box.Avatar src={avatarSrc} style={{ width: 45, height: 45 }} />
+				<Box.Avatar
+					// TODO: Add `avatar`
+					// src={userPublicInfo.avatarSrc}
+					style={{ width: 45, height: 45 }}
+				/>
 			</ListItemAvatar>
 
 			<Box.Flex col style={{ width: "80%" }}>
-				<Upper fullName={fullName} />
+				<Upper
+					firstName={userPublicInfo.firstName}
+					lastName={userPublicInfo.lastName}
+				/>
 				<Lower messageText={messageText} />
 			</Box.Flex>
 		</Box.ListItemButton>
 	);
 };
-
-export default ChatListItem;

@@ -61,5 +61,3 @@ export const Content: React.FC<Props> = ({
 		</Box.Flex>
 	);
 };
-
-export default Content;

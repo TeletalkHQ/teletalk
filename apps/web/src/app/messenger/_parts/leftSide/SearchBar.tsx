@@ -5,7 +5,7 @@ interface Props {
 	onDrawerIconClick: VoidNoArgs;
 }
 
-const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
+export const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
 	return (
 		<Box.Paper
 			style={{
@@ -50,5 +50,3 @@ const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
 		</Box.Paper>
 	);
 };
-
-export default SearchBar;

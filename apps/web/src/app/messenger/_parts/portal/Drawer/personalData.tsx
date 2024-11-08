@@ -7,7 +7,11 @@ interface Props {
 	avatarSrc: AvatarSrc;
 }
 
-const PersonalData: React.FC<Props> = ({ fullName, fullNumber, avatarSrc }) => (
+export const PersonalData: React.FC<Props> = ({
+	fullName,
+	fullNumber,
+	avatarSrc,
+}) => (
 	<Box.Flex
 		ai="center"
 		col
@@ -36,5 +40,3 @@ const PersonalData: React.FC<Props> = ({ fullName, fullNumber, avatarSrc }) => (
 		</Box.Div>
 	</Box.Flex>
 );
-
-export default PersonalData;

@@ -1,5 +1,4 @@
 import { userUtils } from "@repo/classes";
-import { Template } from "@repo/ui";
 
 import {
 	useDialogState,
@@ -11,7 +10,7 @@ import { useGlobalStore } from "~/store";
 import { Actions } from "./actions";
 import { Content } from "./content";
 
-const RemoveBlock = () => {
+export const RemoveBlock = () => {
 	const globalStore = useGlobalStore();
 	const selectedUserForActions = useFindSelectedUserForActions();
 	const dialogState = useDialogState("removeBlock");
@@ -50,5 +49,3 @@ const RemoveBlock = () => {
 		</>
 	);
 };
-
-export default RemoveBlock;

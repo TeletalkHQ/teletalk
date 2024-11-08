@@ -4,7 +4,7 @@ import { TCellProps } from "./types";
 
 interface Props extends TCellProps {}
 
-function TCell(props: Props) {
+export function TCell(props: Props) {
 	return (
 		<TableCell {...props}>
 			<Box
@@ -20,5 +20,3 @@ function TCell(props: Props) {
 		</TableCell>
 	);
 }
-
-export default TCell;

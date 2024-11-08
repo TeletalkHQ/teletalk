@@ -2,7 +2,7 @@ import { UserItem, Users, VoidWithArg } from "@repo/types";
 
 import { GlobalStore } from "~/store";
 
-import ListItem from "./ListItem";
+import { ListItem } from "./ListItem";
 
 interface Props {
 	contacts: Users;
@@ -32,5 +32,3 @@ export const Content: React.FC<Props> = ({
 		</>
 	);
 };
-
-export default Content;

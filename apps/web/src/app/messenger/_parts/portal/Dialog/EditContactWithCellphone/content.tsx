@@ -23,5 +23,3 @@ export const Content: React.FC<Props> = ({ fullName, onChange }) => {
 		</>
 	);
 };
-
-export default Content;

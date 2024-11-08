@@ -1,5 +1,3 @@
-import { Template } from "@repo/ui";
-
 import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
 import { OnInputChange } from "~/types";
@@ -9,7 +7,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-const AddContactWithUserId = () => {
+export const AddContactWithUserId = () => {
 	const globalStore = useGlobalStore();
 	const userStore = useUserStore();
 	const messageStore = useMessageStore();
@@ -59,5 +57,3 @@ const AddContactWithUserId = () => {
 		</>
 	);
 };
-
-export default AddContactWithUserId;

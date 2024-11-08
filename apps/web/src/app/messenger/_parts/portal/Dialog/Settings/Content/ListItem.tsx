@@ -12,7 +12,7 @@ interface Props {
 	Icon: IconType;
 }
 
-const ListItem: React.FC<Props> = ({
+export const ListItem: React.FC<Props> = ({
 	disabled,
 	displayName,
 	Icon,
@@ -33,5 +33,3 @@ const ListItem: React.FC<Props> = ({
 		<Box.Div> {displayName}</Box.Div>
 	</Box.ListItemButton>
 );
-
-export default ListItem;

@@ -1,18 +1,17 @@
+import { useDialogState } from "@repo/hooks";
 import { Box } from "@repo/ui";
 
-import { useGlobalStore } from "~/store";
-
-import ChatBarCenterContent from "./CenterContent";
-import ChatBarCloseButton from "./CloseButton";
-import ChatBarMenu from "./Menu";
+import { ChatBarCenterContent } from "./centerContent";
+import { ChatBarCloseButton } from "./closeButton";
+import { ChatBarMenu } from "./menu";
 
 interface Props {}
 
-const ChatBar: React.FC<Props> = () => {
-	const globalStore = useGlobalStore();
+export const ChatBar: React.FC<Props> = () => {
+	const dialogState = useDialogState("userInfo");
 
 	const handleChatBarClick = () => {
-		globalStore.openDialog("userInfo");
+		dialogState.open();
 	};
 
 	return (
@@ -38,5 +37,3 @@ const ChatBar: React.FC<Props> = () => {
 		</>
 	);
 };
-
-export default ChatBar;

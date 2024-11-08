@@ -31,5 +31,3 @@ export const Content: React.FC<Props> = ({ avatarSrc }) => {
 		</>
 	);
 };
-
-export default Content;

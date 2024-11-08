@@ -14,7 +14,7 @@ interface Props {
 	userId: UserId;
 }
 
-const ListItem: React.FC<Props> = ({
+export const ListItem: React.FC<Props> = ({
 	fullName,
 	lastSeen,
 	onContactClick,
@@ -52,5 +52,3 @@ const ListItem: React.FC<Props> = ({
 		</Box.ListItemButton>
 	);
 };
-
-export default ListItem;

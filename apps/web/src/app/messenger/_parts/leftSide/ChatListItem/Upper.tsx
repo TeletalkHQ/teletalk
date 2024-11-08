@@ -1,10 +1,12 @@
+import { BaseSchema } from "@repo/schema";
 import { Box, Typography } from "@repo/ui";
 
 interface Props {
-	fullName: string;
+	firstName: BaseSchema.FirstName;
+	lastName: BaseSchema.LastName;
 }
 
-const Upper: React.FC<Props> = ({ fullName }) => (
+export const Upper: React.FC<Props> = ({ firstName, lastName }) => (
 	<Box.Flex
 		ai="center"
 		jc="space-between"
@@ -12,17 +14,16 @@ const Upper: React.FC<Props> = ({ fullName }) => (
 			width: "100%",
 		}}
 	>
-		<Typography.Bold>{fullName}</Typography.Bold>
+		<Typography fontWeight="bold">{`${firstName} ${lastName}`}</Typography>
 		<Box.Div>
-			<Typography.GreyTextParagraph
+			<Typography
 				style={{
 					fontSize: 12,
 				}}
+				variant="greyCaption"
 			>
 				12:38
-			</Typography.GreyTextParagraph>
+			</Typography>
 		</Box.Div>
 	</Box.Flex>
 );
-
-export default Upper;

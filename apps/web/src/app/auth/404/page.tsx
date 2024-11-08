@@ -1,7 +1,7 @@
 import { useCustomRouter } from "@repo/hooks";
 import { useEffect } from "react";
 
-const Page404Container = () => {
+export const Page404Container = () => {
 	const router = useCustomRouter();
 
 	useEffect(() => {
@@ -11,5 +11,3 @@ const Page404Container = () => {
 
 	return <></>;
 };
-
-export default Page404Container;

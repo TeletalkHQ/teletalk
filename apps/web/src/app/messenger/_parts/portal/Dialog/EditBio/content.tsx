@@ -23,5 +23,3 @@ export const Content: React.FC<Props> = ({ bio, onChange }) => {
 		</Box.Flex>
 	);
 };
-
-export default Content;

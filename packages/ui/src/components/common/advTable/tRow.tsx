@@ -26,7 +26,7 @@ interface Props<Schema, ExtraFields extends string = string> extends TRowProps {
 	tCellProps?: TableCellProps;
 }
 
-function TRow<Schema, ExtraFields extends string = string>({
+export function TRow<Schema, ExtraFields extends string = string>({
 	className,
 	components,
 	headers,
@@ -67,5 +67,3 @@ function TRow<Schema, ExtraFields extends string = string>({
 		</TableRow>
 	);
 }
-
-export default TRow;

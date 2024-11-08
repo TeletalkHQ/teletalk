@@ -14,7 +14,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-const AddServer = () => {
+export const AddServer = () => {
 	const dialogState = useDialogState("addServer");
 	const [inputValue, setInputValue] = useState("");
 	const [protocol, setProtocol] = useState<Protocol>("https");
@@ -95,5 +95,3 @@ const AddServer = () => {
 		/>
 	);
 };
-
-export default AddServer;

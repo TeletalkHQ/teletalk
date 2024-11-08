@@ -10,7 +10,7 @@ interface Props {
 	onItemClick: VoidWithArg<GlobalStore.DialogName>;
 }
 
-const ListItem: React.FC<Props> = ({ item, onItemClick }) => (
+export const ListItem: React.FC<Props> = ({ item, onItemClick }) => (
 	<Box.ListItemButton
 		style={{
 			display: "flex",
@@ -31,5 +31,3 @@ const ListItem: React.FC<Props> = ({ item, onItemClick }) => (
 		<Box.Span>{item.displayName}</Box.Span>
 	</Box.ListItemButton>
 );
-
-export default ListItem;

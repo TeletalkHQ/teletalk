@@ -10,7 +10,7 @@ interface Props {
 	onItemLick: VoidNoArgs;
 }
 
-const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
+export const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
 	const { publicInfo } = useGetPublicData(userItem.userId);
 
 	return (
@@ -58,5 +58,3 @@ const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
 		</Box.ListItemButton>
 	);
 };
-
-export default ListItem;

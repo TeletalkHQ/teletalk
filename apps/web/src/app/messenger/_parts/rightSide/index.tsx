@@ -1,40 +1,28 @@
 import { Box } from "@repo/ui";
-import { useEffect } from "react";
 
-import { storage } from "~/classes/Storage";
-import ChatBar from "~/containers/Messenger/RightSide/ChatBar";
-import MessageInput from "~/containers/Messenger/RightSide/MessageInput";
-import MessageList from "~/containers/Messenger/RightSide/MessageList";
-import {
-	useCustomRouter,
-	useEmitter,
-	useNewPrivateChatMessage,
-	useSetPrivateChats,
-} from "~/hooks";
-import { useMessageStore, useUserStore } from "~/store";
+import { useChatStore } from "~/store";
 
-const RightSide = () => {
-	const messageStore = useMessageStore();
-	useNewPrivateChatMessage();
-	useSetPrivateChats();
-	const { handler: joinHandler } = useEmitter("join");
-	const { handler: getOnlineClientsHandler } = useEmitter("getOnlineClients");
-	const userStore = useUserStore();
-	const router = useCustomRouter();
+import { ChatBar } from "./ChatBar";
+import { MessageInput } from "./messageInput";
+import { MessageList } from "./messageList";
 
-	useEffect(() => {
-		if (!storage.get("session")) router.push("signIn");
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+export const RightSide = () => {
+	const selectedChatId = useChatStore((state) => state.selectedChatId);
 
-	useEffect(() => {
-		if (userStore.currentUserData.userId)
-			joinHandler.send(undefined, () => {
-				getOnlineClientsHandler.send(undefined);
-			});
+	// useEffect(() => {
+	// TODO: Check if `isAuthenticated`
+	// if (!storage.get("session")) router.push("signIn");
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, []);
 
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [userStore.currentUserData.userId]);
+	// useEffect(() => {
+	// TODO: Handle this in server-side
+	// if (userStore.currentUserData.userId)
+	// 	joinHandler.send(undefined, () => {
+	// 		getOnlineClientsHandler.send(undefined);
+	// 	});
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [userStore.currentUserData.userId]);
 
 	return (
 		<Box.Grid
@@ -46,7 +34,7 @@ const RightSide = () => {
 				height: "100%",
 			}}
 		>
-			{messageStore.selectedChatInfo.userId && (
+			{selectedChatId && (
 				<Box.Flex
 					ai="center"
 					col
@@ -78,5 +66,3 @@ const RightSide = () => {
 		</Box.Grid>
 	);
 };
-
-export default RightSide;

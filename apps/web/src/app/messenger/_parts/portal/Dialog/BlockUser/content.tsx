@@ -14,5 +14,3 @@ export const Content: React.FC<Props> = ({ fullName }) => (
 		</Box.Div>
 	</>
 );
-
-export default Content;

@@ -1,5 +1,4 @@
 import { UserItem } from "@repo/types";
-import { Template } from "@repo/ui";
 
 import { useContextMenu, useDialogState } from "~/hooks";
 import {
@@ -13,7 +12,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-const Contacts = () => {
+export const Contacts = () => {
 	const globalStore = useGlobalStore();
 	const messageStore = useMessageStore();
 	const userStore = useUserStore();
@@ -86,5 +85,3 @@ const Contacts = () => {
 		/>
 	);
 };
-
-export default Contacts;

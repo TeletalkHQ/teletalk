@@ -10,7 +10,7 @@ interface Props {
 	username: string;
 }
 
-const List: React.FC<Props> = ({
+export const List: React.FC<Props> = ({
 	bio,
 	fullName,
 	fullNumber,
@@ -37,5 +37,3 @@ const List: React.FC<Props> = ({
 		</>
 	);
 };
-
-export default List;

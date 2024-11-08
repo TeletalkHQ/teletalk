@@ -6,7 +6,11 @@ interface Props {
 	avatarSrc: AvatarSrc;
 	onAvatarClick: VoidNoArgs;
 }
-const Header: React.FC<Props> = ({ avatarSrc, fullName, onAvatarClick }) => {
+export const Header: React.FC<Props> = ({
+	avatarSrc,
+	fullName,
+	onAvatarClick,
+}) => {
 	return (
 		<Box.Flex ai="center" col gap={1} jc="center">
 			<Box.Avatar
@@ -26,5 +30,3 @@ const Header: React.FC<Props> = ({ avatarSrc, fullName, onAvatarClick }) => {
 		</Box.Flex>
 	);
 };
-
-export default Header;

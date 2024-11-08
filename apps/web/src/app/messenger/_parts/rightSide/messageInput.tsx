@@ -10,7 +10,7 @@ import {
 } from "@repo/ui";
 import { useWatch } from "react-hook-form";
 
-const MessageInput = () => {
+export const MessageInput = () => {
 	const { emitter, isLoading } = useSendMessage();
 
 	const schemaName: FormSchemaName = "messageInput";
@@ -95,5 +95,3 @@ const MessageInput = () => {
 		</Form.Base>
 	);
 };
-
-export default MessageInput;

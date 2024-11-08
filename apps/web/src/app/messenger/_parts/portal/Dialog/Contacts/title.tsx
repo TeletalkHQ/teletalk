@@ -7,5 +7,3 @@ export const Title = () => (
 		</Box.Flex>
 	</>
 );
-
-export default Title;

@@ -1,5 +1,4 @@
 import { emptyMaker } from "@repo/classes";
-import { Template } from "@repo/ui";
 import React from "react";
 
 import { useDialogState, useEmitter } from "~/hooks";
@@ -11,7 +10,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-const AddContactWithCellphone = () => {
+export const AddContactWithCellphone = () => {
 	const globalStore = useGlobalStore();
 	const userStore = useUserStore();
 	const { handler, loading } = useEmitter("addContact");
@@ -69,5 +68,3 @@ const AddContactWithCellphone = () => {
 		</>
 	);
 };
-
-export default AddContactWithCellphone;

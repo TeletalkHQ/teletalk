@@ -20,7 +20,7 @@ const geistMono = localFont({
 	variable: "--font-geist-mono",
 });
 
-export default function Layout({
+export function Layout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;

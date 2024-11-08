@@ -1,5 +1,4 @@
 import { extractor } from "@repo/classes";
-import { Template } from "@repo/ui";
 import { useEffect } from "react";
 
 import { useDialogState } from "~/hooks";
@@ -10,7 +9,7 @@ import { Content } from "./content";
 import { Title } from "./title";
 import { EditProfileListItem } from "./types";
 
-const EditProfile = () => {
+export const EditProfile = () => {
 	const globalStore = useGlobalStore();
 	const settingsStore = useSettingsStore();
 	const userStore = useUserStore();
@@ -57,5 +56,3 @@ const EditProfile = () => {
 		</>
 	);
 };
-
-export default EditProfile;

@@ -1,34 +1,30 @@
-import type { PrivateChats, UserId } from "@repo/types";
+import { useUserInfo } from "@repo/hooks";
+import { BaseSchema } from "@repo/schema";
 import { Box } from "@repo/ui";
-import { useEffect } from "react";
 
-import { domUtils } from "~/classes/DomUtils";
-import MessageListItem from "~/containers/Messenger/RightSide/MessageListItem";
-import { useMessageStore, useUserStore } from "~/store";
+import { MessageListItem } from "./messageListItem";
 
 interface Props {}
 
-const MessageList: React.FC<Props> = () => {
-	const userStore = useUserStore();
-	const messageStore = useMessageStore();
+export const MessageList: React.FC<Props> = () => {
+	// TODO: Handle scroll to bottom
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		//CLEANME: Don't use null assertions
+	// 		const messageBox = domUtils().getElementById("messageBox")!;
+	// 		messageBox.scrollTo({
+	// 			top: messageBox.scrollHeight,
+	// 		});
+	// 	}, 100);
+	// }, [messageStore.privateChats]);
 
-	useEffect(() => {
-		setTimeout(() => {
-			//CLEANME: Don't use null assertions
-			const messageBox = domUtils().getElementById("messageBox")!;
-			messageBox.scrollTo({
-				top: messageBox.scrollHeight,
-			});
-		}, 100);
-	}, [messageStore.privateChats]);
+	// const selectedChatId = useChatStore((state) => state.selectedChatId);
 
-	const selectedChatId =
-		messageStore.selectedChatInfo.chatId ||
-		findChatId(messageStore.privateChats, messageStore.selectedChatInfo.userId);
+	const {
+		data: { userInfo },
+	} = useUserInfo();
 
-	const messages =
-		messageStore.privateChats.find((i) => i.chatId === selectedChatId)
-			?.messages || [];
+	const messages: BaseSchema.Messages = [];
 
 	return (
 		<Box.Div
@@ -48,21 +44,15 @@ const MessageList: React.FC<Props> = () => {
 						key={index}
 						chatDate=""
 						justify={
-							userStore.currentUserData.userId === messageItem.sender.senderId
+							userInfo.userId === messageItem.sender.senderId
 								? "flex-end"
 								: "flex-start"
 						}
 						message={messageItem.messageText}
-						messageTime={"" ?? messageItem.createdAt.toString()}
+						messageTime={messageItem.createdAt.toString()}
 					/>
 				);
 			})}
 		</Box.Div>
 	);
 };
-
-export default MessageList;
-
-const findChatId = (p: PrivateChats, selectedUserId: UserId) =>
-	p.find((i) => i.participants.find((j) => j.participantId === selectedUserId))
-		?.chatId || "";

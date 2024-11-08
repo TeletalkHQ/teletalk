@@ -1,5 +1,4 @@
 import { userUtils } from "@repo/classes";
-import { Template } from "@repo/ui";
 
 import {
 	useDialogState,
@@ -11,7 +10,7 @@ import { useGlobalStore } from "~/store";
 import { Actions } from "./actions";
 import { Content } from "./content";
 
-const RemoveContact = () => {
+export const RemoveContact = () => {
 	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("removeContact");
 	const selectedUserForActions = useFindSelectedUserForActions();
@@ -50,5 +49,3 @@ const RemoveContact = () => {
 		</>
 	);
 };
-
-export default RemoveContact;

@@ -6,7 +6,7 @@ interface Props {
 	onSettingItemClick: OnSettingItemClick;
 }
 
-const List: React.FC<Props> = ({ onSettingItemClick }) => {
+export const List: React.FC<Props> = ({ onSettingItemClick }) => {
 	return (
 		<>
 			{settingsList.map((item, i) => (
@@ -21,5 +21,3 @@ const List: React.FC<Props> = ({ onSettingItemClick }) => {
 		</>
 	);
 };
-
-export default List;

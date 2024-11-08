@@ -2,10 +2,11 @@ import { Box } from "@repo/ui";
 
 import { useGlobalStore } from "~/store/global";
 
-import ChatList from "./ChatList";
-import SearchBar from "./SearchBar";
+import { ChatList } from "./ChatList";
+import { SearchBar } from "./SearchBar";
+import { SideBarList } from "./SideBarList";
 
-const LeftSide = () => {
+export const LeftSide = () => {
 	const globalStore = useGlobalStore();
 
 	const handleDrawerIconClick = () => {
@@ -26,6 +27,7 @@ const LeftSide = () => {
 			>
 				<Box.Flex col style={{ width: "100%", height: "100%" }}>
 					<SearchBar onDrawerIconClick={handleDrawerIconClick} />
+					<SideBarList />
 
 					<Box.List
 						sx={{
@@ -42,5 +44,3 @@ const LeftSide = () => {
 		</>
 	);
 };
-
-export default LeftSide;

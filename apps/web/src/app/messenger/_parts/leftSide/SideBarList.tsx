@@ -10,7 +10,7 @@ const sidebarList = [
 	Icons.EditChatsOutlined,
 ];
 
-const SideBarList = () => {
+export const SideBarList = () => {
 	return (
 		<>
 			<Box.List sx={{ width: "20%" }}>
@@ -36,5 +36,3 @@ const SideBarList = () => {
 		</>
 	);
 };
-
-export default SideBarList;

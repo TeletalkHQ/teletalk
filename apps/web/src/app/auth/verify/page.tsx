@@ -22,9 +22,9 @@ import { useFormState } from "react-hook-form";
 import { domUtils } from "~/classes";
 import { useAuthUrlQueries } from "~/hooks";
 
-import AuthFooter from "../common/AuthFooter";
+import { AuthFooter } from "../common/AuthFooter";
 
-const Verify = () => {
+export const Verify = () => {
 	const router = useCustomRouter();
 	const {
 		api: { postApi },
@@ -125,5 +125,3 @@ const Verify = () => {
 		</Form.Base>
 	);
 };
-
-export default Verify;

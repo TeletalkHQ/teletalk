@@ -17,7 +17,7 @@ interface Props<Schema, ExtraFields extends string = string> {
 	components?: Partial<CellValueComponents<Schema, ExtraFields>>;
 }
 
-function TBody<Schema, ExtraFields extends string = string>({
+export function TBody<Schema, ExtraFields extends string = string>({
 	data,
 	headers,
 	isLoading,
@@ -61,5 +61,3 @@ function TBody<Schema, ExtraFields extends string = string>({
 		</TableBody>
 	);
 }
-
-export default TBody;

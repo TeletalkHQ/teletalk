@@ -6,7 +6,10 @@ interface Props {
 	onAddServerClick: VoidNoArgs;
 }
 
-const AddServerButton: React.FC<Props> = ({ disabled, onAddServerClick }) => {
+export const AddServerButton: React.FC<Props> = ({
+	disabled,
+	onAddServerClick,
+}) => {
 	return (
 		<>
 			<Button disabled={disabled} onClick={onAddServerClick}>
@@ -15,5 +18,3 @@ const AddServerButton: React.FC<Props> = ({ disabled, onAddServerClick }) => {
 		</>
 	);
 };
-
-export default AddServerButton;

@@ -19,9 +19,9 @@ import {
 } from "@repo/ui";
 import { useFormState } from "react-hook-form";
 
-import AuthFooter from "../common/AuthFooter";
+import { AuthFooter } from "../common/AuthFooter";
 
-const Create = () => {
+export const Create = () => {
 	const router = useCustomRouter();
 
 	const {
@@ -98,5 +98,3 @@ const Create = () => {
 		</Form.Base>
 	);
 };
-
-export default Create;

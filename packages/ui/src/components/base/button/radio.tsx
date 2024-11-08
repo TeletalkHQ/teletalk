@@ -2,8 +2,6 @@ import { FC } from "react";
 
 interface Props {}
 
-const radio: FC<Props> = () => {
+export const Radio: FC<Props> = () => {
 	return <div>radio</div>;
 };
-
-export default radio;

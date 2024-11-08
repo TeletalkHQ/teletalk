@@ -5,8 +5,8 @@ import { Box } from "@repo/ui";
 import { SettingsStore } from "~/store";
 
 import { EditProfileListItemOnClick } from "../types";
-import Header from "./Header";
-import List from "./List";
+import { Header } from "./Header";
+import { List } from "./List";
 
 interface Props {
 	avatarSrc: AvatarSrc;
@@ -50,5 +50,3 @@ export const Content: React.FC<Props> = ({
 		</>
 	);
 };
-
-export default Content;

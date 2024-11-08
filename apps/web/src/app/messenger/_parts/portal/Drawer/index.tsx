@@ -11,7 +11,7 @@ import { utils } from "~/utils";
 import DrawerList from "./DrawerList";
 import PersonalData from "./PersonalData";
 
-const Drawer = () => {
+export const Drawer = () => {
 	const globalStore = useGlobalStore();
 	const userStore = useUserStore();
 
@@ -78,5 +78,3 @@ const Drawer = () => {
 		</SwipeableDrawer>
 	);
 };
-
-export default Drawer;

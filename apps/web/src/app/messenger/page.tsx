@@ -4,7 +4,7 @@ import { useUserInfo, useUserPublicInfo } from "@repo/hooks";
 
 import { MessengerContainer } from "./_parts";
 
-const Messenger = () => {
+export const Messenger = () => {
 	const {
 		data: { userInfo },
 	} = useUserInfo();
@@ -15,5 +15,3 @@ const Messenger = () => {
 
 	return <MessengerContainer />;
 };
-
-export default Messenger;

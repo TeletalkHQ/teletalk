@@ -3,7 +3,7 @@ import { Box, Typography, TypographyProps } from "@repo/ui";
 
 interface Props extends TypographyProps {}
 
-const Copyright: React.FC<Props> = (props) => {
+export const Copyright: React.FC<Props> = (props) => {
 	const { getAppBaseUrl } = useConfigs();
 
 	return (
@@ -22,5 +22,3 @@ const Copyright: React.FC<Props> = (props) => {
 		</Typography>
 	);
 };
-
-export default Copyright;

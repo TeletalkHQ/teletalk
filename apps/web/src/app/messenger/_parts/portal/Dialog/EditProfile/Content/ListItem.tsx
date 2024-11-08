@@ -11,7 +11,7 @@ interface Props extends ListItemButtonProps {
 	Icon: IconType;
 }
 
-const ListItem: React.FC<Props> = ({
+export const ListItem: React.FC<Props> = ({
 	disabled,
 	Icon,
 	label,
@@ -55,5 +55,3 @@ const ListItem: React.FC<Props> = ({
 		</Box.Flex>
 	</Box.ListItemButton>
 );
-
-export default ListItem;

@@ -1,5 +1,4 @@
 import { userUtils } from "@repo/classes";
-import { Template } from "@repo/ui";
 
 import { useDialogState } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
@@ -9,7 +8,7 @@ import { Content } from "./content";
 import { Title } from "./title";
 import { SettingItem } from "./types";
 
-const Settings = () => {
+export const Settings = () => {
 	const globalStore = useGlobalStore();
 	const userStore = useUserStore();
 	const dialogState = useDialogState("settings");
@@ -41,5 +40,3 @@ const Settings = () => {
 		/>
 	);
 };
-
-export default Settings;

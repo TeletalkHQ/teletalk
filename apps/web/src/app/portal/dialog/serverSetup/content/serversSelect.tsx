@@ -11,7 +11,7 @@ interface Props {
 	selectedServerId: number | undefined;
 }
 
-const ServerSelect: React.FC<Props> = ({
+export const ServerSelect: React.FC<Props> = ({
 	disabled,
 	onServerSelectChange,
 	selectedServerId,
@@ -44,5 +44,3 @@ const ServerSelect: React.FC<Props> = ({
 		</>
 	);
 };
-
-export default ServerSelect;

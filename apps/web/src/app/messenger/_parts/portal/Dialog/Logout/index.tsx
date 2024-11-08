@@ -6,7 +6,7 @@ import { useGlobalStore } from "~/store";
 import { Actions } from "./actions";
 import { Content } from "./content";
 
-const Logout = () => {
+export const Logout = () => {
 	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("logout");
 	const { handler, loading } = useEmitter("logout");
@@ -36,5 +36,3 @@ const Logout = () => {
 		</>
 	);
 };
-
-export default Logout;

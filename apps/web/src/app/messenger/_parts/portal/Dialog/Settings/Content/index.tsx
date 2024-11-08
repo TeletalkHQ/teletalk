@@ -3,8 +3,8 @@ import type { AvatarSrc, Username } from "@repo/types";
 import { Box } from "@repo/ui";
 
 import { OnSettingItemClick } from "../types";
-import List from "./List";
-import ProfileOverview from "./ProfileOverview";
+import { List } from "./List";
+import { ProfileOverview } from "./ProfileOverview";
 
 interface Props {
 	avatarSrc: AvatarSrc;
@@ -38,5 +38,3 @@ export const Content: React.FC<Props> = ({
 		</>
 	);
 };
-
-export default Content;

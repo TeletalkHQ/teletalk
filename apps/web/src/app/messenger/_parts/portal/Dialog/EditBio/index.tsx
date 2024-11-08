@@ -1,5 +1,3 @@
-import { Template } from "@repo/ui";
-
 import { useDialogState, useUpdateProfile } from "~/hooks";
 import { useGlobalStore, useSettingsStore } from "~/store";
 import { OnInputChange } from "~/types";
@@ -8,7 +6,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-const EditBio = () => {
+export const EditBio = () => {
 	const globalStore = useGlobalStore();
 	const settingsStore = useSettingsStore();
 	const { handler: profileUpdater, loading } = useUpdateProfile();
@@ -44,5 +42,3 @@ const EditBio = () => {
 		</>
 	);
 };
-
-export default EditBio;

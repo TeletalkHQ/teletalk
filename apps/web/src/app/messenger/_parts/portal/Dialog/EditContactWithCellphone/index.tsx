@@ -1,7 +1,6 @@
 import { emptyMaker } from "@repo/classes";
 import { extractor } from "@repo/classes";
 import type { FullName } from "@repo/types";
-import { Template } from "@repo/ui";
 import React, { useEffect, useState } from "react";
 
 import {
@@ -17,7 +16,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-const EditContactWithCellphone = () => {
+export const EditContactWithCellphone = () => {
 	const globalStore = useGlobalStore();
 	const userStore = useUserStore();
 	const dialogState = useDialogState("editContactWithCellphone");
@@ -80,5 +79,3 @@ const EditContactWithCellphone = () => {
 		</>
 	);
 };
-
-export default EditContactWithCellphone;
