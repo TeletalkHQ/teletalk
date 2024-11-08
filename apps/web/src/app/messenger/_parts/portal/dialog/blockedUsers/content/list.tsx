@@ -3,7 +3,7 @@ import { Box } from "@repo/ui";
 
 import { useUserStore } from "~/store";
 
-import ListItem from "./ListItem";
+import ListItem from "./listItem";
 
 interface Props {
 	onItemLick: VoidWithArg<UserId>;

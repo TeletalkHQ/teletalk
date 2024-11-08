@@ -1,24 +1,24 @@
-// import { AddContactWithCellphone } from "./Dialog/AddContactWithCellphone";
-// import { AvatarSelector } from "./Dialog/AvatarSelector";
-// import { AvatarViewer } from "./Dialog/AvatarViewer";
-// import { BlockUser } from "./Dialog/BlockUser";
-// import { BlockedUsers } from "./Dialog/BlockedUsers";
-// import { Contacts } from "./Dialog/Contacts";
-// import { DeleteAvatar } from "./Dialog/DeleteAvatar";
-// import { EditBio } from "./Dialog/EditBio";
-// import { EditContactWithCellphone } from "./Dialog/EditContactWithCellphone";
-// import { EditFullName } from "./Dialog/EditFullName";
-// import { EditProfile } from "./Dialog/EditProfile";
-// import { EditUsername } from "./Dialog/EditUsername";
-// import { Logout } from "./Dialog/Logout";
-// import { PrivacyAndSecurity } from "./Dialog/PrivacyAndSecurity";
-// import { RemoveBlock } from "./Dialog/RemoveBlock";
-// import { RemoveContact } from "./Dialog/RemoveContact";
-// import { Settings } from "./Dialog/Settings";
-// import { UserInfo } from "./Dialog/UserInfo";
-// import { Drawer } from "./Drawer";
-import { Logout } from "./Dialog/Logout";
-import { Drawer } from "./Drawer";
+// import { AddContactWithCellphone } from "./Dialog/addContact";
+// import { AvatarSelector } from "./Dialog/avatarSelector";
+// import { AvatarViewer } from "./Dialog/avatarViewer";
+// import { BlockUser } from "./Dialog/blockUser";
+// import { BlockedUsers } from "./Dialog/blockedUsers";
+// import { Contacts } from "./Dialog/contacts";
+// import { DeleteAvatar } from "./Dialog/deleteAvatar";
+// import { EditBio } from "./Dialog/editBio";
+// import { EditContact } from "./Dialog/editContact";
+// import { EditFullName } from "./Dialog/editFullName";
+// import { EditProfile } from "./Dialog/editProfile";
+// import { EditUsername } from "./Dialog/editUsername";
+// import { Logout } from "./Dialog/logout";
+// import { PrivacyAndSecurity } from "./Dialog/privacyAndSecurity";
+// import { RemoveBlock } from "./Dialog/removeBlock";
+// import { RemoveContact } from "./Dialog/removeContact";
+// import { Settings } from "./Dialog/settings";
+// import { UserInfo } from "./Dialog/userInfo";
+// import { Drawer } from "./drawer";
+import { Logout } from "./dialog/logout";
+import { Drawer } from "./drawer";
 
 export const Portal = () => {
 	return (
@@ -27,7 +27,7 @@ export const Portal = () => {
 
 			<Logout />
 			{/* 
-			<AddContactWithCellphone />
+			<AddContact />
 			<AvatarSelector />
 			<AvatarViewer />
 			<BlockedUsers />
@@ -35,7 +35,7 @@ export const Portal = () => {
 			<Contacts />
 			<DeleteAvatar />
 			<EditBio />
-			<EditContactWithCellphone />
+			<EditContact />
 			<EditFullName />
 			<EditProfile />
 			<EditUsername />

@@ -14,7 +14,7 @@ export const dialogNames = [
 	"deleteAvatar",
 	"editBio",
 	"editContact",
-	"editContactWithCellphone",
+	"editContact",
 	"editFullName",
 	"editPhoneNumber",
 	"editProfile",

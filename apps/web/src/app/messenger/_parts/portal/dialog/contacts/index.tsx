@@ -23,7 +23,7 @@ export const Contacts = () => {
 	}: Partial<UserItem> = {}): GlobalStore.ContextMenuList => [
 		{
 			text: "Edit",
-			handler: onContextMenuHandler("editContactWithCellphone"),
+			handler: onContextMenuHandler("editContact"),
 		},
 		{
 			text: "Remove",

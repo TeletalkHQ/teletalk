@@ -1,6 +1,6 @@
 import type { UserId, VoidWithArg } from "@repo/types";
 
-import { List } from "./List";
+import { List } from "./list";
 
 interface Props {
 	onItemLick: VoidWithArg<UserId>;

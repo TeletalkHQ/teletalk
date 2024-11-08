@@ -2,7 +2,7 @@ import { UserItem, Users, VoidWithArg } from "@repo/types";
 
 import { GlobalStore } from "~/store";
 
-import { ListItem } from "./ListItem";
+import { ListItem } from "./listItem";
 
 interface Props {
 	contacts: Users;

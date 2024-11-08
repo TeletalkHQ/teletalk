@@ -3,8 +3,8 @@ import { Box } from "@repo/ui";
 
 import { GlobalStore } from "~/store";
 
-import { ListItem } from "./ListItem";
 import { privacyAndSecurityList } from "./data";
+import { ListItem } from "./listItem";
 
 interface Props {
 	onItemClick: VoidWithArg<GlobalStore.DialogName>;

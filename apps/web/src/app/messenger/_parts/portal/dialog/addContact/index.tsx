@@ -10,7 +10,7 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-export const AddContactWithCellphone = () => {
+export const AddContact = () => {
 	const globalStore = useGlobalStore();
 	const userStore = useUserStore();
 	const { handler, loading } = useEmitter("addContact");

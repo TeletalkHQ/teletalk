@@ -16,10 +16,10 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-export const EditContactWithCellphone = () => {
+export const EditContact = () => {
 	const globalStore = useGlobalStore();
 	const userStore = useUserStore();
-	const dialogState = useDialogState("editContactWithCellphone");
+	const dialogState = useDialogState("editContact");
 	const { handler, loading } = useEmitter("updateContact");
 	const selectedUserForActions = useFindSelectedUserForActions();
 	const [fullName, setFullName] = useState<FullName>(
