@@ -4,8 +4,8 @@ import { Box, Button } from "@repo/ui";
 
 import { ServerAvailabilityStatus } from "~/components/Other";
 
-import AddServerButton from "./addServerButton";
-import ServerSelect from "./serversSelect";
+import { AddServerButton } from "./addServerButton";
+import { ServerSelect } from "./serversSelect";
 
 interface Props {
 	disabled: boolean;

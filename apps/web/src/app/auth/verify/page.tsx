@@ -24,7 +24,7 @@ import { useAuthUrlQueries } from "~/hooks";
 
 import { AuthFooter } from "../common/AuthFooter";
 
-export const Verify = () => {
+const Verify = () => {
 	const router = useCustomRouter();
 	const {
 		api: { postApi },
@@ -125,3 +125,5 @@ export const Verify = () => {
 		</Form.Base>
 	);
 };
+
+export default Verify;

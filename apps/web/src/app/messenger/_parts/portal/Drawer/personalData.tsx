@@ -1,42 +1,40 @@
-import type { AvatarSrc } from "@repo/types";
+import { useUserInfo } from "@repo/hooks";
 import { Box, Typography } from "@repo/ui";
 
-interface Props {
-	fullNumber: string;
-	fullName: string;
-	avatarSrc: AvatarSrc;
-}
+interface Props {}
 
-export const PersonalData: React.FC<Props> = ({
-	fullName,
-	fullNumber,
-	avatarSrc,
-}) => (
-	<Box.Flex
-		ai="center"
-		col
-		gap={1}
-		jc="center"
-		style={{
-			padding: 10,
-		}}
-	>
-		<Box.Div>
-			<Box.Avatar src={avatarSrc} />
-		</Box.Div>
-		<Typography
+export const PersonalData: React.FC<Props> = () => {
+	const {
+		data: { userInfo },
+	} = useUserInfo();
+
+	return (
+		<Box.Flex
+			ai="center"
+			col
+			gap={1}
+			jc="center"
 			style={{
-				fontSize: 18,
+				padding: 10,
 			}}
 		>
-			{fullName}
-		</Typography>
-		<Box.Div
-			style={{
-				fontSize: 14,
-			}}
-		>
-			{fullNumber}
-		</Box.Div>
-	</Box.Flex>
-);
+			<Box.Div>
+				<Box.Avatar src={userInfo.avatarSrc} />
+			</Box.Div>
+			<Typography
+				style={{
+					fontSize: 18,
+				}}
+			>
+				{userInfo.firstName} {userInfo.lastName}
+			</Typography>
+			<Box.Div
+				style={{
+					fontSize: 14,
+				}}
+			>
+				+{userInfo.countryCode} {userInfo.phoneNumber}
+			</Box.Div>
+		</Box.Flex>
+	);
+};

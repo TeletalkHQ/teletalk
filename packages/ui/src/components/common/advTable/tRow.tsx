@@ -2,7 +2,7 @@ import { TableCellProps, TableRow } from "@mui/material";
 import React from "react";
 
 import { Skeleton } from "../loading";
-import TCell from "./tCell";
+import { TCell } from "./tCell";
 import { GetHeadersType } from "./tHead";
 import { TRowProps } from "./types";
 
@@ -55,11 +55,7 @@ export function TRow<Schema, ExtraFields extends string = string>({
 					>
 						<Skeleton height={40} isLoading={isLoading}>
 							{/* TODO: Convert to component - ValueComponent */}
-							<>
-								{ValueComponent
-									? ValueComponent(row)
-									: (row[name as Key] ?? "-")}
-							</>
+							{ValueComponent ? ValueComponent(row) : (row[name as Key] ?? "-")}
 						</Skeleton>
 					</TCell>
 				);

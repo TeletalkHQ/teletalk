@@ -1,6 +1,6 @@
 import { Box } from "@repo/ui";
 
-import LeftSide from "./leftSide";
+import { LeftSide } from "./leftSide";
 
 //REFACTOR
 export const MessengerContainer = () => {

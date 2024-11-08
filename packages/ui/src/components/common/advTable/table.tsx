@@ -2,10 +2,10 @@ import { Table as TableBase, TableContainer } from "@mui/material";
 import { PaginationStore } from "@repo/store";
 import React from "react";
 
-import TBody from "./tBody";
+import { TBody } from "./tBody";
 import { AdvTHead, GetHeadersType } from "./tHead";
 import { CellValueComponents } from "./tRow";
-import TablePagination from "./tablePagination";
+import { TablePagination } from "./tablePagination";
 import {
 	OnTRowClick,
 	Order,

@@ -1,19 +1,19 @@
 import { Divider, SwipeableDrawer } from "@mui/material";
-import { userUtils } from "@repo/classes";
-import { ElementName } from "@repo/types";
-import { Box } from "@repo/ui";
+import { DialogStore, dialogNames, useDialogStore } from "@repo/store";
+import { Box, ElementName } from "@repo/ui";
 import { KeyboardEvent, SyntheticEvent } from "react";
 
-import { GlobalStore, useGlobalStore, useUserStore } from "~/store";
-import { dialogNames } from "~/store/global/initialState";
-import { utils } from "~/utils";
+import { useGlobalStore } from "~/store";
 
-import DrawerList from "./DrawerList";
-import PersonalData from "./PersonalData";
+import { DrawerList } from "./drawerList";
+import { PersonalData } from "./personalData";
 
 export const Drawer = () => {
 	const globalStore = useGlobalStore();
-	const userStore = useUserStore();
+
+	const { openDialog } = useDialogStore((state) => ({
+		openDialog: state.setOpenDialog,
+	}));
 
 	const toggleDrawer = (
 		event: SyntheticEvent<object, Event> | KeyboardEvent<HTMLDivElement>,
@@ -32,21 +32,14 @@ export const Drawer = () => {
 
 	const handleDrawerItemClick = (n: ElementName) => {
 		if (dialogNames.some((i) => i === n))
-			globalStore.openDialog(n as GlobalStore.DialogName);
+			openDialog(n as DialogStore.DialogName);
 	};
-
-	const fullName = userUtils.concatFirstNameWithLastName(
-		userStore.currentUserData
-	);
-	const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(
-		userStore.currentUserData
-	);
 
 	return (
 		<SwipeableDrawer
 			anchor={globalStore.drawer.anchor}
-			disableBackdropTransition={!utils.isIos()}
-			disableDiscovery={utils.isIos()}
+			// disableBackdropTransition={!utils.isIos()}
+			// disableDiscovery={utils.isIos()}
 			open={globalStore.drawer.open}
 			onClose={(event) => toggleDrawer(event, false)}
 			onOpen={(event) => toggleDrawer(event, true)}
@@ -62,11 +55,7 @@ export const Drawer = () => {
 				}}
 				onKeyDown={(event) => toggleDrawer(event, false)}
 			>
-				<PersonalData
-					avatarSrc={userStore.currentUserData.avatarSrc}
-					fullName={fullName}
-					fullNumber={fullNumber}
-				/>
+				<PersonalData />
 
 				<Divider />
 

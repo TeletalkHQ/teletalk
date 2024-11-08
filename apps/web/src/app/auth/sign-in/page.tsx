@@ -24,7 +24,7 @@ import { useAuthUrlQueries } from "~/hooks";
 
 import { AuthFooter } from "../common/AuthFooter";
 
-export const SignInPage = () => {
+const SignIn = () => {
 	const {
 		api: { postApi },
 	} = useSignIn();
@@ -137,3 +137,5 @@ export const SignInPage = () => {
 		</Box.Container>
 	);
 };
+
+export default SignIn;

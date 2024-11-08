@@ -9,7 +9,7 @@ import {
 import { useTheme } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 
-import TCell from "./tCell";
+import { TCell } from "./tCell";
 import { Order, THeadProps } from "./types";
 
 export type Headers<K extends string | number | symbol> = Record<

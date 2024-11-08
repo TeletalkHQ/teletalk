@@ -2,7 +2,7 @@ import { TableBody, TableRow, useTheme } from "@mui/material";
 import { Fragment } from "react";
 
 import { GetHeadersType } from "./tHead";
-import TRow, { CellValueComponents } from "./tRow";
+import { CellValueComponents, TRow } from "./tRow";
 import { OnTRowClick, TBodyProps, TRowProps, TableData } from "./types";
 
 interface Props<Schema, ExtraFields extends string = string> {
