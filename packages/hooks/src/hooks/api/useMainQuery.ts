@@ -12,10 +12,11 @@ import {
 } from "@tanstack/react-query";
 
 export const queryKeys = {
-	getUserPublicInfo: ({ userId }: { userId: BaseSchema.UserId }) => [
-		"getUserPublicInfo",
+	getUserPublicInfo: ({
 		userId,
-	],
+	}: {
+		userId: BaseSchema.UserId | undefined;
+	}) => ["getUserPublicInfo", userId],
 	getUserInfo: ["getUserInfo"],
 } satisfies Partial<
 	Record<EventName, Array<any> | ((...args: any[]) => Array<any>)>

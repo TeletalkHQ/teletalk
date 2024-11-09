@@ -6,23 +6,23 @@ import { useUserStore } from "~/store";
 interface Props {}
 
 export const Content: React.FC<Props> = () => {
-	const selectedUserIdToBlock = useUserStore(
+	const selectedUserIdToUnblock = useUserStore(
 		(state) => state.selectedUserIdToBlock
 	);
 
 	const {
 		data: { userPublicInfo },
-	} = useUserPublicInfo({ userId: selectedUserIdToBlock });
+	} = useUserPublicInfo({ userId: selectedUserIdToUnblock });
 
 	return (
 		<>
 			<Box.Div style={{ textAlign: "center", fontSize: 18 }}>
 				<Box.Span>Are you sure you want to</Box.Span>{" "}
-				<Typography>block</Typography>{" "}
+				<Typography>remove</Typography>{" "}
 				<Typography>
-					{userPublicInfo.firstName} {userPublicInfo.lastName}
+					{userPublicInfo.firstName} {userPublicInfo.lastName}{" "}
 				</Typography>
-				<Box.Span>?</Box.Span>
+				<Box.Span>from your blacklist?</Box.Span>
 			</Box.Div>
 		</>
 	);

@@ -5,7 +5,7 @@ import { createEmitterInitialData, useMainEmitter } from "../useMainEmitter";
 import { queryKeys, useMainQuery } from "../useMainQuery";
 
 type Arg = {
-	userId: BaseSchema.UserId;
+	userId: BaseSchema.UserId | undefined;
 };
 
 export const useUserPublicInfo = ({ userId }: Arg) => {
@@ -17,11 +17,12 @@ export const useUserPublicInfo = ({ userId }: Arg) => {
 	const queryKey = queryKeys.getUserPublicInfo({ userId });
 
 	const queryFn = () => {
-		return emitter({
-			data: {
-				userId,
-			},
-		});
+		if (userId)
+			return emitter({
+				data: {
+					userId,
+				},
+			});
 	};
 
 	const query = useMainQuery({

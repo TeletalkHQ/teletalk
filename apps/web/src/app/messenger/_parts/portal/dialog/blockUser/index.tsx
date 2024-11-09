@@ -1,57 +1,44 @@
-import { userUtils } from "@repo/classes";
+import { useAddBlock, useDialogState } from "@repo/hooks";
+import { ConfirmActions, DialogTemplate } from "@repo/ui";
 
-import {
-	useDialogState,
-	useEmitter,
-	useFindSelectedUserForActions,
-} from "~/hooks";
-import { useGlobalStore } from "~/store";
+import { useUserStore } from "~/store";
 
-import { Actions } from "./actions";
 import { Content } from "./content";
 
 export const BlockUser = () => {
-	const globalStore = useGlobalStore();
+	const selectedUserIdToBlock = useUserStore(
+		(state) => state.selectedUserIdToBlock
+	);
+
 	const dialogState = useDialogState("addBlock");
-	const selectedUserForActions = useFindSelectedUserForActions();
 
-	const { handler: addBlockHandler, loading: addBlockLoading } =
-		useEmitter("addBlock");
-
-	const { handler: removeBlockHandler, loading: removeBlockLoading } =
-		useEmitter("removeBlock");
+	const { emitter, isLoading } = useAddBlock();
 
 	const handleConfirm = () => {
-		(selectedUserForActions.isBlocked
-			? removeBlockHandler
-			: addBlockHandler
-		).send(
-			{
-				userId: selectedUserForActions.userId,
-			},
-			globalStore.closeDialog
-		);
+		if (selectedUserIdToBlock)
+			emitter({
+				data: {
+					userId: selectedUserIdToBlock,
+				},
+				options: {
+					onSuccess: dialogState.close,
+				},
+			});
 	};
-
-	const loading = addBlockLoading || removeBlockLoading;
 
 	return (
 		<>
 			<DialogTemplate
 				actions={
-					<Actions
-						loading={loading}
-						onCancel={globalStore.closeDialog}
-						onConfirm={handleConfirm}
+					<ConfirmActions
+						cancelProps={{ onClick: dialogState.close }}
+						confirmProps={{
+							onClick: handleConfirm,
+							loading: isLoading,
+						}}
 					/>
 				}
-				content={
-					<Content
-						fullName={userUtils.concatFirstNameWithLastName(
-							selectedUserForActions
-						)}
-					/>
-				}
+				content={<Content />}
 				dialogState={dialogState}
 			/>
 		</>
