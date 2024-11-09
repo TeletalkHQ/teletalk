@@ -21,7 +21,10 @@ const messageInput = z.object({
 	messageText: baseSchema.messageText,
 });
 
+const addContact = baseSchema.contactsItem;
+
 export const formSchema = {
+	addContact,
 	createNewUser,
 	messageInput,
 	signIn,

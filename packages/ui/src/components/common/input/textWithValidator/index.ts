@@ -1,21 +1,10 @@
-import { CountryCode } from "./countryCode";
-import { Email } from "./email";
-import { FirstName } from "./firstName";
-import { LastName } from "./lastName";
-import { Name } from "./name";
-import { Password } from "./password";
-import { PhoneNumber } from "./phoneNumber";
-import { Search } from "./search";
-import { SignInCode } from "./signInCode";
-
-export const TextWithValidator = {
-	CountryCode,
-	Email,
-	FirstName,
-	LastName,
-	Name,
-	Password,
-	PhoneNumber,
-	Search,
-	SignInCode,
-};
+export * from "./countryCode";
+export * from "./countryName";
+export * from "./email";
+export * from "./firstName";
+export * from "./lastName";
+export * from "./name";
+export * from "./password";
+export * from "./phoneNumber";
+export * from "./search";
+export * from "./signInCode";

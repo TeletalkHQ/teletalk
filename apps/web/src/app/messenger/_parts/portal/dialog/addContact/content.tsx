@@ -1,33 +1,29 @@
-import type { FullName, UnknownCellphone } from "@repo/types";
-import { Box, Input } from "@repo/ui";
-
-import { OnInputChange } from "~/types";
+import { Control } from "@repo/hooks";
+import {
+	Box,
+	CountryCode,
+	CountryName,
+	FirstName,
+	LastName,
+	PhoneNumber,
+} from "@repo/ui";
 
 interface Props {
-	contact: UnknownCellphone & FullName;
-	onChange: OnInputChange;
+	control: Control<"addContact">;
 }
 
-export const Content: React.FC<Props> = ({ contact, onChange }) => {
+export const Content: React.FC<Props> = ({ control }) => {
 	return (
 		<>
 			<Box.Div>
 				<Box.Div></Box.Div>
 
 				<Box.Flex col jc="space-between" mt={2}>
-					<Input.Text.FullName
-						firstName={contact.firstName}
-						lastName={contact.lastName}
-						onFirstNameInputChange={onChange}
-						onLastNameInputChange={onChange}
-					/>
-
-					<Input.Text.Cellphone
-						countryCode={contact.countryCode}
-						countryName={contact.countryName}
-						phoneNumber={contact.phoneNumber}
-						onChange={onChange}
-					/>
+					<FirstName control={control} />
+					<LastName control={control} />
+					<CountryCode control={control} />
+					<CountryName control={control} />
+					<PhoneNumber control={control} />
 				</Box.Flex>
 			</Box.Div>
 		</>

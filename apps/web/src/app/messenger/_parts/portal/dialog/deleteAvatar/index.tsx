@@ -29,7 +29,7 @@ export const DeleteAvatar = () => {
 					/>
 				}
 				content={<Content />}
-				open={dialogState.open}
+				dialogState={dialogState}
 			/>
 		</>
 	);

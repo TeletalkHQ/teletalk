@@ -52,7 +52,7 @@ export const BlockUser = () => {
 						)}
 					/>
 				}
-				open={dialogState.open}
+				dialogState={dialogState}
 			/>
 		</>
 	);

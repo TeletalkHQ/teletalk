@@ -50,7 +50,7 @@ export const EditProfile = () => {
 						onClick={handleItemClick}
 					/>
 				}
-				open={dialogState.open}
+				dialogState={dialogState}
 				title={<Title />}
 			/>
 		</>

@@ -1,69 +1,63 @@
-import { emptyMaker } from "@repo/classes";
+import {
+	SubmitHandler,
+	useAddContact,
+	useDialogState,
+	useForm,
+} from "@repo/hooks";
+import { FormSchemaName } from "@repo/schema";
+import { ConfirmActions, DialogTemplate } from "@repo/ui";
 import React from "react";
 
-import { useDialogState, useEmitter } from "~/hooks";
-import { useGlobalStore, useUserStore } from "~/store";
-import { OnInputChange } from "~/types";
-import { utils } from "~/utils";
-
-import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
 export const AddContact = () => {
-	const globalStore = useGlobalStore();
-	const userStore = useUserStore();
-	const { handler, loading } = useEmitter("addContact");
+	const { emitter, isLoading } = useAddContact();
 	const dialogState = useDialogState("addContact");
 
-	const handleChange: OnInputChange = (e) => {
-		userStore.updateAddingContactWithCellphone({
-			[e.target.name]: e.target.value,
+	const schemaName: FormSchemaName = "addContact";
+
+	const { control, formState, handleSubmit, reset } = useForm<
+		typeof schemaName
+	>({
+		schemaName,
+		defaultValues: {},
+	});
+
+	const handleAddClick: SubmitHandler<typeof schemaName> = (data) => {
+		emitter({
+			data,
+			options: {
+				onSuccess: dialogState.close,
+			},
 		});
 	};
 
-	const handleAddClick = () => {
-		handler.send(userStore.addingContactWithCellphone, handleClose);
-	};
+	const isSubmitDisabled = !formState.isValid;
 
-	const handleClose = () => {
-		globalStore.closeDialog();
-		resetStates();
-	};
-
-	const resetStates = () => {
-		userStore.updateAddingContactWithCellphone(
-			emptyMaker.emptyAddingContactWithCellphone()
-		);
-	};
-
-	const isSubmitDisabled = utils.isContactWithCellphoneValid(
-		userStore.addingContactWithCellphone
-	);
+	const onSubmit = handleSubmit(handleAddClick);
 
 	return (
 		<>
 			<DialogTemplate
 				actions={
-					<Actions
-						isAddContactButtonDisabled={isSubmitDisabled}
-						loading={loading}
-						onAddContactClick={handleAddClick}
-						onCancelClick={handleClose}
+					<ConfirmActions
+						cancelProps={{ onClick: dialogState.close }}
+						confirmProps={{
+							onClick: onSubmit,
+							disabled: isSubmitDisabled,
+							type: "submit",
+							loading: isLoading,
+						}}
 					/>
 				}
-				content={
-					<Content
-						contact={userStore.addingContactWithCellphone}
-						onChange={handleChange}
-					/>
-				}
-				open={dialogState.open}
+				content={<Content control={control} />}
+				dialogState={dialogState}
 				paperStyle={{
 					height: "50vh",
 				}}
 				title={<Title />}
-				onAfterClose={resetStates}
+				onAfterClose={reset}
 			/>
 		</>
 	);

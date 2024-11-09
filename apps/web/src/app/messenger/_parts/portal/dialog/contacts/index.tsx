@@ -77,7 +77,7 @@ export const Contacts = () => {
 					onContextMenu={handleContextMenu}
 				/>
 			}
-			open={dialogState.open}
+			dialogState={dialogState}
 			paperStyle={{
 				height: "90vh",
 			}}

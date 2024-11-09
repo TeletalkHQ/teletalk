@@ -1,19 +1,14 @@
+import { maker } from "@repo/classes";
 import { FormSchema, FormSchemaName } from "@repo/schema";
 import { z } from "zod";
 
 export const formInitialData = {
-	createNewUser: {
-		firstName: "",
-		lastName: "",
-	},
+	addContact: maker.emptyContact(),
+	createNewUser: maker.emptyFullName(),
 	messageInput: {
 		messageText: "",
 	},
-	signIn: {
-		countryCode: "",
-		countryName: "",
-		phoneNumber: "",
-	},
+	signIn: maker.emptyCellphone(),
 	verifySignInCode: {
 		signInCode: "",
 	},

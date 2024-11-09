@@ -44,7 +44,7 @@ export const RemoveBlock = () => {
 						)}
 					/>
 				}
-				open={dialogState.open}
+				dialogState={dialogState}
 			/>
 		</>
 	);

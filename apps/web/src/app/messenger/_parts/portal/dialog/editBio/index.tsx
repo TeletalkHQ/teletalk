@@ -36,7 +36,7 @@ export const EditBio = () => {
 						onChange={handleInputChange}
 					/>
 				}
-				open={dialogState.open}
+				dialogState={dialogState}
 				title={<Title />}
 			/>
 		</>

@@ -76,7 +76,7 @@ export const AvatarSelector = () => {
 						onOpenFileSelector={handleOpenFileSelector}
 					/>
 				}
-				open={dialogState.open}
+				dialogState={dialogState}
 			/>
 		</>
 	);

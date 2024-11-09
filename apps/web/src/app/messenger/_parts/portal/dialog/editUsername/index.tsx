@@ -40,7 +40,7 @@ export const EditUsername = () => {
 						onChange={handleInputChange}
 					/>
 				}
-				open={dialogState.open}
+				dialogState={dialogState}
 				title={<Title />}
 			/>
 		</>

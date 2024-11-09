@@ -17,7 +17,7 @@ export const PrivacyAndSecurity = () => {
 			<DialogTemplate
 				actions={<Actions onClose={globalStore.closeDialog} />}
 				content={<Content onItemClick={handleItemClick} />}
-				open={dialogState.open}
+				dialogState={dialogState}
 			/>
 		</>
 	);

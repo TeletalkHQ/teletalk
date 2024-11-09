@@ -35,7 +35,7 @@ export const Settings = () => {
 					onSettingItemClick={handleSettingItemClick}
 				/>
 			}
-			open={dialogState.open}
+			dialogState={dialogState}
 			title={<Title />}
 		/>
 	);

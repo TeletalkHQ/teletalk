@@ -21,7 +21,7 @@ export const BlockedUsers = () => {
 			<DialogTemplate
 				actions={<Actions onClose={globalStore.closeDialog} />}
 				content={<Content onItemLick={handleItemClick} />}
-				open={dialogState.open}
+				dialogState={dialogState}
 			/>
 		</>
 	);

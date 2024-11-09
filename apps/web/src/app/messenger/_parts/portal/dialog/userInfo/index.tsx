@@ -28,7 +28,7 @@ export const UserInfo = () => {
 						fullNumber={userUtils.concatCountryCodeWithPhoneNumber(publicInfo)}
 					/>
 				}
-				open={dialogState.open}
+				dialogState={dialogState}
 				title={<Title />}
 			/>
 		</>

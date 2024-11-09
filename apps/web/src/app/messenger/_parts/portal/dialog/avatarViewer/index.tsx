@@ -28,7 +28,7 @@ export const AvatarViewer = () => {
 					/>
 				}
 				content={<Content avatarSrc={userStore.currentUserData.avatarSrc} />}
-				open={dialogState.open}
+				dialogState={dialogState}
 			/>
 		</>
 	);

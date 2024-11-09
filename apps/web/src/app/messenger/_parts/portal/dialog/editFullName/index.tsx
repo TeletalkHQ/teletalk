@@ -38,7 +38,7 @@ export const EditFullName = () => {
 						onChange={handleInputChange}
 					/>
 				}
-				open={dialogState.open}
+				dialogState={dialogState}
 				title={<Title />}
 			/>
 		</>

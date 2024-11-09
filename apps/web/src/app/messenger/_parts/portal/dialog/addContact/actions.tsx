@@ -24,13 +24,15 @@ export const Actions: React.FC<Props> = ({
 					width: "100%",
 				}}
 			>
-				<Button.SecondaryCancel onClick={onCancelClick} />
+				<Button color="secondary" onClick={onCancelClick}>
+					Cancel
+				</Button>
 
-				<Button.PrimaryConfirm
+				<Button
 					disabled={isAddContactButtonDisabled}
 					loading={loading}
 					onClick={onAddContactClick}
-				/>
+				></Button>
 			</Box.Flex>
 		</>
 	);

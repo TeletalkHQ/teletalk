@@ -72,7 +72,7 @@ export const EditContact = () => {
 					/>
 				}
 				content={<Content fullName={fullName} onChange={handleInputChange} />}
-				open={dialogState.open}
+				dialogState={dialogState}
 				title={<Title />}
 				onAfterClose={resetStates}
 			/>

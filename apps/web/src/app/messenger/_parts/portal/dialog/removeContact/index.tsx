@@ -44,7 +44,7 @@ export const RemoveContact = () => {
 						)}
 					/>
 				}
-				open={dialogState.open}
+				dialogState={dialogState}
 			/>
 		</>
 	);
