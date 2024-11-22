@@ -1,15 +1,14 @@
 import { userUtils } from "@repo/classes";
-import type { AvatarSrc, VoidNoArgs } from "@repo/types";
+import { BaseSchema } from "@repo/schema";
+import type { VoidNoArgs } from "@repo/types";
 import { Box } from "@repo/ui";
-
-import { SettingsStore } from "~/store";
 
 import { EditProfileListItemOnClick } from "../types";
 import { Header } from "./Header";
 import { List } from "./List";
 
 interface Props {
-	avatarSrc: AvatarSrc;
+	avatarSrc: BaseSchema.AvatarSrc;
 	onAvatarClick: VoidNoArgs;
 	onClick: EditProfileListItemOnClick;
 	profile: SettingsStore.Profile;

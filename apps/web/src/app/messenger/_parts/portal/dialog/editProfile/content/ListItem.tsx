@@ -1,8 +1,6 @@
 import { ListItemButtonProps } from "@mui/material";
-import { ElementLabel, VoidNoArgs } from "@repo/types";
-import { Box } from "@repo/ui";
-
-import { IconType } from "~/types";
+import { VoidNoArgs } from "@repo/types";
+import { Box, ElementLabel, IconType } from "@repo/ui";
 
 interface Props extends ListItemButtonProps {
 	label: ElementLabel;
