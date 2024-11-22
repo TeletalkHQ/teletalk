@@ -1,7 +1,5 @@
 import { VoidNoArgs } from "@repo/types";
-import { Box } from "@repo/ui";
-
-import { IconType } from "~/types";
+import { Box, IconType } from "@repo/ui";
 
 import { SettingDisplayName } from "../types";
 

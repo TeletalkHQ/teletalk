@@ -1,7 +1,6 @@
 import { SvgIconComponent } from "@mui/icons-material";
+import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
-
-import { GlobalStore } from "~/store";
 
 export type SettingDisplayName =
 	| "Edit Profile"

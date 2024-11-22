@@ -11,10 +11,11 @@ import { FormSchemaName } from "@repo/schema";
 import {
 	Box,
 	Button,
+	CountryCode,
 	CountrySelector,
-	Field,
 	Form,
 	Icons,
+	PhoneNumber,
 	SelectedCountry,
 	Typography,
 } from "@repo/ui";
@@ -65,7 +66,7 @@ const SignIn = () => {
 			data,
 			config: {
 				onSuccess: () => {
-					router.push("verify", {
+					router.push("/auth/verify", {
 						countryCode: data.countryCode,
 						phoneNumber: data.phoneNumber,
 					});
@@ -112,8 +113,8 @@ const SignIn = () => {
 								onSelectChange={handleCountrySelectChange}
 							/>
 							<Box.Flex fullWidth>
-								<Field.CountryCode control={control} />
-								<Field.PhoneNumber control={control} />
+								<CountryCode control={control} />
+								<PhoneNumber control={control} />
 							</Box.Flex>
 
 							<Button

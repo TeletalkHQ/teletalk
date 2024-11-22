@@ -1,39 +1,37 @@
 import { Divider } from "@mui/material";
-import type { AvatarSrc, Username } from "@repo/types";
+import { useDialogStore } from "@repo/store";
 import { Box } from "@repo/ui";
 
-import { OnSettingItemClick } from "../types";
-import { List } from "./List";
-import { ProfileOverview } from "./ProfileOverview";
+import { SettingItem } from "../types";
+import { settingsList } from "./data";
+import { ListItem } from "./listItem";
+import { ProfileOverview } from "./profileOverview";
 
-interface Props {
-	avatarSrc: AvatarSrc;
-	fullName: string;
-	fullNumber: string;
-	username: Username;
-	onSettingItemClick: OnSettingItemClick;
-}
+export const Content: React.FC = () => {
+	const dialogStore = useDialogStore();
 
-export const Content: React.FC<Props> = ({
-	avatarSrc,
-	fullName,
-	fullNumber,
-	onSettingItemClick,
-	username,
-}) => {
+	const handleSettingItemClick = (item: SettingItem) => {
+		dialogStore.setOpenDialog(item.name, {
+			forceZIndex: 1500,
+		});
+	};
+
 	return (
 		<>
-			<ProfileOverview
-				avatarSrc={avatarSrc}
-				fullName={fullName}
-				fullNumber={fullNumber}
-				username={username}
-			/>
+			<ProfileOverview />
 
 			<Divider style={{ margin: "20px 0px 20px 0px" }} />
 
 			<Box.List>
-				<List onSettingItemClick={onSettingItemClick} />
+				{settingsList.map((item, i) => (
+					<ListItem
+						key={i}
+						disabled={item.disabled}
+						displayName={item.displayName}
+						Icon={item.Icon}
+						onClick={() => handleSettingItemClick(item)}
+					/>
+				))}
 			</Box.List>
 		</>
 	);

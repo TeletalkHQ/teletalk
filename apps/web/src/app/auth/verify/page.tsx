@@ -11,10 +11,10 @@ import { FormSchemaName } from "@repo/schema";
 import {
 	Box,
 	Button,
-	Field,
 	Form,
 	IconButton,
 	Icons,
+	SignInCode,
 	Typography,
 } from "@repo/ui";
 import { useFormState } from "react-hook-form";
@@ -59,7 +59,7 @@ const Verify = () => {
 				onSuccess: ({ data }) => {
 					if (data.data.isNewUser) router.replace("create");
 					else {
-						router.push("/messenger");
+						router.push("messenger");
 					}
 				},
 			},
@@ -102,7 +102,7 @@ const Verify = () => {
 								We have sent the code to the Teletalk app to your phone number.
 							</Typography>
 
-							<Field.SignInCode control={control} />
+							<SignInCode control={control} />
 
 							<Button
 								disabled={!isValid}

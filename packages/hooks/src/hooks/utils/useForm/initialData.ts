@@ -9,6 +9,24 @@ export const formInitialData = {
 		messageText: "",
 	},
 	signIn: maker.emptyCellphone(),
+	updateBio: {
+		bio: "",
+	},
+	updateContact: {
+		countryCode: "",
+		countryName: "",
+		firstName: "",
+		lastName: "",
+		phoneNumber: "",
+		userId: "",
+	},
+	updateFullName: {
+		firstName: "",
+		lastName: "",
+	},
+	updateUsername: {
+		username: "",
+	},
 	verifySignInCode: {
 		signInCode: "",
 	},

@@ -11,10 +11,11 @@ import { FormSchemaName } from "@repo/schema";
 import {
 	Box,
 	Button,
-	Field,
+	FirstName,
 	Form,
 	IconButton,
 	Icons,
+	LastName,
 	Typography,
 } from "@repo/ui";
 import { useFormState } from "react-hook-form";
@@ -45,7 +46,7 @@ const Create = () => {
 			data,
 			config: {
 				onSuccess: () => {
-					router.push("/messenger");
+					router.push("messenger");
 				},
 			},
 		});
@@ -76,8 +77,8 @@ const Create = () => {
 							Please enter this information to complete your account creation.
 						</Typography>
 
-						<Field.FirstName control={control} />
-						<Field.LastName control={control} />
+						<FirstName control={control} />
+						<LastName control={control} />
 
 						<Button
 							disabled={!isValid}

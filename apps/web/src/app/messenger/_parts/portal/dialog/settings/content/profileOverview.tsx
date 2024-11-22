@@ -1,23 +1,18 @@
-import { BaseSchema } from "@repo/schema";
+import { useUserInfo } from "@repo/hooks";
 import { Box, Typography } from "@repo/ui";
 
-interface Props {
-	avatarSrc: BaseSchema.AvatarSrc;
-	fullName: string;
-	fullNumber: string;
-	username: BaseSchema.Username;
-}
+export const ProfileOverview: React.FC = () => {
+	const {
+		data: { userInfo },
+	} = useUserInfo();
 
-export const ProfileOverview: React.FC<Props> = ({
-	avatarSrc,
-	fullName,
-	fullNumber,
-	username,
-}) => {
 	return (
 		<Box.Flex ai="center" gap={2}>
 			<Box.Div>
-				<Box.Avatar src={avatarSrc} style={{ width: 80, height: 80 }} />
+				<Box.Avatar
+					src={userInfo.avatarSrc}
+					style={{ width: 80, height: 80 }}
+				/>
 			</Box.Div>
 
 			<Box.Flex col>
@@ -27,7 +22,8 @@ export const ProfileOverview: React.FC<Props> = ({
 						fontSize: 20,
 					}}
 				>
-					{fullName}
+					{/* TODO: Make fn */}
+					{userInfo.firstName} {userInfo.lastName}
 				</Typography>
 
 				<Box.Div
@@ -35,16 +31,16 @@ export const ProfileOverview: React.FC<Props> = ({
 						fontSize: 14,
 					}}
 				>
-					{fullNumber}
+					{/* TODO: Make fn */}+{userInfo.countryCode} {userInfo.phoneNumber}
 				</Box.Div>
 
-				{username && (
+				{userInfo.username && (
 					<Box.Div
 						style={{
 							fontSize: 16,
 						}}
 					>
-						<Typography variant="greyCaption">@{username}</Typography>
+						<Typography variant="greyCaption">@{userInfo.username}</Typography>
 					</Box.Div>
 				)}
 			</Box.Flex>
