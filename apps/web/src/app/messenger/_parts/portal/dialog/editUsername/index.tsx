@@ -1,48 +1,44 @@
-import { stuffStore } from "~/classes/StuffStore";
-import { useDialogState, useUpdateProfile } from "~/hooks";
-import { useGlobalStore, useSettingsStore } from "~/store";
-import { OnInputChange } from "~/types";
+import { useDialogState, useForm, useUpdateUserPublicInfo } from "@repo/hooks";
+import { FormSchemaName } from "@repo/schema";
+import { DialogTemplate, DoubleAction } from "@repo/ui";
 
-import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
 export const EditUsername = () => {
-	const globalStore = useGlobalStore();
-	const settingsState = useSettingsStore();
 	const dialogState = useDialogState("editUsername");
-	const { handler: profileUpdater, loading } = useUpdateProfile();
 
-	const handleInputChange: OnInputChange = (e) => {
-		settingsState.updateProfile({
-			[e.target.name]: e.target.value,
+	const { emitter, isLoading } = useUpdateUserPublicInfo();
+
+	const schemaName: FormSchemaName = "updateUsername";
+
+	const { control, handleSubmit } = useForm<typeof schemaName>({ schemaName });
+
+	const onSubmit = handleSubmit((data) => {
+		emitter({
+			data,
+			options: {
+				onSuccess: dialogState.close,
+			},
 		});
-	};
-
-	const handleSaveClick = async () => {
-		profileUpdater(globalStore.closeDialog);
-	};
+	});
 
 	return (
-		<>
-			<DialogTemplate
-				actions={
-					<Actions
-						loading={loading}
-						onCancel={globalStore.closeDialog}
-						onSaveClick={handleSaveClick}
-					/>
-				}
-				content={
-					<Content
-						username={settingsState.profile.username}
-						usernameLength={stuffStore.models.username.minLength}
-						onChange={handleInputChange}
-					/>
-				}
-				dialogState={dialogState}
-				title={<Title />}
-			/>
-		</>
+		<DialogTemplate
+			actions={
+				<DoubleAction
+					cancelProps={{
+						onClick: dialogState.close,
+					}}
+					confirmProps={{
+						onClick: onSubmit,
+						loading: isLoading,
+					}}
+				/>
+			}
+			content={<Content control={control} />}
+			dialogState={dialogState}
+			title={<Title />}
+		/>
 	);
 };

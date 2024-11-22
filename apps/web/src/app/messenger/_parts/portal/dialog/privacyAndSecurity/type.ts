@@ -1,9 +1,8 @@
 import { SvgIconComponent } from "@mui/icons-material";
-
-import { GlobalStore } from "~/store";
+import { DialogStore } from "@repo/store";
 
 export interface PrivacyAndSecurityListItem {
 	displayName: "Blocked users" | "Sessions";
 	Icon: SvgIconComponent;
-	name: GlobalStore.DialogName;
+	name: DialogStore.DialogName;
 }

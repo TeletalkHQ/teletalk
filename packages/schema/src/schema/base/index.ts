@@ -141,6 +141,7 @@ const userPublicInfo = z.object({
 	bio,
 	userId,
 	username,
+	avatarSrc: avatarSrc.optional(),
 });
 
 const userInfo = z.intersection(

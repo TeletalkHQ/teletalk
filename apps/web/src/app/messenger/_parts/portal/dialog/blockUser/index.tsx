@@ -1,14 +1,12 @@
 import { useAddBlock, useDialogState } from "@repo/hooks";
-import { ConfirmActions, DialogTemplate } from "@repo/ui";
+import { DialogTemplate, DoubleAction } from "@repo/ui";
 
 import { useUserStore } from "~/store";
 
 import { Content } from "./content";
 
 export const BlockUser = () => {
-	const selectedUserIdToBlock = useUserStore(
-		(state) => state.selectedUserIdToBlock
-	);
+	const selectedUserIdToBlock = useUserStore((state) => state.userIdToBlock);
 
 	const dialogState = useDialogState("addBlock");
 
@@ -30,7 +28,7 @@ export const BlockUser = () => {
 		<>
 			<DialogTemplate
 				actions={
-					<ConfirmActions
+					<DoubleAction
 						cancelProps={{ onClick: dialogState.close }}
 						confirmProps={{
 							onClick: handleConfirm,

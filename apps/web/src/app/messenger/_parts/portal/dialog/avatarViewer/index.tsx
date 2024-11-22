@@ -1,33 +1,42 @@
-import { useDialogState } from "~/hooks";
-import { useGlobalStore, useUserStore } from "~/store";
+import { useDialogState } from "@repo/hooks";
+import { DialogTemplate, TripleAction } from "@repo/ui";
 
-import { Actions } from "./actions";
 import { Content } from "./content";
 
 export const AvatarViewer = () => {
-	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("avatarViewer");
-	const userStore = useUserStore();
+	const deleteAvatarDialog = useDialogState("deleteAvatar");
+	const avatarSelectorDialog = useDialogState("avatarSelector");
 
 	const handleDelete = () => {
-		globalStore.openDialog("deleteAvatar");
+		deleteAvatarDialog.open();
 	};
 
 	const handleEdit = () => {
-		globalStore.openDialog("avatarSelector");
+		avatarSelectorDialog.open();
 	};
 
 	return (
 		<>
 			<DialogTemplate
 				actions={
-					<Actions
-						onClose={globalStore.closeDialog}
-						onDelete={handleDelete}
-						onEdit={handleEdit}
+					<TripleAction
+						leftProps={{
+							children: "Close",
+							onClick: dialogState.close,
+						}}
+						middleProps={{
+							children: "Edit",
+							onClick: handleEdit,
+						}}
+						rightProps={{
+							children: "Delete",
+							color: "error",
+							onClick: handleDelete,
+						}}
 					/>
 				}
-				content={<Content avatarSrc={userStore.currentUserData.avatarSrc} />}
+				content={<Content />}
 				dialogState={dialogState}
 			/>
 		</>

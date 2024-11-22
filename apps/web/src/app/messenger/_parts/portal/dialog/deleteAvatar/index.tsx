@@ -1,31 +1,35 @@
-import { useDialogState, useEmitter } from "~/hooks";
-import { useGlobalStore } from "~/store";
+import { useDialogState, useUpdateUserPublicInfo } from "@repo/hooks";
+import { DialogTemplate, DoubleAction } from "@repo/ui";
 
-import { Actions } from "./actions";
 import { Content } from "./content";
 
 export const DeleteAvatar = () => {
-	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("deleteAvatar");
-	const { handler, loading } = useEmitter("updateAvatar");
+	const { emitter, isLoading } = useUpdateUserPublicInfo();
 
 	const handleDelete = () => {
-		handler.send(
-			{
+		emitter({
+			data: {
 				avatarSrc: "",
 			},
-			globalStore.closeDialog
-		);
+			options: {
+				onSuccess: dialogState.close,
+			},
+		});
 	};
 
 	return (
 		<>
 			<DialogTemplate
 				actions={
-					<Actions
-						loading={loading}
-						onClose={globalStore.closeDialog}
-						onDelete={handleDelete}
+					<DoubleAction
+						cancelProps={{ onClick: handleDelete }}
+						confirmProps={{
+							color: "error",
+							loading: isLoading,
+							loadingIndicator: "Deleting...",
+							onClick: handleDelete,
+						}}
 					/>
 				}
 				content={<Content />}

@@ -1,18 +1,12 @@
 import { extractor } from "@repo/classes";
+import { useDialogState } from "@repo/hooks";
 import { useEffect } from "react";
 
-import { useDialogState } from "~/hooks";
-import { useGlobalStore, useSettingsStore, useUserStore } from "~/store";
-
-import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 import { EditProfileListItem } from "./types";
 
 export const EditProfile = () => {
-	const globalStore = useGlobalStore();
-	const settingsStore = useSettingsStore();
-	const userStore = useUserStore();
 	const dialogState = useDialogState("editProfile");
 
 	const handleAvatarClick = () => {

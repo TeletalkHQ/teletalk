@@ -1,8 +1,6 @@
 import { VoidNoArgs } from "@repo/types";
-import { Box, Button } from "@repo/ui";
+import { Box, Button, OnInputChange } from "@repo/ui";
 import AvatarEditor from "react-avatar-editor";
-
-import { OnInputChange } from "~/types";
 
 interface Props {
 	avatarSrc: string;
@@ -48,14 +46,14 @@ export const Content: React.FC<Props> = ({
 					/>
 				) : (
 					<>
-						<Button.Primary
+						<Button
 							style={{
 								width: "max-content",
 							}}
 							onClick={onOpenFileSelector}
 						>
 							Select
-						</Button.Primary>
+						</Button>
 					</>
 				)}
 

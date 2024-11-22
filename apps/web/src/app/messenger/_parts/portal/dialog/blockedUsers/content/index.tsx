@@ -1,15 +1,19 @@
-import type { UserId, VoidWithArg } from "@repo/types";
+import { Box } from "@repo/ui";
 
-import { List } from "./list";
+interface Props {}
 
-interface Props {
-	onItemLick: VoidWithArg<UserId>;
-}
-
-export const Content: React.FC<Props> = ({ onItemLick }) => {
+export const Content: React.FC<Props> = () => {
 	return (
-		<>
-			<List onItemLick={onItemLick} />
-		</>
+		<Box.List>
+			{/* {userStore.users
+				.filter((item) => item.isBlocked)
+				.map((item, index) => (
+					<ListItem
+						key={index}
+						userItem={item}
+						onItemLick={() => onItemLick(item.userId)}
+					/>
+				))} */}
+		</Box.List>
 	);
 };

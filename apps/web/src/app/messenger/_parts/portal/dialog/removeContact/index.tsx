@@ -1,49 +1,44 @@
-import { userUtils } from "@repo/classes";
+import { useDialogState, useRemoveContact } from "@repo/hooks";
+import { DialogTemplate, DoubleAction } from "@repo/ui";
 
-import {
-	useDialogState,
-	useEmitter,
-	useFindSelectedUserForActions,
-} from "~/hooks";
-import { useGlobalStore } from "~/store";
+import { useUserStore } from "~/store";
 
-import { Actions } from "./actions";
 import { Content } from "./content";
 
 export const RemoveContact = () => {
-	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("removeContact");
-	const selectedUserForActions = useFindSelectedUserForActions();
-	const { handler, loading } = useEmitter("removeContact");
 
-	const handleRemoveContact = () => {
-		handler.send(
-			{
-				userId: selectedUserForActions.userId,
-			},
-			() => {
-				globalStore.closeDialog();
-			}
-		);
+	const userIdForRemoveContact = useUserStore(
+		(state) => state.userIdForRemoveContact
+	);
+
+	const { emitter, isLoading } = useRemoveContact();
+
+	const onSubmit = () => {
+		if (userIdForRemoveContact)
+			emitter({
+				data: {
+					userId: userIdForRemoveContact,
+				},
+				options: {
+					onSuccess: dialogState.close,
+				},
+			});
 	};
 
 	return (
 		<>
 			<DialogTemplate
 				actions={
-					<Actions
-						loading={loading}
-						onClose={globalStore.closeDialog}
-						onRemove={handleRemoveContact}
+					<DoubleAction
+						cancelProps={{ onClick: dialogState.close }}
+						confirmProps={{
+							onClick: onSubmit,
+							loading: isLoading,
+						}}
 					/>
 				}
-				content={
-					<Content
-						fullName={userUtils.concatFirstNameWithLastName(
-							selectedUserForActions
-						)}
-					/>
-				}
+				content={<Content />}
 				dialogState={dialogState}
 			/>
 		</>

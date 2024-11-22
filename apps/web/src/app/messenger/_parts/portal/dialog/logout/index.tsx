@@ -4,9 +4,8 @@ import {
 	useDialogState,
 	useLogout,
 } from "@repo/hooks";
-import { DialogTemplate } from "@repo/ui";
+import { DialogTemplate, DoubleAction } from "@repo/ui";
 
-import { Actions } from "./actions";
 import { Content } from "./content";
 
 export const Logout = () => {
@@ -36,10 +35,12 @@ export const Logout = () => {
 		<>
 			<DialogTemplate
 				actions={
-					<Actions
-						loading={logoutPhase.isLoading}
-						onClose={dialogState.close}
-						onLogout={handleLogout}
+					<DoubleAction
+						cancelProps={{ onClick: dialogState.close }}
+						confirmProps={{
+							loading: logoutPhase.isLoading,
+							onClick: handleLogout,
+						}}
 					/>
 				}
 				content={<Content />}

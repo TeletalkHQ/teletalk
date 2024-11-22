@@ -1,21 +1,20 @@
+import { useDialogState, useUpdateUserPublicInfo } from "@repo/hooks";
+import { DialogTemplate, DoubleAction } from "@repo/ui";
 import { useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
 
 import { compressor } from "~/classes";
-import { useDialogState, useEmitter } from "~/hooks";
-import { useGlobalStore } from "~/store";
-import { utils } from "~/utils";
+import { convertFileToBase64 } from "~/utils";
 
-import { Actions } from "./actions";
 import { Content } from "./content";
 
 export const AvatarSelector = () => {
-	const globalStore = useGlobalStore();
 	const dialogState = useDialogState("avatarSelector");
 	const [avatarSrc, setAvatarSrc] = useState("");
-	const { loading, handler } = useEmitter("updateAvatar");
 	const editor = useRef<AvatarEditor | null>(null);
 	const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+	const { emitter, isLoading } = useUpdateUserPublicInfo();
 
 	const handleOpenFileSelector = () => {
 		fileInputRef.current?.click();
@@ -29,7 +28,7 @@ export const AvatarSelector = () => {
 
 		compressor(file, {
 			async success(file) {
-				const src = await utils.convertFileToBase64(file);
+				const src = await convertFileToBase64(file);
 				if (typeof src === "string") setAvatarSrc(src as string);
 			},
 		});
@@ -39,17 +38,19 @@ export const AvatarSelector = () => {
 		if (editor.current) {
 			const canvas = editor.current.getImage();
 
-			handler.send(
-				{
+			emitter({
+				data: {
 					avatarSrc: canvas.toDataURL(),
 				},
-				handleClose
-			);
+				options: {
+					onSuccess: handleClose,
+				},
+			});
 		}
 	};
 
 	const handleClose = () => {
-		globalStore.closeDialog();
+		dialogState.close();
 		setTimeout(() => {
 			setAvatarSrc("");
 			if (fileInputRef.current?.value) fileInputRef.current.value = "";
@@ -60,11 +61,16 @@ export const AvatarSelector = () => {
 		<>
 			<DialogTemplate
 				actions={
-					<Actions
-						isSaveDisabled={!avatarSrc}
-						loading={loading}
-						onClose={handleClose}
-						onSave={handleSave}
+					<DoubleAction
+						cancelProps={{
+							onClick: handleClose,
+						}}
+						cancelText="close"
+						confirmProps={{
+							onClick: handleSave,
+							loading: isLoading,
+						}}
+						confirmText="Save"
 					/>
 				}
 				content={

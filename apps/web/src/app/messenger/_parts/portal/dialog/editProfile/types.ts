@@ -4,7 +4,7 @@ import { GlobalStore } from "~/store";
 import { IconType } from "~/types";
 
 export interface EditProfileListItem {
-	name: GlobalStore.DialogName;
+	name: DialogStore.DialogName;
 	label: ElementLabel;
 	disabled: boolean;
 	value: string;

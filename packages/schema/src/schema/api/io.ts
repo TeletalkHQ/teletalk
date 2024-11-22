@@ -205,6 +205,7 @@ export const ioCollection = {
 	},
 	updateUserPublicInfo: {
 		input: z.object({
+			avatarSrc: baseSchema.avatarSrc.optional(),
 			bio: baseSchema.bio.optional(),
 			firstName: baseSchema.firstName.optional(),
 			lastName: baseSchema.lastName.optional(),

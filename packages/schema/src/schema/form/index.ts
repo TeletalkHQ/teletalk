@@ -21,13 +21,28 @@ const messageInput = z.object({
 	messageText: baseSchema.messageText,
 });
 
+const updateBio = z.object({
+	bio: baseSchema.bio,
+});
+
+const updateUsername = z.object({
+	username: baseSchema.username,
+});
+
+const updateFullName = baseSchema.fullName;
+
 const addContact = baseSchema.contactsItem;
+const updateContact = baseSchema.contactsItem;
 
 export const formSchema = {
 	addContact,
 	createNewUser,
 	messageInput,
 	signIn,
+	updateBio,
+	updateContact,
+	updateFullName,
+	updateUsername,
 	verifySignInCode,
 };
 

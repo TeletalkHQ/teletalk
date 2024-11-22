@@ -1,41 +1,44 @@
-import { useDialogState, useUpdateProfile } from "~/hooks";
-import { useGlobalStore, useSettingsStore } from "~/store";
-import { OnInputChange } from "~/types";
+import { useDialogState, useForm, useUpdateUserPublicInfo } from "@repo/hooks";
+import { FormSchemaName } from "@repo/schema";
+import { DialogTemplate, DoubleAction } from "@repo/ui";
 
-import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
 export const EditBio = () => {
-	const globalStore = useGlobalStore();
-	const settingsStore = useSettingsStore();
-	const { handler: profileUpdater, loading } = useUpdateProfile();
 	const dialogState = useDialogState("editBio");
 
-	const handleInputChange: OnInputChange = (e) => {
-		settingsStore.updateProfile({ [e.target.name]: e.target.value });
-	};
+	const { emitter } = useUpdateUserPublicInfo();
 
-	const handleSaveClick = async () => {
-		profileUpdater(globalStore.closeDialog);
-	};
+	const schemaName: FormSchemaName = "updateBio";
+
+	const { control, handleSubmit } = useForm<typeof schemaName>({
+		schemaName,
+	});
+
+	const onSubmit = handleSubmit((data) => {
+		emitter({
+			data,
+			options: {
+				onSuccess: dialogState.close,
+			},
+		});
+	});
 
 	return (
 		<>
 			<DialogTemplate
 				actions={
-					<Actions
-						loading={loading}
-						onCancel={globalStore.closeDialog}
-						onSaveClick={handleSaveClick}
+					<DoubleAction
+						cancelProps={{
+							onClick: dialogState.close,
+						}}
+						confirmProps={{
+							onClick: onSubmit,
+						}}
 					/>
 				}
-				content={
-					<Content
-						bio={settingsStore.profile.bio}
-						onChange={handleInputChange}
-					/>
-				}
+				content={<Content control={control} />}
 				dialogState={dialogState}
 				title={<Title />}
 			/>

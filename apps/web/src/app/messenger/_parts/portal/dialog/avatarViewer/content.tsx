@@ -1,11 +1,13 @@
-import type { AvatarSrc } from "@repo/types";
+import { useUserInfo } from "@repo/hooks";
 import { Box } from "@repo/ui";
 
-interface Props {
-	avatarSrc: AvatarSrc;
-}
+export const Content: React.FC = () => {
+	const {
+		data: {
+			userInfo: { avatarSrc },
+		},
+	} = useUserInfo();
 
-export const Content: React.FC<Props> = ({ avatarSrc }) => {
 	return (
 		<>
 			<Box.Flex

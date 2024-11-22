@@ -1,2 +1,3 @@
-export * from "./confirmActions";
-export * from "./closeAction";
+export * from "./doubleAction";
+export * from "./singleAction";
+export * from "./tripleAction";

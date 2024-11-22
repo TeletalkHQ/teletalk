@@ -4,7 +4,7 @@ interface Props {
 	closeProps: LoadingButtonProps;
 }
 
-export const CloseAction: React.FC<Props> = ({ closeProps }) => {
+export const SingleAction: React.FC<Props> = ({ closeProps }) => {
 	return (
 		<>
 			<LoadingButton variant="outlined" {...closeProps}>

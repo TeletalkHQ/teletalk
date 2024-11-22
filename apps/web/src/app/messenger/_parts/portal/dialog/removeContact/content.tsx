@@ -1,16 +1,25 @@
+import { useUserPublicInfo } from "@repo/hooks";
 import { Box, Typography } from "@repo/ui";
 
-interface Props {
-	fullName: string;
-}
+import { useUserStore } from "~/store";
 
-export const Content: React.FC<Props> = ({ fullName }) => (
-	<>
+export const Content: React.FC = () => {
+	const userIdForRemoveContact = useUserStore(
+		(state) => state.userIdForRemoveContact
+	);
+
+	const {
+		data: { userPublicInfo },
+	} = useUserPublicInfo({ userId: userIdForRemoveContact });
+
+	return (
 		<Box.Div style={{ textAlign: "center", fontSize: 18 }}>
 			<Box.Span>Are you sure you want to</Box.Span>{" "}
 			<Typography>remove</Typography> <Box.Span>user</Box.Span>{" "}
-			<Typography>{fullName} </Typography>
+			<Typography>
+				{userPublicInfo.firstName} {userPublicInfo.lastName}
+			</Typography>
 			<Box.Span>from your contacts?</Box.Span>
 		</Box.Div>
-	</>
-);
+	);
+};

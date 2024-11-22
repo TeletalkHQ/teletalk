@@ -1,6 +1,9 @@
 import { State } from "./types";
 
 export const initialState: State = {
-	selectedUserIdToBlock: undefined,
-	selectedUserIdToUnblock: undefined,
+	userIdToBlock: undefined,
+	userIdToUnblock: undefined,
+	userIdToChat: undefined,
+	userIdForRemoveContact: undefined,
+	userIdForEditContact: undefined,
 };

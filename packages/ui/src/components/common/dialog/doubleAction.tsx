@@ -7,7 +7,7 @@ interface Props {
 	confirmText?: string;
 }
 
-export const ConfirmActions: React.FC<Props> = ({
+export const DoubleAction: React.FC<Props> = ({
 	cancelProps,
 	confirmProps,
 	confirmText = "Confirm",

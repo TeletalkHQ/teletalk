@@ -1,24 +1,26 @@
-import type { AvatarSrc } from "@repo/types";
+import { useIsOnline, useUserPublicInfo } from "@repo/hooks";
 import { Box, Typography } from "@repo/ui";
 
-interface Props {
-	avatarSrc: AvatarSrc;
-	connectionStatus: string;
-	fullName: string;
-	fullNumber: string;
-}
+import { useUserStore } from "~/store";
 
-export const Content: React.FC<Props> = ({
-	avatarSrc,
-	connectionStatus,
-	fullName,
-	fullNumber,
-}) => {
+export const Content: React.FC = () => {
+	const userIdToChat = useUserStore((state) => state.userIdToChat);
+
+	const {
+		data: { userPublicInfo },
+	} = useUserPublicInfo({ userId: userIdToChat });
+
+	const { isOnline } = useIsOnline({
+		userId: userIdToChat,
+	});
+
+	const connectionStatus = isOnline ? "online" : "offline";
+
 	return (
 		<Box.Flex ai="center" gap={2}>
 			<Box.Div>
 				<Box.Avatar
-					src={avatarSrc}
+					src={userPublicInfo.avatarSrc}
 					style={{
 						height: 80,
 						width: 80,
@@ -32,7 +34,8 @@ export const Content: React.FC<Props> = ({
 						fontSize: 20,
 					}}
 				>
-					{fullName} : {connectionStatus}
+					{userPublicInfo.firstName} {userPublicInfo.lastName} :{" "}
+					{connectionStatus}
 				</Typography>
 
 				<Box.Div
@@ -40,7 +43,7 @@ export const Content: React.FC<Props> = ({
 						fontSize: 14,
 					}}
 				>
-					{fullNumber}
+					{/* {userPublicInfo.countryCode} */}
 				</Box.Div>
 			</Box.Flex>
 		</Box.Flex>

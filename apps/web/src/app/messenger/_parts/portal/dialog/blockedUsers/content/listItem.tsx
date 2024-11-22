@@ -1,17 +1,19 @@
 import LockOpenTwoToneIcon from "@mui/icons-material/LockOpenTwoTone";
 import { userUtils } from "@repo/classes";
-import { UserItem, VoidNoArgs } from "@repo/types";
+import { useUserPublicInfo } from "@repo/hooks";
+import { BaseSchema } from "@repo/schema";
+import { VoidNoArgs } from "@repo/types";
 import { Box, IconButton } from "@repo/ui";
 
-import { useGetPublicData } from "~/hooks";
-
 interface Props {
-	userItem: UserItem;
 	onItemLick: VoidNoArgs;
+	item: BaseSchema.UserPublicInfo;
 }
 
-export const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
-	const { publicInfo } = useGetPublicData(userItem.userId);
+export const ListItem: React.FC<Props> = ({ item, onItemLick }) => {
+	const {
+		data: { userPublicInfo },
+	} = useUserPublicInfo({ userId: item.userId });
 
 	return (
 		<Box.ListItemButton
@@ -36,13 +38,13 @@ export const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
 				}}
 			>
 				<Box.Span>
-					{userUtils.concatFirstNameWithLastName(userItem, publicInfo)}
+					{userUtils.concatFirstNameWithLastName(item, userPublicInfo)}
 				</Box.Span>
 				<Box.Span>
-					{userUtils.concatCountryCodeWithPhoneNumber(
-						userItem,
+					{/* {userUtils.concatCountryCodeWithPhoneNumber(
+						item,
 						"unknown phone number"
-					)}
+					)} */}
 				</Box.Span>
 			</Box.Span>
 			<Box.Span>

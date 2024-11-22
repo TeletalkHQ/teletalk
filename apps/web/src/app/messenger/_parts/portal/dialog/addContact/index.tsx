@@ -5,7 +5,7 @@ import {
 	useForm,
 } from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
-import { ConfirmActions, DialogTemplate } from "@repo/ui";
+import { DialogTemplate, DoubleAction } from "@repo/ui";
 import React from "react";
 
 import { Content } from "./content";
@@ -41,7 +41,7 @@ export const AddContact = () => {
 		<>
 			<DialogTemplate
 				actions={
-					<ConfirmActions
+					<DoubleAction
 						cancelProps={{ onClick: dialogState.close }}
 						confirmProps={{
 							onClick: onSubmit,

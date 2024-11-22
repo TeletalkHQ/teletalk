@@ -3,6 +3,7 @@ export * from "./useAddContact";
 export * from "./useGetClientStatus";
 export * from "./useIsOnline";
 export * from "./useRemoveBlock";
+export * from "./useRemoveContact";
 export * from "./useUpdateUserPublicInfo";
 export * from "./useUserInfo";
 export * from "./useUserPublicInfo";

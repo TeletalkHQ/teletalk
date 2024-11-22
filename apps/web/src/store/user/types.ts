@@ -2,13 +2,19 @@ import { StoreSetFn } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
 
 export interface State {
-	selectedUserIdToBlock: string | undefined;
-	selectedUserIdToUnblock: string | undefined;
+	userIdToBlock: string | undefined;
+	userIdToUnblock: string | undefined;
+	userIdToChat: string | undefined;
+	userIdForRemoveContact: string | undefined;
+	userIdForEditContact: string | undefined;
 }
 
 export interface Handlers {
-	setSelectedUserIdToBlock: VoidWithArg<State["selectedUserIdToBlock"]>;
-	setSelectedUserIdToUnblock: VoidWithArg<State["selectedUserIdToUnblock"]>;
+	setUserIdToBlock: VoidWithArg<State["userIdToBlock"]>;
+	setUserIdToUnblock: VoidWithArg<State["userIdToUnblock"]>;
+	setUserIdToChat: VoidWithArg<State["userIdToChat"]>;
+	setUserIdForRemoveContact: VoidWithArg<State["userIdForRemoveContact"]>;
+	setUserIdForEditContact: VoidWithArg<State["userIdForEditContact"]>;
 }
 
 export type SetState = StoreSetFn<State>;

@@ -6,9 +6,7 @@ import { useUserStore } from "~/store";
 interface Props {}
 
 export const Content: React.FC<Props> = () => {
-	const selectedUserIdToBlock = useUserStore(
-		(state) => state.selectedUserIdToBlock
-	);
+	const selectedUserIdToBlock = useUserStore((state) => state.userIdToBlock);
 
 	const {
 		data: { userPublicInfo },

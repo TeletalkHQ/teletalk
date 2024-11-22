@@ -1,8 +1,8 @@
+import { useUserPublicInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
 import { Box, Typography } from "@repo/ui";
 
-import { useGetAvatar } from "~/hooks";
 import { GlobalStore } from "~/store";
 
 interface Props {
@@ -21,7 +21,11 @@ export const ListItem: React.FC<Props> = ({
 	onContextMenu,
 	userId,
 }) => {
-	const { avatarSrc } = useGetAvatar(userId);
+	const {
+		data: {
+			userPublicInfo: { avatarSrc },
+		},
+	} = useUserPublicInfo({ userId });
 
 	return (
 		<Box.ListItemButton

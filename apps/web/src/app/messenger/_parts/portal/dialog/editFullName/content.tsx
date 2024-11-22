@@ -1,22 +1,15 @@
-import type { FullName } from "@repo/types";
-import { Box, Input } from "@repo/ui";
-
-import { OnInputChange } from "~/types";
+import { Control } from "@repo/hooks";
+import { Box, FirstName } from "@repo/ui";
 
 interface Props {
-	fullName: FullName;
-	onChange: OnInputChange;
+	control: Control<"updateFullName">;
 }
 
-export const Content: React.FC<Props> = ({ fullName, onChange }) => {
+export const Content: React.FC<Props> = ({ control }) => {
 	return (
 		<Box.Flex col>
-			<Input.Text.FullName
-				firstName={fullName.firstName}
-				lastName={fullName.lastName}
-				onFirstNameInputChange={onChange}
-				onLastNameInputChange={onChange}
-			/>
+			<FirstName control={control} />
+			<FirstName control={control} />
 		</Box.Flex>
 	);
 };

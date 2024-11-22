@@ -1,21 +1,27 @@
-import { useDialogState } from "~/hooks";
-import { GlobalStore, useGlobalStore } from "~/store";
+import { useDialogState } from "@repo/hooks";
+import { DialogStore, useDialogStore } from "@repo/store";
+import { DialogTemplate, SingleAction } from "@repo/ui";
 
-import { Actions } from "./actions";
 import { Content } from "./content";
 
 export const PrivacyAndSecurity = () => {
-	const globalStore = useGlobalStore();
+	const dialogStore = useDialogStore();
 	const dialogState = useDialogState("privacyAndSecurity");
 
-	const handleItemClick = (d: GlobalStore.DialogName) => {
-		globalStore.openDialog(d);
+	const handleItemClick = (name: DialogStore.DialogName) => {
+		dialogStore.setOpenDialog(name);
 	};
 
 	return (
 		<>
 			<DialogTemplate
-				actions={<Actions onClose={globalStore.closeDialog} />}
+				actions={
+					<SingleAction
+						closeProps={{
+							onClick: dialogState.close,
+						}}
+					/>
+				}
 				content={<Content onItemClick={handleItemClick} />}
 				dialogState={dialogState}
 			/>

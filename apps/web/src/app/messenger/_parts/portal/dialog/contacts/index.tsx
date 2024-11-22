@@ -1,82 +1,29 @@
-import { UserItem } from "@repo/types";
+import { useDialogState } from "@repo/hooks";
+import { DialogTemplate, DoubleAction } from "@repo/ui";
 
-import { useContextMenu, useDialogState } from "~/hooks";
-import {
-	GlobalStore,
-	useGlobalStore,
-	useMessageStore,
-	useUserStore,
-} from "~/store";
-
-import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
 export const Contacts = () => {
-	const globalStore = useGlobalStore();
-	const messageStore = useMessageStore();
-	const userStore = useUserStore();
+	const addContactDialog = useDialogState("addContact");
+
 	const dialogState = useDialogState("contacts");
-
-	const createContextMenuList = ({
-		isBlocked,
-	}: Partial<UserItem> = {}): GlobalStore.ContextMenuList => [
-		{
-			text: "Edit",
-			handler: onContextMenuHandler("editContact"),
-		},
-		{
-			text: "Remove",
-			handler: onContextMenuHandler("removeContact"),
-		},
-		{
-			text: `${isBlocked ? "Unblock" : "Block"}`,
-			handler: onContextMenuHandler("addBlock"),
-		},
-	];
-
-	const onContextMenuHandler = (dn: GlobalStore.DialogName) => () => {
-		globalStore.closeContextMenu();
-		globalStore.openDialog(dn);
-	};
-
-	const { onContextMenu } = useContextMenu(createContextMenuList());
-
-	const handleAddContactClick = () => {
-		globalStore.openDialog("addContact");
-	};
-
-	const handleContactItemClicked = (contact: UserItem) => {
-		globalStore.closeDialog();
-		messageStore.updateSelectedChatInfo({
-			userId: contact.userId,
-			chatId: "",
-		});
-	};
-
-	const handleContextMenu: GlobalStore.ExtendedOnContextMenu<UserItem> = (
-		event,
-		u
-	) => {
-		userStore.updateSelectedUserIdForActions(u.userId);
-		onContextMenu(event, createContextMenuList(u));
-	};
 
 	return (
 		<DialogTemplate
 			actions={
-				<Actions
-					onAddContactClick={handleAddContactClick}
-					onClose={globalStore.closeDialog}
+				<DoubleAction
+					cancelProps={{
+						onClick: dialogState.close,
+					}}
+					cancelText="Close"
+					confirmProps={{
+						onClick: () => addContactDialog.open(),
+					}}
+					confirmText="Add Contact"
 				/>
 			}
-			content={
-				<Content
-					contacts={userStore.users.filter((i) => i.isContact)}
-					onContactItemClicked={handleContactItemClicked}
-					onContextMenu={handleContextMenu}
-				/>
-			}
+			content={<Content />}
 			dialogState={dialogState}
 			paperStyle={{
 				height: "90vh",

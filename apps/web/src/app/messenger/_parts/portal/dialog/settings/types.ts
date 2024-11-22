@@ -17,7 +17,7 @@ export type SettingItem = {
 	disabled: boolean;
 	displayName: SettingDisplayName;
 	Icon: SvgIconComponent;
-	name: GlobalStore.DialogName;
+	name: DialogStore.DialogName;
 };
 
 export type SettingsList = SettingItem[];

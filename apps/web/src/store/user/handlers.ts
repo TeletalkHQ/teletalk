@@ -1,14 +1,19 @@
 import { Handlers, SetState } from "./types";
 
 export const handlers: (set: SetState) => Handlers = (set) => ({
-	setSelectedUserIdToBlock(id) {
+	setUserIdToBlock(id) {
 		set({
-			selectedUserIdToBlock: id,
+			userIdToBlock: id,
 		});
 	},
-	setSelectedUserIdToUnblock(id) {
+	setUserIdToUnblock(id) {
 		set({
-			selectedUserIdToUnblock: id,
+			userIdToUnblock: id,
+		});
+	},
+	setUserIdToChat(id) {
+		set({
+			userIdToChat: id,
 		});
 	},
 });

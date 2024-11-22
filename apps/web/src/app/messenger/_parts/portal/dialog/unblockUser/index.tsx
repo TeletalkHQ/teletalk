@@ -1,5 +1,5 @@
 import { useDialogState, useRemoveBlock } from "@repo/hooks";
-import { ConfirmActions, DialogTemplate } from "@repo/ui";
+import { DialogTemplate, DoubleAction } from "@repo/ui";
 
 import { useUserStore } from "~/store";
 
@@ -10,9 +10,7 @@ export const RemoveBlock = () => {
 
 	const { emitter, isLoading } = useRemoveBlock();
 
-	const selectedUserIdToUnblock = useUserStore(
-		(state) => state.selectedUserIdToBlock
-	);
+	const selectedUserIdToUnblock = useUserStore((state) => state.userIdToBlock);
 
 	const handleRemoveBlock = () => {
 		if (selectedUserIdToUnblock)
@@ -26,7 +24,7 @@ export const RemoveBlock = () => {
 		<>
 			<DialogTemplate
 				actions={
-					<ConfirmActions
+					<DoubleAction
 						cancelProps={{
 							onClick: dialogState.close,
 						}}

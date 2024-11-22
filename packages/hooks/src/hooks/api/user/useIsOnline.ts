@@ -1,7 +1,7 @@
 import { BaseSchema } from "@repo/schema";
 
-type Arg = { userId: BaseSchema.UserId };
+type Arg = { userId: BaseSchema.UserId | undefined };
 
 export const useIsOnline = ({ userId }: Arg) => {
-	return !!userId;
+	return { isOnline: !!userId };
 };
