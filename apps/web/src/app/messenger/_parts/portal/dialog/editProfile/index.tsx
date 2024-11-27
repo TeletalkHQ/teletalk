@@ -1,45 +1,39 @@
-import { extractor } from "@repo/classes";
-import { useDialogState } from "@repo/hooks";
-import { useEffect } from "react";
+import { useDialogState, useUserInfo } from "@repo/hooks";
+import { useDialogStore } from "@repo/store";
+import { DialogTemplate, SingleAction } from "@repo/ui";
 
 import { Content } from "./content";
+import { OnProfileItemClick } from "./content/ListItem";
 import { Title } from "./title";
-import { EditProfileListItem } from "./types";
 
 export const EditProfile = () => {
 	const dialogState = useDialogState("editProfile");
+	const avatarViewerDialog = useDialogState("avatarViewer");
+	const avatarSelectorDialog = useDialogState("avatarSelector");
+
+	const setOpenDialog = useDialogStore((state) => state.setOpenDialog);
+
+	const {
+		data: { userInfo },
+	} = useUserInfo();
 
 	const handleAvatarClick = () => {
-		if (userStore.currentUserData.avatarSrc)
-			globalStore.openDialog("avatarViewer");
-		else globalStore.openDialog("avatarSelector");
+		if (userInfo.avatarSrc) avatarViewerDialog.open();
+		else avatarSelectorDialog.open();
 	};
 
-	useEffect(() => {
-		if (dialogState.open)
-			settingsStore.updateProfile({
-				...extractor.cellphone(userStore.currentUserData),
-				...extractor.fullName(userStore.currentUserData),
-				bio: userStore.currentUserData.bio,
-				username: userStore.currentUserData.username,
-			});
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [dialogState.open, userStore]);
-
-	const handleItemClick = (item: EditProfileListItem) => {
-		globalStore.openDialog(item.name, {
-			zIndex: 1500,
+	const handleItemClick: OnProfileItemClick = (item) => {
+		setOpenDialog(item.name, {
+			forceZIndex: 1500,
 		});
 	};
 
 	return (
 		<>
 			<DialogTemplate
-				actions={<Actions onCancel={globalStore.closeDialog} />}
+				actions={<SingleAction closeProps={{ onClick: dialogState.close }} />}
 				content={
 					<Content
-						avatarSrc={userStore.currentUserData.avatarSrc}
-						profile={settingsStore.profile}
 						onAvatarClick={handleAvatarClick}
 						onClick={handleItemClick}
 					/>

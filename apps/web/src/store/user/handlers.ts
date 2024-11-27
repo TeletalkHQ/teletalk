@@ -16,4 +16,14 @@ export const handlers: (set: SetState) => Handlers = (set) => ({
 			userIdToChat: id,
 		});
 	},
+	setUserIdForEditContact(id) {
+		set({
+			userIdForEditContact: id,
+		});
+	},
+	setUserIdForRemoveContact(id) {
+		set({
+			userIdForRemoveContact: id,
+		});
+	},
 });

@@ -1,5 +1,7 @@
 import { ListItemButtonProps } from "@mui/material";
+import { DialogStore } from "@repo/store";
 import { VoidNoArgs } from "@repo/types";
+import { VoidWithArg } from "@repo/types";
 import { Box, ElementLabel, IconType } from "@repo/ui";
 
 interface Props extends ListItemButtonProps {
@@ -8,6 +10,16 @@ interface Props extends ListItemButtonProps {
 	value: string;
 	Icon: IconType;
 }
+
+export interface EditProfileListItem {
+	Icon: IconType;
+	disabled: boolean;
+	label: ElementLabel;
+	name: DialogStore.DialogName;
+	value: string;
+}
+
+export type OnProfileItemClick = VoidWithArg<EditProfileListItem>;
 
 export const ListItem: React.FC<Props> = ({
 	disabled,

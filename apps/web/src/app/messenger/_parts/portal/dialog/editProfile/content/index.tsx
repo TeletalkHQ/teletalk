@@ -1,27 +1,24 @@
 import { userUtils } from "@repo/classes";
-import { BaseSchema } from "@repo/schema";
+import { useUserInfo } from "@repo/hooks";
 import type { VoidNoArgs } from "@repo/types";
 import { Box } from "@repo/ui";
 
-import { EditProfileListItemOnClick } from "../types";
 import { Header } from "./Header";
 import { List } from "./List";
+import { OnProfileItemClick } from "./ListItem";
 
 interface Props {
-	avatarSrc: BaseSchema.AvatarSrc;
 	onAvatarClick: VoidNoArgs;
-	onClick: EditProfileListItemOnClick;
-	profile: SettingsStore.Profile;
+	onClick: OnProfileItemClick;
 }
 
-export const Content: React.FC<Props> = ({
-	avatarSrc,
-	onAvatarClick,
-	onClick,
-	profile,
-}) => {
-	const fullName = userUtils.concatFirstNameWithLastName(profile);
-	const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(profile);
+export const Content: React.FC<Props> = ({ onAvatarClick, onClick }) => {
+	const {
+		data: { userInfo },
+	} = useUserInfo();
+
+	const fullName = userUtils.concatFirstNameWithLastName(userInfo);
+	const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(userInfo);
 
 	return (
 		<>
@@ -33,16 +30,16 @@ export const Content: React.FC<Props> = ({
 				style={{ maxWidth: "400px" }}
 			>
 				<Header
-					avatarSrc={avatarSrc}
+					avatarSrc={userInfo.avatarSrc}
 					fullName={fullName}
 					onAvatarClick={onAvatarClick}
 				/>
 
 				<List
-					bio={profile.bio}
+					bio={userInfo.bio}
 					fullName={fullName}
 					fullNumber={fullNumber}
-					username={profile.username}
+					username={userInfo.username}
 					onClick={onClick}
 				/>
 			</Box.Flex>
