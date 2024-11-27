@@ -59,7 +59,7 @@ const Verify = () => {
 				onSuccess: ({ data }) => {
 					if (data.data.isNewUser) router.replace("create");
 					else {
-						router.push("messenger");
+						router.push("/messenger");
 					}
 				},
 			},

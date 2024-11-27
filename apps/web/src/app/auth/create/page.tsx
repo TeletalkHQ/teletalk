@@ -46,7 +46,7 @@ const Create = () => {
 			data,
 			config: {
 				onSuccess: () => {
-					router.push("messenger");
+					router.push("/messenger");
 				},
 			},
 		});

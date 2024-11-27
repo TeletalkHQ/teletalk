@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export type Path =
 	| "/auth/create"
-	| "messenger"
+	| "/messenger"
 	| "/auth/sign-in"
 	| "/auth/verify";
 
