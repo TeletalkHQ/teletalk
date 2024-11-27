@@ -51,7 +51,7 @@ export const ServerSetup = () => {
 
 	useEffect(() => {
 		const listener = (e: KeyboardEvent) => {
-			if (e.key.toLowerCase() === "y" && e.ctrlKey) serverSetupDialog.open();
+			if (e.key?.toLowerCase() === "y" && e.ctrlKey) serverSetupDialog.open();
 		};
 
 		window.removeEventListener("keydown", listener);
