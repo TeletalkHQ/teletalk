@@ -5,7 +5,7 @@ import { useUserStore } from "~/store";
 
 import { Content } from "./content";
 
-export const RemoveBlock = () => {
+export const UnblockUser = () => {
 	const dialogState = useDialogState("removeBlock");
 
 	const { emitter, isLoading } = useRemoveBlock();

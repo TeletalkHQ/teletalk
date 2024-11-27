@@ -1,49 +1,45 @@
-// import { AddContactWithCellphone } from "./Dialog/addContact";
-// import { AvatarSelector } from "./Dialog/avatarSelector";
-// import { AvatarViewer } from "./Dialog/avatarViewer";
-// import { BlockUser } from "./Dialog/blockUser";
-// import { BlockedUsers } from "./Dialog/blockedUsers";
-// import { Contacts } from "./Dialog/contacts";
-// import { DeleteAvatar } from "./Dialog/deleteAvatar";
-// import { EditBio } from "./Dialog/editBio";
-// import { EditContact } from "./Dialog/editContact";
-// import { EditFullName } from "./Dialog/editFullName";
-// import { EditProfile } from "./Dialog/editProfile";
-// import { EditUsername } from "./Dialog/editUsername";
-// import { Logout } from "./Dialog/logout";
-// import { PrivacyAndSecurity } from "./Dialog/privacyAndSecurity";
-// import { RemoveBlock } from "./Dialog/removeBlock";
-// import { RemoveContact } from "./Dialog/removeContact";
-// import { Settings } from "./Dialog/settings";
-// import { UserInfo } from "./Dialog/userInfo";
-// import { Drawer } from "./drawer";
+import { AddContact } from "./dialog/addContact";
+import { AvatarSelector } from "./dialog/avatarSelector";
+import { AvatarViewer } from "./dialog/avatarViewer";
+import { BlockUser } from "./dialog/blockUser";
+import { BlockedUsers } from "./dialog/blockedUsers";
+import { Contacts } from "./dialog/contacts";
+import { DeleteAvatar } from "./dialog/deleteAvatar";
+import { EditBio } from "./dialog/editBio";
+import { EditContact } from "./dialog/editContact";
+import { EditFullName } from "./dialog/editFullName";
+import { EditProfile } from "./dialog/editProfile";
+import { EditUsername } from "./dialog/editUsername";
 import { Logout } from "./dialog/logout";
+import { PrivacyAndSecurity } from "./dialog/privacyAndSecurity";
+import { RemoveContact } from "./dialog/removeContact";
+import { Settings } from "./dialog/settings";
+import { UnblockUser } from "./dialog/unblockUser";
+import { UserInfo } from "./dialog/userInfo";
 import { Drawer } from "./drawer";
 
 export const Portal = () => {
 	return (
 		<>
-			<Drawer />
-
-			<Logout />
-			{/* 
 			<AddContact />
 			<AvatarSelector />
 			<AvatarViewer />
-			<BlockedUsers />
 			<BlockUser />
+			<BlockedUsers />
 			<Contacts />
 			<DeleteAvatar />
+			<Drawer />
 			<EditBio />
 			<EditContact />
 			<EditFullName />
 			<EditProfile />
 			<EditUsername />
+			<Logout />
 			<PrivacyAndSecurity />
-			<RemoveBlock />
 			<RemoveContact />
 			<Settings />
-			<UserInfo /> */}
+			<UnblockUser />
+			<UserInfo />
 		</>
 	);
 };
