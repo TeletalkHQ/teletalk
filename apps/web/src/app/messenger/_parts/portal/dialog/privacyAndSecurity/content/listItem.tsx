@@ -1,8 +1,12 @@
 import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
-import { Box } from "@repo/ui";
+import { Box, GeneratedIcon } from "@repo/ui";
 
-import { PrivacyAndSecurityListItem } from "../type";
+export interface PrivacyAndSecurityListItem {
+	displayName: "Blocked users" | "Sessions";
+	Icon: GeneratedIcon;
+	name: DialogStore.DialogName;
+}
 
 interface Props {
 	item: PrivacyAndSecurityListItem;

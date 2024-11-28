@@ -1,12 +1,13 @@
-//CLEANME: Move to icons
-import AccountBoxIcon from "@mui/icons-material/AccountBoxTwoTone";
-import CallIcon from "@mui/icons-material/CallTwoTone";
-import ChatIcon from "@mui/icons-material/ChatTwoTone";
-import CircleNotificationsIcon from "@mui/icons-material/CircleNotificationsTwoTone";
-import LanguageIcon from "@mui/icons-material/LanguageTwoTone";
-import LockIcon from "@mui/icons-material/LockTwoTone";
-import PieChartIcon from "@mui/icons-material/PieChartTwoTone";
-import StorageIcon from "@mui/icons-material/Storage";
+import {
+	AccountBoxIcon,
+	CallIcon,
+	ChatIcon,
+	CircleNotificationsIcon,
+	LanguageIcon,
+	LockIcon,
+	PieChartIcon,
+	StorageIcon,
+} from "@repo/ui";
 
 import { SettingsList } from "../types";
 

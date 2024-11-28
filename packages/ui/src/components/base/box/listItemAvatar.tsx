@@ -1,18 +1,18 @@
 import {
-	ListItemButton as MuiListItemButton,
-	ListItemButtonProps as MuiListItemButtonProps,
+	ListItemAvatar as MuiListItemAvatar,
+	ListItemAvatarProps as MuiListItemAvatarProps,
 } from "@mui/material";
 
 import { Skeleton } from "../../common/loading";
 
-export interface ListItemButtonProps extends MuiListItemButtonProps {
+export interface ListItemButtonProps extends MuiListItemAvatarProps {
 	loading?: boolean;
 	loadingStyle?: React.CSSProperties;
 	fullWidth?: boolean;
 	fullHeight?: boolean;
 }
 
-export const ListItemButton: React.FC<ListItemButtonProps> = ({
+export const ListItemAvatar: React.FC<ListItemButtonProps> = ({
 	children,
 	fullHeight,
 	fullWidth,
@@ -22,15 +22,15 @@ export const ListItemButton: React.FC<ListItemButtonProps> = ({
 	...rest
 }) => {
 	return (
-		<MuiListItemButton
+		<MuiListItemAvatar
 			{...rest}
 			style={{
 				...style,
-				width: fullWidth ? "100%" : style?.width,
 				height: fullHeight ? "100%" : style?.height,
+				width: fullWidth ? "100%" : style?.width,
 			}}
 		>
 			{loading ? <Skeleton style={loadingStyle} /> : children}
-		</MuiListItemButton>
+		</MuiListItemAvatar>
 	);
 };

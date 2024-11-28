@@ -1,39 +1,19 @@
 import { VoidWithArg, VoidWithTwoArgs } from "@repo/types";
-import { Box, ElementName, Icons } from "@repo/ui";
+import {
+	Box,
+	CallsIcon,
+	ContactsIcon,
+	ElementName,
+	GeneratedIcon,
+	LogoutOutlinedIcon,
+	NewChannelOutlinedIcon,
+	NewGroupOutlinedIcon,
+	NightModeOutlinedIcon,
+	SettingsOutlinedIcon,
+} from "@repo/ui";
 import { MouseEvent } from "react";
 
 type HTMLDivMouseEvent = MouseEvent<HTMLDivElement, globalThis.MouseEvent>;
-
-const drawerList = [
-	{
-		disabled: true,
-		Icon: Icons.Calls,
-	},
-	{
-		disabled: false,
-		Icon: Icons.Contacts,
-	},
-	{
-		disabled: false,
-		Icon: Icons.LogoutOutlined,
-	},
-	{
-		disabled: true,
-		Icon: Icons.NewChannelOutlined,
-	},
-	{
-		disabled: true,
-		Icon: Icons.NewGroupOutlined,
-	},
-	{
-		disabled: true,
-		Icon: Icons.NightModeOutlined,
-	},
-	{
-		disabled: false,
-		Icon: Icons.SettingsOutlined,
-	},
-];
 
 interface Props {
 	toggleDrawer: VoidWithTwoArgs<HTMLDivMouseEvent, boolean>;
@@ -42,7 +22,7 @@ interface Props {
 
 export const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
 	<Box.List style={{ padding: 10 }}>
-		{drawerList.map(({ Icon, disabled }, index) => (
+		{drawerList.map(({ name, label, Icon, disabled }, index) => (
 			<Box.ListItemButton
 				key={index}
 				disabled={disabled}
@@ -53,14 +33,64 @@ export const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
 				}}
 				onClick={(event) => {
 					toggleDrawer(event, false);
-					onClick(Icon.name);
+					onClick(name);
 				}}
 			>
 				<Box.ListItemIcon>
-					<Icon.Element />
+					<Icon />
 				</Box.ListItemIcon>
-				<Box.ListItemText primary={Icon.text} />
+				<Box.ListItemText primary={label} />
 			</Box.ListItemButton>
 		))}
 	</Box.List>
 );
+
+const drawerList: Array<{
+	disabled: boolean;
+	name: ElementName;
+	Icon: GeneratedIcon;
+	label: string;
+}> = [
+	{
+		disabled: true,
+		Icon: CallsIcon,
+		label: "Calls",
+		name: "calls",
+	},
+	{
+		disabled: false,
+		Icon: ContactsIcon,
+		name: "contacts",
+		label: "Contacts",
+	},
+	{
+		disabled: false,
+		Icon: LogoutOutlinedIcon,
+		name: "logout",
+		label: "Logout",
+	},
+	{
+		disabled: true,
+		Icon: NewChannelOutlinedIcon,
+		name: "channels",
+		label: "Channels",
+	},
+	{
+		disabled: true,
+		Icon: NewGroupOutlinedIcon,
+		name: "newGroup",
+		label: "New Group",
+	},
+	{
+		disabled: true,
+		Icon: NightModeOutlinedIcon,
+		name: "nightMode",
+		label: "Night Mode",
+	},
+	{
+		disabled: false,
+		Icon: SettingsOutlinedIcon,
+		name: "settings",
+		label: "Settings",
+	},
+];

@@ -2,8 +2,7 @@ import { ServerAvailabilityStatusType } from "@repo/hooks";
 import { VoidNoArgs, VoidWithArg } from "@repo/types";
 import { Box, Button } from "@repo/ui";
 
-import { ServerAvailabilityStatus } from "~/components/Other";
-
+import { ServerAvailabilityStatus } from "../../serverAvailabilityStatus";
 import { AddServerButton } from "./addServerButton";
 import { ServerSelect } from "./serversSelect";
 

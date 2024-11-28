@@ -15,7 +15,7 @@ export const Content: React.FC<Props> = ({ control }) => {
 		<Box.Flex col style={{ maxWidth: 400 }}>
 			<FirstName control={control} />
 
-			<Typography variant="greyCaption">
+			<Typography variant="caption">
 				You can choose a username on Teletalk. If you do, other people will be
 				able to find you by this username and contact you without knowing your
 				phone number. You can use a-z, 0-9 and underscores. Minimum length is{" "}

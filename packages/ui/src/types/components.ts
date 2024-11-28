@@ -1,5 +1,5 @@
-import { SelectChangeEvent, SelectProps, SvgIconTypeMap } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { SelectChangeEvent, SelectProps } from "@mui/material";
+import { CircularProgressProps } from "@mui/material";
 import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
 import {
@@ -87,10 +87,6 @@ export type OnChangeValidatorFn = (
 
 export type ElementLabel = string;
 
-export type IconType = OverridableComponent<SvgIconTypeMap<object, "svg">> & {
-	muiName: string;
-};
-
 export type HTMLDivMouseEvent = MouseEvent<
 	HTMLDivElement,
 	globalThis.MouseEvent
@@ -103,3 +99,5 @@ export type OnInputChange = ChangeEventHandler<
 >;
 
 export type OnSelectOnChange = SelectProps["onChange"];
+
+export type ProgressColor = CircularProgressProps["color"];

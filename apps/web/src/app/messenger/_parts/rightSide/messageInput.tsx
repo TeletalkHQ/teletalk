@@ -1,12 +1,15 @@
 import { SubmitHandler, useForm, useSendMessage } from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
 import {
+	AttachFileIcon,
 	Box,
+	EmojiEmotionsIcon,
 	FieldWithController,
 	Form,
 	IconButton,
-	Icons,
+	MicNoneIcon,
 	Progress,
+	SendIcon,
 } from "@repo/ui";
 import { useWatch } from "react-hook-form";
 
@@ -48,7 +51,7 @@ export const MessageInput = () => {
 				<Box.Flex ai="center" gap={1} jc="space-between" style={{ padding: 5 }}>
 					<Box.Div>
 						<IconButton onClick={() => {}}>
-							<Icons.AttachFile.Element />
+							<AttachFileIcon />
 						</IconButton>
 					</Box.Div>
 
@@ -65,7 +68,7 @@ export const MessageInput = () => {
 
 					<Box.Div>
 						<IconButton>
-							<Icons.EmojiEmotions.Element />
+							<EmojiEmotionsIcon />
 						</IconButton>
 					</Box.Div>
 
@@ -75,7 +78,7 @@ export const MessageInput = () => {
 								{isLoading ? (
 									<Progress.Circular />
 								) : (
-									<Icons.Send.Element color="primary" />
+									<SendIcon color="primary" />
 								)}
 							</IconButton>
 						) : (
@@ -85,7 +88,7 @@ export const MessageInput = () => {
 										console.debug("Mic clicked");
 									}}
 								>
-									<Icons.MicNone.Element />
+									<MicNoneIcon />
 								</IconButton>
 							</>
 						)}

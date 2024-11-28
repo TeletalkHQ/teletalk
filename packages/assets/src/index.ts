@@ -1,2 +1,1 @@
-export * from "./dynamicIcon";
-export * from "./icons";
+export {};

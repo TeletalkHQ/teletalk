@@ -40,7 +40,7 @@ export const ProfileOverview: React.FC = () => {
 							fontSize: 16,
 						}}
 					>
-						<Typography variant="greyCaption">@{userInfo.username}</Typography>
+						<Typography variant="caption">@{userInfo.username}</Typography>
 					</Box.Div>
 				)}
 			</Box.Flex>

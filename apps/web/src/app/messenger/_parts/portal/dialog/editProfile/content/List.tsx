@@ -1,7 +1,10 @@
-import AccountBoxTwoTone from "@mui/icons-material/AccountBoxTwoTone";
-import AlternateEmailTwoTone from "@mui/icons-material/AlternateEmailTwoTone";
-import CallTwoTone from "@mui/icons-material/CallTwoTone";
-import SettingsAccessibilityTwoToneIcon from "@mui/icons-material/SettingsAccessibilityTwoTone";
+// TODO: Move to `icons`
+import {
+	AccountBoxTwoToneIcon,
+	AlternateEmailTwoToneIcon,
+	CallTwoToneIcon,
+	SettingsAccessibilityTwoToneIcon,
+} from "@repo/ui";
 
 import { EditProfileListItem, ListItem, OnProfileItemClick } from "./ListItem";
 
@@ -30,21 +33,21 @@ export const List: React.FC<Props> = ({
 		},
 		{
 			disabled: false,
-			Icon: AccountBoxTwoTone,
+			Icon: AccountBoxTwoToneIcon,
 			label: "Name",
 			name: "editFullName",
 			value: fullName,
 		},
 		{
 			disabled: true,
-			Icon: CallTwoTone,
+			Icon: CallTwoToneIcon,
 			label: "Phone Number",
 			name: "editPhoneNumber",
 			value: fullNumber,
 		},
 		{
 			disabled: false,
-			Icon: AlternateEmailTwoTone,
+			Icon: AlternateEmailTwoToneIcon,
 			label: "Username",
 			name: "editUsername",
 			value: username || "Not set",

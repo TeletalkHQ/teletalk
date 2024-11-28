@@ -3,7 +3,6 @@ export * from "./datePicker";
 export * from "./field";
 export * from "./fieldWithController";
 export * from "./file";
-export * from "./icon";
 export * from "./inputAdornment";
 export * from "./otp";
 export * from "./select";

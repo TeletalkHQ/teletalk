@@ -1,6 +1,6 @@
-import { SvgIconComponent } from "@mui/icons-material";
 import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
+import { GeneratedIcon } from "@repo/ui";
 
 export type SettingDisplayName =
 	| "Edit Profile"
@@ -15,7 +15,7 @@ export type SettingDisplayName =
 export type SettingItem = {
 	disabled: boolean;
 	displayName: SettingDisplayName;
-	Icon: SvgIconComponent;
+	Icon: GeneratedIcon;
 	name: DialogStore.DialogName;
 };
 

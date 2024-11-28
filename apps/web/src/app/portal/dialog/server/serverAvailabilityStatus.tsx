@@ -1,7 +1,7 @@
 import { ServerAvailabilityStatusType } from "@repo/hooks";
 import { Box } from "@repo/ui";
 
-import { ServerStatusIndicator } from "./ServerStatusIndicator";
+import { ServerStatusIndicator } from "./serverStatusIndicator";
 
 interface Props {
 	status: ServerAvailabilityStatusType;

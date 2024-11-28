@@ -7,9 +7,10 @@ import {
 	useTheme,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import { useTablePagination } from "@repo/hooks";
 import { PaginationStore } from "@repo/store";
 import * as React from "react";
+
+import { useTablePagination } from "../../../hooks";
 
 interface Props {
 	tableName: PaginationStore.TableName;

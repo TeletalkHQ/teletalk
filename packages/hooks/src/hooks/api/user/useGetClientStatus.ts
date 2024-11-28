@@ -1,3 +1,5 @@
+"use client";
+
 import { BaseSchema } from "@repo/schema";
 import { useState } from "react";
 

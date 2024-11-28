@@ -9,12 +9,13 @@ import {
 } from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
 import {
+	AccountCircleOutlinedIcon,
+	ArrowBackIcon,
 	Box,
 	Button,
 	FirstName,
 	Form,
 	IconButton,
-	Icons,
 	LastName,
 	Typography,
 } from "@repo/ui";
@@ -62,18 +63,15 @@ const Create = () => {
 					}}
 				>
 					<IconButton onClick={handleBackToSignInClick}>
-						<Icons.ArrowBack.Element />
+						<ArrowBackIcon />
 					</IconButton>
 				</Box.Div>
 				<Box.Flex ai="center" col sx={{ marginTop: 8 }}>
 					<Box.Div>
-						<Icons.AccountCircleOutlined.Element
-							color="primary"
-							fontSize="large"
-						/>
+						<AccountCircleOutlinedIcon color="primary" fontSize="large" />
 					</Box.Div>
 					<Box.Container mw="xs">
-						<Typography variant="greyCaption">
+						<Typography variant="caption">
 							Please enter this information to complete your account creation.
 						</Typography>
 

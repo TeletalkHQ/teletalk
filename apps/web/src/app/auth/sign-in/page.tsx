@@ -14,7 +14,7 @@ import {
 	CountryCode,
 	CountrySelector,
 	Form,
-	Icons,
+	LockOutlinedIcon,
 	PhoneNumber,
 	SelectedCountry,
 	Typography,
@@ -86,7 +86,7 @@ const SignIn = () => {
 						backgroundColor: theme.palette.secondary.main,
 					})}
 				>
-					<Icons.LockOutlined.Element />
+					<LockOutlinedIcon />
 				</Box.Avatar>
 
 				<Typography variant="h5">Teletalk</Typography>
@@ -101,7 +101,7 @@ const SignIn = () => {
 						onSubmit={onSubmit}
 					>
 						<Box.Div style={{ marginTop: 1 }}>
-							<Typography variant="greyCaption">
+							<Typography variant="caption">
 								Please verify your country code and enter your mobile phone
 								number.
 							</Typography>

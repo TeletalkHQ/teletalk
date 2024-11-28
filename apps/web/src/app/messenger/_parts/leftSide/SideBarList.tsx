@@ -1,20 +1,29 @@
-import { Box, Icons } from "@repo/ui";
+import {
+	AllChatsOutlinedIcon,
+	BotOutlinedIcon,
+	Box,
+	ChannelsOutlinedIcon,
+	EditChatsOutlinedIcon,
+	GroupsIcon,
+	PersonalOutlinedIcon,
+	UnreadOutlinedIcon,
+} from "@repo/ui";
 
 const sidebarList = [
-	Icons.AllChatsOutlined,
-	Icons.UnreadOutlined,
-	Icons.PersonalOutlined,
-	Icons.ChannelsOutlined,
-	Icons.Groups,
-	Icons.BotOutlined,
-	Icons.EditChatsOutlined,
+	AllChatsOutlinedIcon,
+	UnreadOutlinedIcon,
+	PersonalOutlinedIcon,
+	ChannelsOutlinedIcon,
+	GroupsIcon,
+	BotOutlinedIcon,
+	EditChatsOutlinedIcon,
 ];
 
 export const SideBarList = () => {
 	return (
 		<>
 			<Box.List sx={{ width: "20%" }}>
-				{sidebarList.map(({ Element: Icon }, index) => {
+				{sidebarList.map((Icon, index) => {
 					return (
 						//TODO: Flex list Item
 						<Box.ListItemButton

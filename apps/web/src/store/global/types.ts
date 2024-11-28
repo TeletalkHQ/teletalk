@@ -1,6 +1,6 @@
-import { CircularProgressProps } from "@mui/material";
 import { StoreSetFn } from "@repo/store";
 import type { VoidNoArgs, VoidWithArg, VoidWithTwoArgs } from "@repo/types";
+import { CircularProgressProps } from "@repo/ui";
 import { CSSProperties } from "react";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";

@@ -1,4 +1,3 @@
-import { CircularProgressProps } from "@mui/material";
 import { ChangeEventHandler } from "react";
 
 export type SnakeCase<S extends string> = S extends `${infer T1}_${infer T2}`
@@ -49,8 +48,6 @@ export type StoreSetFn<StoreType> = (
 ) => void;
 
 export type LoadingType = "FULL_PAGE" | "OVERLAY";
-
-export type ProgressColor = CircularProgressProps["color"];
 
 export type CommonOnChange = ChangeEventHandler<
 	HTMLInputElement | HTMLTextAreaElement

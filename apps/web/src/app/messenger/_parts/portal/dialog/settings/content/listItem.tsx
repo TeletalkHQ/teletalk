@@ -1,5 +1,5 @@
 import { VoidNoArgs } from "@repo/types";
-import { Box, IconType } from "@repo/ui";
+import { Box, GeneratedIcon } from "@repo/ui";
 
 import { SettingDisplayName } from "../types";
 
@@ -7,7 +7,7 @@ interface Props {
 	onClick: VoidNoArgs;
 	displayName: SettingDisplayName;
 	disabled: boolean;
-	Icon: IconType;
+	Icon: GeneratedIcon;
 }
 
 export const ListItem: React.FC<Props> = ({

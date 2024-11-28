@@ -14,6 +14,7 @@ import { Li } from "./li";
 import { Link } from "./link";
 import { List } from "./list";
 import { ListItem } from "./listItem";
+import { ListItemAvatar } from "./listItemAvatar";
 import { ListItemButton } from "./listItemButton";
 import { ListItemIcon } from "./listItemIcon";
 import { ListItemText } from "./listItemText";
@@ -24,6 +25,8 @@ import { Paper } from "./paper";
 import { Span } from "./span";
 import { Tooltip } from "./tooltip";
 import { Ul } from "./ul";
+
+export * from "./divider";
 
 export const Box = {
 	AppBar,
@@ -52,13 +55,13 @@ export const Box = {
 	Span,
 	Tooltip,
 	Ul,
+	ListItemAvatar,
 };
 
 export type * from "./avatar";
 export type * from "./container";
 export type * from "./dialog";
 export type * from "./div";
-export type * from "./divider";
 export type * from "./flex";
 export type * from "./fullScreen";
 export type * from "./grid";

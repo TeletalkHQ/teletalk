@@ -1,18 +1,23 @@
-import { ListItemButtonProps } from "@mui/material";
 import { DialogStore } from "@repo/store";
 import { VoidNoArgs } from "@repo/types";
 import { VoidWithArg } from "@repo/types";
-import { Box, ElementLabel, IconType } from "@repo/ui";
+import {
+	Box,
+	ElementLabel,
+	GeneratedIcon,
+	ListItemButtonProps,
+} from "@repo/ui";
+import React from "react";
 
 interface Props extends ListItemButtonProps {
 	label: ElementLabel;
 	onClick: VoidNoArgs;
 	value: string;
-	Icon: IconType;
+	Icon: GeneratedIcon;
 }
 
 export interface EditProfileListItem {
-	Icon: IconType;
+	Icon: GeneratedIcon;
 	disabled: boolean;
 	label: ElementLabel;
 	name: DialogStore.DialogName;

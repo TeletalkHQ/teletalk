@@ -18,7 +18,6 @@
 		"@repo/classes": "workspace:*",
 		"@repo/socket": "workspace:*",
 		"@repo/store": "workspace:*",
-		"@repo/theme": "workspace:*",
 		"@repo/utils": "workspace:*"
 	},
 	"devDependencies": {

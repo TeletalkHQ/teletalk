@@ -1,5 +1,6 @@
-import { LoadingType, ProgressColor, VoidNoArgs } from "@repo/types";
+import { LoadingType, VoidNoArgs } from "@repo/types";
 
+import { ProgressColor } from "../../../types";
 import { Progress } from "../../base";
 import { Backdrop } from "./backdrop";
 

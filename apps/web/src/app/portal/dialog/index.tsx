@@ -1,6 +1,6 @@
-import { AddServer } from "./addServer";
-import { ServerSetup } from "./serverSetup";
-import { Servers } from "./servers";
+import { AddServer } from "./server/addServer";
+import { ServerSetup } from "./server/serverSetup";
+import { Servers } from "./server/servers";
 
 export const DialogContainer = () => {
 	return (

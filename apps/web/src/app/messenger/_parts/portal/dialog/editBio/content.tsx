@@ -15,7 +15,7 @@ export const Content: React.FC<Props> = ({ control }) => {
 		>
 			<FieldWithController control={control} name="bio" />
 
-			<Typography variant="greyCaption">
+			<Typography variant="caption">
 				any details such as age, occupation or city. Example: 23 y.o. designer
 				from San Francisco
 			</Typography>

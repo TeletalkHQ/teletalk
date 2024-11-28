@@ -1,9 +1,8 @@
-import LockOpenTwoToneIcon from "@mui/icons-material/LockOpenTwoTone";
 import { userUtils } from "@repo/classes";
 import { useUserPublicInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
-import { Box, IconButton } from "@repo/ui";
+import { Box, IconButton, LockOpenTwoToneIcon } from "@repo/ui";
 
 interface Props {
 	onItemLick: VoidNoArgs;

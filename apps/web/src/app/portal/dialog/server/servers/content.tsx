@@ -2,7 +2,7 @@ import { ServerTestResult } from "@repo/hooks";
 import { VoidWithArg } from "@repo/types";
 import { Box } from "@repo/ui";
 
-import { ServerStatusIndicator } from "~/components/Other";
+import { ServerStatusIndicator } from "../serverStatusIndicator";
 
 interface Props {
 	disabled: boolean;

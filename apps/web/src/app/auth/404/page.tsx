@@ -1,7 +1,9 @@
+"use client";
+
 import { useCustomRouter } from "@repo/hooks";
 import { useEffect } from "react";
 
-export const Page404Container = () => {
+const Page = () => {
 	const router = useCustomRouter();
 
 	useEffect(() => {
@@ -9,5 +11,7 @@ export const Page404Container = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	return <></>;
+	return null;
 };
+
+export default Page;

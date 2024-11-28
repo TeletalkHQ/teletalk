@@ -1,4 +1,3 @@
-import { ListItemAvatar } from "@mui/material";
 import { useUserPublicInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
@@ -38,13 +37,13 @@ export const ChatListItem: React.FC<Props> = ({
 			}}
 			onClick={onClick}
 		>
-			<ListItemAvatar>
+			<Box.ListItemAvatar>
 				<Box.Avatar
 					// TODO: Add `avatar`
 					// src={userPublicInfo.avatarSrc}
 					style={{ width: 45, height: 45 }}
 				/>
-			</ListItemAvatar>
+			</Box.ListItemAvatar>
 
 			<Box.Flex col style={{ width: "80%" }}>
 				<Upper

@@ -1,6 +1,7 @@
 import TableCellBase, { TableCellProps } from "@mui/material/TableCell";
-import { DASHBOARD_BASE_THEME } from "@repo/theme";
 import { FC } from "react";
+
+import { DASHBOARD_BASE_THEME } from "../../../theme";
 
 export const TableCell: FC<TableCellProps> = ({ sx, ...rest }) => {
 	return (

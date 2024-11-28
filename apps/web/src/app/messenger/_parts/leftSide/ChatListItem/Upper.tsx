@@ -20,7 +20,7 @@ export const Upper: React.FC<Props> = ({ firstName, lastName }) => (
 				style={{
 					fontSize: 12,
 				}}
-				variant="greyCaption"
+				variant="caption"
 			>
 				12:38
 			</Typography>

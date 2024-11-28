@@ -1,6 +1,5 @@
-import CircleIcon from "@mui/icons-material/Circle";
 import { ServerAvailabilityStatusType } from "@repo/hooks";
-import { Box } from "@repo/ui";
+import { Box, CircleIcon } from "@repo/ui";
 
 interface Props {
 	status: ServerAvailabilityStatusType;

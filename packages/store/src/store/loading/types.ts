@@ -1,11 +1,5 @@
 import { HTTPRouteName } from "@repo/schema";
-import {
-	LoadingType,
-	ProgressColor,
-	StoreSetFn,
-	VoidNoArgs,
-	VoidWithArg,
-} from "@repo/types";
+import { LoadingType, StoreSetFn, VoidNoArgs, VoidWithArg } from "@repo/types";
 
 export type SidebarName = "welcome";
 
@@ -28,7 +22,8 @@ export interface State {
 	globalLoading: {
 		color: React.CSSProperties["color"];
 		open: boolean;
-		progressColor: ProgressColor;
+		// progressColor: ProgressColor;
+		progressColor: string;
 		size: 80;
 		speedMultiplier: number;
 		type: LoadingType;

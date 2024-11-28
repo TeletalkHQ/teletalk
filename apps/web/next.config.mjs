@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
 	images: {
 		remotePatterns: [
@@ -11,7 +12,14 @@ const nextConfig = {
 	},
 };
 
+// export default withBundleAnalyzer({
+// 	// enabled: process.env.ANALYZE === "true",
+// 	enabled: true,
+// })(nextConfig);
+
 export default nextConfig;
+
+// export default nextConfig;
 
 // const env = Object.keys(process.env).reduce((prev, curr) => {
 // 	if (curr.startsWith("NEXT_PUBLIC_")) prev[curr] = process.env[curr];

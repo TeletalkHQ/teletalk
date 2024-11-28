@@ -1,9 +1,9 @@
 import { CssBaseline, GlobalStyles } from "@mui/material";
 import { Theme, ThemeProvider as ThemeProviderMui } from "@mui/material";
-import { useThemeState } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import React, { FC, PropsWithChildren } from "react";
 
+import { useThemeState } from "../hooks";
 import { EmotionCacheProvider } from "./emotionCache";
 
 export type Themes = Record<BaseSchema.ThemeName, Theme>;

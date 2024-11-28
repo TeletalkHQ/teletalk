@@ -1,4 +1,4 @@
-import { IconButton, Icons } from "@repo/ui";
+import { CloseIcon, IconButton } from "@repo/ui";
 
 import { useChatStore } from "~/store";
 
@@ -16,7 +16,7 @@ export const ChatBarCloseButton = () => {
 				handleMessageContainerClose();
 			}}
 		>
-			<Icons.Close.Element />
+			<CloseIcon />
 		</IconButton>
 	);
 };

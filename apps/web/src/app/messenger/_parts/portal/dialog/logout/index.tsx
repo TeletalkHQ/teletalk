@@ -5,6 +5,7 @@ import {
 	useLogout,
 } from "@repo/hooks";
 import { DialogTemplate, DoubleAction } from "@repo/ui";
+import { Suspense } from "react";
 
 import { Content } from "./content";
 
@@ -32,7 +33,7 @@ export const Logout = () => {
 	};
 
 	return (
-		<>
+		<Suspense>
 			<DialogTemplate
 				actions={
 					<DoubleAction
@@ -45,7 +46,7 @@ export const Logout = () => {
 				}
 				content={<Content />}
 				dialogState={dialogState}
-			/>
-		</>
+			/>{" "}
+		</Suspense>
 	);
 };

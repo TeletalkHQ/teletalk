@@ -22,8 +22,7 @@
 		"@repo/logger": "workspace:*",
 		"@repo/query-client": "workspace:*",
 		"@repo/schema": "workspace:*",
-		"@repo/store": "workspace:*",
-		"@repo/theme": "workspace:*"
+		"@repo/store": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",

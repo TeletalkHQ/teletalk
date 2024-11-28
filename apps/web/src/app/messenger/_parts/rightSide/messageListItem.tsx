@@ -1,5 +1,4 @@
-import DoneAllIcon from "@mui/icons-material/DoneAll";
-import { Box, Typography } from "@repo/ui";
+import { Box, DoneAllIcon, Typography } from "@repo/ui";
 import { CSSProperties } from "react";
 
 interface Props {
@@ -39,13 +38,11 @@ export const MessageListItem: React.FC<Props> = ({
 						justifyContent="flex-end"
 						style={{ fontSize: 12 }}
 					>
-						<Typography variant="greyCaption">
-							{messageTime || "12:24"}
-						</Typography>
+						<Typography variant="caption">{messageTime || "12:24"}</Typography>
 
-						<Typography variant="greyCaption">{chatDate}</Typography>
+						<Typography variant="caption">{chatDate}</Typography>
 
-						<Typography variant="greyCaption">
+						<Typography variant="caption">
 							<DoneAllIcon fontSize="small" />
 						</Typography>
 					</Box.Flex>

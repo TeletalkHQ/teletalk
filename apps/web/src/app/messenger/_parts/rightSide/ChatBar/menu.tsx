@@ -1,7 +1,7 @@
 "use client";
 
 import { useDialogState } from "@repo/hooks";
-import { Box, IconButton, Icons } from "@repo/ui";
+import { Box, IconButton, MoreVerticalIcon } from "@repo/ui";
 import { useState } from "react";
 
 export const ChatBarMenu = () => {
@@ -49,7 +49,7 @@ export const ChatBarMenu = () => {
 				id="long-button"
 				onClick={handleClick}
 			>
-				<Icons.MoreVertical.Element />
+				<MoreVerticalIcon />
 			</IconButton>
 			<Box.Menu
 				anchorEl={anchorEl}

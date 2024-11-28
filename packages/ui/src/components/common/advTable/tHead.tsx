@@ -78,7 +78,7 @@ export function AdvTHead<Schema, ExtraFields extends string = string>({
 								direction={orderBy === name ? order : "asc"}
 								onClick={createSortHandler(name as keyof Schema)}
 							>
-								<Typography variant="s"> {value as string} </Typography>
+								<Typography> {value as string} </Typography>
 								{orderBy === name ? (
 									<Box component="span" sx={visuallyHidden}>
 										{order === "desc"

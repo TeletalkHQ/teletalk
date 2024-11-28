@@ -1,6 +1,5 @@
-import { Divider } from "@mui/material";
 import { useDialogStore } from "@repo/store";
-import { Box } from "@repo/ui";
+import { Box, Divider } from "@repo/ui";
 
 import { SettingItem } from "../types";
 import { settingsList } from "./data";

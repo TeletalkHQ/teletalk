@@ -8,7 +8,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SnackbarProvider } from "notistack";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
 import { AppName, ThemeProvider, Themes } from "../../providers";
@@ -39,33 +39,35 @@ export function RootLayout({
 				fallback={<div>Something went wrong</div>}
 				onError={logger.log}
 			>
-				<NuqsAdapter>
-					<QueryClientProvider>
-						<ThemeProvider
-							appName={appName}
-							forceThemeName={forceThemeName}
-							shouldUseBaseline={shouldUseBaseline}
-							themes={themes}
-						>
-							<SnackbarProvider
-								anchorOrigin={{
-									horizontal: "center",
-									vertical: "bottom",
-								}}
-								maxSnack={5}
-								preventDuplicate
-							/>
+				<Suspense>
+					<NuqsAdapter>
+						<QueryClientProvider>
+							<ThemeProvider
+								appName={appName}
+								forceThemeName={forceThemeName}
+								shouldUseBaseline={shouldUseBaseline}
+								themes={themes}
+							>
+								<SnackbarProvider
+									anchorOrigin={{
+										horizontal: "center",
+										vertical: "bottom",
+									}}
+									maxSnack={5}
+									preventDuplicate
+								/>
 
-							<AuthLayout>{children}</AuthLayout>
+								<AuthLayout>{children}</AuthLayout>
 
-							{isMounted && <SpeedInsights />}
-						</ThemeProvider>
+								{isMounted && <SpeedInsights />}
+							</ThemeProvider>
 
-						{shouldShowQueryDevtools && (
-							<ReactQueryDevtools initialIsOpen={false} />
-						)}
-					</QueryClientProvider>
-				</NuqsAdapter>
+							{shouldShowQueryDevtools && (
+								<ReactQueryDevtools initialIsOpen={false} />
+							)}
+						</QueryClientProvider>
+					</NuqsAdapter>
+				</Suspense>
 			</ErrorBoundary>
 		</>
 	);

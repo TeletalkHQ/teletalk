@@ -9,13 +9,14 @@ import {
 } from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
 import {
+	ArrowBackIcon,
 	Box,
 	Button,
 	Form,
 	IconButton,
-	Icons,
 	SignInCode,
 	Typography,
+	VerifiedUserIcon,
 } from "@repo/ui";
 import { useFormState } from "react-hook-form";
 
@@ -39,7 +40,9 @@ const Verify = () => {
 		schemaName,
 	});
 
-	const { isValid } = useFormState({ control });
+	const { isValid } = useFormState({
+		control,
+	});
 
 	const handleBackToSignInClick = () => {
 		setValue("signInCode", "");
@@ -73,7 +76,7 @@ const Verify = () => {
 			<Box.Container maxWidth="xl">
 				<Box.Div style={{ marginTop: 1 }}>
 					<IconButton onClick={handleBackToSignInClick}>
-						<Icons.ArrowBack.Element />
+						<ArrowBackIcon />
 					</IconButton>
 				</Box.Div>
 				<Box.Div
@@ -90,7 +93,7 @@ const Verify = () => {
 							backgroundColor: theme.palette.secondary.dark,
 						})}
 					>
-						<Icons.VerifiedUser.Element />
+						<VerifiedUserIcon />
 					</Box.Avatar>
 					<Box.Container maxWidth="xs">
 						<Box.Div style={{ marginTop: 1 }}>
@@ -98,7 +101,7 @@ const Verify = () => {
 								+{countryCode} {phoneNumber}
 							</Typography>
 
-							<Typography variant="greyCaption">
+							<Typography variant="caption">
 								We have sent the code to the Teletalk app to your phone number.
 							</Typography>
 

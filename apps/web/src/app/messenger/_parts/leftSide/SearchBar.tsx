@@ -1,5 +1,12 @@
 import { VoidNoArgs } from "@repo/types";
-import { Box, IconButton, Icons, InputAdornment, TextField } from "@repo/ui";
+import {
+	Box,
+	IconButton,
+	InputAdornment,
+	MenuIcon,
+	SearchIcon,
+	TextField,
+} from "@repo/ui";
 
 interface Props {
 	onDrawerIconClick: VoidNoArgs;
@@ -24,7 +31,7 @@ export const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
 			>
 				<Box.Div style={{ padding: "5px 15px" }}>
 					<IconButton onClick={onDrawerIconClick}>
-						<Icons.Menu.Element />
+						<MenuIcon />
 					</IconButton>
 				</Box.Div>
 
@@ -37,7 +44,7 @@ export const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
 							},
 							startAdornment: (
 								<InputAdornment position="start">
-									<Icons.Search.Element />
+									<SearchIcon />
 								</InputAdornment>
 							),
 						}}

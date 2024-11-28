@@ -1,14 +1,15 @@
-import { FormControl, InputLabel } from "@mui/material";
 import { ServerAvailabilityStatusType } from "@repo/hooks";
 import {
 	Box,
+	FormControl,
+	InputLabel,
 	OnInputChange,
 	OnSelectOnChange,
 	Select,
 	TextField,
 } from "@repo/ui";
 
-import { ServerAvailabilityStatus } from "~/components/Other";
+import { ServerAvailabilityStatus } from "../serverAvailabilityStatus";
 
 interface Props {
 	disabled: boolean;

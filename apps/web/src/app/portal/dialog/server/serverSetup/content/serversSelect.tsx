@@ -1,8 +1,6 @@
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
 import { useConfigs } from "@repo/hooks";
 import { VoidWithArg } from "@repo/types";
-import { Box, Select } from "@repo/ui";
+import { Box, FormControl, InputLabel, Select } from "@repo/ui";
 import lodash from "lodash";
 
 interface Props {
