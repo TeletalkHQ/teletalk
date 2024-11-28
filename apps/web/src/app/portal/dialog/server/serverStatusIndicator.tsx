@@ -1,5 +1,5 @@
 import { ServerAvailabilityStatusType } from "@repo/hooks";
-import { Box, CircleIcon } from "@repo/ui";
+import { CircleIcon, Span } from "@repo/ui";
 
 interface Props {
 	status: ServerAvailabilityStatusType;
@@ -16,7 +16,7 @@ export const statusColors: StatusColors = {
 
 export const ServerStatusIndicator: React.FC<Props> = ({ status }) => {
 	return (
-		<Box.Span>
+		<Span>
 			<CircleIcon
 				style={{
 					fontSize: "12px",
@@ -24,6 +24,6 @@ export const ServerStatusIndicator: React.FC<Props> = ({ status }) => {
 					margin: "0px 4px",
 				}}
 			/>
-		</Box.Span>
+		</Span>
 	);
 };

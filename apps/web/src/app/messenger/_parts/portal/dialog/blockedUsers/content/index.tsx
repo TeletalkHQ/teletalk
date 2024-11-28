@@ -1,10 +1,10 @@
-import { Box } from "@repo/ui";
+import { List } from "@repo/ui";
 
 interface Props {}
 
 export const Content: React.FC<Props> = () => {
 	return (
-		<Box.List>
+		<List>
 			{/* {userStore.users
 				.filter((item) => item.isBlocked)
 				.map((item, index) => (
@@ -14,6 +14,6 @@ export const Content: React.FC<Props> = () => {
 						onItemLick={() => onItemLick(item.userId)}
 					/>
 				))} */}
-		</Box.List>
+		</List>
 	);
 };

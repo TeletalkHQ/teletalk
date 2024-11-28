@@ -1,9 +1,7 @@
-import { Box, Typography } from "@repo/ui";
+import { Flex, Typography } from "@repo/ui";
 
 export const Title = () => (
-	<>
-		<Box.Flex ai="center" jc="center">
-			<Typography fontWeight="bold">Contacts</Typography>
-		</Box.Flex>
-	</>
+	<Flex ai="center" jc="center">
+		<Typography fontWeight="bold">Contacts</Typography>
+	</Flex>
 );

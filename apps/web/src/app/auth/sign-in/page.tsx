@@ -9,10 +9,13 @@ import {
 } from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
 import {
-	Box,
+	Avatar,
 	Button,
+	Container,
 	CountryCode,
 	CountrySelector,
+	Div,
+	Flex,
 	Form,
 	LockOutlinedIcon,
 	PhoneNumber,
@@ -78,20 +81,20 @@ const SignIn = () => {
 	const onSubmit = handleSubmit(submitSignInForm);
 
 	return (
-		<Box.Container mw="xl">
-			<Box.Flex ai="center" col mt={8}>
-				<Box.Avatar
+		<Container mw="xl">
+			<Flex ai="center" col mt={8}>
+				<Avatar
 					sx={(theme) => ({
 						m: 1,
 						backgroundColor: theme.palette.secondary.main,
 					})}
 				>
 					<LockOutlinedIcon />
-				</Box.Avatar>
+				</Avatar>
 
 				<Typography variant="h5">Teletalk</Typography>
 
-				<Box.Container mw="xs">
+				<Container mw="xs">
 					<Form.Base
 						style={{
 							display: "flex",
@@ -100,7 +103,7 @@ const SignIn = () => {
 						}}
 						onSubmit={onSubmit}
 					>
-						<Box.Div style={{ marginTop: 1 }}>
+						<Div style={{ marginTop: 1 }}>
 							<Typography variant="caption">
 								Please verify your country code and enter your mobile phone
 								number.
@@ -112,10 +115,10 @@ const SignIn = () => {
 								onCountryNameChange={handleCountryNameChange}
 								onSelectChange={handleCountrySelectChange}
 							/>
-							<Box.Flex fullWidth>
+							<Flex fullWidth>
 								<CountryCode control={control} />
 								<PhoneNumber control={control} />
-							</Box.Flex>
+							</Flex>
 
 							<Button
 								// disabled={!isValid}
@@ -129,13 +132,13 @@ const SignIn = () => {
 							>
 								Next
 							</Button>
-						</Box.Div>
+						</Div>
 					</Form.Base>
-				</Box.Container>
-			</Box.Flex>
+				</Container>
+			</Flex>
 
 			<AuthFooter />
-		</Box.Container>
+		</Container>
 	);
 };
 

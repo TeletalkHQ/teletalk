@@ -1,5 +1,5 @@
 import { useUserInfo } from "@repo/hooks";
-import { Box } from "@repo/ui";
+import { Avatar, Flex } from "@repo/ui";
 
 export const Content: React.FC = () => {
 	const {
@@ -10,7 +10,7 @@ export const Content: React.FC = () => {
 
 	return (
 		<>
-			<Box.Flex
+			<Flex
 				ai="center"
 				col
 				jc="center"
@@ -20,7 +20,7 @@ export const Content: React.FC = () => {
 					height: "300px",
 				}}
 			>
-				<Box.Avatar
+				<Avatar
 					alt="avatar"
 					src={avatarSrc}
 					style={{
@@ -29,7 +29,7 @@ export const Content: React.FC = () => {
 						width: 200,
 					}}
 				/>
-			</Box.Flex>
+			</Flex>
 		</>
 	);
 };

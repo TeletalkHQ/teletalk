@@ -1,6 +1,6 @@
 import { useConfigs } from "@repo/hooks";
 import { VoidWithArg } from "@repo/types";
-import { Box, FormControl, InputLabel, Select } from "@repo/ui";
+import { FormControl, InputLabel, MenuItem, Select } from "@repo/ui";
 import lodash from "lodash";
 
 interface Props {
@@ -33,9 +33,9 @@ export const ServerSelect: React.FC<Props> = ({
 					}}
 				>
 					{configs.api.servers.map((item, index) => (
-						<Box.MenuItem key={index} value={item.id}>
+						<MenuItem key={index} value={item.id}>
 							{item.url}
-						</Box.MenuItem>
+						</MenuItem>
 					))}
 				</Select>
 			</FormControl>

@@ -1,5 +1,5 @@
 import { DialogStore, dialogNames, useDialogStore } from "@repo/store";
-import { Box, Divider, ElementName, SwipeableDrawer } from "@repo/ui";
+import { Div, Divider, ElementName, SwipeableDrawer } from "@repo/ui";
 import { KeyboardEvent, SyntheticEvent } from "react";
 
 import { useGlobalStore } from "~/store";
@@ -43,7 +43,7 @@ export const Drawer = () => {
 			onClose={(event) => toggleDrawer(event, false)}
 			onOpen={(event) => toggleDrawer(event, true)}
 		>
-			<Box.Div
+			<Div
 				role="presentation"
 				style={{
 					width:
@@ -62,7 +62,7 @@ export const Drawer = () => {
 					toggleDrawer={toggleDrawer}
 					onClick={handleDrawerItemClick}
 				/>
-			</Box.Div>
+			</Div>
 		</SwipeableDrawer>
 	);
 };

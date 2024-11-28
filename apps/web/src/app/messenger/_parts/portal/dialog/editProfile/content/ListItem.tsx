@@ -2,10 +2,12 @@ import { DialogStore } from "@repo/store";
 import { VoidNoArgs } from "@repo/types";
 import { VoidWithArg } from "@repo/types";
 import {
-	Box,
 	ElementLabel,
+	Flex,
 	GeneratedIcon,
+	ListItemButton,
 	ListItemButtonProps,
+	Span,
 } from "@repo/ui";
 import React from "react";
 
@@ -34,7 +36,7 @@ export const ListItem: React.FC<Props> = ({
 	value,
 	...rest
 }) => (
-	<Box.ListItemButton
+	<ListItemButton
 		{...rest}
 		disabled={disabled}
 		style={{
@@ -48,7 +50,7 @@ export const ListItem: React.FC<Props> = ({
 		onClick={onClick}
 	>
 		<Icon style={{ fontSize: 30 }} />
-		<Box.Flex
+		<Flex
 			jc="space-between"
 			style={{
 				gap: 10,
@@ -56,8 +58,8 @@ export const ListItem: React.FC<Props> = ({
 				width: "90%",
 			}}
 		>
-			<Box.Span style={{ minWidth: "50px" }}>{label}</Box.Span>
-			<Box.Span
+			<Span style={{ minWidth: "50px" }}>{label}</Span>
+			<Span
 				style={{
 					color: "#1976d2",
 					overflow: "hidden",
@@ -66,7 +68,7 @@ export const ListItem: React.FC<Props> = ({
 				}}
 			>
 				{value}
-			</Box.Span>
-		</Box.Flex>
-	</Box.ListItemButton>
+			</Span>
+		</Flex>
+	</ListItemButton>
 );

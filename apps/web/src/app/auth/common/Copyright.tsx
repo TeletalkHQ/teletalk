@@ -1,5 +1,5 @@
 import { useConfigs } from "@repo/hooks";
-import { Box, Typography, TypographyProps } from "@repo/ui";
+import { Link, Typography, TypographyProps } from "@repo/ui";
 
 interface Props extends TypographyProps {}
 
@@ -14,9 +14,9 @@ export const Copyright: React.FC<Props> = (props) => {
 			{...props}
 		>
 			{"Copyright © "}
-			<Box.Link color="inherit" href={getAppBaseUrl()}>
+			<Link color="inherit" href={getAppBaseUrl()}>
 				teletalk
-			</Box.Link>
+			</Link>
 
 			{new Date().getFullYear()}
 		</Typography>

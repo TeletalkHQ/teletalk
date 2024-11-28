@@ -5,7 +5,7 @@ import { DialogStore, useDialogStore } from "@repo/store";
 import { TransitionName, VoidNoArgs } from "@repo/types";
 import React from "react";
 
-import { Box, DialogProps, Transitions } from "../../base";
+import { Dialog, DialogProps, Transitions } from "../../base";
 import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
@@ -68,7 +68,7 @@ export const DialogTemplate: React.FC<Props> = ({
 			: paperStyle?.height;
 
 	return (
-		<Box.Dialog
+		<Dialog
 			{...rest}
 			fullScreen={fullScreen || smFullScreen}
 			keepMounted
@@ -92,6 +92,6 @@ export const DialogTemplate: React.FC<Props> = ({
 			<Title>{title}</Title>
 			<Content>{content}</Content>
 			<Actions>{actions}</Actions>
-		</Box.Dialog>
+		</Dialog>
 	);
 };

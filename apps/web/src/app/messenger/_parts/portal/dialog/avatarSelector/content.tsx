@@ -1,5 +1,5 @@
 import { VoidNoArgs } from "@repo/types";
-import { Box, Button, OnInputChange } from "@repo/ui";
+import { Button, Flex, OnInputChange } from "@repo/ui";
 import AvatarEditor from "react-avatar-editor";
 
 interface Props {
@@ -19,7 +19,7 @@ export const Content: React.FC<Props> = ({
 }) => {
 	return (
 		<>
-			<Box.Flex
+			<Flex
 				ai="center"
 				col
 				jc="center"
@@ -64,7 +64,7 @@ export const Content: React.FC<Props> = ({
 					type="file"
 					onChange={onFileChange}
 				/>
-			</Box.Flex>
+			</Flex>
 		</>
 	);
 };

@@ -1,10 +1,11 @@
 import {
 	AllChatsOutlinedIcon,
 	BotOutlinedIcon,
-	Box,
 	ChannelsOutlinedIcon,
 	EditChatsOutlinedIcon,
 	GroupsIcon,
+	List,
+	ListItemButton,
 	PersonalOutlinedIcon,
 	UnreadOutlinedIcon,
 } from "@repo/ui";
@@ -22,11 +23,11 @@ const sidebarList = [
 export const SideBarList = () => {
 	return (
 		<>
-			<Box.List sx={{ width: "20%" }}>
+			<List sx={{ width: "20%" }}>
 				{sidebarList.map((Icon, index) => {
 					return (
 						//TODO: Flex list Item
-						<Box.ListItemButton
+						<ListItemButton
 							key={index}
 							selected={index === 4}
 							sx={{
@@ -38,10 +39,10 @@ export const SideBarList = () => {
 							}}
 						>
 							<Icon />
-						</Box.ListItemButton>
+						</ListItemButton>
 					);
 				})}
-			</Box.List>
+			</List>
 		</>
 	);
 };

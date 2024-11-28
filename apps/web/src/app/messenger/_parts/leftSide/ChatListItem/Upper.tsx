@@ -1,5 +1,5 @@
 import { BaseSchema } from "@repo/schema";
-import { Box, Typography } from "@repo/ui";
+import { Div, Flex, Typography } from "@repo/ui";
 
 interface Props {
 	firstName: BaseSchema.FirstName;
@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Upper: React.FC<Props> = ({ firstName, lastName }) => (
-	<Box.Flex
+	<Flex
 		ai="center"
 		jc="space-between"
 		style={{
@@ -15,7 +15,7 @@ export const Upper: React.FC<Props> = ({ firstName, lastName }) => (
 		}}
 	>
 		<Typography fontWeight="bold">{`${firstName} ${lastName}`}</Typography>
-		<Box.Div>
+		<Div>
 			<Typography
 				style={{
 					fontSize: 12,
@@ -24,6 +24,6 @@ export const Upper: React.FC<Props> = ({ firstName, lastName }) => (
 			>
 				12:38
 			</Typography>
-		</Box.Div>
-	</Box.Flex>
+		</Div>
+	</Flex>
 );

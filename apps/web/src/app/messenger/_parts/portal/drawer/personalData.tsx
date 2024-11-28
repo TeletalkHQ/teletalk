@@ -1,5 +1,5 @@
 import { useUserInfo } from "@repo/hooks";
-import { Box, Typography } from "@repo/ui";
+import { Avatar, Div, Flex, Typography } from "@repo/ui";
 
 interface Props {}
 
@@ -9,7 +9,7 @@ export const PersonalData: React.FC<Props> = () => {
 	} = useUserInfo();
 
 	return (
-		<Box.Flex
+		<Flex
 			ai="center"
 			col
 			gap={1}
@@ -18,9 +18,9 @@ export const PersonalData: React.FC<Props> = () => {
 				padding: 10,
 			}}
 		>
-			<Box.Div>
-				<Box.Avatar src={userInfo.avatarSrc} />
-			</Box.Div>
+			<Div>
+				<Avatar src={userInfo.avatarSrc} />
+			</Div>
 			<Typography
 				style={{
 					fontSize: 18,
@@ -28,13 +28,13 @@ export const PersonalData: React.FC<Props> = () => {
 			>
 				{userInfo.firstName} {userInfo.lastName}
 			</Typography>
-			<Box.Div
+			<Div
 				style={{
 					fontSize: 14,
 				}}
 			>
 				+{userInfo.countryCode} {userInfo.phoneNumber}
-			</Box.Div>
-		</Box.Flex>
+			</Div>
+		</Flex>
 	);
 };

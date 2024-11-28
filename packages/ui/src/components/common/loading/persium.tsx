@@ -3,13 +3,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { useTheme } from "@mui/material";
 
-import { Box } from "../../base";
+import { Div, Flex } from "../../base";
 
 export const PersiumLoading = () => {
 	const theme = useTheme();
 
 	return (
-		<Box.Flex
+		<Flex
 			ai="center"
 			fullHeight
 			fullWidth
@@ -18,12 +18,12 @@ export const PersiumLoading = () => {
 				maxHeight: "500px",
 			}}
 		>
-			<Box.Div
+			<Div
 				style={{
 					position: "relative",
 				}}
 			>
-				<Box.Div
+				<Div
 					style={{
 						height: " 100px",
 						width: " 100px",
@@ -31,11 +31,11 @@ export const PersiumLoading = () => {
 						border: ` 3px solid ${theme.palette.primary.main}`,
 					}}
 				/>
-				<Box.Div
+				<Div
 					className="persium-spinner"
 					style={{ position: "absolute", top: 0, left: 0 }}
 				/>
-			</Box.Div>
+			</Div>
 			<img
 				alt="pe-loading-logo"
 				src="./icons/PersiumLoading.svg"
@@ -46,6 +46,6 @@ export const PersiumLoading = () => {
 					position: "absolute",
 				}}
 			/>
-		</Box.Flex>
+		</Flex>
 	);
 };

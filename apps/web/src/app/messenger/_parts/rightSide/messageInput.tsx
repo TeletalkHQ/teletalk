@@ -2,12 +2,14 @@ import { SubmitHandler, useForm, useSendMessage } from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
 import {
 	AttachFileIcon,
-	Box,
+	Div,
 	EmojiEmotionsIcon,
 	FieldWithController,
+	Flex,
 	Form,
 	IconButton,
 	MicNoneIcon,
+	Paper,
 	Progress,
 	SendIcon,
 } from "@repo/ui";
@@ -47,15 +49,15 @@ export const MessageInput = () => {
 
 	return (
 		<Form.Base onSubmit={onSubmit}>
-			<Box.Paper style={{ borderRadius: 0 }}>
-				<Box.Flex ai="center" gap={1} jc="space-between" style={{ padding: 5 }}>
-					<Box.Div>
+			<Paper style={{ borderRadius: 0 }}>
+				<Flex ai="center" gap={1} jc="space-between" style={{ padding: 5 }}>
+					<Div>
 						<IconButton onClick={() => {}}>
 							<AttachFileIcon />
 						</IconButton>
-					</Box.Div>
+					</Div>
 
-					<Box.Div style={{ width: "100%" }}>
+					<Div style={{ width: "100%" }}>
 						<FieldWithController
 							autoFocus
 							control={control}
@@ -64,15 +66,15 @@ export const MessageInput = () => {
 							name="messageText"
 							placeholder="Type a message..."
 						/>
-					</Box.Div>
+					</Div>
 
-					<Box.Div>
+					<Div>
 						<IconButton>
 							<EmojiEmotionsIcon />
 						</IconButton>
-					</Box.Div>
+					</Div>
 
-					<Box.Div>
+					<Div>
 						{messageText ? (
 							<IconButton disabled={isLoading} type="submit">
 								{isLoading ? (
@@ -92,9 +94,9 @@ export const MessageInput = () => {
 								</IconButton>
 							</>
 						)}
-					</Box.Div>
-				</Box.Flex>
-			</Box.Paper>
+					</Div>
+				</Flex>
+			</Paper>
 		</Form.Base>
 	);
 };

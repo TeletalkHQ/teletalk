@@ -1,6 +1,6 @@
 import { ServerAvailabilityStatusType } from "@repo/hooks";
 import { VoidNoArgs, VoidWithArg } from "@repo/types";
-import { Box, Button } from "@repo/ui";
+import { Button, Flex } from "@repo/ui";
 
 import { ServerAvailabilityStatus } from "../../serverAvailabilityStatus";
 import { AddServerButton } from "./addServerButton";
@@ -24,7 +24,7 @@ export const Content: React.FC<Props> = ({
 	status,
 }) => {
 	return (
-		<Box.Flex col gap="10px" maxWidth="400px" padding="10px">
+		<Flex col gap="10px" maxWidth="400px" padding="10px">
 			<ServerAvailabilityStatus status={status} />
 
 			<ServerSelect
@@ -33,7 +33,7 @@ export const Content: React.FC<Props> = ({
 				onServerSelectChange={onServerSelectChange}
 			/>
 
-			<Box.Flex fullWidth gap={"8px"}>
+			<Flex fullWidth gap={"8px"}>
 				<AddServerButton
 					disabled={disabled}
 					onAddServerClick={onAddServerClick}
@@ -42,7 +42,7 @@ export const Content: React.FC<Props> = ({
 				<Button disabled={disabled} onClick={onServersClick}>
 					Servers
 				</Button>
-			</Box.Flex>
-		</Box.Flex>
+			</Flex>
+		</Flex>
 	);
 };

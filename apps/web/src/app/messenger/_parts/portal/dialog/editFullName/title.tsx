@@ -1,3 +1,3 @@
-import { Box } from "@repo/ui";
+import { Div } from "@repo/ui";
 
-export const Title = () => <Box.Div>Edit Name</Box.Div>;
+export const Title = () => <Div>Edit Name</Div>;

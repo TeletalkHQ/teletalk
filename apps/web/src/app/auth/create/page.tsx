@@ -11,9 +11,11 @@ import { FormSchemaName } from "@repo/schema";
 import {
 	AccountCircleOutlinedIcon,
 	ArrowBackIcon,
-	Box,
 	Button,
+	Container,
+	Div,
 	FirstName,
+	Flex,
 	Form,
 	IconButton,
 	LastName,
@@ -56,8 +58,8 @@ const Create = () => {
 
 	return (
 		<Form.Base onSubmit={onSubmit}>
-			<Box.Container mw="xl">
-				<Box.Div
+			<Container mw="xl">
+				<Div
 					style={{
 						marginTop: 1,
 					}}
@@ -65,12 +67,12 @@ const Create = () => {
 					<IconButton onClick={handleBackToSignInClick}>
 						<ArrowBackIcon />
 					</IconButton>
-				</Box.Div>
-				<Box.Flex ai="center" col sx={{ marginTop: 8 }}>
-					<Box.Div>
+				</Div>
+				<Flex ai="center" col sx={{ marginTop: 8 }}>
+					<Div>
 						<AccountCircleOutlinedIcon color="primary" fontSize="large" />
-					</Box.Div>
-					<Box.Container mw="xs">
+					</Div>
+					<Container mw="xs">
 						<Typography variant="caption">
 							Please enter this information to complete your account creation.
 						</Typography>
@@ -89,11 +91,11 @@ const Create = () => {
 						>
 							Create
 						</Button>
-					</Box.Container>
-				</Box.Flex>
+					</Container>
+				</Flex>
 
 				<AuthFooter />
-			</Box.Container>
+			</Container>
 		</Form.Base>
 	);
 };

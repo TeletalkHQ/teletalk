@@ -1,5 +1,5 @@
 import { useUserPublicInfo } from "@repo/hooks";
-import { Box, Typography } from "@repo/ui";
+import { Div, Span, Typography } from "@repo/ui";
 
 import { useUserStore } from "~/store";
 
@@ -14,14 +14,13 @@ export const Content: React.FC<Props> = () => {
 
 	return (
 		<>
-			<Box.Div style={{ textAlign: "center", fontSize: 18 }}>
-				<Box.Span>Are you sure you want to</Box.Span>{" "}
-				<Typography>remove</Typography>{" "}
+			<Div style={{ textAlign: "center", fontSize: 18 }}>
+				<Span>Are you sure you want to</Span> <Typography>remove</Typography>{" "}
 				<Typography>
 					{userPublicInfo.firstName} {userPublicInfo.lastName}{" "}
 				</Typography>
-				<Box.Span>from your blacklist?</Box.Span>
-			</Box.Div>
+				<Span>from your blacklist?</Span>
+			</Div>
 		</>
 	);
 };

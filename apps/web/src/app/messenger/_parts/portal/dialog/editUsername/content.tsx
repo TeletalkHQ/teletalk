@@ -1,5 +1,5 @@
 import { Control } from "@repo/hooks";
-import { Box, FirstName, Typography } from "@repo/ui";
+import { FirstName, Flex, Typography } from "@repo/ui";
 import { useWatch } from "react-hook-form";
 
 interface Props {
@@ -12,7 +12,7 @@ export const Content: React.FC<Props> = ({ control }) => {
 	});
 
 	return (
-		<Box.Flex col style={{ maxWidth: 400 }}>
+		<Flex col style={{ maxWidth: 400 }}>
 			<FirstName control={control} />
 
 			<Typography variant="caption">
@@ -22,6 +22,6 @@ export const Content: React.FC<Props> = ({ control }) => {
 				{/* TODO: Use `username` schema length */}
 				{username?.length} characters.
 			</Typography>
-		</Box.Flex>
+		</Flex>
 	);
 };

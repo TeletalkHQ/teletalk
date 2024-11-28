@@ -1,6 +1,6 @@
 import { BaseSchema } from "@repo/schema";
 import type { VoidNoArgs } from "@repo/types";
-import { Box, Typography } from "@repo/ui";
+import { Avatar, Flex, Typography } from "@repo/ui";
 
 interface Props {
 	fullName: string;
@@ -13,8 +13,8 @@ export const Header: React.FC<Props> = ({
 	onAvatarClick,
 }) => {
 	return (
-		<Box.Flex ai="center" col gap={1} jc="center">
-			<Box.Avatar
+		<Flex ai="center" col gap={1} jc="center">
+			<Avatar
 				src={avatarSrc}
 				style={{ width: "100px", height: "100px" }}
 				onClick={onAvatarClick}
@@ -28,6 +28,6 @@ export const Header: React.FC<Props> = ({
 				{fullName}
 			</Typography>
 			<div id="croppie"></div>
-		</Box.Flex>
+		</Flex>
 	);
 };

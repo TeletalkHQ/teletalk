@@ -1,6 +1,6 @@
 import { useUserInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
-import { Box } from "@repo/ui";
+import { Div } from "@repo/ui";
 
 import { MessageListItem } from "./messageListItem";
 
@@ -27,7 +27,7 @@ export const MessageList: React.FC<Props> = () => {
 	const messages: BaseSchema.Messages = [];
 
 	return (
-		<Box.Div
+		<Div
 			id="messageBox"
 			style={{
 				height: "100%",
@@ -53,6 +53,6 @@ export const MessageList: React.FC<Props> = () => {
 					/>
 				);
 			})}
-		</Box.Div>
+		</Div>
 	);
 };

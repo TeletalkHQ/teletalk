@@ -1,5 +1,5 @@
 import { Control } from "@repo/hooks";
-import { Box, FirstName } from "@repo/ui";
+import { FirstName, Flex } from "@repo/ui";
 
 interface Props {
 	control: Control<"updateFullName">;
@@ -7,9 +7,9 @@ interface Props {
 
 export const Content: React.FC<Props> = ({ control }) => {
 	return (
-		<Box.Flex col>
+		<Flex col>
 			<FirstName control={control} />
 			<FirstName control={control} />
-		</Box.Flex>
+		</Flex>
 	);
 };

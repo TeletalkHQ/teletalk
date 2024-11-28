@@ -1,5 +1,5 @@
 import { useIsOnline, useUserPublicInfo } from "@repo/hooks";
-import { Box, Typography } from "@repo/ui";
+import { Avatar, Div, Flex, Typography } from "@repo/ui";
 
 import { useUserStore } from "~/store";
 
@@ -17,18 +17,18 @@ export const Content: React.FC = () => {
 	const connectionStatus = isOnline ? "online" : "offline";
 
 	return (
-		<Box.Flex ai="center" gap={2}>
-			<Box.Div>
-				<Box.Avatar
+		<Flex ai="center" gap={2}>
+			<Div>
+				<Avatar
 					src={userPublicInfo.avatarSrc}
 					style={{
 						height: 80,
 						width: 80,
 					}}
 				/>
-			</Box.Div>
+			</Div>
 
-			<Box.Flex col>
+			<Flex col>
 				<Typography
 					style={{
 						fontSize: 20,
@@ -38,14 +38,14 @@ export const Content: React.FC = () => {
 					{connectionStatus}
 				</Typography>
 
-				<Box.Div
+				<Div
 					style={{
 						fontSize: 14,
 					}}
 				>
 					{/* {userPublicInfo.countryCode} */}
-				</Box.Div>
-			</Box.Flex>
-		</Box.Flex>
+				</Div>
+			</Flex>
+		</Flex>
 	);
 };

@@ -1,6 +1,6 @@
 import { ServerTestResult } from "@repo/hooks";
 import { VoidWithArg } from "@repo/types";
-import { Box } from "@repo/ui";
+import { List, ListItemButton, ListItemText, Span } from "@repo/ui";
 
 import { ServerStatusIndicator } from "../serverStatusIndicator";
 
@@ -16,26 +16,26 @@ export const Content: React.FC<Props> = ({
 	disabled,
 }) => {
 	return (
-		<Box.List>
+		<List>
 			{list.map((item, index) => {
 				return (
-					<Box.ListItemButton
+					<ListItemButton
 						key={index}
 						disabled={disabled}
 						style={{ borderRadius: "10px" }}
 						onClick={() => onListItemClick(item.id)}
 					>
-						<Box.ListItemText>{item.url}</Box.ListItemText>
-						<Box.ListItemText style={{ textAlign: "end" }}>
-							<Box.Span>
+						<ListItemText>{item.url}</ListItemText>
+						<ListItemText style={{ textAlign: "end" }}>
+							<Span>
 								<ServerStatusIndicator status={item.status} />
-							</Box.Span>
+							</Span>
 
-							<Box.Span>{item.status}</Box.Span>
-						</Box.ListItemText>
-					</Box.ListItemButton>
+							<Span>{item.status}</Span>
+						</ListItemText>
+					</ListItemButton>
 				);
 			})}
-		</Box.List>
+		</List>
 	);
 };

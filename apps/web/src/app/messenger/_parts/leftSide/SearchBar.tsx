@@ -1,9 +1,11 @@
 import { VoidNoArgs } from "@repo/types";
 import {
-	Box,
+	Div,
+	Flex,
 	IconButton,
 	InputAdornment,
 	MenuIcon,
+	Paper,
 	SearchIcon,
 	TextField,
 } from "@repo/ui";
@@ -14,7 +16,7 @@ interface Props {
 
 export const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
 	return (
-		<Box.Paper
+		<Paper
 			style={{
 				width: "100%",
 
@@ -23,19 +25,14 @@ export const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
 				padding: "0px",
 			}}
 		>
-			<Box.Flex
-				ai="center"
-				gap={1}
-				jc="space-between"
-				style={{ width: "100%" }}
-			>
-				<Box.Div style={{ padding: "5px 15px" }}>
+			<Flex ai="center" gap={1} jc="space-between" style={{ width: "100%" }}>
+				<Div style={{ padding: "5px 15px" }}>
 					<IconButton onClick={onDrawerIconClick}>
 						<MenuIcon />
 					</IconButton>
-				</Box.Div>
+				</Div>
 
-				<Box.Div style={{ width: "90%", marginRight: 5 }}>
+				<Div style={{ width: "90%", marginRight: 5 }}>
 					<TextField
 						fullWidth
 						InputProps={{
@@ -52,8 +49,8 @@ export const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
 						placeholder="Search"
 						size="small"
 					/>
-				</Box.Div>
-			</Box.Flex>
-		</Box.Paper>
+				</Div>
+			</Flex>
+		</Paper>
 	);
 };

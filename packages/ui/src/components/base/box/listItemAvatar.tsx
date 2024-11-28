@@ -5,14 +5,14 @@ import {
 
 import { Skeleton } from "../../common/loading";
 
-export interface ListItemButtonProps extends MuiListItemAvatarProps {
+export interface ListItemAvatarProps extends MuiListItemAvatarProps {
 	loading?: boolean;
 	loadingStyle?: React.CSSProperties;
 	fullWidth?: boolean;
 	fullHeight?: boolean;
 }
 
-export const ListItemAvatar: React.FC<ListItemButtonProps> = ({
+export const ListItemAvatar: React.FC<ListItemAvatarProps> = ({
 	children,
 	fullHeight,
 	fullWidth,

@@ -1,7 +1,7 @@
 import { userUtils } from "@repo/classes";
 import { useUserInfo } from "@repo/hooks";
 import type { VoidNoArgs } from "@repo/types";
-import { Box } from "@repo/ui";
+import { Flex } from "@repo/ui";
 
 import { Header } from "./Header";
 import { List } from "./List";
@@ -22,13 +22,7 @@ export const Content: React.FC<Props> = ({ onAvatarClick, onClick }) => {
 
 	return (
 		<>
-			<Box.Flex
-				ai="center"
-				col
-				gap={1}
-				jc="center"
-				style={{ maxWidth: "400px" }}
-			>
+			<Flex ai="center" col gap={1} jc="center" style={{ maxWidth: "400px" }}>
 				<Header
 					avatarSrc={userInfo.avatarSrc}
 					fullName={fullName}
@@ -42,7 +36,7 @@ export const Content: React.FC<Props> = ({ onAvatarClick, onClick }) => {
 					username={userInfo.username}
 					onClick={onClick}
 				/>
-			</Box.Flex>
+			</Flex>
 		</>
 	);
 };

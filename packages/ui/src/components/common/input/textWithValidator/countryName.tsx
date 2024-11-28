@@ -1,9 +1,9 @@
 import { FormSchemaName } from "@repo/schema";
 
 import {
-	Box,
 	FieldWithController,
 	FieldWithValidatorWithOptionalNameProps,
+	Span,
 } from "../../../base";
 
 interface Props<Name extends FormSchemaName>
@@ -16,7 +16,7 @@ export const CountryName = <Name extends FormSchemaName>({
 	<FieldWithController
 		autoComplete="tel-country-code"
 		InputProps={{
-			startAdornment: <Box.Span>+</Box.Span>,
+			startAdornment: <Span>+</Span>,
 		}}
 		name="countryName"
 		placeholder="Country Name"

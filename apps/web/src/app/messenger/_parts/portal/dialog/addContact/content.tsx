@@ -1,9 +1,10 @@
 import { Control } from "@repo/hooks";
 import {
-	Box,
 	CountryCode,
 	CountryName,
+	Div,
 	FirstName,
+	Flex,
 	LastName,
 	PhoneNumber,
 } from "@repo/ui";
@@ -15,17 +16,17 @@ interface Props {
 export const Content: React.FC<Props> = ({ control }) => {
 	return (
 		<>
-			<Box.Div>
-				<Box.Div></Box.Div>
+			<Div>
+				<Div></Div>
 
-				<Box.Flex col jc="space-between" mt={2}>
+				<Flex col jc="space-between" mt={2}>
 					<FirstName control={control} />
 					<LastName control={control} />
 					<CountryCode control={control} />
 					<CountryName control={control} />
 					<PhoneNumber control={control} />
-				</Box.Flex>
-			</Box.Div>
+				</Flex>
+			</Div>
 		</>
 	);
 };

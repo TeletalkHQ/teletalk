@@ -2,7 +2,13 @@ import { userUtils } from "@repo/classes";
 import { useUserPublicInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
-import { Box, IconButton, LockOpenTwoToneIcon } from "@repo/ui";
+import {
+	Avatar,
+	IconButton,
+	ListItemButton,
+	LockOpenTwoToneIcon,
+	Span,
+} from "@repo/ui";
 
 interface Props {
 	onItemLick: VoidNoArgs;
@@ -15,7 +21,7 @@ export const ListItem: React.FC<Props> = ({ item, onItemLick }) => {
 	} = useUserPublicInfo({ userId: item.userId });
 
 	return (
-		<Box.ListItemButton
+		<ListItemButton
 			style={{
 				alignItems: "center",
 				borderRadius: "10px",
@@ -26,27 +32,27 @@ export const ListItem: React.FC<Props> = ({ item, onItemLick }) => {
 			}}
 			onClick={onItemLick}
 		>
-			<Box.Span>
-				<Box.Avatar style={{ width: "50px", height: "50px" }} />
-			</Box.Span>
-			<Box.Span
+			<Span>
+				<Avatar style={{ width: "50px", height: "50px" }} />
+			</Span>
+			<Span
 				style={{
 					display: "flex",
 					flexDirection: "column",
 					gap: 5,
 				}}
 			>
-				<Box.Span>
+				<Span>
 					{userUtils.concatFirstNameWithLastName(item, userPublicInfo)}
-				</Box.Span>
-				<Box.Span>
+				</Span>
+				<Span>
 					{/* {userUtils.concatCountryCodeWithPhoneNumber(
 						item,
 						"unknown phone number"
 					)} */}
-				</Box.Span>
-			</Box.Span>
-			<Box.Span>
+				</Span>
+			</Span>
+			<Span>
 				<IconButton
 					onClick={(e) => {
 						e.stopPropagation();
@@ -55,7 +61,7 @@ export const ListItem: React.FC<Props> = ({ item, onItemLick }) => {
 				>
 					<LockOpenTwoToneIcon color="error" />
 				</IconButton>
-			</Box.Span>
-		</Box.ListItemButton>
+			</Span>
+		</ListItemButton>
 	);
 };

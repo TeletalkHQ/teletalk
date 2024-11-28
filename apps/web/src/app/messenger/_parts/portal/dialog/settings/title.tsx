@@ -1,9 +1,9 @@
-import { Box } from "@repo/ui";
+import { Div } from "@repo/ui";
 
 export const Title = () => {
 	return (
 		<>
-			<Box.Div>Settings</Box.Div>
+			<Div>Settings</Div>
 		</>
 	);
 };

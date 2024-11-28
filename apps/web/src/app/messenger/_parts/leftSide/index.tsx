@@ -1,4 +1,4 @@
-import { Box } from "@repo/ui";
+import { Flex, Grid, List } from "@repo/ui";
 
 import { useGlobalStore } from "~/store/global";
 
@@ -15,7 +15,7 @@ export const LeftSide = () => {
 
 	return (
 		<>
-			<Box.Grid
+			<Grid
 				container
 				item
 				lg={3}
@@ -25,11 +25,11 @@ export const LeftSide = () => {
 					height: "100vh",
 				}}
 			>
-				<Box.Flex col style={{ width: "100%", height: "100%" }}>
+				<Flex col style={{ width: "100%", height: "100%" }}>
 					<SearchBar onDrawerIconClick={handleDrawerIconClick} />
 					<SideBarList />
 
-					<Box.List
+					<List
 						sx={{
 							overflowY: "auto",
 							padding: "5px",
@@ -38,9 +38,9 @@ export const LeftSide = () => {
 						}}
 					>
 						<ChatList />
-					</Box.List>
-				</Box.Flex>
-			</Box.Grid>
+					</List>
+				</Flex>
+			</Grid>
 		</>
 	);
 };

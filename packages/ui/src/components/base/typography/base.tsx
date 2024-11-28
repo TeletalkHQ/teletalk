@@ -4,7 +4,7 @@ import {
 } from "@mui/material";
 
 import { Skeleton, SkeletonProps } from "../../common/loading";
-import { Box } from "../box";
+import { Span, Tooltip } from "../box";
 
 export interface TypographyProps extends MuiTypographyProps {
 	height?: string | number | undefined;
@@ -25,9 +25,9 @@ export const Typography: React.FC<TypographyProps> = ({
 		throw Error("When `showTooltip` is true children, must be `string`");
 	const component =
 		showTooltip && typeof children === "string" ? (
-			<Box.Tooltip title={children}>
-				<Box.Span>{children}</Box.Span>
-			</Box.Tooltip>
+			<Tooltip title={children}>
+				<Span>{children}</Span>
+			</Tooltip>
 		) : (
 			children
 		);

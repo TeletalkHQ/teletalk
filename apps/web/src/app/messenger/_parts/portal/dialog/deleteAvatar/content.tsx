@@ -1,16 +1,13 @@
-import { Box, Typography } from "@repo/ui";
+import { Div, Span, Typography } from "@repo/ui";
 
 export const Content = () => (
-	<>
-		<Box.Div
-			style={{
-				fontSize: 18,
-				textAlign: "center",
-			}}
-		>
-			<Box.Span>Are you sure you want to</Box.Span>{" "}
-			<Typography>delete</Typography>
-			<Box.Span> your avatar?</Box.Span>
-		</Box.Div>
-	</>
+	<Div
+		style={{
+			fontSize: 18,
+			textAlign: "center",
+		}}
+	>
+		<Span>Are you sure you want to</Span> <Typography>delete</Typography>
+		<Span> your avatar?</Span>
+	</Div>
 );

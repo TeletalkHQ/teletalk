@@ -1,5 +1,5 @@
 import { VoidNoArgs } from "@repo/types";
-import { Box, GeneratedIcon } from "@repo/ui";
+import { Div, GeneratedIcon, ListItemButton } from "@repo/ui";
 
 import { SettingDisplayName } from "../types";
 
@@ -16,7 +16,7 @@ export const ListItem: React.FC<Props> = ({
 	Icon,
 	onClick,
 }) => (
-	<Box.ListItemButton
+	<ListItemButton
 		disabled={disabled}
 		style={{
 			display: "flex",
@@ -28,6 +28,6 @@ export const ListItem: React.FC<Props> = ({
 		onClick={onClick}
 	>
 		<Icon style={{ fontSize: 30 }} />
-		<Box.Div> {displayName}</Box.Div>
-	</Box.ListItemButton>
+		<Div> {displayName}</Div>
+	</ListItemButton>
 );

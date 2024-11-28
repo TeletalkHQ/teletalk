@@ -1,6 +1,6 @@
 import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
-import { Box, GeneratedIcon } from "@repo/ui";
+import { GeneratedIcon, ListItemButton, Span } from "@repo/ui";
 
 export interface PrivacyAndSecurityListItem {
 	displayName: "Blocked users" | "Sessions";
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const ListItem: React.FC<Props> = ({ item, onItemClick }) => (
-	<Box.ListItemButton
+	<ListItemButton
 		style={{
 			display: "flex",
 			height: "65px",
@@ -24,13 +24,13 @@ export const ListItem: React.FC<Props> = ({ item, onItemClick }) => (
 		}}
 		onClick={() => onItemClick(item.name)}
 	>
-		<Box.Span
+		<Span
 			style={{
 				marginTop: "5px",
 			}}
 		>
 			<item.Icon />
-		</Box.Span>
-		<Box.Span>{item.displayName}</Box.Span>
-	</Box.ListItemButton>
+		</Span>
+		<Span>{item.displayName}</Span>
+	</ListItemButton>
 );

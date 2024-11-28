@@ -1,5 +1,5 @@
 import { useUserInfo } from "@repo/hooks";
-import { Box, Typography } from "@repo/ui";
+import { Avatar, Div, Flex, Typography } from "@repo/ui";
 
 export const ProfileOverview: React.FC = () => {
 	const {
@@ -7,15 +7,12 @@ export const ProfileOverview: React.FC = () => {
 	} = useUserInfo();
 
 	return (
-		<Box.Flex ai="center" gap={2}>
-			<Box.Div>
-				<Box.Avatar
-					src={userInfo.avatarSrc}
-					style={{ width: 80, height: 80 }}
-				/>
-			</Box.Div>
+		<Flex ai="center" gap={2}>
+			<Div>
+				<Avatar src={userInfo.avatarSrc} style={{ width: 80, height: 80 }} />
+			</Div>
 
-			<Box.Flex col>
+			<Flex col>
 				<Typography
 					fontWeight={"bold"}
 					style={{
@@ -26,24 +23,24 @@ export const ProfileOverview: React.FC = () => {
 					{userInfo.firstName} {userInfo.lastName}
 				</Typography>
 
-				<Box.Div
+				<Div
 					style={{
 						fontSize: 14,
 					}}
 				>
 					{/* TODO: Make fn */}+{userInfo.countryCode} {userInfo.phoneNumber}
-				</Box.Div>
+				</Div>
 
 				{userInfo.username && (
-					<Box.Div
+					<Div
 						style={{
 							fontSize: 16,
 						}}
 					>
 						<Typography variant="caption">@{userInfo.username}</Typography>
-					</Box.Div>
+					</Div>
 				)}
-			</Box.Flex>
-		</Box.Flex>
+			</Flex>
+		</Flex>
 	);
 };

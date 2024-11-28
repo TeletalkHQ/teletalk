@@ -1,7 +1,7 @@
 import { useUserPublicInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
-import { Box, Typography } from "@repo/ui";
+import { Avatar, Div, Flex, ListItemButton, Typography } from "@repo/ui";
 
 import { GlobalStore } from "~/store";
 
@@ -28,7 +28,7 @@ export const ListItem: React.FC<Props> = ({
 	} = useUserPublicInfo({ userId });
 
 	return (
-		<Box.ListItemButton
+		<ListItemButton
 			style={{
 				borderRadius: "10px",
 				display: "flex",
@@ -38,21 +38,21 @@ export const ListItem: React.FC<Props> = ({
 			onClick={onContactClick}
 			onContextMenu={onContextMenu}
 		>
-			<Box.Div>
-				<Box.Avatar src={avatarSrc} />
-			</Box.Div>
+			<Div>
+				<Avatar src={avatarSrc} />
+			</Div>
 
-			<Box.Div style={{ width: "100%" }}>
-				<Box.Flex ai="center" jc="space-between">
+			<Div style={{ width: "100%" }}>
+				<Flex ai="center" jc="space-between">
 					<Typography style={{ fontSize: 18 }}>{fullName}</Typography>
-					{/* <Box.Div>time</Box.Div> */}
-				</Box.Flex>
+					{/* <Div>time</Div> */}
+				</Flex>
 
-				<Box.Flex ai="center" jc="space-between">
-					<Box.Div>{lastSeen}</Box.Div>
-					{/* <Box.Div>icons</Box.Div> */}
-				</Box.Flex>
-			</Box.Div>
-		</Box.ListItemButton>
+				<Flex ai="center" jc="space-between">
+					<Div>{lastSeen}</Div>
+					{/* <Div>icons</Div> */}
+				</Flex>
+			</Div>
+		</ListItemButton>
 	);
 };

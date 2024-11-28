@@ -10,8 +10,10 @@ import {
 import { FormSchemaName } from "@repo/schema";
 import {
 	ArrowBackIcon,
-	Box,
+	Avatar,
 	Button,
+	Container,
+	Div,
 	Form,
 	IconButton,
 	SignInCode,
@@ -73,13 +75,13 @@ const Verify = () => {
 
 	return (
 		<Form.Base onSubmit={onSubmit}>
-			<Box.Container maxWidth="xl">
-				<Box.Div style={{ marginTop: 1 }}>
+			<Container maxWidth="xl">
+				<Div style={{ marginTop: 1 }}>
 					<IconButton onClick={handleBackToSignInClick}>
 						<ArrowBackIcon />
 					</IconButton>
-				</Box.Div>
-				<Box.Div
+				</Div>
+				<Div
 					style={{
 						marginTop: 8,
 						display: "flex",
@@ -87,16 +89,16 @@ const Verify = () => {
 						alignItems: "center",
 					}}
 				>
-					<Box.Avatar
+					<Avatar
 						sx={(theme) => ({
 							m: 1,
 							backgroundColor: theme.palette.secondary.dark,
 						})}
 					>
 						<VerifiedUserIcon />
-					</Box.Avatar>
-					<Box.Container maxWidth="xs">
-						<Box.Div style={{ marginTop: 1 }}>
+					</Avatar>
+					<Container maxWidth="xs">
+						<Div style={{ marginTop: 1 }}>
 							<Typography variant="h5">
 								+{countryCode} {phoneNumber}
 							</Typography>
@@ -119,12 +121,12 @@ const Verify = () => {
 							>
 								Verify
 							</Button>
-						</Box.Div>
-					</Box.Container>
-				</Box.Div>
+						</Div>
+					</Container>
+				</Div>
 
 				<AuthFooter />
-			</Box.Container>
+			</Container>
 		</Form.Base>
 	);
 };

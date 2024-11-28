@@ -1,7 +1,7 @@
 "use client";
 
 import { useDialogState } from "@repo/hooks";
-import { Box, IconButton, MoreVerticalIcon } from "@repo/ui";
+import { Div, IconButton, Menu, MenuItem, MoreVerticalIcon } from "@repo/ui";
 import { useState } from "react";
 
 export const ChatBarMenu = () => {
@@ -36,7 +36,7 @@ export const ChatBarMenu = () => {
 	const isOpen = !!anchorEl;
 
 	return (
-		<Box.Div
+		<Div
 			onClick={(e) => {
 				e.stopPropagation();
 			}}
@@ -51,7 +51,7 @@ export const ChatBarMenu = () => {
 			>
 				<MoreVerticalIcon />
 			</IconButton>
-			<Box.Menu
+			<Menu
 				anchorEl={anchorEl}
 				id="long-menu"
 				MenuListProps={{
@@ -66,7 +66,7 @@ export const ChatBarMenu = () => {
 						onClick: isContact ? handleRemoveFromContacts : handleAddToContacts,
 					},
 				].map((option, index) => (
-					<Box.MenuItem
+					<MenuItem
 						key={index}
 						onClick={() => {
 							handleClose();
@@ -74,9 +74,9 @@ export const ChatBarMenu = () => {
 						}}
 					>
 						{option.label}
-					</Box.MenuItem>
+					</MenuItem>
 				))}
-			</Box.Menu>
-		</Box.Div>
+			</Menu>
+		</Div>
 	);
 };

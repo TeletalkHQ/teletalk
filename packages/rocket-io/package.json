@@ -43,7 +43,7 @@
   "types": "./src/index.ts",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "bunx --bun lbundle",
+    "build": "echo 'bunx --bun lbundle'",
     "check:format": "prettier --write  --list-different ./",
     "check:lint": "eslint --fix ./",
     "check:style": "npm run check:format && npm run check:lint && npm run check:types",

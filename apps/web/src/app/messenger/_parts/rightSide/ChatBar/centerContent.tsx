@@ -1,6 +1,6 @@
 import { userUtils } from "@repo/classes";
 import { useUserInfo, useUserPublicInfo } from "@repo/hooks";
-import { Box, Typography } from "@repo/ui";
+import { Flex, Typography } from "@repo/ui";
 
 export const ChatBarCenterContent = () => {
 	// const selectedChatId = useChatStore((state) => state.selectedChatId);
@@ -16,7 +16,7 @@ export const ChatBarCenterContent = () => {
 	const fullName = userUtils.concatFirstNameWithLastName(userPublicInfo);
 
 	return (
-		<Box.Flex ai="center">
+		<Flex ai="center">
 			<Typography
 				fontWeight="bold"
 				style={{
@@ -25,6 +25,6 @@ export const ChatBarCenterContent = () => {
 			>
 				{fullName}
 			</Typography>
-		</Box.Flex>
+		</Flex>
 	);
 };

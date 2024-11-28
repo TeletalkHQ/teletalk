@@ -1,7 +1,7 @@
 import { useLoadingStore } from "@repo/store";
 import MoonLoader from "react-spinners/MoonLoader";
 
-import { Box } from "../../base";
+import { Flex } from "../../base";
 
 // UNUSED
 export const FullPageLoading = () => {
@@ -10,7 +10,7 @@ export const FullPageLoading = () => {
 	return (
 		loadingStore.globalLoading.open &&
 		loadingStore.globalLoading.type === "FULL_PAGE" && (
-			<Box.Flex
+			<Flex
 				ai="center"
 				fullHeight
 				fullWidth
@@ -29,7 +29,7 @@ export const FullPageLoading = () => {
 					size={loadingStore.globalLoading.size}
 					speedMultiplier={loadingStore.globalLoading.speedMultiplier}
 				/>
-			</Box.Flex>
+			</Flex>
 		)
 	);
 };

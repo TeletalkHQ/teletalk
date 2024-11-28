@@ -1,8 +1,9 @@
 import { ServerAvailabilityStatusType } from "@repo/hooks";
 import {
-	Box,
+	Flex,
 	FormControl,
 	InputLabel,
+	MenuItem,
 	OnInputChange,
 	OnSelectOnChange,
 	Select,
@@ -29,10 +30,10 @@ export const Content: React.FC<Props> = ({
 	status,
 }) => {
 	return (
-		<Box.Flex col gap="5px" style={{ maxWidth: "400px" }}>
+		<Flex col gap="5px" style={{ maxWidth: "400px" }}>
 			<ServerAvailabilityStatus status={status} />
 
-			<Box.Flex ai="center" jc="space-between" width="100%">
+			<Flex ai="center" jc="space-between" width="100%">
 				<FormControl fullWidth style={{ width: "25%" }}>
 					<InputLabel>Protocol</InputLabel>
 					<Select
@@ -43,9 +44,9 @@ export const Content: React.FC<Props> = ({
 						onChange={onSelectChange}
 					>
 						{["http", "https"].map((item, index) => (
-							<Box.MenuItem key={index} value={item}>
+							<MenuItem key={index} value={item}>
 								{item}
-							</Box.MenuItem>
+							</MenuItem>
 						))}
 					</Select>
 				</FormControl>
@@ -58,7 +59,7 @@ export const Content: React.FC<Props> = ({
 					value={inputValue}
 					onChange={onChange}
 				/>
-			</Box.Flex>
-		</Box.Flex>
+			</Flex>
+		</Flex>
 	);
 };

@@ -1,4 +1,4 @@
-import { Box } from "@repo/ui";
+import { Grid } from "@repo/ui";
 
 import { LeftSide } from "./leftSide";
 import { Portal } from "./portal";
@@ -97,7 +97,7 @@ export const MessengerContainer = () => {
 	// });
 
 	return (
-		<Box.Grid
+		<Grid
 			container
 			style={{
 				height: "100vh",
@@ -106,6 +106,6 @@ export const MessengerContainer = () => {
 			<Portal />
 			<LeftSide />
 			{/* <RightSide /> */}
-		</Box.Grid>
+		</Grid>
 	);
 };

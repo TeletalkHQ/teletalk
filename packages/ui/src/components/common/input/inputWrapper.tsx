@@ -1,7 +1,7 @@
 import { CSSProperties, FC } from "react";
 import React from "react";
 
-import { Box } from "../../base/box";
+import { Flex } from "../../base/box";
 import { Typography } from "../../base/typography";
 import { GeneratedIcon } from "../../icons";
 
@@ -19,15 +19,15 @@ export const InputWrapper: FC<Props> = ({
 	Icon,
 }) => {
 	return (
-		<Box.Flex fullWidth gap="10px">
-			<Box.Flex alignItems="center" gap="10px" style={labelStyle}>
+		<Flex fullWidth gap="10px">
+			<Flex alignItems="center" gap="10px" style={labelStyle}>
 				{Icon && <Icon />}
 				<Typography fontSize="10px" variant="xXs">
 					{label}
 				</Typography>
-			</Box.Flex>
+			</Flex>
 
 			{inputComponent}
-		</Box.Flex>
+		</Flex>
 	);
 };

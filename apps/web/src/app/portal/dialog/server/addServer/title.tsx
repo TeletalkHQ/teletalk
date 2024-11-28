@@ -1,5 +1,5 @@
-import { Box } from "@repo/ui";
+import { Div } from "@repo/ui";
 
 export const Title = () => {
-	return <Box.Div>Add Server</Box.Div>;
+	return <Div>Add Server</Div>;
 };

@@ -1,4 +1,4 @@
-import { Box } from "@repo/ui";
+import { Div, Flex, Grid } from "@repo/ui";
 
 import { useChatStore } from "~/store";
 
@@ -25,7 +25,7 @@ export const RightSide = () => {
 	// }, [userStore.currentUserData.userId]);
 
 	return (
-		<Box.Grid
+		<Grid
 			container
 			item
 			lg={9}
@@ -35,7 +35,7 @@ export const RightSide = () => {
 			}}
 		>
 			{selectedChatId && (
-				<Box.Flex
+				<Flex
 					ai="center"
 					col
 					jc="space-between"
@@ -44,25 +44,25 @@ export const RightSide = () => {
 						width: "100%",
 					}}
 				>
-					<Box.Div
+					<Div
 						style={{
 							width: "100%",
 						}}
 					>
 						<ChatBar />
-					</Box.Div>
+					</Div>
 
 					<MessageList />
 
-					<Box.Div
+					<Div
 						style={{
 							width: "100%",
 						}}
 					>
 						<MessageInput />
-					</Box.Div>
-				</Box.Flex>
+					</Div>
+				</Flex>
 			)}
-		</Box.Grid>
+		</Grid>
 	);
 };

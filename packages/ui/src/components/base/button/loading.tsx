@@ -2,7 +2,7 @@ import { LoadingButton as MuiLoadingButton } from "@mui/lab";
 import { LoadingButtonProps as MuiLoadingButtonProps } from "@mui/lab";
 import { CSSProperties } from "react";
 
-import { Box } from "../box";
+import { Span } from "../box";
 import { Progress } from "../progress";
 
 export interface LoadingButtonProps extends MuiLoadingButtonProps {
@@ -25,7 +25,7 @@ export const LoadingButton: React.FC<LoadingButtonProps> = ({
 			fullWidth={fullWidth}
 			loadingIndicator={
 				<>
-					<Box.Span>{loadingIndicatorText}</Box.Span>
+					<Span>{loadingIndicatorText}</Span>
 					<Progress.Circular
 						style={{
 							marginLeft: 10,

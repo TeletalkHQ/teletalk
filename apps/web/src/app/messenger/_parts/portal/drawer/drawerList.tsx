@@ -1,10 +1,13 @@
 import { VoidWithArg, VoidWithTwoArgs } from "@repo/types";
 import {
-	Box,
 	CallsIcon,
 	ContactsIcon,
 	ElementName,
 	GeneratedIcon,
+	List,
+	ListItemButton,
+	ListItemIcon,
+	ListItemText,
 	LogoutOutlinedIcon,
 	NewChannelOutlinedIcon,
 	NewGroupOutlinedIcon,
@@ -21,9 +24,9 @@ interface Props {
 }
 
 export const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
-	<Box.List style={{ padding: 10 }}>
+	<List style={{ padding: 10 }}>
 		{drawerList.map(({ name, label, Icon, disabled }, index) => (
-			<Box.ListItemButton
+			<ListItemButton
 				key={index}
 				disabled={disabled}
 				style={{
@@ -36,13 +39,13 @@ export const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
 					onClick(name);
 				}}
 			>
-				<Box.ListItemIcon>
+				<ListItemIcon>
 					<Icon />
-				</Box.ListItemIcon>
-				<Box.ListItemText primary={label} />
-			</Box.ListItemButton>
+				</ListItemIcon>
+				<ListItemText primary={label} />
+			</ListItemButton>
 		))}
-	</Box.List>
+	</List>
 );
 
 const drawerList: Array<{

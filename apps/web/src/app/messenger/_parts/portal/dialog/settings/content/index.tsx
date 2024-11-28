@@ -1,5 +1,5 @@
 import { useDialogStore } from "@repo/store";
-import { Box, Divider } from "@repo/ui";
+import { Divider, List } from "@repo/ui";
 
 import { SettingItem } from "../types";
 import { settingsList } from "./data";
@@ -21,7 +21,7 @@ export const Content: React.FC = () => {
 
 			<Divider style={{ margin: "20px 0px 20px 0px" }} />
 
-			<Box.List>
+			<List>
 				{settingsList.map((item, i) => (
 					<ListItem
 						key={i}
@@ -31,7 +31,7 @@ export const Content: React.FC = () => {
 						onClick={() => handleSettingItemClick(item)}
 					/>
 				))}
-			</Box.List>
+			</List>
 		</>
 	);
 };

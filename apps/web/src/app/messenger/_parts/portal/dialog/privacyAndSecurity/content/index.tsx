@@ -1,6 +1,6 @@
 import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
-import { BlockIcon, Box, DevicesIcon } from "@repo/ui";
+import { BlockIcon, DevicesIcon, List } from "@repo/ui";
 
 import { ListItem, PrivacyAndSecurityListItem } from "./listItem";
 
@@ -9,11 +9,11 @@ interface Props {
 }
 
 export const Content: React.FC<Props> = ({ onItemClick }) => (
-	<Box.List>
+	<List>
 		{privacyAndSecurityList.map((item, index) => (
 			<ListItem key={index} item={item} onItemClick={onItemClick} />
 		))}
-	</Box.List>
+	</List>
 );
 
 export const privacyAndSecurityList: PrivacyAndSecurityListItem[] = [

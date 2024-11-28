@@ -1,4 +1,4 @@
-import { Box, DoneAllIcon, Typography } from "@repo/ui";
+import { DoneAllIcon, Flex, Paper, Typography } from "@repo/ui";
 import { CSSProperties } from "react";
 
 interface Props {
@@ -18,21 +18,21 @@ export const MessageListItem: React.FC<Props> = ({
 }) => {
 	return (
 		<>
-			<Box.Flex justifyContent={justify} style={{ padding: 3 }}>
+			<Flex justifyContent={justify} style={{ padding: 3 }}>
 				{/* <Transitions.Slide
           direction={transitionDirection}
           in={true}
           mountOnEnter
           unmountOnExit
         > */}
-				<Box.Paper
+				<Paper
 					// onContextMenu={(e) => onOtherStateChange(e)}
 					elevation={0}
 					style={{ padding: 5, borderRadius: 10 }}
 				>
 					<Typography style={{ wordBreak: "break-word" }}>{message}</Typography>
 
-					<Box.Flex
+					<Flex
 						alignItems="center"
 						gap={0.2}
 						justifyContent="flex-end"
@@ -45,10 +45,10 @@ export const MessageListItem: React.FC<Props> = ({
 						<Typography variant="caption">
 							<DoneAllIcon fontSize="small" />
 						</Typography>
-					</Box.Flex>
-				</Box.Paper>
+					</Flex>
+				</Paper>
 				{/* </Transitions.Slide> */}
-			</Box.Flex>
+			</Flex>
 		</>
 	);
 };

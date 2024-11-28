@@ -1,5 +1,5 @@
 import { useDialogState } from "@repo/hooks";
-import { Box } from "@repo/ui";
+import { Paper } from "@repo/ui";
 
 import { ChatBarCenterContent } from "./centerContent";
 import { ChatBarCloseButton } from "./closeButton";
@@ -16,7 +16,7 @@ export const ChatBar: React.FC<Props> = () => {
 
 	return (
 		<>
-			<Box.Paper
+			<Paper
 				style={{
 					alignItems: "center",
 					borderRadius: 0,
@@ -33,7 +33,7 @@ export const ChatBar: React.FC<Props> = () => {
 				<ChatBarCenterContent />
 
 				<ChatBarMenu />
-			</Box.Paper>
+			</Paper>
 		</>
 	);
 };
