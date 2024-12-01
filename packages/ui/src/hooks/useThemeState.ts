@@ -40,7 +40,7 @@ export const useThemeState = () => {
 
 	return {
 		updateTheme,
-		theme: "dark" as BaseSchema.ThemeName,
+		theme: "light" as BaseSchema.ThemeName,
 		isDarkTheme: false,
 	};
 };

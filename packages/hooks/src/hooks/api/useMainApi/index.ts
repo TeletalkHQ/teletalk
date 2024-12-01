@@ -40,7 +40,7 @@ export const useMainApi = <T extends HTTPRouteName>({
 	});
 };
 
-export const createRequestInitialData = <T extends HTTPRouteName>(
+export const createInitialData = <T extends HTTPRouteName>(
 	_name: T,
 	data: GetOutput<T>
 ): HTTPResponse<T> => {

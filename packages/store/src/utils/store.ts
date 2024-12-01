@@ -7,12 +7,11 @@ export const createStore = (<T extends unknown>(
 ) => {
 	if (f === undefined) return createStore;
 	const store = _create(f);
-	const initialState = store.getState();
+	const initialState = store.getInitialState();
 	resetters.push(() => {
 		store.setState(initialState, true);
 	});
 	return store;
-	// TODO: Remove `assertion`
 }) as typeof _create;
 
 export const resetAllStores = () => {
@@ -21,10 +20,11 @@ export const resetAllStores = () => {
 	}
 };
 
+// CLEANME: DUPLICATE
 export type StoreSetFn<StoreType> = (
 	partial:
 		| StoreType
 		| Partial<StoreType>
 		| ((state: StoreType) => StoreType | Partial<StoreType>),
-	replace?: boolean | undefined
+	replace?: false | undefined
 ) => void;

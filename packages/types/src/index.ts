@@ -44,7 +44,7 @@ export type StoreSetFn<StoreType> = (
 		| StoreType
 		| Partial<StoreType>
 		| ((state: StoreType) => StoreType | Partial<StoreType>),
-	replace?: boolean | undefined
+	replace?: false | undefined
 ) => void;
 
 export type LoadingType = "FULL_PAGE" | "OVERLAY";

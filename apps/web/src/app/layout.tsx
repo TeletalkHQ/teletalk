@@ -32,7 +32,7 @@ export default function Layout({
 					forceThemeName="dark"
 					shouldShowQueryDevtools
 					shouldUseBaseline
-					themes={themes.mapView}
+					themes={themes.web}
 				>
 					<DialogContainer />
 					{children}

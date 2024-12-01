@@ -1,11 +1,5 @@
-import { dashboardThemes } from "./dashboard";
-import { healthModelThemes } from "./healthModel";
-import { mapViewThemes } from "./mapView";
+import { webThemes } from "./web";
 
 export const themes = {
-	mapView: mapViewThemes,
-	dashboard: dashboardThemes,
-	healthModel: healthModelThemes,
+	web: webThemes,
 };
-
-export * from "./base";
