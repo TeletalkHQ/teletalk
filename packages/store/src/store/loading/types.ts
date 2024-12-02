@@ -1,5 +1,7 @@
 import { HTTPRouteName } from "@repo/schema";
-import { LoadingType, StoreSetFn, VoidNoArgs, VoidWithArg } from "@repo/types";
+import { LoadingType, VoidNoArgs, VoidWithArg } from "@repo/types";
+
+import { StoreSetFn } from "../../utils";
 
 export type SidebarName = "welcome";
 

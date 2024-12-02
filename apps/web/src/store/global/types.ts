@@ -1,18 +1,16 @@
 import { StoreSetFn } from "@repo/store";
-import type { VoidNoArgs, VoidWithArg, VoidWithTwoArgs } from "@repo/types";
+import type { LoadingType, VoidNoArgs, VoidWithArg } from "@repo/types";
 import { CircularProgressProps } from "@repo/ui";
 import { CSSProperties } from "react";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
-export type LoadingType = "FULL_PAGE" | "OVERLAY";
-
 export type OnContextMenu = VoidWithArg<React.MouseEvent>;
 
-export type ExtendedOnContextMenu<T extends any = any> = VoidWithTwoArgs<
-	React.MouseEvent,
-	T
->;
+export type ExtendedOnContextMenu<T extends any = any> = (
+	event: React.MouseEvent,
+	arg: T
+) => void;
 
 type ContextMenuText = "Edit" | "Remove" | "Block" | "Unblock";
 
@@ -37,7 +35,7 @@ export interface Handlers {
 	closeFullPageLoading: VoidNoArgs;
 	closeLoading: VoidWithArg<LoadingType>;
 	closeOverlayLoading: VoidNoArgs;
-	handleContextMenu: VoidWithTwoArgs<React.MouseEvent, ContextMenuList>;
+	handleContextMenu: ExtendedOnContextMenu<ContextMenuList>;
 	openFullPageLoading: VoidNoArgs;
 	openLoading: VoidWithArg<LoadingType>;
 	openOverlayLoading: VoidNoArgs;

@@ -26,26 +26,11 @@ export type KeysToSnakeCase<T> = {
 	[K in keyof T as CamelToSnakeCase<string & K>]: T[K];
 };
 
-export interface StringMap {
-	[prop: string | symbol]: any;
-}
-
-export type PromiseVoidNoArgsFn = () => Promise<void>;
+export type StringMap = Record<string, any>;
 
 export type VoidNoArgs = () => void;
 
 export type VoidWithArg<Arg> = (arg: Arg) => void;
-
-// TODO: Remove
-export type VoidWithTwoArgs<Arg1, Arg2> = (arg1: Arg1, arg2: Arg2) => void;
-
-export type StoreSetFn<StoreType> = (
-	partial:
-		| StoreType
-		| Partial<StoreType>
-		| ((state: StoreType) => StoreType | Partial<StoreType>),
-	replace?: false | undefined
-) => void;
 
 export type LoadingType = "FULL_PAGE" | "OVERLAY";
 
@@ -55,17 +40,5 @@ export type CommonOnChange = ChangeEventHandler<
 
 export type PickFromUnion<T, U> = T extends U ? T : never;
 
-export enum STORAGE_KEY {
-	FEATURES = "FEATURES",
-	IS_PERMISSION_SET = "IS_PERMISSION_HAS_SET",
-	LOCATION_PERMISSION = "LOCATION_PERMISSION",
-	NOTIFICATION_PERMISSION = "NOTIFICATION_PERMISSION",
-	THEME = "THEME",
-	CONFIGS = "CONFIGS",
-}
-
 export type TransitionName = "Grow" | "Slide" | "Zoom";
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
-
-export * from "./http";
-export * from "./socket";

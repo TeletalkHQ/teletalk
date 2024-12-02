@@ -1,4 +1,4 @@
-import { VoidWithArg, VoidWithTwoArgs } from "@repo/types";
+import { VoidWithArg } from "@repo/types";
 import {
 	CallsIcon,
 	ContactsIcon,
@@ -19,7 +19,7 @@ import { MouseEvent } from "react";
 type HTMLDivMouseEvent = MouseEvent<HTMLDivElement, globalThis.MouseEvent>;
 
 interface Props {
-	toggleDrawer: VoidWithTwoArgs<HTMLDivMouseEvent, boolean>;
+	toggleDrawer: (e: HTMLDivMouseEvent, val: boolean) => void;
 	onClick: VoidWithArg<ElementName>;
 }
 

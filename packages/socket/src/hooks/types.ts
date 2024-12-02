@@ -1,4 +1,5 @@
-import { SocketMethods, VoidWithArg } from "@repo/types";
+import { SocketMethods } from "@repo/schema";
+import { VoidWithArg } from "@repo/types";
 import { Socket } from "socket.io-client";
 import { ZodSchema, z } from "zod";
 

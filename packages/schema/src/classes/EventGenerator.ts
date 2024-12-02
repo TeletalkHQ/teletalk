@@ -1,4 +1,4 @@
-import { PickFromUnion, SocketMethods } from "@repo/types";
+import { PickFromUnion } from "@repo/types";
 
 import { IOName, ioCollection } from "../schema";
 
@@ -28,6 +28,8 @@ export type EventName = PickFromUnion<
 	| "updateContact"
 	| "updateUserPublicInfo"
 >;
+
+export type SocketMethods = "on" | "onAny" | "once";
 
 export type EventSchema<T extends EventName> = {
 	ioName: T;

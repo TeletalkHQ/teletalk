@@ -2,11 +2,12 @@
 
 import { logger } from "@repo/logger";
 import { usePermissionStore } from "@repo/store";
-import { STORAGE_KEY } from "@repo/types";
 import { enqueueSnackbar } from "notistack";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { useLocalStorage } from "usehooks-ts";
+
+import { STORAGE_KEY } from "../../types";
 
 export interface Features {
 	apiValidation: boolean;

@@ -1,4 +1,4 @@
-import { HTTPMethod, PickFromUnion } from "@repo/types";
+import { PickFromUnion } from "@repo/types";
 import { ZodSchema } from "zod";
 
 import { IOCollection, IOName, ioCollection } from "../schema/api/io";
@@ -23,6 +23,8 @@ export type RouteName = PickFromUnion<
 	| "userFcm"
 	| "verify"
 >;
+
+export type HTTPMethod = "delete" | "get" | "post" | "patch" | "put";
 
 export type RouteSchema<
 	T extends RouteName,

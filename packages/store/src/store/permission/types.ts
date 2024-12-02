@@ -1,4 +1,6 @@
-import { StoreSetFn, VoidWithArg } from "@repo/types";
+import { VoidWithArg } from "@repo/types";
+
+import { StoreSetFn } from "../../utils";
 
 export interface Handlers {
 	setIsPermissionLoaded: VoidWithArg<boolean>;

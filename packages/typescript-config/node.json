@@ -3,7 +3,9 @@
 	"extends": "./base.json",
 	"display": "Node Config",
 	"compilerOptions": {
-		"declaration": true
+		"declaration": true,
+		"esModuleInterop": true,
+		"types": ["mocha"]
 	},
 	"ts-node": {
 		"esm": true,

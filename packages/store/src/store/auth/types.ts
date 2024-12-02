@@ -1,5 +1,7 @@
 import { BaseSchema } from "@repo/schema";
-import { StoreSetFn, VoidNoArgs, VoidWithArg } from "@repo/types";
+import { VoidNoArgs, VoidWithArg } from "@repo/types";
+
+import { StoreSetFn } from "../../utils";
 
 export interface State {
 	selectedCountry: BaseSchema.CountriesItem | null;

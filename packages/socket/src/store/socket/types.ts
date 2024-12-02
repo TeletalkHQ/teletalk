@@ -1,4 +1,4 @@
-import { StoreSetFn } from "@repo/types";
+import { StoreSetFn } from "@repo/store";
 
 export interface State {}
 

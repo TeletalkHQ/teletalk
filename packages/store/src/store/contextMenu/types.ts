@@ -1,4 +1,6 @@
-import { StoreSetFn, VoidNoArgs, VoidWithArg } from "@repo/types";
+import { VoidNoArgs, VoidWithArg } from "@repo/types";
+
+import { StoreSetFn } from "../../utils";
 
 type ContextMenuText = "Edit" | "Remove" | "Block" | "Unblock";
 

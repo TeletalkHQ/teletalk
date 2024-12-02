@@ -20,7 +20,6 @@ export const resetAllStores = () => {
 	}
 };
 
-// CLEANME: DUPLICATE
 export type StoreSetFn<StoreType> = (
 	partial:
 		| StoreType
