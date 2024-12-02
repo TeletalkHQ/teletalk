@@ -1,4 +1,3 @@
-import React from "react";
 import { useIsClient } from "usehooks-ts";
 
 type ClientOnlyProps = {

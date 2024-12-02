@@ -1,4 +1,4 @@
-import { PaginationStore, usePaginationStore } from "@repo/store";
+import { PaginationStore, usePaginationStore } from "../store";
 
 export const useTablePagination = (name: PaginationStore.TableName) => {
 	const paginationStore = usePaginationStore();

@@ -1,6 +1,5 @@
+import { StoreSetFn } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
-
-import { StoreSetFn } from "../../utils";
 
 export type TableName = "users";
 

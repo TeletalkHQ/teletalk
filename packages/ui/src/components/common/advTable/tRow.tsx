@@ -1,5 +1,4 @@
 import { TableCellProps, TableRow } from "@mui/material";
-import React from "react";
 
 import { Skeleton } from "../loading";
 import { TCell } from "./tCell";

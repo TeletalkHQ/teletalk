@@ -1,7 +1,9 @@
-import { Table as TableBase, TableContainer } from "@mui/material";
-import { PaginationStore } from "@repo/store";
-import React from "react";
+"use client";
 
+import { Table as TableBase, TableContainer } from "@mui/material";
+import { MouseEvent, useMemo, useState } from "react";
+
+import { PaginationStore } from "../../../store";
 import { TBody } from "./tBody";
 import { AdvTHead, GetHeadersType } from "./tHead";
 import { CellValueComponents } from "./tRow";
@@ -59,19 +61,16 @@ export function AdvTable<Schema, ExtraFields extends string = string>({
 }: Props<Schema, ExtraFields>) {
 	type Key = keyof Schema;
 
-	const [order, setOrder] = React.useState<Order>(sortOrder);
-	const [orderBy, setOrderBy] = React.useState<Key>(defaultSortKey);
+	const [order, setOrder] = useState<Order>(sortOrder);
+	const [orderBy, setOrderBy] = useState<Key>(defaultSortKey);
 
-	const handleRequestSort = (
-		_event: React.MouseEvent<unknown>,
-		property: Key
-	) => {
+	const handleRequestSort = (_event: MouseEvent<unknown>, property: Key) => {
 		const isAsc = orderBy === property && order === "asc";
 		setOrder(isAsc ? "desc" : "asc");
 		setOrderBy(property);
 	};
 
-	const sortedData = React.useMemo(
+	const sortedData = useMemo(
 		() => data.slice().sort(getComparator(order, orderBy)),
 		[order, orderBy, data]
 	);

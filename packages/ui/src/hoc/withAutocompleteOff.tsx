@@ -1,5 +1,3 @@
-import React from "react";
-
 export const withAutocompleteOff = <T extends object>(
 	Component: React.FC<T>
 ) => {

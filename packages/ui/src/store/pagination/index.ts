@@ -1,4 +1,5 @@
-import { createStore } from "../../utils";
+import { createStore } from "@repo/store";
+
 import { handlers } from "./handlers";
 import { initialState } from "./initialState";
 import * as PaginationStore from "./types";

@@ -9,7 +9,6 @@ import {
 	ListItemButtonProps,
 	Span,
 } from "@repo/ui";
-import React from "react";
 
 interface Props extends ListItemButtonProps {
 	label: ElementLabel;

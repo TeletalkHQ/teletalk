@@ -1,5 +1,4 @@
 import { CSSProperties, FC } from "react";
-import React from "react";
 
 import { Flex } from "../../base/box";
 import { Typography } from "../../base/typography";

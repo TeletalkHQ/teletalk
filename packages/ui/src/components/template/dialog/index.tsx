@@ -3,7 +3,6 @@ import { useTheme } from "@mui/material";
 import { useConfigs } from "@repo/hooks";
 import { DialogStore, useDialogStore } from "@repo/store";
 import { TransitionName, VoidNoArgs } from "@repo/types";
-import React from "react";
 
 import { Dialog, DialogProps, Transitions } from "../../base";
 import { Actions } from "./actions";

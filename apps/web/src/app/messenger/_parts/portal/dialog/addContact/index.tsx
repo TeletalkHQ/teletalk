@@ -6,7 +6,6 @@ import {
 } from "@repo/hooks";
 import { FormSchemaName } from "@repo/schema";
 import { DialogTemplate, DoubleAction } from "@repo/ui";
-import React from "react";
 
 import { Content } from "./content";
 import { Title } from "./title";
