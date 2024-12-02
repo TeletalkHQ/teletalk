@@ -2,44 +2,7 @@ import { initialState } from "./initialState";
 import { Handlers, SetState } from "./types";
 
 export const handlers: (set: SetState) => Handlers = (set) => ({
-	openLoading(type) {
-		set((prevState) => {
-			return {
-				loading: {
-					...prevState.loading,
-					open: true,
-					type: type || prevState.loading.type,
-				},
-			};
-		});
-	},
-	closeLoading(type) {
-		set((prevState) => {
-			return {
-				loading: {
-					...prevState.loading,
-					open: false,
-					type: type || prevState.loading.type,
-				},
-			};
-		});
-	},
-
-	openOverlayLoading() {
-		this.openLoading("OVERLAY");
-	},
-	closeOverlayLoading() {
-		this.closeLoading("OVERLAY");
-	},
-
-	openFullPageLoading() {
-		this.openLoading("FULL_PAGE");
-	},
-	closeFullPageLoading() {
-		this.closeLoading("FULL_PAGE");
-	},
-
-	changeDrawerOpen(open) {
+	updateIsDrawerOpen(open) {
 		set((prevState) => {
 			return {
 				drawer: {

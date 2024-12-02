@@ -1,7 +1,5 @@
 import { StoreSetFn } from "@repo/store";
-import type { LoadingType, VoidNoArgs, VoidWithArg } from "@repo/types";
-import { CircularProgressProps } from "@repo/ui";
-import { CSSProperties } from "react";
+import type { VoidNoArgs, VoidWithArg } from "@repo/types";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -29,31 +27,6 @@ export type ContextMenuState = {
 	list: ContextMenuList;
 };
 
-export interface Handlers {
-	changeDrawerOpen: VoidWithArg<boolean>;
-	closeContextMenu: VoidNoArgs;
-	closeFullPageLoading: VoidNoArgs;
-	closeLoading: VoidWithArg<LoadingType>;
-	closeOverlayLoading: VoidNoArgs;
-	handleContextMenu: ExtendedOnContextMenu<ContextMenuList>;
-	openFullPageLoading: VoidNoArgs;
-	openLoading: VoidWithArg<LoadingType>;
-	openOverlayLoading: VoidNoArgs;
-	reset: VoidNoArgs;
-	updateContextMenuList: VoidWithArg<ContextMenuList>;
-	updateIsInitialized: VoidWithArg<boolean>;
-	updateOnlineStatus: VoidWithArg<boolean>;
-}
-
-export interface LoadingState {
-	color: "blue";
-	open: false;
-	progressColor: "inherit";
-	size: number;
-	speedMultiplier: number;
-	type: LoadingType;
-}
-
 export interface State {
 	contextMenu: ContextMenuState;
 	drawer: {
@@ -61,15 +34,17 @@ export interface State {
 		open: boolean;
 	};
 	isOnline: boolean;
-	loading: {
-		color: CSSProperties["color"];
-		open: boolean;
-		progressColor: CircularProgressProps["color"];
-		size: 80;
-		speedMultiplier: number;
-		type: LoadingType;
-	};
 	isInitialized: boolean;
+}
+
+export interface Handlers {
+	closeContextMenu: VoidNoArgs;
+	handleContextMenu: ExtendedOnContextMenu<ContextMenuList>;
+	reset: VoidNoArgs;
+	updateContextMenuList: VoidWithArg<ContextMenuList>;
+	updateIsDrawerOpen: VoidWithArg<boolean>;
+	updateIsInitialized: VoidWithArg<boolean>;
+	updateOnlineStatus: VoidWithArg<boolean>;
 }
 
 export type SetState = StoreSetFn<State>;

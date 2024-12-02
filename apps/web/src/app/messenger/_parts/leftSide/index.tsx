@@ -10,7 +10,7 @@ export const LeftSide = () => {
 	const globalStore = useGlobalStore();
 
 	const handleDrawerIconClick = () => {
-		globalStore.changeDrawerOpen(true);
+		globalStore.updateIsDrawerOpen(true);
 	};
 
 	return (

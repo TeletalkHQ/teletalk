@@ -6,14 +6,5 @@ export const defaultLoadingItem: LoadingItem = {
 };
 
 export const initialState: State = {
-	globalLoading: {
-		color: "wheat",
-		open: false,
-		progressColor: "inherit",
-		size: 80,
-		speedMultiplier: 1,
-		type: "FULL_PAGE",
-	},
-
 	phases: {},
 };

@@ -1,5 +1,5 @@
 import { HTTPRouteName } from "@repo/schema";
-import { LoadingType, VoidNoArgs, VoidWithArg } from "@repo/types";
+import { VoidWithArg } from "@repo/types";
 
 import { StoreSetFn } from "../../utils";
 
@@ -21,23 +21,12 @@ export type Phases = {
 };
 
 export interface State {
-	globalLoading: {
-		color: React.CSSProperties["color"];
-		open: boolean;
-		// progressColor: ProgressColor;
-		progressColor: string;
-		size: 80;
-		speedMultiplier: number;
-		type: LoadingType;
-	};
 	phases: Partial<Phases>;
 }
 
 export interface Handlers {
 	finishLoading: VoidWithArg<HTTPRouteName>;
 	finishUpdating: VoidWithArg<HTTPRouteName>;
-	setLoadingClose: VoidWithArg<LoadingType>;
-	setOverlayLoadingClose: VoidNoArgs;
 	startLoading: VoidWithArg<HTTPRouteName>;
 	startUpdating: VoidWithArg<HTTPRouteName>;
 }

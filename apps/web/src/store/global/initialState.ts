@@ -12,12 +12,4 @@ export const initialState: State = {
 	},
 	isInitialized: false,
 	isOnline: false,
-	loading: {
-		color: "wheat",
-		open: false,
-		progressColor: "inherit",
-		size: 80,
-		speedMultiplier: 1,
-		type: "FULL_PAGE",
-	},
 };

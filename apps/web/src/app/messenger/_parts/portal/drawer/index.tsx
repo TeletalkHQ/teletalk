@@ -26,7 +26,7 @@ export const Drawer = () => {
 			return;
 		}
 
-		globalStore.changeDrawerOpen(open);
+		globalStore.updateIsDrawerOpen(open);
 	};
 
 	const handleDrawerItemClick = (n: ElementName) => {

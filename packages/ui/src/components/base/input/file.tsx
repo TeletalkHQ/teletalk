@@ -1,11 +1,13 @@
-import { CommonOnChange } from "@repo/types";
+import { ChangeEventHandler } from "react";
+
+export type OnFileChange = ChangeEventHandler<HTMLInputElement> | undefined;
 
 interface Props
 	extends React.DetailedHTMLProps<
 		React.InputHTMLAttributes<HTMLInputElement>,
 		HTMLInputElement
 	> {
-	onFileChange: CommonOnChange;
+	onFileChange: OnFileChange;
 	fileInputRef: React.LegacyRef<HTMLInputElement>;
 }
 
