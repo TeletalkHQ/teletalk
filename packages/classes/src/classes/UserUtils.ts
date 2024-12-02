@@ -1,6 +1,6 @@
 import { BaseSchema } from "@repo/schema";
 import { StringMap } from "@repo/types";
-import { isDataHasEqualityWithTargetCellphone } from "@repo/utils";
+import isEqual from "lodash/isEqual";
 
 export class UserUtils {
 	concatFirstNameWithLastName(
@@ -59,9 +59,7 @@ export class UserUtils {
 		items: (BaseSchema.Cellphone & StringMap)[],
 		targetCellphone: BaseSchema.Cellphone & StringMap
 	): { index: number; item?: BaseSchema.Cellphone & StringMap } {
-		const item = items.find((cellphone) =>
-			isDataHasEqualityWithTargetCellphone(cellphone, targetCellphone)
-		);
+		const item = items.find((cellphone) => isEqual(cellphone, targetCellphone));
 
 		return {
 			index: item ? items.indexOf(item) : -1,

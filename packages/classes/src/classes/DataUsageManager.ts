@@ -1,5 +1,5 @@
 import { BaseSchema } from "@repo/schema";
-import { isDataHasEqualityWithTargetCellphone } from "@repo/utils";
+import isEqual from "lodash/isEqual";
 
 class DataUsageManager {
 	private usedCellphones: BaseSchema.Cellphone[];
@@ -14,9 +14,7 @@ class DataUsageManager {
 	}
 
 	isCellphoneUsed(cellphone: BaseSchema.Cellphone) {
-		return this.usedCellphones.some((c) =>
-			isDataHasEqualityWithTargetCellphone(c, cellphone)
-		);
+		return this.usedCellphones.some((c) => isEqual(c, cellphone));
 	}
 }
 

@@ -1,3 +1,4 @@
+import { faker } from "@faker-js/faker";
 import { Body, Controller, Get, Post, Req, Res } from "@nestjs/common";
 import { extractor, randomizer, userUtils } from "@repo/classes";
 import {
@@ -6,7 +7,6 @@ import {
 	getPathname,
 	getRootPath,
 } from "@repo/schema";
-import { stringGenerator } from "@repo/utils";
 import { Request, Response } from "express";
 
 import { COOKIE_NAMES } from "~/constants";
@@ -36,7 +36,7 @@ export class AuthController {
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response
 	): HTTPHandlerReturnType<"signIn"> {
-		const signInCode = stringGenerator();
+		const signInCode = faker.string.numeric({ length: 6 });
 
 		const cellphone = extractor.cellphone(data);
 
