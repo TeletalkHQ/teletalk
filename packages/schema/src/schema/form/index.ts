@@ -1,51 +1,61 @@
 import { z } from "zod";
 
-import { baseSchema } from "../base";
+import {
+	bioSchema,
+	contactsItemSchema,
+	countryCodeSchema,
+	countryNameSchema,
+	firstNameSchema,
+	fullNameSchema,
+	lastNameSchema,
+	messageTextSchema,
+	phoneNumberSchema,
+	signInCodeSchema,
+	usernameSchema,
+} from "../base";
 
-const signIn = z.object({
-	countryCode: baseSchema.countryCode,
-	countryName: baseSchema.countryName,
-	phoneNumber: baseSchema.phoneNumber,
+export const signInForm = z.object({
+	countryCode: countryCodeSchema,
+	countryName: countryNameSchema,
+	phoneNumber: phoneNumberSchema,
 });
 
-const verifySignInCode = z.object({
-	signInCode: baseSchema.signInCode,
+export const verifySignInCodeForm = z.object({
+	signInCode: signInCodeSchema,
 });
 
-const createNewUser = z.object({
-	firstName: baseSchema.firstName,
-	lastName: baseSchema.lastName,
+export const createNewUserForm = z.object({
+	firstName: firstNameSchema,
+	lastName: lastNameSchema,
 });
 
-const messageInput = z.object({
-	messageText: baseSchema.messageText,
+export const messageInputForm = z.object({
+	messageText: messageTextSchema,
 });
 
-const updateBio = z.object({
-	bio: baseSchema.bio,
+export const updateBioForm = z.object({
+	bio: bioSchema,
 });
 
-const updateUsername = z.object({
-	username: baseSchema.username,
+export const updateUsernameForm = z.object({
+	username: usernameSchema,
 });
 
-const updateFullName = baseSchema.fullName;
+export const updateFullNameForm = fullNameSchema;
 
-const addContact = baseSchema.contactsItem;
-const updateContact = baseSchema.contactsItem;
+export const addContactForm = contactsItemSchema;
+export const updateContactForm = contactsItemSchema;
 
-export const formSchema = {
-	addContact,
-	createNewUser,
-	messageInput,
-	signIn,
-	updateBio,
-	updateContact,
-	updateFullName,
-	updateUsername,
-	verifySignInCode,
+export type FormSchema = {
+	addContact: typeof addContactForm;
+	createNewUser: typeof createNewUserForm;
+	messageInput: typeof messageInputForm;
+	signIn: typeof signInForm;
+	updateBio: typeof updateBioForm;
+	updateContact: typeof updateContactForm;
+	updateFullName: typeof updateFullNameForm;
+	updateUsername: typeof updateUsernameForm;
+	verifySignInCode: typeof verifySignInCodeForm;
 };
-
-export type FormSchema = typeof formSchema;
 
 export type FormSchemaName = keyof FormSchema;

@@ -1,4 +1,4 @@
-import { FormSchemaName } from "@repo/schema";
+import { ZodSchema } from "zod";
 
 import {
 	FieldWithController,
@@ -6,13 +6,13 @@ import {
 	Span,
 } from "../../../base";
 
-interface Props<Name extends FormSchemaName>
-	extends FieldWithValidatorWithOptionalNameProps<Name> {}
+interface Props<T extends ZodSchema>
+	extends FieldWithValidatorWithOptionalNameProps<T> {}
 
-export const CountryName = <Name extends FormSchemaName>({
+export const CountryName = <T extends ZodSchema>({
 	style,
 	...rest
-}: Props<Name>) => (
+}: Props<T>) => (
 	<FieldWithController
 		autoComplete="tel-country-code"
 		InputProps={{

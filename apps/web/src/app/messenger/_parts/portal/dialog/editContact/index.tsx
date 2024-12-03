@@ -1,5 +1,5 @@
 import { useDialogState, useForm } from "@repo/hooks";
-import { FormSchemaName } from "@repo/schema";
+import { FormSchema, updateContactForm } from "@repo/schema";
 import { DialogTemplate, DoubleAction } from "@repo/ui";
 
 import { Content } from "./content";
@@ -8,13 +8,13 @@ import { Title } from "./title";
 export const EditContact = () => {
 	const dialogState = useDialogState("editContact");
 
-	const schemaName: FormSchemaName = "updateContact";
-
 	const {
 		control,
 		handleSubmit,
 		formState: { isValid },
-	} = useForm<typeof schemaName>({ schemaName });
+	} = useForm<FormSchema["updateContact"]>({
+		schema: updateContactForm,
+	});
 
 	const onSubmit = handleSubmit((_data) => {
 		// emitter({

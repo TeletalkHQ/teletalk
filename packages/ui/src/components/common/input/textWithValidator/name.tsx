@@ -1,13 +1,13 @@
-import { FormSchemaName } from "@repo/schema";
+import { ZodSchema } from "zod";
 
 import {
 	FieldWithController,
 	FieldWithValidatorWithOptionalNameProps,
 } from "../../../base";
 
-interface Props<Name extends FormSchemaName>
-	extends FieldWithValidatorWithOptionalNameProps<Name> {}
+interface Props<T extends ZodSchema>
+	extends FieldWithValidatorWithOptionalNameProps<T> {}
 
-export const Name = <Name extends FormSchemaName>(props: Props<Name>) => (
+export const Name = <T extends ZodSchema>(props: Props<T>) => (
 	<FieldWithController hiddenLabel name="name" placeholder="Name" {...props} />
 );

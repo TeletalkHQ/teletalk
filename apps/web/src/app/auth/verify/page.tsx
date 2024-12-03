@@ -6,7 +6,7 @@ import {
 	useForm,
 	useVerify,
 } from "@repo/hooks";
-import { FormSchemaName } from "@repo/schema";
+import { FormSchema, verifySignInCodeForm } from "@repo/schema";
 import {
 	ArrowBackIcon,
 	Avatar,
@@ -37,9 +37,10 @@ const Verify = () => {
 
 	const verifyPhase = useApiPhase("verify");
 
-	const schemaName: FormSchemaName = "verifySignInCode";
-	const { control, handleSubmit, setValue } = useForm<typeof schemaName>({
-		schemaName,
+	const { control, handleSubmit, setValue } = useForm<
+		FormSchema["verifySignInCode"]
+	>({
+		schema: verifySignInCodeForm,
 	});
 
 	const { isValid } = useFormState({
@@ -51,7 +52,7 @@ const Verify = () => {
 		router.back();
 	};
 
-	const submitForm: SubmitHandler<typeof schemaName> = (data) => {
+	const submitForm: SubmitHandler<FormSchema["verifySignInCode"]> = (data) => {
 		postApi.handler({
 			data,
 			config: {

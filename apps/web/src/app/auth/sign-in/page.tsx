@@ -6,7 +6,7 @@ import {
 	useForm,
 	useSignIn,
 } from "@repo/hooks";
-import { FormSchemaName } from "@repo/schema";
+import { FormSchema, signInForm } from "@repo/schema";
 import {
 	Avatar,
 	Button,
@@ -37,9 +37,8 @@ const SignIn = () => {
 
 	const authQueries = useAuthUrlQueries();
 
-	const schemaName: FormSchemaName = "signIn";
-	const { control, handleSubmit, setValue } = useForm<typeof schemaName>({
-		schemaName,
+	const { control, handleSubmit, setValue } = useForm<FormSchema["signIn"]>({
+		schema: signInForm,
 		defaultValues: {
 			countryCode: authQueries.countryCode,
 			phoneNumber: authQueries.phoneNumber,
@@ -61,7 +60,7 @@ const SignIn = () => {
 		setValue("countryCode", value?.countryCode || "");
 	};
 
-	const submitSignInForm: SubmitHandler<typeof schemaName> = (data) => {
+	const submitSignInForm: SubmitHandler<FormSchema["signIn"]> = (data) => {
 		authQueries.setCountryCode(data.countryCode);
 		authQueries.setPhoneNumber(data.phoneNumber);
 

@@ -6,7 +6,7 @@ import {
 	useCustomRouter,
 	useForm,
 } from "@repo/hooks";
-import { FormSchemaName } from "@repo/schema";
+import { FormSchema, createNewUserForm } from "@repo/schema";
 import {
 	AccountCircleOutlinedIcon,
 	ArrowBackIcon,
@@ -37,14 +37,13 @@ const Create = () => {
 		router.back();
 	};
 
-	const schemaName: FormSchemaName = "createNewUser";
-	const { control, handleSubmit } = useForm<typeof schemaName>({
-		schemaName,
+	const { control, handleSubmit } = useForm<FormSchema["createNewUser"]>({
+		schema: createNewUserForm,
 	});
 
 	const { isValid } = useFormState({ control });
 
-	const submitForm: SubmitHandler<typeof schemaName> = (data) => {
+	const submitForm: SubmitHandler<FormSchema["createNewUser"]> = (data) => {
 		postApi.handler({
 			data,
 			config: {

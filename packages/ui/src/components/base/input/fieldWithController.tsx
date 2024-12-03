@@ -1,33 +1,34 @@
 "use client";
 
 import { Control } from "@repo/hooks";
-import { FormSchemaName } from "@repo/schema";
 import { Path, UseFormGetValues, useController } from "react-hook-form";
+import { ZodSchema } from "zod";
 
 import { FieldInputBaseProps, TextField } from "./field";
 
-export type FieldWithValidatorProps<Name extends FormSchemaName> =
+export type FieldWithValidatorProps<T extends ZodSchema> =
 	FieldInputBaseProps & {
-		control: Control<Name>;
+		control: Control<T>;
 	};
 
-export type FieldWithValidatorWithOptionalNameProps<
-	Name extends FormSchemaName,
-> = Omit<FieldWithValidatorProps<Name>, "name"> & {
+export type FieldWithValidatorWithOptionalNameProps<T extends ZodSchema> = Omit<
+	FieldWithValidatorProps<T>,
+	"name"
+> & {
 	name?: string;
 };
 
-export const FieldWithController = <Name extends FormSchemaName>({
+export const FieldWithController = <T extends ZodSchema>({
 	autoComplete,
 	control,
 	m,
 	name,
 	...rest
-}: FieldWithValidatorProps<Name>) => {
+}: FieldWithValidatorProps<T>) => {
 	const { field } = useController({
 		control,
 		name: name as Path<UseFormGetValues<any>>,
-		// name: name as Path<UseFormGetValues<Control<Name>>>,
+		// name: name as Path<UseFormGetValues<Control<T>>>,
 	});
 
 	return <TextField {...rest} {...field} />;

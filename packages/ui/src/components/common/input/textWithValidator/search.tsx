@@ -1,17 +1,16 @@
-import { FormSchemaName } from "@repo/schema";
+import { ZodSchema } from "zod";
 
 import {
 	FieldWithValidatorWithOptionalNameProps,
 	TextField,
 } from "../../../base";
 
-type Props<Name extends FormSchemaName> =
-	FieldWithValidatorWithOptionalNameProps<Name>;
+type Props<T extends ZodSchema> = FieldWithValidatorWithOptionalNameProps<T>;
 
-export const Search = <Name extends FormSchemaName>({
+export const Search = <T extends ZodSchema>({
 	placeholder,
 	...rest
-}: Props<Name>) => {
+}: Props<T>) => {
 	return (
 		<TextField
 			autoComplete="off"

@@ -3,8 +3,8 @@
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
-import { FormSchemaName } from "@repo/schema";
 import { useState } from "react";
+import { ZodSchema } from "zod";
 
 import {
 	FieldWithController,
@@ -12,10 +12,10 @@ import {
 } from "../../../base";
 import { IconButton } from "../../../base/button";
 
-interface Props<Name extends FormSchemaName>
-	extends FieldWithValidatorWithOptionalNameProps<Name> {}
+interface Props<T extends ZodSchema>
+	extends FieldWithValidatorWithOptionalNameProps<T> {}
 
-export const Password = <Name extends FormSchemaName>(props: Props<Name>) => {
+export const Password = <T extends ZodSchema>(props: Props<T>) => {
 	const [showPassword, setShowPassword] = useState(false);
 
 	const handleClickShowPassword = () => setShowPassword((show) => !show);

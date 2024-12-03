@@ -1,314 +1,318 @@
 import { regex } from "@repo/assets";
 import { z } from "zod";
 
-const avatarSrc = z.string().min(0).max(800000).trim();
+export const avatarSrcSchema = z.string().min(0).max(800000).trim();
 
-const bio = z.string().min(0).max(255).trim();
+export const bioSchema = z.string().min(0).max(255).trim();
 
-const createdAt = z.number();
+export const createdAtSchema = z.number();
 
-const countryCode = z
+export const countryCodeSchema = z
 	.string()
 	.min(1)
 	.max(4)
 	.regex(regex.numbers.enNumber)
 	.trim();
 
-const countryName = z.string().min(2).max(50).trim();
+export const countryNameSchema = z.string().min(2).max(50).trim();
 
-const countryShortName = z.string().min(2).max(80).trim();
+export const countryShortNameSchema = z.string().min(2).max(80).trim();
 
-const firstName = z.string().min(2).max(18).trim();
+export const firstNameSchema = z.string().min(2).max(18).trim();
 
-const isActive = z.boolean().default(false);
+export const isActiveSchema = z.boolean().default(false);
 
-const isOnline = z.boolean().default(false);
+export const isOnlineSchema = z.boolean().default(false);
 
-const lastName = z.string().min(2).max(18).trim();
+export const lastNameSchema = z.string().min(2).max(18).trim();
 
-const macAddress = z.string().min(12).max(16).trim();
+export const macAddressSchema = z.string().min(12).max(16).trim();
 
-const userId = z.string().min(30).max(35).trim();
+export const userIdSchema = z.string().min(30).max(35).trim();
 
-const phoneNumber = z
+export const phoneNumberSchema = z
 	.string()
 	.min(10)
 	.max(14)
 	.trim()
 	.regex(regex.numbers.enNumber);
 
-const username = z.string().min(0).max(12).trim();
+export const usernameSchema = z.string().min(0).max(12).trim();
 
-const email = z.string().min(5).max(100).trim();
+export const emailSchema = z.string().min(5).max(100).trim();
 
-const password = z.string().min(4).max(100).trim();
+export const passwordSchema = z.string().min(4).max(100).trim();
 
-const session = z.string().min(100).max(400).trim();
-const sessionId = z.string().min(100).max(150).trim();
+export const sessionSchema = z.string().min(100).max(400).trim();
+export const sessionIdSchema = z.string().min(100).max(150).trim();
 
-const encryptedSession = z.string().min(100).max(400).trim();
+export const encryptedSessionSchema = z.string().min(100).max(400).trim();
 
-const signInCode = z.string().length(6).trim().regex(regex.numbers.enNumber);
+export const signInCodeSchema = z
+	.string()
+	.length(6)
+	.trim()
+	.regex(regex.numbers.enNumber);
 
-const chatId = z.string().min(30).max(35).trim();
+export const chatIdSchema = z.string().min(30).max(35).trim();
 
-const messageId = z.string().min(40).max(45).trim();
+export const messageIdSchema = z.string().min(40).max(45).trim();
 
-const messageText = z.string().min(1).max(1000).trim();
+export const messageTextSchema = z.string().min(1).max(1000).trim();
 
-const senderId = userId;
+const senderIdSchema = userIdSchema;
 
-const welcomeMessage = z.string().min(10).max(100).trim();
+export const welcomeMessageSchema = z.string().min(10).max(100).trim();
 
-const pong = z.string().min(1).max(100);
+export const pongSchema = z.string().min(1).max(100);
 
 // TODO: Rename to privateMessage
-const messagesItem = z.object({
-	createdAt,
-	messageId,
-	messageText,
+export const messagesItemSchema = z.object({
+	createdAt: createdAtSchema,
+	messageId: messageIdSchema,
+	messageText: messageTextSchema,
 	sender: z.object({
-		senderId,
+		senderId: senderIdSchema,
 	}),
 });
 
 // TODO: Rename to privateMessageList
-const messages = z.array(messagesItem);
+export const messagesSchema = z.array(messagesItemSchema);
 
-const participantId = userId;
+export const participantIdSchema = userIdSchema;
 
-const participantsItem = z.object({
-	participantId,
+export const participantsItemSchema = z.object({
+	participantId: participantIdSchema,
 });
 
-const participants = z.array(participantsItem).length(2);
+export const participantsSchema = z.array(participantsItemSchema).length(2);
 
-const privateChatsItem = z.object({
-	chatId,
-	createdAt,
-	messages,
-	participants,
+export const privateChatsItemSchema = z.object({
+	chatId: chatIdSchema,
+	createdAt: createdAtSchema,
+	messages: messagesSchema,
+	participants: participantsSchema,
 });
 
-const privateChats = z.array(privateChatsItem);
+export const privateChatsSchema = z.array(privateChatsItemSchema);
 
-const sessionItem = z.object({
-	sessionId,
+export const sessionItemSchema = z.object({
+	sessionId: sessionIdSchema,
 	isExpired: z.boolean(),
 });
-const sessions = z.array(sessionItem);
+export const sessionsSchema = z.array(sessionItemSchema);
 
-const status = z.object({
-	isActive,
+export const statusSchema = z.object({
+	isActive: isActiveSchema,
 });
 
-const blockedUser = z.object({
-	userId,
+export const blockedUserSchema = z.object({
+	userId: userIdSchema,
 });
 
-const cellphone = z.object({
-	countryCode,
-	countryName,
-	phoneNumber,
+export const cellphoneSchema = z.object({
+	countryCode: countryCodeSchema,
+	countryName: countryNameSchema,
+	phoneNumber: phoneNumberSchema,
 });
 
-const fullName = z.object({
-	firstName,
-	lastName,
+export const fullNameSchema = z.object({
+	firstName: firstNameSchema,
+	lastName: lastNameSchema,
 });
 
-const contactsItem = z.object({
-	countryCode: countryCode.optional(),
-	countryName: countryName.optional(),
-	firstName,
-	lastName: lastName.optional(),
-	phoneNumber: phoneNumber.optional(),
-	userId,
+export const contactsItemSchema = z.object({
+	countryCode: countryCodeSchema.optional(),
+	countryName: countryNameSchema.optional(),
+	firstName: firstNameSchema,
+	lastName: lastNameSchema.optional(),
+	phoneNumber: phoneNumberSchema.optional(),
+	userId: userIdSchema,
 });
 
-const contacts = z.array(contactsItem);
+export const contactsSchema = z.array(contactsItemSchema);
 
-const blacklistItem = z.object({
-	userId,
+export const blacklistItemSchema = z.object({
+	userId: userIdSchema,
 });
 
-const blacklist = z.array(blacklistItem);
+export const blacklistSchema = z.array(blacklistItemSchema);
 
 // TODO: Mix with `userData`
-const userPublicInfo = z.object({
-	firstName,
-	lastName,
-	bio,
-	userId,
-	username,
-	avatarSrc: avatarSrc.optional(),
+export const userPublicInfoSchema = z.object({
+	firstName: firstNameSchema,
+	lastName: lastNameSchema,
+	bio: bioSchema,
+	userId: userIdSchema,
+	username: usernameSchema,
+	avatarSrc: avatarSrcSchema.optional(),
 });
 
-const userInfo = z.intersection(
-	userPublicInfo,
+const userInfoSchema = z.intersection(
+	userPublicInfoSchema,
 	z.object({
-		avatarSrc,
-		blacklist,
-		contacts,
-		countryCode,
-		countryName,
-		createdAt,
-		phoneNumber,
-		status,
+		avatarSrc: avatarSrcSchema,
+		blacklist: blacklistSchema,
+		contacts: contactsSchema,
+		countryCode: countryCodeSchema,
+		countryName: countryNameSchema,
+		createdAt: createdAtSchema,
+		phoneNumber: phoneNumberSchema,
+		status: statusSchema,
 	})
 );
 
 // TODO: Rename | Remove
-const DBUserData = z.intersection(
-	userInfo,
+const DBUserDataSchema = z.intersection(
+	userInfoSchema,
 	z.object({
-		sessions,
+		sessions: sessionsSchema,
 	})
 );
 
-const onlineClientsItem = z.object({
-	userId,
+export const onlineClientsItemSchema = z.object({
+	userId: userIdSchema,
 });
 
-const onlineClients = z.array(onlineClientsItem);
+export const onlineClientsSchema = z.array(onlineClientsItemSchema);
 
-const countriesItem = z.object({
-	countryCode,
-	countryName,
-	countryShortName,
+export const countriesItemSchema = z.object({
+	countryCode: countryCodeSchema,
+	countryName: countryNameSchema,
+	countryShortName: countryShortNameSchema,
 	// TODO: Implement `uuid` schema
 	uuid: z.string(),
 });
 
-const countries = z.array(countriesItem);
+export const countriesSchema = z.array(countriesItemSchema);
 
-const isNewUser = z.boolean();
-const isBlocked = z.boolean();
-const isContact = z.boolean();
+export const isNewUserSchema = z.boolean();
+export const isBlockedSchema = z.boolean();
+export const isContactSchema = z.boolean();
 
-const clientUser = userPublicInfo.and(
-	cellphone.and(
+const clientUserSchema = userPublicInfoSchema.and(
+	cellphoneSchema.and(
 		z.object({
-			avatarSrc,
-			isBlocked,
-			isContact,
-			originalFirstName: firstName,
-			originalLastName: lastName,
+			avatarSrc: avatarSrcSchema,
+			isBlocked: isBlockedSchema,
+			isContact: isContactSchema,
+			originalFirstName: firstNameSchema,
+			originalLastName: lastNameSchema,
 		})
 	)
 );
 
-const themeName = z.enum(["dark", "light"]);
+const themeNameSchema = z.enum(["dark", "light"]);
 
 export const baseSchema = {
-	avatarSrc,
-	bio,
-	blacklist,
-	blacklistItem,
-	blockedUser,
-	cellphone,
-	chatId,
-	clientUser,
-	contacts,
-	contactsItem,
-	countries,
-	countriesItem,
-	countryCode,
-	countryName,
-	countryShortName,
-	createdAt,
-	DBUserData,
-	email,
-	encryptedSession,
-	firstName,
-	fullName,
-	isActive,
-	isNewUser,
-	isOnline,
-	lastName,
-	macAddress,
-	messageId,
-	messages,
-	messagesItem,
-	messageText,
-	onlineClients,
-	participantId,
-	participants,
-	participantsItem,
-	password,
-	phoneNumber,
-	pong,
-	privateChats,
+	avatarSrc: avatarSrcSchema,
+	bio: bioSchema,
+	blacklist: blacklistSchema,
+	blacklistItem: blacklistItemSchema,
+	blockedUser: blockedUserSchema,
+	cellphone: cellphoneSchema,
+	chatId: chatIdSchema,
+	clientUser: clientUserSchema,
+	contacts: contactsSchema,
+	contactsItem: contactsItemSchema,
+	countries: countriesSchema,
+	countriesItem: countriesItemSchema,
+	countryCode: countryCodeSchema,
+	countryName: countryNameSchema,
+	countryShortName: countryShortNameSchema,
+	createdAt: createdAtSchema,
+	DBUserData: DBUserDataSchema,
+	email: emailSchema,
+	encryptedSession: encryptedSessionSchema,
+	firstName: firstNameSchema,
+	fullName: fullNameSchema,
+	isActive: isActiveSchema,
+	isNewUser: isNewUserSchema,
+	isOnline: isOnlineSchema,
+	lastName: lastNameSchema,
+	macAddress: macAddressSchema,
+	messageId: messageIdSchema,
+	messages: messagesSchema,
+	messagesItem: messagesItemSchema,
+	messageText: messageTextSchema,
+	onlineClients: onlineClientsSchema,
+	participantId: participantIdSchema,
+	participants: participantsSchema,
+	participantsItem: participantsItemSchema,
+	password: passwordSchema,
+	phoneNumber: phoneNumberSchema,
+	pong: pongSchema,
+	privateChats: privateChatsSchema,
 	// TODO: Rename all `NAME_Item` to `one_NAME`
-	privateChatsItem,
-	senderId,
-	session,
-	sessionId,
-	sessionItem,
-	sessions,
-	signInCode,
-	status,
-	themeName,
-	userId,
-	userInfo,
-	username,
-	userPublicInfo,
-	welcomeMessage,
+	privateChatsItem: privateChatsItemSchema,
+	senderId: senderIdSchema,
+	session: sessionSchema,
+	sessionId: sessionIdSchema,
+	sessionItem: sessionItemSchema,
+	sessions: sessionsSchema,
+	signInCode: signInCodeSchema,
+	status: statusSchema,
+	themeName: themeNameSchema,
+	userId: userIdSchema,
+	userInfo: userInfoSchema,
+	username: usernameSchema,
+	userPublicInfo: userPublicInfoSchema,
+	welcomeMessage: welcomeMessageSchema,
 };
 
 export namespace BaseSchema {
-	export type AvatarSrc = z.infer<typeof avatarSrc>;
-	export type Bio = z.infer<typeof bio>;
-	export type Blacklist = z.infer<typeof blacklist>;
-	export type BlacklistItem = z.infer<typeof blacklistItem>;
-	export type BlockedUser = z.infer<typeof blockedUser>;
-	export type Cellphone = z.infer<typeof cellphone>;
-	export type ChatId = z.infer<typeof chatId>;
-	export type ClientUser = z.infer<typeof clientUser>;
-	export type Contacts = z.infer<typeof contacts>;
-	export type ContactsItem = z.infer<typeof contactsItem>;
-	export type Countries = z.infer<typeof countries>;
-	export type CountriesItem = z.infer<typeof countriesItem>;
-	export type CountryCode = z.infer<typeof countryCode>;
-	export type CountryName = z.infer<typeof countryName>;
-	export type CountryShortName = z.infer<typeof countryShortName>;
-	export type CreatedAt = z.infer<typeof createdAt>;
-	export type DBUserData = z.infer<typeof DBUserData>;
-	export type Email = z.infer<typeof email>;
-	export type EncryptedSession = z.infer<typeof encryptedSession>;
-	export type FirstName = z.infer<typeof firstName>;
-	export type FullName = z.infer<typeof fullName>;
-	export type IsActive = z.infer<typeof isActive>;
-	export type IsNewUser = z.infer<typeof isNewUser>;
-	export type IsOnline = z.infer<typeof isOnline>;
-	export type LastName = z.infer<typeof lastName>;
-	export type MacAddress = z.infer<typeof macAddress>;
-	export type MessageId = z.infer<typeof messageId>;
-	export type MessageText = z.infer<typeof messageText>;
-	export type Messages = z.infer<typeof messages>;
-	export type MessagesItem = z.infer<typeof messagesItem>;
-	export type OnlineClients = z.infer<typeof onlineClients>;
-	export type ParticipantId = z.infer<typeof participantId>;
-	export type Participants = z.infer<typeof participants>;
-	export type ParticipantsItem = z.infer<typeof participantsItem>;
-	export type Password = z.infer<typeof password>;
-	export type PhoneNumber = z.infer<typeof phoneNumber>;
-	export type Pong = z.infer<typeof pong>;
-	export type PrivateChats = z.infer<typeof privateChats>;
-	export type PrivateChatsItem = z.infer<typeof privateChatsItem>;
-	export type SenderId = z.infer<typeof senderId>;
-	export type Session = z.infer<typeof session>;
-	export type SessionId = z.infer<typeof sessionId>;
-	export type SessionItem = z.infer<typeof sessionItem>;
-	export type Sessions = z.infer<typeof sessions>;
-	export type SignInCode = z.infer<typeof signInCode>;
-	export type Status = z.infer<typeof status>;
-	export type ThemeName = z.infer<typeof themeName>;
-	export type UserId = z.infer<typeof userId>;
-	export type UserInfo = z.infer<typeof userInfo>;
-	export type UserPublicInfo = z.infer<typeof userPublicInfo>;
-	export type Username = z.infer<typeof username>;
-	export type WelcomeMessage = z.infer<typeof welcomeMessage>;
+	export type AvatarSrc = z.infer<typeof avatarSrcSchema>;
+	export type Bio = z.infer<typeof bioSchema>;
+	export type Blacklist = z.infer<typeof blacklistSchema>;
+	export type BlacklistItem = z.infer<typeof blacklistItemSchema>;
+	export type BlockedUser = z.infer<typeof blockedUserSchema>;
+	export type Cellphone = z.infer<typeof cellphoneSchema>;
+	export type ChatId = z.infer<typeof chatIdSchema>;
+	export type ClientUser = z.infer<typeof clientUserSchema>;
+	export type Contacts = z.infer<typeof contactsSchema>;
+	export type ContactsItem = z.infer<typeof contactsItemSchema>;
+	export type Countries = z.infer<typeof countriesSchema>;
+	export type CountriesItem = z.infer<typeof countriesItemSchema>;
+	export type CountryCode = z.infer<typeof countryCodeSchema>;
+	export type CountryName = z.infer<typeof countryNameSchema>;
+	export type CountryShortName = z.infer<typeof countryShortNameSchema>;
+	export type CreatedAt = z.infer<typeof createdAtSchema>;
+	export type DBUserData = z.infer<typeof DBUserDataSchema>;
+	export type Email = z.infer<typeof emailSchema>;
+	export type EncryptedSession = z.infer<typeof encryptedSessionSchema>;
+	export type FirstName = z.infer<typeof firstNameSchema>;
+	export type FullName = z.infer<typeof fullNameSchema>;
+	export type IsActive = z.infer<typeof isActiveSchema>;
+	export type IsNewUser = z.infer<typeof isNewUserSchema>;
+	export type IsOnline = z.infer<typeof isOnlineSchema>;
+	export type LastName = z.infer<typeof lastNameSchema>;
+	export type MacAddress = z.infer<typeof macAddressSchema>;
+	export type MessageId = z.infer<typeof messageIdSchema>;
+	export type MessageText = z.infer<typeof messageTextSchema>;
+	export type Messages = z.infer<typeof messagesSchema>;
+	export type MessagesItem = z.infer<typeof messagesItemSchema>;
+	export type OnlineClients = z.infer<typeof onlineClientsSchema>;
+	export type ParticipantId = z.infer<typeof participantIdSchema>;
+	export type Participants = z.infer<typeof participantsSchema>;
+	export type ParticipantsItem = z.infer<typeof participantsItemSchema>;
+	export type Password = z.infer<typeof passwordSchema>;
+	export type PhoneNumber = z.infer<typeof phoneNumberSchema>;
+	export type Pong = z.infer<typeof pongSchema>;
+	export type PrivateChats = z.infer<typeof privateChatsSchema>;
+	export type PrivateChatsItem = z.infer<typeof privateChatsItemSchema>;
+	export type SenderId = z.infer<typeof senderIdSchema>;
+	export type Session = z.infer<typeof sessionSchema>;
+	export type SessionId = z.infer<typeof sessionIdSchema>;
+	export type SessionItem = z.infer<typeof sessionItemSchema>;
+	export type Sessions = z.infer<typeof sessionsSchema>;
+	export type SignInCode = z.infer<typeof signInCodeSchema>;
+	export type Status = z.infer<typeof statusSchema>;
+	export type ThemeName = z.infer<typeof themeNameSchema>;
+	export type UserId = z.infer<typeof userIdSchema>;
+	export type UserInfo = z.infer<typeof userInfoSchema>;
+	export type UserPublicInfo = z.infer<typeof userPublicInfoSchema>;
+	export type Username = z.infer<typeof usernameSchema>;
+	export type WelcomeMessage = z.infer<typeof welcomeMessageSchema>;
 }
 
 export type BaseSchemaName = keyof typeof baseSchema;

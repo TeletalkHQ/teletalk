@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm, useSendMessage } from "@repo/hooks";
-import { FormSchemaName } from "@repo/schema";
+import { FormSchema, messageInputForm } from "@repo/schema";
 import {
 	AttachFileIcon,
 	Div,
@@ -18,18 +18,18 @@ import { useWatch } from "react-hook-form";
 export const MessageInput = () => {
 	const { emitter, isLoading } = useSendMessage();
 
-	const schemaName: FormSchemaName = "messageInput";
-
-	const { control, handleSubmit, setValue } = useForm<typeof schemaName>({
-		schemaName,
+	const { control, handleSubmit, setValue } = useForm<
+		FormSchema["messageInput"]
+	>({
+		schema: messageInputForm,
 		defaultValues: {
 			messageText: "",
 		},
 	});
 
-	const submitForm: SubmitHandler<typeof schemaName> = ({ messageText }) => {
-		console.log("messageText:", messageText);
-
+	const submitForm: SubmitHandler<FormSchema["messageInput"]> = ({
+		messageText,
+	}) => {
 		emitter({
 			data: {
 				messageText,

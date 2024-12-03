@@ -1,5 +1,5 @@
 import { useDialogState, useForm, useUpdateUserPublicInfo } from "@repo/hooks";
-import { FormSchemaName } from "@repo/schema";
+import { FormSchema, updateBioForm } from "@repo/schema";
 import { DialogTemplate, DoubleAction } from "@repo/ui";
 
 import { Content } from "./content";
@@ -10,10 +10,8 @@ export const EditBio = () => {
 
 	const { emitter } = useUpdateUserPublicInfo();
 
-	const schemaName: FormSchemaName = "updateBio";
-
-	const { control, handleSubmit } = useForm<typeof schemaName>({
-		schemaName,
+	const { control, handleSubmit } = useForm<FormSchema["updateBio"]>({
+		schema: updateBioForm,
 	});
 
 	const onSubmit = handleSubmit((data) => {

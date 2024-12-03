@@ -1,4 +1,5 @@
 import { Control } from "@repo/hooks";
+import { FormSchema } from "@repo/schema";
 import {
 	CountryCode,
 	CountryName,
@@ -10,7 +11,7 @@ import {
 } from "@repo/ui";
 
 interface Props {
-	control: Control<"addContact">;
+	control: Control<FormSchema["addContact"]>;
 }
 
 export const Content: React.FC<Props> = ({ control }) => {

@@ -1,5 +1,5 @@
 import { useDialogState, useForm, useUpdateUserPublicInfo } from "@repo/hooks";
-import { FormSchemaName } from "@repo/schema";
+import { FormSchema, updateFullNameForm } from "@repo/schema";
 import { DialogTemplate, DoubleAction } from "@repo/ui";
 
 import { Content } from "./content";
@@ -10,9 +10,9 @@ export const EditFullName = () => {
 
 	const { emitter, isLoading } = useUpdateUserPublicInfo();
 
-	const schemaName: FormSchemaName = "updateFullName";
-
-	const { control, handleSubmit } = useForm<typeof schemaName>({ schemaName });
+	const { control, handleSubmit } = useForm<FormSchema["updateFullName"]>({
+		schema: updateFullNameForm,
+	});
 
 	const onSubmit = handleSubmit((data) => {
 		emitter({

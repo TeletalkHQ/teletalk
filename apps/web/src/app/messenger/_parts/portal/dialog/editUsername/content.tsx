@@ -1,9 +1,10 @@
 import { Control } from "@repo/hooks";
+import { FormSchema } from "@repo/schema";
 import { FirstName, Flex, Typography } from "@repo/ui";
 import { useWatch } from "react-hook-form";
 
 interface Props {
-	control: Control<"updateUsername">;
+	control: Control<FormSchema["updateUsername"]>;
 }
 
 export const Content: React.FC<Props> = ({ control }) => {

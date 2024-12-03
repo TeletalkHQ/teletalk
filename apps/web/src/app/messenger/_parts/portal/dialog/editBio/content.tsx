@@ -1,8 +1,9 @@
 import { Control } from "@repo/hooks";
+import { FormSchema } from "@repo/schema";
 import { FieldWithController, Flex, Typography } from "@repo/ui";
 
 interface Props {
-	control: Control<"updateBio">;
+	control: Control<FormSchema["updateBio"]>;
 }
 
 export const Content: React.FC<Props> = ({ control }) => {
