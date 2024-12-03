@@ -1,5 +1,5 @@
 import { Controller, Get } from "@nestjs/common";
-import { countries } from "@repo/constants";
+import { countries } from "@repo/assets";
 import {
 	HTTPHandlerReturnType,
 	IOCollection,

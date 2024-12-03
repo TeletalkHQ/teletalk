@@ -14,8 +14,7 @@
 		"check:types:watch": "pnpm run check:types --watch"
 	},
 	"dependencies": {
-		"@repo/schema": "workspace:*",
-		"@repo/store": "workspace:*"
+		"@repo/schema": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/types": "workspace:*"

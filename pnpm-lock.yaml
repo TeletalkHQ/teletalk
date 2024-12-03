@@ -879,12 +879,12 @@ importers:
 
   apps/server:
     dependencies:
+      '@repo/assets':
+        specifier: workspace:*
+        version: link:../../packages/assets
       '@repo/classes':
         specifier: workspace:*
         version: link:../../packages/classes
-      '@repo/constants':
-        specifier: workspace:*
-        version: link:../../packages/constants
       '@repo/logger':
         specifier: workspace:*
         version: link:../../packages/logger
@@ -953,9 +953,9 @@ importers:
 
   packages/classes:
     dependencies:
-      '@repo/constants':
+      '@repo/assets':
         specifier: workspace:*
-        version: link:../constants
+        version: link:../assets
       '@repo/schema':
         specifier: workspace:*
         version: link:../schema
@@ -972,8 +972,6 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-
-  packages/constants: {}
 
   packages/eslint-config: {}
 
@@ -1011,9 +1009,9 @@ importers:
 
   packages/schema:
     dependencies:
-      '@repo/constants':
+      '@repo/assets':
         specifier: workspace:*
-        version: link:../constants
+        version: link:../assets
     devDependencies:
       '@repo/types':
         specifier: workspace:*
@@ -1024,9 +1022,6 @@ importers:
       '@repo/schema':
         specifier: workspace:*
         version: link:../schema
-      '@repo/store':
-        specifier: workspace:*
-        version: link:../store
     devDependencies:
       '@repo/types':
         specifier: workspace:*
@@ -1117,9 +1112,9 @@ importers:
 
   packages/utils:
     dependencies:
-      '@repo/constants':
+      '@repo/assets':
         specifier: workspace:*
-        version: link:../constants
+        version: link:../assets
       '@repo/schema':
         specifier: workspace:*
         version: link:../schema

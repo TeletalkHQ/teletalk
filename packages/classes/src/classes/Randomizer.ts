@@ -1,4 +1,4 @@
-import { countries } from "@repo/constants";
+import { countries } from "@repo/assets";
 import { BaseSchema, baseSchema, getStringSchemaMaxLength } from "@repo/schema";
 import { nanoid } from "nanoid";
 

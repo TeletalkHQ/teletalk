@@ -1,4 +1,4 @@
-import { regex } from "@repo/constants";
+import { regex } from "@repo/assets";
 import { z } from "zod";
 
 const avatarSrc = z.string().min(0).max(800000).trim();

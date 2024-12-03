@@ -1,4 +1,4 @@
-import { FIELD_TYPE } from "@repo/constants";
+import { FIELD_TYPE } from "@repo/assets";
 import {
 	HTTPRequestBody,
 	HTTPResponse,
