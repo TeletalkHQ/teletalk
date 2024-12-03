@@ -1,14 +1,12 @@
-import { CssBaseline } from "@mui/material";
-import { Theme, ThemeProvider as ThemeProviderMui } from "@mui/material";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import CssBaseline from "@mui/material/CssBaseline";
+import { Theme, ThemeProvider as ThemeProviderMui } from "@mui/material/styles";
 import { BaseSchema } from "@repo/schema";
 import React, { FC, PropsWithChildren } from "react";
 
-import { useThemeState } from "../hooks";
-
 export type Themes = Record<BaseSchema.ThemeName, Theme>;
 
-export type AppName = "dashboard" | "map" | "admin" | "health";
+export type AppName = "web";
 
 interface Props extends PropsWithChildren {
 	appName: AppName;
@@ -19,17 +17,19 @@ interface Props extends PropsWithChildren {
 
 export const ThemeProvider: FC<Props> = ({
 	children,
-	forceThemeName,
+	// forceThemeName,
 	shouldUseBaseline = true,
 	themes,
 }) => {
-	const { theme } = useThemeState();
+	// const { theme } = useThemeState();
 
-	const selectedTheme = themes[forceThemeName || theme];
+	// const selectedTheme = themes[forceThemeName || theme];
 
 	return (
-		<AppRouterCacheProvider options={{ enableCssLayer: true }}>
-			<ThemeProviderMui theme={selectedTheme}>
+		<AppRouterCacheProvider
+		// options={{ enableCssLayer: true }}
+		>
+			<ThemeProviderMui theme={themes.dark}>
 				{shouldUseBaseline && <CssBaseline />}
 				{children}
 			</ThemeProviderMui>

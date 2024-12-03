@@ -1,6 +1,13 @@
-/** @type {import('next').NextConfig} */
+// import withBundleAnalyzer from "@next/bundle-analyzer";
+import type { NextConfig } from "next";
 
-const nextConfig = {
+const nextConfig: NextConfig = {
+	// experimental: {
+	// 	turbo: {
+	// 		treeShaking: true,
+	// 		minify: true,
+	// 	},
+	// },
 	images: {
 		remotePatterns: [
 			{
@@ -15,11 +22,10 @@ const nextConfig = {
 // export default withBundleAnalyzer({
 // 	// enabled: process.env.ANALYZE === "true",
 // 	enabled: true,
+// 	openAnalyzer: true,
 // })(nextConfig);
 
 export default nextConfig;
-
-// export default nextConfig;
 
 // const env = Object.keys(process.env).reduce((prev, curr) => {
 // 	if (curr.startsWith("NEXT_PUBLIC_")) prev[curr] = process.env[curr];

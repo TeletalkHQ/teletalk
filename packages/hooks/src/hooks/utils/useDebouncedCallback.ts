@@ -1,6 +1,5 @@
 import { useDebouncedCallback as useDebouncedCallbackFromPkg } from "use-debounce";
-
-import { useIsMounted } from "./useIsMounted";
+import { useIsMounted } from "usehooks-ts";
 
 type Params = Parameters<typeof useDebouncedCallbackFromPkg>;
 
@@ -11,5 +10,5 @@ export const useDebouncedCallback = <T extends Params[0]>(
 	const isMounted = useIsMounted();
 	const debounced = useDebouncedCallbackFromPkg(func, wait);
 
-	return isMounted ? debounced : func;
+	return isMounted() ? debounced : func;
 };

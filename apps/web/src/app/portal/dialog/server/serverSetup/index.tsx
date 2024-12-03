@@ -1,7 +1,9 @@
+"use client";
+
 import { useConfigs, useDialogState, usePing } from "@repo/hooks";
 import { DialogTemplate } from "@repo/ui";
 import { useApiPhase } from "@repo/use-api";
-import lodash from "lodash";
+import isNumber from "lodash/isNumber";
 import { enqueueSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
@@ -44,7 +46,7 @@ export const ServerSetup = () => {
 
 	useEffect(() => {
 		serverSetupDialog.open();
-		if (lodash.isNumber(serverId)) {
+		if (isNumber(serverId)) {
 			handleSetup();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps

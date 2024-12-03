@@ -1,7 +1,7 @@
 import { useConfigs } from "@repo/hooks";
 import { VoidWithArg } from "@repo/types";
 import { FormControl, InputLabel, MenuItem, Select } from "@repo/ui";
-import lodash from "lodash";
+import isNumber from "lodash/isNumber";
 
 interface Props {
 	disabled: boolean;
@@ -29,7 +29,7 @@ export const ServerSelect: React.FC<Props> = ({
 					value={selectedServerId}
 					onChange={({ target: { value } }) => {
 						// TODO: Replace with `lodash`
-						if (lodash.isNumber(value)) onServerSelectChange(value);
+						if (isNumber(value)) onServerSelectChange(value);
 					}}
 				>
 					{configs.api.servers.map((item, index) => (

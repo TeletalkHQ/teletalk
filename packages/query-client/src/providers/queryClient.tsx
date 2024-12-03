@@ -1,54 +1,43 @@
+"use client";
+
 import {
-	QueryClientProvider as RQQueryClientProvider,
-	QueryClient as ReactQueryClient,
+	QueryClient,
+	QueryClientProvider as QueryClientProvider_pkg,
+	isServer,
 } from "@tanstack/react-query";
 import React from "react";
 
-// const persister = createSyncStoragePersister({
-// 	storage: typeof window === "undefined" ? undefined : window.localStorage,
-// });
-
-// const persistQueryClient = new ReactQueryClient({
-// 	defaultOptions: {
-// 		queries: {
-// 			staleTime: 1000 * 60 * 60 * 24,
-// 			gcTime: 1000 * 60 * 60 * 24,
-// 		},
-// 	},
-// });
-
-export const queryClient = new ReactQueryClient({
-	defaultOptions: {
-		queries: {
-			gcTime: 1000 * 60 * 20,
-			staleTime: 1000 * 60 * 20,
+function makeQueryClient() {
+	return new QueryClient({
+		defaultOptions: {
+			queries: {
+				staleTime: 60 * 1000,
+			},
 		},
-	},
-});
-
-interface Props extends React.PropsWithChildren {
-	queryClient?: ReactQueryClient;
+	});
 }
 
-export const QueryClientProvider: React.FC<Props> = ({
-	children,
-	queryClient: qcFromParams,
-}) => {
-	const qc = qcFromParams || queryClient;
+let browserQueryClient: QueryClient | undefined = undefined;
 
-	// useEffect(() => {
-	// 	window.clearQueryCache = qc.clear;
-	// }, [qc]);
+function getQueryClient() {
+	if (isServer) {
+		return makeQueryClient();
+	} else {
+		if (!browserQueryClient) browserQueryClient = makeQueryClient();
+		return browserQueryClient;
+	}
+}
+
+export function QueryClientProvider({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
+	const queryClient = getQueryClient();
 
 	return (
-		// <PersistQueryClientProvider
-		// 	client={persistQueryClient}
-		// 	persistOptions={{
-		// 		persister,
-		// 	}}
-		// >
-		// 	{children}
-		// </PersistQueryClientProvider>
-		<RQQueryClientProvider client={qc}>{children}</RQQueryClientProvider>
+		<QueryClientProvider_pkg client={queryClient}>
+			{children}
+		</QueryClientProvider_pkg>
 	);
-};
+}
