@@ -44,14 +44,14 @@ export class BaseInterceptor implements NestInterceptor {
 		);
 
 		return next.handle().pipe(
-			map((dataFromHandler: SocketHandlerReturnType<EventName>) => {
+			map((dataFromHandler: SocketHandlerReturnType) => {
 				this.validateData(
 					this.getEventSchema(eventName).schema.io.output,
 					dataFromHandler.data,
 					"OUTPUT_DATA_INVALID"
 				);
 
-				const response: SocketResponse<EventName> = {
+				const response: SocketResponse = {
 					data: dataFromHandler.data,
 					errors: [],
 					eventName,

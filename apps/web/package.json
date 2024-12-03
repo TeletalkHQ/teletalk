@@ -21,7 +21,8 @@
 		"@repo/schema": "workspace:*",
 		"@repo/socket": "workspace:*",
 		"@repo/store": "workspace:*",
-		"@repo/ui": "workspace:*"
+		"@repo/ui": "workspace:*",
+		"@repo/use-api": "workspace:*"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "workspace:*",

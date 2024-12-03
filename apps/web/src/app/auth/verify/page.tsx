@@ -2,7 +2,6 @@
 
 import {
 	SubmitHandler,
-	useApiPhase,
 	useCustomRouter,
 	useForm,
 	useVerify,
@@ -20,6 +19,7 @@ import {
 	Typography,
 	VerifiedUserIcon,
 } from "@repo/ui";
+import { useApiPhase } from "@repo/use-api";
 import { useFormState } from "react-hook-form";
 
 import { domUtils } from "~/classes";

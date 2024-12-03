@@ -1,3 +1,5 @@
+import { signInRoute } from "@repo/schema";
+
 import { useMainApi } from "../../useMainApi";
 
 export const usePostApi = () =>
@@ -7,4 +9,5 @@ export const usePostApi = () =>
 			errors: [],
 		},
 		name: "signIn",
+		schema: signInRoute.schema,
 	});

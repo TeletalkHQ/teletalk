@@ -2,12 +2,11 @@ import { FIELD_TYPE } from "@repo/constants";
 import {
 	HTTPRequestBody,
 	HTTPResponse,
-	HTTPRouteName,
+	IOSchema,
 	RouteSchema,
 } from "@repo/schema";
 import axios, { AxiosResponse } from "axios";
 import { expect } from "chai";
-import { ZodSchema } from "zod";
 
 import { COOKIE_NAMES } from "~/constants";
 import { ConfigService } from "~/modules/config/config.service";
@@ -31,15 +30,15 @@ interface CustomError {
 
 export type CookieItem = { value: string; flags: Record<string, boolean> };
 
-export type HTTPHandlerResponse<T extends HTTPRouteName> = AxiosResponse<
+export type HTTPHandlerResponse<T extends IOSchema = IOSchema> = AxiosResponse<
 	Awaited<HTTPResponse<T>>
 >;
 
-type RequestBody<T extends HTTPRouteName> = {
+type RequestBody<T extends IOSchema = IOSchema> = {
 	data: HTTPRequestBody<T>;
 };
 
-export class HTTPHandler<T extends HTTPRouteName> {
+export class HTTPHandler<T extends RouteSchema> {
 	private expectedError?: CustomError;
 
 	private options: HTTPHandlerOptions = {
@@ -47,12 +46,11 @@ export class HTTPHandler<T extends HTTPRouteName> {
 		shouldLogDetails: false,
 	};
 
-	private body: HTTPRequestBody<T>;
-	private response: HTTPHandlerResponse<T>;
+	private body: HTTPRequestBody<T["io"]>;
+	private response: HTTPHandlerResponse<T["io"]>;
 
 	constructor(
-		// FIXME: Read from somewhere else
-		private routeSchema: RouteSchema<T, ZodSchema, ZodSchema>,
+		private routeSchema: RouteSchema,
 		options: HTTPHandlerOptions = {}
 	) {
 		this.updateOptions(options);
@@ -77,13 +75,13 @@ export class HTTPHandler<T extends HTTPRouteName> {
 	private getBody() {
 		return this.body;
 	}
-	private setBody(data: HTTPRequestBody<T>) {
+	private setBody(data: HTTPRequestBody<T["io"]>) {
 		this.body = data;
 		return this;
 	}
 
 	async send(
-		{ data }: RequestBody<T>,
+		{ data }: RequestBody<T["io"]>,
 		reason?: ErrorReason,
 		options: Partial<HTTPHandlerOptions> = this.options
 	) {
@@ -107,7 +105,7 @@ export class HTTPHandler<T extends HTTPRouteName> {
 			method: this.routeSchema.method,
 			data: this.getBody(),
 			// FIXME: `pathname` may include query parameter!
-			url: `http://localhost:${configService.getPort()}/${this.routeSchema.rootPath}/${this.routeSchema.pathname}`,
+			url: `http://localhost:${configService.getPort()}/${this.routeSchema.endpoint}`,
 			headers: {
 				Authorization: this.options.session,
 			},
@@ -167,7 +165,7 @@ export class HTTPHandler<T extends HTTPRouteName> {
 		}, {});
 	}
 
-	private setResponse(response: HTTPHandlerResponse<T>) {
+	private setResponse(response: HTTPHandlerResponse<T["io"]>) {
 		this.response = response;
 		return this;
 	}
@@ -210,8 +208,7 @@ export class HTTPHandler<T extends HTTPRouteName> {
 	}
 }
 
-export const httpHandler = <T extends HTTPRouteName>(
-	// FIXME: Read from somewhere else
-	routeSchema: RouteSchema<T, ZodSchema, ZodSchema>,
+export const httpHandler = <T extends RouteSchema>(
+	routeSchema: RouteSchema,
 	options?: HTTPHandlerOptions
 ) => new HTTPHandler<T>(routeSchema, options);

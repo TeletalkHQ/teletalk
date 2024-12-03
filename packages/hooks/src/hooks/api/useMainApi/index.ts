@@ -2,48 +2,61 @@ import {
 	GetOutput,
 	HTTPResponse,
 	HTTPRouteName,
-	httpRoutes,
+	IOSchema,
+	RouteSchema,
 } from "@repo/schema";
+import { InitialData, UseApiOptions, useApi } from "@repo/use-api";
 
 import { useConfigs } from "../../utils";
-import { InitialData, RequestPhase, useApi } from "../useApi";
 
-type UseMainApiArg<T extends HTTPRouteName> = {
-	initialData: InitialData<T>;
-	name: T;
-	phase?: RequestPhase;
+type UseMainApiArg<T extends IOSchema, U extends HTTPRouteName> = {
+	initialData: InitialData<T["output"]>;
+	name: U;
+	schema: RouteSchema<T, U>;
+	baseUrl?: string;
+	options?: UseApiOptions;
 };
 
-export const useMainApi = <T extends HTTPRouteName>({
+export const useMainApi = <
+	Input extends IOSchema["input"],
+	Output extends IOSchema["output"],
+	Pathnames extends IOSchema["pathnames"],
+	Params extends IOSchema["params"],
+	U extends HTTPRouteName,
+>({
 	initialData,
 	name,
-	phase,
-}: UseMainApiArg<T>) => {
+	schema,
+	options,
+}: UseMainApiArg<
+	{ input: Input; output: Output; params: Params; pathnames: Pathnames },
+	U
+>) => {
 	const { getApiHTTPBaseUrl, configs } = useConfigs();
-
-	const { schema } = httpRoutes[name];
 
 	return useApi({
 		baseUrl: getApiHTTPBaseUrl(),
-		endpoint: `${schema.rootPath}/${schema.pathname}`,
+		endpoint: schema.endpoint,
 		endpointShortName: name,
 		initialData,
 		io: {
 			input: schema.io.input,
 			output: schema.io.output,
-			params: schema.params,
-			pathnames: schema.pathnames,
+			params: schema.io.params,
+			pathnames: schema.io.pathnames,
 		},
 		method: schema.method,
-		phase,
-		requestDelay: configs.api.requestDelay,
+		options: {
+			...options,
+			requestDelay: configs.api.requestDelay,
+		},
 	});
 };
 
-export const createInitialData = <T extends HTTPRouteName>(
+export const createInitialData = <T extends RouteSchema>(
 	_name: T,
-	data: GetOutput<T>
-): HTTPResponse<T> => {
+	data: GetOutput<T["io"]>
+): HTTPResponse<T["io"]> => {
 	return {
 		data,
 		errors: [],

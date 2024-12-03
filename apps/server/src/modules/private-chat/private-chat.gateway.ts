@@ -7,6 +7,7 @@ import {
 } from "@nestjs/websockets";
 import {
 	BaseSchema,
+	IOCollection,
 	SocketHandlerReturnType_Promise,
 	SocketRequestBody,
 	getEventName,
@@ -39,9 +40,9 @@ export class PrivateChatGateway extends BaseGateway {
 
 	@SubscribeMessage(getEventName("sendMessage"))
 	async sendMessage(
-		@MessageBody() body: SocketRequestBody<"sendMessage">,
+		@MessageBody() body: SocketRequestBody<IOCollection["sendMessage"]>,
 		@ConnectedSocket() socket: Socket
-	): SocketHandlerReturnType_Promise<"sendMessage"> {
+	): SocketHandlerReturnType_Promise<IOCollection["sendMessage"]> {
 		const { targetParticipantId, messageText } = body.data;
 
 		const { chatId, newMessage } = await this.privateChatService.sendMessage({
@@ -72,8 +73,8 @@ export class PrivateChatGateway extends BaseGateway {
 
 	@SubscribeMessage(getEventName("getOnePrivateChat"))
 	async getOnePrivateChat(
-		@MessageBody() body: SocketRequestBody<"getOnePrivateChat">
-	): SocketHandlerReturnType_Promise<"getOnePrivateChat"> {
+		@MessageBody() body: SocketRequestBody<IOCollection["getOnePrivateChat"]>
+	): SocketHandlerReturnType_Promise<IOCollection["getOnePrivateChat"]> {
 		const privateChat = await this.privateChatService.getPrivateChatByChatId(
 			body.data.chatId
 		);
@@ -88,7 +89,7 @@ export class PrivateChatGateway extends BaseGateway {
 	@SubscribeMessage(getEventName("getPrivateChats"))
 	async getPrivateChats(
 		@ConnectedSocket() socket: Socket
-	): SocketHandlerReturnType_Promise<"getPrivateChats"> {
+	): SocketHandlerReturnType_Promise<IOCollection["getPrivateChats"]> {
 		const privateChats = await this.privateChatService.getCurrentUserChats(
 			socket.sessionId
 		);

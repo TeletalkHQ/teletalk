@@ -7,7 +7,6 @@ import {
 import {
 	HTTPRequestBody,
 	HTTPResponse,
-	IOName,
 	findHttpRouteByUrl,
 } from "@repo/schema";
 import { Request, Response } from "express";
@@ -20,9 +19,6 @@ import {
 	ErrorStoreService,
 } from "../error-store/error-store.service";
 
-type HttpHandlerReturnData = Awaited<HTTPResponse<IOName>>;
-type HttpHandlerInputData = HTTPRequestBody<IOName>;
-
 @Injectable()
 export class AppInterceptor implements NestInterceptor {
 	constructor(private errorStoreService: ErrorStoreService) {}
@@ -32,7 +28,7 @@ export class AppInterceptor implements NestInterceptor {
 
 		const routeSchema = this.getRouteSchema(request.url);
 
-		const inputData: HttpHandlerInputData = request.body;
+		const inputData: HTTPRequestBody = request.body;
 
 		this.validateData(
 			routeSchema.schema.io.input,
@@ -41,7 +37,7 @@ export class AppInterceptor implements NestInterceptor {
 		);
 
 		return next.handle().pipe(
-			map(({ data }: HttpHandlerReturnData) => {
+			map(({ data }: Awaited<HTTPResponse>) => {
 				const response: Response = context.switchToHttp().getResponse();
 				response.statusCode = routeSchema.schema.statusCode;
 

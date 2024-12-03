@@ -1,35 +1,17 @@
-import { z } from "zod";
+import { userFcmRoute } from "@repo/schema";
 
-import { useApi } from "../../useApi";
-
-const output = z.object({
-	message: z.string(),
-});
-
-const input = z.object({
-	device_uuid: z.string().optional(),
-	token: z.string(),
-});
+import { useMainApi } from "../../useMainApi";
 
 export const useSendApi = () => {
-	return useApi({
-		// TODO: Add `baseUrl`
-		baseUrl: "",
-		endpoint: "user/fcm-token",
-		// TODO: `sendFCMToken`
-		endpointShortName: "userFcm",
+	return useMainApi({
+		name: "userFcm",
+		// TODO: Extract initial data - use `createInitialData`
 		initialData: {
 			data: {
 				message: "",
 			},
 			errors: [],
 		},
-		method: "put",
-		io: {
-			input,
-			output,
-			params: undefined,
-			pathnames: undefined,
-		},
+		schema: userFcmRoute.schema,
 	});
 };

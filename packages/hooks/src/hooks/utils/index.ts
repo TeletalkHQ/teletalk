@@ -8,8 +8,6 @@ export * from "./useEnv";
 export * from "./useFeatures";
 export * from "./useForceUpdate";
 export * from "./useForm";
-export * from "./useGetAllQueries";
-export * from "./useGetQuery";
 export * from "./useIsMounted";
 export * from "./useLoading";
 export * from "./useNavigate";

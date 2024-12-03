@@ -1,3 +1,5 @@
+import { getCountriesRoute } from "@repo/schema";
+
 import { useMainApi } from "../../useMainApi";
 
 export const useGetApi = () => {
@@ -9,5 +11,6 @@ export const useGetApi = () => {
 			errors: [],
 		},
 		name: "getCountries",
+		schema: getCountriesRoute.schema,
 	});
 };

@@ -1,4 +1,4 @@
-import { BaseSchema } from "@repo/schema";
+import { BaseSchema, IOCollection } from "@repo/schema";
 
 import { SessionService } from "~/modules/session/session.service";
 import { TempSessionStoreService } from "~/modules/temp-session-store/temp-session-store.service";
@@ -15,9 +15,9 @@ const tempSessionStoreService = await getServiceInstance(
 );
 
 class AuthHelper {
-	private createResponse: HTTPHandlerResponse<"createNewUser">;
-	private signInResponse: HTTPHandlerResponse<"signIn">;
-	private verifyResponse: HTTPHandlerResponse<"verify">;
+	private createResponse: HTTPHandlerResponse<IOCollection["createNewUser"]>;
+	private signInResponse: HTTPHandlerResponse<IOCollection["signIn"]>;
+	private verifyResponse: HTTPHandlerResponse<IOCollection["verify"]>;
 	// TODO: Add session as well
 	private sessionCookie: CookieItem;
 

@@ -1,27 +1,26 @@
 import { VoidNoArgs } from "@repo/types";
 import { z } from "zod";
 
-import { EventName } from "../classes";
-import { IOCollection, IOName } from "../schema";
+import { IOName, IOSchema } from "../schema";
 
-export type GetInput<T extends IOName> = z.infer<IOCollection[T]["input"]>;
-export type GetOutput<T extends IOName> = z.infer<IOCollection[T]["output"]>;
+export type GetInput<T extends IOSchema> = z.infer<T["input"]>;
+export type GetOutput<T extends IOSchema> = z.infer<T["output"]>;
 
-export type HTTPRequestBody<T extends IOName> = GetInput<T>;
-export type HTTPResponse<T extends IOName> = {
+export type HTTPRequestBody<T extends IOSchema = IOSchema> = GetInput<T>;
+export type HTTPResponse<T extends IOSchema = IOSchema> = {
 	data: GetOutput<T>;
 	// TODO: Use `errorStoreService`
 	errors: Array<Error>;
 };
-export type HTTPHandlerReturnType<T extends IOName> = Promise<
+export type HTTPHandlerReturnType<T extends IOSchema> = Promise<
 	Omit<HTTPResponse<T>, "errors">
 >;
 // export type HTTPHandlerReturnType_Promise<T extends IOName> = Promise<
 // 	Omit<HTTPResponse<T>, "errors">
 // >;
 
-export interface SocketRequestBody<T extends EventName> {
-	data: z.infer<IOCollection[T]["input"]>;
+export interface SocketRequestBody<T extends IOSchema> {
+	data: z.infer<T["input"]>;
 }
 
 // TODO: Use `errorStoreService`
@@ -37,30 +36,30 @@ export interface SocketOnHandlerReturnOptions {
 	cbAfterEmit: VoidNoArgs;
 }
 
-export type SocketHandlerReturnType<T extends EventName> = {
+export type SocketHandlerReturnType<T extends IOSchema = IOSchema> = {
 	data: GetOutput<T>;
 	options?: Partial<SocketOnHandlerReturnOptions>;
 };
 
-export type SocketHandlerReturnType_Promise<T extends EventName> = Promise<
+export type SocketHandlerReturnType_Promise<T extends IOSchema> = Promise<
 	SocketHandlerReturnType<T>
 >;
 
 // TODO: Refactor
-export interface SocketResponse<T extends EventName>
+export interface SocketResponse<T extends IOSchema = IOSchema>
 	extends SocketHandlerReturnType<T> {
 	errors: SocketResponseErrors;
 	ok: boolean;
 	eventName: IOName;
 }
 
-export interface _SocketResponse<T extends EventName> {
+export interface _SocketResponse<T extends IOSchema> {
 	data: GetOutput<T>;
 	errors: SocketResponseErrors;
 	ok: boolean;
 }
 
-export type ResponseCallback<T extends EventName> = (
+export type ResponseCallback<T extends IOSchema> = (
 	response: SocketResponse<T>
 ) => void | Promise<void>;
 

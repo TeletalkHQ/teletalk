@@ -1,10 +1,15 @@
 import { Controller, Get } from "@nestjs/common";
-import { HTTPHandlerReturnType, getPathname, getRootPath } from "@repo/schema";
+import {
+	HTTPHandlerReturnType,
+	IOCollection,
+	getPathname,
+	getRootPath,
+} from "@repo/schema";
 
-@Controller(getRootPath("serverInfo"))
+@Controller(getRootPath("server-info"))
 export class ServerInfoController {
 	@Get(getPathname("ping"))
-	async ping(): HTTPHandlerReturnType<"ping"> {
+	async ping(): HTTPHandlerReturnType<IOCollection["ping"]> {
 		return {
 			data: {
 				pong: "pong",

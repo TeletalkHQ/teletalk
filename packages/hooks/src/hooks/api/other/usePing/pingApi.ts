@@ -1,3 +1,5 @@
+import { pingRoute } from "@repo/schema";
+
 import { useMainApi } from "../../useMainApi";
 
 export const usePingApi = () =>
@@ -9,4 +11,5 @@ export const usePingApi = () =>
 			errors: [],
 		},
 		name: "ping",
+		schema: pingRoute.schema,
 	});

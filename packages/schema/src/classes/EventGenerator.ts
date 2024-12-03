@@ -1,6 +1,6 @@
 import { PickFromUnion } from "@repo/types";
 
-import { IOName, ioCollection } from "../schema";
+import { IOName, IOSchema } from "../schema";
 
 export type EventName = PickFromUnion<
 	IOName,
@@ -31,29 +31,20 @@ export type EventName = PickFromUnion<
 
 export type SocketMethods = "on" | "onAny" | "once";
 
-export type EventSchema<T extends EventName> = {
-	ioName: T;
+export type EventSchema<
+	T extends IOSchema = IOSchema,
+	U extends EventName = EventName,
+> = {
+	ioName: U;
 	namespace: string;
 	isAuthRequired: boolean;
 	method: SocketMethods;
-	io: (typeof ioCollection)[T];
+	io: T;
 };
 
-type _Schema<T extends EventName> = {
-	ioName: T;
-	namespace?: string;
-	isAuthRequired: boolean;
-	method: SocketMethods;
-};
-
-export class EventGenerator<T extends EventName> {
-	public schema: EventSchema<T>;
-
-	constructor(schema: _Schema<T>) {
-		this.schema = {
-			...schema,
-			namespace: schema.namespace || "",
-			io: ioCollection[schema.ioName],
-		};
-	}
+export class EventGenerator<
+	T extends IOSchema = IOSchema,
+	U extends EventName = EventName,
+> {
+	constructor(public schema: EventSchema<T, U>) {}
 }

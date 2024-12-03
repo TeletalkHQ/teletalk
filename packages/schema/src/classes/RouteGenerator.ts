@@ -1,14 +1,14 @@
 import { PickFromUnion } from "@repo/types";
-import { ZodSchema } from "zod";
+import { ZodUndefined, z } from "zod";
 
-import { IOCollection, IOName, ioCollection } from "../schema/api/io";
+import { IOName, IOSchema } from "../schema/api/io";
 
 export type HTTPRootPath =
 	| "auth"
-	| "user"
 	| "private-chat"
+	| "server-info"
 	| "stuff"
-	| "serverInfo";
+	| "user";
 
 export type RouteName = PickFromUnion<
 	IOName,
@@ -24,37 +24,35 @@ export type RouteName = PickFromUnion<
 	| "verify"
 >;
 
+export type EndPoint<T extends IOSchema["pathnames"]> = T extends ZodUndefined
+	? string
+	: (pathnames: z.infer<T>) => string;
+
 export type HTTPMethod = "delete" | "get" | "post" | "patch" | "put";
 
 export type RouteSchema<
-	T extends RouteName,
-	Pathnames extends ZodSchema | undefined,
-	Params extends ZodSchema | undefined,
+	T extends IOSchema = IOSchema,
+	U extends RouteName = RouteName,
 > = {
-	io: IOCollection[T];
-	ioName: T;
+	io: T;
+	ioName: U;
 	isAuthRequired: boolean;
 	method: HTTPMethod;
-	params?: Params;
-	pathname: string;
-	pathnames?: Pathnames;
-	rootPath: HTTPRootPath;
 	statusCode?: number;
+	endpoint: `${HTTPRootPath}/${string}`;
 };
 
 export class RouteGenerator<
-	T extends RouteName,
-	Pathnames extends ZodSchema | undefined,
-	Params extends ZodSchema | undefined,
+	T extends IOSchema = IOSchema,
+	U extends RouteName = RouteName,
 > {
 	// TODO: Remove `statusCode` part
-	public schema: RouteSchema<T, Pathnames, Params> & { statusCode: number };
+	public schema: RouteSchema<T, U> & { statusCode: number };
 
-	constructor(schema: Omit<RouteSchema<T, Pathnames, Params>, "io">) {
+	constructor(schema: RouteSchema<T, U>) {
 		this.schema = {
 			statusCode: 200,
 			...schema,
-			io: ioCollection[schema.ioName],
 		};
 	}
 }

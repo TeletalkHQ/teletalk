@@ -1,5 +1,5 @@
 import { Injectable, NestMiddleware } from "@nestjs/common";
-import { HTTPRequestBody } from "@repo/schema";
+import { HTTPRequestBody, IOCollection } from "@repo/schema";
 import { NextFunction, Request, Response } from "express";
 
 import { ErrorStoreService } from "../error-store/error-store.service";
@@ -13,7 +13,7 @@ export class AuthMiddleware implements NestMiddleware {
 	) {}
 
 	async use(
-		req: Request<any, any, HTTPRequestBody<"verify">>,
+		req: Request<any, any, HTTPRequestBody<IOCollection["verify"]>>,
 		_res: Response,
 		next: NextFunction
 	) {
@@ -21,7 +21,7 @@ export class AuthMiddleware implements NestMiddleware {
 	}
 
 	async verifySignInCode(
-		req: Request<any, any, HTTPRequestBody<"verify">>,
+		req: Request<any, any, HTTPRequestBody<IOCollection["verify"]>>,
 		_res: Response,
 		next: NextFunction
 	) {

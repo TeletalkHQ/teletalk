@@ -1,5 +1,5 @@
 import { maker } from "@repo/classes";
-import { BaseSchema } from "@repo/schema";
+import { BaseSchema, getUserPublicInfoEvent } from "@repo/schema";
 
 import { createEmitterInitialData, useMainEmitter } from "../useMainEmitter";
 import { queryKeys, useMainQuery } from "../useMainQuery";
@@ -12,6 +12,7 @@ export const useUserPublicInfo = ({ userId }: Arg) => {
 	const { emitter, socket } = useMainEmitter({
 		name: "getUserPublicInfo",
 		initialData,
+		schema: getUserPublicInfoEvent.schema,
 	});
 
 	const queryKey = queryKeys.getUserPublicInfo({ userId });
@@ -39,6 +40,6 @@ export const useUserPublicInfo = ({ userId }: Arg) => {
 	};
 };
 
-const initialData = createEmitterInitialData("getUserPublicInfo", {
+const initialData = createEmitterInitialData(getUserPublicInfoEvent.schema, {
 	userPublicInfo: maker.emptyUserPublicInfo(),
 });

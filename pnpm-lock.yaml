@@ -928,6 +928,9 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@repo/use-api':
+        specifier: workspace:*
+        version: link:../../packages/use-api
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -985,6 +988,9 @@ importers:
       '@repo/store':
         specifier: workspace:*
         version: link:../store
+      '@repo/use-api':
+        specifier: workspace:*
+        version: link:../use-api
       '@repo/utils':
         specifier: workspace:*
         version: link:../utils
@@ -1089,6 +1095,25 @@ importers:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+
+  packages/use-api:
+    dependencies:
+      '@repo/logger':
+        specifier: workspace:*
+        version: link:../logger
+      '@repo/schema':
+        specifier: workspace:*
+        version: link:../schema
+      '@repo/store':
+        specifier: workspace:*
+        version: link:../store
+    devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../types
 
   packages/utils:
     dependencies:

@@ -1,4 +1,4 @@
-import { defaultLoadingItem } from "./initialState";
+import { defaultPhase } from "./initialState";
 import { Handlers, SetState } from "./types";
 
 export const handlers: (set: SetState) => Handlers = (set) => ({
@@ -7,7 +7,7 @@ export const handlers: (set: SetState) => Handlers = (set) => ({
 			phases: {
 				...state.phases,
 				[name]: {
-					...(state.phases[name] || defaultLoadingItem),
+					...(state.phases[name] || defaultPhase),
 					isLoading: true,
 				},
 			},
@@ -19,7 +19,7 @@ export const handlers: (set: SetState) => Handlers = (set) => ({
 			phases: {
 				...state.phases,
 				[name]: {
-					...(state.phases[name] || defaultLoadingItem),
+					...(state.phases[name] || defaultPhase),
 					isLoading: false,
 				},
 			},
@@ -31,7 +31,7 @@ export const handlers: (set: SetState) => Handlers = (set) => ({
 			phases: {
 				...state.phases,
 				[name]: {
-					...(state.phases[name] || defaultLoadingItem),
+					...(state.phases[name] || defaultPhase),
 					isUpdating: true,
 				},
 			},
@@ -43,7 +43,7 @@ export const handlers: (set: SetState) => Handlers = (set) => ({
 			phases: {
 				...state.phases,
 				[name]: {
-					...(state.phases[name] || defaultLoadingItem),
+					...(state.phases[name] || defaultPhase),
 					isUpdating: false,
 				},
 			},

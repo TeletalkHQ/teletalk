@@ -6,6 +6,7 @@ import {
 	WebSocketGateway,
 } from "@nestjs/websockets";
 import {
+	IOCollection,
 	SocketHandlerReturnType_Promise,
 	SocketRequestBody,
 	getEventName,
@@ -38,9 +39,9 @@ export class UserGateway extends BaseGateway {
 
 	@SubscribeMessage(getEventName("addBlock"))
 	async addBlock(
-		@MessageBody() body: SocketRequestBody<"addBlock">,
+		@MessageBody() body: SocketRequestBody<IOCollection["addBlock"]>,
 		@ConnectedSocket() socket: Socket
-	): SocketHandlerReturnType_Promise<"addBlock"> {
+	): SocketHandlerReturnType_Promise<IOCollection["addBlock"]> {
 		await this.userService.addBlock({
 			sessionId: socket.sessionId,
 			targetUserId: body.data.userId,
@@ -57,9 +58,9 @@ export class UserGateway extends BaseGateway {
 
 	@SubscribeMessage(getEventName("addContact"))
 	async addContact(
-		@MessageBody() body: SocketRequestBody<"addContact">,
+		@MessageBody() body: SocketRequestBody<IOCollection["addContact"]>,
 		@ConnectedSocket() socket: Socket
-	): SocketHandlerReturnType_Promise<"addContact"> {
+	): SocketHandlerReturnType_Promise<IOCollection["addContact"]> {
 		const newContact = await this.userService.addContact({
 			sessionId: socket.sessionId,
 			targetUserInfo: body.data,
@@ -74,9 +75,9 @@ export class UserGateway extends BaseGateway {
 
 	@SubscribeMessage(getEventName("removeBlock"))
 	async removeBlock(
-		@MessageBody() body: SocketRequestBody<"removeBlock">,
+		@MessageBody() body: SocketRequestBody<IOCollection["removeBlock"]>,
 		@ConnectedSocket() socket: Socket
-	): SocketHandlerReturnType_Promise<"removeBlock"> {
+	): SocketHandlerReturnType_Promise<IOCollection["removeBlock"]> {
 		await this.userService.removeBlock({
 			sessionId: socket.sessionId,
 			targetUserId: body.data.userId,
@@ -93,9 +94,9 @@ export class UserGateway extends BaseGateway {
 
 	@SubscribeMessage(getEventName("removeContact"))
 	async removeContact(
-		@MessageBody() body: SocketRequestBody<"removeContact">,
+		@MessageBody() body: SocketRequestBody<IOCollection["removeContact"]>,
 		@ConnectedSocket() socket: Socket
-	): SocketHandlerReturnType_Promise<"removeContact"> {
+	): SocketHandlerReturnType_Promise<IOCollection["removeContact"]> {
 		await this.userService.removeContact({
 			sessionId: socket.sessionId,
 			targetUserId: body.data.userId,
@@ -113,7 +114,7 @@ export class UserGateway extends BaseGateway {
 	@SubscribeMessage(getEventName("getContacts"))
 	async getContacts(
 		@ConnectedSocket() socket: Socket
-	): SocketHandlerReturnType_Promise<"getContacts"> {
+	): SocketHandlerReturnType_Promise<IOCollection["getContacts"]> {
 		const contacts = await this.userService.getContacts(socket.sessionId);
 
 		return {
@@ -126,7 +127,7 @@ export class UserGateway extends BaseGateway {
 	@SubscribeMessage(getEventName("getUserInfo"))
 	async getUserInfo(
 		@ConnectedSocket() socket: Socket
-	): SocketHandlerReturnType_Promise<"getUserInfo"> {
+	): SocketHandlerReturnType_Promise<IOCollection["getUserInfo"]> {
 		const userInfo = await this.userService.getUserInfo(socket.sessionId);
 
 		return {
@@ -138,8 +139,8 @@ export class UserGateway extends BaseGateway {
 
 	@SubscribeMessage(getEventName("getUserPublicInfo"))
 	async getUserPublicInfo(
-		@MessageBody() body: SocketRequestBody<"getUserPublicInfo">
-	): SocketHandlerReturnType_Promise<"getUserPublicInfo"> {
+		@MessageBody() body: SocketRequestBody<IOCollection["getUserPublicInfo"]>
+	): SocketHandlerReturnType_Promise<IOCollection["getUserPublicInfo"]> {
 		const userPublicInfo = await this.userService.getUserPublicInfo(
 			body.data.userId
 		);
@@ -154,8 +155,8 @@ export class UserGateway extends BaseGateway {
 	@SubscribeMessage(getEventName("updateUserPublicInfo"))
 	async updateUserPublicInfo(
 		@ConnectedSocket() socket: Socket,
-		@MessageBody() body: SocketRequestBody<"updateUserPublicInfo">
-	): SocketHandlerReturnType_Promise<"updateUserPublicInfo"> {
+		@MessageBody() body: SocketRequestBody<IOCollection["updateUserPublicInfo"]>
+	): SocketHandlerReturnType_Promise<IOCollection["updateUserPublicInfo"]> {
 		const updatedPublicInfo = await this.userService.updateUserPublicInfo(
 			socket.sessionId,
 			body.data
@@ -171,8 +172,8 @@ export class UserGateway extends BaseGateway {
 	@SubscribeMessage(getEventName("updateContact"))
 	async updateContact(
 		@ConnectedSocket() socket: Socket,
-		@MessageBody() body: SocketRequestBody<"updateContact">
-	): SocketHandlerReturnType_Promise<"updateContact"> {
+		@MessageBody() body: SocketRequestBody<IOCollection["updateContact"]>
+	): SocketHandlerReturnType_Promise<IOCollection["updateContact"]> {
 		const updatedContact = await this.userService.updateContact(
 			socket.sessionId,
 			body.data

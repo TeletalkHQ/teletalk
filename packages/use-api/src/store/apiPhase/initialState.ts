@@ -1,6 +1,6 @@
 import { LoadingItem, State } from "./types";
 
-export const defaultLoadingItem: LoadingItem = {
+export const defaultPhase: LoadingItem = {
 	isLoading: false,
 	isUpdating: false,
 };

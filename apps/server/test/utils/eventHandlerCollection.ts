@@ -1,35 +1,55 @@
-import { EventName, EventSchema, findEvent } from "@repo/schema";
+import {
+	EventSchema,
+	addBlockEvent,
+	addContactEvent,
+	disconnectEvent,
+	getChatInfoEvent,
+	getClientStatusEvent,
+	getContactsEvent,
+	getOnePrivateChatEvent,
+	getOnlineClientsEvent,
+	getPrivateChatsEvent,
+	getUserInfoEvent,
+	getUserPublicInfoEvent,
+	joinEvent,
+	logoutEvent,
+	pingEvent,
+	removeBlockEvent,
+	removeContactEvent,
+	sendMessageEvent,
+	updateAvatarEvent,
+	updateContactEvent,
+	updateUserPublicInfoEvent,
+} from "@repo/schema";
 import { Socket } from "socket.io-client";
 
 import { EventHandlerOptions, eventHandler } from "@/classes";
 
-export const eventHandlerMaker = <T extends EventName>(name: T) => {
-	const foundEvent = findEvent(name);
-
+export const eventHandlerMaker = <T extends EventSchema>(schema: T) => {
 	return (socket: Socket, options?: EventHandlerOptions) => {
-		return eventHandler(foundEvent.schema as EventSchema<T>, socket, options);
+		return eventHandler(schema, socket, options);
 	};
 };
 
 export const eventHandlerCollection = {
-	addBlock: eventHandlerMaker("addBlock"),
-	addContact: eventHandlerMaker("addContact"),
-	disconnect: eventHandlerMaker("disconnect"),
-	getChatInfo: eventHandlerMaker("getChatInfo"),
-	getClientStatus: eventHandlerMaker("getClientStatus"),
-	getContacts: eventHandlerMaker("getContacts"),
-	getOnlineClients: eventHandlerMaker("getOnlineClients"),
-	getOnePrivateChat: eventHandlerMaker("getOnePrivateChat"),
-	getPrivateChats: eventHandlerMaker("getPrivateChats"),
-	getUserPublicInfo: eventHandlerMaker("getUserPublicInfo"),
-	getUserInfo: eventHandlerMaker("getUserInfo"),
-	join: eventHandlerMaker("join"),
-	logout: eventHandlerMaker("logout"),
-	ping: eventHandlerMaker("ping"),
-	removeBlock: eventHandlerMaker("removeBlock"),
-	removeContact: eventHandlerMaker("removeContact"),
-	sendMessage: eventHandlerMaker("sendMessage"),
-	updateAvatar: eventHandlerMaker("updateAvatar"),
-	updateContact: eventHandlerMaker("updateContact"),
-	updateUserPublicInfo: eventHandlerMaker("updateUserPublicInfo"),
+	addBlock: eventHandlerMaker(addBlockEvent.schema),
+	addContact: eventHandlerMaker(addContactEvent.schema),
+	disconnect: eventHandlerMaker(disconnectEvent.schema),
+	getChatInfo: eventHandlerMaker(getChatInfoEvent.schema),
+	getClientStatus: eventHandlerMaker(getClientStatusEvent.schema),
+	getContacts: eventHandlerMaker(getContactsEvent.schema),
+	getOnlineClients: eventHandlerMaker(getOnlineClientsEvent.schema),
+	getOnePrivateChat: eventHandlerMaker(getOnePrivateChatEvent.schema),
+	getPrivateChats: eventHandlerMaker(getPrivateChatsEvent.schema),
+	getUserPublicInfo: eventHandlerMaker(getUserPublicInfoEvent.schema),
+	getUserInfo: eventHandlerMaker(getUserInfoEvent.schema),
+	join: eventHandlerMaker(joinEvent.schema),
+	logout: eventHandlerMaker(logoutEvent.schema),
+	ping: eventHandlerMaker(pingEvent.schema),
+	removeBlock: eventHandlerMaker(removeBlockEvent.schema),
+	removeContact: eventHandlerMaker(removeContactEvent.schema),
+	sendMessage: eventHandlerMaker(sendMessageEvent.schema),
+	updateAvatar: eventHandlerMaker(updateAvatarEvent.schema),
+	updateContact: eventHandlerMaker(updateContactEvent.schema),
+	updateUserPublicInfo: eventHandlerMaker(updateUserPublicInfoEvent.schema),
 };

@@ -1,12 +1,6 @@
 import { Logger } from "@nestjs/common";
 import { escapeChars } from "@repo/constants";
-import {
-	EventName,
-	EventSchema,
-	HTTPRouteName,
-	RouteSchema,
-} from "@repo/schema";
-import { ZodSchema } from "zod";
+import { EventSchema, RouteSchema } from "@repo/schema";
 
 export class LogHelper {
 	logger: Logger;
@@ -37,9 +31,7 @@ export class LogHelper {
 	logRequestDetails(
 		options: object,
 		requestData: unknown,
-		schema:
-			| RouteSchema<HTTPRouteName, ZodSchema, ZodSchema>
-			| EventSchema<EventName>,
+		schema: RouteSchema | EventSchema,
 		error: unknown
 	) {
 		this.logger.debug(`${escapeChars.newLine}request details:`, {

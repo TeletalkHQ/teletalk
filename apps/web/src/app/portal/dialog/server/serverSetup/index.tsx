@@ -1,5 +1,6 @@
-import { useApiPhase, useConfigs, useDialogState, usePing } from "@repo/hooks";
+import { useConfigs, useDialogState, usePing } from "@repo/hooks";
 import { DialogTemplate } from "@repo/ui";
+import { useApiPhase } from "@repo/use-api";
 import lodash from "lodash";
 import { enqueueSnackbar } from "notistack";
 import { useEffect, useState } from "react";

@@ -1,34 +1,28 @@
-import { EventName, GetOutput, _SocketResponse, findEvent } from "@repo/schema";
+import { EventSchema, GetOutput, IOName, _SocketResponse } from "@repo/schema";
 import { useEmitter } from "@repo/socket";
 
 import { useConfigs } from "../utils";
 
-export type UseMainEmitterParameters<T extends EventName> = {
-	name: T;
-	initialData: _SocketResponse<T>;
+export type UseMainEmitterParameters<T extends EventSchema> = {
+	schema: T;
+	initialData: _SocketResponse<T["io"]>;
+	name: IOName;
 };
 
-export const useMainEmitter = <T extends EventName>({
-	name,
+export const useMainEmitter = <T extends EventSchema>({
+	schema,
 	initialData,
+	name,
 }: UseMainEmitterParameters<T>) => {
 	const { getApiWSBaseUrl } = useConfigs();
 
-	const event = findEvent(name);
+	if (!schema) throw new Error("EVENT_NOT_FOUND");
 
-	type Event = typeof event;
-
-	if (!event) throw new Error("EVENT_NOT_FOUND");
-
-	return useEmitter<
-		T,
-		Event["schema"]["io"]["input"],
-		Event["schema"]["io"]["output"]
-	>({
+	return useEmitter<string, T["io"]["input"], T["io"]["output"]>({
 		baseUrl: getApiWSBaseUrl(),
 		eventName: name,
-		io: event.schema.io,
-		namespace: event.schema.namespace,
+		io: schema.io,
+		namespace: schema.namespace,
 		options: {
 			autoConnect: true,
 			withCredentials: true,
@@ -37,10 +31,10 @@ export const useMainEmitter = <T extends EventName>({
 	});
 };
 
-export const createEmitterInitialData = <T extends EventName>(
+export const createEmitterInitialData = <T extends EventSchema>(
 	_name: T,
-	data: GetOutput<T>
-): _SocketResponse<T> => {
+	data: GetOutput<T["io"]>
+): _SocketResponse<T["io"]> => {
 	return {
 		data,
 		errors: [],

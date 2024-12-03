@@ -1,3 +1,5 @@
+import { verifyRoute } from "@repo/schema";
+
 import { useMainApi } from "../../useMainApi";
 
 export const usePostApi = () =>
@@ -9,4 +11,5 @@ export const usePostApi = () =>
 			errors: [],
 		},
 		name: "verify",
+		schema: verifyRoute.schema,
 	});

@@ -4,6 +4,7 @@ import { extractor, randomizer, userUtils } from "@repo/classes";
 import {
 	HTTPHandlerReturnType,
 	HTTPRequestBody,
+	IOCollection,
 	getPathname,
 	getRootPath,
 } from "@repo/schema";
@@ -32,10 +33,10 @@ export class AuthController {
 
 	@Post(getPathname("signIn"))
 	async signIn(
-		@Body() data: HTTPRequestBody<"signIn">,
+		@Body() data: HTTPRequestBody<IOCollection["signIn"]>,
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response
-	): HTTPHandlerReturnType<"signIn"> {
+	): HTTPHandlerReturnType<IOCollection["signIn"]> {
 		const signInCode = faker.string.numeric({ length: 6 });
 
 		const cellphone = extractor.cellphone(data);
@@ -73,10 +74,10 @@ export class AuthController {
 
 	@Post(getPathname("verify"))
 	async verify(
-		@Body() _data: HTTPRequestBody<"verify">,
+		@Body() _data: HTTPRequestBody<IOCollection["verify"]>,
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response
-	): HTTPHandlerReturnType<"verify"> {
+	): HTTPHandlerReturnType<IOCollection["verify"]> {
 		const { sessionId } = req;
 
 		const tempStoredSession =
@@ -124,8 +125,8 @@ export class AuthController {
 	async createNewUser(
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response,
-		@Body() data: HTTPRequestBody<"createNewUser">
-	): HTTPHandlerReturnType<"createNewUser"> {
+		@Body() data: HTTPRequestBody<IOCollection["createNewUser"]>
+	): HTTPHandlerReturnType<IOCollection["createNewUser"]> {
 		const { firstName, lastName } = data;
 
 		const tempStoredSession = await this.tempSessionStoreService.find(
@@ -181,7 +182,9 @@ export class AuthController {
 	}
 
 	@Get(getPathname("logout"))
-	async logout(@Req() req: Request): HTTPHandlerReturnType<"logout"> {
+	async logout(
+		@Req() req: Request
+	): HTTPHandlerReturnType<IOCollection["logout"]> {
 		const foundUser = await this.userService.findBySessionId(req.sessionId);
 
 		if (!foundUser)

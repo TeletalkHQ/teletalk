@@ -2,7 +2,6 @@
 
 import {
 	SubmitHandler,
-	useApiPhase,
 	useCreateNewUser,
 	useCustomRouter,
 	useForm,
@@ -21,6 +20,7 @@ import {
 	LastName,
 	Typography,
 } from "@repo/ui";
+import { useApiPhase } from "@repo/use-api";
 import { useFormState } from "react-hook-form";
 
 import { AuthFooter } from "../common/AuthFooter";

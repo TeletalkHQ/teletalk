@@ -1,7 +1,7 @@
 import { FIELD_TYPE } from "@repo/constants";
 import {
-	EventName,
 	EventSchema,
+	IOSchema,
 	SocketRequestBody,
 	SocketResponse,
 } from "@repo/schema";
@@ -20,11 +20,11 @@ interface CustomError {
 	reason: ErrorReason;
 }
 
-export type EventHandlerResponse<T extends EventName> = SocketResponse<T>;
+export type EventHandlerResponse<T extends IOSchema> = SocketResponse<T>;
 
-type RequestBody<T extends EventName> = SocketRequestBody<T>;
+type RequestBody<T extends IOSchema> = SocketRequestBody<T>;
 
-export class EventHandler<T extends EventName> {
+export class EventHandler<T extends IOSchema> {
 	private expectedError?: CustomError;
 
 	private options: EventHandlerOptions = {
@@ -140,7 +140,7 @@ export class EventHandler<T extends EventName> {
 	}
 }
 
-export const eventHandler = <T extends EventName>(
+export const eventHandler = <T extends IOSchema>(
 	eventSchema: EventSchema<T>,
 	socket: Socket,
 	options?: EventHandlerOptions

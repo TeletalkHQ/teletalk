@@ -1,15 +1,13 @@
 import { logger } from "@repo/logger";
-import { RouteName } from "@repo/schema";
+import { HTTPMethod, IOSchema } from "@repo/schema";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { enqueueSnackbar } from "notistack";
-import { ZodSchema } from "zod";
 
-import { EndPoint, HandlerOptions, IO, Method } from "./types";
+import { HandlerOptions } from "./types";
 
 export const getDefaultHandlerOptions = <
-	T extends IO,
-	U extends RouteName,
->(): HandlerOptions<T, U> => ({
+	T extends IOSchema,
+>(): HandlerOptions<T> => ({
 	config: {
 		headers: {},
 		onError: emptyFn,
@@ -25,8 +23,8 @@ export const getDefaultHandlerOptions = <
 
 export const emptyFn = () => undefined;
 
-export const mergeOptions = <T extends IO, U extends RouteName>(
-	options?: HandlerOptions<T, U>
+export const mergeOptions = <T extends IOSchema>(
+	options?: HandlerOptions<T>
 ) => {
 	const defaultOptions = getDefaultHandlerOptions();
 
@@ -41,25 +39,26 @@ export const mergeOptions = <T extends IO, U extends RouteName>(
 		pathnames: options?.pathnames,
 	};
 };
-export type MergedOptions<T extends IO, U extends RouteName> = ReturnType<
-	typeof mergeOptions<T, U>
+export type MergedOptions<T extends IOSchema> = ReturnType<
+	typeof mergeOptions<T>
 >;
 
-export interface CreateConfigParams<T extends IO, U extends RouteName> {
+export interface CreateConfigParams<T extends IOSchema> {
 	baseUrl: string;
-	endpoint: EndPoint<T["pathnames"]>;
-	method: Method;
-	options: MergedOptions<T, U>;
+	endpoint: string;
+	// endpoint: EndPoint<T["pathnames"]>;
+	method: HTTPMethod;
+	options: MergedOptions<T>;
 	token?: string | null;
 }
 
-export const createAxiosConfig = <T extends IO, U extends RouteName>({
+export const createAxiosConfig = <T extends IOSchema>({
 	baseUrl,
 	endpoint,
 	method,
 	options,
 	token,
-}: CreateConfigParams<T, U>): AxiosRequestConfig => {
+}: CreateConfigParams<T>): AxiosRequestConfig => {
 	const END_POINT = createEndpoint(options.pathnames, endpoint);
 	const BASE_URL = options.config.baseURL || baseUrl;
 	const { url } = options.config;
@@ -79,34 +78,38 @@ export const createAxiosConfig = <T extends IO, U extends RouteName>({
 	};
 };
 
-const createEndpoint = <T extends IO, U extends RouteName>(
-	pathnames: MergedOptions<T, U>["pathnames"],
-	endpoint: EndPoint<T["pathnames"]>
+export const createEndpoint = <T extends IOSchema>(
+	pathnames: MergedOptions<T>["pathnames"],
+	endpoint: string
+	// endpoint: EndPoint<T["pathnames"]>
 ) => {
-	return typeof endpoint === "function" ? endpoint(pathnames) : endpoint;
+	return endpoint;
+	// return typeof endpoint === "function" ? endpoint(pathnames) : endpoint;
 };
 
 export const handleOutputValidation = async (
 	response: AxiosResponse,
 	//TODO: Use features interface
-	shouldValidate: boolean,
-	validator: ZodSchema
+	validator: IOSchema["output"],
+	shouldValidate?: boolean
 ) => {
-	if (shouldValidate) {
+	if (shouldValidate && validator) {
 		const result = await validator.safeParseAsync(response.data.data);
 
 		if (result.success) return;
 
-		throw {
+		const error = {
 			type: "validationError",
 			error: result.error,
 		};
+
+		throw error;
 	}
 };
 
-export const handleRequestError = <T extends IO, U extends RouteName>(
+export const handleRequestError = <T extends IOSchema>(
 	error: unknown,
-	mergedOptions: MergedOptions<T, U>
+	onError: MergedOptions<T>["config"]["onError"]
 ) => {
 	logger.log(error);
 
@@ -127,7 +130,7 @@ export const handleRequestError = <T extends IO, U extends RouteName>(
 
 	toastErrorMessage(message);
 
-	mergedOptions.config.onError?.();
+	onError?.();
 };
 
 const getMessageFromResponse = (error: unknown) => {

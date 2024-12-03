@@ -1,10 +1,6 @@
-import {
-	useApiPhase,
-	useCustomRouter,
-	useDialogState,
-	useLogout,
-} from "@repo/hooks";
+import { useCustomRouter, useDialogState, useLogout } from "@repo/hooks";
 import { DialogTemplate, DoubleAction } from "@repo/ui";
+import { useApiPhase } from "@repo/use-api";
 import { Suspense } from "react";
 
 import { Content } from "./content";

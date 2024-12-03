@@ -46,9 +46,7 @@ export const getSchemaType = (schema: ZodTypeAny): string => {
 
 export const findHttpRouteByUrl = (url: string) => {
 	return Object.values(httpRoutes).find((item) => {
-		const fullPath = `/${item.schema.rootPath}/${item.schema.pathname}`;
-
-		return url === fullPath;
+		return url === item.schema.endpoint || url === `/${item.schema.endpoint}`;
 	});
 };
 
@@ -66,11 +64,11 @@ export const getEventName = <T extends EventName>(name: T) => {
 };
 
 export const getPathname = (name: HTTPRouteName) => {
-	return findHttpRoute(name).schema.pathname;
+	return findHttpRoute(name).schema.endpoint.split("/")[1];
 };
 
 export const getRootName = (name: HTTPRouteName) => {
-	return findHttpRoute(name).schema.rootPath;
+	return findHttpRoute(name).schema.endpoint.split("/")[0];
 };
 
 export const getRootPath = (name: HTTPRootPath) => {

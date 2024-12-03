@@ -1,4 +1,4 @@
-import { EventName } from "@repo/schema";
+import { EventSchema } from "@repo/schema";
 import {
 	DefaultError,
 	DefinedInitialDataOptions,
@@ -14,7 +14,7 @@ import { UseMainEmitterParameters, useMainEmitter } from "./useMainEmitter";
 import { useMainQuery } from "./useMainQuery";
 
 export function useEmitterQuery<
-	E extends EventName,
+	E extends EventSchema,
 	TQueryFnData = unknown,
 	TError = DefaultError,
 	TData = TQueryFnData,
@@ -31,7 +31,7 @@ export function useEmitterQuery<
 };
 
 export function useEmitterQuery<
-	E extends EventName,
+	E extends EventSchema,
 	TQueryFnData = unknown,
 	TError = DefaultError,
 	TData = TQueryFnData,
@@ -53,7 +53,7 @@ export function useEmitterQuery<
 };
 
 export function useEmitterQuery<
-	E extends EventName,
+	E extends EventSchema,
 	TQueryFnData = unknown,
 	TError = DefaultError,
 	TData = TQueryFnData,

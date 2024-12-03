@@ -1,15 +1,6 @@
 import { HTTPRouteName } from "@repo/schema";
+import { StoreSetFn } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
-
-import { StoreSetFn } from "../../utils";
-
-export type SidebarName = "welcome";
-
-export type OnOpenDrawer = (name: SidebarName) => void;
-
-export interface PanelBaseProps {
-	onOpenDrawer: OnOpenDrawer;
-}
 
 export interface LoadingItem {
 	isLoading: boolean;
