@@ -2,12 +2,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-	// experimental: {
-	// 	turbo: {
-	// 		treeShaking: true,
-	// 		minify: true,
-	// 	},
-	// },
+	experimental: {
+		turbo: {
+			treeShaking: true,
+			minify: true,
+		},
+	},
+	webpack: (config) => {
+		config.module.rules.push({
+			test: /\/index.ts$/,
+			sideEffects: false,
+		});
+		return config;
+	},
 	images: {
 		remotePatterns: [
 			{

@@ -1,18 +1,18 @@
 import { SubmitHandler, useForm, useSendMessage } from "@repo/hooks";
 import { FormSchema, messageInputForm } from "@repo/schema";
 import {
-	AttachFileIcon,
 	Div,
-	EmojiEmotionsIcon,
 	FieldWithController,
 	Flex,
 	Form,
 	IconButton,
-	MicNoneIcon,
 	Paper,
 	Progress,
-	SendIcon,
 } from "@repo/ui";
+import { AttachFileIcon } from "@repo/ui/attachFile";
+import { EmojiEmotionsIcon } from "@repo/ui/emojiEmotions";
+import { MicNoneIcon } from "@repo/ui/micNone";
+import { TelegramIcon } from "@repo/ui/telegram";
 import { useWatch } from "react-hook-form";
 
 export const MessageInput = () => {
@@ -80,7 +80,7 @@ export const MessageInput = () => {
 								{isLoading ? (
 									<Progress.Circular />
 								) : (
-									<SendIcon color="primary" />
+									<TelegramIcon color="primary" />
 								)}
 							</IconButton>
 						) : (

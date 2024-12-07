@@ -1,10 +1,4 @@
-// TODO: Move to `icons`
-import {
-	AccountBoxTwoToneIcon,
-	AlternateEmailTwoToneIcon,
-	CallTwoToneIcon,
-	SettingsAccessibilityTwoToneIcon,
-} from "@repo/ui";
+import { AccountBoxIcon } from "@repo/ui/accountBox";
 
 import { EditProfileListItem, ListItem, OnProfileItemClick } from "./ListItem";
 
@@ -26,28 +20,28 @@ export const List: React.FC<Props> = ({
 	const list: Array<EditProfileListItem> = [
 		{
 			disabled: false,
-			Icon: SettingsAccessibilityTwoToneIcon,
+			Icon: AccountBoxIcon,
 			label: "Bio",
 			name: "editBio",
 			value: bio,
 		},
 		{
 			disabled: false,
-			Icon: AccountBoxTwoToneIcon,
+			Icon: AccountBoxIcon,
 			label: "Name",
 			name: "editFullName",
 			value: fullName,
 		},
 		{
 			disabled: true,
-			Icon: CallTwoToneIcon,
+			Icon: AccountBoxIcon,
 			label: "Phone Number",
 			name: "editPhoneNumber",
 			value: fullNumber,
 		},
 		{
 			disabled: false,
-			Icon: AlternateEmailTwoToneIcon,
+			Icon: AccountBoxIcon,
 			label: "Username",
 			name: "editUsername",
 			value: username || "Not set",

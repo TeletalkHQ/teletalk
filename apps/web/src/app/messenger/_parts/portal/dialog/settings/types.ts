@@ -1,6 +1,6 @@
 import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
-import { GeneratedIcon } from "@repo/ui";
+import { GeneratedIcon } from "@repo/ui/utils";
 
 export type SettingDisplayName =
 	| "Edit Profile"

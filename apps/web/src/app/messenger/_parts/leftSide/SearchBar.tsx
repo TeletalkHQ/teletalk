@@ -4,11 +4,10 @@ import {
 	Flex,
 	IconButton,
 	InputAdornment,
-	MenuIcon,
 	Paper,
-	SearchIcon,
 	TextField,
 } from "@repo/ui";
+import { AccountBoxIcon } from "@repo/ui/accountBox";
 
 interface Props {
 	onDrawerIconClick: VoidNoArgs;
@@ -28,7 +27,7 @@ export const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
 			<Flex ai="center" gap={1} jc="space-between" style={{ width: "100%" }}>
 				<Div style={{ padding: "5px 15px" }}>
 					<IconButton onClick={onDrawerIconClick}>
-						<MenuIcon />
+						<AccountBoxIcon />
 					</IconButton>
 				</Div>
 
@@ -41,7 +40,7 @@ export const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
 							},
 							startAdornment: (
 								<InputAdornment position="start">
-									<SearchIcon />
+									<AccountBoxIcon />
 								</InputAdornment>
 							),
 						}}

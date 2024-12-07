@@ -1,5 +1,6 @@
 import { VoidNoArgs } from "@repo/types";
-import { Div, GeneratedIcon, ListItemButton } from "@repo/ui";
+import { Div, ListItemButton } from "@repo/ui";
+import { GeneratedIcon } from "@repo/ui/utils";
 
 import { SettingDisplayName } from "../types";
 

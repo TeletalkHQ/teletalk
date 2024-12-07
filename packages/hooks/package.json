@@ -16,6 +16,8 @@
 	},
 	"dependencies": {
 		"@repo/classes": "workspace:*",
+		"@repo/logger": "workspace:*",
+		"@repo/schema": "workspace:*",
 		"@repo/socket": "workspace:*",
 		"@repo/store": "workspace:*",
 		"@repo/use-api": "workspace:*",

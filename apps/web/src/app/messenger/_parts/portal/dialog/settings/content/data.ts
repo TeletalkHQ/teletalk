@@ -1,13 +1,4 @@
-import {
-	AccountBoxIcon,
-	CallIcon,
-	ChatIcon,
-	CircleNotificationsIcon,
-	LanguageIcon,
-	LockIcon,
-	PieChartIcon,
-	StorageIcon,
-} from "@repo/ui";
+import { AccountBoxIcon } from "@repo/ui/accountBox";
 
 import { SettingsList } from "../types";
 
@@ -21,43 +12,43 @@ export const settingsList: SettingsList = [
 	{
 		disabled: true,
 		displayName: "Notifications and Sounds",
-		Icon: CircleNotificationsIcon,
+		Icon: AccountBoxIcon,
 		name: "notificationsAndSounds",
 	},
 	{
 		disabled: false,
 		displayName: "Privacy and Security",
-		Icon: LockIcon,
+		Icon: AccountBoxIcon,
 		name: "privacyAndSecurity",
 	},
 	{
 		disabled: true,
 		displayName: "Chat Settings",
-		Icon: ChatIcon,
+		Icon: AccountBoxIcon,
 		name: "chatSettings",
 	},
 	{
 		disabled: true,
 		displayName: "Advanced",
-		Icon: PieChartIcon,
+		Icon: AccountBoxIcon,
 		name: "advanced",
 	},
 	{
 		disabled: true,
 		displayName: "Call Settings",
-		Icon: CallIcon,
+		Icon: AccountBoxIcon,
 		name: "callSettings",
 	},
 	{
 		disabled: true,
 		displayName: "Language",
-		Icon: LanguageIcon,
+		Icon: AccountBoxIcon,
 		name: "language",
 	},
 	{
 		disabled: false,
 		displayName: "Server Setup",
-		Icon: StorageIcon,
+		Icon: AccountBoxIcon,
 		name: "serverSetup",
 	},
 ];

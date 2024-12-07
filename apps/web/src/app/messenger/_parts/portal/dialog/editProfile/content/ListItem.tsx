@@ -4,11 +4,11 @@ import { VoidWithArg } from "@repo/types";
 import {
 	ElementLabel,
 	Flex,
-	GeneratedIcon,
 	ListItemButton,
 	ListItemButtonProps,
 	Span,
 } from "@repo/ui";
+import { GeneratedIcon } from "@repo/ui/utils";
 
 interface Props extends ListItemButtonProps {
 	label: ElementLabel;

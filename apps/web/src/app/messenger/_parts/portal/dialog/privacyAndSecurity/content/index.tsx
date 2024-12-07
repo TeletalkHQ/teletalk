@@ -1,6 +1,7 @@
 import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
-import { BlockIcon, DevicesIcon, List } from "@repo/ui";
+import { List } from "@repo/ui";
+import { AccountBoxIcon } from "@repo/ui/accountBox";
 
 import { ListItem, PrivacyAndSecurityListItem } from "./listItem";
 
@@ -19,12 +20,12 @@ export const Content: React.FC<Props> = ({ onItemClick }) => (
 export const privacyAndSecurityList: PrivacyAndSecurityListItem[] = [
 	{
 		displayName: "Blocked users",
-		Icon: BlockIcon,
+		Icon: AccountBoxIcon,
 		name: "blockedUsers",
 	},
 	{
 		displayName: "Sessions",
-		Icon: DevicesIcon,
+		Icon: AccountBoxIcon,
 		name: "sessions",
 	},
 ];

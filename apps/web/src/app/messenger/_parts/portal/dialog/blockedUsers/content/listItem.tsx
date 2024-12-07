@@ -2,13 +2,8 @@ import { userUtils } from "@repo/classes";
 import { useUserPublicInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
-import {
-	Avatar,
-	IconButton,
-	ListItemButton,
-	LockOpenTwoToneIcon,
-	Span,
-} from "@repo/ui";
+import { Avatar, IconButton, ListItemButton, Span } from "@repo/ui";
+import { AccountBoxIcon } from "@repo/ui/accountBox";
 
 interface Props {
 	onItemLick: VoidNoArgs;
@@ -59,7 +54,7 @@ export const ListItem: React.FC<Props> = ({ item, onItemLick }) => {
 						onItemLick();
 					}}
 				>
-					<LockOpenTwoToneIcon color="error" />
+					<AccountBoxIcon color="error" />
 				</IconButton>
 			</Span>
 		</ListItemButton>

@@ -1,5 +1,8 @@
-import { SelectChangeEvent, SelectProps } from "@mui/material";
-import { CircularProgressProps } from "@mui/material";
+import {
+	CircularProgressProps,
+	SelectChangeEvent,
+	SelectProps,
+} from "@mui/material";
 import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
 import {
@@ -10,6 +13,7 @@ import {
 	MouseEvent,
 } from "react";
 
+// TODO: Remove
 export type ElementName =
 	| "account"
 	| "addContacts"

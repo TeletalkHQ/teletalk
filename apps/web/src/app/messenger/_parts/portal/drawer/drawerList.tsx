@@ -1,19 +1,15 @@
 import { VoidWithArg } from "@repo/types";
 import {
-	CallsIcon,
-	ContactsIcon,
 	ElementName,
-	GeneratedIcon,
 	List,
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
-	LogoutOutlinedIcon,
-	NewChannelOutlinedIcon,
-	NewGroupOutlinedIcon,
-	NightModeOutlinedIcon,
-	SettingsOutlinedIcon,
 } from "@repo/ui";
+import { CallOutlinedIcon } from "@repo/ui/callOutlined";
+import { LogoutOutlinedIcon } from "@repo/ui/logoutOutlined";
+import { SettingsOutlinedIcon } from "@repo/ui/settingsOutlined";
+import { GeneratedIcon } from "@repo/ui/utils";
 import { MouseEvent } from "react";
 
 type HTMLDivMouseEvent = MouseEvent<HTMLDivElement, globalThis.MouseEvent>;
@@ -56,13 +52,13 @@ const drawerList: Array<{
 }> = [
 	{
 		disabled: true,
-		Icon: CallsIcon,
+		Icon: CallOutlinedIcon,
 		label: "Calls",
 		name: "calls",
 	},
 	{
 		disabled: false,
-		Icon: ContactsIcon,
+		Icon: CallOutlinedIcon,
 		name: "contacts",
 		label: "Contacts",
 	},
@@ -74,19 +70,19 @@ const drawerList: Array<{
 	},
 	{
 		disabled: true,
-		Icon: NewChannelOutlinedIcon,
+		Icon: CallOutlinedIcon,
 		name: "channels",
 		label: "Channels",
 	},
 	{
 		disabled: true,
-		Icon: NewGroupOutlinedIcon,
+		Icon: CallOutlinedIcon,
 		name: "newGroup",
 		label: "New Group",
 	},
 	{
 		disabled: true,
-		Icon: NightModeOutlinedIcon,
+		Icon: CallOutlinedIcon,
 		name: "nightMode",
 		label: "Night Mode",
 	},

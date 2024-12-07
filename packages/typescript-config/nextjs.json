@@ -4,7 +4,7 @@
 	"display": "NextJS",
 	"compilerOptions": {
 		"jsx": "preserve",
-		"lib": ["dom", "dom.iterable", "esnext"],
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
 		"plugins": [
 			{
 				"name": "next"
@@ -13,7 +13,7 @@
 				"name": "typescript-plugin-css-modules"
 			}
 		],
-		"target": "ES5",
+		"target": "ES2022",
 		"types": ["mocha"]
 	}
 }

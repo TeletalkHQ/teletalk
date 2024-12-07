@@ -104,12 +104,11 @@ export const useConfigs = () => {
 
 	return {
 		addServerUrl,
+		configs,
 		getApiHTTPBaseUrl,
 		getApiWSBaseUrl,
 		getAppBaseUrl,
-		getAppUrl: getAppBaseUrl,
 		setDebugLevel,
 		updateSelectedServer,
-		configs,
 	};
 };

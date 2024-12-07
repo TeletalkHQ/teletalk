@@ -22,7 +22,8 @@ export const Typography: React.FC<TypographyProps> = ({
 	...rest
 }) => {
 	if (showTooltip && typeof children !== "string")
-		throw Error("When `showTooltip` is true children, must be `string`");
+		throw Error("When `showTooltip` is true, children must be `string`");
+
 	const component =
 		showTooltip && typeof children === "string" ? (
 			<Tooltip title={children}>

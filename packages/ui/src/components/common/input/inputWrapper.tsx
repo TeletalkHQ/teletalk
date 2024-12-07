@@ -2,7 +2,7 @@ import { CSSProperties, FC } from "react";
 
 import { Flex } from "../../base/box";
 import { Typography } from "../../base/typography";
-import { GeneratedIcon } from "../../icons";
+import { GeneratedIcon } from "../../icons/utils";
 
 interface Props {
 	inputComponent: React.ReactNode;

@@ -1,23 +1,14 @@
-import {
-	AllChatsOutlinedIcon,
-	BotOutlinedIcon,
-	ChannelsOutlinedIcon,
-	EditChatsOutlinedIcon,
-	GroupsIcon,
-	List,
-	ListItemButton,
-	PersonalOutlinedIcon,
-	UnreadOutlinedIcon,
-} from "@repo/ui";
+import { List, ListItemButton } from "@repo/ui";
+import { AccountBoxIcon } from "@repo/ui/accountBox";
 
 const sidebarList = [
-	AllChatsOutlinedIcon,
-	UnreadOutlinedIcon,
-	PersonalOutlinedIcon,
-	ChannelsOutlinedIcon,
-	GroupsIcon,
-	BotOutlinedIcon,
-	EditChatsOutlinedIcon,
+	AccountBoxIcon,
+	AccountBoxIcon,
+	AccountBoxIcon,
+	AccountBoxIcon,
+	AccountBoxIcon,
+	AccountBoxIcon,
+	AccountBoxIcon,
 ];
 
 export const SideBarList = () => {

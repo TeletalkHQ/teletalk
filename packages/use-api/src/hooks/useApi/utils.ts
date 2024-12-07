@@ -3,7 +3,7 @@ import { HTTPMethod, IOSchema } from "@repo/schema";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 import { enqueueSnackbar } from "notistack";
 
-import { HandlerOptions } from "./types";
+import { HandlerConfig, HandlerOptions } from "./types";
 
 export const getDefaultHandlerOptions = <
 	T extends IOSchema,
@@ -25,7 +25,7 @@ export const emptyFn = () => undefined;
 
 export const mergeOptions = <T extends IOSchema>(
 	options?: HandlerOptions<T>
-) => {
+): HandlerOptions<T> => {
 	const defaultOptions = getDefaultHandlerOptions();
 
 	return {
@@ -39,16 +39,13 @@ export const mergeOptions = <T extends IOSchema>(
 		pathnames: options?.pathnames,
 	};
 };
-export type MergedOptions<T extends IOSchema> = ReturnType<
-	typeof mergeOptions<T>
->;
 
 export interface CreateConfigParams<T extends IOSchema> {
 	baseUrl: string;
 	endpoint: string;
 	// endpoint: EndPoint<T["pathnames"]>;
 	method: HTTPMethod;
-	options: MergedOptions<T>;
+	options: HandlerOptions<T>;
 	token?: string | null;
 }
 
@@ -60,26 +57,25 @@ export const createAxiosConfig = <T extends IOSchema>({
 	token,
 }: CreateConfigParams<T>): AxiosRequestConfig => {
 	const END_POINT = createEndpoint(options.pathnames, endpoint);
-	const BASE_URL = options.config.baseURL || baseUrl;
-	const { url } = options.config;
+	const BASE_URL = options.config?.baseURL || baseUrl;
 
 	return {
-		url: url || `${BASE_URL}/${END_POINT}`,
+		url: options.config?.url || `${BASE_URL}/${END_POINT}`,
 		method,
-		shouldSendAuthHeader: options.config.shouldSendAuthHeader,
+		shouldSendAuthHeader: options.config?.shouldSendAuthHeader,
 		data: options.data,
 		params: options.params,
 
 		...options.config,
 		headers: {
-			...options.config.headers,
-			Authorization: options.config.shouldSendAuthHeader ? token : undefined,
+			...options.config?.headers,
+			Authorization: options.config?.shouldSendAuthHeader ? token : undefined,
 		},
 	};
 };
 
 export const createEndpoint = <T extends IOSchema>(
-	pathnames: MergedOptions<T>["pathnames"],
+	_pathnames: HandlerOptions<T>["pathnames"],
 	endpoint: string
 	// endpoint: EndPoint<T["pathnames"]>
 ) => {
@@ -109,7 +105,7 @@ export const handleOutputValidation = async (
 
 export const handleRequestError = <T extends IOSchema>(
 	error: unknown,
-	onError: MergedOptions<T>["config"]["onError"]
+	onError: HandlerConfig<T["output"]>["onError"]
 ) => {
 	logger.log(error);
 

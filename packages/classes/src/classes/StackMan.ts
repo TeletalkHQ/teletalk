@@ -11,11 +11,11 @@ export class StackMan {
 		};
 	}
 
-	getFileName(): string {
+	getFileName(): string | undefined {
 		const fileName = this.getStackLines().trim().split(/\(|\)/g)[1];
 		if (this.options.isFullLine) return fileName;
 
-		return fileName.split("/").at(-1) || "";
+		return fileName?.split("/").at(-1) || "";
 	}
 
 	private getStackLines(): string {

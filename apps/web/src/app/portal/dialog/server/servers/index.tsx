@@ -8,6 +8,7 @@ import {
 	usePing,
 } from "@repo/hooks";
 import { DialogTemplate } from "@repo/ui";
+import merge from "lodash/merge";
 import { enqueueSnackbar } from "notistack";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -85,13 +86,9 @@ export const Servers = () => {
 		id: number,
 		restResult: Partial<Omit<ServerTestResult, "url">> = {}
 	) => {
-		const index = list.current.findIndex((i) => i.id === id);
+		const item = list.current.find((i) => i.id === id);
 
-		if (index > -1)
-			list.current[index] = {
-				...list.current[index],
-				...restResult,
-			};
+		if (item) merge(item, restResult);
 	};
 
 	const handleClose = () => {

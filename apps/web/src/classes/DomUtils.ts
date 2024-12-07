@@ -71,7 +71,7 @@ class DomUtils {
 
 	setElementByName(elementName: ElementName) {
 		const element = this.getFirstElementByName(elementName);
-		this.setElement(element);
+		if (element) this.setElement(element);
 		this.setElementName(elementName);
 
 		return this;

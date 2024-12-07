@@ -9,7 +9,6 @@ import { useApiPhase } from "../useApiPhase";
 import { axiosInstance } from "./axiosInstance";
 import { HandlerOptions, InitialData, RequestPhase } from "./types";
 import {
-	MergedOptions,
 	createAxiosConfig,
 	getDefaultHandlerOptions,
 	handleOutputValidation,
@@ -79,27 +78,27 @@ export const useApi = <
 
 			return await tryToSendRequest(mergedOptions);
 		} catch (error) {
-			handleRequestError(error, mergedOptions.config.onError);
+			handleRequestError(error, mergedOptions.config?.onError);
 
 			setHasError(true);
 
 			throw error;
 		} finally {
-			mergedOptions.config.onSettled?.();
+			mergedOptions.config?.onSettled?.();
 			apiPhase.finishLoading();
 			apiPhase.finishUpdating();
 		}
 	};
 
 	const tryToSendRequest = async (
-		options: MergedOptions<{
+		options: HandlerOptions<{
 			input: Input;
 			output: Output;
 			pathnames: Pathnames;
 			params: Params;
 		}>
 	) => {
-		handleStartLoadings(phase || options.config.phase);
+		handleStartLoadings(phase || options.config?.phase);
 
 		const axiosConfig = createAxiosConfig<{
 			input: Input;
@@ -119,7 +118,7 @@ export const useApi = <
 
 		await handleOutputValidation(response, io.output, validation?.output);
 
-		await options.config.onSuccess?.(response as any);
+		await options.config?.onSuccess?.(response as any);
 
 		setData(response.data);
 		return response.data;

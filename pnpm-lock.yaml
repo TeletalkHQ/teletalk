@@ -822,9 +822,6 @@ importers:
       prettier:
         specifier: ^3.4.1
         version: 3.4.1
-      sass:
-        specifier: ^1.81.0
-        version: 1.81.0
       semantic-release:
         specifier: ^24.2.0
         version: 24.2.0(typescript@5.7.2)
@@ -983,6 +980,12 @@ importers:
       '@repo/classes':
         specifier: workspace:*
         version: link:../classes
+      '@repo/logger':
+        specifier: workspace:*
+        version: link:../logger
+      '@repo/schema':
+        specifier: workspace:*
+        version: link:../schema
       '@repo/socket':
         specifier: workspace:*
         version: link:../socket

@@ -8,8 +8,6 @@ import {
 } from "@repo/hooks";
 import { FormSchema, createNewUserForm } from "@repo/schema";
 import {
-	AccountCircleOutlinedIcon,
-	ArrowBackIcon,
 	Button,
 	Container,
 	Div,
@@ -20,6 +18,8 @@ import {
 	LastName,
 	Typography,
 } from "@repo/ui";
+import { AccountCircleOutlinedIcon } from "@repo/ui/accountCircleOutlined";
+import { ArrowBackIcon } from "@repo/ui/arrowBack";
 import { useApiPhase } from "@repo/use-api";
 import { useFormState } from "react-hook-form";
 

@@ -1,4 +1,5 @@
-import { DoneAllIcon, Flex, Paper, Typography } from "@repo/ui";
+import { Flex, Paper, Typography } from "@repo/ui";
+import { DoneAllIcon } from "@repo/ui/doneAll";
 import { CSSProperties } from "react";
 
 interface Props {

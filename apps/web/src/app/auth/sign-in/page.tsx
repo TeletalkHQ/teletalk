@@ -1,143 +1,34 @@
-"use client";
-
-import {
-	SubmitHandler,
-	useCustomRouter,
-	useForm,
-	useSignIn,
-} from "@repo/hooks";
-import { FormSchema, signInForm } from "@repo/schema";
-import {
-	Avatar,
-	Button,
-	Container,
-	CountryCode,
-	CountrySelector,
-	Div,
-	Flex,
-	Form,
-	LockOutlinedIcon,
-	PhoneNumber,
-	SelectedCountry,
-	Typography,
-} from "@repo/ui";
-import { useApiPhase } from "@repo/use-api";
-import { useWatch } from "react-hook-form";
-
-import { useAuthUrlQueries } from "~/hooks";
-
-import { AuthFooter } from "../common/AuthFooter";
+import { Stack } from "@mui/material";
+import { CircleIcon } from "@repo/ui/circle";
 
 const SignIn = () => {
-	const {
-		api: { postApi },
-	} = useSignIn();
-
-	const router = useCustomRouter();
-
-	const authQueries = useAuthUrlQueries();
-
-	const { control, handleSubmit, setValue } = useForm<FormSchema["signIn"]>({
-		schema: signInForm,
-		defaultValues: {
-			countryCode: authQueries.countryCode,
-			phoneNumber: authQueries.phoneNumber,
-		},
-	});
-
-	const { countryCode, countryName } = useWatch({
-		control,
-	});
-
-	const signInPhase = useApiPhase("signIn");
-
-	const handleCountryNameChange = (value: string) => {
-		setValue("countryName", value);
-	};
-
-	const handleCountrySelectChange = (value: SelectedCountry) => {
-		setValue("countryName", value?.countryName || "");
-		setValue("countryCode", value?.countryCode || "");
-	};
-
-	const submitSignInForm: SubmitHandler<FormSchema["signIn"]> = (data) => {
-		authQueries.setCountryCode(data.countryCode);
-		authQueries.setPhoneNumber(data.phoneNumber);
-
-		postApi.handler({
-			data,
-			config: {
-				onSuccess: () => {
-					router.push("/auth/verify", {
-						countryCode: data.countryCode,
-						phoneNumber: data.phoneNumber,
-					});
-				},
-			},
-		});
-	};
-
-	const onSubmit = handleSubmit(submitSignInForm);
-
 	return (
-		<Container mw="xl">
-			<Flex ai="center" col mt={8}>
-				<Avatar
-					sx={(theme) => ({
-						m: 1,
-						backgroundColor: theme.palette.secondary.main,
-					})}
-				>
-					<LockOutlinedIcon />
-				</Avatar>
+		// <Container mw="xl">
+		// 	<Flex ai="center" col mt={8}>
+		// 		<Avatar
+		// 			style={
+		// 				{
+		// 					// m: 1,
+		// 					// backgroundColor: theme.palette.secondary.main,
+		// 				}
+		// 			}
+		// 		>
+		// 			<LockOutlinedIcon />
+		// 		</Avatar>
 
-				<Typography variant="h5">Teletalk</Typography>
+		// 		<Typography variant="h5">Teletalk</Typography>
 
-				<Container mw="xs">
-					<Form.Base
-						style={{
-							display: "flex",
-							flexDirection: "column",
-							gap: "10px",
-						}}
-						onSubmit={onSubmit}
-					>
-						<Div style={{ marginTop: 1 }}>
-							<Typography variant="caption">
-								Please verify your country code and enter your mobile phone
-								number.
-							</Typography>
+		// 		<Container mw="xs">
+		// 			<SignForm />
+		// 		</Container>
+		// 	</Flex>
 
-							<CountrySelector
-								countryCode={countryCode || ""}
-								countryName={countryName || ""}
-								onCountryNameChange={handleCountryNameChange}
-								onSelectChange={handleCountrySelectChange}
-							/>
-							<Flex fullWidth>
-								<CountryCode control={control} />
-								<PhoneNumber control={control} />
-							</Flex>
+		// 	<AuthFooter />
+		// </Container>
 
-							<Button
-								// disabled={!isValid}
-								loading={signInPhase.isLoading}
-								loadingIndicatorText="Sign in..."
-								sx={{
-									mb: 1,
-									mt: 2,
-								}}
-								type="submit"
-							>
-								Next
-							</Button>
-						</Div>
-					</Form.Base>
-				</Container>
-			</Flex>
-
-			<AuthFooter />
-		</Container>
+		<Stack>
+			<CircleIcon />
+		</Stack>
 	);
 };
 

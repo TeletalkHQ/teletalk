@@ -8,7 +8,6 @@ import {
 } from "@repo/hooks";
 import { FormSchema, verifySignInCodeForm } from "@repo/schema";
 import {
-	ArrowBackIcon,
 	Avatar,
 	Button,
 	Container,
@@ -17,8 +16,9 @@ import {
 	IconButton,
 	SignInCode,
 	Typography,
-	VerifiedUserIcon,
 } from "@repo/ui";
+import { ArrowBackIcon } from "@repo/ui/arrowBack";
+import { VerifiedUserIcon } from "@repo/ui/verifiedUser";
 import { useApiPhase } from "@repo/use-api";
 import { useFormState } from "react-hook-form";
 

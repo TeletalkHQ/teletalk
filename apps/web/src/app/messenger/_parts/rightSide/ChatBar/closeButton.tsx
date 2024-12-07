@@ -1,4 +1,5 @@
-import { CloseIcon, IconButton } from "@repo/ui";
+import { IconButton } from "@repo/ui";
+import { CloseIcon } from "@repo/ui/close";
 
 import { useChatStore } from "~/store";
 

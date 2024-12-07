@@ -1,5 +1,6 @@
 import { ServerAvailabilityStatusType } from "@repo/hooks";
-import { CircleIcon, Span } from "@repo/ui";
+import { Span } from "@repo/ui";
+import { CircleIcon } from "@repo/ui/circle";
 
 interface Props {
 	status: ServerAvailabilityStatusType;
