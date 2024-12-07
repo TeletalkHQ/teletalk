@@ -1,4 +1,5 @@
-import { useDialogState, useRemoveBlock } from "@repo/hooks";
+import { useDialogState } from "@repo/hooks/useDialogState";
+import { useRemoveBlock } from "@repo/hooks/useRemoveBlock";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { DoubleAction } from "@repo/ui/template/doubleAction";
 

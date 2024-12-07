@@ -1,11 +1,8 @@
 "use client";
 
-import {
-	SubmitHandler,
-	useCustomRouter,
-	useForm,
-	useVerify,
-} from "@repo/hooks";
+import { useCustomRouter } from "@repo/hooks/useCustomRouter";
+import { SubmitHandler, useForm } from "@repo/hooks/useForm";
+import { useVerify } from "@repo/hooks/useVerify";
 import { FormSchema, verifySignInCodeForm } from "@repo/schema";
 import { Avatar } from "@repo/ui/box/Avatar";
 import { Container } from "@repo/ui/box/container";

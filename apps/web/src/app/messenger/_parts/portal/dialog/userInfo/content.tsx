@@ -1,4 +1,5 @@
-import { useIsOnline, useUserPublicInfo } from "@repo/hooks";
+import { useIsOnline } from "@repo/hooks/useIsOnline";
+import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
 import { Avatar } from "@repo/ui/box/Avatar";
 import { Div } from "@repo/ui/box/div";
 import { Flex } from "@repo/ui/box/flex";

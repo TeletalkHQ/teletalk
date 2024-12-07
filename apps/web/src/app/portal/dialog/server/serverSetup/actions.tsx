@@ -1,4 +1,4 @@
-import { ServerAvailabilityStatusType } from "@repo/hooks";
+import { ServerAvailabilityStatusType } from "@repo/hooks/usePing";
 import { VoidNoArgs } from "@repo/types";
 import { Button } from "@repo/ui/button/button";
 

@@ -7,7 +7,7 @@ import {
 } from "@repo/schema";
 import { InitialData, UseApiOptions, useApi } from "@repo/use-api";
 
-import { useConfigs } from "../../utils";
+import { useConfigs } from "../../utils/useConfigs";
 
 type UseMainApiArg<T extends IOSchema, U extends HTTPRouteName> = {
 	initialData: InitialData<T["output"]>;

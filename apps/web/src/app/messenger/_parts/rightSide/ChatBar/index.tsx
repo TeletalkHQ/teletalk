@@ -1,4 +1,4 @@
-import { useDialogState } from "@repo/hooks";
+import { useDialogState } from "@repo/hooks/useDialogState";
 import { Paper } from "@repo/ui/box/paper";
 
 import { ChatBarCenterContent } from "./centerContent";

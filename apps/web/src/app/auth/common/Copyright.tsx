@@ -1,6 +1,6 @@
 "use client";
 
-import { useConfigs } from "@repo/hooks";
+import { useConfigs } from "@repo/hooks/useConfigs";
 import { Link } from "@repo/ui/box/link";
 import { Typography, TypographyProps } from "@repo/ui/typography/typography";
 

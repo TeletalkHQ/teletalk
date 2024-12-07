@@ -1,4 +1,4 @@
-import { useDialogState } from "@repo/hooks";
+import { useDialogState } from "@repo/hooks/useDialogState";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { SingleAction } from "@repo/ui/template/singleAction";
 

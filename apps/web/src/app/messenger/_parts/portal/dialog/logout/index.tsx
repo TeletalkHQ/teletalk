@@ -1,4 +1,6 @@
-import { useCustomRouter, useDialogState, useLogout } from "@repo/hooks";
+import { useCustomRouter } from "@repo/hooks/useCustomRouter";
+import { useDialogState } from "@repo/hooks/useDialogState";
+import { useLogout } from "@repo/hooks/useLogout";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { DoubleAction } from "@repo/ui/template/doubleAction";
 import { useApiPhase } from "@repo/use-api";

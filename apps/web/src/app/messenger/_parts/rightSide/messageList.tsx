@@ -1,4 +1,4 @@
-import { useUserInfo } from "@repo/hooks";
+import { useUserInfo } from "@repo/hooks/useUserInfo";
 import { BaseSchema } from "@repo/schema";
 import { Div } from "@repo/ui/box/div";
 

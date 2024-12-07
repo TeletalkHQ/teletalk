@@ -1,4 +1,4 @@
-import { useUserPublicInfo } from "@repo/hooks";
+import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
 import { Div } from "@repo/ui/box/div";
 import { Span } from "@repo/ui/box/span";
 import { Typography } from "@repo/ui/typography/typography";

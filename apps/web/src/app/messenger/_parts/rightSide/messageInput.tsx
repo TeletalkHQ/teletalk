@@ -1,4 +1,5 @@
-import { SubmitHandler, useForm, useSendMessage } from "@repo/hooks";
+import { SubmitHandler, useForm } from "@repo/hooks/useForm";
+import { useSendMessage } from "@repo/hooks/useSendMessage";
 import { FormSchema, messageInputForm } from "@repo/schema";
 import { Div } from "@repo/ui/box/div";
 import { Flex } from "@repo/ui/box/flex";

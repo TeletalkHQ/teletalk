@@ -1,6 +1,6 @@
 import { ListItemProps } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
-import { useCountries } from "@repo/hooks";
+import { useCountries } from "@repo/hooks/useCountries";
 import { BaseSchema } from "@repo/schema";
 import { VoidWithArg } from "@repo/types";
 import { useMemo } from "react";

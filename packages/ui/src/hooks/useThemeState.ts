@@ -1,4 +1,4 @@
-import { STORAGE_KEY } from "@repo/hooks";
+import { STORAGE_KEY } from "@repo/hooks/types";
 import { BaseSchema } from "@repo/schema";
 import { useIsomorphicLayoutEffect, useLocalStorage } from "usehooks-ts";
 

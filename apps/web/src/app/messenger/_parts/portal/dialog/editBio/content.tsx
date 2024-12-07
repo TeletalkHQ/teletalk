@@ -1,4 +1,4 @@
-import { Control } from "@repo/hooks";
+import { Control } from "@repo/hooks/useForm";
 import { FormSchema } from "@repo/schema";
 import { Flex } from "@repo/ui/box/flex";
 import { FieldWithController } from "@repo/ui/input/fieldWithController";

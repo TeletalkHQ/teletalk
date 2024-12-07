@@ -1,4 +1,4 @@
-import { ServerAvailabilityStatusType } from "@repo/hooks";
+import { ServerAvailabilityStatusType } from "@repo/hooks/usePing";
 import { Flex } from "@repo/ui/box/flex";
 import { FormControl } from "@repo/ui/box/formControl";
 import { MenuItem } from "@repo/ui/box/menuItem";

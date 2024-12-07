@@ -1,4 +1,4 @@
-import { ServerAvailabilityStatusType } from "@repo/hooks";
+import { ServerAvailabilityStatusType } from "@repo/hooks/usePing";
 import { Span } from "@repo/ui/box/span";
 import { CircleIcon } from "@repo/ui/icons/circle";
 

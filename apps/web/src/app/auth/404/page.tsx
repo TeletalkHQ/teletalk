@@ -1,6 +1,6 @@
 "use client";
 
-import { useCustomRouter } from "@repo/hooks";
+import { useCustomRouter } from "@repo/hooks/useCustomRouter";
 import { useEffect } from "react";
 
 const Page = () => {

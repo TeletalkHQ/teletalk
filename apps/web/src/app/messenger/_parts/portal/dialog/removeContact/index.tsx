@@ -1,4 +1,5 @@
-import { useDialogState, useRemoveContact } from "@repo/hooks";
+import { useDialogState } from "@repo/hooks/useDialogState";
+import { useRemoveContact } from "@repo/hooks/useRemoveContact";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { DoubleAction } from "@repo/ui/template/doubleAction";
 

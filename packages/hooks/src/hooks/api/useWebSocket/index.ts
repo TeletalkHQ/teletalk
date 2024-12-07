@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import useWebSocketPkg, { Options, ReadyState } from "react-use-websocket";
 import z, { ZodSchema } from "zod";
 
-import { useConfigs } from "../../utils";
+import { useConfigs } from "../../utils/useConfigs";
 
 export type Command<C extends ZodSchema> = {
 	command: "execute" | "auth" | "ping";

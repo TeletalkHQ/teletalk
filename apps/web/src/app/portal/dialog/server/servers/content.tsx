@@ -1,4 +1,4 @@
-import { ServerTestResult } from "@repo/hooks";
+import { ServerTestResult } from "@repo/hooks/usePing";
 import { VoidWithArg } from "@repo/types";
 import { List } from "@repo/ui/box/list";
 import { ListItemButton } from "@repo/ui/box/listItemButton";

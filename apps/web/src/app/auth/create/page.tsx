@@ -1,11 +1,8 @@
 "use client";
 
-import {
-	SubmitHandler,
-	useCreateNewUser,
-	useCustomRouter,
-	useForm,
-} from "@repo/hooks";
+import { useCreateNewUser } from "@repo/hooks/useCreateNewUser";
+import { useCustomRouter } from "@repo/hooks/useCustomRouter";
+import { SubmitHandler, useForm } from "@repo/hooks/useForm";
 import { FormSchema, createNewUserForm } from "@repo/schema";
 import { Container } from "@repo/ui/box/container";
 import { Div } from "@repo/ui/box/div";

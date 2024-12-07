@@ -1,4 +1,5 @@
-import { useDialogState, useUserInfo } from "@repo/hooks";
+import { useDialogState } from "@repo/hooks/useDialogState";
+import { useUserInfo } from "@repo/hooks/useUserInfo";
 import { BaseSchema } from "@repo/schema";
 import { DialogStore, useDialogStore } from "@repo/store";
 

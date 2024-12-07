@@ -1,4 +1,5 @@
-import { useDialogState, useForm } from "@repo/hooks";
+import { useDialogState } from "@repo/hooks/useDialogState";
+import { useForm } from "@repo/hooks/useForm";
 import { FormSchema, updateContactForm } from "@repo/schema";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { DoubleAction } from "@repo/ui/template/doubleAction";

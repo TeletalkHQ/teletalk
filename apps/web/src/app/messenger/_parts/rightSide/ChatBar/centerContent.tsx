@@ -1,5 +1,6 @@
 import { userUtils } from "@repo/classes";
-import { useUserInfo, useUserPublicInfo } from "@repo/hooks";
+import { useUserInfo } from "@repo/hooks/useUserInfo";
+import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
 import { Flex } from "@repo/ui/box/flex";
 import { Typography } from "@repo/ui/typography/typography";
 

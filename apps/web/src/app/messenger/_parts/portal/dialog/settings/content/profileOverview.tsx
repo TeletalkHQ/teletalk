@@ -1,4 +1,4 @@
-import { useUserInfo } from "@repo/hooks";
+import { useUserInfo } from "@repo/hooks/useUserInfo";
 import { Avatar } from "@repo/ui/box/Avatar";
 import { Div } from "@repo/ui/box/div";
 import { Flex } from "@repo/ui/box/flex";

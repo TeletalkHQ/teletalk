@@ -2,7 +2,7 @@
 
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
-import { useConfigs } from "@repo/hooks";
+import { useConfigs } from "@repo/hooks/useConfigs";
 import { DialogStore, useDialogStore } from "@repo/store";
 import { TransitionName, VoidNoArgs } from "@repo/types";
 

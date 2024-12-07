@@ -1,4 +1,5 @@
-import { useDialogState, useUpdateUserPublicInfo } from "@repo/hooks";
+import { useDialogState } from "@repo/hooks/useDialogState";
+import { useUpdateUserPublicInfo } from "@repo/hooks/useUpdateUserPublicInfo";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { DoubleAction } from "@repo/ui/template/doubleAction";
 

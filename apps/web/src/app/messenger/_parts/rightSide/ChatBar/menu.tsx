@@ -1,6 +1,6 @@
 "use client";
 
-import { useDialogState } from "@repo/hooks";
+import { useDialogState } from "@repo/hooks/useDialogState";
 import { Div } from "@repo/ui/box/div";
 import { Menu } from "@repo/ui/box/menu";
 import { MenuItem } from "@repo/ui/box/menuItem";

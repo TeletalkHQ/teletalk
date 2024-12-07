@@ -1,4 +1,4 @@
-import { useUserPublicInfo } from "@repo/hooks";
+import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
 import { Avatar } from "@repo/ui/box/Avatar";

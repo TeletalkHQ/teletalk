@@ -1,6 +1,8 @@
 "use client";
 
-import { useConfigs, useDialogState, usePing } from "@repo/hooks";
+import { useConfigs } from "@repo/hooks/useConfigs";
+import { useDialogState } from "@repo/hooks/useDialogState";
+import { usePing } from "@repo/hooks/usePing";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { useApiPhase } from "@repo/use-api";
 import isNumber from "lodash/isNumber";

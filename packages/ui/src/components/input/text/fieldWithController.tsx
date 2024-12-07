@@ -1,6 +1,6 @@
 "use client";
 
-import { Control } from "@repo/hooks";
+import { Control } from "@repo/hooks/useForm";
 import { Path, UseFormGetValues, useController } from "react-hook-form";
 import { ZodSchema } from "zod";
 

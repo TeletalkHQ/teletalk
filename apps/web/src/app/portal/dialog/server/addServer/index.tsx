@@ -1,12 +1,8 @@
 "use client";
 
-import {
-	Protocol,
-	Url,
-	useConfigs,
-	useDialogState,
-	usePing,
-} from "@repo/hooks";
+import { Protocol, Url, useConfigs } from "@repo/hooks/useConfigs";
+import { useDialogState } from "@repo/hooks/useDialogState";
+import { usePing } from "@repo/hooks/usePing";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { OnInputChange, OnSelectOnChange } from "@repo/ui/types";
 import { useApiPhase } from "@repo/use-api";

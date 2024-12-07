@@ -1,7 +1,7 @@
 import { EventSchema, GetOutput, IOName, _SocketResponse } from "@repo/schema";
 import { useEmitter } from "@repo/socket";
 
-import { useConfigs } from "../utils";
+import { useConfigs } from "../utils/useConfigs";
 
 export type UseMainEmitterParameters<T extends EventSchema> = {
 	schema: T;
