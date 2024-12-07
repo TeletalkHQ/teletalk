@@ -1,8 +1,11 @@
 "use client";
 
 import { useDialogState } from "@repo/hooks";
-import { Div, IconButton, Menu, MenuItem } from "@repo/ui";
-import { MoreVertIcon } from "@repo/ui/moreVert";
+import { Div } from "@repo/ui/box/div";
+import { Menu } from "@repo/ui/box/menu";
+import { MenuItem } from "@repo/ui/box/menuItem";
+import { IconButton } from "@repo/ui/button/icon";
+import { MoreVertIcon } from "@repo/ui/icons/moreVert";
 import { useState } from "react";
 
 export const ChatBarMenu = () => {

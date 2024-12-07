@@ -7,7 +7,8 @@ import {
 	useDialogState,
 	usePing,
 } from "@repo/hooks";
-import { DialogTemplate, OnInputChange, OnSelectOnChange } from "@repo/ui";
+import { DialogTemplate } from "@repo/ui/template/dialog";
+import { OnInputChange, OnSelectOnChange } from "@repo/ui/types";
 import { useApiPhase } from "@repo/use-api";
 import { enqueueSnackbar } from "notistack";
 import React, { useState } from "react";

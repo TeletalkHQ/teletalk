@@ -1,4 +1,6 @@
-import { Div, Span, Typography } from "@repo/ui";
+import { Div } from "@repo/ui/box/div";
+import { Span } from "@repo/ui/box/span";
+import { Typography } from "@repo/ui/typography/typography";
 
 export const Content = () => (
 	<Div

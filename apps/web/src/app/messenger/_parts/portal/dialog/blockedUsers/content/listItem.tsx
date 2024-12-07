@@ -2,8 +2,11 @@ import { userUtils } from "@repo/classes";
 import { useUserPublicInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
-import { Avatar, IconButton, ListItemButton, Span } from "@repo/ui";
-import { AccountBoxIcon } from "@repo/ui/accountBox";
+import { Avatar } from "@repo/ui/box/Avatar";
+import { ListItemButton } from "@repo/ui/box/listItemButton";
+import { Span } from "@repo/ui/box/span";
+import { IconButton } from "@repo/ui/button/icon";
+import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
 
 interface Props {
 	onItemLick: VoidNoArgs;

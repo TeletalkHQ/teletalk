@@ -1,4 +1,6 @@
-import { Flex, Grid, List } from "@repo/ui";
+import { Flex } from "@repo/ui/box/flex";
+import { Grid } from "@repo/ui/box/grid";
+import { List } from "@repo/ui/box/list";
 
 import { useGlobalStore } from "~/store/global";
 

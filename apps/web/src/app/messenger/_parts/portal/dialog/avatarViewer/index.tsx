@@ -1,5 +1,6 @@
 import { useDialogState } from "@repo/hooks";
-import { DialogTemplate, TripleAction } from "@repo/ui";
+import { DialogTemplate } from "@repo/ui/template/dialog";
+import { TripleAction } from "@repo/ui/template/tripleAction";
 
 import { Content } from "./content";
 

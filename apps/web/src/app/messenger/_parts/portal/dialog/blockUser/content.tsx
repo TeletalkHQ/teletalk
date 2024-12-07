@@ -1,5 +1,7 @@
 import { useUserPublicInfo } from "@repo/hooks";
-import { Div, Span, Typography } from "@repo/ui";
+import { Div } from "@repo/ui/box/div";
+import { Span } from "@repo/ui/box/span";
+import { Typography } from "@repo/ui/typography/typography";
 
 import { useUserStore } from "~/store";
 
@@ -13,14 +15,12 @@ export const Content: React.FC<Props> = () => {
 	} = useUserPublicInfo({ userId: selectedUserIdToBlock });
 
 	return (
-		<>
-			<Div style={{ textAlign: "center", fontSize: 18 }}>
-				<Span>Are you sure you want to</Span> <Typography>block</Typography>{" "}
-				<Typography>
-					{userPublicInfo.firstName} {userPublicInfo.lastName}
-				</Typography>
-				<Span>?</Span>
-			</Div>
-		</>
+		<Div style={{ textAlign: "center", fontSize: 18 }}>
+			<Span>Are you sure you want to</Span> <Typography>block</Typography>{" "}
+			<Typography>
+				{userPublicInfo.firstName} {userPublicInfo.lastName}
+			</Typography>
+			<Span>?</Span>
+		</Div>
 	);
 };

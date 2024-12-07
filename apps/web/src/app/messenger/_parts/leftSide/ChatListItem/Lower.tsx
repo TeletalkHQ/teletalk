@@ -1,6 +1,8 @@
 import { BaseSchema } from "@repo/schema";
-import { Div, Flex, Typography } from "@repo/ui";
-import { AccountBoxIcon } from "@repo/ui/accountBox";
+import { Div } from "@repo/ui/box/div";
+import { Flex } from "@repo/ui/box/flex";
+import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
+import { Typography } from "@repo/ui/typography/typography";
 
 interface Props {
 	messageText: BaseSchema.MessageText;

@@ -1,7 +1,7 @@
 import { DialogStore } from "@repo/store";
 import { VoidWithArg } from "@repo/types";
-import { List } from "@repo/ui";
-import { AccountBoxIcon } from "@repo/ui/accountBox";
+import { List } from "@repo/ui/box/list";
+import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
 
 import { ListItem, PrivacyAndSecurityListItem } from "./listItem";
 

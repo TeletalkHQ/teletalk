@@ -1,15 +1,13 @@
 import { VoidWithArg } from "@repo/types";
-import {
-	ElementName,
-	List,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
-} from "@repo/ui";
-import { CallOutlinedIcon } from "@repo/ui/callOutlined";
-import { LogoutOutlinedIcon } from "@repo/ui/logoutOutlined";
-import { SettingsOutlinedIcon } from "@repo/ui/settingsOutlined";
-import { GeneratedIcon } from "@repo/ui/utils";
+import { List } from "@repo/ui/box/list";
+import { ListItemButton } from "@repo/ui/box/listItemButton";
+import { ListItemIcon } from "@repo/ui/box/listItemIcon";
+import { ListItemText } from "@repo/ui/box/listItemText";
+import { CallOutlinedIcon } from "@repo/ui/icons/callOutlined";
+import { LogoutOutlinedIcon } from "@repo/ui/icons/logoutOutlined";
+import { SettingsOutlinedIcon } from "@repo/ui/icons/settingsOutlined";
+import { GeneratedIcon } from "@repo/ui/icons/utils";
+import { ElementName } from "@repo/ui/types";
 import { MouseEvent } from "react";
 
 type HTMLDivMouseEvent = MouseEvent<HTMLDivElement, globalThis.MouseEvent>;

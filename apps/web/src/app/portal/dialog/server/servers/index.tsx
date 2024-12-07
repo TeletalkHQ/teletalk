@@ -7,7 +7,7 @@ import {
 	useLoading,
 	usePing,
 } from "@repo/hooks";
-import { DialogTemplate } from "@repo/ui";
+import { DialogTemplate } from "@repo/ui/template/dialog";
 import merge from "lodash/merge";
 import { enqueueSnackbar } from "notistack";
 import React, { useEffect, useRef, useState } from "react";

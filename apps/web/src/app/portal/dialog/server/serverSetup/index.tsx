@@ -1,7 +1,7 @@
 "use client";
 
 import { useConfigs, useDialogState, usePing } from "@repo/hooks";
-import { DialogTemplate } from "@repo/ui";
+import { DialogTemplate } from "@repo/ui/template/dialog";
 import { useApiPhase } from "@repo/use-api";
 import isNumber from "lodash/isNumber";
 import { enqueueSnackbar } from "notistack";

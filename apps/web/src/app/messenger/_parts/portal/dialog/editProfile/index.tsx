@@ -1,6 +1,7 @@
 import { useDialogState, useUserInfo } from "@repo/hooks";
 import { useDialogStore } from "@repo/store";
-import { DialogTemplate, SingleAction } from "@repo/ui";
+import { DialogTemplate } from "@repo/ui/template/dialog";
+import { SingleAction } from "@repo/ui/template/singleAction";
 
 import { Content } from "./content";
 import { OnProfileItemClick } from "./content/ListItem";

@@ -1,6 +1,8 @@
 import { Control } from "@repo/hooks";
 import { FormSchema } from "@repo/schema";
-import { FirstName, Flex, Typography } from "@repo/ui";
+import { Flex } from "@repo/ui/box/flex";
+import { FirstName } from "@repo/ui/input/firstName";
+import { Typography } from "@repo/ui/typography/typography";
 import { useWatch } from "react-hook-form";
 
 interface Props {

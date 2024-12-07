@@ -7,18 +7,16 @@ import {
 	useVerify,
 } from "@repo/hooks";
 import { FormSchema, verifySignInCodeForm } from "@repo/schema";
-import {
-	Avatar,
-	Button,
-	Container,
-	Div,
-	Form,
-	IconButton,
-	SignInCode,
-	Typography,
-} from "@repo/ui";
-import { ArrowBackIcon } from "@repo/ui/arrowBack";
-import { VerifiedUserIcon } from "@repo/ui/verifiedUser";
+import { Avatar } from "@repo/ui/box/Avatar";
+import { Container } from "@repo/ui/box/container";
+import { Div } from "@repo/ui/box/div";
+import { Form } from "@repo/ui/box/form";
+import { Button } from "@repo/ui/button/button";
+import { IconButton } from "@repo/ui/button/icon";
+import { ArrowBackIcon } from "@repo/ui/icons/arrowBack";
+import { VerifiedUserIcon } from "@repo/ui/icons/verifiedUser";
+import { SignInCode } from "@repo/ui/input/signInCode";
+import { Typography } from "@repo/ui/typography/typography";
 import { useApiPhase } from "@repo/use-api";
 import { useFormState } from "react-hook-form";
 
@@ -75,7 +73,7 @@ const Verify = () => {
 	const onSubmit = handleSubmit(submitForm);
 
 	return (
-		<Form.Base onSubmit={onSubmit}>
+		<Form onSubmit={onSubmit}>
 			<Container maxWidth="xl">
 				<Div style={{ marginTop: 1 }}>
 					<IconButton onClick={handleBackToSignInClick}>
@@ -128,7 +126,7 @@ const Verify = () => {
 
 				<AuthFooter />
 			</Container>
-		</Form.Base>
+		</Form>
 	);
 };
 

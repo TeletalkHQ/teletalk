@@ -6,7 +6,8 @@ import { useConfigs } from "@repo/hooks";
 import { DialogStore, useDialogStore } from "@repo/store";
 import { TransitionName, VoidNoArgs } from "@repo/types";
 
-import { Dialog, DialogProps, Transitions } from "../../base";
+import { Dialog, DialogProps } from "../../box/dialog";
+import { Transitions } from "../../transition";
 import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";

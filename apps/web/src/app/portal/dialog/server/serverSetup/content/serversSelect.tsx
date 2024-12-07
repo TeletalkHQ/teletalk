@@ -1,6 +1,9 @@
 import { useConfigs } from "@repo/hooks";
 import { VoidWithArg } from "@repo/types";
-import { FormControl, InputLabel, MenuItem, Select } from "@repo/ui";
+import { FormControl } from "@repo/ui/box/formControl";
+import { MenuItem } from "@repo/ui/box/menuItem";
+import { InputLabel } from "@repo/ui/input/inputLabel";
+import { Select } from "@repo/ui/input/select";
 import isNumber from "lodash/isNumber";
 
 interface Props {

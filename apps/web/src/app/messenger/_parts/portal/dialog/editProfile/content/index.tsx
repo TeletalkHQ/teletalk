@@ -1,7 +1,7 @@
 import { userUtils } from "@repo/classes";
 import { useUserInfo } from "@repo/hooks";
 import type { VoidNoArgs } from "@repo/types";
-import { Flex } from "@repo/ui";
+import { Flex } from "@repo/ui/box/flex";
 
 import { Header } from "./Header";
 import { List } from "./List";

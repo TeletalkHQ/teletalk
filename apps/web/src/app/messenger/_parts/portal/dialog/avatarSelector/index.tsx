@@ -1,5 +1,6 @@
 import { useDialogState, useUpdateUserPublicInfo } from "@repo/hooks";
-import { DialogTemplate, DoubleAction } from "@repo/ui";
+import { DialogTemplate } from "@repo/ui/template/dialog";
+import { DoubleAction } from "@repo/ui/template/doubleAction";
 import { useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
 

@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui";
+import { Button } from "@repo/ui/button/button";
 import Image from "next/image";
 
 import styles from "./page.module.css";

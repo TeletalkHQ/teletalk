@@ -1,4 +1,4 @@
-import { Grid } from "@repo/ui";
+import { Grid } from "@repo/ui/box/grid";
 
 import { LeftSide } from "./leftSide";
 import { Portal } from "./portal";

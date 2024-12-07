@@ -1,7 +1,8 @@
 "use client";
 
 import { useConfigs } from "@repo/hooks";
-import { Link, Typography, TypographyProps } from "@repo/ui";
+import { Link } from "@repo/ui/box/link";
+import { Typography, TypographyProps } from "@repo/ui/typography/typography";
 
 interface Props extends TypographyProps {}
 

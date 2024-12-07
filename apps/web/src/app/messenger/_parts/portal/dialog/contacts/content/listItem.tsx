@@ -1,7 +1,11 @@
 import { useUserPublicInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
-import { Avatar, Div, Flex, ListItemButton, Typography } from "@repo/ui";
+import { Avatar } from "@repo/ui/box/Avatar";
+import { Div } from "@repo/ui/box/div";
+import { Flex } from "@repo/ui/box/flex";
+import { ListItemButton } from "@repo/ui/box/listItemButton";
+import { Typography } from "@repo/ui/typography/typography";
 
 import { GlobalStore } from "~/store";
 

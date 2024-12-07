@@ -1,18 +1,16 @@
 import { SubmitHandler, useForm, useSendMessage } from "@repo/hooks";
 import { FormSchema, messageInputForm } from "@repo/schema";
-import {
-	Div,
-	FieldWithController,
-	Flex,
-	Form,
-	IconButton,
-	Paper,
-	Progress,
-} from "@repo/ui";
-import { AttachFileIcon } from "@repo/ui/attachFile";
-import { EmojiEmotionsIcon } from "@repo/ui/emojiEmotions";
-import { MicNoneIcon } from "@repo/ui/micNone";
-import { TelegramIcon } from "@repo/ui/telegram";
+import { Div } from "@repo/ui/box/div";
+import { Flex } from "@repo/ui/box/flex";
+import { Form } from "@repo/ui/box/form";
+import { Paper } from "@repo/ui/box/paper";
+import { IconButton } from "@repo/ui/button/icon";
+import { AttachFileIcon } from "@repo/ui/icons/attachFile";
+import { EmojiEmotionsIcon } from "@repo/ui/icons/emojiEmotions";
+import { MicNoneIcon } from "@repo/ui/icons/micNone";
+import { TelegramIcon } from "@repo/ui/icons/telegram";
+import { FieldWithController } from "@repo/ui/input/fieldWithController";
+import { CircularProgress } from "@repo/ui/loadings/circular";
 import { useWatch } from "react-hook-form";
 
 export const MessageInput = () => {
@@ -48,7 +46,7 @@ export const MessageInput = () => {
 	const onSubmit = handleSubmit(submitForm);
 
 	return (
-		<Form.Base onSubmit={onSubmit}>
+		<Form onSubmit={onSubmit}>
 			<Paper style={{ borderRadius: 0 }}>
 				<Flex ai="center" gap={1} jc="space-between" style={{ padding: 5 }}>
 					<Div>
@@ -78,7 +76,7 @@ export const MessageInput = () => {
 						{messageText ? (
 							<IconButton disabled={isLoading} type="submit">
 								{isLoading ? (
-									<Progress.Circular />
+									<CircularProgress />
 								) : (
 									<TelegramIcon color="primary" />
 								)}
@@ -97,6 +95,6 @@ export const MessageInput = () => {
 					</Div>
 				</Flex>
 			</Paper>
-		</Form.Base>
+		</Form>
 	);
 };

@@ -1,5 +1,8 @@
 import { useUserInfo } from "@repo/hooks";
-import { Avatar, Div, Flex, Typography } from "@repo/ui";
+import { Avatar } from "@repo/ui/box/Avatar";
+import { Div } from "@repo/ui/box/div";
+import { Flex } from "@repo/ui/box/flex";
+import { Typography } from "@repo/ui/typography/typography";
 
 export const ProfileOverview: React.FC = () => {
 	const {

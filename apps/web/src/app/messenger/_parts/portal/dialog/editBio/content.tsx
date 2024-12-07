@@ -1,6 +1,8 @@
 import { Control } from "@repo/hooks";
 import { FormSchema } from "@repo/schema";
-import { FieldWithController, Flex, Typography } from "@repo/ui";
+import { Flex } from "@repo/ui/box/flex";
+import { FieldWithController } from "@repo/ui/input/fieldWithController";
+import { Typography } from "@repo/ui/typography/typography";
 
 interface Props {
 	control: Control<FormSchema["updateBio"]>;

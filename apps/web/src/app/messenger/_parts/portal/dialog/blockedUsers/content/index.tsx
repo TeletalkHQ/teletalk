@@ -1,4 +1,4 @@
-import { List } from "@repo/ui";
+import { List } from "@repo/ui/box/list";
 
 interface Props {}
 

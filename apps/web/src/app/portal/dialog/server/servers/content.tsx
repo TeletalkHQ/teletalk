@@ -1,6 +1,9 @@
 import { ServerTestResult } from "@repo/hooks";
 import { VoidWithArg } from "@repo/types";
-import { List, ListItemButton, ListItemText, Span } from "@repo/ui";
+import { List } from "@repo/ui/box/list";
+import { ListItemButton } from "@repo/ui/box/listItemButton";
+import { ListItemText } from "@repo/ui/box/listItemText";
+import { Span } from "@repo/ui/box/span";
 
 import { ServerStatusIndicator } from "../serverStatusIndicator";
 

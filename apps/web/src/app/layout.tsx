@@ -1,4 +1,5 @@
-import { RootLayout, themes } from "@repo/ui";
+import { RootLayout } from "@repo/ui/layouts/root";
+import { webThemes } from "@repo/ui/themes/web";
 import localFont from "next/font/local";
 
 import "./globals.css";
@@ -31,7 +32,7 @@ export default function Layout({
 					forceThemeName="dark"
 					shouldShowQueryDevtools
 					shouldUseBaseline
-					themes={themes.web}
+					themes={webThemes}
 				>
 					<DialogContainer />
 					{children}

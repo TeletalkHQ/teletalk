@@ -1,14 +1,14 @@
 import { DialogStore } from "@repo/store";
 import { VoidNoArgs } from "@repo/types";
 import { VoidWithArg } from "@repo/types";
+import { Flex } from "@repo/ui/box/flex";
 import {
-	ElementLabel,
-	Flex,
 	ListItemButton,
 	ListItemButtonProps,
-	Span,
-} from "@repo/ui";
-import { GeneratedIcon } from "@repo/ui/utils";
+} from "@repo/ui/box/listItemButton";
+import { Span } from "@repo/ui/box/span";
+import { GeneratedIcon } from "@repo/ui/icons/utils";
+import { ElementLabel } from "@repo/ui/types";
 
 interface Props extends ListItemButtonProps {
 	label: ElementLabel;

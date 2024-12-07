@@ -1,6 +1,7 @@
 import { useDialogState, useForm, useUpdateUserPublicInfo } from "@repo/hooks";
 import { FormSchema, updateUsernameForm } from "@repo/schema";
-import { DialogTemplate, DoubleAction } from "@repo/ui";
+import { DialogTemplate } from "@repo/ui/template/dialog";
+import { DoubleAction } from "@repo/ui/template/doubleAction";
 
 import { Content } from "./content";
 import { Title } from "./title";

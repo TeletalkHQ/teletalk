@@ -1,13 +1,11 @@
 import { VoidNoArgs } from "@repo/types";
-import {
-	Div,
-	Flex,
-	IconButton,
-	InputAdornment,
-	Paper,
-	TextField,
-} from "@repo/ui";
-import { AccountBoxIcon } from "@repo/ui/accountBox";
+import { Div } from "@repo/ui/box/div";
+import { Flex } from "@repo/ui/box/flex";
+import { Paper } from "@repo/ui/box/paper";
+import { IconButton } from "@repo/ui/button/icon";
+import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
+import { InputAdornment } from "@repo/ui/input/inputAdornment";
+import { TextField } from "@repo/ui/input/textField";
 
 interface Props {
 	onDrawerIconClick: VoidNoArgs;

@@ -1,14 +1,11 @@
 import { ServerAvailabilityStatusType } from "@repo/hooks";
-import {
-	Flex,
-	FormControl,
-	InputLabel,
-	MenuItem,
-	OnInputChange,
-	OnSelectOnChange,
-	Select,
-	TextField,
-} from "@repo/ui";
+import { Flex } from "@repo/ui/box/flex";
+import { FormControl } from "@repo/ui/box/formControl";
+import { MenuItem } from "@repo/ui/box/menuItem";
+import { InputLabel } from "@repo/ui/input/inputLabel";
+import { Select } from "@repo/ui/input/select";
+import { TextField } from "@repo/ui/input/textField";
+import { OnInputChange, OnSelectOnChange } from "@repo/ui/types";
 
 import { ServerAvailabilityStatus } from "../serverAvailabilityStatus";
 

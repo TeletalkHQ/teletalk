@@ -1,6 +1,6 @@
 import { ServerAvailabilityStatusType } from "@repo/hooks";
 import { VoidNoArgs } from "@repo/types";
-import { Button } from "@repo/ui";
+import { Button } from "@repo/ui/button/button";
 
 interface Props {
 	disabled: boolean;

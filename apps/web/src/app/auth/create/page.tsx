@@ -7,19 +7,17 @@ import {
 	useForm,
 } from "@repo/hooks";
 import { FormSchema, createNewUserForm } from "@repo/schema";
-import {
-	Button,
-	Container,
-	Div,
-	FirstName,
-	Flex,
-	Form,
-	IconButton,
-	LastName,
-	Typography,
-} from "@repo/ui";
-import { AccountCircleOutlinedIcon } from "@repo/ui/accountCircleOutlined";
-import { ArrowBackIcon } from "@repo/ui/arrowBack";
+import { Container } from "@repo/ui/box/container";
+import { Div } from "@repo/ui/box/div";
+import { Flex } from "@repo/ui/box/flex";
+import { Form } from "@repo/ui/box/form";
+import { Button } from "@repo/ui/button/button";
+import { IconButton } from "@repo/ui/button/icon";
+import { AccountCircleOutlinedIcon } from "@repo/ui/icons/accountCircleOutlined";
+import { ArrowBackIcon } from "@repo/ui/icons/arrowBack";
+import { FirstName } from "@repo/ui/input/firstName";
+import { LastName } from "@repo/ui/input/lastName";
+import { Typography } from "@repo/ui/typography/typography";
 import { useApiPhase } from "@repo/use-api";
 import { useFormState } from "react-hook-form";
 
@@ -56,7 +54,7 @@ const Create = () => {
 	const onSubmit = handleSubmit(submitForm);
 
 	return (
-		<Form.Base onSubmit={onSubmit}>
+		<Form onSubmit={onSubmit}>
 			<Container mw="xl">
 				<Div
 					style={{
@@ -95,7 +93,7 @@ const Create = () => {
 
 				<AuthFooter />
 			</Container>
-		</Form.Base>
+		</Form>
 	);
 };
 

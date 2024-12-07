@@ -1,6 +1,7 @@
 import { ServerAvailabilityStatusType } from "@repo/hooks";
 import { VoidNoArgs, VoidWithArg } from "@repo/types";
-import { Button, Flex } from "@repo/ui";
+import { Flex } from "@repo/ui/box/flex";
+import { Button } from "@repo/ui/button/button";
 
 import { ServerAvailabilityStatus } from "../../serverAvailabilityStatus";
 import { AddServerButton } from "./addServerButton";

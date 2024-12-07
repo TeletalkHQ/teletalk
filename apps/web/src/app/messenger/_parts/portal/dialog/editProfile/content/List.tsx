@@ -1,4 +1,4 @@
-import { AccountBoxIcon } from "@repo/ui/accountBox";
+import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
 
 import { EditProfileListItem, ListItem, OnProfileItemClick } from "./ListItem";
 

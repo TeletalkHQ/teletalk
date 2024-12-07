@@ -1,7 +1,10 @@
 import { useUserPublicInfo } from "@repo/hooks";
 import { BaseSchema } from "@repo/schema";
 import { VoidNoArgs } from "@repo/types";
-import { Avatar, Flex, ListItemAvatar, ListItemButton } from "@repo/ui";
+import { Avatar } from "@repo/ui/box/Avatar";
+import { Flex } from "@repo/ui/box/flex";
+import { ListItemAvatar } from "@repo/ui/box/listItemAvatar";
+import { ListItemButton } from "@repo/ui/box/listItemButton";
 
 import { Lower } from "./Lower";
 import { Upper } from "./Upper";

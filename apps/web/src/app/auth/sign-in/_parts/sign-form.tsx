@@ -7,17 +7,17 @@ import {
 	useSignIn,
 } from "@repo/hooks";
 import { FormSchema, signInForm } from "@repo/schema";
+import { Div } from "@repo/ui/box/div";
+import { Flex } from "@repo/ui/box/flex";
+import { Form } from "@repo/ui/box/form";
+import { Button } from "@repo/ui/button/button";
+import { CountryCode } from "@repo/ui/input/countryCode";
 import {
-	Button,
-	CountryCode,
 	CountrySelector,
-	Div,
-	Flex,
-	Form,
-	PhoneNumber,
 	SelectedCountry,
-	Typography,
-} from "@repo/ui";
+} from "@repo/ui/input/countrySelector";
+import { PhoneNumber } from "@repo/ui/input/phoneNumber";
+import { Typography } from "@repo/ui/typography/typography";
 import { useApiPhase } from "@repo/use-api";
 import { PropsWithChildren } from "react";
 import { useWatch } from "react-hook-form";
@@ -76,7 +76,7 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 	const onSubmit = handleSubmit(submitSignInForm);
 
 	return (
-		<Form.Base
+		<Form
 			style={{
 				display: "flex",
 				flexDirection: "column",
@@ -113,6 +113,6 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 					Next
 				</Button>
 			</Div>
-		</Form.Base>
+		</Form>
 	);
 };

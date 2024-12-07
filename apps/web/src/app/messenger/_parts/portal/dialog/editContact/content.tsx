@@ -1,6 +1,9 @@
 import { Control } from "@repo/hooks";
 import { FormSchema } from "@repo/schema";
-import { Div, FirstName, Flex, LastName } from "@repo/ui";
+import { Div } from "@repo/ui/box/div";
+import { Flex } from "@repo/ui/box/flex";
+import { FirstName } from "@repo/ui/input/firstName";
+import { LastName } from "@repo/ui/input/lastName";
 
 interface Props {
 	control: Control<FormSchema["updateContact"]>;

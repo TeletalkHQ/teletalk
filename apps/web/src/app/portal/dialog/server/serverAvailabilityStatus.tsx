@@ -1,5 +1,6 @@
 import { ServerAvailabilityStatusType } from "@repo/hooks";
-import { Flex, Span } from "@repo/ui";
+import { Flex } from "@repo/ui/box/flex";
+import { Span } from "@repo/ui/box/span";
 
 import { ServerStatusIndicator } from "./serverStatusIndicator";
 

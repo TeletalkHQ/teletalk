@@ -1,6 +1,8 @@
 import { BaseSchema } from "@repo/schema";
 import type { VoidNoArgs } from "@repo/types";
-import { Avatar, Flex, Typography } from "@repo/ui";
+import { Avatar } from "@repo/ui/box/Avatar";
+import { Flex } from "@repo/ui/box/flex";
+import { Typography } from "@repo/ui/typography/typography";
 
 interface Props {
 	fullName: string;

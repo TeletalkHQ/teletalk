@@ -1,5 +1,8 @@
 import { DialogStore, dialogNames, useDialogStore } from "@repo/store";
-import { Div, Divider, ElementName, SwipeableDrawer } from "@repo/ui";
+import { Div } from "@repo/ui/box/div";
+import { Divider } from "@repo/ui/box/divider";
+import { SwipeableDrawer } from "@repo/ui/box/swipeableDrawer";
+import { ElementName } from "@repo/ui/types";
 import { KeyboardEvent, SyntheticEvent } from "react";
 
 import { useGlobalStore } from "~/store";

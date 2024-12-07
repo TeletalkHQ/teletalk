@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material";
-import { CircleIcon } from "@repo/ui/circle";
+import { CircleIcon } from "@repo/ui/icons/circle";
 
 const SignIn = () => {
 	return (
