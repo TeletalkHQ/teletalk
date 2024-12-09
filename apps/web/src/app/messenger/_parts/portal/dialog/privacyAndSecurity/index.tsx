@@ -1,5 +1,6 @@
 import { useDialogState } from "@repo/hooks/useDialogState";
-import { DialogStore, useDialogStore } from "@repo/store";
+import type { DialogStore } from "@repo/store";
+import { useDialogStore } from "@repo/store";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { SingleAction } from "@repo/ui/template/singleAction";
 

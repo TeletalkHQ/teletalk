@@ -9,4 +9,4 @@ export const useChatStore = createStore<ChatStore.Store>((set) => ({
 	...handlers(set),
 }));
 
-export { ChatStore };
+export { type ChatStore };

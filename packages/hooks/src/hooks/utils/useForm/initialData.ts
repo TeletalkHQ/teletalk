@@ -1,6 +1,6 @@
 import { maker } from "@repo/classes";
-import { FormSchema, FormSchemaName } from "@repo/schema";
-import { z } from "zod";
+import type { FormSchema, FormSchemaName } from "@repo/schema";
+import type { z } from "zod";
 
 export const formInitialData = {
 	addContact: maker.emptyContact(),

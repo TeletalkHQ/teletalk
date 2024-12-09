@@ -1,8 +1,8 @@
 import { IoAdapter } from "@nestjs/platform-socket.io";
 import { createAdapter } from "@socket.io/redis-adapter";
-import { CorsOptions } from "cors";
+import type { CorsOptions } from "cors";
 import { createClient } from "redis";
-import { ServerOptions } from "socket.io";
+import type { ServerOptions } from "socket.io";
 
 export class RedisIoAdapter extends IoAdapter {
 	private adapterConstructor: ReturnType<typeof createAdapter>;

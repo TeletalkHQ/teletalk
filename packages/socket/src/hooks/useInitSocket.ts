@@ -4,8 +4,8 @@ import { useCallback, useContext, useLayoutEffect } from "react";
 import { io } from "socket.io-client";
 
 import { IoContext } from "../providers";
-import { SocketItem } from "../providers/io/context";
-import { BaseArg } from "./types";
+import { type SocketItem } from "../providers/io/context";
+import { type BaseArg } from "./types";
 
 export const useInitSocket = ({
 	baseUrl,

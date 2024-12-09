@@ -1,5 +1,5 @@
-import { StoreSetFn } from "@repo/store";
-import { VoidWithArg } from "@repo/types";
+import { type StoreSetFn } from "@repo/store";
+import { type VoidWithArg } from "@repo/types";
 
 export interface State {
 	selectedChatId: string | undefined;

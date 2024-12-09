@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 import { Strategy } from "passport-local";
 
-import { SessionService } from "~/modules/session/session.service";
+import type { SessionService } from "~/modules/session/session.service";
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {

@@ -1,5 +1,6 @@
+import type {
+	ListItemTextProps } from "@mui/material";
 import {
-	ListItemTextProps,
 	ListItemText as MuiListItemText,
 } from "@mui/material";
 

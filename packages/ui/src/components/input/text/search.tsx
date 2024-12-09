@@ -1,6 +1,6 @@
-import { ZodSchema } from "zod";
+import type { ZodSchema } from "zod";
 
-import { FieldWithValidatorWithOptionalNameProps } from "./fieldWithController";
+import type { FieldWithValidatorWithOptionalNameProps } from "./fieldWithController";
 import { TextField } from "./textField";
 
 type Props<T extends ZodSchema> = FieldWithValidatorWithOptionalNameProps<T>;

@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { extractor } from "@repo/classes";
-import { BaseSchema } from "@repo/schema";
-import { Model } from "mongoose";
+import { type BaseSchema } from "@repo/schema";
+import type { Model } from "mongoose";
 
-import { EntityFilterer } from "~/types";
+import type { EntityFilterer } from "~/types";
 
-import { ErrorStoreService } from "../error-store/error-store.service";
+import type { ErrorStoreService } from "../error-store/error-store.service";
 import { User } from "./user.entity";
 
 export type DBUser = EntityFilterer<User>;

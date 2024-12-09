@@ -1,7 +1,7 @@
-import { VoidNoArgs } from "@repo/types";
+import { type VoidNoArgs } from "@repo/types";
 
-import { StoreSetFn } from "../../utils";
-import { dialogNames } from "./initialState";
+import { type StoreSetFn } from "../../utils";
+import type { dialogNames } from "./initialState";
 
 export type DialogName = (typeof dialogNames)[number];
 

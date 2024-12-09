@@ -1,6 +1,6 @@
-import { SvgIconProps, SvgIconTypeMap } from "@mui/material";
+import type { SvgIconProps, SvgIconTypeMap } from "@mui/material";
 import type { OverridableComponent } from "@mui/material/OverridableComponent";
-import { FC } from "react";
+import type { FC } from "react";
 
 export type SvgElement = React.FC<React.SVGProps<SVGSVGElement>>;
 

@@ -1,7 +1,7 @@
-import { PickFromUnion } from "@repo/types";
-import { ZodUndefined, z } from "zod";
+import { type PickFromUnion } from "@repo/types";
+import type { ZodUndefined, z } from "zod";
 
-import { IOName, IOSchema } from "../schema/api/io";
+import { type IOName, type IOSchema } from "../schema/api/io";
 
 export type HTTPRootPath =
 	| "auth"

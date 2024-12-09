@@ -1,5 +1,6 @@
+import type {
+	EventSchema } from "@repo/schema";
 import {
-	EventSchema,
 	addBlockEvent,
 	addContactEvent,
 	disconnectEvent,
@@ -21,9 +22,10 @@ import {
 	updateContactEvent,
 	updateUserPublicInfoEvent,
 } from "@repo/schema";
-import { Socket } from "socket.io-client";
+import type { Socket } from "socket.io-client";
 
-import { EventHandlerOptions, eventHandler } from "@/classes";
+import type { EventHandlerOptions } from "@/classes";
+import { eventHandler } from "@/classes";
 
 export const eventHandlerMaker = <T extends EventSchema>(schema: T) => {
 	return (socket: Socket, options?: EventHandlerOptions) => {

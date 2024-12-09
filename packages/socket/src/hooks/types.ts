@@ -1,9 +1,9 @@
-import { SocketMethods } from "@repo/schema";
-import { VoidWithArg } from "@repo/types";
-import { Socket } from "socket.io-client";
-import { ZodSchema, z } from "zod";
+import { type SocketMethods } from "@repo/schema";
+import { type VoidWithArg } from "@repo/types";
+import type { Socket } from "socket.io-client";
+import type { ZodSchema, z } from "zod";
 
-import { SocketOptions } from "../providers";
+import { type SocketOptions } from "../providers";
 
 export type BaseArg = {
 	baseUrl: string;

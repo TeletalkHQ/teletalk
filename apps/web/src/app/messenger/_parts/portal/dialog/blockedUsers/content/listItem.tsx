@@ -1,7 +1,7 @@
 import { userUtils } from "@repo/classes";
 import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
-import { BaseSchema } from "@repo/schema";
-import { VoidNoArgs } from "@repo/types";
+import { type BaseSchema } from "@repo/schema";
+import { type VoidNoArgs } from "@repo/types";
 import { Avatar } from "@repo/ui/box/Avatar";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
 import { Span } from "@repo/ui/box/span";

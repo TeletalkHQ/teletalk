@@ -1,4 +1,4 @@
-import { HTTPRouteName } from "@repo/schema";
+import type { HTTPRouteName } from "@repo/schema";
 
 import { defaultPhase, useApiPhaseStore } from "../store";
 

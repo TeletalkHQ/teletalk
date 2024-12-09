@@ -1,6 +1,6 @@
 import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
 
-import { SettingsList } from "../types";
+import { type SettingsList } from "../types";
 
 export const settingsList: SettingsList = [
 	{

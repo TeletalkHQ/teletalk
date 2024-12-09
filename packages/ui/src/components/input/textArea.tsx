@@ -1,4 +1,5 @@
-import { FieldInputBaseProps, TextField } from "./text/textField";
+import type { FieldInputBaseProps } from "./text/textField";
+import { TextField } from "./text/textField";
 
 interface Props extends Omit<FieldInputBaseProps, "multiline"> {}
 

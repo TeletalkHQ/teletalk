@@ -1,4 +1,4 @@
-import { AutocompleteRenderInputParams } from "@mui/material";
+import type { AutocompleteRenderInputParams } from "@mui/material";
 
 import { TextField } from "../../text/textField";
 

@@ -1,9 +1,9 @@
 import { logger } from "@repo/logger";
-import { HTTPMethod, IOSchema } from "@repo/schema";
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import type { HTTPMethod, IOSchema } from "@repo/schema";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
 import { enqueueSnackbar } from "notistack";
 
-import { HandlerConfig, HandlerOptions } from "./types";
+import type { HandlerConfig, HandlerOptions } from "./types";
 
 export const getDefaultHandlerOptions = <
 	T extends IOSchema,

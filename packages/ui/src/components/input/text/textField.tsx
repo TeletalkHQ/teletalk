@@ -1,6 +1,6 @@
-import { TextField as TextFieldMui, TextFieldProps } from "@mui/material";
+import { TextField as TextFieldMui, type TextFieldProps } from "@mui/material";
 
-import { ElementLabel } from "../../../types";
+import { type ElementLabel } from "../../../types";
 
 export type FieldInputBaseProps = TextFieldProps & {
 	id?: string;

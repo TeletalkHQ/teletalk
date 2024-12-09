@@ -1,5 +1,5 @@
 import { maker } from "@repo/classes";
-import { BaseSchema, getUserPublicInfoEvent } from "@repo/schema";
+import { type BaseSchema, getUserPublicInfoEvent } from "@repo/schema";
 
 import { createEmitterInitialData, useMainEmitter } from "../useMainEmitter";
 import { queryKeys, useMainQuery } from "../useMainQuery";

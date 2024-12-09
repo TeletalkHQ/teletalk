@@ -1,7 +1,7 @@
 import { useAddContact } from "@repo/hooks/useAddContact";
 import { useDialogState } from "@repo/hooks/useDialogState";
-import { SubmitHandler, useForm } from "@repo/hooks/useForm";
-import { FormSchema, addContactForm } from "@repo/schema";
+import { type SubmitHandler, useForm } from "@repo/hooks/useForm";
+import { type FormSchema, addContactForm } from "@repo/schema";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { DoubleAction } from "@repo/ui/template/doubleAction";
 

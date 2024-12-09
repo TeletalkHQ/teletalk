@@ -1,4 +1,4 @@
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 
 type Arg = { userId: BaseSchema.UserId | undefined };
 

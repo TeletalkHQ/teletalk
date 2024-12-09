@@ -1,9 +1,9 @@
-import { DialogStore } from "@repo/store";
-import { VoidWithArg } from "@repo/types";
+import type { DialogStore } from "@repo/store";
+import { type VoidWithArg } from "@repo/types";
 import { List } from "@repo/ui/box/list";
 import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
 
-import { ListItem, PrivacyAndSecurityListItem } from "./listItem";
+import { ListItem, type PrivacyAndSecurityListItem } from "./listItem";
 
 interface Props {
 	onItemClick: VoidWithArg<DialogStore.DialogName>;

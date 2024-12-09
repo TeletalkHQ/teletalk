@@ -1,5 +1,5 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 
 import { StoreService } from "../store/store.service";
 

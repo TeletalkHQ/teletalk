@@ -1,4 +1,4 @@
-import { CheckboxProps, Checkbox as MuiCheckbox } from "@mui/material";
+import { type CheckboxProps, Checkbox as MuiCheckbox } from "@mui/material";
 
 interface Props extends CheckboxProps {}
 

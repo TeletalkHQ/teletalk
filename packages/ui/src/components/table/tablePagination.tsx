@@ -1,17 +1,18 @@
 "use client";
 
+import type {
+	SelectProps } from "@mui/material";
 import {
 	Box,
 	MenuItem,
 	Pagination,
+	Paper,
 	Select,
-	SelectProps,
 	useTheme,
 } from "@mui/material";
-import Paper from "@mui/material/Paper";
 
 import { useTablePagination } from "../../hooks";
-import { PaginationStore } from "../../store";
+import type { PaginationStore } from "../../store";
 
 interface Props {
 	tableName: PaginationStore.TableName;

@@ -1,4 +1,5 @@
-import { ListItemProps, ListItem as MuiListItem } from "@mui/material";
+import type { ListItemProps } from "@mui/material";
+import { ListItem as MuiListItem } from "@mui/material";
 
 interface Props extends ListItemProps {
 	fullWidth?: boolean;

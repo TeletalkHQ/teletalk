@@ -1,4 +1,4 @@
-import { EventGenerator, EventName } from "../../../classes";
+import { EventGenerator, type EventName } from "../../../classes";
 import {
 	addBlockIO,
 	addContactIO,

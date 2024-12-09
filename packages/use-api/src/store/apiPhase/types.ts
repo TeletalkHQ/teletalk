@@ -1,6 +1,6 @@
-import { HTTPRouteName } from "@repo/schema";
-import { StoreSetFn } from "@repo/store";
-import { VoidWithArg } from "@repo/types";
+import type { HTTPRouteName } from "@repo/schema";
+import type { StoreSetFn } from "@repo/store";
+import { type VoidWithArg } from "@repo/types";
 
 export interface LoadingItem {
 	isLoading: boolean;

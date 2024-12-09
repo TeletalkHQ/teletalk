@@ -1,6 +1,6 @@
 "use client";
 
-import { StringMap } from "@repo/types";
+import { type StringMap } from "@repo/types";
 import { useRouter } from "next/navigation";
 
 export type Path =

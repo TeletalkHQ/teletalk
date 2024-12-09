@@ -1,4 +1,4 @@
-import { BaseArg } from "./types";
+import { type BaseArg } from "./types";
 import { useInitSocket } from "./useInitSocket";
 
 export const useSocket = ({ baseUrl, namespace, options = {} }: BaseArg) => {

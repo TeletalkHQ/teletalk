@@ -1,5 +1,5 @@
-import { ServerTestResult } from "@repo/hooks/usePing";
-import { VoidWithArg } from "@repo/types";
+import { type ServerTestResult } from "@repo/hooks/usePing";
+import { type VoidWithArg } from "@repo/types";
 import { List } from "@repo/ui/box/list";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
 import { ListItemText } from "@repo/ui/box/listItemText";

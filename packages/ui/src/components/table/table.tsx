@@ -1,22 +1,22 @@
 "use client";
 
 import { Table as TableBase, TableContainer } from "@mui/material";
-import { MouseEvent, useMemo, useState } from "react";
+import { type MouseEvent, useMemo, useState } from "react";
 
-import { PaginationStore } from "../../store";
+import type { PaginationStore } from "../../store";
 import { TBody } from "./tBody";
-import { AdvTHead, GetHeadersType } from "./tHead";
-import { CellValueComponents } from "./tRow";
+import { AdvTHead, type GetHeadersType } from "./tHead";
+import { type CellValueComponents } from "./tRow";
 import { TablePagination } from "./tablePagination";
 import {
-	OnTRowClick,
-	Order,
-	TBaseProps,
-	TBodyProps,
-	TContainerProps,
-	THeadProps,
-	TRowProps,
-	TableData,
+	type OnTRowClick,
+	type Order,
+	type TBaseProps,
+	type TBodyProps,
+	type TContainerProps,
+	type THeadProps,
+	type TRowProps,
+	type TableData,
 } from "./types";
 
 // ? ExtraFields is the data which is not going to render in the table

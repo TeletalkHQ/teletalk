@@ -1,6 +1,10 @@
 import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
 
-import { EditProfileListItem, ListItem, OnProfileItemClick } from "./ListItem";
+import {
+	type EditProfileListItem,
+	ListItem,
+	type OnProfileItemClick,
+} from "./ListItem";
 
 interface Props {
 	bio: string;

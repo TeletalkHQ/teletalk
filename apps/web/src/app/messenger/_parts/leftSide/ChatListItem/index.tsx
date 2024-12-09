@@ -1,6 +1,6 @@
 import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
-import { BaseSchema } from "@repo/schema";
-import { VoidNoArgs } from "@repo/types";
+import { type BaseSchema } from "@repo/schema";
+import { type VoidNoArgs } from "@repo/types";
 import { Avatar } from "@repo/ui/box/Avatar";
 import { Flex } from "@repo/ui/box/flex";
 import { ListItemAvatar } from "@repo/ui/box/listItemAvatar";

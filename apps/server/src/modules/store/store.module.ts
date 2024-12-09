@@ -1,5 +1,6 @@
-import { Global, Module, OnApplicationShutdown } from "@nestjs/common";
-import { ModuleRef } from "@nestjs/core";
+import type { OnApplicationShutdown } from "@nestjs/common";
+import { Global, Module } from "@nestjs/common";
+import type { ModuleRef } from "@nestjs/core";
 import { createClient } from "redis";
 
 import { ConfigModule } from "~/modules/config/config.module";

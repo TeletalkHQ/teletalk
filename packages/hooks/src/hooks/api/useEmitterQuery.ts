@@ -1,5 +1,5 @@
-import { EventSchema } from "@repo/schema";
-import {
+import type { EventSchema } from "@repo/schema";
+import type {
 	DefaultError,
 	DefinedInitialDataOptions,
 	DefinedUseQueryResult,
@@ -10,7 +10,8 @@ import {
 	UseQueryResult,
 } from "@tanstack/react-query";
 
-import { UseMainEmitterParameters, useMainEmitter } from "./useMainEmitter";
+import type { UseMainEmitterParameters } from "./useMainEmitter";
+import { useMainEmitter } from "./useMainEmitter";
 import { useMainQuery } from "./useMainQuery";
 
 export function useEmitterQuery<

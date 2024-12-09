@@ -1,4 +1,4 @@
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 import isEqual from "lodash/isEqual";
 
 class DataUsageManager {

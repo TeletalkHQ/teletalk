@@ -1,6 +1,6 @@
 import { Box, TableCell } from "@mui/material";
 
-import { TCellProps } from "./types";
+import { type TCellProps } from "./types";
 
 interface Props extends TCellProps {}
 

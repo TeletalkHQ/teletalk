@@ -1,11 +1,12 @@
+import type {
+	OnGatewayInit } from "@nestjs/websockets";
 import {
-	OnGatewayInit,
 	WebSocketGateway,
 	WebSocketServer,
 } from "@nestjs/websockets";
-import { Server } from "socket.io";
+import type { Server } from "socket.io";
 
-import { SessionService } from "../session/session.service";
+import type { SessionService } from "../session/session.service";
 
 @WebSocketGateway()
 export class AuthGateway implements OnGatewayInit {

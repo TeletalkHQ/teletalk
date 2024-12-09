@@ -1,4 +1,4 @@
-import { Handlers, SetState } from "./types";
+import type { Handlers, SetState } from "./types";
 
 export const handlers: (set: SetState) => Handlers = (set) => ({
 	setContextMenu(contextMenuState) {

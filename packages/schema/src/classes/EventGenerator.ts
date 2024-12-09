@@ -1,6 +1,6 @@
-import { PickFromUnion } from "@repo/types";
+import { type PickFromUnion } from "@repo/types";
 
-import { IOName, IOSchema } from "../schema";
+import { type IOName, type IOSchema } from "../schema";
 
 export type EventName = PickFromUnion<
 	IOName,

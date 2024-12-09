@@ -1,4 +1,10 @@
-import { DynamicIcon, DynamicIconProps, MuiIconType } from "./dynamicIcon";
+import { type JSX } from "react";
+
+import {
+	DynamicIcon,
+	type DynamicIconProps,
+	type MuiIconType,
+} from "./dynamicIcon";
 
 export type IconType = "svg" | "mui";
 

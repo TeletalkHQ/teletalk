@@ -2,6 +2,6 @@
 	"$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/nodemon.json",
 	"watch": ["src"],
 	"ignore": ["./testSrc/**"],
-	"exec": "node --no-warnings --loader ./loader.js",
+	"exec": "bun",
 	"ext": "ts,json"
 }

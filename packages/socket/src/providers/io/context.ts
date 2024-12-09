@@ -1,10 +1,11 @@
 "use client";
 
 import { createContext } from "react";
+import type {
+	Socket } from "socket.io-client";
 import {
-	ManagerOptions,
-	Socket,
-	SocketOptions as SocketOptions_pkg,
+	type ManagerOptions,
+	type SocketOptions as SocketOptions_pkg,
 } from "socket.io-client";
 
 export type SocketOptions = Partial<ManagerOptions & SocketOptions_pkg>;

@@ -1,4 +1,4 @@
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 

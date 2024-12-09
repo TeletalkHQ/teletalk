@@ -1,13 +1,13 @@
 import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
-import { BaseSchema } from "@repo/schema";
-import { VoidNoArgs } from "@repo/types";
+import { type BaseSchema } from "@repo/schema";
+import { type VoidNoArgs } from "@repo/types";
 import { Avatar } from "@repo/ui/box/Avatar";
 import { Div } from "@repo/ui/box/div";
 import { Flex } from "@repo/ui/box/flex";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
 import { Typography } from "@repo/ui/typography/typography";
 
-import { GlobalStore } from "~/store";
+import { type GlobalStore } from "~/store";
 
 interface Props {
 	fullName: string;

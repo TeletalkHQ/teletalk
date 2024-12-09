@@ -1,4 +1,5 @@
-import { PaginationStore, usePaginationStore } from "../store";
+import type { PaginationStore } from "../store";
+import { usePaginationStore } from "../store";
 
 export const useTablePagination = (name: PaginationStore.TableName) => {
 	const paginationStore = usePaginationStore();

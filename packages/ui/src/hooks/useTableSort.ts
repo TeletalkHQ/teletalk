@@ -1,15 +1,15 @@
 "use client";
 
 import {
-	TableBodyTypeMap,
-	TableCellProps,
-	TableContainerProps,
-	TableHeadProps,
-	TableProps,
-	TableRowProps,
+	type TableBodyTypeMap,
+	type TableCellProps,
+	type TableContainerProps,
+	type TableHeadProps,
+	type TableProps,
+	type TableRowProps,
 } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
-import { MouseEvent, ReactNode, useMemo, useState } from "react";
+import type { OverridableComponent } from "@mui/material/OverridableComponent";
+import { type MouseEvent, type ReactNode, useMemo, useState } from "react";
 
 export type Order = "asc" | "desc";
 

@@ -1,10 +1,11 @@
 import { useDialogState } from "@repo/hooks/useDialogState";
 import { useUserInfo } from "@repo/hooks/useUserInfo";
-import { BaseSchema } from "@repo/schema";
-import { DialogStore, useDialogStore } from "@repo/store";
+import { type BaseSchema } from "@repo/schema";
+import type { DialogStore } from "@repo/store";
+import { useDialogStore } from "@repo/store";
 
-import { useContextMenu } from "~/hooks";
-import { GlobalStore, useGlobalStore, useUserStore } from "~/store";
+import { useContextMenu } from "~/hooks/utils/useContextMenu";
+import { type GlobalStore, useGlobalStore, useUserStore } from "~/store";
 
 import { ListItem } from "./listItem";
 
@@ -46,6 +47,21 @@ export const Content: React.FC<Props> = () => {
 		},
 	} = useUserInfo();
 
+	const onContextMenuHandler =
+		(dn: DialogStore.DialogName, id: string | undefined) => () => {
+			globalStore.closeContextMenu();
+			openDialog(dn);
+
+			const uuidSetter: UuidSetter = {
+				addBlock: setUserIdToBlock,
+				editContact: setUserIdForEditContact,
+				removeBlock: setUserIdToUnblock,
+				removeContact: setUserIdForRemoveContact,
+			};
+
+			uuidSetter[dn]?.(id);
+		};
+
 	const createContextMenuList = (
 		contact?: BaseSchema.ContactsItem
 	): GlobalStore.ContextMenuList => {
@@ -69,21 +85,6 @@ export const Content: React.FC<Props> = () => {
 			},
 		];
 	};
-
-	const onContextMenuHandler =
-		(dn: DialogStore.DialogName, id: string | undefined) => () => {
-			globalStore.closeContextMenu();
-			openDialog(dn);
-
-			const uuidSetter: UuidSetter = {
-				addBlock: setUserIdToBlock,
-				editContact: setUserIdForEditContact,
-				removeBlock: setUserIdToUnblock,
-				removeContact: setUserIdForRemoveContact,
-			};
-
-			uuidSetter[dn]?.(id);
-		};
 
 	const { onContextMenu } = useContextMenu(createContextMenuList());
 

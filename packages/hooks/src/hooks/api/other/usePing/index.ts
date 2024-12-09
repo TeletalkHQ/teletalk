@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Url } from "../../../utils/useConfigs";
+import { type Url } from "../../../utils/useConfigs";
 import { usePingApi } from "./pingApi";
 
 export type ServerAvailabilityStatusType =

@@ -1,7 +1,7 @@
-import { IOSchema } from "@repo/schema";
-import { VoidNoArgs } from "@repo/types";
-import { AxiosRequestConfig, AxiosResponse } from "axios";
-import { ZodUndefined, z } from "zod";
+import type { IOSchema } from "@repo/schema";
+import type { VoidNoArgs } from "@repo/types";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
+import type { ZodUndefined, z } from "zod";
 
 export type InitialData<T extends IOSchema["output"]> = T extends ZodUndefined
 	? undefined

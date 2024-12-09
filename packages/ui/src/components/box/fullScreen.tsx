@@ -1,4 +1,4 @@
-import { DivProps } from "../../types";
+import type { DivProps } from "../../types";
 import { Div } from "./div";
 
 interface Props extends DivProps {

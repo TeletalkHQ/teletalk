@@ -1,6 +1,6 @@
-import { SubmitHandler, useForm } from "@repo/hooks/useForm";
+import { type SubmitHandler, useForm } from "@repo/hooks/useForm";
 import { useSendMessage } from "@repo/hooks/useSendMessage";
-import { FormSchema, messageInputForm } from "@repo/schema";
+import { type FormSchema, messageInputForm } from "@repo/schema";
 import { Div } from "@repo/ui/box/div";
 import { Flex } from "@repo/ui/box/flex";
 import { Form } from "@repo/ui/box/form";
@@ -86,6 +86,8 @@ export const MessageInput = () => {
 							<>
 								<IconButton
 									onClick={() => {
+										// TODO: Replace with `logger`
+										// eslint-disable-next-line no-console
 										console.debug("Mic clicked");
 									}}
 								>

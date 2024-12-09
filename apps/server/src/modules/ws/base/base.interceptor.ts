@@ -1,23 +1,25 @@
-import {
+import type {
 	CallHandler,
 	ExecutionContext,
+	NestInterceptor } from "@nestjs/common";
+import {
 	Injectable,
 	InternalServerErrorException,
-	Logger,
-	NestInterceptor,
+	Logger
 } from "@nestjs/common";
-import {
+import type {
 	EventName,
 	SocketHandlerReturnType,
 	SocketRequestBody,
-	SocketResponse,
+	SocketResponse } from "@repo/schema";
+import {
 	socketEvents,
 } from "@repo/schema";
-import { Observable } from "rxjs";
+import type { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { ZodSchema } from "zod";
+import type { ZodSchema } from "zod";
 
-import {
+import type {
 	ErrorReason,
 	ErrorStoreService,
 } from "../../error-store/error-store.service";

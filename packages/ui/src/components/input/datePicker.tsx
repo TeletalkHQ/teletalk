@@ -1,10 +1,11 @@
 "use client";
 
-import React, { FC } from "react";
+import type { FC } from "react";
+import React from "react";
 import {
 	DayPicker as DatePickerBase,
-	DateRange as DateRangeType,
-	DayPickerRangeProps,
+	type DateRange as DateRangeType,
+	type DayPickerRangeProps,
 } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 

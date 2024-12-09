@@ -1,5 +1,5 @@
 import { maker } from "@repo/classes";
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 
 import { useChatStore } from "~/store";
 

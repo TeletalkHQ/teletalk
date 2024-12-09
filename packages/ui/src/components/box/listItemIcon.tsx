@@ -1,5 +1,6 @@
+import type {
+	ListItemIconProps } from "@mui/material";
 import {
-	ListItemIconProps,
 	ListItemIcon as MuiListItemIcon,
 } from "@mui/material";
 

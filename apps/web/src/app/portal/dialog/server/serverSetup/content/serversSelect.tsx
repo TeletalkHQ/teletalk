@@ -1,5 +1,5 @@
 import { useConfigs } from "@repo/hooks/useConfigs";
-import { VoidWithArg } from "@repo/types";
+import { type VoidWithArg } from "@repo/types";
 import { FormControl } from "@repo/ui/box/formControl";
 import { MenuItem } from "@repo/ui/box/menuItem";
 import { InputLabel } from "@repo/ui/input/inputLabel";

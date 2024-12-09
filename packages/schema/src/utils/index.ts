@@ -1,8 +1,9 @@
 import { InternalServerErrorException, RequestMethod } from "@nestjs/common";
-import { ZodString, ZodTypeAny, z } from "zod";
+import type { ZodString } from "zod";
+import { type ZodTypeAny, z } from "zod";
 
-import { EventName, HTTPMethod, HTTPRootPath } from "../classes";
-import { HTTPRouteName, httpRoutes, socketEvents } from "../schema";
+import { type EventName, type HTTPMethod, type HTTPRootPath } from "../classes";
+import { type HTTPRouteName, httpRoutes, socketEvents } from "../schema";
 
 export const getStringSchemaMaxLength = <T extends ZodString>(schema: T) => {
 	const result = schema._def.checks.find((item) => item.kind === "max")?.value;

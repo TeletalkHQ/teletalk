@@ -1,11 +1,13 @@
 import { QueryClientProvider } from "@repo/query-client";
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { PropsWithChildren, Suspense } from "react";
+import type { PropsWithChildren } from "react";
+import { Suspense } from "react";
 
-import { AppName, ThemeProvider, Themes } from "../../providers/theme";
+import type { AppName, Themes } from "../../providers/theme";
+import { ThemeProvider } from "../../providers/theme";
 import { AuthLayout } from "../auth";
 
 interface Props extends PropsWithChildren {

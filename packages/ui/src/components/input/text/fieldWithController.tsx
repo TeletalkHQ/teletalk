@@ -1,10 +1,12 @@
 "use client";
 
-import { Control } from "@repo/hooks/useForm";
-import { Path, UseFormGetValues, useController } from "react-hook-form";
-import { ZodSchema } from "zod";
+import { type Control } from "@repo/hooks/useForm";
+import type { Path, UseFormGetValues } from "react-hook-form";
+import { useController } from "react-hook-form";
+import type { ZodSchema } from "zod";
 
-import { FieldInputBaseProps, TextField } from "./textField";
+import type { FieldInputBaseProps } from "./textField";
+import { TextField } from "./textField";
 
 export type FieldWithValidatorProps<T extends ZodSchema> =
 	FieldInputBaseProps & {

@@ -2,7 +2,7 @@ import { Flex } from "@repo/ui/box/flex";
 import { Paper } from "@repo/ui/box/paper";
 import { DoneAllIcon } from "@repo/ui/icons/doneAll";
 import { Typography } from "@repo/ui/typography/typography";
-import { CSSProperties } from "react";
+import { type CSSProperties } from "react";
 
 interface Props {
 	chatDate: string;

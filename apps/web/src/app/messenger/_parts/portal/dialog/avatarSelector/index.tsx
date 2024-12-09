@@ -3,7 +3,7 @@ import { useUpdateUserPublicInfo } from "@repo/hooks/useUpdateUserPublicInfo";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { DoubleAction } from "@repo/ui/template/doubleAction";
 import { useRef, useState } from "react";
-import AvatarEditor from "react-avatar-editor";
+import type AvatarEditor from "react-avatar-editor";
 
 import { compressor } from "~/classes";
 import { convertFileToBase64 } from "~/utils";

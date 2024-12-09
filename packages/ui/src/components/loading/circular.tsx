@@ -1,5 +1,6 @@
+import type {
+	CircularProgressProps } from "@mui/material";
 import {
-	CircularProgressProps,
 	CircularProgress as MuiCircularProgress,
 } from "@mui/material";
 

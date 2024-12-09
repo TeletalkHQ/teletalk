@@ -1,4 +1,4 @@
-import { GlobalStore, useGlobalStore } from "~/store";
+import { type GlobalStore, useGlobalStore } from "~/store";
 
 export const useContextMenu = (list: GlobalStore.ContextMenuList) => {
 	const globalStore = useGlobalStore();

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { BaseArg } from "./types";
+import type { BaseArg } from "./types";
 import { useSocket } from "./useSocket";
 
 export const useDisconnectOnUnmount = ({ baseUrl, namespace }: BaseArg) => {

@@ -1,5 +1,5 @@
-import { ServerAvailabilityStatusType } from "@repo/hooks/usePing";
-import { VoidNoArgs, VoidWithArg } from "@repo/types";
+import { type ServerAvailabilityStatusType } from "@repo/hooks/usePing";
+import { type VoidNoArgs, type VoidWithArg } from "@repo/types";
 import { Flex } from "@repo/ui/box/flex";
 import { Button } from "@repo/ui/button/button";
 

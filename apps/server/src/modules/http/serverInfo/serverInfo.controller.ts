@@ -1,7 +1,8 @@
 import { Controller, Get } from "@nestjs/common";
-import {
+import type {
 	HTTPHandlerReturnType,
-	IOCollection,
+	IOCollection } from "@repo/schema";
+import {
 	getPathname,
 	getRootPath,
 } from "@repo/schema";

@@ -1,7 +1,7 @@
 "use client";
 
 import { IoProvider } from "@repo/socket/src/providers";
-import { PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
 	return (

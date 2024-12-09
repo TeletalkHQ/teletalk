@@ -1,7 +1,7 @@
-import { VoidNoArgs } from "@repo/types";
+import { type VoidNoArgs } from "@repo/types";
 import { Flex } from "@repo/ui/box/flex";
 import { Button } from "@repo/ui/button/button";
-import { OnInputChange } from "@repo/ui/types";
+import { type OnInputChange } from "@repo/ui/types";
 import AvatarEditor from "react-avatar-editor";
 
 interface Props {

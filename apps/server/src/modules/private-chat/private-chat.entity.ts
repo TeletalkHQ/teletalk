@@ -1,7 +1,7 @@
-import { Logger } from "@nestjs/common";
+import type { Logger } from "@nestjs/common";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { BaseSchema } from "@repo/schema";
-import { HydratedDocument } from "mongoose";
+import { type BaseSchema } from "@repo/schema";
+import type { HydratedDocument } from "mongoose";
 
 import { createLogger } from "~/utils";
 

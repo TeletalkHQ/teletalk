@@ -1,4 +1,4 @@
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 import type { VoidNoArgs } from "@repo/types";
 import { Avatar } from "@repo/ui/box/Avatar";
 import { Flex } from "@repo/ui/box/flex";

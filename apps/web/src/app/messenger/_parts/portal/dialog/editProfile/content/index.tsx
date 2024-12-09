@@ -5,7 +5,7 @@ import { Flex } from "@repo/ui/box/flex";
 
 import { Header } from "./Header";
 import { List } from "./List";
-import { OnProfileItemClick } from "./ListItem";
+import { type OnProfileItemClick } from "./ListItem";
 
 interface Props {
 	onAvatarClick: VoidNoArgs;

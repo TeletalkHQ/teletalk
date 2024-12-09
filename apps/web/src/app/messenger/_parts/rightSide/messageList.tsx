@@ -1,5 +1,5 @@
 import { useUserInfo } from "@repo/hooks/useUserInfo";
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 import { Div } from "@repo/ui/box/div";
 
 import { MessageListItem } from "./messageListItem";

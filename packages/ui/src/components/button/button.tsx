@@ -1,4 +1,5 @@
-import { LoadingButton, LoadingButtonProps } from "./loading";
+import type { LoadingButtonProps } from "./loading";
+import { LoadingButton } from "./loading";
 
 export const Button: React.FC<LoadingButtonProps> = ({
 	fullWidth = true,

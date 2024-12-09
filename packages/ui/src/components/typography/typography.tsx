@@ -1,11 +1,13 @@
+import type {
+	TypographyProps as MuiTypographyProps } from "@mui/material";
 import {
-	Typography as MuiTypography,
-	TypographyProps as MuiTypographyProps,
+	Typography as MuiTypography
 } from "@mui/material";
 
 import { Span } from "../box/span";
 import { Tooltip } from "../box/tooltip";
-import { Skeleton, SkeletonProps } from "../loading/skeleton";
+import type { SkeletonProps } from "../loading/skeleton";
+import { Skeleton } from "../loading/skeleton";
 
 export interface TypographyProps extends MuiTypographyProps {
 	height?: string | number | undefined;

@@ -1,4 +1,4 @@
-import { StoreSetFn } from "@repo/store";
+import { type StoreSetFn } from "@repo/store";
 import type { VoidNoArgs, VoidWithArg } from "@repo/types";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";

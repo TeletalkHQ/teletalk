@@ -1,6 +1,6 @@
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 import "express";
-import { Server } from "socket.io";
+import type { Server } from "socket.io";
 
 declare module "express" {
   interface Request {

@@ -1,6 +1,7 @@
+import type {
+	ListItemAvatarProps as MuiListItemAvatarProps } from "@mui/material";
 import {
-	ListItemAvatar as MuiListItemAvatar,
-	ListItemAvatarProps as MuiListItemAvatarProps,
+	ListItemAvatar as MuiListItemAvatar
 } from "@mui/material";
 
 import { Skeleton } from "../loading/skeleton";

@@ -1,6 +1,7 @@
-import {
+import type {
 	Breakpoint,
-	ContainerProps,
+	ContainerProps } from "@mui/material";
+import {
 	Container as MuiContainer,
 } from "@mui/material";
 

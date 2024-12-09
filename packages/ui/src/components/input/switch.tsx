@@ -1,8 +1,10 @@
 "use client";
 
-import { Switch as MuiSwitch, SwitchProps, styled } from "@mui/material";
+import type { SwitchProps } from "@mui/material";
+import { Switch as MuiSwitch, styled } from "@mui/material";
 
-import { Skeleton, SkeletonProps } from "../loading/skeleton";
+import type { SkeletonProps } from "../loading/skeleton";
+import { Skeleton } from "../loading/skeleton";
 
 interface Props extends SwitchProps {
 	loading?: boolean;

@@ -1,4 +1,4 @@
-import { VoidNoArgs } from "@repo/types";
+import { type VoidNoArgs } from "@repo/types";
 import { Div } from "@repo/ui/box/div";
 import { Flex } from "@repo/ui/box/flex";
 import { Paper } from "@repo/ui/box/paper";

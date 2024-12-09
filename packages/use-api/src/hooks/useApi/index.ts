@@ -1,13 +1,17 @@
 "use client";
 
-import { HTTPMethod, IOSchema } from "@repo/schema";
+import { type HTTPMethod, type IOSchema } from "@repo/schema";
 import Timeout from "await-timeout";
 import { useState } from "react";
 import { useBoolean } from "usehooks-ts";
 
 import { useApiPhase } from "../useApiPhase";
 import { axiosInstance } from "./axiosInstance";
-import { HandlerOptions, InitialData, RequestPhase } from "./types";
+import {
+	type HandlerOptions,
+	type InitialData,
+	type RequestPhase,
+} from "./types";
 import {
 	createAxiosConfig,
 	getDefaultHandlerOptions,

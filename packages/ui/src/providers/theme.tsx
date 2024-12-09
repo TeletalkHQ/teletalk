@@ -1,8 +1,11 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Theme, ThemeProvider as ThemeProviderMui } from "@mui/material/styles";
-import { BaseSchema } from "@repo/schema";
-import React, { FC, PropsWithChildren } from "react";
+import {
+	type Theme,
+	ThemeProvider as ThemeProviderMui,
+} from "@mui/material/styles";
+import { type BaseSchema } from "@repo/schema";
+import React, { type FC, type PropsWithChildren } from "react";
 
 export type Themes = Record<BaseSchema.ThemeName, Theme>;
 

@@ -1,20 +1,9 @@
 "use client";
 
-import { MuiOtpInputProps } from "mui-one-time-password-input";
-import dynamic from "next/dynamic";
+import "mui-one-time-password-input";
+import type { MuiOtpInputProps } from "mui-one-time-password-input";
+import { MuiOtpInput } from "mui-one-time-password-input";
 
-const MuiOtpInput = dynamic(
-	async () => {
-		const result = await import("mui-one-time-password-input");
-		return result.MuiOtpInput;
-	},
-	{
-		ssr: false,
-	}
-);
-
-interface Props extends MuiOtpInputProps {}
-
-export const OTP: React.FC<Props> = (props) => {
-	return <MuiOtpInput {...props} />;
+export const OTP = (props: MuiOtpInputProps) => {
+	return <MuiOtpInput.call {...props} />;
 };

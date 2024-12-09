@@ -1,9 +1,10 @@
-import { TableCellProps, TableRow } from "@mui/material";
+import type { TableCellProps } from "@mui/material";
+import { TableRow } from "@mui/material";
 
 import { Skeleton } from "../loading/skeleton";
 import { TCell } from "./tCell";
-import { GetHeadersType } from "./tHead";
-import { TRowProps } from "./types";
+import type { GetHeadersType } from "./tHead";
+import type { TRowProps } from "./types";
 
 export type CellValueComponent<Schema> = (item: Schema) => React.ReactNode;
 

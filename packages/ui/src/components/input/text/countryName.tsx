@@ -1,9 +1,10 @@
-import { ZodSchema } from "zod";
+import type { ZodSchema } from "zod";
 
 import { Span } from "../../box/span";
+import type {
+	FieldWithValidatorWithOptionalNameProps } from "./fieldWithController";
 import {
-	FieldWithController,
-	FieldWithValidatorWithOptionalNameProps,
+	FieldWithController
 } from "./fieldWithController";
 
 interface Props<T extends ZodSchema>

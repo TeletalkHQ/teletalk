@@ -1,9 +1,10 @@
 import { Controller, Get, Req } from "@nestjs/common";
-import { HTTPHandlerReturnType, IOCollection, getPathname } from "@repo/schema";
-import { Request } from "express";
+import type { HTTPHandlerReturnType, IOCollection } from "@repo/schema";
+import { getPathname } from "@repo/schema";
+import type { Request } from "express";
 
-import { ErrorStoreService } from "../error-store/error-store.service";
-import { UserService } from "./user.service";
+import type { ErrorStoreService } from "../error-store/error-store.service";
+import type { UserService } from "./user.service";
 
 @Controller("user")
 export class UserController {

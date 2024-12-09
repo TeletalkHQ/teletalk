@@ -3,10 +3,12 @@
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { useConfigs } from "@repo/hooks/useConfigs";
-import { DialogStore, useDialogStore } from "@repo/store";
-import { TransitionName, VoidNoArgs } from "@repo/types";
+import type { DialogStore } from "@repo/store";
+import { useDialogStore } from "@repo/store";
+import { type TransitionName, type VoidNoArgs } from "@repo/types";
+import { type JSX } from "react";
 
-import { Dialog, DialogProps } from "../../box/dialog";
+import { Dialog, type DialogProps } from "../../box/dialog";
 import { Transitions } from "../../transition";
 import { Actions } from "./actions";
 import { Content } from "./content";

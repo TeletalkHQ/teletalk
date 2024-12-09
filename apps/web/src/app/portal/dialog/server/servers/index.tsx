@@ -3,7 +3,7 @@
 import { useConfigs } from "@repo/hooks/useConfigs";
 import { useDialogState } from "@repo/hooks/useDialogState";
 import { useLoading } from "@repo/hooks/useLoading";
-import { ServerTestResult, usePing } from "@repo/hooks/usePing";
+import { type ServerTestResult, usePing } from "@repo/hooks/usePing";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import merge from "lodash/merge";
 import { enqueueSnackbar } from "notistack";

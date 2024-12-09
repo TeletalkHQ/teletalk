@@ -16,7 +16,7 @@
 		"lib": ["ESNext"],
 		"module": "ESNext",
 		"moduleDetection": "force",
-		"moduleResolution": "bundler",
+		"moduleResolution": "node",
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitAny": true,
 		"noImplicitReturns": false,
@@ -28,7 +28,8 @@
 		"strictBindCallApply": true,
 		"strictNullChecks": true,
 		"strictPropertyInitialization": false,
+		"verbatimModuleSyntax": true,
 		"target": "ESNext",
-		"types": ["node"]
+		"types": ["node", "mocha"]
 	}
 }

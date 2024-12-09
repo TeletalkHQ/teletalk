@@ -1,4 +1,4 @@
-import { VoidNoArgs } from "@repo/types";
+import { type VoidNoArgs } from "@repo/types";
 import { Button } from "@repo/ui/button/button";
 
 interface Props {

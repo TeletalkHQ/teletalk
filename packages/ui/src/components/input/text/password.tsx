@@ -1,15 +1,17 @@
 "use client";
 
+// TODO: Move to icons
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import InputAdornment from "@mui/material/InputAdornment";
+import { InputAdornment } from "@mui/material";
 import { useState } from "react";
-import { ZodSchema } from "zod";
+import type { ZodSchema } from "zod";
 
 import { IconButton } from "../../button/icon";
+import type {
+	FieldWithValidatorWithOptionalNameProps } from "./fieldWithController";
 import {
-	FieldWithController,
-	FieldWithValidatorWithOptionalNameProps,
+	FieldWithController
 } from "./fieldWithController";
 
 interface Props<T extends ZodSchema>

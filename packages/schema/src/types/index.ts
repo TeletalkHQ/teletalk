@@ -1,7 +1,7 @@
-import { VoidNoArgs } from "@repo/types";
-import { z } from "zod";
+import { type VoidNoArgs } from "@repo/types";
+import type { z } from "zod";
 
-import { IOName, IOSchema } from "../schema";
+import { type IOName, type IOSchema } from "../schema";
 
 export type GetInput<T extends IOSchema> = z.infer<T["input"]>;
 export type GetOutput<T extends IOSchema> = z.infer<T["output"]>;

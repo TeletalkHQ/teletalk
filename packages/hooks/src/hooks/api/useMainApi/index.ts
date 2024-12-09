@@ -1,11 +1,11 @@
 import {
-	GetOutput,
-	HTTPResponse,
-	HTTPRouteName,
-	IOSchema,
-	RouteSchema,
+	type GetOutput,
+	type HTTPResponse,
+	type HTTPRouteName,
+	type IOSchema,
+	type RouteSchema,
 } from "@repo/schema";
-import { InitialData, UseApiOptions, useApi } from "@repo/use-api";
+import { type InitialData, type UseApiOptions, useApi } from "@repo/use-api";
 
 import { useConfigs } from "../../utils/useConfigs";
 

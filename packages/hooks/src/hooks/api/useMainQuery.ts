@@ -1,13 +1,14 @@
-import { BaseSchema, EventName } from "@repo/schema";
+import { type BaseSchema, type EventName } from "@repo/schema";
+import type {
+	QueryClient } from "@tanstack/react-query";
 import {
-	DefaultError,
-	DefinedInitialDataOptions,
-	DefinedUseQueryResult,
-	QueryClient,
-	QueryKey,
-	UndefinedInitialDataOptions,
-	UseQueryOptions,
-	UseQueryResult,
+	type DefaultError,
+	type DefinedInitialDataOptions,
+	type DefinedUseQueryResult,
+	type QueryKey,
+	type UndefinedInitialDataOptions,
+	type UseQueryOptions,
+	type UseQueryResult,
 	useQuery,
 } from "@tanstack/react-query";
 

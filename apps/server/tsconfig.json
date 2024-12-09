@@ -1,41 +1,17 @@
 {
+	"extends": "@repo/typescript-config/node.json",
 	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "bundler",
+		"outDir": "./dist",
 		"baseUrl": ".",
 		"declaration": true,
 		"declarationMap": true,
-		"emitDecoratorMetadata": true,
-		"esModuleInterop": true,
-		"experimentalDecorators": true,
-		"forceConsistentCasingInFileNames": true,
-		"incremental": true,
-		"lib": ["ESNext"],
-		"module": "ESNext",
-		"moduleResolution": "node",
-		"noFallthroughCasesInSwitch": true,
-		"noImplicitAny": true,
-		"noImplicitReturns": false,
-		"outDir": "./lib",
 		"paths": {
 			"@/*": ["test/*"],
 			"#/*": ["public/*"],
 			"~/*": ["src/*"]
-		},
-		"removeComments": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"sourceMap": true,
-		"strict": true,
-		"strictBindCallApply": true,
-		"strictNullChecks": true,
-		"strictPropertyInitialization": false,
-		"target": "ESNext"
+		}
 	},
 	"exclude": ["node_modules"],
-	"include": ["src/**/*.ts", "test/**/*.ts", "./global.d.ts"],
-	"ts-node": {
-		"esm": true,
-		"experimentalSpecifierResolution": "node",
-		"files": true
-	}
+	"include": ["src/**/*.ts", "test/**/*.ts", "./global.d.ts"]
 }

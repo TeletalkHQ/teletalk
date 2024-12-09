@@ -1,4 +1,4 @@
-import { LoadingItem, State } from "./types";
+import type { LoadingItem, State } from "./types";
 
 export const defaultPhase: LoadingItem = {
 	isLoading: false,

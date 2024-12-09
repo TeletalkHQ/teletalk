@@ -1,6 +1,6 @@
-import { VoidNoArgs } from "@repo/types";
+import { type VoidNoArgs } from "@repo/types";
 
-import { ProgressColor } from "../../types";
+import { type ProgressColor } from "../../types";
 
 interface Props {
 	color: string;

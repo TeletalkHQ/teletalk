@@ -1,9 +1,9 @@
 "use client";
 
 import { useCustomRouter } from "@repo/hooks/useCustomRouter";
-import { SubmitHandler, useForm } from "@repo/hooks/useForm";
+import { type SubmitHandler, useForm } from "@repo/hooks/useForm";
 import { useVerify } from "@repo/hooks/useVerify";
-import { FormSchema, verifySignInCodeForm } from "@repo/schema";
+import { type FormSchema, verifySignInCodeForm } from "@repo/schema";
 import { Avatar } from "@repo/ui/box/Avatar";
 import { Container } from "@repo/ui/box/container";
 import { Div } from "@repo/ui/box/div";
@@ -18,7 +18,7 @@ import { useApiPhase } from "@repo/use-api";
 import { useFormState } from "react-hook-form";
 
 import { domUtils } from "~/classes";
-import { useAuthUrlQueries } from "~/hooks";
+import { useAuthUrlQueries } from "~/hooks/utils/useAuthUrlQueries";
 
 import { AuthFooter } from "../common/AuthFooter";
 

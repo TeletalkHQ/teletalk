@@ -1,6 +1,6 @@
 "use client";
 
-import { VoidNoArgs } from "@repo/types";
+import type { VoidNoArgs } from "@repo/types";
 import { useEffect } from "react";
 
 import { useIsAuthenticated } from "./useIsAuthenticated";

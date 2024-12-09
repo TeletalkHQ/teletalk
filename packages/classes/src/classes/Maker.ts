@@ -1,5 +1,5 @@
-import { BaseSchema } from "@repo/schema";
-import { StringMap } from "@repo/types";
+import { type BaseSchema } from "@repo/schema";
+import { type StringMap } from "@repo/types";
 
 export class Maker {
 	cellphone(

@@ -1,11 +1,12 @@
-import { FIELD_TYPE } from "@repo/assets";
-import {
+import { FIELD_TYPE } from "@repo/assets/fieldType";
+import type {
 	HTTPRequestBody,
 	HTTPResponse,
 	IOSchema,
 	RouteSchema,
 } from "@repo/schema";
-import axios, { AxiosResponse } from "axios";
+import type { AxiosResponse } from "axios";
+import axios from "axios";
 import { expect } from "chai";
 
 import { COOKIE_NAMES } from "~/constants";

@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import { ZodSchema, z } from "zod";
+import type { ZodSchema, z } from "zod";
 
-import { UseEmitterParameters, useEmitter } from "./useEmitter";
+import type { UseEmitterParameters } from "./useEmitter";
+import { useEmitter } from "./useEmitter";
 
 export const useEmitEffect = <
 	T extends string,

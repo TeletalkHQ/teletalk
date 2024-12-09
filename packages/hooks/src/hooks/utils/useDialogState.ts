@@ -1,4 +1,5 @@
-import { DialogStore, defaultDialogProps, useDialogStore } from "@repo/store";
+import type { DialogStore } from "@repo/store";
+import { defaultDialogProps, useDialogStore } from "@repo/store";
 
 // TODO: Refactor
 export const useDialogState = <T extends DialogStore.DialogName>(

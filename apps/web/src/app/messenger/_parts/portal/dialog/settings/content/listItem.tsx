@@ -1,9 +1,9 @@
-import { VoidNoArgs } from "@repo/types";
+import { type VoidNoArgs } from "@repo/types";
 import { Div } from "@repo/ui/box/div";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
-import { GeneratedIcon } from "@repo/ui/icons/utils";
+import { type GeneratedIcon } from "@repo/ui/icons/utils";
 
-import { SettingDisplayName } from "../types";
+import { type SettingDisplayName } from "../types";
 
 interface Props {
 	onClick: VoidNoArgs;

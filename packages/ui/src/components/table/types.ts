@@ -1,12 +1,12 @@
 import {
-	TableBodyTypeMap,
-	TableCellProps,
-	TableContainerProps,
-	TableHeadProps,
-	TableProps,
-	TableRowProps,
+	type TableBodyTypeMap,
+	type TableCellProps,
+	type TableContainerProps,
+	type TableHeadProps,
+	type TableProps,
+	type TableRowProps,
 } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
+import type { OverridableComponent } from "@mui/material/OverridableComponent";
 
 export type TableData<Schema> = Array<Schema>;
 export type AdvHeader = Array<string>;

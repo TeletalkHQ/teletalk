@@ -1,11 +1,11 @@
-import {
+import type {
 	CircularProgressProps,
 	SelectChangeEvent,
 	SelectProps,
 } from "@mui/material";
-import { DialogStore } from "@repo/store";
-import { VoidWithArg } from "@repo/types";
-import {
+import type { DialogStore } from "@repo/store";
+import { type VoidWithArg } from "@repo/types";
+import type {
 	ChangeEvent,
 	ChangeEventHandler,
 	DetailedHTMLProps,

@@ -1,8 +1,8 @@
-import { DialogStore } from "@repo/store";
-import { VoidWithArg } from "@repo/types";
+import type { DialogStore } from "@repo/store";
+import { type VoidWithArg } from "@repo/types";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
 import { Span } from "@repo/ui/box/span";
-import { GeneratedIcon } from "@repo/ui/icons/utils";
+import { type GeneratedIcon } from "@repo/ui/icons/utils";
 
 export interface PrivacyAndSecurityListItem {
 	displayName: "Blocked users" | "Sessions";

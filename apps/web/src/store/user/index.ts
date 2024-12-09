@@ -9,4 +9,4 @@ export const useUserStore = createStore<UserStore.Store>((set) => ({
 	...handlers(set),
 }));
 
-export { UserStore };
+export { type UserStore };

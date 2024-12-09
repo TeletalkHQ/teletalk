@@ -1,10 +1,11 @@
 "use client";
 
+import type {
+	TableRowProps } from "@mui/material";
 import {
 	Box,
 	TableHead,
 	TableRow,
-	TableRowProps,
 	TableSortLabel,
 	Typography,
 } from "@mui/material";
@@ -12,7 +13,7 @@ import { useTheme } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 
 import { TCell } from "./tCell";
-import { Order, THeadProps } from "./types";
+import type { Order, THeadProps } from "./types";
 
 export type Headers<K extends string | number | symbol> = Record<
 	K,

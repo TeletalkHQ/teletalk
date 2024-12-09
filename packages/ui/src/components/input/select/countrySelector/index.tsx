@@ -1,8 +1,8 @@
-import { ListItemProps } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
+import type { ListItemProps } from "@mui/material";
+import { Autocomplete } from "@mui/material";
 import { useCountries } from "@repo/hooks/useCountries";
-import { BaseSchema } from "@repo/schema";
-import { VoidWithArg } from "@repo/types";
+import { type BaseSchema } from "@repo/schema";
+import { type VoidWithArg } from "@repo/types";
 import { useMemo } from "react";
 
 import { Option } from "./option";
@@ -55,20 +55,13 @@ export const CountrySelector: React.FC<Props> = ({
 		[countryCode, countries]
 	);
 
-	const fixedCountries = useMemo(() => {
-		return countries.map((item) => ({
-			...item,
-			country_code: item.countryCode || "N/A",
-		}));
-	}, [countries]);
-
 	return (
 		<Autocomplete
 			autoHighlight
 			fullWidth
 			getOptionLabel={getOptionLabel}
 			inputValue={countryName}
-			options={fixedCountries}
+			options={countries}
 			renderInput={SelectorInput}
 			renderOption={renderOption}
 			value={foundSelectedCountry}

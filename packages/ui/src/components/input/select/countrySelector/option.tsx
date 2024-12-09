@@ -1,5 +1,5 @@
-import { ListItemProps } from "@mui/material";
-import { BaseSchema } from "@repo/schema";
+import type { ListItemProps } from "@mui/material";
+import { type BaseSchema } from "@repo/schema";
 
 import { Div } from "../../../box/div";
 import { Img } from "../../../box/img";

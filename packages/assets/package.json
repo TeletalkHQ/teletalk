@@ -3,7 +3,14 @@
 	"version": "0.0.0",
 	"type": "module",
 	"private": true,
-	"main": "./src/index.ts",
+	"exports": {
+		"./fieldType": "./src/variables/others/fieldType.ts",
+		"./countries": "./src/variables/others/countries.ts",
+		"./symbols": "./src/variables/others/symbols.ts",
+		"./regex": "./src/variables/regex/index.ts",
+		"./escapeChars": "./src/variables/others/escapeChars.ts",
+		"./node": "./src/index.ts"
+	},
 	"scripts": {
 		"check:format": "prettier --write  --list-different ./",
 		"check:lint": "eslint ./",

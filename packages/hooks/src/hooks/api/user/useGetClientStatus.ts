@@ -1,6 +1,6 @@
 "use client";
 
-import { BaseSchema } from "@repo/schema";
+import { type BaseSchema } from "@repo/schema";
 import { useState } from "react";
 
 type Arg = { userId: BaseSchema.UserId };

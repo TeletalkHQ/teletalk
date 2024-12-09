@@ -1,8 +1,12 @@
 "use client";
 
-import { PropsWithChildren, useRef } from "react";
+import { type PropsWithChildren, useRef } from "react";
 
-import { InputTransformer, IoContext, SocketCollection } from "./context";
+import {
+	type InputTransformer,
+	IoContext,
+	type SocketCollection,
+} from "./context";
 
 interface Props {
 	inputTransformer?: InputTransformer;

@@ -30,7 +30,6 @@ const nodeConfig = defineConfig({
 		// "security/detect-object-injection": "off",
 		// "chai-friendly/no-unused-expressions": 1,
 	},
-	ignorePatterns: [".eslintrc.js"],
 });
 
 module.exports = nodeConfig;

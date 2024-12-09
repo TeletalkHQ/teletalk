@@ -1,4 +1,5 @@
-import { LoadingButton, LoadingButtonProps } from "../../button/loading";
+import type { LoadingButtonProps } from "../../button/loading";
+import { LoadingButton } from "../../button/loading";
 
 interface Props {
 	leftProps: LoadingButtonProps;

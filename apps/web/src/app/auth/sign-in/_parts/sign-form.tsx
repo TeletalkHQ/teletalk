@@ -1,9 +1,9 @@
 "use client";
 
 import { useCustomRouter } from "@repo/hooks/useCustomRouter";
-import { SubmitHandler, useForm } from "@repo/hooks/useForm";
+import { type SubmitHandler, useForm } from "@repo/hooks/useForm";
 import { useSignIn } from "@repo/hooks/useSignIn";
-import { FormSchema, signInForm } from "@repo/schema";
+import { type FormSchema, signInForm } from "@repo/schema";
 import { Div } from "@repo/ui/box/div";
 import { Flex } from "@repo/ui/box/flex";
 import { Form } from "@repo/ui/box/form";
@@ -11,15 +11,15 @@ import { Button } from "@repo/ui/button/button";
 import { CountryCode } from "@repo/ui/input/countryCode";
 import {
 	CountrySelector,
-	SelectedCountry,
+	type SelectedCountry,
 } from "@repo/ui/input/countrySelector";
 import { PhoneNumber } from "@repo/ui/input/phoneNumber";
 import { Typography } from "@repo/ui/typography/typography";
 import { useApiPhase } from "@repo/use-api";
-import { PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 import { useWatch } from "react-hook-form";
 
-import { useAuthUrlQueries } from "~/hooks";
+import { useAuthUrlQueries } from "~/hooks/utils/useAuthUrlQueries";
 
 export const SignForm: React.FC<PropsWithChildren> = () => {
 	const {
@@ -30,7 +30,12 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 
 	const authQueries = useAuthUrlQueries();
 
-	const { control, handleSubmit, setValue } = useForm<FormSchema["signIn"]>({
+	const {
+		control,
+		handleSubmit,
+		setValue,
+		formState: { isValid },
+	} = useForm<FormSchema["signIn"]>({
 		schema: signInForm,
 		defaultValues: {
 			countryCode: authQueries.countryCode,
@@ -98,7 +103,7 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 				</Flex>
 
 				<Button
-					// disabled={!isValid}
+					disabled={!isValid}
 					loading={signInPhase.isLoading}
 					loadingIndicatorText="Sign in..."
 					sx={{

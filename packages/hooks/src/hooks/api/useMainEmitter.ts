@@ -1,4 +1,9 @@
-import { EventSchema, GetOutput, IOName, _SocketResponse } from "@repo/schema";
+import {
+	type EventSchema,
+	type GetOutput,
+	type IOName,
+	type _SocketResponse,
+} from "@repo/schema";
 import { useEmitter } from "@repo/socket";
 
 import { useConfigs } from "../utils/useConfigs";

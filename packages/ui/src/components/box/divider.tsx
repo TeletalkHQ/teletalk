@@ -1,4 +1,5 @@
-import { DividerProps, Divider as MainDivider } from "@mui/material";
+import type { DividerProps } from "@mui/material";
+import { Divider as MainDivider } from "@mui/material";
 
 interface Props extends DividerProps {
 	label?: string;

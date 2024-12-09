@@ -1,5 +1,6 @@
 import os from "os";
-import { JestConfigWithTsJest, pathsToModuleNameMapper } from "ts-jest";
+import type { JestConfigWithTsJest } from "ts-jest";
+import { pathsToModuleNameMapper } from "ts-jest";
 
 import tsconfig from "./tsconfig.json";
 

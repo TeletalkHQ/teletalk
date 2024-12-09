@@ -1,4 +1,4 @@
-import { RouteGenerator, RouteName } from "../../../classes";
+import { RouteGenerator, type RouteName } from "../../../classes";
 import {
 	createNewUserIO,
 	getAvatarIO,

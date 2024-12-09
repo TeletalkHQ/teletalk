@@ -2,23 +2,23 @@ import { faker } from "@faker-js/faker";
 import { Body, Controller, Get, Post, Req, Res } from "@nestjs/common";
 import { extractor, randomizer, userUtils } from "@repo/classes";
 import {
-	HTTPHandlerReturnType,
-	HTTPRequestBody,
-	IOCollection,
+	type HTTPHandlerReturnType,
+	type HTTPRequestBody,
+	type IOCollection,
 	getPathname,
 	getRootPath,
 } from "@repo/schema";
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 
 import { COOKIE_NAMES } from "~/constants";
 import { getHostFromRequest } from "~/utils";
 
-import { ErrorStoreService } from "../error-store/error-store.service";
-import { SessionService } from "../session/session.service";
-import { SmsService } from "../sms/sms.service";
-import { TempSessionStoreService } from "../temp-session-store/temp-session-store.service";
-import { UserService } from "../user/user.service";
-import { AuthService } from "./auth.service";
+import type { ErrorStoreService } from "../error-store/error-store.service";
+import type { SessionService } from "../session/session.service";
+import type { SmsService } from "../sms/sms.service";
+import type { TempSessionStoreService } from "../temp-session-store/temp-session-store.service";
+import type { UserService } from "../user/user.service";
+import type { AuthService } from "./auth.service";
 
 @Controller(getRootPath("auth"))
 export class AuthController {

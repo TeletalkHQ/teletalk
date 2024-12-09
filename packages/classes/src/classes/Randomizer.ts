@@ -1,5 +1,9 @@
-import { countries } from "@repo/assets";
-import { BaseSchema, baseSchema, getStringSchemaMaxLength } from "@repo/schema";
+import { countries } from "@repo/assets/countries";
+import {
+	type BaseSchema,
+	baseSchema,
+	getStringSchemaMaxLength,
+} from "@repo/schema";
 import { nanoid } from "nanoid";
 
 import { dataUsageManager } from "./DataUsageManager";

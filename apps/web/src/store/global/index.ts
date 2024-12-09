@@ -9,4 +9,4 @@ export const useGlobalStore = createStore<GlobalStore.Store>((set) => ({
 	...handlers(set),
 }));
 
-export { GlobalStore };
+export { type GlobalStore };

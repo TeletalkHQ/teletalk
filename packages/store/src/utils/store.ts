@@ -1,4 +1,4 @@
-import { StateCreator, create as _create } from "zustand";
+import { type StateCreator, create as _create } from "zustand";
 
 const resetters: (() => void)[] = [];
 

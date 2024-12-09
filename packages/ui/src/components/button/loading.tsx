@@ -1,6 +1,6 @@
 import { LoadingButton as MuiLoadingButton } from "@mui/lab";
-import { LoadingButtonProps as MuiLoadingButtonProps } from "@mui/lab";
-import { CSSProperties } from "react";
+import { type LoadingButtonProps as MuiLoadingButtonProps } from "@mui/lab";
+import { type CSSProperties } from "react";
 
 import { Span } from "../box/span";
 import { CircularProgress } from "../loading/circular";

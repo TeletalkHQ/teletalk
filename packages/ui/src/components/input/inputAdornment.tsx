@@ -1,5 +1,6 @@
+import type {
+	InputAdornmentProps } from "@mui/material";
 import {
-	InputAdornmentProps,
 	InputAdornment as MuiInputAdornment,
 } from "@mui/material";
 

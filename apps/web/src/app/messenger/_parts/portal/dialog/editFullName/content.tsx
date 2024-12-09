@@ -1,5 +1,5 @@
-import { Control } from "@repo/hooks/useForm";
-import { FormSchema } from "@repo/schema";
+import { type Control } from "@repo/hooks/useForm";
+import { type FormSchema } from "@repo/schema";
 import { Flex } from "@repo/ui/box/flex";
 import { FirstName } from "@repo/ui/input/firstName";
 import { LastName } from "@repo/ui/input/lastName";

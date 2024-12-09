@@ -1,5 +1,5 @@
 import { Logger } from "@nestjs/common";
-import { Request } from "express";
+import type { Request } from "express";
 
 export const getHostFromRequest = (req: Request) => req.headers.host;
 

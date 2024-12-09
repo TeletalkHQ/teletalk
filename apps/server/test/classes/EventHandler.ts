@@ -1,12 +1,12 @@
-import { FIELD_TYPE } from "@repo/assets";
-import {
+import { FIELD_TYPE } from "@repo/assets/fieldType";
+import type {
 	EventSchema,
 	IOSchema,
 	SocketRequestBody,
 	SocketResponse,
 } from "@repo/schema";
 import { expect } from "chai";
-import { Socket } from "socket.io-client";
+import type { Socket } from "socket.io-client";
 
 import { logHelper } from "./LogHelper";
 

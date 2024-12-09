@@ -2,7 +2,7 @@ import { useDialogStore } from "@repo/store";
 import { Divider } from "@repo/ui/box/divider";
 import { List } from "@repo/ui/box/list";
 
-import { SettingItem } from "../types";
+import { type SettingItem } from "../types";
 import { settingsList } from "./data";
 import { ListItem } from "./listItem";
 import { ProfileOverview } from "./profileOverview";

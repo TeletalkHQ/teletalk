@@ -66,6 +66,7 @@ const baseConfig = defineConfig({
 		"unused-imports",
 	],
 	rules: {
+		"@typescript-eslint/consistent-type-imports": "error",
 		// "security/detect-object-injection": "off",
 		"@cspell/spellchecker": [
 			"error",

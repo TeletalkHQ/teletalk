@@ -1,8 +1,9 @@
-import { ZodSchema } from "zod";
+import type { ZodSchema } from "zod";
 
+import type {
+	FieldWithValidatorWithOptionalNameProps } from "./fieldWithController";
 import {
-	FieldWithController,
-	FieldWithValidatorWithOptionalNameProps,
+	FieldWithController
 } from "./fieldWithController";
 
 interface Props<T extends ZodSchema>

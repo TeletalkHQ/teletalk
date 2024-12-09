@@ -1,10 +1,15 @@
 "use client";
 
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { ZodSchema } from "zod";
+import type { ZodSchema } from "zod";
 
 import { IoContext } from "../providers";
-import { BaseArg, EmitResponse, EmitterHandler, _EmitFnArg } from "./types";
+import type {
+	BaseArg,
+	EmitResponse,
+	EmitterHandler,
+	_EmitFnArg,
+} from "./types";
 import { useSocket } from "./useSocket";
 
 export interface UseEmitterParameters<
@@ -66,6 +71,8 @@ export const useEmitter = <
 					data: response.data,
 				};
 			} catch (error) {
+				// TODO: Replace with `logger`
+				// eslint-disable-next-line no-console
 				console.log("emit error:", error);
 				setHasError(true);
 				options?.onError?.([error]);

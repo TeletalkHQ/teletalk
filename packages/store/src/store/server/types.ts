@@ -1,4 +1,4 @@
-import { StoreSetFn } from "../../utils";
+import { type StoreSetFn } from "../../utils";
 
 export interface ServerState {}
 

@@ -1,4 +1,4 @@
-import { DialogState, State } from "./types";
+import { type DialogState, type State } from "./types";
 
 export const dialogNames = [
 	"addContact",

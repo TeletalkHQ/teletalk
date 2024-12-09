@@ -1,5 +1,5 @@
-import { ServerAvailabilityStatusType } from "@repo/hooks/usePing";
-import { VoidNoArgs } from "@repo/types";
+import { type ServerAvailabilityStatusType } from "@repo/hooks/usePing";
+import { type VoidNoArgs } from "@repo/types";
 import { Button } from "@repo/ui/button/button";
 
 interface Props {

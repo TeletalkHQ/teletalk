@@ -1,4 +1,5 @@
-import { ZodSchema, ZodUndefined, z } from "zod";
+import type { ZodSchema, ZodUndefined } from "zod";
+import { z } from "zod";
 
 import { baseSchema } from "../base";
 

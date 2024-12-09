@@ -1,8 +1,10 @@
+import type {
+	SkeletonProps as MuiSkeletonProps } from "@mui/material";
 import {
-	Skeleton as MuiSkeleton,
-	SkeletonProps as MuiSkeletonProps,
+	Skeleton as MuiSkeleton
 } from "@mui/material";
-import React, { CSSProperties } from "react";
+import type { CSSProperties } from "react";
+import type React from "react";
 
 export interface SkeletonProps extends MuiSkeletonProps {
 	isLoading?: boolean;

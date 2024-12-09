@@ -1,6 +1,6 @@
 "use client";
 
-import { VoidNoArgs } from "@repo/types";
+import type { VoidNoArgs } from "@repo/types";
 import { useEffect, useRef } from "react";
 
 export const useDidUpdate = (func: VoidNoArgs, deps: unknown[]) => {

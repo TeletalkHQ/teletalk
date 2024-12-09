@@ -1,8 +1,8 @@
-import { DrawerAnchor, TransitionName } from "@repo/types";
+import { type DrawerAnchor, type TransitionName } from "@repo/types";
 import { useLocalStorage } from "usehooks-ts";
 
 import { STORAGE_KEY } from "../../types";
-import { Environments, useEnv } from "./useEnv";
+import { type Environments, useEnv } from "./useEnv";
 
 export type Protocol = "http" | "https";
 

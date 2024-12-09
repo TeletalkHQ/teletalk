@@ -3,8 +3,10 @@
 import { logger } from "@repo/logger";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
-import useWebSocketPkg, { Options, ReadyState } from "react-use-websocket";
-import z, { ZodSchema } from "zod";
+import type { Options } from "react-use-websocket";
+import useWebSocketPkg, { ReadyState } from "react-use-websocket";
+import type { ZodSchema } from "zod";
+import type z from "zod";
 
 import { useConfigs } from "../../utils/useConfigs";
 

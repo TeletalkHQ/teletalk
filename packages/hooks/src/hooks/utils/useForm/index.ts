@@ -2,12 +2,13 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-	Control as RHFControl,
-	SubmitHandler as RHFSubmitHandler,
+	type Control as RHFControl,
+	type SubmitHandler as RHFSubmitHandler,
 	useForm as RHFUseForm,
-	UseFormHandleSubmit,
+	type UseFormHandleSubmit,
 } from "react-hook-form";
-import z, { ZodSchema } from "zod";
+import type z from "zod";
+import type { ZodSchema } from "zod";
 
 export type GetFormValues<T extends ZodSchema> = z.infer<T>;
 
@@ -44,7 +45,7 @@ export const useForm = <T extends ZodSchema>({
 	} = RHFUseForm<FormValues, any, FormValues>({
 		...rest,
 		resolver: zodResolver(schema),
-		reValidateMode: "onChange",
+		// reValidateMode: "onChange",
 	});
 
 	const reset = () => resetRhf();

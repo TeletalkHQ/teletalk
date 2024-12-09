@@ -1,4 +1,4 @@
-import { DivProps } from "../../types";
+import type { DivProps } from "../../types";
 
 interface Props extends DivProps {
 	fullWidth?: boolean;
