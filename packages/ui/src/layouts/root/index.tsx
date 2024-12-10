@@ -47,7 +47,7 @@ export function RootLayout({
 							<AuthLayout>{children}</AuthLayout>
 
 							<ToastContainer />
-							<SpeedInsights />
+							{process.env.NODE_ENV === "development" && <SpeedInsights />}
 						</ThemeProvider>
 
 						{shouldShowQueryDevtools && (

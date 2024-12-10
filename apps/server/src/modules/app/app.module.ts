@@ -3,6 +3,7 @@ import { Module } from "@nestjs/common";
 import { APP_INTERCEPTOR, NestFactory } from "@nestjs/core";
 import { MongooseModule } from "@nestjs/mongoose";
 import { getFullPath, getRequestMethod, httpRoutes } from "@repo/schema";
+import compression from "compression";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -87,6 +88,8 @@ export const appInitializer = async (module = AppModule) => {
 	app.useWebSocketAdapter(redisIoAdapter);
 
 	app.use(cookieParser());
+
+	app.use(compression());
 
 	app.use(
 		cors({

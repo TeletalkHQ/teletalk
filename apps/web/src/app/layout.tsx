@@ -26,6 +26,7 @@ export default function Layout({
 }>) {
 	return (
 		<html lang="en">
+			<title>Messenger</title>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<RootLayout
 					appName="web"
