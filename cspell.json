@@ -41,6 +41,7 @@
 		"Roboto",
 		"Swipeable",
 		"Teletalk",
+		"Toastify",
 		"Tokelau",
 		"Tooltip",
 		"Trez",
@@ -117,6 +118,7 @@
 		"lightgray",
 		"linebreak",
 		"loadmodule",
+		"locationerror",
 		"logestige",
 		"loglevel",
 		"lrdd",
@@ -144,7 +146,6 @@
 		"noopener",
 		"noproxy",
 		"noreferrer",
-		"notistack",
 		"nowrap",
 		"npmjs",
 		"npmrc",
@@ -248,7 +249,5 @@
 		"zustand"
 	],
 	"import": [],
-	"words": [
-		"prestart"
-	]
+	"words": ["prestart"]
 }

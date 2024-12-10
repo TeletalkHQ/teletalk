@@ -2,9 +2,9 @@
 
 import { logger } from "@repo/logger";
 import { usePermissionStore } from "@repo/store";
-import { enqueueSnackbar } from "notistack";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { useLocalStorage } from "usehooks-ts";
 
 import { STORAGE_KEY } from "../../types";
@@ -100,11 +100,7 @@ export const useFeatures = () => {
 	};
 
 	const onErrorReqLocation = (error: unknown) => {
-		enqueueSnackbar({
-			variant: "error",
-			// FIXME: Not the correct message
-			message: "Unable to get the location permission",
-		});
+		toast.error("Unable to get the location permission");
 
 		// eslint-disable-next-line @cspell/spellchecker
 		logger.log("locationerror:", error);

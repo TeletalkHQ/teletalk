@@ -6,8 +6,8 @@ import { useLoading } from "@repo/hooks/useLoading";
 import { type ServerTestResult, usePing } from "@repo/hooks/usePing";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import merge from "lodash/merge";
-import { enqueueSnackbar } from "notistack";
 import React, { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 import { Actions } from "./actions";
 import { Content } from "./content";
@@ -72,8 +72,7 @@ export const Servers = () => {
 
 		const foundServer = configs.api.servers.find((item) => item.id === id);
 
-		if (!foundServer)
-			return enqueueSnackbar({ message: "SERVER_NOT_FOUND", variant: "error" });
+		if (!foundServer) return toast.error("SERVER_NOT_FOUND");
 
 		const result = await pinger(foundServer.url);
 		updateServer(id, result);

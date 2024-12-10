@@ -5,6 +5,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import type { PropsWithChildren } from "react";
 import { Suspense } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import type { AppName, Themes } from "../../providers/theme";
 import { ThemeProvider } from "../../providers/theme";
@@ -42,17 +44,9 @@ export function RootLayout({
 							shouldUseBaseline={shouldUseBaseline}
 							themes={themes}
 						>
-							{/* <SnackbarProvider
-								anchorOrigin={{
-									horizontal: "center",
-									vertical: "bottom",
-								}}
-								maxSnack={5}
-								preventDuplicate
-							/> */}
-
 							<AuthLayout>{children}</AuthLayout>
 
+							<ToastContainer />
 							<SpeedInsights />
 						</ThemeProvider>
 

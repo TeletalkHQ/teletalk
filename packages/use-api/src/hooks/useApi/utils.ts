@@ -1,7 +1,7 @@
 import { logger } from "@repo/logger";
 import type { HTTPMethod, IOSchema } from "@repo/schema";
 import type { AxiosRequestConfig, AxiosResponse } from "axios";
-import { enqueueSnackbar } from "notistack";
+import { toast } from "react-toastify";
 
 import type { HandlerConfig, HandlerOptions } from "./types";
 
@@ -142,8 +142,5 @@ const fixErrorMessage = (message: string | undefined) => {
 };
 
 const toastErrorMessage = (message: string) => {
-	enqueueSnackbar({
-		message,
-		variant: "error",
-	});
+	toast.error(message);
 };

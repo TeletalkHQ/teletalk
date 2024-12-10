@@ -6,8 +6,8 @@ import { usePing } from "@repo/hooks/usePing";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { type OnInputChange, type OnSelectOnChange } from "@repo/ui/types";
 import { useApiPhase } from "@repo/use-api";
-import { enqueueSnackbar } from "notistack";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 import { Actions } from "./actions";
 import { Content } from "./content";
@@ -33,7 +33,7 @@ export const AddServer = () => {
 
 	const handleAddClick = () => {
 		if (configs.api.servers.some((i) => i.url === getServerUrl()))
-			enqueueSnackbar({ message: "SERVER_ALREADY_EXIST", variant: "error" });
+			toast.error("SERVER_ALREADY_EXIST");
 		else {
 			addServerUrl(getServerUrl());
 			dialogState.close();

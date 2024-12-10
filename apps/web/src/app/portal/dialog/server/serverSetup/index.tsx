@@ -6,8 +6,8 @@ import { usePing } from "@repo/hooks/usePing";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { useApiPhase } from "@repo/use-api";
 import isNumber from "lodash/isNumber";
-import { enqueueSnackbar } from "notistack";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import { useGlobalStore } from "~/store/global";
 
@@ -64,22 +64,13 @@ export const ServerSetup = () => {
 	}, [serverSetupDialog]);
 
 	const handleSetup = async () => {
-		if (!serverId)
-			return enqueueSnackbar({
-				message: "SERVER_ID_NOT_SET",
-				variant: "error",
-			});
+		if (!serverId) return toast.error("SERVER_ID_NOT_SET");
 
 		const foundServer = configs.api.servers.find(
 			(item) => item.id === serverId
 		);
 
-		if (!foundServer) {
-			return enqueueSnackbar({
-				message: "SERVER_NOT_FOUND",
-				variant: "error",
-			});
-		}
+		if (!foundServer) return toast.error("SERVER_NOT_FOUND");
 
 		globalStore.updateIsInitialized(false);
 
