@@ -3,8 +3,8 @@ import {
 	extractor,
 	userUtils,
 } from "@repo/classes";
-import { type BaseSchema } from "@repo/schema";
-import type { Socket } from "socket.io-client";
+import { BaseSchema } from "@repo/schema";
+import { Socket } from "socket.io-client";
 
 import { SessionService } from "~/modules/session/session.service";
 import { UserService } from "~/modules/user/user.service";

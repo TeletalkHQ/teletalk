@@ -1,5 +1,5 @@
 import { assertion, extractor } from "@repo/classes";
-import { type BaseSchema } from "@repo/schema";
+import { BaseSchema } from "@repo/schema";
 
 import { randomizer } from "@/classes";
 import { eventHandlerCollection } from "@/utils/eventHandlerCollection";

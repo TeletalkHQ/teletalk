@@ -4,6 +4,7 @@
 		"baseUrl": "./",
 		"declaration": true,
 		"declarationMap": true,
+		"moduleResolution": "node",
 		"emitDecoratorMetadata": true,
 		"outDir": "./dist",
 		"paths": {

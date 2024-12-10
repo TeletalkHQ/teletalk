@@ -1,4 +1,4 @@
-import { countries } from "@repo/assets/countries";
+import { countries } from "@repo/assets/src/variables/others/countries";
 import {
 	type BaseSchema,
 	baseSchema,

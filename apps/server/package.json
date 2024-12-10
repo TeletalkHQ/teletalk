@@ -5,7 +5,6 @@
 	"type": "module",
 	"license": "MIT",
 	"scripts": {
-		"app-runner": "node --no-warnings --loader ./loader.js dist/main.cjs",
 		"build": "nest build --builder webpack",
 		"check:format": "prettier --write  --list-different ./",
 		"check:lint": "eslint --fix ./",
@@ -22,16 +21,16 @@
 		"nest:test:e2e": "jest --config ./test/jest-e2e.json",
 		"prebuild": "rimraf dist",
 		"setup:app": "ts-patch install -s",
+		"prestart": "npm run build",
 		"start": "npm run start:production",
-		"start:dev": "cross-env NODE_ENV=development PORT=${PORT:-8090}  nodemon dist/main.cjs",
-		"start:production": "cross-env NODE_ENV=production npm run app-runner",
-		"test-runner": "npm run test-runner:mocha",
+		"start:dev": "cross-env NODE_ENV=development PORT=${PORT:-8090} nodemon src/main.ts",
+		"start:production": "cross-env NODE_ENV=production node --no-warnings --loader ./loader.js dist/main.cjs",
 		"test-runner:jest": "cross-env TEST_RUNNER=JEST NODE_OPTIONS='--experimental-vm-modules --no-warnings' npx jest",
 		"test-runner:mocha": "cross-env TEST_RUNNER=MOCHA mocha",
 		"test:coverage": "npm run test:coverage:mocha",
 		"test:coverage:jest": "cross-env COVERAGE=true npm run test-runner:jest",
 		"test:coverage:mocha": "cross-env c8 npm run test-runner:mocha",
-		"test:dev": "cross-env NODE_ENV=test npm run test-runner"
+		"test:dev": "cross-env NODE_ENV=test npm run test-runner:mocha"
 	},
 	"dependencies": {
 		"@repo/assets": "workspace:*",

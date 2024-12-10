@@ -1,4 +1,4 @@
-import { FIELD_TYPE } from "@repo/assets/fieldType";
+import { FIELD_TYPE } from "@repo/assets/src/variables/others/fieldType";
 import { type BaseSchema, baseSchema } from "@repo/schema";
 import { type VoidWithArg } from "@repo/types";
 import { expect } from "chai";

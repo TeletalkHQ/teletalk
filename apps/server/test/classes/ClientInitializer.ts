@@ -1,9 +1,5 @@
-import { type BaseSchema } from "@repo/schema";
-import type {
-	ManagerOptions,
-	Socket,
-	SocketOptions,
-} from "socket.io-client";
+import { BaseSchema } from "@repo/schema";
+import { ManagerOptions, Socket, SocketOptions } from "socket.io-client";
 import Client from "socket.io-client";
 
 import { ConfigService } from "~/modules/config/config.service";

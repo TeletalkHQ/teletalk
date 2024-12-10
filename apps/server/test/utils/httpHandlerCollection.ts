@@ -1,5 +1,4 @@
-import type {
-	RouteSchema } from "@repo/schema";
+import { RouteSchema } from "@repo/schema";
 import {
 	createNewUserRoute,
 	getAvatarRoute,
@@ -11,7 +10,7 @@ import {
 	verifyRoute,
 } from "@repo/schema";
 
-import type { HTTPHandlerOptions } from "@/classes";
+import { HTTPHandlerOptions } from "@/classes";
 import { httpHandler } from "@/classes";
 
 export const httpHandlerMaker = <T extends RouteSchema>(schema: T) => {

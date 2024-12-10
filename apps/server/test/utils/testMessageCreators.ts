@@ -1,4 +1,4 @@
-import type   { IOName } from "@repo/schema";
+import { IOName } from "@repo/schema";
 
 type ErrorReason = string;
 

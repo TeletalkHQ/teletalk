@@ -1,5 +1,5 @@
-import type { IOCollection } from "@repo/schema";
-import { type BaseSchema } from "@repo/schema";
+import { IOCollection } from "@repo/schema";
+import { BaseSchema } from "@repo/schema";
 
 import { SessionService } from "~/modules/session/session.service";
 import { TempSessionStoreService } from "~/modules/temp-session-store/temp-session-store.service";
@@ -7,7 +7,7 @@ import { TempSessionStoreService } from "~/modules/temp-session-store/temp-sessi
 import { getServiceInstance } from "@/utils/app";
 import { httpHandlerCollection } from "@/utils/httpHandlerCollection";
 
-import type { CookieItem, HTTPHandlerResponse } from "./HTTPHandler";
+import { CookieItem, HTTPHandlerResponse } from "./HTTPHandler";
 import { randomizer } from "./Randomizer";
 
 const sessionService = await getServiceInstance(SessionService);

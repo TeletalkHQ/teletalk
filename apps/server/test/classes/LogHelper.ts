@@ -1,6 +1,6 @@
 import { Logger } from "@nestjs/common";
-import { escapeChars } from "@repo/assets/escapeChars";
-import type { EventSchema, RouteSchema } from "@repo/schema";
+import { escapeChars } from "@repo/assets/src/variables/others/escapeChars";
+import { EventSchema, RouteSchema } from "@repo/schema";
 
 export class LogHelper {
 	logger: Logger;

@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InternalServerErrorException, Logger } from "@nestjs/common";
-import { escapeChars } from "@repo/assets/escapeChars";
+import { escapeChars } from "@repo/assets/src/variables/others/escapeChars";
 
 @Injectable()
 export class SmsService {

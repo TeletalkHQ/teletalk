@@ -1,4 +1,4 @@
-import type { MiddlewareConsumer, NestModule } from "@nestjs/common";
+import { MiddlewareConsumer, NestModule } from "@nestjs/common";
 import { Module } from "@nestjs/common";
 import { getFullPath, getRequestMethod } from "@repo/schema";
 
@@ -12,6 +12,7 @@ import { SessionCookieAttacher } from "./session-cookie-attacher.middleware";
 	providers: [],
 })
 export class TestingAppModule implements NestModule {
+	// TODO: DUPLICATE
 	configure(consumer: MiddlewareConsumer) {
 		consumer
 			.apply(SessionCookieAttacher)
