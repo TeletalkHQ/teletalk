@@ -5,17 +5,16 @@ import {
 	SubscribeMessage,
 	WebSocketGateway,
 } from "@nestjs/websockets";
-import type {
+import {
 	IOCollection,
 	SocketHandlerReturnType_Promise,
-	SocketRequestBody } from "@repo/schema";
-import {
-	getEventName,
+	SocketRequestBody,
 } from "@repo/schema";
-import type { Socket } from "socket.io";
+import { getEventName } from "@repo/schema";
+import { Socket } from "socket.io";
 
 import { BaseGateway } from "../ws/base/base.gateway";
-import type { UserService } from "./user.service";
+import { UserService } from "./user.service";
 
 @WebSocketGateway()
 export class UserGateway extends BaseGateway {

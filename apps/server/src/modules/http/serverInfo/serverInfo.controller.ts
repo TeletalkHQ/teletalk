@@ -1,11 +1,6 @@
 import { Controller, Get } from "@nestjs/common";
-import type {
-	HTTPHandlerReturnType,
-	IOCollection } from "@repo/schema";
-import {
-	getPathname,
-	getRootPath,
-} from "@repo/schema";
+import { HTTPHandlerReturnType, IOCollection } from "@repo/schema";
+import { getPathname, getRootPath } from "@repo/schema";
 
 @Controller(getRootPath("server-info"))
 export class ServerInfoController {

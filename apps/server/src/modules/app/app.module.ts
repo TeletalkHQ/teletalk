@@ -1,4 +1,4 @@
-import type { MiddlewareConsumer, NestModule } from "@nestjs/common";
+import { MiddlewareConsumer, NestModule } from "@nestjs/common";
 import { Module } from "@nestjs/common";
 import { APP_INTERCEPTOR, NestFactory } from "@nestjs/core";
 import { MongooseModule } from "@nestjs/mongoose";

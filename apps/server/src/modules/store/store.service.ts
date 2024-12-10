@@ -1,8 +1,8 @@
 import { Inject, Injectable } from "@nestjs/common";
 import isString from "lodash/isString";
-import { type RedisClientType } from "redis";
+import type { RedisClientType } from "redis";
 
-import type { ErrorStoreService } from "../error-store/error-store.service";
+import { ErrorStoreService } from "../error-store/error-store.service";
 import { STORE_KEY } from "./store.constants";
 
 @Injectable()

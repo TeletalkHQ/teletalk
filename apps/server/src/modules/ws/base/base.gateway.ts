@@ -1,11 +1,7 @@
 import { Logger, UseInterceptors } from "@nestjs/common";
-import type {
-	OnGatewayInit } from "@nestjs/websockets";
-import {
-	WebSocketGateway,
-	WebSocketServer,
-} from "@nestjs/websockets";
-import type { Server } from "socket.io";
+import { OnGatewayInit } from "@nestjs/websockets";
+import { WebSocketGateway, WebSocketServer } from "@nestjs/websockets";
+import { Server } from "socket.io";
 
 import { BaseInterceptor } from "./base.interceptor";
 

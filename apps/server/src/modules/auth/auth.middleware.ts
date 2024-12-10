@@ -1,10 +1,10 @@
-import type { NestMiddleware } from "@nestjs/common";
+import { NestMiddleware } from "@nestjs/common";
 import { Injectable } from "@nestjs/common";
-import type { HTTPRequestBody, IOCollection } from "@repo/schema";
-import type { NextFunction, Request, Response } from "express";
+import { HTTPRequestBody, IOCollection } from "@repo/schema";
+import { NextFunction, Request, Response } from "express";
 
-import type { ErrorStoreService } from "../error-store/error-store.service";
-import type { TempSessionStoreService } from "../temp-session-store/temp-session-store.service";
+import { ErrorStoreService } from "../error-store/error-store.service";
+import { TempSessionStoreService } from "../temp-session-store/temp-session-store.service";
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {

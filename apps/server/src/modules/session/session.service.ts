@@ -5,11 +5,11 @@ import {
 	baseSchema,
 	getStringSchemaMaxLength,
 } from "@repo/schema";
-import type { JWTPayload, JWTVerifyResult } from "jose";
+import { JWTPayload, JWTVerifyResult } from "jose";
 import { SignJWT, jwtVerify } from "jose";
 
-import type { ConfigService } from "../config/config.service";
-import type { Environments } from "../env/env.service";
+import { ConfigService } from "../config/config.service";
+import { Environments } from "../env/env.service";
 
 export interface SessionPayload extends JWTPayload {
 	sessionId: string;

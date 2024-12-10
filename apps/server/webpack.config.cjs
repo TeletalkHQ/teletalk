@@ -1,10 +1,6 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-require-imports */
 const path = require("path");
 const { IgnorePlugin } = require("webpack");
-const {
-	swcDefaultsFactory,
-} = require("@nestjs/cli/lib/compiler/defaults/swc-defaults");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 /** @type { import('webpack').Configuration } */
@@ -13,13 +9,20 @@ module.exports = {
 	externals: {},
 	module: {
 		rules: [
+			// {
+			//   exclude: /node_modules/,
+			//   test: /\.ts$/,
+			//   use: {
+			//     loader: 'swc-loader',
+			//     options: swcDefaultsFactory().swcOptions,
+			//   },
+			// },
 			{
-				exclude: /node_modules/,
 				test: /\.ts$/,
-				use: {
-					loader: "swc-loader",
-					options: swcDefaultsFactory().swcOptions,
-				},
+				loader: "ts-loader",
+				// options: {
+				// 	transpileOnly: true, // Speeds up builds
+				// },
 			},
 		],
 	},
@@ -28,7 +31,7 @@ module.exports = {
 		__filename: false,
 	},
 	output: {
-		filename: "[name].js",
+		filename: "[name].cjs",
 		path: path.resolve(__dirname, "dist/"),
 	},
 	plugins: [
@@ -57,9 +60,10 @@ module.exports = {
 				}
 				try {
 					require.resolve(resource, { paths: [process.cwd()] });
+					// eslint-disable-next-line unused-imports/no-unused-vars
 				} catch (err) {
-					console.log("build error:", err);
-
+					// eslint-disable-next-line no-console
+					// console.log("build error:", err);
 					return true;
 				}
 				return false;
@@ -69,7 +73,11 @@ module.exports = {
 	resolve: {
 		extensions: [".js", ".json", ".ts"],
 		mainFields: ["main"],
-		plugins: [new TsconfigPathsPlugin({ configFile: "tsconfig.json" })],
+		plugins: [
+			new TsconfigPathsPlugin({
+				configFile: "tsconfig.json",
+			}),
+		],
 	},
 	target: "node",
 };

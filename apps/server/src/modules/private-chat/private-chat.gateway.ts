@@ -5,18 +5,17 @@ import {
 	SubscribeMessage,
 	WebSocketGateway,
 } from "@nestjs/websockets";
-import type {
-	BaseSchema,
+import {
+	type BaseSchema,
 	IOCollection,
 	SocketHandlerReturnType_Promise,
-	SocketRequestBody } from "@repo/schema";
-import {
-	getEventName,
+	SocketRequestBody,
 } from "@repo/schema";
-import type { Socket } from "socket.io";
+import { getEventName } from "@repo/schema";
+import { Socket } from "socket.io";
 
 import { BaseGateway } from "../ws/base/base.gateway";
-import type { PrivateChatService } from "./private-chat.service";
+import { PrivateChatService } from "./private-chat.service";
 
 @WebSocketGateway()
 export class PrivateChatGateway extends BaseGateway {

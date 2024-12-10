@@ -1,11 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { randomizer } from "@repo/classes";
-import { type BaseSchema, baseSchema } from "@repo/schema";
-import type { Model } from "mongoose";
+import type { BaseSchema } from "@repo/schema";
+import { baseSchema } from "@repo/schema";
+import { Model } from "mongoose";
 
-import type { ErrorStoreService } from "../error-store/error-store.service";
-import type { UserService } from "../user/user.service";
+import { ErrorStoreService } from "../error-store/error-store.service";
+import { UserService } from "../user/user.service";
 import { PrivateChat } from "./private-chat.entity";
 
 @Injectable()

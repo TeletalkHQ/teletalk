@@ -5,7 +5,7 @@ import {
 	WebSocketGateway,
 	WebSocketServer,
 } from "@nestjs/websockets";
-import type { Server, Socket } from "socket.io";
+import { Server, Socket } from "socket.io";
 
 const requestCounts = new Map<string, { count: number; lastRequest: number }>();
 

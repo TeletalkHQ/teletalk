@@ -3,6 +3,7 @@
 	"collection": "@nestjs/schematics",
 	"compilerOptions": {
 		"builder": "swc",
+		"webpackConfigPath": "webpack.config.cjs",
 		"typeCheck": true
 	},
 	"sourceRoot": "src"

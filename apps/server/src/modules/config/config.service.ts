@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 
-import type { EnvService, Environments } from "../env/env.service";
+import { EnvService, Environments } from "../env/env.service";
 
 interface Configs {
 	APP: {

@@ -7,4 +7,7 @@ module.exports = defineConfig({
 	env: {
 		mocha: true,
 	},
+	rules: {
+		"@typescript-eslint/consistent-type-imports": "off",
+	},
 });

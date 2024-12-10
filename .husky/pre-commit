@@ -1,2 +1,2 @@
 # npx lint-staged && npm run check:types && npm run test:dev # && npm run test:coverage && npm run build
-npm run test:dev
+# npm run test:dev

@@ -1,17 +1,16 @@
 {
 	"extends": "@repo/typescript-config/node.json",
 	"compilerOptions": {
-		"moduleResolution": "bundler",
-		"outDir": "./dist",
-		"baseUrl": ".",
+		"baseUrl": "./",
 		"declaration": true,
 		"declarationMap": true,
+		"emitDecoratorMetadata": true,
+		"outDir": "./dist",
 		"paths": {
 			"@/*": ["test/*"],
 			"#/*": ["public/*"],
 			"~/*": ["src/*"]
 		}
 	},
-	"exclude": ["node_modules"],
-	"include": ["src/**/*.ts", "test/**/*.ts", "./global.d.ts"]
+	"include": ["**/*.js", "**/*.ts", "**/.*.js", "webpack.config.cjs"]
 }

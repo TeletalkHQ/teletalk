@@ -3,7 +3,6 @@
 	"extends": "./base.json",
 	"display": "NextJS",
 	"compilerOptions": {
-		"moduleResolution": "bundler",
 		"jsx": "preserve",
 		"lib": ["DOM", "DOM.Iterable", "ESNext"],
 		"plugins": [

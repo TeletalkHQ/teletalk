@@ -118,5 +118,6 @@
 	"testing.defaultGutterClickAction": "run",
 	"todo-tree.tree.showBadges": true,
 	"todo-tree.tree.showCountsInTree": false,
-	"typescript.enablePromptUseWorkspaceTsdk": true
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"typescript.tsdk": "node_modules/typescript/lib"
 }
