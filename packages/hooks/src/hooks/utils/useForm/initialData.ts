@@ -4,7 +4,7 @@ import type { z } from "zod";
 
 export const formInitialData = {
 	addContact: maker.emptyContact(),
-	createNewUser: maker.emptyFullName(),
+	createUser: maker.emptyFullName(),
 	messageInput: {
 		messageText: "",
 	},

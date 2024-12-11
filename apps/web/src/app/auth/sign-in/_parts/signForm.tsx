@@ -1,10 +1,9 @@
 "use client";
 
 import { useCustomRouter } from "@repo/hooks/useCustomRouter";
-import { type SubmitHandler, useForm } from "@repo/hooks/useForm";
+import { useForm } from "@repo/hooks/useForm";
 import { useSignIn } from "@repo/hooks/useSignIn";
-import { type FormSchema, signInForm } from "@repo/schema";
-import { Div } from "@repo/ui/box/div";
+import { signInForm } from "@repo/schema";
 import { Flex } from "@repo/ui/box/flex";
 import { Form } from "@repo/ui/box/form";
 import { Button } from "@repo/ui/button/button";
@@ -21,6 +20,8 @@ import { useWatch } from "react-hook-form";
 
 import { useAuthUrlQueries } from "~/hooks/utils/useAuthUrlQueries";
 
+import { FormContainer } from "../../_parts/FormContainer";
+
 export const SignForm: React.FC<PropsWithChildren> = () => {
 	const {
 		api: { postApi },
@@ -30,12 +31,7 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 
 	const authQueries = useAuthUrlQueries();
 
-	const {
-		control,
-		handleSubmit,
-		setValue,
-		formState: { isValid },
-	} = useForm<FormSchema["signIn"]>({
+	const { control, handleSubmit, setValue } = useForm({
 		schema: signInForm,
 		defaultValues: {
 			countryCode: authQueries.countryCode,
@@ -58,7 +54,7 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 		setValue("countryCode", value?.countryCode || "");
 	};
 
-	const submitSignInForm: SubmitHandler<FormSchema["signIn"]> = (data) => {
+	const onSubmit = handleSubmit((data) => {
 		authQueries.setCountryCode(data.countryCode);
 		authQueries.setPhoneNumber(data.phoneNumber);
 
@@ -73,20 +69,11 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 				},
 			},
 		});
-	};
-
-	const onSubmit = handleSubmit(submitSignInForm);
+	});
 
 	return (
-		<Form
-			style={{
-				display: "flex",
-				flexDirection: "column",
-				gap: "10px",
-			}}
-			onSubmit={onSubmit}
-		>
-			<Div style={{ marginTop: 1 }}>
+		<Form onSubmit={onSubmit}>
+			<FormContainer>
 				<Typography variant="caption">
 					Please verify your country code and enter your mobile phone number.
 				</Typography>
@@ -97,24 +84,20 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 					onCountryNameChange={handleCountryNameChange}
 					onSelectChange={handleCountrySelectChange}
 				/>
-				<Flex fullWidth>
+				<Flex fullWidth gap="8px">
 					<CountryCode control={control} />
 					<PhoneNumber control={control} />
 				</Flex>
 
 				<Button
-					disabled={!isValid}
+					fullWidth
 					loading={signInPhase.isLoading}
 					loadingIndicatorText="Sign in..."
-					sx={{
-						mb: 1,
-						mt: 2,
-					}}
 					type="submit"
 				>
 					Next
 				</Button>
-			</Div>
+			</FormContainer>
 		</Form>
 	);
 };

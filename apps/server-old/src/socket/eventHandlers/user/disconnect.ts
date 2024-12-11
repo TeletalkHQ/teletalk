@@ -6,7 +6,7 @@ import { services } from "~/services";
 import { utils } from "~/utils";
 
 export const disconnect: SocketOnHandler<"disconnect"> = async (socket) => {
-	const notAllowedEvents: EventName[] = ["signIn", "createNewUser", "verify"];
+	const notAllowedEvents: EventName[] = ["signIn", "createUser", "verify"];
 
 	if (socket.sessionId && !notAllowedEvents.includes(socket.eventName)) {
 		const {

@@ -45,7 +45,7 @@ export const addContactIO = {
 // 	output: z.object({}),
 // };
 
-export const createNewUserIO = {
+export const createUserIO = {
 	input: z.object({
 		firstName: baseSchema.firstName,
 		lastName: baseSchema.lastName,
@@ -316,7 +316,7 @@ export const verifyIO = {
 export type IOCollection = {
 	addBlock: typeof addBlockIO;
 	addContact: typeof addContactIO;
-	createNewUser: typeof createNewUserIO;
+	createUser: typeof createUserIO;
 	disconnect: typeof disconnectIO;
 	getAvatar: typeof getAvatarIO;
 	getChatInfo: typeof getChatInfoIO;

@@ -7,7 +7,7 @@
 		"./useBoolean": "./src/hooks/utils/useBoolean.ts",
 		"./useConfigs": "./src/hooks/utils/useConfigs.ts",
 		"./useCountries": "./src/hooks/api/other/useCountries/index.ts",
-		"./useCreateNewUser": "./src/hooks/api/auth/useCreateNewUser/index.ts",
+		"./useCreateUser": "./src/hooks/api/auth/useCreateUser/index.ts",
 		"./useCustomRouter": "./src/hooks/utils/useCustomRouter.ts",
 		"./useDebouncedCallback": "./src/hooks/utils/useDebouncedCallback.ts",
 		"./useDialogState": "./src/hooks/utils/useDialogState.ts",

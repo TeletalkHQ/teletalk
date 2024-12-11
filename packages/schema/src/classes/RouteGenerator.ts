@@ -12,7 +12,7 @@ export type HTTPRootPath =
 
 export type RouteName = PickFromUnion<
 	IOName,
-	| "createNewUser"
+	| "createUser"
 	| "getAvatar"
 	| "getCountries"
 	| "getUserInfo"

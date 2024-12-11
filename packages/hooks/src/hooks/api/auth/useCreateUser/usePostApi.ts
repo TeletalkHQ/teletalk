@@ -1,4 +1,4 @@
-import { createNewUserRoute } from "@repo/schema";
+import { createUserRoute } from "@repo/schema";
 
 import { useMainApi } from "../../useMainApi";
 
@@ -8,6 +8,6 @@ export const usePostApi = () =>
 			data: {},
 			errors: [],
 		},
-		name: "createNewUser",
-		schema: createNewUserRoute.schema,
+		name: "createUser",
+		schema: createUserRoute.schema,
 	});

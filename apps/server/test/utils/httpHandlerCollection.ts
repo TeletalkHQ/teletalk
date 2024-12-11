@@ -1,6 +1,6 @@
 import { RouteSchema } from "@repo/schema";
 import {
-	createNewUserRoute,
+	createUserRoute,
 	getAvatarRoute,
 	getCountriesRoute,
 	getUserInfoRoute,
@@ -20,7 +20,7 @@ export const httpHandlerMaker = <T extends RouteSchema>(schema: T) => {
 };
 
 export const httpHandlerCollection = {
-	createNewUser: httpHandlerMaker(createNewUserRoute.schema),
+	createUser: httpHandlerMaker(createUserRoute.schema),
 	getAvatar: httpHandlerMaker(getAvatarRoute.schema),
 	getCountries: httpHandlerMaker(getCountriesRoute.schema),
 	getUserInfo: httpHandlerMaker(getUserInfoRoute.schema),

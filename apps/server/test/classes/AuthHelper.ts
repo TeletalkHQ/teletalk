@@ -16,7 +16,7 @@ const tempSessionStoreService = await getServiceInstance(
 );
 
 class AuthHelper {
-	private createResponse: HTTPHandlerResponse<IOCollection["createNewUser"]>;
+	private createResponse: HTTPHandlerResponse<IOCollection["createUser"]>;
 	private signInResponse: HTTPHandlerResponse<IOCollection["signIn"]>;
 	private verifyResponse: HTTPHandlerResponse<IOCollection["verify"]>;
 	// TODO: Add session as well
@@ -57,7 +57,7 @@ class AuthHelper {
 	}
 
 	async create() {
-		const handler = httpHandlerCollection.createNewUser({
+		const handler = httpHandlerCollection.createUser({
 			session: this.getSession(),
 		});
 

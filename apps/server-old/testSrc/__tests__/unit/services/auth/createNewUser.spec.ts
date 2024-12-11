@@ -7,43 +7,40 @@ import { assertion } from "@/classes/Assertion";
 import { randomizer } from "@/classes/RandomMaker";
 import { utils } from "@/utils";
 
-describe(
-	messageCreators.unitSuccessDescribe("createNewUser", "service"),
-	() => {
-		it(
-			messageCreators.unitSuccessTest(
-				"createNewUser",
-				"service",
-				"should successfully create new user"
-			),
-			async () => {
-				const userData: DBUserData = {
-					...userUtils.getDBDefaultUserData(),
-					...randomizer.unusedContact(),
-				};
+describe(messageCreators.unitSuccessDescribe("createUser", "service"), () => {
+	it(
+		messageCreators.unitSuccessTest(
+			"createUser",
+			"service",
+			"should successfully create new user"
+		),
+		async () => {
+			const userData: DBUserData = {
+				...userUtils.getDBDefaultUserData(),
+				...randomizer.unusedContact(),
+			};
 
-				await services.user.createNewUser(userData);
+			await services.user.createUser(userData);
 
-				const foundUser = await services.user.findByUserId({
-					targetUserId: userData.userId,
-				});
+			const foundUser = await services.user.findByUserId({
+				targetUserId: userData.userId,
+			});
 
-				assertion().dbUserData({
-					test: foundUser,
-					equal: userData,
-				});
-			}
-		);
-	}
-);
+			assertion().dbUserData({
+				test: foundUser,
+				equal: userData,
+			});
+		}
+	);
+});
 
-await utils.generateServiceFailTest("createNewUser", "USER_EXIST", async () => {
+await utils.generateServiceFailTest("createUser", "USER_EXIST", async () => {
 	const userData: DBUserData = {
 		...userUtils.getDBDefaultUserData(),
 		...randomizer.unusedContact(),
 	};
 
-	await services.user.createNewUser(userData);
+	await services.user.createUser(userData);
 
 	return userData;
 });

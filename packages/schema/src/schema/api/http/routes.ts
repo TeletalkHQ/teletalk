@@ -1,6 +1,6 @@
 import { RouteGenerator, type RouteName } from "../../../classes";
 import {
-	createNewUserIO,
+	createUserIO,
 	getAvatarIO,
 	getCountriesIO,
 	getUserInfoIO,
@@ -12,11 +12,11 @@ import {
 	verifyIO,
 } from "../io";
 
-export const createNewUserRoute = new RouteGenerator({
-	ioName: "createNewUser",
+export const createUserRoute = new RouteGenerator({
+	ioName: "createUser",
 	isAuthRequired: true,
 	method: "post",
-	io: createNewUserIO,
+	io: createUserIO,
 	endpoint: "auth/create",
 });
 
@@ -93,7 +93,7 @@ export const pingRoute = new RouteGenerator({
 }); // TODO: split different roots
 
 export const httpRoutes = {
-	createNewUser: createNewUserRoute,
+	createUser: createUserRoute,
 	getAvatar: getAvatarRoute,
 	getCountries: getCountriesRoute,
 	getUserInfo: getUserInfoRoute,

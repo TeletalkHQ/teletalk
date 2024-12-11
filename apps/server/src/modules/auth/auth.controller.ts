@@ -121,12 +121,12 @@ export class AuthController {
 		};
 	}
 
-	@Post(getPathname("createNewUser"))
-	async createNewUser(
+	@Post(getPathname("createUser"))
+	async createUser(
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response,
-		@Body() data: HTTPRequestBody<IOCollection["createNewUser"]>
-	): HTTPHandlerReturnType<IOCollection["createNewUser"]> {
+		@Body() data: HTTPRequestBody<IOCollection["createUser"]>
+	): HTTPHandlerReturnType<IOCollection["createUser"]> {
 		const { firstName, lastName } = data;
 
 		const tempStoredSession = await this.tempSessionStoreService.find(

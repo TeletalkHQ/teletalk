@@ -12,7 +12,7 @@ await utils.asyncDescribe(
 
 		const eventsWithInputFieldsExceptAuth = eventsWithInputFields.filter(
 			(i) =>
-				!(["signIn", "verify", "createNewUser"] as EventName[]).includes(i.name)
+				!(["signIn", "verify", "createUser"] as EventName[]).includes(i.name)
 		);
 
 		return () => {

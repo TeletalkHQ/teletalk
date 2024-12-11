@@ -24,7 +24,7 @@ export const verifySignInCodeForm = z.object({
 	signInCode: signInCodeSchema,
 });
 
-export const createNewUserForm = z.object({
+export const createUserForm = z.object({
 	firstName: firstNameSchema,
 	lastName: lastNameSchema,
 });
@@ -48,7 +48,7 @@ export const updateContactForm = contactsItemSchema;
 
 export type FormSchema = {
 	addContact: typeof addContactForm;
-	createNewUser: typeof createNewUserForm;
+	createUser: typeof createUserForm;
 	messageInput: typeof messageInputForm;
 	signIn: typeof signInForm;
 	updateBio: typeof updateBioForm;

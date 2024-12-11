@@ -41,7 +41,7 @@ const registerTests = async () => {
 	// await import("@/__tests__/unit/services/user/removeContact.spec");
 	// await import("@/__tests__/unit/services/user/updateContact.spec");
 	// await import("@/__tests__/unit/services/user/updateUserPublicInfo.spec");
-	// await import("@/__tests__/unit/services/auth/createNewUser.spec");
+	// await import("@/__tests__/unit/services/auth/createUser.spec");
 	// await import("@/__tests__/unit/services/auth/logout.spec");
 
 	//? // // Functions

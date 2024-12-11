@@ -1,6 +1,6 @@
 import { usePostApi } from "./usePostApi";
 
-export const useCreateNewUser = () => {
+export const useCreateUser = () => {
 	const postApi = usePostApi();
 
 	return {

@@ -11,7 +11,7 @@ export const MessengerContainer = () => {
 	// });
 	// useListener({
 	// 	cb: handler,
-	// 	evName: "createNewUser",
+	// 	evName: "createUser",
 	// });
 
 	// useEffect(() => {
