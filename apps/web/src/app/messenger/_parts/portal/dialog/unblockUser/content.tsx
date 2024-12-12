@@ -8,7 +8,9 @@ import { useUserStore } from "~/store";
 interface Props {}
 
 export const Content: React.FC<Props> = () => {
-	const selectedUserIdToUnblock = useUserStore((state) => state.userIdToBlock);
+	const selectedUserIdToUnblock = useUserStore(
+		(state) => state.selectedUUID.to.unblock
+	);
 
 	const {
 		data: { userPublicInfo },

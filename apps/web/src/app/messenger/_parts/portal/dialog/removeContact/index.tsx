@@ -11,7 +11,7 @@ export const RemoveContact = () => {
 	const dialogState = useDialogState("removeContact");
 
 	const userIdForRemoveContact = useUserStore(
-		(state) => state.userIdForRemoveContact
+		(state) => state.selectedUUID.to.removeContact
 	);
 
 	const { emitter, isLoading } = useRemoveContact();

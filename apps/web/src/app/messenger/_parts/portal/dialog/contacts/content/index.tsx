@@ -3,6 +3,7 @@ import { useUserInfo } from "@repo/hooks/useUserInfo";
 import { type BaseSchema } from "@repo/schema";
 import type { DialogStore } from "@repo/store";
 import { useDialogStore } from "@repo/store";
+import { List } from "@repo/ui/box/list";
 
 import { useContextMenu } from "~/hooks/utils/useContextMenu";
 import { type GlobalStore, useGlobalStore, useUserStore } from "~/store";
@@ -23,23 +24,10 @@ export const Content: React.FC<Props> = () => {
 
 	const handleContactItemClicked = (id: string) => {
 		dialogState.close();
-		setUserIdToChat(id);
+		setSelectedUUID("chat", id);
 	};
 
-	// TODO: Refactor - e.g: setUUID({selectedUUID:{to:{removeBlock:...,chat:...,}}})
-	const {
-		setUserIdForEditContact,
-		setUserIdForRemoveContact,
-		setUserIdToBlock,
-		setUserIdToChat,
-		setUserIdToUnblock,
-	} = useUserStore((state) => ({
-		setUserIdForEditContact: state.setUserIdForEditContact,
-		setUserIdForRemoveContact: state.setUserIdForRemoveContact,
-		setUserIdToBlock: state.setUserIdToBlock,
-		setUserIdToChat: state.setUserIdToChat,
-		setUserIdToUnblock: state.setUserIdToUnblock,
-	}));
+	const setSelectedUUID = useUserStore((state) => state.setSelectedUUID);
 
 	const {
 		data: {
@@ -53,10 +41,10 @@ export const Content: React.FC<Props> = () => {
 			openDialog(dn);
 
 			const uuidSetter: UuidSetter = {
-				addBlock: setUserIdToBlock,
-				editContact: setUserIdForEditContact,
-				removeBlock: setUserIdToUnblock,
-				removeContact: setUserIdForRemoveContact,
+				addBlock: (id) => setSelectedUUID("block", id),
+				editContact: (id) => setSelectedUUID("editContact", id),
+				removeBlock: (id) => setSelectedUUID("unblock", id),
+				removeContact: (id) => setSelectedUUID("removeContact", id),
 			};
 
 			uuidSetter[dn]?.(id);
@@ -95,7 +83,7 @@ export const Content: React.FC<Props> = () => {
 	};
 
 	return (
-		<>
+		<List className="max-w-lg w-full">
 			{contacts.map((item, index) => (
 				<ListItem
 					key={index}
@@ -108,6 +96,6 @@ export const Content: React.FC<Props> = () => {
 					}}
 				/>
 			))}
-		</>
+		</List>
 	);
 };

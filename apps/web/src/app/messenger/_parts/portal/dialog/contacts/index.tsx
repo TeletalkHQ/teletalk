@@ -28,9 +28,7 @@ export const Contacts = () => {
 			}
 			content={<Content />}
 			dialogState={dialogState}
-			paperStyle={{
-				height: "90vh",
-			}}
+			paperStyle={{ width: "512px" }}
 			title={<Title />}
 		/>
 	);

@@ -12,7 +12,9 @@ export const UnblockUser = () => {
 
 	const { emitter, isLoading } = useRemoveBlock();
 
-	const selectedUserIdToUnblock = useUserStore((state) => state.userIdToBlock);
+	const selectedUserIdToUnblock = useUserStore(
+		(state) => state.selectedUUID.to.unblock
+	);
 
 	const handleRemoveBlock = () => {
 		if (selectedUserIdToUnblock)

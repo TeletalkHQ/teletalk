@@ -7,7 +7,7 @@ import { useUserStore } from "~/store";
 
 export const Content: React.FC = () => {
 	const userIdForRemoveContact = useUserStore(
-		(state) => state.userIdForRemoveContact
+		(state) => state.selectedUUID.to.removeContact
 	);
 
 	const {

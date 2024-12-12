@@ -8,7 +8,7 @@ import { Typography } from "@repo/ui/typography/typography";
 import { useUserStore } from "~/store";
 
 export const Content: React.FC = () => {
-	const userIdToChat = useUserStore((state) => state.userIdToChat);
+	const userIdToChat = useUserStore((state) => state.selectedUUID.to.chat);
 
 	const {
 		data: { userPublicInfo },

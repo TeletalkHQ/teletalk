@@ -50,9 +50,6 @@ export const AddContact = () => {
 				}
 				content={<Content control={control} />}
 				dialogState={dialogState}
-				paperStyle={{
-					height: "50vh",
-				}}
 				title={<Title />}
 				onAfterClose={reset}
 			/>

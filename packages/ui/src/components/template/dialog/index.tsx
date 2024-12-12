@@ -1,5 +1,6 @@
 "use client";
 
+import type { ModalProps } from "@mui/material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { useConfigs } from "@repo/hooks/useConfigs";
@@ -14,13 +15,11 @@ import { Actions } from "./actions";
 import { Content } from "./content";
 import { Title } from "./title";
 
-type FilteredDialogProps = Omit<DialogProps, "content" | "title" | "open">;
-
-type Props = FilteredDialogProps & {
+type Props = {
 	actions: JSX.Element | null;
 	content: JSX.Element | null;
+	dialogProps?: Omit<DialogProps, "content" | "title" | "open">;
 	dialogState: DialogStore.DialogTemplateData;
-	dialogStyle?: React.CSSProperties;
 	fullHeight?: boolean;
 	isClosable?: boolean;
 	onAfterClose?: VoidNoArgs;
@@ -35,10 +34,9 @@ type Props = FilteredDialogProps & {
 export const DialogTemplate: React.FC<Props> = ({
 	actions,
 	content,
+	dialogProps,
 	dialogState,
-	dialogStyle,
 	fullHeight,
-	fullScreen,
 	isClosable = true,
 	onAfterClose,
 	onClose,
@@ -59,8 +57,14 @@ export const DialogTemplate: React.FC<Props> = ({
 	const SelectedTransition =
 		Transitions[transitionName || configs.ui.dialogDefaultTransition];
 
-	const handleClose = () => {
-		const oc = onClose || dialogStore.setCloseAllDialog;
+	const handleClose: ModalProps["onClose"] = (_e, reason) => {
+		const onCloseByDialogState =
+			reason === "backdropClick"
+				? dialogStore.setCloseAllDialog
+				: dialogState.close;
+
+		const oc = onClose || onCloseByDialogState;
+
 		oc();
 		onAfterClose?.();
 	};
@@ -74,11 +78,8 @@ export const DialogTemplate: React.FC<Props> = ({
 	return (
 		<Dialog
 			{...rest}
-			fullScreen={fullScreen || smFullScreen}
+			fullScreen={dialogProps?.fullScreen || smFullScreen}
 			keepMounted
-			{...{
-				onClose: isClosable ? handleClose : undefined,
-			}}
 			open={dialogState.isOpen}
 			PaperProps={{
 				style: {
@@ -88,10 +89,11 @@ export const DialogTemplate: React.FC<Props> = ({
 			}}
 			sx={{
 				zIndex: dialogState.props.zIndex,
-				...dialogStyle,
+				...dialogProps?.sx,
 			}}
 			TransitionComponent={SelectedTransition}
 			transitionDuration={transitionDuration || 500}
+			onClose={isClosable ? handleClose : undefined}
 		>
 			<Title>{title}</Title>
 			<Content>{content}</Content>

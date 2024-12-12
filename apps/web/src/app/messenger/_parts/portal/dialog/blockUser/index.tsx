@@ -10,7 +10,9 @@ import { useUserStore } from "~/store";
 import { Content } from "./content";
 
 export const BlockUser = () => {
-	const selectedUserIdToBlock = useUserStore((state) => state.userIdToBlock);
+	const selectedUserIdToBlock = useUserStore(
+		(state) => state.selectedUUID.to.block
+	);
 
 	const dialogState = useDialogState("addBlock");
 
