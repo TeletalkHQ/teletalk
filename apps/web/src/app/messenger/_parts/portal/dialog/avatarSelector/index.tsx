@@ -1,3 +1,5 @@
+"use client";
+
 import { useDialogState } from "@repo/hooks/useDialogState";
 import { useUpdateUserPublicInfo } from "@repo/hooks/useUpdateUserPublicInfo";
 import { DialogTemplate } from "@repo/ui/template/dialog";

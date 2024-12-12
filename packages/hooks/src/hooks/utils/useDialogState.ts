@@ -1,3 +1,5 @@
+"use client";
+
 import type { DialogStore } from "@repo/store";
 import { defaultDialogProps, useDialogStore } from "@repo/store";
 

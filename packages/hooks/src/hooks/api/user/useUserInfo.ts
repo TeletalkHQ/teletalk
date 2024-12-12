@@ -1,3 +1,5 @@
+"use client";
+
 import { maker } from "@repo/classes";
 import { getUserInfoEvent } from "@repo/schema";
 

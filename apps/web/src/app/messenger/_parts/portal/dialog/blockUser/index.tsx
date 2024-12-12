@@ -1,3 +1,5 @@
+"use client";
+
 import { useAddBlock } from "@repo/hooks/useAddBlock";
 import { useDialogState } from "@repo/hooks/useDialogState";
 import { DialogTemplate } from "@repo/ui/template/dialog";

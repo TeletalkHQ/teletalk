@@ -1,3 +1,5 @@
+"use client";
+
 import { useAddContact } from "@repo/hooks/useAddContact";
 import { useDialogState } from "@repo/hooks/useDialogState";
 import { type SubmitHandler, useForm } from "@repo/hooks/useForm";

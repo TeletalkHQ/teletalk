@@ -1,3 +1,5 @@
+"use client";
+
 import { addBlockEvent } from "@repo/schema";
 
 import { createEmitterInitialData, useMainEmitter } from "../useMainEmitter";

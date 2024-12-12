@@ -1,3 +1,5 @@
+"use client";
+
 import { maker } from "@repo/classes";
 import { type BaseSchema, getUserPublicInfoEvent } from "@repo/schema";
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { updateUserPublicInfoEvent } from "@repo/schema";
 
 import { createEmitterInitialData, useMainEmitter } from "../useMainEmitter";

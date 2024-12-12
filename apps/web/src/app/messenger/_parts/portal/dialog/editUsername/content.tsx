@@ -1,3 +1,5 @@
+"use client";
+
 import { type Control } from "@repo/hooks/useForm";
 import { type FormSchema } from "@repo/schema";
 import { Flex } from "@repo/ui/box/flex";
