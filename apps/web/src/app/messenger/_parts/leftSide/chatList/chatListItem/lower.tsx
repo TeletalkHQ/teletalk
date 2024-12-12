@@ -12,7 +12,7 @@ export const Lower: React.FC<Props> = ({ messageText }) => (
 	<Flex ai="center" jc="space-between" style={{ width: "100%" }}>
 		<Typography variant="caption">{messageText}</Typography>
 		<Div>
-			<DynamicIcon icon={FaCheckDouble} />
+			<DynamicIcon className="text-[12px]" icon={FaCheckDouble} />
 		</Div>
 	</Flex>
 );

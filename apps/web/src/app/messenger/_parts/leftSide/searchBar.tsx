@@ -1,14 +1,14 @@
-import { Paper } from "@repo/ui/box/paper";
+import { Div } from "@repo/ui/box/div";
 import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
 import { InputAdornment } from "@repo/ui/input/inputAdornment";
 import { TextField } from "@repo/ui/input/textField";
-import { RiAccountBoxLine } from "react-icons/ri";
+import { CiSearch } from "react-icons/ci";
 
 interface Props {}
 
 export const SearchBar: React.FC<Props> = () => {
 	return (
-		<Paper className="flex size-14 justify-between items-center p-2 w-full ">
+		<Div className="flex w-full height-14 rounded-lg justify-between items-center p-2">
 			<TextField
 				fullWidth
 				name="search"
@@ -16,14 +16,15 @@ export const SearchBar: React.FC<Props> = () => {
 				size="small"
 				slotProps={{
 					input: {
+						className: "rounded-lg",
 						startAdornment: (
 							<InputAdornment position="start">
-								<DynamicIcon icon={RiAccountBoxLine} />
+								<DynamicIcon icon={CiSearch} />
 							</InputAdornment>
 						),
 					},
 				}}
 			/>
-		</Paper>
+		</Div>
 	);
 };

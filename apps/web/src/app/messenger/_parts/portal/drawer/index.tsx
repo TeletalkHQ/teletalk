@@ -43,7 +43,9 @@ export const Drawer = () => {
 			anchor={globalStore.drawer.anchor}
 			// disableBackdropTransition={!utils.isIos()}
 			// disableDiscovery={utils.isIos()}
+			className="m-4"
 			open={globalStore.drawer.open}
+			PaperProps={{ className: "h-[97vh] m-[17px] rounded-lg" }}
 			onClose={(event) => toggleDrawer(event, false)}
 			onOpen={(event) => toggleDrawer(event, true)}
 		>

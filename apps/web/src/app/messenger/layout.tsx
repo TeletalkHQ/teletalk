@@ -9,7 +9,7 @@ const Layout: React.FC<PropsWithChildren> = ({ children }) => {
 		<IoProvider
 		// inputTransformer={(data) => data}
 		>
-			<Div className="p-2">{children}</Div>
+			<Div className="p-4 flex h-screen gap-2">{children}</Div>
 		</IoProvider>
 	);
 };

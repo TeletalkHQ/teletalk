@@ -28,24 +28,12 @@ export const ChatListItem: React.FC<Props> = ({
 
 	return (
 		<ListItemButton
+			className="h-14 w-full rounded-lg flex justify-between overflow-hidden text-ellipsis text-nowrap"
 			selected={selected}
-			style={{
-				borderRadius: "10px",
-				display: "flex",
-				height: "65px",
-				justifyContent: "space-between",
-				overflow: "hidden",
-				textOverflow: "ellipsis",
-				whiteSpace: "nowrap",
-			}}
 			onClick={onClick}
 		>
 			<ListItemAvatar>
-				<Avatar
-					// TODO: Add `avatar`
-					// src={userPublicInfo.avatarSrc}
-					style={{ width: 45, height: 45 }}
-				/>
+				<Avatar src={userPublicInfo.avatarSrc} />
 			</ListItemAvatar>
 
 			<Flex col style={{ width: "80%" }}>

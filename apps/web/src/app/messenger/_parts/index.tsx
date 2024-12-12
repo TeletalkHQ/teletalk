@@ -1,4 +1,4 @@
-import { Grid } from "@repo/ui/box/grid";
+import { Paper } from "@repo/ui/box/paper";
 
 import { LeftSide } from "./leftSide";
 import { Portal } from "./portal";
@@ -97,15 +97,10 @@ export const MessengerContainer = () => {
 	// });
 
 	return (
-		<Grid
-			container
-			style={{
-				height: "100vh",
-			}}
-		>
+		<>
 			<Portal />
 			<LeftSide />
-			{/* <RightSide /> */}
-		</Grid>
+			<Paper className="w-full rounded-lg p-2">hello</Paper>
+		</>
 	);
 };
