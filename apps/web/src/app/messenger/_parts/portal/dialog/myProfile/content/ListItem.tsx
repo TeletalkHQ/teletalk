@@ -7,18 +7,21 @@ import {
 	type ListItemButtonProps,
 } from "@repo/ui/box/listItemButton";
 import { Span } from "@repo/ui/box/span";
-import { type GeneratedIcon } from "@repo/ui/icons/utils";
+import {
+	DynamicIcon,
+	type IconComponentType,
+} from "@repo/ui/icons/dynamicIcon";
 import { type ElementLabel } from "@repo/ui/types";
 
 interface Props extends ListItemButtonProps {
 	label: ElementLabel;
 	onClick: VoidNoArgs;
 	value: string;
-	Icon: GeneratedIcon;
+	Icon: IconComponentType;
 }
 
 export interface EditProfileListItem {
-	Icon: GeneratedIcon;
+	Icon: IconComponentType;
 	disabled: boolean;
 	label: ElementLabel;
 	name: DialogStore.DialogName;
@@ -48,7 +51,7 @@ export const ListItem: React.FC<Props> = ({
 		}}
 		onClick={onClick}
 	>
-		<Icon style={{ fontSize: 30 }} />
+		<DynamicIcon icon={Icon} />
 		<Flex
 			jc="space-between"
 			style={{

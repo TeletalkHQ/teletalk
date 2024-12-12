@@ -1,5 +1,6 @@
 import { IconButton } from "@repo/ui/button/icon";
-import { CloseIcon } from "@repo/ui/icons/close";
+import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
+import { IoCloseOutline } from "react-icons/io5";
 
 import { useChatStore } from "~/store";
 
@@ -17,7 +18,7 @@ export const ChatBarCloseButton = () => {
 				handleMessageContainerClose();
 			}}
 		>
-			<CloseIcon />
+			<DynamicIcon icon={IoCloseOutline} />
 		</IconButton>
 	);
 };

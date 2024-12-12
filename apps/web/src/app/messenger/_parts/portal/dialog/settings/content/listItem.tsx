@@ -1,15 +1,16 @@
 import { type VoidNoArgs } from "@repo/types";
 import { Div } from "@repo/ui/box/div";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
-import { type GeneratedIcon } from "@repo/ui/icons/utils";
-
-import { type SettingDisplayName } from "../types";
+import {
+	DynamicIcon,
+	type IconComponentType,
+} from "@repo/ui/icons/dynamicIcon";
 
 interface Props {
 	onClick: VoidNoArgs;
-	displayName: SettingDisplayName;
+	displayName: string;
 	disabled: boolean;
-	Icon: GeneratedIcon;
+	Icon: IconComponentType;
 }
 
 export const ListItem: React.FC<Props> = ({
@@ -29,7 +30,7 @@ export const ListItem: React.FC<Props> = ({
 		}}
 		onClick={onClick}
 	>
-		<Icon style={{ fontSize: 30 }} />
+		<DynamicIcon icon={Icon} />
 		<Div> {displayName}</Div>
 	</ListItemButton>
 );

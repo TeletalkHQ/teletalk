@@ -1,6 +1,7 @@
 import { type ServerAvailabilityStatusType } from "@repo/hooks/usePing";
 import { Span } from "@repo/ui/box/span";
-import { CircleIcon } from "@repo/ui/icons/circle";
+import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
+import { FaCircle } from "react-icons/fa";
 
 interface Props {
 	status: ServerAvailabilityStatusType;
@@ -18,7 +19,8 @@ export const statusColors: StatusColors = {
 export const ServerStatusIndicator: React.FC<Props> = ({ status }) => {
 	return (
 		<Span>
-			<CircleIcon
+			<DynamicIcon
+				icon={FaCircle}
 				style={{
 					fontSize: "12px",
 					color: statusColors[status],

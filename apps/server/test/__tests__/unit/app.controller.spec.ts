@@ -1,8 +1,9 @@
 import { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
+import { expect } from "chai";
 
-import { AppController } from "../../../src/modules/app/app.controller";
-import { AppService } from "../../../src/modules/app/app.service";
+import { AppController } from "~/modules/app/app.controller";
+import { AppService } from "~/modules/app/app.service";
 
 describe("AppController", () => {
 	let appController: AppController;
@@ -18,9 +19,7 @@ describe("AppController", () => {
 
 	describe("root", () => {
 		it("should return Hello World!", () => {
-			// expect(appController.getHello()).to.be("Hello World!");
-			// eslint-disable-next-line no-console
-			console.log(appController);
+			expect(appController.getHello()).to.be("Hello World!");
 		});
 	});
 });

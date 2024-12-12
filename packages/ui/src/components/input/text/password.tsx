@@ -1,18 +1,16 @@
 "use client";
 
 // TODO: Move to icons
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { InputAdornment } from "@mui/material";
 import { useState } from "react";
+import { LuEye } from "react-icons/lu";
+import { LuEyeClosed } from "react-icons/lu";
 import type { ZodSchema } from "zod";
 
 import { IconButton } from "../../button/icon";
-import type {
-	FieldWithValidatorWithOptionalNameProps } from "./fieldWithController";
-import {
-	FieldWithController
-} from "./fieldWithController";
+import { DynamicIcon } from "../../icons/dynamicIcon";
+import type { FieldWithValidatorWithOptionalNameProps } from "./fieldWithController";
+import { FieldWithController } from "./fieldWithController";
 
 interface Props<T extends ZodSchema>
 	extends FieldWithValidatorWithOptionalNameProps<T> {}
@@ -40,7 +38,7 @@ export const Password = <T extends ZodSchema>(props: Props<T>) => {
 							onClick={handleClickShowPassword}
 							onMouseDown={handleMouseDownPassword}
 						>
-							{showPassword ? <VisibilityOff /> : <Visibility />}
+							<DynamicIcon icon={showPassword ? LuEye : LuEyeClosed} />
 						</IconButton>
 					</InputAdornment>
 				),

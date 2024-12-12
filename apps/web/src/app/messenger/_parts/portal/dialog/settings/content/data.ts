@@ -1,54 +1,75 @@
-import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
+import { CiLock } from "react-icons/ci";
+import { CiServer } from "react-icons/ci";
+import { GiSettingsKnobs } from "react-icons/gi";
+import { HiMiniLanguage } from "react-icons/hi2";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoChatbubbleOutline } from "react-icons/io5";
+import { LuFolders } from "react-icons/lu";
+import { LuBatteryCharging } from "react-icons/lu";
+import { MdOutlinePermCameraMic } from "react-icons/md";
+import { RiAccountCircle2Line } from "react-icons/ri";
 
 import { type SettingsList } from "../types";
 
 export const settingsList: SettingsList = [
 	{
 		disabled: false,
-		displayName: "Edit Profile",
-		Icon: AccountBoxIcon,
-		name: "editProfile",
+		displayName: "My Profile",
+		Icon: RiAccountCircle2Line,
+		name: "myProfile",
 	},
 	{
 		disabled: true,
 		displayName: "Notifications and Sounds",
-		Icon: AccountBoxIcon,
+		Icon: IoIosNotificationsOutline,
 		name: "notificationsAndSounds",
 	},
 	{
 		disabled: false,
 		displayName: "Privacy and Security",
-		Icon: AccountBoxIcon,
+		Icon: CiLock,
 		name: "privacyAndSecurity",
 	},
 	{
 		disabled: true,
 		displayName: "Chat Settings",
-		Icon: AccountBoxIcon,
+		Icon: IoChatbubbleOutline,
 		name: "chatSettings",
 	},
 	{
 		disabled: true,
+		displayName: "Folders",
+		Icon: LuFolders,
+		name: "folders",
+	},
+	{
+		disabled: true,
 		displayName: "Advanced",
-		Icon: AccountBoxIcon,
+		Icon: GiSettingsKnobs,
 		name: "advanced",
 	},
 	{
 		disabled: true,
-		displayName: "Call Settings",
-		Icon: AccountBoxIcon,
-		name: "callSettings",
+		displayName: "Speakers and Camera",
+		Icon: MdOutlinePermCameraMic,
+		name: "speakersAndCamera",
+	},
+	{
+		disabled: true,
+		displayName: "Battery and Animations",
+		Icon: LuBatteryCharging,
+		name: "batteryAndAnimations",
 	},
 	{
 		disabled: true,
 		displayName: "Language",
-		Icon: AccountBoxIcon,
+		Icon: HiMiniLanguage,
 		name: "language",
 	},
 	{
 		disabled: false,
 		displayName: "Server Setup",
-		Icon: AccountBoxIcon,
+		Icon: CiServer,
 		name: "serverSetup",
 	},
 ];

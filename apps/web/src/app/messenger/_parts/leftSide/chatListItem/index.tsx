@@ -6,8 +6,8 @@ import { Flex } from "@repo/ui/box/flex";
 import { ListItemAvatar } from "@repo/ui/box/listItemAvatar";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
 
-import { Lower } from "./Lower";
-import { Upper } from "./Upper";
+import { Lower } from "./lower";
+import { Upper } from "./upper";
 
 interface Props {
 	messageText: BaseSchema.MessageText;

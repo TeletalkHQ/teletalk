@@ -119,5 +119,15 @@
 	"todo-tree.tree.showBadges": true,
 	"todo-tree.tree.showCountsInTree": false,
 	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"tailwindCSS.classAttributes": [
+		"class",
+		"className",
+		"ngClass",
+		".*Styles.*",
+		".*Classes.*"
+	],
 	"typescript.tsdk": "node_modules/typescript/lib"
 }

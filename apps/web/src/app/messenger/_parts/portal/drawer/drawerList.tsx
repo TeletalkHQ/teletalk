@@ -3,12 +3,20 @@ import { List } from "@repo/ui/box/list";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
 import { ListItemIcon } from "@repo/ui/box/listItemIcon";
 import { ListItemText } from "@repo/ui/box/listItemText";
-import { CallOutlinedIcon } from "@repo/ui/icons/callOutlined";
-import { LogoutOutlinedIcon } from "@repo/ui/icons/logoutOutlined";
-import { SettingsOutlinedIcon } from "@repo/ui/icons/settingsOutlined";
-import { type GeneratedIcon } from "@repo/ui/icons/utils";
+import {
+	DynamicIcon,
+	type IconComponentType,
+} from "@repo/ui/icons/dynamicIcon";
 import { type ElementName } from "@repo/ui/types";
 import { type MouseEvent } from "react";
+import { BsTelephone } from "react-icons/bs";
+import { CiBookmark } from "react-icons/ci";
+import { CiDark } from "react-icons/ci";
+import { GrGroup } from "react-icons/gr";
+import { IoLogOutOutline } from "react-icons/io5";
+import { LuSettings } from "react-icons/lu";
+import { RiAccountCircle2Line } from "react-icons/ri";
+import { TfiAnnouncement } from "react-icons/tfi";
 
 type HTMLDivMouseEvent = MouseEvent<HTMLDivElement, globalThis.MouseEvent>;
 
@@ -19,7 +27,7 @@ interface Props {
 
 export const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
 	<List style={{ padding: 10 }}>
-		{drawerList.map(({ name, label, Icon, disabled }, index) => (
+		{drawerList.map(({ disabled, Icon, label, name }, index) => (
 			<ListItemButton
 				key={index}
 				disabled={disabled}
@@ -34,7 +42,7 @@ export const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
 				}}
 			>
 				<ListItemIcon>
-					<Icon />
+					<DynamicIcon icon={Icon} />
 				</ListItemIcon>
 				<ListItemText primary={label} />
 			</ListItemButton>
@@ -45,49 +53,55 @@ export const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
 const drawerList: Array<{
 	disabled: boolean;
 	name: ElementName;
-	Icon: GeneratedIcon;
+	Icon: IconComponentType;
 	label: string;
 }> = [
 	{
 		disabled: true,
-		Icon: CallOutlinedIcon,
+		Icon: GrGroup,
+		label: "New Group",
+		name: "newGroup",
+	},
+	{
+		disabled: true,
+		Icon: TfiAnnouncement,
+		label: "New Channel",
+		name: "channels",
+	},
+	{
+		disabled: false,
+		Icon: RiAccountCircle2Line,
+		label: "Contacts",
+		name: "contacts",
+	},
+	{
+		disabled: true,
+		Icon: BsTelephone,
 		label: "Calls",
 		name: "calls",
 	},
 	{
+		disabled: true,
+		Icon: CiBookmark,
+		label: "Saved Messages",
+		name: "calls",
+	},
+	{
 		disabled: false,
-		Icon: CallOutlinedIcon,
-		name: "contacts",
-		label: "Contacts",
-	},
-	{
-		disabled: false,
-		Icon: LogoutOutlinedIcon,
-		name: "logout",
-		label: "Logout",
+		Icon: LuSettings,
+		name: "settings",
+		label: "Settings",
 	},
 	{
 		disabled: true,
-		Icon: CallOutlinedIcon,
-		name: "channels",
-		label: "Channels",
-	},
-	{
-		disabled: true,
-		Icon: CallOutlinedIcon,
-		name: "newGroup",
-		label: "New Group",
-	},
-	{
-		disabled: true,
-		Icon: CallOutlinedIcon,
+		Icon: CiDark,
 		name: "nightMode",
 		label: "Night Mode",
 	},
 	{
 		disabled: false,
-		Icon: SettingsOutlinedIcon,
-		name: "settings",
-		label: "Settings",
+		Icon: IoLogOutOutline,
+		name: "logout",
+		label: "Logout",
 	},
 ];

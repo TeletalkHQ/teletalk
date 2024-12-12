@@ -1,13 +1,13 @@
 import { maker } from "@repo/classes";
 import { type BaseSchema } from "@repo/schema";
+import { List } from "@repo/ui/box/list";
+import { ListItemButton } from "@repo/ui/box/listItemButton";
 
 import { useChatStore } from "~/store";
 
-import { ChatListItem } from "./ChatListItem";
+import { ChatListItem } from "./chatListItem";
 
-interface Props {}
-
-export const ChatList: React.FC<Props> = () => {
+export const ChatList: React.FC = () => {
 	const chatStore = useChatStore();
 
 	const handleChatItemClick = (chatId: BaseSchema.ChatId) => {
@@ -17,7 +17,8 @@ export const ChatList: React.FC<Props> = () => {
 	const arr: BaseSchema.PrivateChats = [];
 
 	return (
-		<>
+		<List className="overflow-y-auto p-1 scroll-smooth w-full">
+			<ListItemButton className="w-full bg-red-600">hello</ListItemButton>
 			{arr.map((item, index) => {
 				const lastMessage = item.messages.at(-1) || maker.emptyMessageItem();
 
@@ -31,6 +32,6 @@ export const ChatList: React.FC<Props> = () => {
 					/>
 				);
 			})}
-		</>
+		</List>
 	);
 };

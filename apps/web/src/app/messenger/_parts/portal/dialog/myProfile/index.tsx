@@ -8,8 +8,8 @@ import { Content } from "./content";
 import { type OnProfileItemClick } from "./content/ListItem";
 import { Title } from "./title";
 
-export const EditProfile = () => {
-	const dialogState = useDialogState("editProfile");
+export const MyProfile = () => {
+	const dialogState = useDialogState("myProfile");
 	const avatarViewerDialog = useDialogState("avatarViewer");
 	const avatarSelectorDialog = useDialogState("avatarSelector");
 

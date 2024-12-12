@@ -8,9 +8,9 @@ import { DeleteAvatar } from "./dialog/deleteAvatar";
 import { EditBio } from "./dialog/editBio";
 import { EditContact } from "./dialog/editContact";
 import { EditFullName } from "./dialog/editFullName";
-import { EditProfile } from "./dialog/editProfile";
 import { EditUsername } from "./dialog/editUsername";
 import { Logout } from "./dialog/logout";
+import { MyProfile } from "./dialog/myProfile";
 import { PrivacyAndSecurity } from "./dialog/privacyAndSecurity";
 import { RemoveContact } from "./dialog/removeContact";
 import { Settings } from "./dialog/settings";
@@ -32,7 +32,7 @@ export const Portal = () => {
 			<EditBio />
 			<EditContact />
 			<EditFullName />
-			<EditProfile />
+			<MyProfile />
 			<EditUsername />
 			<Logout />
 			<PrivacyAndSecurity />

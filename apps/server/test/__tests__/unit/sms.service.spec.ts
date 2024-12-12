@@ -2,7 +2,7 @@ import { TestingModule } from "@nestjs/testing";
 import { Test } from "@nestjs/testing";
 import { expect } from "chai";
 
-import { SmsService } from "../../../src/modules/sms/sms.service";
+import { SmsService } from "~/modules/sms/sms.service";
 
 describe("SmsService", () => {
 	let service: SmsService;

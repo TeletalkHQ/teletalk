@@ -1,3 +1,4 @@
+import "@repo/ui/css/globals";
 import { RootLayout } from "@repo/ui/layouts/root";
 import { webThemes } from "@repo/ui/themes/web";
 import localFont from "next/font/local";

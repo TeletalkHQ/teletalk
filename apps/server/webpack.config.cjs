@@ -60,10 +60,7 @@ module.exports = {
 				}
 				try {
 					require.resolve(resource, { paths: [process.cwd()] });
-					// eslint-disable-next-line unused-imports/no-unused-vars
-				} catch (err) {
-					// eslint-disable-next-line no-console
-					// console.log("build error:", err);
+				} catch {
 					return true;
 				}
 				return false;

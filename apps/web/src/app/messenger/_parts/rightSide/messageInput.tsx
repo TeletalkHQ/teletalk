@@ -6,13 +6,14 @@ import { Flex } from "@repo/ui/box/flex";
 import { Form } from "@repo/ui/box/form";
 import { Paper } from "@repo/ui/box/paper";
 import { IconButton } from "@repo/ui/button/icon";
-import { AttachFileIcon } from "@repo/ui/icons/attachFile";
-import { EmojiEmotionsIcon } from "@repo/ui/icons/emojiEmotions";
-import { MicNoneIcon } from "@repo/ui/icons/micNone";
-import { TelegramIcon } from "@repo/ui/icons/telegram";
+import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
 import { FieldWithController } from "@repo/ui/input/fieldWithController";
 import { CircularProgress } from "@repo/ui/loadings/circular";
 import { useWatch } from "react-hook-form";
+import { BsEmojiSmile } from "react-icons/bs";
+import { BsSend } from "react-icons/bs";
+import { CiMicrophoneOn } from "react-icons/ci";
+import { TiAttachment } from "react-icons/ti";
 
 export const MessageInput = () => {
 	const { emitter, isLoading } = useSendMessage();
@@ -52,7 +53,7 @@ export const MessageInput = () => {
 				<Flex ai="center" gap={1} jc="space-between" style={{ padding: 5 }}>
 					<Div>
 						<IconButton onClick={() => {}}>
-							<AttachFileIcon />
+							<DynamicIcon icon={TiAttachment} />
 						</IconButton>
 					</Div>
 
@@ -69,7 +70,7 @@ export const MessageInput = () => {
 
 					<Div>
 						<IconButton>
-							<EmojiEmotionsIcon />
+							<DynamicIcon icon={BsEmojiSmile} />
 						</IconButton>
 					</Div>
 
@@ -79,7 +80,7 @@ export const MessageInput = () => {
 								{isLoading ? (
 									<CircularProgress />
 								) : (
-									<TelegramIcon color="primary" />
+									<DynamicIcon icon={BsSend} />
 								)}
 							</IconButton>
 						) : (
@@ -91,7 +92,7 @@ export const MessageInput = () => {
 										console.debug("Mic clicked");
 									}}
 								>
-									<MicNoneIcon />
+									<DynamicIcon icon={CiMicrophoneOn} />
 								</IconButton>
 							</>
 						)}

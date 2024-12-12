@@ -1,8 +1,9 @@
 import { Flex } from "@repo/ui/box/flex";
 import { Paper } from "@repo/ui/box/paper";
-import { DoneAllIcon } from "@repo/ui/icons/doneAll";
+import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
 import { Typography } from "@repo/ui/typography/typography";
 import { type CSSProperties } from "react";
+import { FaCheckDouble } from "react-icons/fa6";
 
 interface Props {
 	chatDate: string;
@@ -46,7 +47,7 @@ export const MessageListItem: React.FC<Props> = ({
 						<Typography variant="caption">{chatDate}</Typography>
 
 						<Typography variant="caption">
-							<DoneAllIcon fontSize="small" />
+							<DynamicIcon icon={FaCheckDouble} />
 						</Typography>
 					</Flex>
 				</Paper>

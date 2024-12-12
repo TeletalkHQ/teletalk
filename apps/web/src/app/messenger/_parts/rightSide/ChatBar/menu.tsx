@@ -5,8 +5,9 @@ import { Div } from "@repo/ui/box/div";
 import { Menu } from "@repo/ui/box/menu";
 import { MenuItem } from "@repo/ui/box/menuItem";
 import { IconButton } from "@repo/ui/button/icon";
-import { MoreVertIcon } from "@repo/ui/icons/moreVert";
+import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
 import { useState } from "react";
+import { FiMoreVertical } from "react-icons/fi";
 
 export const ChatBarMenu = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -53,7 +54,7 @@ export const ChatBarMenu = () => {
 				id="long-button"
 				onClick={handleClick}
 			>
-				<MoreVertIcon />
+				<DynamicIcon icon={FiMoreVertical} />
 			</IconButton>
 			<Menu
 				anchorEl={anchorEl}

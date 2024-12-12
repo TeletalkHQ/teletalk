@@ -1,4 +1,7 @@
-import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
+import { BsTelephone } from "react-icons/bs";
+import { FiAtSign } from "react-icons/fi";
+import { RiAccountBoxLine } from "react-icons/ri";
+import { TbAbc } from "react-icons/tb";
 
 import {
 	type EditProfileListItem,
@@ -24,28 +27,28 @@ export const List: React.FC<Props> = ({
 	const list: Array<EditProfileListItem> = [
 		{
 			disabled: false,
-			Icon: AccountBoxIcon,
+			Icon: TbAbc,
 			label: "Bio",
 			name: "editBio",
 			value: bio,
 		},
 		{
 			disabled: false,
-			Icon: AccountBoxIcon,
+			Icon: RiAccountBoxLine,
 			label: "Name",
 			name: "editFullName",
 			value: fullName,
 		},
 		{
 			disabled: true,
-			Icon: AccountBoxIcon,
+			Icon: BsTelephone,
 			label: "Phone Number",
 			name: "editPhoneNumber",
 			value: fullNumber,
 		},
 		{
 			disabled: false,
-			Icon: AccountBoxIcon,
+			Icon: FiAtSign,
 			label: "Username",
 			name: "editUsername",
 			value: username || "Not set",

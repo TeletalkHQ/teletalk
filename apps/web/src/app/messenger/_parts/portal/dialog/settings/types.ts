@@ -1,21 +1,11 @@
 import type { DialogStore } from "@repo/store";
 import { type VoidWithArg } from "@repo/types";
-import { type GeneratedIcon } from "@repo/ui/icons/utils";
-
-export type SettingDisplayName =
-	| "Edit Profile"
-	| "Notifications and Sounds"
-	| "Privacy and Security"
-	| "Chat Settings"
-	| "Advanced"
-	| "Call Settings"
-	| "Language"
-	| "Server Setup";
+import { type IconComponentType } from "@repo/ui/icons/dynamicIcon";
 
 export type SettingItem = {
 	disabled: boolean;
-	displayName: SettingDisplayName;
-	Icon: GeneratedIcon;
+	displayName: string;
+	Icon: IconComponentType;
 	name: DialogStore.DialogName;
 };
 

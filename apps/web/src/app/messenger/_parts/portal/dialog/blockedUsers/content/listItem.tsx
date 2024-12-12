@@ -6,7 +6,8 @@ import { Avatar } from "@repo/ui/box/Avatar";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
 import { Span } from "@repo/ui/box/span";
 import { IconButton } from "@repo/ui/button/icon";
-import { AccountBoxIcon } from "@repo/ui/icons/accountBox";
+import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
+import { CgUnblock } from "react-icons/cg";
 
 interface Props {
 	onItemLick: VoidNoArgs;
@@ -57,7 +58,7 @@ export const ListItem: React.FC<Props> = ({ item, onItemLick }) => {
 						onItemLick();
 					}}
 				>
-					<AccountBoxIcon color="error" />
+					<DynamicIcon icon={CgUnblock} />
 				</IconButton>
 			</Span>
 		</ListItemButton>

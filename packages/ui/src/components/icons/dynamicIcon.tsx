@@ -1,33 +1,31 @@
-import type { SvgIconProps, SvgIconTypeMap } from "@mui/material";
-import type { OverridableComponent } from "@mui/material/OverridableComponent";
 import type { FC } from "react";
+import type { IconBaseProps, IconType } from "react-icons";
 
-export type SvgElement = React.FC<React.SVGProps<SVGSVGElement>>;
+export type IconComponentType = IconType;
 
-export type MuiIconProps = SvgIconProps;
-
-export type MuiIconType = OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
-	muiName: string;
-};
-
-export interface DynamicIconProps extends MuiIconProps {
+export interface DynamicIconProps extends IconBaseProps {
 	// color?: string;
 	height?: string | number;
-	Icon: MuiIconType;
+	icon: IconComponentType;
 	width?: string | number;
 }
 
-export type IconComponentType = (
-	p: DynamicIconProps
-) => React.FC<DynamicIconProps>;
-
 export const DynamicIcon: FC<DynamicIconProps> = ({
-	Icon,
-	width = 24,
-	height = 24,
+	icon: Icon,
+	width = 26,
+	height = 26,
 	// CLEANME: Replace with COLORS
-	// color = "#9F9F9F",
+	color = "#9F9F9F",
+	fontSize = 26,
 	...rest
 }) => {
-	return <Icon height={height} width={width} {...rest} />;
+	return (
+		<Icon
+			color={color}
+			fontSize={fontSize}
+			height={height}
+			width={width}
+			{...rest}
+		/>
+	);
 };

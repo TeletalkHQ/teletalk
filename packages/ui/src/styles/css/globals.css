@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
 	--foreground-rgb: 0, 0, 0;
 	--background-start-rgb: 214, 219, 220;
@@ -63,4 +67,42 @@
 	font-family: "InterBold";
 	src: url("/fonts/Inter-Bold.ttf") format("truetype");
 	font-display: swap;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth !important;
+	}
+	body {
+		position: relative;
+		min-height: 100vh;
+	}
+}
+
+@layer utilities {
+}
+
+@layer components {
+}
+* {
+	/* For Firefox */
+	scrollbar-width: thin; /* Makes scrollbar thinner */
+	scrollbar-color: #56ddb4 transparent; /* Thumb color and track color */
+
+	/* For Internet Explorer and Edge (Legacy) */
+	-ms-overflow-style: -ms-autohiding-scrollbar; /* Auto-hide scrollbars */
+}
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+	width: 5px; /* Width of the scrollbar */
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #56ddb4; /* Color of the scrollbar */
+	border-radius: 10px; /* Rounded corners */
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent; /* Background of the scrollbar track */
 }

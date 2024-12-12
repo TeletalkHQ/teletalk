@@ -1,6 +1,7 @@
 import { Avatar } from "@repo/ui/box/Avatar";
-import { VerifiedUserIcon } from "@repo/ui/icons/verifiedUser";
+import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
 import { Typography } from "@repo/ui/typography/typography";
+import { MdOutlineVerifiedUser } from "react-icons/md";
 
 import { EnteredPhoneNumber } from "./_parts/enteredPhoneNumber";
 import { VerifyForm } from "./_parts/verifyForm";
@@ -9,7 +10,7 @@ const Verify = () => {
 	return (
 		<>
 			<Avatar>
-				<VerifiedUserIcon />
+				<DynamicIcon icon={MdOutlineVerifiedUser} />
 			</Avatar>
 
 			<EnteredPhoneNumber />

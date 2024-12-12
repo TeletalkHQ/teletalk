@@ -15,6 +15,7 @@
 		"Burkina",
 		"CLEANME",
 		"Caicos",
+		"Chatbubble",
 		"Croppie",
 		"DANGERZONE",
 		"Darussalam",
@@ -249,5 +250,7 @@
 		"zustand"
 	],
 	"import": [],
-	"words": ["prestart"]
+	"words": [
+		"prestart"
+	]
 }

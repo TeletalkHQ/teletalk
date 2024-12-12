@@ -2,11 +2,14 @@ import type { DialogStore } from "@repo/store";
 import { type VoidWithArg } from "@repo/types";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
 import { Span } from "@repo/ui/box/span";
-import { type GeneratedIcon } from "@repo/ui/icons/utils";
+import {
+	DynamicIcon,
+	type IconComponentType,
+} from "@repo/ui/icons/dynamicIcon";
 
 export interface PrivacyAndSecurityListItem {
 	displayName: "Blocked users" | "Sessions";
-	Icon: GeneratedIcon;
+	Icon: IconComponentType;
 	name: DialogStore.DialogName;
 }
 
@@ -15,7 +18,10 @@ interface Props {
 	onItemClick: VoidWithArg<DialogStore.DialogName>;
 }
 
-export const ListItem: React.FC<Props> = ({ item, onItemClick }) => (
+export const ListItem: React.FC<Props> = ({
+	item: { Icon, displayName, name },
+	onItemClick,
+}) => (
 	<ListItemButton
 		style={{
 			display: "flex",
@@ -24,15 +30,15 @@ export const ListItem: React.FC<Props> = ({ item, onItemClick }) => (
 			gap: 10,
 			alignItems: "center",
 		}}
-		onClick={() => onItemClick(item.name)}
+		onClick={() => onItemClick(name)}
 	>
 		<Span
 			style={{
 				marginTop: "5px",
 			}}
 		>
-			<item.Icon />
+			<DynamicIcon icon={Icon} />
 		</Span>
-		<Span>{item.displayName}</Span>
+		<Span>{displayName}</Span>
 	</ListItemButton>
 );
