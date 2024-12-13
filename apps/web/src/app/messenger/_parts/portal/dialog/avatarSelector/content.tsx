@@ -1,13 +1,13 @@
 import { type VoidNoArgs } from "@repo/types";
 import { Flex } from "@repo/ui/box/flex";
 import { Button } from "@repo/ui/button/button";
-import { type OnInputChange } from "@repo/ui/types";
+import { type OnTextInputChange } from "@repo/ui/types";
 import AvatarEditor from "react-avatar-editor";
 
 interface Props {
 	avatarSrc: string;
 	editor: React.MutableRefObject<AvatarEditor | null>;
-	onFileChange: OnInputChange;
+	onFileChange: OnTextInputChange;
 	onOpenFileSelector: VoidNoArgs;
 	fileInputRef: React.LegacyRef<HTMLInputElement>;
 }

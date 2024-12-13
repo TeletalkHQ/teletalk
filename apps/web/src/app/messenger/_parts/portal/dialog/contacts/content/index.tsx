@@ -3,7 +3,13 @@ import { useUserInfo } from "@repo/hooks/useUserInfo";
 import { type BaseSchema } from "@repo/schema";
 import type { DialogStore } from "@repo/store";
 import { useDialogStore } from "@repo/store";
+import { Div } from "@repo/ui/box/div";
 import { List } from "@repo/ui/box/list";
+import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
+import { TextField } from "@repo/ui/input/textField";
+import type { OnTextInputChange } from "@repo/ui/types";
+import { useState } from "react";
+import { CiSearch } from "react-icons/ci";
 
 import { useContextMenu } from "~/hooks/utils/useContextMenu";
 import { type GlobalStore, useGlobalStore, useUserStore } from "~/store";
@@ -19,6 +25,7 @@ type UuidSetter = Partial<
 export const Content: React.FC<Props> = () => {
 	const globalStore = useGlobalStore();
 	const openDialog = useDialogStore((state) => state.setOpenDialog);
+	const [search, setSearch] = useState("");
 
 	const dialogState = useDialogState("contacts");
 
@@ -31,6 +38,7 @@ export const Content: React.FC<Props> = () => {
 
 	const {
 		data: {
+			// TODO: Remove `contacts` and `blacklist`
 			userInfo: { contacts, blacklist },
 		},
 	} = useUserInfo();
@@ -82,20 +90,39 @@ export const Content: React.FC<Props> = () => {
 		onContextMenu(event, createContextMenuList(contact));
 	};
 
+	const handleSearchChange: OnTextInputChange = (e) => {
+		setSearch(e.target.value);
+	};
+
 	return (
-		<List className="max-w-lg w-full">
-			{contacts.map((item, index) => (
-				<ListItem
-					key={index}
-					fullName={`${item.firstName} ${item.lastName}`}
-					lastSeen=""
-					userId={item.userId}
-					onContactClick={() => handleContactItemClicked(item.userId)}
-					onContextMenu={(e) => {
-						handleContextMenu(e, item);
-					}}
-				/>
-			))}
-		</List>
+		<Div className="flex flex-col gap-2 w-full">
+			<TextField
+				name="search-contact"
+				placeholder="Search"
+				size="small"
+				slotProps={{
+					input: {
+						startAdornment: <DynamicIcon icon={CiSearch} />,
+					},
+				}}
+				value={search}
+				onChange={handleSearchChange}
+			/>
+
+			<List className="w-full">
+				{contacts.map((item, index) => (
+					<ListItem
+						key={index}
+						fullName={`${item.firstName} ${item.lastName}`}
+						lastSeen=""
+						userId={item.userId}
+						onContactClick={() => handleContactItemClicked(item.userId)}
+						onContextMenu={(e) => {
+							handleContextMenu(e, item);
+						}}
+					/>
+				))}
+			</List>
+		</Div>
 	);
 };

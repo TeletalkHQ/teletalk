@@ -2,8 +2,8 @@ import { Div } from "@repo/ui/box/div";
 import { Flex } from "@repo/ui/box/flex";
 import { Paper } from "@repo/ui/box/paper";
 
+import { Searchbar } from "./Searchbar";
 import { ChatList } from "./chatList";
-import { SearchBar } from "./searchBar";
 import { Sidebar } from "./sidebar";
 
 export const LeftSide = () => {
@@ -13,7 +13,7 @@ export const LeftSide = () => {
 				<Sidebar />
 
 				<Div className="flex flex-col w-full">
-					<SearchBar />
+					<Searchbar />
 					<ChatList />
 				</Div>
 			</Flex>

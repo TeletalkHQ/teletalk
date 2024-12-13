@@ -5,14 +5,14 @@ import { MenuItem } from "@repo/ui/box/menuItem";
 import { InputLabel } from "@repo/ui/input/inputLabel";
 import { Select } from "@repo/ui/input/select";
 import { TextField } from "@repo/ui/input/textField";
-import { type OnInputChange, type OnSelectOnChange } from "@repo/ui/types";
+import { type OnSelectOnChange, type OnTextInputChange } from "@repo/ui/types";
 
 import { ServerAvailabilityStatus } from "../serverAvailabilityStatus";
 
 interface Props {
 	disabled: boolean;
 	inputValue: string;
-	onChange: OnInputChange;
+	onChange: OnTextInputChange;
 	onSelectChange: OnSelectOnChange;
 	protocol: string;
 	status: ServerAvailabilityStatusType;

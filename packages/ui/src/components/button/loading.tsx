@@ -13,7 +13,7 @@ export interface LoadingButtonProps extends MuiLoadingButtonProps {
 export const LoadingButton: React.FC<LoadingButtonProps> = ({
 	fullWidth = true,
 	loadingIndicatorText = "",
-	size = "small",
+	size,
 	style,
 	width,
 	variant = "contained",

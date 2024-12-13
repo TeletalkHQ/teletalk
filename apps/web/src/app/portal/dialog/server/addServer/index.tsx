@@ -4,7 +4,7 @@ import { type Protocol, type Url, useConfigs } from "@repo/hooks/useConfigs";
 import { useDialogState } from "@repo/hooks/useDialogState";
 import { usePing } from "@repo/hooks/usePing";
 import { DialogTemplate } from "@repo/ui/template/dialog";
-import { type OnInputChange, type OnSelectOnChange } from "@repo/ui/types";
+import { type OnSelectOnChange, type OnTextInputChange } from "@repo/ui/types";
 import { useApiPhase } from "@repo/use-api";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
@@ -26,7 +26,7 @@ export const AddServer = () => {
 
 	const { configs, addServerUrl } = useConfigs();
 
-	const handleInputChange: OnInputChange = (event) => {
+	const handleInputChange: OnTextInputChange = (event) => {
 		setInputValue(event.target.value);
 		updateStatus("idle");
 	};

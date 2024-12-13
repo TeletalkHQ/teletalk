@@ -6,7 +6,7 @@ import { CiSearch } from "react-icons/ci";
 
 interface Props {}
 
-export const SearchBar: React.FC<Props> = () => {
+export const Searchbar: React.FC<Props> = () => {
 	return (
 		<Div className="flex w-full height-14 rounded-lg justify-between items-center p-2">
 			<TextField

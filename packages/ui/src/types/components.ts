@@ -98,7 +98,7 @@ export type HTMLDivMouseEvent = MouseEvent<
 
 export type OnDialogClose = VoidWithArg<DialogStore.DialogName>;
 
-export type OnInputChange = ChangeEventHandler<
+export type OnTextInputChange = ChangeEventHandler<
 	HTMLInputElement | HTMLTextAreaElement
 >;
 

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ModalProps } from "@mui/material";
+import type { ModalProps, PaperProps } from "@mui/material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { useConfigs } from "@repo/hooks/useConfigs";
@@ -25,7 +25,7 @@ type Props = {
 	onAfterClose?: VoidNoArgs;
 	onClose?: VoidNoArgs;
 	onKeyDown?: VoidNoArgs;
-	paperStyle?: React.CSSProperties;
+	paperProps?: PaperProps;
 	title?: string | JSX.Element;
 	transitionDuration?: number;
 	transitionName?: TransitionName;
@@ -40,10 +40,10 @@ export const DialogTemplate: React.FC<Props> = ({
 	isClosable = true,
 	onAfterClose,
 	onClose,
-	paperStyle,
 	title,
 	transitionDuration,
 	transitionName,
+	paperProps,
 	...rest
 }) => {
 	const dialogStore = useDialogStore();
@@ -73,7 +73,7 @@ export const DialogTemplate: React.FC<Props> = ({
 		? "100vh"
 		: fullHeight
 			? "100%"
-			: paperStyle?.height;
+			: paperProps?.style?.height;
 
 	return (
 		<Dialog
@@ -82,8 +82,9 @@ export const DialogTemplate: React.FC<Props> = ({
 			keepMounted
 			open={dialogState.isOpen}
 			PaperProps={{
+				...paperProps,
 				style: {
-					...paperStyle,
+					...paperProps?.style,
 					height: paperHeight,
 				},
 			}}
