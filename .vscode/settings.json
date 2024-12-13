@@ -129,5 +129,10 @@
 		".*Styles.*",
 		".*Classes.*"
 	],
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"editor.quickSuggestions": {
+		"strings": "on"
+	},
+	"tailwindCSS.includeLanguages": {
+		"plaintext": "javascript"
+	}
 }

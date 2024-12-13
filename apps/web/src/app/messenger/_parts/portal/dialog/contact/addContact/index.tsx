@@ -38,18 +38,21 @@ export const AddContact = () => {
 		<>
 			<DialogTemplate
 				actions={
-					<DoubleAction
-						cancelProps={{ onClick: dialogState.close }}
+					<DoubleAction 
+						cancelProps={{
+							onClick: dialogState.close,
+						}}
 						confirmProps={{
-							onClick: onSubmit,
 							disabled: isSubmitDisabled,
-							type: "submit",
 							loading: isLoading,
+							onClick: onSubmit,
+							type: "submit",
 						}}
 					/>
 				}
 				content={<Content control={control} />}
-				dialogState={dialogState}
+				dialogState={{ ...dialogState, isOpen: true }}
+				paperProps={{ className: "w-full max-w-sm" }}
 				title={<Title />}
 				onAfterClose={reset}
 			/>
