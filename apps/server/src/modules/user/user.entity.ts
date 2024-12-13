@@ -23,7 +23,7 @@ export class User {
 	blacklist: BaseSchema.Blacklist;
 
 	@Prop({ default: [] })
-	contacts: BaseSchema.Contacts;
+	contacts: BaseSchema.DBContacts;
 
 	@Prop()
 	countryCode: BaseSchema.CountryCode;

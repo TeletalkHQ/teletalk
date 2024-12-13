@@ -1,7 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { extractor } from "@repo/classes";
-import type { BaseSchema } from "@repo/schema";
+import { type BaseSchema, baseSchema } from "@repo/schema";
+import isEqual from "lodash/isEqual";
 import { Model } from "mongoose";
 
 import { EntityFilterer } from "~/types";
@@ -9,6 +10,7 @@ import { EntityFilterer } from "~/types";
 import { ErrorStoreService } from "../error-store/error-store.service";
 import { User } from "./user.entity";
 
+// TODO Remove?
 export type DBUser = EntityFilterer<User>;
 
 @Injectable()
@@ -194,31 +196,55 @@ export class UserService {
 			);
 	}
 
+	async throwIfPhoneNotMatchByUserId(
+		targetUserInfo: BaseSchema.ContactsItem,
+		targetUserCellphone: BaseSchema.Cellphone
+	) {
+		const isPhoneEqual = isEqual(
+			extractor.partialCellphone(targetUserInfo),
+			extractor.cellphone(targetUserCellphone)
+		);
+
+		if (!isPhoneEqual)
+			this.errorStoreService.throw(
+				"badRequest",
+				"CELLPHONE_NOT_MATCH_BY_USER_ID",
+				this.throwIfPhoneNotMatchByUserId.name
+			);
+	}
+
+	isPhonePropsExist(data: BaseSchema.ContactsItem) {
+		return [data.countryCode, data.countryName, data.phoneNumber].some(Boolean);
+	}
+
 	async addContact({
 		sessionId,
-		targetUserInfo,
+		targetUserInfo: contactToAdd,
 	}: {
 		sessionId: BaseSchema.SessionId;
 		targetUserInfo: BaseSchema.ContactsItem;
 	}) {
 		const currentUser = await this.getCurrentUser(sessionId);
 		const targetUser = await this.getTargetUser({
-			countryCode: targetUserInfo.countryCode,
-			countryName: targetUserInfo.countryName,
-			phoneNumber: targetUserInfo.phoneNumber,
-			userId: targetUserInfo.userId,
+			userId: contactToAdd.userId,
 		});
+
 		await this.throwIfSelfRequested(currentUser.userId, targetUser.userId);
 
 		await this.throwIfContactExist(currentUser.contacts, targetUser.userId);
-		const newContactsItem: DBUser["contacts"][number] = {
+
+		const isPhonePropsExist = this.isPhonePropsExist(contactToAdd);
+		if (isPhonePropsExist)
+			await this.throwIfPhoneNotMatchByUserId(
+				contactToAdd,
+				extractor.cellphone(targetUser)
+			);
+
+		const newContactsItem: BaseSchema.DBContactsItem = {
+			firstName: contactToAdd.firstName,
+			lastName: contactToAdd.lastName,
+			isPhoneAccessible: isPhonePropsExist,
 			userId: targetUser.userId,
-			firstName: targetUserInfo.firstName,
-			lastName: targetUserInfo.lastName,
-			countryCode: targetUserInfo.countryCode,
-			countryName: targetUserInfo.countryName,
-			phoneNumber: targetUserInfo.phoneNumber,
-			// isCellphoneAccessible: true,
 		};
 		const newContacts = [...currentUser.contacts, newContactsItem];
 		await this.update(
@@ -229,6 +255,54 @@ export class UserService {
 		);
 
 		return newContactsItem;
+	}
+
+	async updateContact(
+		sessionId: BaseSchema.SessionId,
+		contactToUpdate: BaseSchema.ContactsItem
+	) {
+		const currentUser = await this.getCurrentUser(sessionId);
+
+		const targetUser = await this.getTargetUser({
+			userId: contactToUpdate.userId,
+		});
+
+		await this.throwIfSelfRequested(currentUser.userId, targetUser.userId);
+
+		await this.throwIfContactNotExist(
+			currentUser.contacts,
+			contactToUpdate.userId
+		);
+
+		const isPhonePropsExist = this.isPhonePropsExist(contactToUpdate);
+		if (isPhonePropsExist)
+			await this.throwIfPhoneNotMatchByUserId(
+				contactToUpdate,
+				extractor.cellphone(targetUser)
+			);
+
+		const copyOfContacts = [...currentUser.contacts];
+
+		const index = copyOfContacts.findIndex(
+			(item) => item.userId === contactToUpdate.userId
+		);
+
+		const oldContact = copyOfContacts.at(index)!;
+
+		const updatedContact = baseSchema.DBContactsItem.parse({
+			...oldContact,
+			...contactToUpdate,
+			isPhoneAccessible: isPhonePropsExist,
+		});
+
+		copyOfContacts.splice(index, 1, updatedContact);
+
+		await this.update(
+			{ userId: currentUser.userId },
+			{ contacts: copyOfContacts }
+		);
+
+		return updatedContact;
 	}
 
 	async removeContact({
@@ -242,9 +316,13 @@ export class UserService {
 		await this.throwIfSelfRequested(currentUser.userId, targetUserId);
 
 		await this.throwIfContactNotExist(currentUser.contacts, targetUserId);
+
 		const copyList = [...currentUser.contacts];
+
 		const index = copyList.findIndex((i) => i.userId === targetUserId);
+
 		copyList.splice(index, 1);
+
 		await this.update(
 			{ userId: currentUser.userId },
 			{
@@ -253,14 +331,13 @@ export class UserService {
 		);
 	}
 
-	// TODO: Refactor all `throw` methods - return index instead
 	async throwIfContactNotExist(
 		contacts: DBUser["contacts"],
 		targetUserId: BaseSchema.UserId
 	) {
-		const isContactExist = contacts.some((i) => i.userId === targetUserId);
+		const isContactNotExist = contacts.every((i) => i.userId !== targetUserId);
 
-		if (!isContactExist)
+		if (isContactNotExist)
 			this.errorStoreService.throw(
 				"notFound",
 				"CONTACT_ITEM_NOT_EXIST",
@@ -340,36 +417,5 @@ export class UserService {
 		await this.update({ userId: currentUser.userId }, newInfo);
 
 		return newInfo;
-	}
-
-	async updateContact(
-		sessionId: BaseSchema.SessionId,
-		contactToUpdate: BaseSchema.ContactsItem
-	) {
-		const currentUser = await this.getCurrentUser(sessionId);
-
-		const copyOfContacts = [...currentUser.contacts];
-
-		await this.throwIfContactNotExist(copyOfContacts, contactToUpdate.userId);
-		const index = copyOfContacts.findIndex(
-			(item) => item.userId === contactToUpdate.userId
-		);
-
-		// TODO: Remove assertion
-		const oldContact = copyOfContacts.at(index)!;
-
-		const updatedContact: BaseSchema.ContactsItem = {
-			...oldContact,
-			...contactToUpdate,
-		};
-
-		copyOfContacts.splice(index, 1, updatedContact);
-
-		await this.update(
-			{ userId: currentUser.userId },
-			{ contacts: copyOfContacts }
-		);
-
-		return updatedContact;
 	}
 }

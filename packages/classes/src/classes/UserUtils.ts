@@ -2,6 +2,7 @@ import { type BaseSchema } from "@repo/schema";
 import { type StringMap } from "@repo/types";
 import isEqual from "lodash/isEqual";
 
+// TODO: Remove
 export class UserUtils {
 	concatFirstNameWithLastName(
 		userItem: Partial<BaseSchema.ClientUser>,

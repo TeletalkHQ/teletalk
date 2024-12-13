@@ -148,12 +148,21 @@ export const userPublicInfoSchema = z.object({
 	avatarSrc: avatarSrcSchema.optional(),
 });
 
+const DBContactsItemSchema = z.object({
+	userId: userIdSchema,
+	isPhoneAccessible: z.boolean(),
+	firstName: firstNameSchema,
+	lastName: lastNameSchema.optional(),
+});
+
+const DBContactsSchema = z.array(DBContactsItemSchema);
+
 const userInfoSchema = z.intersection(
 	userPublicInfoSchema,
 	z.object({
 		avatarSrc: avatarSrcSchema,
 		blacklist: blacklistSchema,
-		contacts: contactsSchema,
+		contacts: DBContactsSchema,
 		countryCode: countryCodeSchema,
 		countryName: countryNameSchema,
 		createdAt: createdAtSchema,
@@ -221,6 +230,8 @@ export const baseSchema = {
 	countryName: countryNameSchema,
 	countryShortName: countryShortNameSchema,
 	createdAt: createdAtSchema,
+	DBContacts: DBContactsSchema,
+	DBContactsItem: DBContactsItemSchema,
 	DBUserData: DBUserDataSchema,
 	email: emailSchema,
 	encryptedSession: encryptedSessionSchema,
@@ -278,6 +289,8 @@ export namespace BaseSchema {
 	export type CountryShortName = z.infer<typeof countryShortNameSchema>;
 	export type CreatedAt = z.infer<typeof createdAtSchema>;
 	export type DBUserData = z.infer<typeof DBUserDataSchema>;
+	export type DBContactsItem = z.infer<typeof DBContactsItemSchema>;
+	export type DBContacts = z.infer<typeof DBContactsSchema>;
 	export type Email = z.infer<typeof emailSchema>;
 	export type EncryptedSession = z.infer<typeof encryptedSessionSchema>;
 	export type FirstName = z.infer<typeof firstNameSchema>;

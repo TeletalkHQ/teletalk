@@ -2,6 +2,14 @@ import { type BaseSchema } from "@repo/schema";
 import { type StringMap } from "@repo/types";
 
 export class Extractor {
+	partialCellphone(data: Partial<BaseSchema.Cellphone> & StringMap) {
+		return {
+			countryCode: data.countryCode,
+			countryName: data.countryName,
+			phoneNumber: data.phoneNumber,
+		};
+	}
+
 	cellphone(data: BaseSchema.Cellphone & StringMap): BaseSchema.Cellphone {
 		return {
 			countryCode: data.countryCode,

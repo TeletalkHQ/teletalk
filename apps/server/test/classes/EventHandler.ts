@@ -1,10 +1,5 @@
 import { FIELD_TYPE } from "@repo/assets/src/variables/others/fieldType";
-import {
-	EventSchema,
-	IOSchema,
-	SocketRequestBody,
-	SocketResponse,
-} from "@repo/schema";
+import { EventSchema, SocketRequestBody, SocketResponse } from "@repo/schema";
 import { expect } from "chai";
 import { Socket } from "socket.io-client";
 
@@ -20,11 +15,13 @@ interface CustomError {
 	reason: ErrorReason;
 }
 
-export type EventHandlerResponse<T extends IOSchema> = SocketResponse<T>;
+export type EventHandlerResponse<T extends EventSchema> = SocketResponse<
+	T["io"]
+>;
 
-type RequestBody<T extends IOSchema> = SocketRequestBody<T>;
+type RequestBody<T extends EventSchema> = SocketRequestBody<T["io"]>;
 
-export class EventHandler<T extends IOSchema> {
+export class EventHandler<T extends EventSchema> {
 	private expectedError?: CustomError;
 
 	private options: EventHandlerOptions = {
@@ -35,7 +32,7 @@ export class EventHandler<T extends IOSchema> {
 	private response: EventHandlerResponse<T>;
 
 	constructor(
-		private eventSchema: EventSchema<T>,
+		private eventSchema: T,
 		private socket: Socket,
 		options: EventHandlerOptions = {}
 	) {
@@ -91,7 +88,7 @@ export class EventHandler<T extends IOSchema> {
 		const response = (await new Promise((resolve, _reject) => {
 			// this.socket.connect();
 			this.socket.emit(this.eventSchema.ioName, this.getBody(), resolve);
-		})) as SocketResponse<T>;
+		})) as SocketResponse<T["io"]>;
 		// this.socket.disconnect();
 
 		this.setResponse(response);
@@ -140,8 +137,8 @@ export class EventHandler<T extends IOSchema> {
 	}
 }
 
-export const eventHandler = <T extends IOSchema>(
-	eventSchema: EventSchema<T>,
+export const eventHandler = <T extends EventSchema>(
+	eventSchema: T,
 	socket: Socket,
 	options?: EventHandlerOptions
 ) => new EventHandler<T>(eventSchema, socket, options);
