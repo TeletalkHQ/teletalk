@@ -20,7 +20,7 @@ export const AddContactByPhone = () => {
 
 	const dialogState = useDialogState("addContactByPhone");
 
-	const { control, formState, handleSubmit, reset, setValue } = useForm<
+	const { control, handleSubmit, reset, setValue } = useForm<
 		FormSchema["addContactByPhone"]
 	>({
 		schema: addContactForm,
