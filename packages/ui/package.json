@@ -34,6 +34,7 @@
 		"./input/countrySelector": "./src/components/input/select/countrySelector/index.tsx",
 		"./input/fieldWithController": "./src/components/input/text/fieldWithController.tsx",
 		"./input/firstName": "./src/components/input/text/firstName.tsx",
+		"./input/username": "./src/components/input/text/username.tsx",
 		"./input/inputAdornment": "./src/components/input/inputAdornment.tsx",
 		"./input/inputLabel": "./src/components/input/inputLabel.tsx",
 		"./input/lastName": "./src/components/input/text/lastName.tsx",

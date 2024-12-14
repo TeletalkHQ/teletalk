@@ -11,8 +11,8 @@ interface Props<T extends ZodSchema>
 export const Username = <T extends ZodSchema>(props: Props<T>) => {
 	return (
 		<FieldWithController
-			id="firstName"
-			label="First Name"
+			id="username"
+			label="Username"
 			name="username"
 			{...props}
 		/>
