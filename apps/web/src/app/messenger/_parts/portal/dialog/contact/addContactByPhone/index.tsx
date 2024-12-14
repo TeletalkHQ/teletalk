@@ -70,7 +70,7 @@ export const AddContactByPhone = () => {
 					onCountrySelectChange={handleCountrySelectChange}
 				/>
 			}
-			dialogState={{ ...dialogState, isOpen: true }}
+			dialogState={dialogState}
 			paperProps={{ className: "w-full max-w-sm" }}
 			title={<Title />}
 			onAfterClose={reset}
