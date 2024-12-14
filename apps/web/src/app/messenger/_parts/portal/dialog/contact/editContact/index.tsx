@@ -1,3 +1,4 @@
+import { updateContactFormDefaultValues } from "@repo/hooks/formInitialData";
 import { useDialogState } from "@repo/hooks/useDialogState";
 import { useForm } from "@repo/hooks/useForm";
 import { type FormSchema, updateContactForm } from "@repo/schema";
@@ -16,6 +17,7 @@ export const EditContact = () => {
 		formState: { isValid },
 	} = useForm<FormSchema["updateContact"]>({
 		schema: updateContactForm,
+		defaultValues: updateContactFormDefaultValues,
 	});
 
 	const onSubmit = handleSubmit((_data) => {

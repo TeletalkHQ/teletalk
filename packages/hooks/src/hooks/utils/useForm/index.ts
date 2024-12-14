@@ -21,7 +21,8 @@ type UseFormArgs<T extends ZodSchema> = Partial<
 	Parameters<typeof RHFUseForm<GetFormValues<T>, any, GetFormValues<T>>>[0]
 > & {
 	schema: ZodSchema;
-	defaultValues?: z.infer<T>;
+	defaultValues: z.infer<T>;
+	values?: z.infer<T>;
 };
 
 export type SubmitHandler<T extends ZodSchema> = RHFSubmitHandler<

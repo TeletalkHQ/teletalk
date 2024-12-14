@@ -1,3 +1,4 @@
+import { updateFullNameFormDefaultValues } from "@repo/hooks/formInitialData";
 import { useDialogState } from "@repo/hooks/useDialogState";
 import { useForm } from "@repo/hooks/useForm";
 import { useUpdateUserPublicInfo } from "@repo/hooks/useUpdateUserPublicInfo";
@@ -15,6 +16,7 @@ export const EditFullName = () => {
 
 	const { control, handleSubmit } = useForm<FormSchema["updateFullName"]>({
 		schema: updateFullNameForm,
+		defaultValues: updateFullNameFormDefaultValues,
 	});
 
 	const onSubmit = handleSubmit((data) => {

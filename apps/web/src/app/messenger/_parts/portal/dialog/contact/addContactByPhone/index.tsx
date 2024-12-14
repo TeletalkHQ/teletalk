@@ -71,7 +71,6 @@ export const AddContactByPhone = () => {
 				/>
 			}
 			dialogState={dialogState}
-			paperProps={{ className: "w-full max-w-sm" }}
 			title={<Title />}
 			onAfterClose={reset}
 		/>

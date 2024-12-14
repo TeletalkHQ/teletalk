@@ -1,5 +1,6 @@
 "use client";
 
+import { createUserFormDefaultValues } from "@repo/hooks/formInitialData";
 import { useCreateUser } from "@repo/hooks/useCreateUser";
 import { useCustomRouter } from "@repo/hooks/useCustomRouter";
 import { useForm } from "@repo/hooks/useForm";
@@ -21,6 +22,7 @@ export const CreateUserForm = () => {
 
 	const { control, handleSubmit } = useForm<FormSchema["createUser"]>({
 		schema: createUserForm,
+		defaultValues: createUserFormDefaultValues,
 	});
 
 	const onSubmit = handleSubmit((data) => {

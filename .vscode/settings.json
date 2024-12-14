@@ -127,12 +127,23 @@
 		"className",
 		"ngClass",
 		".*Styles.*",
+		".*ClassName.*",
 		".*Classes.*"
+	],
+	"tailwindCSS.includeLanguages": {
+		"javascript": "javascript",
+		"typescript": "typescript",
+		"javascriptreact": "javascript",
+		"typescriptreact": "typescript"
+	},
+	"tailwindCSS.experimental.classRegex": [
+		"/((?:\b|:)(className?|tw)=?['\"`{])/gi",
+		"className\\: '([^']*)'",
+		"className\\: '{[^']*}'",
+		"/((?:\b|:)(className?|tw):?['\"`{])/gi"
 	],
 	"editor.quickSuggestions": {
 		"strings": "on"
 	},
-	"tailwindCSS.includeLanguages": {
-		"plaintext": "javascript"
-	}
+	"editor.inlineSuggest.enabled": true
 }

@@ -1,8 +1,10 @@
 "use client";
 
+import { signInFormDefaultValues } from "@repo/hooks/formInitialData";
 import { useCustomRouter } from "@repo/hooks/useCustomRouter";
 import { useForm } from "@repo/hooks/useForm";
 import { useSignIn } from "@repo/hooks/useSignIn";
+import type { FormSchema } from "@repo/schema";
 import { signInForm } from "@repo/schema";
 import { Flex } from "@repo/ui/box/flex";
 import { Form } from "@repo/ui/box/form";
@@ -31,16 +33,21 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 
 	const authQueries = useAuthUrlQueries();
 
-	const { control, handleSubmit, setValue } = useForm({
+	const formValues = {
+		countryCode: authQueries.countryCode,
+		phoneNumber: authQueries.phoneNumber,
+		countryName: authQueries.countryName,
+	};
+
+	const { control, handleSubmit, setValue } = useForm<FormSchema["signIn"]>({
 		schema: signInForm,
-		defaultValues: {
-			countryCode: authQueries.countryCode,
-			phoneNumber: authQueries.phoneNumber,
-		},
+		defaultValues: signInFormDefaultValues,
+		values: formValues,
 	});
 
 	const { countryCode, countryName } = useWatch({
 		control,
+		defaultValue: formValues,
 	});
 
 	const signInPhase = useApiPhase("signIn");
@@ -56,6 +63,7 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 
 	const onSubmit = handleSubmit((data) => {
 		authQueries.setCountryCode(data.countryCode);
+		authQueries.setCountryName(data.countryName);
 		authQueries.setPhoneNumber(data.phoneNumber);
 
 		postApi.handler({
@@ -65,6 +73,7 @@ export const SignForm: React.FC<PropsWithChildren> = () => {
 					router.push("/auth/verify", {
 						countryCode: data.countryCode,
 						phoneNumber: data.phoneNumber,
+						countryName: data.countryName,
 					});
 				},
 			},

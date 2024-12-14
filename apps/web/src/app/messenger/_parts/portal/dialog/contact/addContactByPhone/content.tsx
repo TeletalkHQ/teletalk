@@ -26,7 +26,9 @@ export const Content: React.FC<Props> = ({
 	onCountryNameChange,
 	onCountrySelectChange,
 }) => {
-	const { countryCode, countryName } = useWatch({ control });
+	const { countryCode, countryName } = useWatch({
+		control,
+	});
 
 	return (
 		<Div className="flex flex-col gap-2">

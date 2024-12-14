@@ -1,5 +1,6 @@
 "use client";
 
+import { verifySignInCodeFormDefaultValues } from "@repo/hooks/formInitialData";
 import { useCustomRouter } from "@repo/hooks/useCustomRouter";
 import { useForm } from "@repo/hooks/useForm";
 import { useVerify } from "@repo/hooks/useVerify";
@@ -23,6 +24,7 @@ export const VerifyForm = () => {
 		FormSchema["verifySignInCode"]
 	>({
 		schema: verifySignInCodeForm,
+		defaultValues: verifySignInCodeFormDefaultValues,
 	});
 
 	const router = useCustomRouter();

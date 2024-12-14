@@ -82,6 +82,7 @@ export const DialogTemplate: React.FC<Props> = ({
 			keepMounted
 			open={dialogState.isOpen}
 			PaperProps={{
+				className: paperProps?.className || "w-full max-w-sm",
 				...paperProps,
 				style: {
 					...paperProps?.style,

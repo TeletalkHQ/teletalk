@@ -38,7 +38,6 @@ export const Content: React.FC<Props> = () => {
 
 	const {
 		data: {
-			// TODO: Remove `contacts` and `blacklist`
 			userInfo: { contacts, blacklist },
 		},
 	} = useUserInfo();
