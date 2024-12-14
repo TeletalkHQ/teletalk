@@ -8,7 +8,7 @@ import { Suspense } from "react";
 
 import { Content } from "./content";
 
-export const Logout = () => {
+export const LogOut = () => {
 	const dialogState = useDialogState("logout");
 
 	const {
@@ -36,16 +36,23 @@ export const Logout = () => {
 			<DialogTemplate
 				actions={
 					<DoubleAction
-						leftButtonProps={{ onClick: dialogState.close }}
+						leftButtonProps={{
+							onClick: dialogState.close,
+							variant: "contained",
+							color: "primary",
+						}}
 						rightButtonProps={{
 							loading: logoutPhase.isLoading,
 							onClick: handleLogout,
+							variant: "text",
+							color: "error",
 						}}
+						rightButtonText="Log out"
 					/>
 				}
 				content={<Content />}
 				dialogState={dialogState}
-			/>{" "}
+			/>
 		</Suspense>
 	);
 };

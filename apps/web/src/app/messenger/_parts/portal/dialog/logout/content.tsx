@@ -1,10 +1,14 @@
 import { Div } from "@repo/ui/box/div";
-import { Span } from "@repo/ui/box/span";
 import { Typography } from "@repo/ui/typography/typography";
 
 export const Content = () => (
-	<Div style={{ textAlign: "center", fontSize: 18 }}>
-		<Span>Are you sure you want to</Span> <Typography>logout</Typography>
-		<Span>?</Span>
+	<Div>
+		<Typography textAlign="center">
+			Are you sure you want to{" "}
+			<Typography component="span" fontWeight="bold">
+				log out
+			</Typography>
+			?
+		</Typography>
 	</Div>
 );

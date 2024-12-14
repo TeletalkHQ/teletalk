@@ -102,6 +102,6 @@ const drawerList: Array<{
 		disabled: false,
 		Icon: IoLogOutOutline,
 		name: "logout",
-		label: "Logout",
+		label: "Log out",
 	},
 ];
