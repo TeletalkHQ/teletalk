@@ -66,15 +66,15 @@ export const AvatarSelector = () => {
 			<DialogTemplate
 				actions={
 					<DoubleAction
-						cancelProps={{
+						leftButtonProps={{
 							onClick: handleClose,
 						}}
-						cancelText="close"
-						confirmProps={{
+						leftButtonText="close"
+						rightButtonProps={{
 							onClick: handleSave,
 							loading: isLoading,
 						}}
-						confirmText="Save"
+						rightButtonText="Save"
 					/>
 				}
 				content={

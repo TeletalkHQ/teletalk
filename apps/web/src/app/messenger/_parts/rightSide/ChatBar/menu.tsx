@@ -12,7 +12,7 @@ import { FiMoreVertical } from "react-icons/fi";
 export const ChatBarMenu = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-	const addContactDialog = useDialogState("addContact");
+	const addContactDialog = useDialogState("addContactByPhone");
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);

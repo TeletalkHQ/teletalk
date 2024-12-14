@@ -14,7 +14,7 @@ export const BlockedUsers = () => {
 			<DialogTemplate
 				actions={
 					<SingleAction
-						closeProps={{
+						buttonProps={{
 							onClick: dialogState.close,
 						}}
 					/>

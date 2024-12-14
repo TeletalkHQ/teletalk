@@ -2,7 +2,7 @@ import { type DialogState, type State } from "./types";
 
 export const dialogNames = [
 	"addBlock",
-	"addContact",
+	"addContactByPhone",
 	"addServer",
 	"advanced",
 	"avatarSelector",

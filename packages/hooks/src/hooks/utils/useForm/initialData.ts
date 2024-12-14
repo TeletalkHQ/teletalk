@@ -1,36 +1,32 @@
 import { maker } from "@repo/classes";
-import type { FormSchema, FormSchemaName } from "@repo/schema";
-import type { z } from "zod";
 
-export const formInitialData = {
-	addContact: maker.emptyContact(),
-	createUser: maker.emptyFullName(),
-	messageInput: {
-		messageText: "",
-	},
-	signIn: maker.emptyCellphone(),
-	updateBio: {
-		bio: "",
-	},
-	updateContact: {
-		countryCode: "",
-		countryName: "",
-		firstName: "",
-		lastName: "",
-		phoneNumber: "",
-		userId: "",
-	},
-	updateFullName: {
-		firstName: "",
-		lastName: "",
-	},
-	updateUsername: {
-		username: "",
-	},
-	verifySignInCode: {
-		signInCode: "",
-	},
-} satisfies {
-	// eslint-disable-next-line no-use-before-define
-	[K in FormSchemaName]: z.infer<FormSchema[K]>;
+export const addContactFormDefaultValues = maker.emptyContact();
+
+export const createUserFormDefaultValues = maker.emptyFullName();
+
+export const signInFormDefaultValues = maker.emptyCellphone();
+
+export const messageInputFormDefaultValues = {
+	messageText: "",
+};
+export const updateBioFormDefaultValues = {
+	bio: "",
+};
+export const updateContactFormDefaultValues = {
+	countryCode: "",
+	countryName: "",
+	firstName: "",
+	lastName: "",
+	phoneNumber: "",
+	userId: "",
+};
+export const updateFullNameFormDefaultValues = {
+	firstName: "",
+	lastName: "",
+};
+export const updateUsernameFormDefaultValues = {
+	username: "",
+};
+export const verifySignInCodeFormDefaultValues = {
+	signInCode: "",
 };

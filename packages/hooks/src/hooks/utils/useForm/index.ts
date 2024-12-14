@@ -21,7 +21,7 @@ type UseFormArgs<T extends ZodSchema> = Partial<
 	Parameters<typeof RHFUseForm<GetFormValues<T>, any, GetFormValues<T>>>[0]
 > & {
 	schema: ZodSchema;
-	initialData?: z.infer<T>;
+	defaultValues?: z.infer<T>;
 };
 
 export type SubmitHandler<T extends ZodSchema> = RHFSubmitHandler<
@@ -32,7 +32,7 @@ export type FormOnSubmit = React.FormEventHandler<HTMLFormElement>;
 
 export const useForm = <T extends ZodSchema>({
 	schema,
-	initialData,
+	defaultValues,
 	...rest
 }: UseFormArgs<T>) => {
 	type FormValues = GetFormValues<T>;
@@ -44,6 +44,7 @@ export const useForm = <T extends ZodSchema>({
 		...restOfUseFormReturns
 	} = RHFUseForm<FormValues, any, FormValues>({
 		...rest,
+		defaultValues,
 		resolver: zodResolver(schema),
 		// reValidateMode: "onChange",
 	});

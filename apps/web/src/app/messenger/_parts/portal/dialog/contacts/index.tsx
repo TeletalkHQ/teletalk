@@ -10,7 +10,7 @@ import type { SortType } from "./title";
 import { Title } from "./title";
 
 export const Contacts = () => {
-	const addContactDialog = useDialogState("addContact");
+	const addContactDialog = useDialogState("addContactByPhone");
 
 	const [sortType, setSortType] = useState<SortType>("a-z");
 
@@ -29,14 +29,14 @@ export const Contacts = () => {
 		<DialogTemplate
 			actions={
 				<DoubleAction
-					cancelProps={{
+					leftButtonProps={{
 						onClick: dialogState.close,
 					}}
-					cancelText="Close"
-					confirmProps={{
+					leftButtonText="Close"
+					rightButtonProps={{
 						onClick: () => addContactDialog.open(),
 					}}
-					confirmText="Add Contact"
+					rightButtonText="Add Contact"
 				/>
 			}
 			content={<Content />}

@@ -1,7 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { extractor } from "@repo/classes";
-import { type BaseSchema, baseSchema } from "@repo/schema";
+import {
+	type BaseSchema,
+	GetInput,
+	IOCollection,
+	baseSchema,
+} from "@repo/schema";
 import isEqual from "lodash/isEqual";
 import { Model } from "mongoose";
 
@@ -217,33 +222,26 @@ export class UserService {
 		return [data.countryCode, data.countryName, data.phoneNumber].some(Boolean);
 	}
 
-	async addContact({
+	async addContactByPhone({
 		sessionId,
-		targetUserInfo: contactToAdd,
+		contactToAdd,
 	}: {
 		sessionId: BaseSchema.SessionId;
-		targetUserInfo: BaseSchema.ContactsItem;
+		contactToAdd: GetInput<IOCollection["addContactByPhone"]>;
 	}) {
 		const currentUser = await this.getCurrentUser(sessionId);
-		const targetUser = await this.getTargetUser({
-			userId: contactToAdd.userId,
-		});
+		const targetUser = await this.getTargetUser(
+			extractor.cellphone(contactToAdd)
+		);
 
 		await this.throwIfSelfRequested(currentUser.userId, targetUser.userId);
 
 		await this.throwIfContactExist(currentUser.contacts, targetUser.userId);
 
-		const isPhonePropsExist = this.isPhonePropsExist(contactToAdd);
-		if (isPhonePropsExist)
-			await this.throwIfPhoneNotMatchByUserId(
-				contactToAdd,
-				extractor.cellphone(targetUser)
-			);
-
 		const newContactsItem: BaseSchema.DBContactsItem = {
 			firstName: contactToAdd.firstName,
 			lastName: contactToAdd.lastName,
-			isPhoneAccessible: isPhonePropsExist,
+			isPhoneAccessible: true,
 			userId: targetUser.userId,
 		};
 		const newContacts = [...currentUser.contacts, newContactsItem];
@@ -254,7 +252,44 @@ export class UserService {
 			}
 		);
 
-		return newContactsItem;
+		return {
+			userId: targetUser.userId,
+		};
+	}
+
+	async addContactById({
+		sessionId,
+		contactToAdd,
+	}: {
+		sessionId: BaseSchema.SessionId;
+		contactToAdd: GetInput<IOCollection["addContactById"]>;
+	}) {
+		const currentUser = await this.getCurrentUser(sessionId);
+		const targetUser = await this.getTargetUser({
+			userId: contactToAdd.userId,
+		});
+
+		await this.throwIfSelfRequested(currentUser.userId, targetUser.userId);
+
+		await this.throwIfContactExist(currentUser.contacts, targetUser.userId);
+
+		const newContactsItem: BaseSchema.DBContactsItem = {
+			firstName: contactToAdd.firstName,
+			lastName: contactToAdd.lastName,
+			isPhoneAccessible: false,
+			userId: targetUser.userId,
+		};
+		const newContacts = [...currentUser.contacts, newContactsItem];
+		await this.update(
+			{ userId: currentUser.userId },
+			{
+				contacts: newContacts,
+			}
+		);
+
+		return {
+			userId: targetUser.userId,
+		};
 	}
 
 	async updateContact(

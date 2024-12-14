@@ -24,15 +24,15 @@ export const AvatarViewer = () => {
 			<DialogTemplate
 				actions={
 					<TripleAction
-						leftProps={{
+						leftButtonProps={{
 							children: "Close",
 							onClick: dialogState.close,
 						}}
-						middleProps={{
+						middleButtonProps={{
 							children: "Edit",
 							onClick: handleEdit,
 						}}
-						rightProps={{
+						rightButtonProps={{
 							children: "Delete",
 							color: "error",
 							onClick: handleDelete,

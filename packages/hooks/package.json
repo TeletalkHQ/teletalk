@@ -18,6 +18,7 @@
 		"./useFeatures": "./src/hooks/utils/useFeatures.ts",
 		"./useForceUpdate": "./src/hooks/utils/useForceUpdate.ts",
 		"./useForm": "./src/hooks/utils/useForm/index.ts",
+		"./formInitialData": "./src/hooks/utils/useForm/initialData.ts",
 		"./useGetClientStatus": "./src/hooks/api/user/useGetClientStatus.ts",
 		"./useIsAuthenticated": "./src/hooks/api/auth/useIsAuthenticated.ts",
 		"./useIsOnline": "./src/hooks/api/user/useIsOnline.ts",

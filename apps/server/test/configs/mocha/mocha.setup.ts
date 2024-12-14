@@ -33,7 +33,8 @@ const registerTests = async () => {
 	//? // // Services
 	// await import("@/__tests__/unit/services/chat/sendMessage.spec");
 	// await import("@/__tests__/unit/services/user/addBlock.spec");
-	// await import("@/__tests__/unit/services/user/addContact.spec");
+	// await import("@/__tests__/unit/services/user/addContactByPhone.spec");
+	// await import("@/__tests__/unit/services/user/addContactById.spec");
 	// await import("@/__tests__/unit/services/user/addSession.spec");
 	// await import("@/__tests__/unit/services/user/getContacts.spec");
 	// await import("@/__tests__/unit/services/user/getUserPublicInfo.spec");

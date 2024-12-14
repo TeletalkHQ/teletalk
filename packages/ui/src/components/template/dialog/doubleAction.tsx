@@ -2,17 +2,17 @@ import type { LoadingButtonProps } from "../../button/loading";
 import { LoadingButton } from "../../button/loading";
 
 interface Props {
-	cancelProps: LoadingButtonProps;
-	cancelText?: string;
-	confirmProps: LoadingButtonProps;
-	confirmText?: string;
+	leftButtonProps: LoadingButtonProps;
+	leftButtonText?: string;
+	rightButtonProps: LoadingButtonProps;
+	rightButtonText?: string;
 }
 
 export const DoubleAction: React.FC<Props> = ({
-	cancelProps,
-	confirmProps,
-	confirmText = "Confirm",
-	cancelText = "Cancel",
+	leftButtonProps: cancelProps,
+	leftButtonText: cancelText = "Cancel",
+	rightButtonProps: confirmProps,
+	rightButtonText: confirmText = "Confirm",
 }) => {
 	return (
 		<>

@@ -16,9 +16,9 @@ describe(messageCreators.e2eSuccessSuite("removeContact", "event"), () => {
 			const { socket } = await randomizer.userByE2E();
 			const { userInfo: targetUserInfo } = await randomizer.userByE2E();
 
-			const contactToAdd = extractor.contact(targetUserInfo);
+			const contactToAdd = extractor.contactByPhone(targetUserInfo);
 
-			await eventHandlerCollection.addContact(socket).send({
+			await eventHandlerCollection.addContactByPhone(socket).send({
 				data: contactToAdd,
 			});
 

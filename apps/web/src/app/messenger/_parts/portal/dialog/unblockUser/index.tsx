@@ -29,10 +29,10 @@ export const UnblockUser = () => {
 			<DialogTemplate
 				actions={
 					<DoubleAction
-						cancelProps={{
+						leftButtonProps={{
 							onClick: dialogState.close,
 						}}
-						confirmProps={{
+						rightButtonProps={{
 							onClick: handleRemoveBlock,
 							loading: isLoading,
 						}}

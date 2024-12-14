@@ -19,9 +19,12 @@ describe(messageCreators.e2eSuccessSuite("updateContact", "event"), () => {
 
 			const contactToAdd = extractor.contact(targetUserInfo);
 
-			await eventHandlerCollection
-				.addContact(socket)
-				.send({ data: contactToAdd });
+			await eventHandlerCollection.addContactByPhone(socket).send({
+				data: {
+					...extractor.cellphone(targetUserInfo),
+					...extractor.fullName(targetUserInfo),
+				},
+			});
 
 			const contactToEdit: BaseSchema.ContactsItem = {
 				...randomizer.fullName(),

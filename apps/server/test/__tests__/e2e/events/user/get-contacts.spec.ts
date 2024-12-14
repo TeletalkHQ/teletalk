@@ -16,8 +16,8 @@ describe(messageCreators.e2eSuccessSuite("getContacts", "event"), () => {
 			const { socket } = await randomizer.userByE2E();
 
 			const { userInfo: targetUserInfo } = await randomizer.userByE2E();
-			const addingContact = extractor.contact(targetUserInfo);
-			await eventHandlerCollection.addContact(socket).send({
+			const addingContact = extractor.contactByPhone(targetUserInfo);
+			await eventHandlerCollection.addContactByPhone(socket).send({
 				data: addingContact,
 			});
 

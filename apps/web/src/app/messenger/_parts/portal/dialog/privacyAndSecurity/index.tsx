@@ -19,7 +19,7 @@ export const PrivacyAndSecurity = () => {
 			<DialogTemplate
 				actions={
 					<SingleAction
-						closeProps={{
+						buttonProps={{
 							onClick: dialogState.close,
 						}}
 					/>

@@ -5,6 +5,7 @@ import {
 	SubscribeMessage,
 	WebSocketGateway,
 } from "@nestjs/websockets";
+import { extractor } from "@repo/classes";
 import {
 	IOCollection,
 	SocketHandlerReturnType_Promise,
@@ -56,19 +57,45 @@ export class UserGateway extends BaseGateway {
 		};
 	}
 
-	@SubscribeMessage(getEventName("addContact"))
-	async addContact(
-		@MessageBody() body: SocketRequestBody<IOCollection["addContact"]>,
+	@SubscribeMessage(getEventName("addContactByPhone"))
+	async addContactByPhone(
+		@MessageBody() body: SocketRequestBody<IOCollection["addContactByPhone"]>,
 		@ConnectedSocket() socket: Socket
-	): SocketHandlerReturnType_Promise<IOCollection["addContact"]> {
-		const newContact = await this.userService.addContact({
+	): SocketHandlerReturnType_Promise<IOCollection["addContactByPhone"]> {
+		const { userId } = await this.userService.addContactByPhone({
 			sessionId: socket.sessionId,
-			targetUserInfo: body.data,
+			contactToAdd: body.data,
 		});
 
 		return {
 			data: {
-				newContact,
+				newContact: {
+					userId,
+					...extractor.cellphone(body.data),
+					firstName: body.data.firstName,
+					lastName: body.data.lastName,
+				},
+			},
+		};
+	}
+
+	@SubscribeMessage(getEventName("addContactById"))
+	async addContactById(
+		@MessageBody() body: SocketRequestBody<IOCollection["addContactById"]>,
+		@ConnectedSocket() socket: Socket
+	): SocketHandlerReturnType_Promise<IOCollection["addContactById"]> {
+		const { userId } = await this.userService.addContactById({
+			sessionId: socket.sessionId,
+			contactToAdd: body.data,
+		});
+
+		return {
+			data: {
+				newContact: {
+					firstName: body.data.firstName,
+					lastName: body.data.lastName,
+					userId,
+				},
 			},
 		};
 	}

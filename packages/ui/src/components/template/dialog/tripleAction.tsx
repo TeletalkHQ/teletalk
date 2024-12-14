@@ -2,15 +2,15 @@ import type { LoadingButtonProps } from "../../button/loading";
 import { LoadingButton } from "../../button/loading";
 
 interface Props {
-	leftProps: LoadingButtonProps;
-	middleProps: LoadingButtonProps;
-	rightProps: LoadingButtonProps;
+	leftButtonProps: LoadingButtonProps;
+	middleButtonProps: LoadingButtonProps;
+	rightButtonProps: LoadingButtonProps;
 }
 
 export const TripleAction: React.FC<Props> = ({
-	leftProps,
-	middleProps,
-	rightProps,
+	leftButtonProps: leftProps,
+	middleButtonProps: middleProps,
+	rightButtonProps: rightProps,
 }) => {
 	return (
 		<>

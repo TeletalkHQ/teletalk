@@ -27,8 +27,8 @@ export const DeleteAvatar = () => {
 			<DialogTemplate
 				actions={
 					<DoubleAction
-						cancelProps={{ onClick: handleDelete }}
-						confirmProps={{
+						leftButtonProps={{ onClick: handleDelete }}
+						rightButtonProps={{
 							color: "error",
 							loading: isLoading,
 							loadingIndicator: "Deleting...",

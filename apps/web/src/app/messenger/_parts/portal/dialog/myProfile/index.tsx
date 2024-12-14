@@ -33,7 +33,7 @@ export const MyProfile = () => {
 	return (
 		<>
 			<DialogTemplate
-				actions={<SingleAction closeProps={{ onClick: dialogState.close }} />}
+				actions={<SingleAction buttonProps={{ onClick: dialogState.close }} />}
 				content={
 					<Content
 						onAvatarClick={handleAvatarClick}

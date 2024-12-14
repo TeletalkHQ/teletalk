@@ -2,7 +2,7 @@ import { AvatarSelector } from "./dialog/avatarSelector";
 import { AvatarViewer } from "./dialog/avatarViewer";
 import { BlockUser } from "./dialog/blockUser";
 import { BlockedUsers } from "./dialog/blockedUsers";
-import { AddContact } from "./dialog/contact/addContact";
+import { AddContactByPhone } from "./dialog/contact/addContactByPhone";
 import { EditContact } from "./dialog/contact/editContact";
 import { RemoveContact } from "./dialog/contact/removeContact";
 import { Contacts } from "./dialog/contacts";
@@ -21,7 +21,7 @@ import { Drawer } from "./drawer";
 export const Portal = () => {
 	return (
 		<>
-			<AddContact />
+			<AddContactByPhone />
 			<AvatarSelector />
 			<AvatarViewer />
 			<BlockUser />

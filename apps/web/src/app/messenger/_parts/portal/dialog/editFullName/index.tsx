@@ -31,10 +31,10 @@ export const EditFullName = () => {
 			<DialogTemplate
 				actions={
 					<DoubleAction
-						cancelProps={{
+						leftButtonProps={{
 							onClick: dialogState.close,
 						}}
-						confirmProps={{
+						rightButtonProps={{
 							onClick: onSubmit,
 							loading: isLoading,
 						}}

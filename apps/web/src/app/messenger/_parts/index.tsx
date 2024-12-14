@@ -52,8 +52,8 @@ export const MessengerContainer = () => {
 	// });
 
 	// useListener({
-	// 	evName: "addContact",
-	// 	cb: (response) => userStore.addContact(response.data.newContact),
+	// 	evName: "addContactByPhone",
+	// 	cb: (response) => userStore.addContactByPhone(response.data.newContact),
 	// });
 
 	// useListener({

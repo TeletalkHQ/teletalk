@@ -1,7 +1,7 @@
 import { EventGenerator, type EventName } from "../../../classes";
 import {
 	addBlockIO,
-	addContactIO,
+	addContactByPhoneIO,
 	disconnectIO,
 	getChatInfoIO,
 	getClientStatusIO,
@@ -22,11 +22,19 @@ import {
 	updateUserPublicInfoIO,
 } from "../io";
 
-export const addContactEvent = new EventGenerator({
+export const addContactByPhoneEvent = new EventGenerator({
 	isAuthRequired: true,
 	method: "on",
-	ioName: "addContact",
-	io: addContactIO,
+	ioName: "addContactByPhone",
+	io: addContactByPhoneIO,
+	namespace: "",
+});
+
+export const addContactByIdEvent = new EventGenerator({
+	isAuthRequired: true,
+	method: "on",
+	ioName: "addContactById",
+	io: addContactByPhoneIO,
 	namespace: "",
 });
 
@@ -198,7 +206,8 @@ export const updateUserPublicInfoEvent = new EventGenerator({
 
 export const socketEvents = {
 	addBlock: addBlockEvent,
-	addContact: addContactEvent,
+	addContactById: addContactByIdEvent,
+	addContactByPhone: addContactByPhoneEvent,
 	disconnect: disconnectEvent,
 	getChatInfo: getChatInfoEvent,
 	getClientStatus: getClientStatusEvent,

@@ -1,7 +1,7 @@
 import { EventSchema } from "@repo/schema";
 import {
 	addBlockEvent,
-	addContactEvent,
+	addContactByPhoneEvent,
 	disconnectEvent,
 	getChatInfoEvent,
 	getClientStatusEvent,
@@ -34,7 +34,7 @@ export const eventHandlerMaker = <T extends EventSchema>(schema: T) => {
 
 export const eventHandlerCollection = {
 	addBlock: eventHandlerMaker(addBlockEvent.schema),
-	addContact: eventHandlerMaker(addContactEvent.schema),
+	addContactByPhone: eventHandlerMaker(addContactByPhoneEvent.schema),
 	disconnect: eventHandlerMaker(disconnectEvent.schema),
 	getChatInfo: eventHandlerMaker(getChatInfoEvent.schema),
 	getClientStatus: eventHandlerMaker(getClientStatusEvent.schema),

@@ -28,6 +28,24 @@ export class Extractor {
 		};
 	}
 
+	contactByPhone(data: BaseSchema.Cellphone & BaseSchema.FullName & StringMap) {
+		return {
+			...this.cellphone(data),
+			...this.fullName(data),
+			userId: data.userId,
+		};
+	}
+
+	contactById(
+		data: BaseSchema.Cellphone & BaseSchema.FullName & StringMap
+	): BaseSchema.FullName & { userId: BaseSchema.UserId } {
+		return {
+			...this.cellphone(data),
+			...this.fullName(data),
+			userId: data.userId,
+		};
+	}
+
 	fullName(data: BaseSchema.FullName & StringMap): BaseSchema.FullName {
 		return {
 			firstName: data.firstName,

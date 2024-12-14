@@ -2,7 +2,6 @@ import { z } from "zod";
 
 import {
 	bioSchema,
-	contactsItemSchema,
 	countryCodeSchema,
 	countryNameSchema,
 	firstNameSchema,
@@ -43,11 +42,17 @@ export const updateUsernameForm = z.object({
 
 export const updateFullNameForm = fullNameSchema;
 
-export const addContactForm = contactsItemSchema;
-export const updateContactForm = contactsItemSchema;
+export const addContactForm = z.object({
+	firstName: firstNameSchema,
+	lastName: lastNameSchema.optional(),
+	countryCode: countryCodeSchema,
+	countryName: countryNameSchema,
+	phoneNumber: phoneNumberSchema,
+});
+export const updateContactForm = addContactForm;
 
 export type FormSchema = {
-	addContact: typeof addContactForm;
+	addContactByPhone: typeof addContactForm;
 	createUser: typeof createUserForm;
 	messageInput: typeof messageInputForm;
 	signIn: typeof signInForm;

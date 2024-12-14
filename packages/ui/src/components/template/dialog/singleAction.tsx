@@ -2,15 +2,17 @@ import type { LoadingButtonProps } from "../../button/loading";
 import { LoadingButton } from "../../button/loading";
 
 interface Props {
-	closeProps: LoadingButtonProps;
+	buttonProps: LoadingButtonProps;
+	text?: string;
 }
 
-export const SingleAction: React.FC<Props> = ({ closeProps }) => {
+export const SingleAction: React.FC<Props> = ({
+	buttonProps: closeProps,
+	text = "Close",
+}) => {
 	return (
-		<>
-			<LoadingButton variant="outlined" {...closeProps}>
-				Close
-			</LoadingButton>
-		</>
+		<LoadingButton variant="outlined" {...closeProps}>
+			{text}
+		</LoadingButton>
 	);
 };

@@ -24,7 +24,7 @@ export class Maker {
 		};
 	}
 
-	emptyCellphone(): BaseSchema.Cellphone {
+	emptyCellphone() {
 		return {
 			countryCode: "",
 			countryName: "",
@@ -32,14 +32,14 @@ export class Maker {
 		};
 	}
 
-	emptyFullName(): BaseSchema.FullName {
+	emptyFullName() {
 		return {
 			firstName: "",
 			lastName: "",
 		};
 	}
 
-	emptyContact(): BaseSchema.ContactsItem {
+	emptyContact() {
 		return {
 			...this.emptyCellphone(),
 			...this.emptyFullName(),
@@ -47,7 +47,7 @@ export class Maker {
 		};
 	}
 
-	emptyUserPublicInfo(): BaseSchema.UserPublicInfo {
+	emptyUserPublicInfo() {
 		return {
 			...this.emptyFullName(),
 			bio: "",

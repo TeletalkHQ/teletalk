@@ -31,10 +31,10 @@ export const EditContact = () => {
 		<DialogTemplate
 			actions={
 				<DoubleAction
-					cancelProps={{
+					leftButtonProps={{
 						onClick: dialogState.close,
 					}}
-					confirmProps={{
+					rightButtonProps={{
 						loading: false,
 						onClick: onSubmit,
 						type: "submit",

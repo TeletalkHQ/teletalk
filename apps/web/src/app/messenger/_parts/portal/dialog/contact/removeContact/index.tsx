@@ -33,8 +33,8 @@ export const RemoveContact = () => {
 			<DialogTemplate
 				actions={
 					<DoubleAction
-						cancelProps={{ onClick: dialogState.close }}
-						confirmProps={{
+						leftButtonProps={{ onClick: dialogState.close }}
+						rightButtonProps={{
 							onClick: onSubmit,
 							loading: isLoading,
 						}}

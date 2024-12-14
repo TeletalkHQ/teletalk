@@ -10,13 +10,14 @@ import { SelectorInput } from "./selectorInput";
 
 export type SelectedCountry = BaseSchema.CountriesItem | null;
 
-type SelectCountryOnChange = VoidWithArg<SelectedCountry>;
+export type OnCountrySelectChange = VoidWithArg<SelectedCountry>;
+export type OnCountryNameChange = VoidWithArg<string>;
 
 interface Props {
 	countryCode: string;
 	countryName: string;
-	onCountryNameChange: VoidWithArg<string>;
-	onSelectChange: SelectCountryOnChange;
+	onCountryNameChange: OnCountryNameChange;
+	onSelectChange: OnCountrySelectChange;
 }
 
 export const CountrySelector: React.FC<Props> = ({

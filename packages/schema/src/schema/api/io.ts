@@ -21,21 +21,44 @@ export const addBlockIO = {
 	pathnames: z.undefined(),
 };
 
-export const addContactIO = {
+export const addContactByPhoneIO = {
 	input: z.object({
-		countryCode: baseSchema.countryCode.optional(),
-		countryName: baseSchema.countryName.optional(),
+		countryCode: baseSchema.countryCode,
+		countryName: baseSchema.countryName,
 		firstName: baseSchema.firstName,
 		lastName: baseSchema.lastName.optional(),
-		phoneNumber: baseSchema.phoneNumber.optional(),
-		userId: baseSchema.userId,
+		phoneNumber: baseSchema.phoneNumber,
 	}),
 	output: z.object({
-		newContact: baseSchema.contactsItem,
+		newContact: baseSchema.cellphone.and(
+			z.object({
+				firstName: baseSchema.firstName,
+				lastName: baseSchema.lastName.optional(),
+				userId: baseSchema.userId,
+			})
+		),
 	}),
 	params: z.undefined(),
 	pathnames: z.undefined(),
 };
+
+export const addContactByIdIO = {
+	input: z.object({
+		firstName: baseSchema.firstName,
+		lastName: baseSchema.lastName.optional(),
+		userId: baseSchema.userId,
+	}),
+	output: z.object({
+		newContact: z.object({
+			firstName: baseSchema.firstName,
+			lastName: baseSchema.lastName.optional(),
+			userId: baseSchema.userId,
+		}),
+	}),
+	params: z.undefined(),
+	pathnames: z.undefined(),
+};
+
 // connect: {
 // 	input: z.object({}),
 // 	output: z.object({}),
@@ -270,7 +293,11 @@ export const updateAvatarIO = {
 };
 
 export const updateContactIO = {
-	input: baseSchema.contactsItem,
+	input: z.object({
+		firstName: baseSchema.firstName,
+		lastName: baseSchema.lastName.optional(),
+		userId: baseSchema.userId,
+	}),
 	output: z.object({
 		updatedContact: baseSchema.contactsItem,
 	}),
@@ -315,7 +342,8 @@ export const verifyIO = {
 
 export type IOCollection = {
 	addBlock: typeof addBlockIO;
-	addContact: typeof addContactIO;
+	addContactByPhone: typeof addContactByPhoneIO;
+	addContactById: typeof addContactByIdIO;
 	createUser: typeof createUserIO;
 	disconnect: typeof disconnectIO;
 	getAvatar: typeof getAvatarIO;

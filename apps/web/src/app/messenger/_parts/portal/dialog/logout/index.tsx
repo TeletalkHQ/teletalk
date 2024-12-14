@@ -36,8 +36,8 @@ export const Logout = () => {
 			<DialogTemplate
 				actions={
 					<DoubleAction
-						cancelProps={{ onClick: dialogState.close }}
-						confirmProps={{
+						leftButtonProps={{ onClick: dialogState.close }}
+						rightButtonProps={{
 							loading: logoutPhase.isLoading,
 							onClick: handleLogout,
 						}}

@@ -1,15 +1,15 @@
 import { assertion, extractor } from "@repo/classes";
-import { BaseSchema } from "@repo/schema";
+import { GetInput, IOCollection } from "@repo/schema";
 
 import { randomizer } from "@/classes";
 import { eventHandlerCollection } from "@/utils/eventHandlerCollection";
 import { messageCreators } from "@/utils/testMessageCreators";
 
 // TODO: Add more tests
-describe(messageCreators.e2eSuccessSuite("addContact", "event"), () => {
+describe(messageCreators.e2eSuccessSuite("addContactByPhone", "event"), () => {
 	it(
 		messageCreators.e2eSuccessTest(
-			"addContact",
+			"addContactByPhone",
 			"event",
 			"should add users to contacts"
 		),
@@ -17,21 +17,23 @@ describe(messageCreators.e2eSuccessSuite("addContact", "event"), () => {
 			const { socket } = await randomizer.userByE2E();
 			const { userInfo: targetUserInfo } = await randomizer.userByE2E();
 
-			const dataToSend: BaseSchema.ContactsItem = {
+			const dataToSend: GetInput<IOCollection["addContactByPhone"]> = {
 				...extractor.cellphone(targetUserInfo),
 				...randomizer.fullName(),
-				userId: targetUserInfo.userId,
 			};
 
 			const {
 				data: { newContact },
-			} = await eventHandlerCollection.addContact(socket).send({
+			} = await eventHandlerCollection.addContactByPhone(socket).send({
 				data: dataToSend,
 			});
 
 			assertion().oneContact({
 				test: newContact,
-				equal: dataToSend,
+				equal: {
+					...dataToSend,
+					userId: targetUserInfo.userId,
+				},
 			});
 		}
 	);

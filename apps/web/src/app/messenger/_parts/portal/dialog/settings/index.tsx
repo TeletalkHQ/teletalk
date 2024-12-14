@@ -10,7 +10,7 @@ export const Settings = () => {
 
 	return (
 		<DialogTemplate
-			actions={<SingleAction closeProps={{ onClick: dialogState.close }} />}
+			actions={<SingleAction buttonProps={{ onClick: dialogState.close }} />}
 			content={<Content />}
 			dialogState={dialogState}
 			title={<Title />}

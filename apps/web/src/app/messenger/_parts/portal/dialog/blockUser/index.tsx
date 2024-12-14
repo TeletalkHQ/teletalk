@@ -35,8 +35,8 @@ export const BlockUser = () => {
 			<DialogTemplate
 				actions={
 					<DoubleAction
-						cancelProps={{ onClick: dialogState.close }}
-						confirmProps={{
+						leftButtonProps={{ onClick: dialogState.close }}
+						rightButtonProps={{
 							onClick: handleConfirm,
 							loading: isLoading,
 						}}

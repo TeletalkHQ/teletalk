@@ -1,18 +1,18 @@
 "use client";
 
-import { addContactEvent } from "@repo/schema";
+import { addContactByPhoneEvent } from "@repo/schema";
 
 import { createEmitterInitialData, useMainEmitter } from "../useMainEmitter";
 
-export const useAddContact = () => {
+export const useAddContactByPhone = () => {
 	return useMainEmitter({
 		initialData,
-		name: "addContact",
-		schema: addContactEvent.schema,
+		name: "addContactByPhone",
+		schema: addContactByPhoneEvent.schema,
 	});
 };
 
-const initialData = createEmitterInitialData(addContactEvent.schema, {
+const initialData = createEmitterInitialData(addContactByPhoneEvent.schema, {
 	newContact: {
 		firstName: "",
 		userId: "",
