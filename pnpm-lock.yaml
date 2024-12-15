@@ -149,6 +149,9 @@ importers:
       class-validator:
         specifier: ^0.14.1
         version: 0.14.1
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       compression:
         specifier: ^1.7.5
         version: 1.7.5
@@ -1027,6 +1030,9 @@ importers:
       '@repo/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
+      '@repo/logger':
+        specifier: workspace:*
+        version: link:../../packages/logger
       '@repo/schema':
         specifier: workspace:*
         version: link:../../packages/schema

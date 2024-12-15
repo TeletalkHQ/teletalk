@@ -1,5 +1,3 @@
-"use client";
-
 import { useDialogState } from "@repo/hooks/useDialogState";
 import { DialogTemplate } from "@repo/ui/template/dialog";
 import { SingleAction } from "@repo/ui/template/singleAction";
@@ -20,7 +18,8 @@ export const BlockedUsers = () => {
 					/>
 				}
 				content={<Content />}
-				dialogState={dialogState}
+				dialogState={{ ...dialogState, isOpen: true }}
+				paperProps={{ className: "w-full max-w-md" }}
 			/>
 		</>
 	);

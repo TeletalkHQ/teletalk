@@ -1,66 +1,60 @@
-import { userUtils } from "@repo/classes";
 import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
 import { type BaseSchema } from "@repo/schema";
 import { type VoidNoArgs } from "@repo/types";
 import { Avatar } from "@repo/ui/box/Avatar";
+import { Div } from "@repo/ui/box/div";
+import { Grid } from "@repo/ui/box/grid";
+import { ListItemAvatar } from "@repo/ui/box/listItemAvatar";
 import { ListItemButton } from "@repo/ui/box/listItemButton";
-import { Span } from "@repo/ui/box/span";
-import { IconButton } from "@repo/ui/button/icon";
-import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
-import { CgUnblock } from "react-icons/cg";
+import { Button } from "@repo/ui/button/button";
+import { Typography } from "@repo/ui/typography/typography";
 
 interface Props {
 	onItemLick: VoidNoArgs;
-	item: BaseSchema.UserPublicInfo;
+	userId: BaseSchema.UserId;
 }
 
-export const ListItem: React.FC<Props> = ({ item, onItemLick }) => {
+export const ListItem: React.FC<Props> = ({ userId, onItemLick }) => {
 	const {
 		data: { userPublicInfo },
-	} = useUserPublicInfo({ userId: item.userId });
+	} = useUserPublicInfo({ userId });
 
 	return (
-		<ListItemButton
-			style={{
-				alignItems: "center",
-				borderRadius: "10px",
-				display: "flex",
-				gap: 10,
-				height: "65px",
-				justifyContent: "space-between",
-			}}
-			onClick={onItemLick}
-		>
-			<Span>
-				<Avatar style={{ width: "50px", height: "50px" }} />
-			</Span>
-			<Span
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					gap: 5,
-				}}
-			>
-				<Span>
-					{userUtils.concatFirstNameWithLastName(item, userPublicInfo)}
-				</Span>
-				<Span>
-					{/* {userUtils.concatCountryCodeWithPhoneNumber(
+		<Grid container spacing={1}>
+			<Grid item xs={8}>
+				<ListItemButton
+					className="flex flex-row w-full rounded-lg items-center justify-between"
+					onClick={onItemLick}
+				>
+					<ListItemAvatar>
+						<Avatar />
+					</ListItemAvatar>
+
+					<Div className="flex flex-col w-full justify-between items-start">
+						<Typography variant="body1">
+							{userPublicInfo.firstName} {userPublicInfo.lastName}
+						</Typography>
+
+						<Typography variant="subtitle2">
+							Unknown phone number
+							{/* {userUtils.concatCountryCodeWithPhoneNumber(
 						item,
 						"unknown phone number"
 					)} */}
-				</Span>
-			</Span>
-			<Span>
-				<IconButton
-					onClick={(e) => {
-						e.stopPropagation();
-						onItemLick();
-					}}
+						</Typography>
+					</Div>
+				</ListItemButton>
+			</Grid>
+
+			<Grid item xs={4}>
+				<Button
+					className="w-full h-full rounded-lg"
+					variant="text"
+					onClick={onItemLick}
 				>
-					<DynamicIcon icon={CgUnblock} />
-				</IconButton>
-			</Span>
-		</ListItemButton>
+					Unblock
+				</Button>
+			</Grid>
+		</Grid>
 	);
 };

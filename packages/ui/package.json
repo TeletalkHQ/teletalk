@@ -16,6 +16,7 @@
 		"./box/grid": "./src/components/box/grid.tsx",
 		"./box/link": "./src/components/box/link.tsx",
 		"./box/list": "./src/components/box/list.tsx",
+		"./box/listItem": "./src/components/box/listItem.tsx",
 		"./box/listItemAvatar": "./src/components/box/listItemAvatar.tsx",
 		"./box/listItemButton": "./src/components/box/listItemButton.tsx",
 		"./box/listItemIcon": "./src/components/box/listItemIcon.tsx",
@@ -34,7 +35,6 @@
 		"./input/countrySelector": "./src/components/input/select/countrySelector/index.tsx",
 		"./input/fieldWithController": "./src/components/input/text/fieldWithController.tsx",
 		"./input/firstName": "./src/components/input/text/firstName.tsx",
-		"./input/username": "./src/components/input/text/username.tsx",
 		"./input/inputAdornment": "./src/components/input/inputAdornment.tsx",
 		"./input/inputLabel": "./src/components/input/inputLabel.tsx",
 		"./input/lastName": "./src/components/input/text/lastName.tsx",
@@ -42,6 +42,7 @@
 		"./input/select": "./src/components/input/select/select.tsx",
 		"./input/signInCode": "./src/components/input/text/signInCode.tsx",
 		"./input/textField": "./src/components/input/text/textField.tsx",
+		"./input/username": "./src/components/input/text/username.tsx",
 		"./layouts/auth": "./src/layouts/auth/index.tsx",
 		"./layouts/root": "./src/layouts/root/index.tsx",
 		"./loadings/backdrop": "./src/components/loading/backdrop.tsx",
@@ -56,7 +57,8 @@
 		"./themes/nord": "./src/theme/nord/index.ts",
 		"./themes/web": "./src/theme/web/index.ts",
 		"./types": "./src/types/index.ts",
-		"./typography/typography": "./src/components/typography/typography.tsx"
+		"./typography/typography": "./src/components/typography/typography.tsx",
+		"./utils": "./src/utils/index.ts"
 	},
 	"scripts": {
 		"build:storybook": "storybook build",

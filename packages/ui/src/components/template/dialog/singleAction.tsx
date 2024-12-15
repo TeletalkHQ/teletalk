@@ -11,7 +11,7 @@ export const SingleAction: React.FC<Props> = ({
 	text = "Close",
 }) => {
 	return (
-		<LoadingButton variant="outlined" {...closeProps}>
+		<LoadingButton variant="text" {...closeProps}>
 			{text}
 		</LoadingButton>
 	);
