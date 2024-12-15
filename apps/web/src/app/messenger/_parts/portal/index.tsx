@@ -1,11 +1,12 @@
+import ContextMenu from "./contextMenu";
 import { AvatarSelector } from "./dialog/avatarSelector";
 import { AvatarViewer } from "./dialog/avatarViewer";
 import { BlockUser } from "./dialog/blockUser";
 import { BlockedUsers } from "./dialog/blockedUsers";
 import { AddContactByPhone } from "./dialog/contact/addContactByPhone";
+import { Contacts } from "./dialog/contact/contacts";
 import { EditContact } from "./dialog/contact/editContact";
 import { RemoveContact } from "./dialog/contact/removeContact";
-import { Contacts } from "./dialog/contacts";
 import { DeleteAvatar } from "./dialog/deleteAvatar";
 import { EditBio } from "./dialog/editBio";
 import { EditFullName } from "./dialog/editFullName";
@@ -21,6 +22,7 @@ import { Drawer } from "./drawer";
 export const Portal = () => {
 	return (
 		<>
+			<ContextMenu />
 			<AddContactByPhone />
 			<AvatarSelector />
 			<AvatarViewer />

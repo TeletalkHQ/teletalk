@@ -8,19 +8,17 @@ export const BlockedUsers = () => {
 	const dialogState = useDialogState("blockedUsers");
 
 	return (
-		<>
-			<DialogTemplate
-				actions={
-					<SingleAction
-						buttonProps={{
-							onClick: dialogState.close,
-						}}
-					/>
-				}
-				content={<Content />}
-				dialogState={{ ...dialogState, isOpen: true }}
-				paperProps={{ className: "w-full max-w-md" }}
-			/>
-		</>
+		<DialogTemplate
+			actions={
+				<SingleAction
+					buttonProps={{
+						onClick: dialogState.close,
+					}}
+				/>
+			}
+			content={<Content />}
+			dialogState={dialogState}
+			paperProps={{ className: "w-full max-w-md" }}
+		/>
 	);
 };

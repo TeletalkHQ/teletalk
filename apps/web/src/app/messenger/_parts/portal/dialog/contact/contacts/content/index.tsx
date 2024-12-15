@@ -1,8 +1,8 @@
 import { useDialogState } from "@repo/hooks/useDialogState";
 import { useUserInfo } from "@repo/hooks/useUserInfo";
 import { type BaseSchema } from "@repo/schema";
-import type { DialogStore } from "@repo/store";
-import { useDialogStore } from "@repo/store";
+import type { ContextMenuStore, DialogStore } from "@repo/store";
+import { useContextMenuStore, useDialogStore } from "@repo/store";
 import { Div } from "@repo/ui/box/div";
 import { List } from "@repo/ui/box/list";
 import { DynamicIcon } from "@repo/ui/icons/dynamicIcon";
@@ -11,8 +11,7 @@ import type { OnTextInputChange } from "@repo/ui/types";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 
-import { useContextMenu } from "~/hooks/utils/useContextMenu";
-import { type GlobalStore, useGlobalStore, useUserStore } from "~/store";
+import { useUserStore } from "~/store";
 
 import { ListItem } from "./listItem";
 
@@ -23,8 +22,13 @@ type UuidSetter = Partial<
 >;
 
 export const Content: React.FC<Props> = () => {
-	const globalStore = useGlobalStore();
+	const { closeMenu, setMenu } = useContextMenuStore((state) => ({
+		closeMenu: state.closeMenu,
+		setMenu: state.setMenu,
+	}));
+
 	const openDialog = useDialogStore((state) => state.setOpenDialog);
+
 	const [search, setSearch] = useState("");
 
 	const dialogState = useDialogState("contacts");
@@ -42,10 +46,9 @@ export const Content: React.FC<Props> = () => {
 		},
 	} = useUserInfo();
 
-	const onContextMenuHandler =
+	const onMenuItemClick =
 		(dn: DialogStore.DialogName, id: string | undefined) => () => {
-			globalStore.closeContextMenu();
-			openDialog(dn);
+			closeMenu();
 
 			const uuidSetter: UuidSetter = {
 				addBlock: (id) => setSelectedUUID("block", id),
@@ -55,38 +58,32 @@ export const Content: React.FC<Props> = () => {
 			};
 
 			uuidSetter[dn]?.(id);
+
+			openDialog(dn);
 		};
 
 	const createContextMenuList = (
-		contact?: BaseSchema.ContactsItem
-	): GlobalStore.ContextMenuList => {
-		const isBlocked = blacklist.some((item) => item.userId === contact?.userId);
+		userId?: BaseSchema.UserId
+	): ContextMenuStore.MenuList => {
+		const isBlocked = blacklist.some((item) => item.userId === userId);
 
 		return [
 			{
 				text: "Edit",
-				handler: onContextMenuHandler("editContact", contact?.userId),
+				handler: onMenuItemClick("editContact", userId),
 			},
 			{
 				text: "Remove",
-				handler: onContextMenuHandler("removeContact", contact?.userId),
+				handler: onMenuItemClick("removeContact", userId),
 			},
 			{
 				text: `${isBlocked ? "Unblock" : "Block"}`,
-				handler: onContextMenuHandler(
+				handler: onMenuItemClick(
 					isBlocked ? "removeBlock" : "addBlock",
-					contact?.userId
+					userId
 				),
 			},
 		];
-	};
-
-	const { onContextMenu } = useContextMenu(createContextMenuList());
-
-	const handleContextMenu: GlobalStore.ExtendedOnContextMenu<
-		BaseSchema.ContactsItem
-	> = (event, contact) => {
-		onContextMenu(event, createContextMenuList(contact));
 	};
 
 	const handleSearchChange: OnTextInputChange = (e) => {
@@ -117,7 +114,7 @@ export const Content: React.FC<Props> = () => {
 						userId={item.userId}
 						onContactClick={() => handleContactItemClicked(item.userId)}
 						onContextMenu={(e) => {
-							handleContextMenu(e, item);
+							setMenu({ e, list: createContextMenuList(item.userId) });
 						}}
 					/>
 				))}

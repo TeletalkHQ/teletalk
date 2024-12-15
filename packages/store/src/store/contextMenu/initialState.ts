@@ -1,7 +1,7 @@
 import type { State } from "./types";
 
 export const initialState: State = {
-	contextMenu: {
+	menu: {
 		list: [],
 		position: {
 			mouseX: 0,

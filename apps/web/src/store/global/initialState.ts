@@ -1,10 +1,6 @@
 import { type State } from "./types";
 
 export const initialState: State = {
-	contextMenu: {
-		list: [],
-		position: null,
-	},
 	drawer: {
 		//TODO: appConfigs.getConfigs().ui.drawerDefaultAnchor
 		anchor: "left",

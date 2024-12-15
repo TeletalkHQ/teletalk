@@ -2,30 +2,40 @@ import type { VoidNoArgs, VoidWithArg } from "@repo/types";
 
 import { type StoreSetFn } from "../../utils";
 
-type ContextMenuText = "Edit" | "Remove" | "Block" | "Unblock";
+export type OnContextMenu<T extends any = any> = (
+	event: React.MouseEvent,
+	arg: T
+) => void;
 
-export interface ContextMenuItem {
-	text: ContextMenuText;
+export interface MenuListItem {
+	text: string;
 	handler: (...args: any[]) => void;
 }
 
-export type ContextMenuList = ContextMenuItem[];
+export type MenuList = MenuListItem[];
 
-export type ContextMenuState = {
-	position: {
-		mouseX: number;
-		mouseY: number;
-	} | null;
-	list: ContextMenuList;
+export type MenuPosition = {
+	mouseX: number;
+	mouseY: number;
+};
+
+export type MenuState = {
+	position: MenuPosition | null;
+	list: MenuList;
 };
 
 export interface Handlers {
-	setContextMenu: VoidWithArg<ContextMenuState>;
-	setContextMenuClose: VoidNoArgs;
+	closeMenu: VoidNoArgs;
+	setMenu: VoidWithArg<{
+		e: React.MouseEvent;
+		list: MenuList;
+	}>;
+	updateMenu: VoidWithArg<Partial<MenuState>>;
 }
 
 export interface State {
-	contextMenu: ContextMenuState;
+	menu: MenuState;
 }
 export type SetState = StoreSetFn<State>;
+
 export type Store = State & Handlers;

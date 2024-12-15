@@ -1,14 +1,35 @@
 import type { Handlers, SetState } from "./types";
 
 export const handlers: (set: SetState) => Handlers = (set) => ({
-	setContextMenu(contextMenuState) {
+	setMenu({ e, list }) {
+		e.preventDefault();
+
 		set({
-			contextMenu: contextMenuState,
+			menu: {
+				list,
+				position: {
+					mouseX: e.clientX + 2,
+					mouseY: e.clientY - 6,
+				},
+			},
 		});
 	},
-	setContextMenuClose() {
+
+	updateMenu(newMenu) {
 		set((prevState) => ({
-			contextMenu: { ...prevState.contextMenu, position: null },
+			menu: {
+				...prevState.menu,
+				...newMenu,
+			},
+		}));
+	},
+
+	closeMenu() {
+		set((prevState) => ({
+			menu: {
+				...prevState.menu,
+				position: null,
+			},
 		}));
 	},
 });

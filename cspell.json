@@ -250,7 +250,5 @@
 		"zustand"
 	],
 	"import": [],
-	"words": [
-		"prestart"
-	]
+	"words": ["prestart", "Showable"]
 }
