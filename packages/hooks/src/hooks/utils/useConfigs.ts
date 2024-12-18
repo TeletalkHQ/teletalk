@@ -80,6 +80,8 @@ export const useConfigs = () => {
 			shouldLogActions: false,
 		},
 		app: {
+			name: "teletalk",
+			label: "Teletalk",
 			baseUrl: envs.NEXT_PUBLIC_CLIENT_BASE_URL,
 		},
 		ui: {

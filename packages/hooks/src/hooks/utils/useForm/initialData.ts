@@ -9,17 +9,16 @@ export const signInFormDefaultValues = maker.emptyCellphone();
 export const messageInputFormDefaultValues = {
 	messageText: "",
 };
+
 export const updateBioFormDefaultValues = {
 	bio: "",
 };
+
 export const updateContactFormDefaultValues = {
-	countryCode: "",
-	countryName: "",
 	firstName: "",
 	lastName: "",
-	phoneNumber: "",
-	userId: "",
 };
+
 export const updateFullNameFormDefaultValues = {
 	firstName: "",
 	lastName: "",

@@ -1,3 +1,4 @@
+// Move to `types/decorators`
 export function AutoBind(
 	_target: any,
 	_methodName: string,

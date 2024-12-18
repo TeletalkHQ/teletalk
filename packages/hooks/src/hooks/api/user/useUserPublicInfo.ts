@@ -6,11 +6,11 @@ import { type BaseSchema, getUserPublicInfoEvent } from "@repo/schema";
 import { createEmitterInitialData, useMainEmitter } from "../useMainEmitter";
 import { queryKeys, useMainQuery } from "../useMainQuery";
 
-type Arg = {
+export type UseUserPublicInfoArg = {
 	userId: BaseSchema.UserId | undefined;
 };
 
-export const useUserPublicInfo = ({ userId }: Arg) => {
+export const useUserPublicInfo = ({ userId }: UseUserPublicInfoArg) => {
 	const { emitter, socket } = useMainEmitter({
 		name: "getUserPublicInfo",
 		initialData,

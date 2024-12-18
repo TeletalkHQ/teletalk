@@ -1,6 +1,7 @@
 {
 	"name": "@repo/hooks",
 	"exports": {
+		"./formInitialData": "./src/hooks/utils/useForm/initialData.ts",
 		"./types": "./src/types/index.ts",
 		"./useAddBlock": "./src/hooks/api/user/useAddBlock.ts",
 		"./useAddContact": "./src/hooks/api/user/useAddContact.ts",
@@ -18,8 +19,8 @@
 		"./useFeatures": "./src/hooks/utils/useFeatures.ts",
 		"./useForceUpdate": "./src/hooks/utils/useForceUpdate.ts",
 		"./useForm": "./src/hooks/utils/useForm/index.ts",
-		"./formInitialData": "./src/hooks/utils/useForm/initialData.ts",
 		"./useGetClientStatus": "./src/hooks/api/user/useGetClientStatus.ts",
+		"./useConcatenatedFullName": "./src/hooks/api/user/useConcatenatedFullName.ts",
 		"./useIsAuthenticated": "./src/hooks/api/auth/useIsAuthenticated.ts",
 		"./useIsOnline": "./src/hooks/api/user/useIsOnline.ts",
 		"./useLoading": "./src/hooks/utils/useLoading.ts",
@@ -32,6 +33,7 @@
 		"./useResetState": "./src/hooks/api/auth/useResetState.ts",
 		"./useSendMessage": "./src/hooks/api/privateChat/useSendMessage.ts",
 		"./useSignIn": "./src/hooks/api/auth/useSignIn/index.ts",
+		"./useUpdateContact": "./src/hooks/api/user/useUpdateContact.ts",
 		"./useUpdateUserPublicInfo": "./src/hooks/api/user/useUpdateUserPublicInfo.ts",
 		"./useUserInfo": "./src/hooks/api/user/useUserInfo.ts",
 		"./useUserPublicInfo": "./src/hooks/api/user/useUserPublicInfo.ts",

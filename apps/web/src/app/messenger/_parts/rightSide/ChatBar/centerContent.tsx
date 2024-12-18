@@ -1,21 +1,13 @@
-import { userUtils } from "@repo/classes";
-import { useUserInfo } from "@repo/hooks/useUserInfo";
-import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
+import { useConcatenatedFullName } from "@repo/hooks/useConcatenatedFullName";
 import { Flex } from "@repo/ui/box/flex";
 import { Typography } from "@repo/ui/typography/typography";
 
+import { useUserStore } from "~/store";
+
 export const ChatBarCenterContent = () => {
-	// const selectedChatId = useChatStore((state) => state.selectedChatId);
+	const selectedUUID = useUserStore((state) => state.selectedUUID);
 
-	const {
-		data: { userInfo },
-	} = useUserInfo();
-
-	const {
-		data: { userPublicInfo },
-	} = useUserPublicInfo({ userId: userInfo.userId });
-
-	const fullName = userUtils.concatFirstNameWithLastName(userPublicInfo);
+	const fullName = useConcatenatedFullName({ userId: selectedUUID.to.chat });
 
 	return (
 		<Flex ai="center">

@@ -1,7 +1,8 @@
-import { userUtils } from "@repo/classes";
+import { useConcatenatedFullName } from "@repo/hooks/useConcatenatedFullName";
 import { useUserInfo } from "@repo/hooks/useUserInfo";
 import type { VoidNoArgs } from "@repo/types";
 import { Flex } from "@repo/ui/box/flex";
+import { concatenatePhone } from "@repo/utils/user";
 
 import { Header } from "./Header";
 import { List } from "./List";
@@ -17,8 +18,9 @@ export const Content: React.FC<Props> = ({ onAvatarClick, onClick }) => {
 		data: { userInfo },
 	} = useUserInfo();
 
-	const fullName = userUtils.concatFirstNameWithLastName(userInfo);
-	const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(userInfo);
+	const fullName = useConcatenatedFullName(userInfo);
+
+	const fullNumber = concatenatePhone(userInfo);
 
 	return (
 		<>

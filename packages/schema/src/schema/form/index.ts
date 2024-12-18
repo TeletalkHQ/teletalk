@@ -49,7 +49,10 @@ export const addContactForm = z.object({
 	countryName: countryNameSchema,
 	phoneNumber: phoneNumberSchema,
 });
-export const updateContactForm = addContactForm;
+export const updateContactForm = z.object({
+	firstName: firstNameSchema,
+	lastName: lastNameSchema.optional(),
+});
 
 export type FormSchema = {
 	addContactByPhone: typeof addContactForm;

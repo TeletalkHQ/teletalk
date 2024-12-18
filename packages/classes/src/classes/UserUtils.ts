@@ -4,32 +4,6 @@ import isEqual from "lodash/isEqual";
 
 // TODO: Remove
 export class UserUtils {
-	concatFirstNameWithLastName(
-		userItem: Partial<BaseSchema.ClientUser>,
-		publicInfo?: BaseSchema.UserPublicInfo
-	) {
-		const fn =
-			userItem.firstName ||
-			userItem.originalFirstName ||
-			publicInfo?.firstName ||
-			"";
-		const ln =
-			userItem.lastName ||
-			userItem.originalLastName ||
-			publicInfo?.lastName ||
-			"";
-
-		return `${fn} ${ln}`;
-	}
-
-	concatCountryCodeWithPhoneNumber(
-		data: BaseSchema.Cellphone & StringMap,
-		fallbackValue = ""
-	) {
-		if (!data.countryCode || !data.phoneNumber) return fallbackValue;
-		return `+${data.countryCode} ${data.phoneNumber}`;
-	}
-
 	getDefaultUserData(): BaseSchema.DBUserData {
 		return {
 			avatarSrc: "",

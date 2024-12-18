@@ -5,6 +5,9 @@
 	"type": "module",
 	"main": "./src/index.ts",
 	"types": "./src/index.ts",
+	"exports": {
+		"./user": "./src/utils/user.ts"
+	},
 	"scripts": {
 		"check:format": "prettier --write  --list-different ./",
 		"check:lint": "eslint ./",

@@ -9,13 +9,11 @@ export const UserInfo = () => {
 	const dialogState = useDialogState("userInfo");
 
 	return (
-		<>
-			<DialogTemplate
-				actions={<SingleAction buttonProps={{ onClick: dialogState.close }} />}
-				content={<Content />}
-				dialogState={dialogState}
-				title={<Title />}
-			/>
-		</>
+		<DialogTemplate
+			actions={<SingleAction buttonProps={{ onClick: dialogState.close }} />}
+			content={<Content />}
+			dialogState={dialogState}
+			title={<Title />}
+		/>
 	);
 };

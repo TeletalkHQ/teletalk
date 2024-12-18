@@ -1048,6 +1048,9 @@ importers:
       '@repo/use-api':
         specifier: workspace:*
         version: link:../../packages/use-api
+      '@repo/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*

@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const Content: React.FC<Props> = ({ onItemClick }) => (
-	<List>
+	<List className="flex flex-col gap-2">
 		{privacyAndSecurityList.map((item, index) => (
 			<ListItem key={index} item={item} onItemClick={onItemClick} />
 		))}
