@@ -1,4 +1,4 @@
-import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
+import { useConcatenatedFullName } from "@repo/hooks/useConcatenatedFullName";
 import { type BaseSchema } from "@repo/schema";
 import { type VoidNoArgs } from "@repo/types";
 import { Avatar } from "@repo/ui/box/Avatar";
@@ -15,9 +15,7 @@ interface Props {
 }
 
 export const ListItem: React.FC<Props> = ({ userId, onItemLick }) => {
-	const {
-		data: { userPublicInfo },
-	} = useUserPublicInfo({ userId });
+	const fullName = useConcatenatedFullName({ userId });
 
 	return (
 		<Grid container spacing={1}>
@@ -31,9 +29,7 @@ export const ListItem: React.FC<Props> = ({ userId, onItemLick }) => {
 					</ListItemAvatar>
 
 					<Div className="flex flex-col w-full justify-between items-start">
-						<Typography variant="body1">
-							{userPublicInfo.firstName} {userPublicInfo.lastName}
-						</Typography>
+						<Typography variant="body1">{fullName}</Typography>
 
 						<Typography variant="subtitle2">
 							Unknown phone number

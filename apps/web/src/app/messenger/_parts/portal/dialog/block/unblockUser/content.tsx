@@ -1,6 +1,5 @@
-import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
+import { useConcatenatedFullName } from "@repo/hooks/useConcatenatedFullName";
 import { Div } from "@repo/ui/box/div";
-import { Span } from "@repo/ui/box/span";
 import { Typography } from "@repo/ui/typography/typography";
 
 import { useUserStore } from "~/store";
@@ -12,19 +11,22 @@ export const Content: React.FC<Props> = () => {
 		(state) => state.selectedUUID.to.unblock
 	);
 
-	const {
-		data: { userPublicInfo },
-	} = useUserPublicInfo({ userId: selectedUserIdToUnblock });
+	const fullName = useConcatenatedFullName({ userId: selectedUserIdToUnblock });
 
 	return (
-		<>
-			<Div style={{ textAlign: "center", fontSize: 18 }}>
-				<Span>Are you sure you want to</Span> <Typography>remove</Typography>{" "}
-				<Typography>
-					{userPublicInfo.firstName} {userPublicInfo.lastName}{" "}
+		<Div>
+			<Typography>
+				Are you sure you want to
+				<Typography color="warning" component="span">
+					{" "}
+					remove
 				</Typography>
-				<Span>from your blacklist?</Span>
-			</Div>
-		</>
+				<Typography component="span" fontWeight="bold">
+					{" "}
+					{fullName}
+				</Typography>
+				<Typography component="span"> from your blacklist?</Typography>
+			</Typography>
+		</Div>
 	);
 };

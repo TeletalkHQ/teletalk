@@ -1,3 +1,4 @@
+import { useConcatenatedFullName } from "@repo/hooks/useConcatenatedFullName";
 import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
 import { type BaseSchema } from "@repo/schema";
 import { type VoidNoArgs } from "@repo/types";
@@ -26,6 +27,8 @@ export const ChatListItem: React.FC<Props> = ({
 		data: { userPublicInfo },
 	} = useUserPublicInfo({ userId: senderId });
 
+	const fullName = useConcatenatedFullName({ userId: senderId });
+
 	return (
 		<ListItemButton
 			className="h-14 w-full rounded-lg flex justify-between overflow-hidden text-ellipsis text-nowrap"
@@ -37,10 +40,7 @@ export const ChatListItem: React.FC<Props> = ({
 			</ListItemAvatar>
 
 			<Flex col style={{ width: "80%" }}>
-				<Upper
-					firstName={userPublicInfo.firstName}
-					lastName={userPublicInfo.lastName}
-				/>
+				<Upper fullName={fullName} />
 				<Lower messageText={messageText} />
 			</Flex>
 		</ListItemButton>

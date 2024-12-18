@@ -1,9 +1,11 @@
+import { useDialogState } from "@repo/hooks/useDialogState";
 import { useUserInfo } from "@repo/hooks/useUserInfo";
-import { logger } from "@repo/logger";
 import type { BaseSchema } from "@repo/schema";
 import { Div } from "@repo/ui/box/div";
 import { List } from "@repo/ui/box/list";
 import { Typography } from "@repo/ui/typography/typography";
+
+import { useUserStore } from "~/store";
 
 import { ListItem } from "./listItem";
 
@@ -14,10 +16,13 @@ export const Content: React.FC<Props> = () => {
 		data: { userInfo },
 	} = useUserInfo();
 
+	const setSelectedUUID = useUserStore((state) => state.setSelectedUUID);
+
+	const unblockUserDialog = useDialogState("removeBlock");
+
 	const itemClick = (userId: BaseSchema.UserId) => {
-		// TODO: Remove
-		logger.setLevel("DEBUG");
-		logger.log(userId);
+		setSelectedUUID("unblock", userId);
+		unblockUserDialog.open();
 	};
 
 	return (

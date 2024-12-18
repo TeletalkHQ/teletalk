@@ -1,14 +1,12 @@
-import { type BaseSchema } from "@repo/schema";
 import { Div } from "@repo/ui/box/div";
 import { Flex } from "@repo/ui/box/flex";
 import { Typography } from "@repo/ui/typography/typography";
 
 interface Props {
-	firstName: BaseSchema.FirstName;
-	lastName: BaseSchema.LastName;
+	fullName: string;
 }
 
-export const Upper: React.FC<Props> = ({ firstName, lastName }) => (
+export const Upper: React.FC<Props> = ({ fullName }) => (
 	<Flex
 		ai="center"
 		jc="space-between"
@@ -16,7 +14,7 @@ export const Upper: React.FC<Props> = ({ firstName, lastName }) => (
 			width: "100%",
 		}}
 	>
-		<Typography fontWeight="bold">{`${firstName} ${lastName}`}</Typography>
+		<Typography fontWeight="bold">{fullName}</Typography>
 		<Div>
 			<Typography
 				style={{

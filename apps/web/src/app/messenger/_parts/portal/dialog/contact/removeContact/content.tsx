@@ -1,6 +1,5 @@
-import { useUserPublicInfo } from "@repo/hooks/useUserPublicInfo";
+import { useConcatenatedFullName } from "@repo/hooks/useConcatenatedFullName";
 import { Div } from "@repo/ui/box/div";
-import { Span } from "@repo/ui/box/span";
 import { Typography } from "@repo/ui/typography/typography";
 
 import { useUserStore } from "~/store";
@@ -10,18 +9,21 @@ export const Content: React.FC = () => {
 		(state) => state.selectedUUID.to.removeContact
 	);
 
-	const {
-		data: { userPublicInfo },
-	} = useUserPublicInfo({ userId: userIdForRemoveContact });
+	const fullName = useConcatenatedFullName({ userId: userIdForRemoveContact });
 
 	return (
-		<Div style={{ textAlign: "center", fontSize: 18 }}>
-			<Span>Are you sure you want to</Span> <Typography>remove</Typography>{" "}
-			<Span>user</Span>{" "}
+		<Div>
 			<Typography>
-				{userPublicInfo.firstName} {userPublicInfo.lastName}
+				Are you sure you want to
+				<Typography color="warning" component="span" fontWeight={"bold"}>
+					{" "}
+					remove
+				</Typography>
 			</Typography>
-			<Span>from your contacts?</Span>
+			<Typography component="span" fontWeight="bold">
+				{fullName}
+			</Typography>
+			<Typography component="span"> from your contact list?</Typography>
 		</Div>
 	);
 };
